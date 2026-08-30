@@ -16,4 +16,7 @@ actions:
   - text: The Dirac Equation
     link: /dirac-equation.html
     type: primary
+  - text: "QFT: Quantum Field Theory"
+    link: /qft.html
+    type: primary
 ---

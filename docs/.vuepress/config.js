@@ -26,6 +26,7 @@ export default {
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
       { text: 'Dirac Equation', link: '/dirac-equation.html' },
+      { text: 'QFT: Quantum Field Theory', link: '/qft.html' },
     ],
   }),
 
