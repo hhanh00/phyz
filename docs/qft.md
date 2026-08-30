@@ -1,3 +1,5 @@
 # Quantum Field Theory
 
 This page continues from [The Dirac Equation](dirac-equation.md): the bridge promised at its end is crossed here. What the single-particle equation could not do — describing particles that are created and destroyed — requires a change of object: the wave function is not the fundamental object of the theory, it is a coefficient. The fundamental objects are **field operators** — operator-valued functions of space and time that create and annihilate particles. The negative-energy branch of the Dirac equation is then not a problem to be explained away: the hole picture of its §4 is replaced by creation and annihilation operators acting on the vacuum, the antiparticle of its §3 is the electron field's partner, and the physics of the positron follows from the mathematics of the field.
+
+Under construction
