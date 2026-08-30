@@ -23,6 +23,9 @@ importers:
       katex:
         specifier: ^0.16.47
         version: 0.16.47
+      markdown-it-footnote:
+        specifier: ^4.0.0
+        version: 4.0.0
       sass-embedded:
         specifier: ^1.103.1
         version: 1.103.1
@@ -1066,6 +1069,9 @@ packages:
 
   markdown-it-emoji@3.1.0:
     resolution: {integrity: sha512-NhmMEH2ywduD4Nty1E8uB5NqfLhAT1VR0dyvoJyStKOqCzbZmVdn/+8wj7zpDsb/fLBikpCPsWwxqKlvMmbz4g==}
+
+  markdown-it-footnote@4.0.0:
+    resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
 
   markdown-it@14.3.1:
     resolution: {integrity: sha512-4Ej49aYTDFIQ+uBkfX8GBvJGccoARxxPep+7aWTs55ozbjQJpW9M26Fe53vnGgvLeVzva/amzjQQaQu9w0vMhA==}
@@ -2866,6 +2872,8 @@ snapshots:
       markdown-it: 14.3.1
 
   markdown-it-emoji@3.1.0: {}
+
+  markdown-it-footnote@4.0.0: {}
 
   markdown-it@14.3.1:
     dependencies:
