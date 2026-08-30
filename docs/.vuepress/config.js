@@ -8,6 +8,8 @@ export default {
   lang: 'en-US',
   title: 'Phyz',
   description: 'A VuePress site with math markdown support',
+  // Served from GitHub Pages at https://hhanh00.github.io/phyz/
+  base: '/phyz/',
 
   bundler: viteBundler(),
 
