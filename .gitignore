@@ -1,0 +1,8 @@
+node_modules/
+docs/.vuepress/dist/
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/
+.manim-venv/
+.DS_Store
+docs/manim/media/
+__pycache__/
