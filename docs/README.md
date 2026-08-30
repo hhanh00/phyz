@@ -13,4 +13,7 @@ actions:
   - text: Relativistic QM
     link: /relativistic-qm.html
     type: primary
+  - text: The Dirac Equation
+    link: /dirac-equation.html
+    type: primary
 ---

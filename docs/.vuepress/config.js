@@ -19,12 +19,13 @@ export default {
       {
         text: 'Quantum Mech',
         children: [
-          { text: '01a — Classical Mechanics', link: '/classical-mechanics.html' },
-          { text: '01b — First Quantization', link: '/first-quantization.html' },
+          { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
+          { text: 'First Quantization', link: '/first-quantization.html' },
         ],
       },
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
+      { text: 'Dirac Equation', link: '/dirac-equation.html' },
     ],
   }),
 
