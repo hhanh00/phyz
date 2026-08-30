@@ -18,7 +18,7 @@ $$\frac{d\mathbf A}{dt} = \frac{i}{\hbar}[H, \mathbf A],$$
 
 so it is a constant of the motion exactly when $[H, \mathbf A] = 0$ — the commutator measures how fast the observable changes. That is the criterion used throughout this section: $[H, \mathbf L] \neq 0$ rules out $\mathbf L$ as a conserved quantity, and the intrinsic term must restore $[H, \mathbf J] = 0$.
 
-The $\boldsymbol\alpha$ matrices act on the spinor's internal components, coupling the motion to degrees of freedom that $\mathbf L$ — a purely spatial operator — cannot see. What must the intrinsic term be? Two requirements fix it: it must be an angular momentum — its components must obey the angular-momentum commutation table — and it must cancel the deficit,
+The $\boldsymbol\alpha$ matrices act on the spinor's internal components, coupling the motion to degrees of freedom that $\mathbf L$ — a purely spatial operator — cannot see. What must the intrinsic term be? Two requirements constrain it: it must cancel the deficit, and it must be an angular momentum — its components must obey the angular-momentum commutation table, a property to be checked once the candidate is found. The first requirement fixes the size:
 
 $$[H, S_i] = -[H, L_i] = i\hbar\,(\boldsymbol\alpha \times \hat{\mathbf p})_i.$$
 
@@ -88,7 +88,13 @@ $$E = +m: \quad w = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatr
 
 The four components are forced, not chosen: the equation needs four mutually anticommuting matrices, and in $2 \times 2$ the three Pauli matrices cannot be extended by a fourth — each anticommutes with the others but not with itself — so the matrices, and with them $\psi$, live in $4 \times 4$ ([Relativistic QM §4](relativistic-qm.md#_4-dirac-equation)): two pairs, the particle and antiparticle components of the previous page.
 
-The two members of each pair are the two **spin states** along $z$ — the eigenstates of the spin projection $S_z = \Sigma_z/2$ (which acts on each pair as $\sigma_z/2$), with eigenvalues $+\hbar/2$ for the first member (spin up) and $-\hbar/2$ for the second (spin down). The axis is a choice: any direction $\mathbf n$ defines spin states of its own, the eigenstates of $\mathbf n\cdot\mathbf S$. At rest the equation is therefore completely solved — four states, two energies, two spins each.
+The two members of each pair are the two **spin states** along $z$ — the eigenstates of the spin projection $S_z = \tfrac{\hbar}{2}\Sigma_z$. Call the four rest solutions $w^{(1)}_+, w^{(2)}_+, w^{(1)}_-, w^{(2)}_-$. Since $\Sigma_z = \mathrm{diag}(1, -1, 1, -1)$,
+
+$$S_z\,w^{(1)}_\pm = +\frac{\hbar}{2}\,w^{(1)}_\pm, \qquad S_z\,w^{(2)}_\pm = -\frac{\hbar}{2}\,w^{(2)}_\pm,$$
+
+the two eigenvalues, each occurring once per pair: the first member of each pair is **spin up** ($+\hbar/2$), the second **spin down** ($-\hbar/2$). On each pair the operator acts as $\tfrac{\hbar}{2}\sigma_z$, the factor $\tfrac12$ being the spin quantum number of §1 — not a consequence of the block structure — and the total spin is $\mathbf S^2 = \tfrac{\hbar^2}{4}\boldsymbol\Sigma^2 = \tfrac{3\hbar^2}{4}$, computed directly from the matrices ($\boldsymbol\Sigma^2 = 3$, since each $\sigma_i^2 = 1$): a magnitude $\tfrac{\sqrt3}{2}\hbar$, larger than the largest projection $\tfrac{\hbar}{2}$ — the spin vector never lies along a single axis.
+
+The axis is a choice: for any direction $\mathbf n$ the operator $\mathbf n\cdot\mathbf S = \tfrac{\hbar}{2}\,\mathbf n\cdot\boldsymbol\Sigma$ has the same two eigenvalues $\pm\hbar/2$ (the Pauli matrices have eigenvalues $\pm 1$ along every axis), so every direction defines spin states of its own, the eigenstates of $\mathbf n\cdot\mathbf S$; the $z$-axis is singled out here only by the basis we wrote down. At rest the equation is therefore completely solved — four states, two energies, two spins each.
 
 **Moving ($\mathbf p \neq 0$).** For a plane wave $\psi = w(p)\,e^{-ip\cdot x/\hbar}$, the equation becomes algebraic,
 
@@ -118,7 +124,7 @@ What cannot be done at this level: making this precise requires particles to be 
 
 ## 4. Negative Energy Solutions
 
-The two families of [§3](#_3-antiparticles) — the positive-energy $u$-branch and the negative-energy $v$-branch — pose the problem that [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) sharpened: both carry positive density $\psi^\dagger\psi$, so nothing marks a negative-energy state as unphysical, and the energy is unbounded below — an interacting electron could radiate energy forever, falling through negative levels. Dirac's resolution was the **hole theory**. The vacuum is not empty; every negative-energy state is occupied — a filled sea of electrons, which the Pauli exclusion principle protects from further occupancy. A missing electron in the sea then behaves as a positive-energy particle of positive charge: a **hole**, the positron. When an electron falls from a negative level into a hole, both disappear — the radiation emitted is pair annihilation; the reverse process is pair creation.
+The two families of [§3](#_3-antiparticles) — the positive-energy $u$-branch and the negative-energy $v$-branch — pose the problem that [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) sharpened: both carry positive density $\psi^\dagger\psi$, so nothing marks a negative-energy state as unphysical, and the energy is unbounded below — an interacting electron could radiate energy forever, falling through negative levels. Dirac's resolution was the **hole theory**. The vacuum is not empty; every negative-energy state is occupied — a filled sea of electrons, which the Pauli exclusion principle protects from further occupancy. A missing electron in the sea then behaves as a positive-energy particle of positive charge: a **hole**, the positron. When a positive-energy electron falls into a hole, both disappear — the energy released is radiated away: pair annihilation; the reverse process, lifting an electron out of the sea into a positive level and leaving a hole behind, is pair creation.
 
 Two honest caveats, in the spirit of the previous pages: the sea picture leans on fermionic statistics (the exclusion principle), and on a many-particle vacuum — both belong to the quantized theory, where the hole picture is replaced by creation and annihilation operators acting on the vacuum. What the single-particle equation contributes is definitive: negative-energy solutions exist, they carry opposite charge ([§3](#_3-antiparticles)), and their interpretation is the doorway to field theory.
 
