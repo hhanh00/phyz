@@ -19,8 +19,8 @@ export default {
       {
         text: 'Quantum Mech',
         children: [
-          { text: '01a — Classical Mechanics', link: '/lesson-01a-classical-mechanics.html' },
-          { text: '01b — First Quantization', link: '/lesson-01b-first-quantization.html' },
+          { text: '01a — Classical Mechanics', link: '/classical-mechanics.html' },
+          { text: '01b — First Quantization', link: '/first-quantization.html' },
         ],
       },
       { text: 'Special Relativity', link: '/special-relativity.html' },

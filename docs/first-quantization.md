@@ -1,4 +1,4 @@
-# Lesson 01b: First Quantization
+# First Quantization
 
 ## 1. From Classical to Quantum State Space
 First quantization is the procedure of promoting a classical system to a quantum one while keeping its basic structure intact. Phase space $(q, p)$ is replaced by a Hilbert space of state vectors, dynamical quantities become linear operators acting on that space, and the Poisson bracket is replaced by the commutator via $\{\cdot,\cdot\} \to \frac{1}{i\hbar}[\cdot,\cdot]$. The immediate consequence is that a system's state is no longer a single point specifying definite values for every quantity at once — it is a vector that, in general, does not have a definite value for every observable simultaneously. Everything that follows is really an unpacking of what that shift entails.
@@ -38,7 +38,7 @@ where $\Delta x$ and $\Delta p$ are the standard deviations of position and mome
 
 ---
 
-Previous: [Lesson 01a — Classical Mechanics](./lesson-01a-classical-mechanics.md)
+Previous: [Lesson 01a — Classical Mechanics](./classical-mechanics.md)
 
 [^linalg]: The linear algebra underlying quantum mechanics has two workhorse classes of operator, each chosen because it preserves something physically essential.
 
