@@ -8,8 +8,8 @@ export default {
   lang: 'en-US',
   title: 'Phyz',
   description: 'A VuePress site with math markdown support',
-  // Served from GitHub Pages at https://hhanh00.github.io/phyz/
-  base: '/phyz/',
+  // Served from custom domain https://phyz.methyl.cc
+  base: '/',
 
   bundler: viteBundler(),
 
