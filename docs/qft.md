@@ -35,7 +35,7 @@ Stated once without the spinor dressing — the construction below builds it tha
 
 $$\hat\phi(x) = \int \frac{d^3k}{(2\pi\hbar)^3}\left[\hat a(\mathbf k)\,e^{-ik\cdot x/\hbar} + \hat b^\dagger(\mathbf k)\,e^{+ik\cdot x/\hbar}\right], \qquad \hat\phi^\dagger(x) = \int \frac{d^3k}{(2\pi\hbar)^3}\left[\hat a^\dagger(\mathbf k)\,e^{+ik\cdot x/\hbar} + \hat b(\mathbf k)\,e^{-ik\cdot x/\hbar}\right],$$
 
-so $\hat a$ annihilates a particle and $\hat b^\dagger$ creates an antiparticle inside the field, while $\hat a^\dagger$ creates a particle and $\hat b$ annihilates an antiparticle inside its adjoint. The doubling of coefficients is charge made visible: a field equal to its own adjoint — a real field, $\hat\phi^\dagger = \hat\phi$ — has no $\hat b$'s at all and describes a particle that is its own antiparticle; only when particle and antiparticle are distinct, opposite charges, does the field need both pairs.
+so $\hat a$ annihilates a particle and $\hat b^\dagger$ creates an antiparticle inside the field, while $\hat a^\dagger$ creates a particle and $\hat b$ annihilates an antiparticle inside its adjoint. The doubling of coefficients is charge made visible: a field equal to its own adjoint — a real field, $\hat\phi^\dagger = \hat\phi$ — has no $\hat b$'s at all and describes a particle that is its own antiparticle; only when particle and antiparticle are distinct, opposite charges, does the field need both pairs. One honest note: charge here is a *quantum number* — the conserved label separating particle from antiparticle — and nothing so far shows it to be the electric charge of electromagnetism; that identification waits until the field is coupled to $A_\mu$.
 
 ### What the promotion does not yet have
 
