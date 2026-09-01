@@ -26,7 +26,13 @@ export default {
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
       { text: 'Dirac Equation', link: '/dirac-equation.html' },
-      { text: 'QFT: Quantum Field Theory', link: '/qft.html' },
+      {
+        text: 'Quantum Field Theory',
+        children: [
+          { text: 'Fields and Quanta', link: '/qft.html' },
+          { text: 'Action and Lagrangians', link: '/qft-action.html' },
+        ],
+      },
     ],
   }),
 
