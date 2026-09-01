@@ -2,7 +2,7 @@
 
 ## 1. Plane Wave
 
-Start from the non-relativistic Schrödinger equation (Special Relativity §10) and ask what its simplest solutions are: the states of definite energy.
+Start from the non-relativistic Schrödinger equation (Special Relativity §9) and ask what its simplest solutions are: the states of definite energy.
 
 **A state of definite energy.** In quantum mechanics an observable takes a sharp, predictable value only when the system is in an eigenstate of the corresponding operator. The energy observable is the **Hamiltonian** $\hat H$, so a state of definite energy $E$ satisfies
 
@@ -14,7 +14,7 @@ Measurement of the energy on such a state returns $E$ with certainty, and the st
 
 $$i\hbar \frac{\partial \psi}{\partial t} = \hat H \psi$$
 
-(restoring $\hbar$, still $c = 1$, as in Special Relativity §10). We want its definite-energy solutions.
+(restoring $\hbar$, still $c = 1$, as in Special Relativity §9). We want its definite-energy solutions.
 
 **Separation of variables.** Assume the wave function factors into spatial and temporal parts, $\psi(x, t) = \phi(x)\,\tau(t)$. Substituting into the Schrödinger equation and dividing by $\psi$,
 
@@ -38,19 +38,19 @@ $$\psi(x, t) = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar},$$
 
 the **plane wave**: a state of definite momentum $\mathbf p$ and definite energy $E = \mathbf p^2/2m$. Note the price of definiteness: $|\psi|^2 = 1$ everywhere — a state with sharp momentum carries no position information at all, the extreme limit of the Heisenberg uncertainty relation.
 
-The plane wave is the natural eigen-solution of the non-relativistic theory, but its dispersion relation $E = \mathbf p^2/2m$ is precisely the one Special Relativity §10 showed to be incompatible with Lorentz covariance. The next step is to replace the Schrödinger operator with the relativistic wave equation — the Klein–Gordon equation — and see what a definite-energy plane wave looks like there.
+The plane wave is the natural eigen-solution of the non-relativistic theory, but its dispersion relation $E = \mathbf p^2/2m$ is precisely the one Special Relativity §9 showed to be incompatible with Lorentz covariance. The next step is to replace the Schrödinger operator with the relativistic wave equation — the Klein–Gordon equation — and see what a definite-energy plane wave looks like there.
 
 ## 2. Klein Gordon
 
-The Schrödinger equation failed the Lorentz test (Special Relativity §10) because it quantized the *approximate* energy relation. The Klein–Gordon equation is what you get by quantizing the exact one.
+The Schrödinger equation failed the Lorentz test (Special Relativity §9) because it quantized the *approximate* energy relation. The Klein–Gordon equation is what you get by quantizing the exact one.
 
-**Take the definition of $E$ in special relativity.** The exact relation between energy and momentum (Special Relativity §8) is
+**Take the definition of $E$ in special relativity.** The exact relation between energy and momentum (Special Relativity §7) is
 
 $$E^2 = \mathbf p^2 + m^2$$
 
 ($c = 1$): the Lorentz-invariant norm $p^\mu p_\mu = m^2$ of the four-momentum. The non-relativistic relation $E = \mathbf p^2/2m$ of §1 is only its low-velocity limit, valid when $|\mathbf p| \ll m$.
 
-**Promote to operators.** Apply the same quantization prescription used in Special Relativity §8 and in §1 — replace the classical energy and momentum by operators:
+**Promote to operators.** Apply the same quantization prescription used in Special Relativity §7 and in §1 — replace the classical energy and momentum by operators:
 
 $$E \to i\hbar\,\frac{\partial}{\partial t}, \qquad \mathbf p \to -i\hbar\nabla .$$
 
@@ -68,7 +68,7 @@ or, in covariant notation,
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\psi = 0, \qquad \Box \equiv \partial_\mu\partial^\mu = \partial_t^2 - \nabla^2,$$
 
-the **Klein–Gordon equation**. It is manifestly Lorentz-invariant: $\Box$ is the Lorentz scalar built from derivatives (Special Relativity §10), $m$ is a scalar, and the equation is a scalar equation — a boost cannot change its form. This is the fix §10 promised.
+the **Klein–Gordon equation**. It is manifestly Lorentz-invariant: $\Box$ is the Lorentz scalar built from derivatives (Special Relativity §9), $m$ is a scalar, and the equation is a scalar equation — a boost cannot change its form. This is the fix §9 promised.
 
 Plane-wave solutions $\psi = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar}$ reproduce the dispersion relation
 
@@ -124,7 +124,7 @@ The contrast, in one table:
 
 Dirac's 1928 move was to solve the probability problem by construction: write down an equation that is first order in time, so that §3's machinery runs and the density is positive — while remaining Lorentz-covariant, so that the dispersion relation of §2 is untouched.
 
-**The requirements.** First, the equation must be first order in time: then $\partial_t\psi$ is fixed by the equation, and the density $\psi^\dagger\psi$ obeys a continuity equation with positive total probability, exactly as in the Schrödinger case of §3. Second, it must be Lorentz-covariant — and a first-order-in-time equation can only be covariant if space enters at the same order (otherwise the equation singles out the time direction, the §10 asymmetry argument all over again). Third, plane waves must still satisfy $E^2 = \mathbf p^2 + m^2$, so that iterating the equation reproduces the Klein–Gordon result.
+**The requirements.** First, the equation must be first order in time: then $\partial_t\psi$ is fixed by the equation, and the density $\psi^\dagger\psi$ obeys a continuity equation with positive total probability, exactly as in the Schrödinger case of §3. Second, it must be Lorentz-covariant — and a first-order-in-time equation can only be covariant if space enters at the same order (otherwise the equation singles out the time direction, the §9 asymmetry argument all over again). Third, plane waves must still satisfy $E^2 = \mathbf p^2 + m^2$, so that iterating the equation reproduces the Klein–Gordon result.
 
 **The guess.** The most general first-order equation with these properties is
 
@@ -176,7 +176,7 @@ with conserved current $j^\mu = \bar\psi\gamma^\mu\psi$, $\bar\psi = \psi^\dagge
 
 The page's argument in four moves:
 
-**1. Relativistic energy.** The exact energy–momentum relation is $E^2 = \mathbf p^2 + m^2$ — the Lorentz-invariant norm $p^\mu p_\mu = m^2$. The non-relativistic relation $E = \mathbf p^2/2m$ is its low-velocity limit; quantizing that limit produced the Schrödinger equation, which Special Relativity §10 showed is not Lorentz-covariant.
+**1. Relativistic energy.** The exact energy–momentum relation is $E^2 = \mathbf p^2 + m^2$ — the Lorentz-invariant norm $p^\mu p_\mu = m^2$. The non-relativistic relation $E = \mathbf p^2/2m$ is its low-velocity limit; quantizing that limit produced the Schrödinger equation, which Special Relativity §9 showed is not Lorentz-covariant.
 
 **2. The quantization rule.** Replace energy and momentum by operators, $E \to i\hbar\,\partial_t$ and $\mathbf p \to -i\hbar\nabla$. Applied to the non-relativistic relation this gives the Schrödinger equation of §1; applied to the exact relation it gives the relativistic equation.
 

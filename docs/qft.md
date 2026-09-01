@@ -51,7 +51,7 @@ What kind of object is being built? Fields come in kinds, classified the way the
 | vector $A^\mu(x)$ | $A'^\mu(x') = \Lambda^\mu{}_{\nu}\,A^\nu(x)$ | $1$ | photon |
 | spinor $\psi(x)$ | $\psi'(x') = S(\Lambda)\,\psi(x)$ | $\tfrac{1}{2}$ | electron |
 
-Each row comes with its wave equation, and the correspondence is not an inventory to memorize — it is forced. Once a field transforms by a fixed representation, a relativistic wave equation must be built from that field in combinations that are themselves Lorentz-invariant (or transform consistently with it, [Special Relativity §7](special-relativity.md#_7-metric-tensor-covariance-and-contravariance)), and for each row the simplest such equation is essentially unique.
+Each row comes with its wave equation, and the correspondence is not an inventory to memorize — it is forced. Once a field transforms by a fixed representation, a relativistic wave equation must be built from that field in combinations that are themselves Lorentz-invariant (or transform consistently with it, [Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance)), and for each row the simplest such equation is essentially unique.
 
 The scalar offers only $\phi$ itself, so its equation is built from the one Lorentz scalar a derivative can form, $\Box = \partial_t^2 - \nabla^2$:
 
@@ -65,7 +65,7 @@ $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
 the Dirac equation itself: first order in time and space together, the escape from the Klein–Gordon equation's negative density that [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) sought — with the twist, already familiar, that the first-order equation came with four components and antiparticles attached.
 
-The vector row carries the electromagnetic four-potential, and the field it enters physics through is the tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ of [Special Relativity §9](special-relativity.md#_9-maxwell-equations). In empty space its equation is
+The vector row carries the electromagnetic four-potential, and the field it enters physics through is the tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ of [Special Relativity §8](special-relativity.md#_8-maxwell-equations). In empty space its equation is
 
 $$\partial_\mu F^{\mu\nu} = 0 \quad\Longleftrightarrow\quad \Box A^\nu - \partial^\nu(\partial_\mu A^\mu) = 0,$$
 

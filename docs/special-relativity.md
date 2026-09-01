@@ -17,7 +17,7 @@ The Lorentz transformation fixes this by tilting *both* axes symmetrically towar
 
 *Figure: the same boost in both frameworks — Galilean (left): $t' = t$ stays horizontal and only $x'$ tilts up, so light no longer bisects the axes; Lorentz (right): both axes tilt symmetrically, so light always bisects $t'$ and $x'$.*
 
-## 4. Lorentz Transformations
+## 3. Lorentz Transformations
 
 If two inertial frames $S$ and $S'$ are aligned along the $x$-axis with $S'$ moving at velocity $v$ relative to $S$, the Lorentz transformation relating their coordinates is
 
@@ -33,7 +33,7 @@ $$u' = \frac{u - v}{1 - uv/c^2}$$
 
 Setting $u = c$ gives $u' = c$ for any $v$ — light speed is the same in every frame, as required.
 
-## 5. Spacetime and the Invariant Interval
+## 4. Spacetime and the Invariant Interval
 
 Minkowski's insight was that the Lorentz transformations are rotations in a four-dimensional spacetime, but with a metric that mixes a spatial sign with a temporal one. Define the **spacetime interval** between two events as
 
@@ -47,7 +47,7 @@ This quantity is the same in every inertial frame — it is the Lorentz-invarian
 
 The invariant interval replaces the Euclidean notion of absolute distance. Just as a rotation in space changes $x$ and $y$ individually while preserving $x^2 + y^2$, a Lorentz boost changes $t$ and $x$ individually while preserving $c^2 t^2 - x^2$.
 
-## 6. Four-Vectors and Covariant Notation
+## 5. Four-Vectors and Covariant Notation
 
 The natural objects in special relativity are **four-vectors**, which transform under Lorentz boosts the same way $(ct, x, y, z)$ does. The prototype is the spacetime four-position:
 
@@ -65,7 +65,7 @@ $$p^\mu = \left(\frac{E}{c},\, p_x,\, p_y,\, p_z\right)$$
 
 where $E$ is the relativistic energy and $\mathbf{p} = \gamma m \mathbf{v}$ is the relativistic three-momentum.
 
-## 7. Metric Tensor, Covariance, and Contravariance
+## 6. Metric Tensor, Covariance, and Contravariance
 
 Most of this section is bookkeeping — and the bookkeeping is the point. On the earlier pages a vector was a list of three coordinates, $(x, y, z)$, and beyond the count nothing about the notation demanded care: dimensionality was all we ever asked of it. Spacetime adds a fourth coordinate — that part is trivial. What is not trivial is the Lorentz transformation: it no longer treats every list of coordinates the same way. Some objects transform *with* the new frame, some *against* it, and a calculation that mixes the two without tracking which is which produces frame-dependent nonsense. The upper and lower indices are the tracking device — a notation tool, nothing deeper. The reader who takes away one rule is equipped for everything between here and the [QFT](qft.md) page: **pair an upper index with a lower one, and the result is the same number in every frame.** The rest of this section unpacks the rule.
 
@@ -100,7 +100,7 @@ The metric itself is a $(0,2)$ tensor. Any equation written as a tensor equality
 A word on scope: the general tensor definition above is the heaviest formalism in the sequence so far, and it is introduced here once — the pages in between need only the four-vectors and contractions already in hand, and the general machinery returns when the transformation laws of *fields* take the stage on the [QFT](qft.md) page.
 
 
-## 8. Mass, Energy
+## 7. Mass, Energy
 
 The Lorentz-invariant norm of the four-momentum gives the **energy–momentum relation**:
 
@@ -116,9 +116,9 @@ The total relativistic energy $E = \gamma mc^2$ splits into rest energy $mc^2$ a
 
 The energy–momentum relation is the starting point for relativistic quantum mechanics: replacing $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$ in $E^2 = (mc^2)^2 + (pc)^2$ gives the Klein–Gordon equation, the first attempt at a relativistic wave equation, and the road that eventually leads to the Dirac equation and quantum field theory.
 
-## 9. Maxwell Equations
+## 8. Maxwell Equations
 
-Section 1 left a claim dangling: the two postulates are "what Maxwell's equations require." The reason is that Maxwell's equations are already Lorentz-covariant — they assemble out of four-vector and tensor objects exactly as §7 prescribes, so they keep the same form in every inertial frame. Special relativity did not fix Maxwell; it was built to accommodate it.
+Section 1 left a claim dangling: the two postulates are "what Maxwell's equations require." The reason is that Maxwell's equations are already Lorentz-covariant — they assemble out of four-vector and tensor objects exactly as §6 prescribes, so they keep the same form in every inertial frame. Special relativity did not fix Maxwell; it was built to accommodate it.
 
 In natural units ($c = 1$), the four equations are
 
@@ -142,13 +142,13 @@ The classic illustration: a point charge at rest produces a purely electric fiel
 
 Conversely, the four familiar equations are the **component expansion of the two tensor equations**. In $\partial_\mu F^{\mu\nu} = J^\nu$, the $\nu = 0$ component is Gauss's law $\nabla\cdot\mathbf{E} = \rho$ and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law; in the cyclic identity, the purely spatial index choice $(\lambda\mu\nu) = (123)$ is $\nabla\cdot\mathbf{B} = 0$ and the choices with one temporal index give Faraday's law. Maxwell's equations are not four independent postulates — they are the components of two tensor equations, unpacked in a chosen frame. That is why a boost merely rotates the components into one another (the mixing above) while the equations themselves never change form. The homogeneous pair is automatic: it is an identity once $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ is substituted — the field tensor is the exterior derivative of the four-potential.
 
-Both tensor equations are contractions of four-vector/tensor objects, hence **manifestly Lorentz-covariant**: by §7 they hold unchanged in every inertial frame, and in particular the wave equation they imply propagates disturbances at exactly $c$ for every observer. That is the precise sense in which Maxwell is compatible with the Lorentz transformation — the equations are *the same* in every frame, not merely similar.
+Both tensor equations are contractions of four-vector/tensor objects, hence **manifestly Lorentz-covariant**: by §6 they hold unchanged in every inertial frame, and in particular the wave equation they imply propagates disturbances at exactly $c$ for every observer. That is the precise sense in which Maxwell is compatible with the Lorentz transformation — the equations are *the same* in every frame, not merely similar.
 
-## 10. Schrödinger Equation
+## 9. Schrödinger Equation
 
 The Schrödinger equation is what you get by quantizing the *non-relativistic* energy–momentum relation, and it is not Lorentz-covariant: time and space enter at different orders, so the equation singles out one frame.
 
-Restoring $\hbar$ (still $c = 1$), the non-relativistic energy is $E = \mathbf{p}^2/2m$. Applying the quantization prescription of §8, $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$, gives the free Schrödinger equation
+Restoring $\hbar$ (still $c = 1$), the non-relativistic energy is $E = \mathbf{p}^2/2m$. Applying the quantization prescription of §7, $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$, gives the free Schrödinger equation
 
 $$i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2 \psi,$$
 
@@ -156,4 +156,4 @@ with a potential term $V(\mathbf{x})\psi$ added by hand for interacting particle
 
 That asymmetry is exactly why it cannot be Lorentz-invariant. The Lorentz scalar built from two derivatives is the d'Alembertian $\partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$, which treats time and space democratically; the Schrödinger operator $i\hbar\partial_t + \tfrac{\hbar^2}{2m}\nabla^2$ has no such four-vector form, so a Lorentz boost does not preserve the equation — observers in relative motion would not agree that it holds.
 
-Equivalently, look at plane waves $\psi \propto e^{i(\mathbf{p}\cdot\mathbf{x} - Et)/\hbar}$. The equation enforces the dispersion relation $E = \mathbf{p}^2/2m$, which is only approximate: it is the low-velocity limit of the exact relation $E^2 = m^2 + \mathbf{p}^2$ (§8), valid when $|\mathbf{p}| \ll m$. Special relativity demands the second-order Klein–Gordon equation instead — at the price of negative-energy solutions, which point the way to the Dirac equation and antiparticles. The Schrödinger equation is the $v \ll c$ limit of that story, and the starting point of [First Quantization](first-quantization.md).
+Equivalently, look at plane waves $\psi \propto e^{i(\mathbf{p}\cdot\mathbf{x} - Et)/\hbar}$. The equation enforces the dispersion relation $E = \mathbf{p}^2/2m$, which is only approximate: it is the low-velocity limit of the exact relation $E^2 = m^2 + \mathbf{p}^2$ (§7), valid when $|\mathbf{p}| \ll m$. Special relativity demands the second-order Klein–Gordon equation instead — at the price of negative-energy solutions, which point the way to the Dirac equation and antiparticles. The Schrödinger equation is the $v \ll c$ limit of that story, and the starting point of [First Quantization](first-quantization.md).
