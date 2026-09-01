@@ -1,0 +1,5 @@
+- [Phyz VuePress quirks](phyz-vuepress-quirks.md) — components dir not auto-registered, static-SVG excalidraw renderer, .temp conflict, use docs:clean-dev
+- [Static over interactive](phyz-static-over-interactive.md) — user wants diagrams displayed, not editable embeds
+- [Manim setup](phyz-manim-setup.md) — .manim-venv + TinyTeX toolchain, render command, x-vertical/t-horizontal convention
+- [Prose style](phyz-prose-style.md) — no over-explaining, no stilted phrasing, rewrite ambiguous sentences instead of adding prose
+- [Terminology](phyz-terminology.md) — "term"/explicit descriptions, not "branch", for positive/negative-frequency solution parts
