@@ -34,6 +34,16 @@ export default {
         ],
       },
     ],
+    // Reading order for the Prev/Next footer links on each page.
+    sidebar: [
+      { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
+      { text: 'First Quantization', link: '/first-quantization.html' },
+      { text: 'Special Relativity', link: '/special-relativity.html' },
+      { text: 'Relativistic QM', link: '/relativistic-qm.html' },
+      { text: 'Dirac Equation', link: '/dirac-equation.html' },
+      { text: 'Fields and Quanta', link: '/qft.html' },
+      { text: 'Action and Lagrangians', link: '/qft-action.html' },
+    ],
   }),
 
   plugins: [
