@@ -6,11 +6,7 @@ Special relativity rests on exactly two assumptions. The first is the **principl
 
 The second postulate is the one that breaks with Newtonian intuition: the **invariance of the speed of light**. The speed of light in vacuum, $c \approx 3 \times 10^8\ \text{m/s}$, is the same for all inertial observers regardless of the motion of the source or the observer. This is not obvious — it contradicts the Galilean addition of velocities — but it is what Maxwell's equations require, and every precision experiment since Michelson–Morley has confirmed it. Taken together, the two postulates force a revision of how time and space relate across different frames.
 
-## 2. Natural Coordinates
-
-Setting $c = 1$ — measuring time in the same units as distance, so one second equals $3 \times 10^8$ metres — strips the factors of $c$ from every formula and makes the underlying geometry legible. The Lorentz transformation becomes $t' = \gamma(t - vx)$, $x' = \gamma(x - vt)$; the invariant interval becomes $s^2 = \Delta t^2 - \Delta x^2$; the energy–momentum relation becomes $E^2 = m^2 + p^2$. Velocities are dimensionless numbers between 0 and 1. Mass, energy, and momentum all share the same unit. The only price is that restoring SI units at the end requires inserting factors of $c$ by dimensional analysis, which is straightforward once the physics is clear. Natural units are used throughout the rest of this page.
-
-## 3. Galilean Transformation
+## 2. Galilean Transformation
 
 Before Einstein, frames in relative motion were related by the Galilean transformation: $t' = t$ and $x' = x - vt$, with $y$ and $z$ unchanged. Time is universal, and velocities add without limit — if a train moves at $v$ and a passenger walks at $u$ relative to the train, a platform observer sees them at $u + v$, with no ceiling. There is nothing in the Galilean rules that forbids speeds larger than $c$; light has no special status.
 
@@ -21,8 +17,6 @@ The Lorentz transformation fixes this by tilting *both* axes symmetrically towar
 
 *Figure: the same boost in both frameworks — Galilean (left): $t' = t$ stays horizontal and only $x'$ tilts up, so light no longer bisects the axes; Lorentz (right): both axes tilt symmetrically, so light always bisects $t'$ and $x'$.*
 
-
-
 ## 4. Lorentz Transformations
 
 If two inertial frames $S$ and $S'$ are aligned along the $x$-axis with $S'$ moving at velocity $v$ relative to $S$, the Lorentz transformation relating their coordinates is
@@ -30,7 +24,6 @@ If two inertial frames $S$ and $S'$ are aligned along the $x$-axis with $S'$ mov
 $$t' = \gamma\!\left(t - \frac{vx}{c^2}\right), \qquad x' = \gamma(x - vt), \qquad y' = y, \qquad z' = z$$
 
 where $\gamma = 1/\sqrt{1 - v^2/c^2}$ is the **Lorentz factor**, always $\geq 1$ and diverging as $v \to c$. In the limit $v \ll c$, $\gamma \to 1$ and these reduce to the Galilean transformation $t' = t$, $x' = x - vt$ — Newton's kinematics is recovered as a low-velocity approximation.
-
 
 The crucial novelty is the mixing of $t$ and $x$: time is no longer universal. What one observer calls "simultaneous" ($t_1 = t_2$ at different $x$) another observer in relative motion generally does not. Simultaneity is frame-dependent, and this is not a failure of perception but a structural feature of spacetime.
 
@@ -74,7 +67,9 @@ where $E$ is the relativistic energy and $\mathbf{p} = \gamma m \mathbf{v}$ is t
 
 ## 7. Metric Tensor, Covariance, and Contravariance
 
-Four-vectors come in two flavors distinguished by where their index sits. A **contravariant** vector $A^\mu$ (index up) transforms the same way the coordinate displacement $dx^\mu$ does under a Lorentz transformation $\Lambda^\mu{}_\nu$:
+Most of this section is bookkeeping — and the bookkeeping is the point. On the earlier pages a vector was a list of three coordinates, $(x, y, z)$, and beyond the count nothing about the notation demanded care: dimensionality was all we ever asked of it. Spacetime adds a fourth coordinate — that part is trivial. What is not trivial is the Lorentz transformation: it no longer treats every list of coordinates the same way. Some objects transform *with* the new frame, some *against* it, and a calculation that mixes the two without tracking which is which produces frame-dependent nonsense. The upper and lower indices are the tracking device — a notation tool, nothing deeper. The reader who takes away one rule is equipped for everything between here and the [QFT](qft.md) page: **pair an upper index with a lower one, and the result is the same number in every frame.** The rest of this section unpacks the rule.
+
+The two behaviors get names. A **contravariant** vector $A^\mu$ (index up) transforms the same way the coordinate displacement $dx^\mu$ does under a Lorentz transformation $\Lambda^\mu{}_\nu$:
 
 $$A'^\mu = \Lambda^\mu{}_\nu\, A^\nu$$
 
@@ -82,7 +77,7 @@ A **covariant** vector $A_\mu$ (index down) transforms by the inverse transpose,
 
 $$A'_\mu = (\Lambda^{-1})^\nu{}_\mu\, A_\nu$$
 
-The names come from how each type behaves under a change of coordinates: contravariant components transform inversely to the basis vectors (they "go against" the basis), covariant components transform the same way as the basis (they "go with" it). Derivatives $\partial/\partial x^\mu$ are the prototype covariant object; coordinate increments $dx^\mu$ are the prototype contravariant one.
+Contravariant components go *against* the basis vectors, covariant ones *with* them — derivatives $\partial/\partial x^\mu$ are the prototype covariant object, coordinate increments $dx^\mu$ the prototype contravariant one.
 
 The **Minkowski metric** $\eta_{\mu\nu} = \text{diag}(+1,-1,-1,-1)$ is the machine that converts between them:
 
@@ -101,6 +96,9 @@ A **tensor** of type $(r, s)$ carries $r$ contravariant and $s$ covariant indice
 $$T'^{\mu_1\cdots\mu_r}{}_{\nu_1\cdots\nu_s} = \Lambda^{\mu_1}{}_{\alpha_1}\cdots\Lambda^{\mu_r}{}_{\alpha_r}\,(\Lambda^{-1})^{\beta_1}{}_{\nu_1}\cdots(\Lambda^{-1})^{\beta_s}{}_{\nu_s}\; T^{\alpha_1\cdots\alpha_r}{}_{\beta_1\cdots\beta_s}$$
 
 The metric itself is a $(0,2)$ tensor. Any equation written as a tensor equality — same index structure on both sides, all free indices consistent — is automatically valid in every Lorentz frame. This is the practical content of covariance: write physics as tensor equations and relativistic invariance is built in.
+
+A word on scope: the general tensor definition above is the heaviest formalism in the sequence so far, and it is introduced here once — the pages in between need only the four-vectors and contractions already in hand, and the general machinery returns when the transformation laws of *fields* take the stage on the [QFT](qft.md) page.
+
 
 ## 8. Mass, Energy
 
