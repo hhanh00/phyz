@@ -20,9 +20,19 @@ The upgrade to a field changes the integration variable, and that is all it chan
 
 $$S[\phi] = \int d^4x\;\mathcal{L}(\phi, \partial_\mu\phi),$$
 
-and the same two-line variation, one more index, returns the Euler–Lagrange equation for the field,
+The variation deserves running in full once, because the field version adds one structural step. Perturb the field by a small function $\delta\phi(x)$ that vanishes on the boundary of the spacetime region: the fixed endpoints of mechanics become a fixed initial configuration, a fixed final configuration, and decay far enough away in space. To first order in the perturbation, the chain rule gives
 
-$$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0.$$
+$$\delta S = \int d^4x\left[\frac{\partial\mathcal{L}}{\partial\phi}\,\delta\phi + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\,\partial_\mu(\delta\phi)\right].$$
+
+The second term still differentiates the perturbation, and it must be made to wear $\delta\phi$ alone. Integrate it by parts in each of the four directions; every pass leaves a total divergence $\partial_\mu(\,\cdot\,\delta\phi)$, which integrates to a surface term over the boundary, and the surface term dies because $\delta\phi$ dies there. What remains is
+
+$$\delta S = \int d^4x\left[\frac{\partial\mathcal{L}}{\partial\phi} - \partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right)\right]\delta\phi.$$
+
+For the particle, the bracket had to vanish at each time, because $\delta q(t)$ was arbitrary at each time. The same demand now runs point by point through space: $\delta\phi$ may perturb one address of the field while leaving all its neighbors fixed, so the bracket must vanish at every point of spacetime,
+
+$$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0,$$
+
+the Euler–Lagrange equation for a field: the particle's equation with the time derivative grown into a four-dimensional divergence.
 
 What the principle buys is exactly what the field table wanted: Lorentz invariance built into the derivation rather than checked afterward. Let $\mathcal{L}$ be a Lorentz scalar built from the field and its derivatives. The action is then a single number that every observer agrees on, the stationary configuration cannot depend on a frame, and the equation that comes out is automatically covariant. Each row of the table's wave equations is the Euler–Lagrange equation of the simplest invariant density its field admits: the scalar's $\mathcal{L} = \tfrac{1}{2}\,(\partial_\mu\phi)(\partial^\mu\phi) - \tfrac{m^2}{2\hbar^2}\,\phi^2$ gives the Klein–Gordon equation, the vector's $\mathcal{L} = -\tfrac{1}{4}F^{\mu\nu}F_{\mu\nu}$ gives Maxwell with the massless term, and the spinor's $\mathcal{L} = \bar\psi\,(i\hbar\gamma^\mu\partial_\mu - m)\,\psi$ gives the Dirac equation. The "essentially unique" of the [Fields section](qft.md#fields) becomes a computation here: write down the simplest scalar density the representation allows, and the wave equation of that row falls out.
 
@@ -96,37 +106,46 @@ $$\mathcal{L} = -\frac{1}{4}\,F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu} = \partial
 
 The density has one term, which is purely kinetic. The scalar's mass term has no counterpart here, and the computation below will show the gap as the exact slot where one would sit.
 
-Expand the contraction as the scalar section did. Antisymmetry, $F_{\mu\nu} = -F_{\nu\mu}$, leaves six independent components out of sixteen, three time-space pairs and three spatial pairs, and the sum counts every independent pair twice:
+The Euler–Lagrange formula runs on the four components $A_\nu$ of the potential. Its first input is the derivative with respect to $\partial_\mu A_\nu$, and the chain rule makes each of the two $F$ factors contribute:
 
-$$F_{\mu\nu}F^{\mu\nu} = 2\sum_i F_{0i}F^{0i} + 2\sum_{i<j}F_{ij}F^{ij}.$$
+$$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\left[\frac{\partial F_{\rho\sigma}}{\partial(\partial_\mu A_\nu)}\,F^{\rho\sigma} \;+\; F_{\rho\sigma}\,\frac{\partial F^{\rho\sigma}}{\partial(\partial_\mu A_\nu)}\right].$$
 
-The components are [§8](special-relativity.md#_8-maxwell-equations)'s matrix, lowered with the metric $F_{\mu\nu} = g_{\mu\alpha}\,g_{\nu\beta}\,F^{\alpha\beta}$:
+Both component derivatives are built from deltas, and the first deserves its mechanics spelled out, since differentiating through an index structure is new. The variable is the collection $\partial_\mu A_\nu$ of sixteen independent numbers, and $F_{\rho\sigma} = \partial_\rho A_\sigma - \partial_\sigma A_\rho$ contains exactly two of them: its own $(\rho, \sigma)$ entry with coefficient $+1$ and its transposed $(\sigma, \rho)$ entry with coefficient $-1$. Asking how $F_{\rho\sigma}$ responds to a change in the one entry $\partial_\mu A_\nu$ therefore has a three-way answer: $+1$ when $(\mu, \nu) = (\rho, \sigma)$, $-1$ when $(\mu, \nu) = (\sigma, \rho)$, and $0$ otherwise. Kronecker deltas pack the three cases into one formula, because $\delta^\mu_\rho\,\delta^\nu_\sigma$ equals $1$ only when both indices match, which happens only in the first case, and $\delta^\mu_\sigma\,\delta^\nu_\rho$ only in the second:
 
-$$F^{\mu\nu} = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & -B_z & B_y \\ E_y & B_z & 0 & -B_x \\ E_z & -B_y & B_x & 0 \end{pmatrix},$$
+$$\frac{\partial F_{\rho\sigma}}{\partial(\partial_\mu A_\nu)} = \delta^\mu_\rho\,\delta^\nu_\sigma - \delta^\mu_\sigma\,\delta^\nu_\rho.$$
 
-$$F_{0i} = g_{00}\,g_{ii}\,F^{0i} = -F^{0i} = E_i, \qquad\qquad F_{ij} = g_{ii}\,g_{jj}\,F^{ij} = F^{ij}:$$
+A concrete check: with $(\rho, \sigma) = (0, 1)$, the component $F_{01} = \partial_0 A_1 - \partial_1 A_0$ responds to $\partial_0 A_1$ with $+1$, to $\partial_1 A_0$ with $-1$, and to every other entry with $0$, which is exactly what the delta combination returns. Differentiating the raised-index copy gives the same deltas with indices raised, because the constant metric does nothing but raise indices,
 
-$$F_{\mu\nu}F^{\mu\nu} = 2\sum_i\left(E_i \cdot (-E_i)\right) + 2\left[B_z^2 + B_y^2 + B_x^2\right] = 2\,(\mathbf B^2 - \mathbf E^2).$$
+$$\frac{\partial F^{\rho\sigma}}{\partial(\partial_\mu A_\nu)} = g^{\rho\mu}\,g^{\sigma\nu} - g^{\rho\nu}\,g^{\sigma\mu}.$$
 
-The factor out front is now legible: $\mathcal{L} = \tfrac{1}{2}(\mathbf E^2 - \mathbf B^2)$. The $-\tfrac14$ is the scalar's $\tfrac12$ paid twice, once for the quadratic in derivatives and once for the antisymmetric double-count.
+Each delta combination contracts one antisymmetric pair against another. The first gives
 
-The Euler–Lagrange formula runs on the four components $A_\nu$ of the potential. For the kinetic derivative, the product rule makes each of the two $F$ factors contribute a term:
+$$(\delta^\mu_\rho\,\delta^\nu_\sigma - \delta^\mu_\sigma\,\delta^\nu_\rho)\,F^{\rho\sigma} = F^{\mu\nu} - F^{\nu\mu} = 2F^{\mu\nu},$$
 
-$$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\left[(\delta^\mu_\rho\,\delta^\nu_\sigma - \delta^\mu_\sigma\,\delta^\nu_\rho)\,F^{\rho\sigma} \;+\; F_{\rho\sigma}\,(g^{\rho\mu}\,g^{\sigma\nu} - g^{\rho\nu}\,g^{\sigma\mu})\right],$$
+and the second acts identically on the lowered copy,
 
-where the deltas come from differentiating $F_{\rho\sigma} = \partial_\rho A_\sigma - \partial_\sigma A_\rho$, and differentiating the raised-index copy gives the same deltas with indices raised, because the constant metric does nothing but raise indices. Contracting,
+$$F_{\rho\sigma}\,(g^{\rho\mu}\,g^{\sigma\nu} - g^{\rho\nu}\,g^{\sigma\mu}) = F^{\mu\nu} - F^{\nu\mu} = 2F^{\mu\nu},$$
 
-$$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\,\big[(F^{\mu\nu} - F^{\nu\mu}) + (F^{\mu\nu} - F^{\nu\mu})\big] = -F^{\mu\nu}.$$
+the antisymmetry turning each difference into a double. Substituting both,
 
-The Euler–Lagrange formula also needs the derivative with respect to $A_\nu$ itself. Every factor in $-\tfrac14 F_{\mu\nu}F^{\mu\nu}$ contains a derivative of the potential, so this derivative vanishes:
+$$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\,\big[2F^{\mu\nu} + 2F^{\mu\nu}\big] = -F^{\mu\nu}.$$
+
+The formula's second input is the derivative with respect to $A_\nu$ itself. Every factor of the density is built from derivatives of the potential, so this derivative vanishes:
 
 $$\frac{\partial\mathcal{L}}{\partial A_\nu} = 0.$$
 
-This vanishing is the empty slot promised above: a mass term would contribute here, and the density has none. Substituting both derivatives into the Euler–Lagrange equation gives $\partial_\mu(-F^{\mu\nu}) = 0$, and the overall minus sign drops out:
+The vanishing is the empty slot promised above: a mass term, the vector analogue of the scalar's $-\tfrac{m^2}{2\hbar^2}\phi^2$, would contribute exactly here, and the density has none.
+
+Recall the formula and substitute both inputs,
+
+$$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)}\right) - \frac{\partial\mathcal{L}}{\partial A_\nu} \;=\; \partial_\mu\big(-F^{\mu\nu}\big) - 0 \;=\; 0.$$
+
+The second term is the empty slot, zero by the vanishing shown above. The first carries only a constant overall sign, and the linearity of $\partial_\mu$ lets it pass through:
 
 $$\partial_\mu F^{\mu\nu} = 0,$$
 
-which is [§8](special-relativity.md#_8-maxwell-equations)'s $\partial_\mu F^{\mu\nu} = J^\nu$ with the current set to zero. It gives one equation per component $\nu$: Gauss's law, then the three space components of Ampère's.
+which is [§8](special-relativity.md#_8-maxwell-equations)'s $\partial_\mu F^{\mu\nu} = J^\nu$ with the current set to zero: the $\nu = 0$ component is Gauss's law, and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law.
+
 
 ### Dirac
 
