@@ -12,7 +12,7 @@ with $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$ and $E_p = \sqrt{\mathbf p^2 +
 
 ### The promotion
 
-A coefficient can multiply a term of the solution, but it cannot create or destroy a particle, and creation and destruction are exactly what the negative-frequency terms demand ([§4](dirac-equation.md#_4-negative-energy-solutions)). The way out, announced at the end of [§6](dirac-equation.md#_6-general-solution), is to promote the coefficients to operators,
+A coefficient can multiply a term of the solution, but it cannot create or destroy a particle, and that is exactly what describing the negative-frequency terms requires ([§4](dirac-equation.md#_4-negative-energy-solutions)). The way out, announced at the end of [§6](dirac-equation.md#_6-general-solution), is to promote the coefficients to operators,
 
 $$a_s(p) \to \hat a_s(p), \qquad b_s^*(p) \to \hat b_s^\dagger(p),$$
 
@@ -33,7 +33,7 @@ The action column needs an argument. The symbols alone do not decide it, because
 
 The argument in brief: $\langle f|\hat\psi|i\rangle$ is the amplitude with which the field's action connects $|i\rangle$ to $|f\rangle$. The $\hat a_s(p)$ term contributes to it only when $E_f = E_i - E_p$; every other pair of states meets an oscillation that averages away. The term therefore removes one quantum of energy and momentum, and removal is annihilation. Naming is the open part: which particle the term removes comes in the next paragraph, and whether the removed quantum has yet earned the name particle comes with the Hamiltonian of the construction to come.
 
-The phase matching fixes the action but not the name. [The Dirac Equation](dirac-equation.md) identified the positive-frequency $u$-terms as the electron's solutions, and the operator standing on such a term inherits the name. The $v$-terms' operator takes the remaining label, positron. Choice enters only here, as continuity with the single-particle theory.
+The phase matching fixes the action but not the name. [The Dirac Equation](dirac-equation.md) identified the positive-frequency $u$-terms as the electron's solutions, and the name carries over to the operator standing on such a term. The $v$-terms' operator takes the remaining label, positron. Choice enters only here, as continuity with the single-particle theory.
 
 The field and its adjoint mirror each other: each carries one annihilation half and one creation half. Nothing removed the negative-frequency terms; they changed jobs, from states an electron might fall into to the operators that create antiparticles.
 
@@ -57,7 +57,7 @@ The scalar offers only $\phi$ itself, so its equation is built from the one Lore
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0,$$
 
-which is the Klein–Gordon equation of [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon). That page derived it from the exact relation $E^2 = \mathbf p^2 + m^2$ and rejected it as a single-particle wave equation because its probability density came out negative. As a *classical field equation* the Klein–Gordon equation has no such flaw, so here the rejection dissolves rather than gets repaired: a classical $\phi$ carries energy and momentum, not probability, and no positivity condition applies to it.
+which is the Klein–Gordon equation of [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon). That page derived it from the exact relation $E^2 = \mathbf p^2 + m^2$ and rejected it as a single-particle wave equation because its probability density came out negative. As a *classical field equation* the Klein–Gordon equation has no such flaw, so the earlier rejection no longer applies: a classical $\phi$ carries energy and momentum, not probability, and no positivity condition applies to it.
 
 The spinor transforms by $S(\Lambda)$, and the matrices $S(\Lambda)$ are built from the $\gamma^\mu$ of [The Dirac Equation](dirac-equation.md). The same matrices assemble its equation when we contract them with the derivative to make a Lorentz scalar:
 
@@ -71,7 +71,7 @@ $$\partial_\mu F^{\mu\nu} = 0 \quad\Longleftrightarrow\quad \Box A^\nu - \partia
 
 which is Maxwell's equations in free space, the wave equation with $m = 0$, and disturbances propagate at exactly $c$ in every frame. The zero on the right-hand side is physical: the vector family also admits a massive equation, $\partial_\mu F^{\mu\nu} + \tfrac{m^2}{\hbar^2}A^\nu = 0$, and the photon's masslessness is read off which member of the family light obeys.
 
-So the table is closed on the left as well as the right: one transformation law, one wave equation, one spin, one species of quantum. The sequence met all three equations before, but as candidates for a different job, wave equations of a single particle: the Klein–Gordon equation was tried and rejected ([Relativistic QM §2](relativistic-qm.md#_2-klein-gordon)), the Dirac equation tried and triumphant ([The Dirac Equation](dirac-equation.md)), and Maxwell was never a particle equation at all. In this table they return in their original role as equations of fields, and the single-particle readings of the previous pages were the borrowings. Spin comes from transformation, the lesson of [§5](dirac-equation.md#_5-spinors-transformations), and the table reads as a table of contents for particle physics, with one row per species of carrier. One example runs ahead of the story: the Higgs field has not been met in the sequence so far. It is a scalar field of the interacting theory, and its turn comes later on this page.
+So the table is closed on the left as well as the right: one transformation law, one wave equation, one spin, one species of quantum. The sequence met all three equations before, but as candidates for a different job, wave equations of a single particle: the Klein–Gordon equation was tried and rejected ([Relativistic QM §2](relativistic-qm.md#_2-klein-gordon)), the Dirac equation tried and triumphant ([The Dirac Equation](dirac-equation.md)), and Maxwell was never a particle equation at all. In this table they return in their original role as equations of fields, and the single-particle readings of the previous pages were the borrowings. Spin comes from transformation, the lesson of [§5](dirac-equation.md#_5-spinors-transformations), and the table reads as a table of contents for particle physics, with one row per species of carrier. One example belongs to a later stage: the Higgs field has not been met in the sequence so far. It is a scalar field of the interacting theory, and its turn comes later on this page.
 
 ### What the table does not cover
 
@@ -79,7 +79,7 @@ The classification by Lorentz transformation continues beyond these three rows, 
 
 ### Second quantization
 
-The quantum step has a name, and the name counts the quantizations. [First Quantization](first-quantization.md) turned a particle's classical quantities, position and momentum and energy, into operators acting on a wave function. The promotion of the previous section quantizes once more, one level up: the wave function's own coefficients become operators. This is **second quantization**, and it applies to every row of the table. Each classical field becomes an operator-valued function of spacetime, $\hat\phi(x)$, $\hat A^\mu(x)$, $\hat\psi(x)$ (strictly, operator-valued distributions, since the momentum integrals are what make them well-defined), acting on the state space to create and annihilate the field's quanta. The name is slightly misleading, and the misleading part is instructive. Nothing is quantized twice; a different object, the classical field rather than the classical particle, is quantized once. Read that way, the outcome is concrete: there is one field per particle species, and a particle is what that field's creation operator produces from the vacuum, so $\hat a_s^\dagger(\mathbf p)\,|0\rangle$ is a state with one electron of momentum $\mathbf p$ and spin $s$. Electrons and positrons come from $\hat\psi$'s operators, photons from $\hat A^\mu$'s, and the Higgs from $\hat\phi$'s.
+The quantum step has a name, and the name is a count of quantizations. [First Quantization](first-quantization.md) turned a particle's classical quantities, position and momentum and energy, into operators acting on a wave function. The promotion of the previous section quantizes once more, one level up: the wave function's own coefficients become operators. This is **second quantization**, and it applies to every row of the table. Each classical field becomes an operator-valued function of spacetime, $\hat\phi(x)$, $\hat A^\mu(x)$, $\hat\psi(x)$ (strictly, operator-valued distributions, since the momentum integrals are what make them well-defined), acting on the state space to create and annihilate the field's quanta. The name is slightly misleading, and the misleading part is instructive. Nothing is quantized twice; a different object, the classical field rather than the classical particle, is quantized once. Read that way, the outcome is concrete: there is one field per particle species, and a particle is what that field's creation operator produces from the vacuum, so $\hat a_s^\dagger(\mathbf p)\,|0\rangle$ is a state with one electron of momentum $\mathbf p$ and spin $s$. Electrons and positrons come from $\hat\psi$'s operators, photons from $\hat A^\mu$'s, and the Higgs from $\hat\phi$'s.
 
 ### Choosing a picture
 
@@ -95,7 +95,7 @@ Note where the plus sign comes from. The Schrödinger equation evolves only the 
 
 $$\langle\Psi_S(t)|\,\hat O_S\,|\Psi_S(t)\rangle = \langle\Psi_H|\,\hat O_H(t)\,|\Psi_H\rangle,$$
 
-so the choice between pictures is bookkeeping rather than physics. Which bookkeeping to adopt is a question of convenience, and relativity has a strong preference, as the Why Heisenberg section explains.
+so the choice between pictures is bookkeeping rather than physics. Which bookkeeping to adopt is a question of convenience, and relativity constrains the choice, as the Why Heisenberg section explains.
 
 ### State versus field
 
@@ -111,7 +111,7 @@ Every term carries exactly one $\hat a_s^\dagger(p)$, which creates an electron 
 
 ### Why Heisenberg
 
-Carried into a relativistic theory, the Schrödinger picture uses time in a way that Lorentz invariance cannot sanction. The trouble is visible in its evolution equation, $i\hbar\,\partial_t|\Psi_S(t)\rangle = \hat H|\Psi_S(t)\rangle$, which is first order in $t$ and elevates one observer's time coordinate to the parameter of all change; the state it defines is an object at a time. What such a state becomes in field theory makes the price concrete. Wave mechanics carried one amplitude per position of one particle, $\psi(\mathbf x)$; many-particle mechanics carried one amplitude per configuration, $\psi(\mathbf x_1, \ldots, \mathbf x_N)$; field theory escalates once more,
+Carried into a relativistic theory, the Schrödinger picture uses time in a way that Lorentz invariance cannot sanction. The trouble is visible in its evolution equation, $i\hbar\,\partial_t|\Psi_S(t)\rangle = \hat H|\Psi_S(t)\rangle$, which is first order in $t$ and elevates one observer's time coordinate to the parameter of all change; the state it defines is an object at a time. What such a state becomes in field theory makes the price concrete. Wave mechanics carried one amplitude per position of one particle, $\psi(\mathbf x)$; many-particle mechanics carried one amplitude per configuration, $\psi(\mathbf x_1, \ldots, \mathbf x_N)$; field theory goes further still,
 
 $$\psi(\mathbf x) \;\longrightarrow\; \psi(\mathbf x_1, \ldots, \mathbf x_N) \;\longrightarrow\; \Psi[\varphi(\mathbf x)],$$
 
@@ -119,6 +119,6 @@ one amplitude per whole configuration $\varphi(\mathbf x)$ of the field at one i
 
 One further fact belongs here, to be confirmed rather than assumed: the wave equations survive the promotion. The operator $\hat\phi(x)$ obeys the Klein–Gordon equation of [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), and the operator $\hat\psi(x)$ obeys the Dirac equation of [The Dirac Equation](dirac-equation.md). The equations of the previous pages were field equations all along.
 
-The table even foreshadows the algebra choice that the previous section left open, because the rows quantize differently: integer-spin rows with commutators, half-integer rows with anticommutators. That correlation of spin and statistics arrives with what follows; here it stands as a promise.
+The algebra choice that the previous section left open is already visible in the table, because the rows quantize differently: integer-spin rows with commutators, half-integer rows with anticommutators. That correlation of spin and statistics is established in what follows; here it stands as a promise.
 
 Everything so far has been the promotion, the expansion's coefficients turned into operators with assigned duties. Two choices are still open, and fixing them turns the promoted expansion into a working theory. First, the algebra: will the operators obey commutators or anticommutators? Second, the Hamiltonian: when we build it from these operators, will the energy come out bounded below, so that the negative-energy solutions of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability) are finally accounted for? The [next page](qft-action.md) settles the algebra for the scalar field $\hat\phi$, the simplest case with no spin to keep track of, and extracts the Hamiltonian that the second question is about. The spinor and vector rows of the table get their answers the same way.

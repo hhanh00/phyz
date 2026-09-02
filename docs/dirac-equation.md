@@ -150,7 +150,50 @@ where $\omega_{\mu\nu}$ are the boost/rotation parameters. Three features set $S
 2. **Double-valued.** A rotation by $2\pi$ gives $S = -\mathbb{1}$: the spinor returns to itself only up to a sign. A $4\pi$ rotation is needed to return exactly. No scalar or vector does this; the minus sign is the signature of spin-½.
 3. **Reducible.** The $4 \times 4$ representation splits into two $2 \times 2$ pieces, $(\tfrac{1}{2}, 0) \oplus (0, \tfrac{1}{2})$ — the two two-component pieces are the **Weyl spinors**, which transform under rotations identically (the $\boldsymbol\Sigma/2$ of [§1](#_1-spin)) and under boosts oppositely. They are the left- and right-handed parts of the Dirac spinor.
 
-For rotations alone, $S = \exp\!\left(-\tfrac{i}{2}\,\boldsymbol\theta\cdot\boldsymbol\Sigma\right)$ — the spin operator of [§1](#_1-spin) as the generator, confirming from the transformation side that the extra components carry angular momentum $\hbar/2$.
+For rotations alone, $S = \exp\!\left(-\tfrac{i}{2}\,\boldsymbol\theta\cdot\boldsymbol\Sigma\right)$ — the spin operator of [§1](#_1-spin) as the generator, confirming from the transformation side that the extra components carry angular momentum $\hbar/2$. The boost case, and the derivation of the general formula itself, are in the extra subsection below — heavy on calculation, and safe to skip.
+
+### Extra: Deriving the Spinor Transformation
+
+This subsection is extra material: it is nearly all calculation, and nothing later in the sequence depends on it. Skip it freely. The main text states the transformation formula; what follows derives it from the one requirement the Dirac equation imposes.
+
+The requirement is covariance. Let $\psi(x)$ solve $(i\hbar\gamma^\mu\partial_\mu - m)\psi = 0$ in one frame, and ask that $\psi'(x') = S(\Lambda)\,\psi(x)$ solve the same equation in the frame $x' = \Lambda x$, where $\partial'_\mu = (\Lambda^{-1})^\nu{}_\mu\,\partial_\nu$. Substituting into the primed equation and multiplying by $S^{-1}$,
+
+$$(i\hbar\,S^{-1}\gamma^\mu S\,(\Lambda^{-1})^\nu{}_\mu\,\partial_\nu - m)\,\psi = 0,$$
+
+and this is the original equation for every solution $\psi$ exactly when
+
+$$S^{-1}\gamma^\mu S = \Lambda^\mu{}_\nu\,\gamma^\nu.$$
+
+Now specialize to transformations near the identity, $\Lambda^\mu{}_\nu = \delta^\mu_\nu + \omega^\mu{}_\nu$, where the antisymmetric parameters $\omega_{\mu\nu} = -\omega_{\nu\mu}$ carry the three rotation angles and three boost rapidities, and let $S = 1 + \Omega$ to the same order. Then $S^{-1}\gamma^\mu S = (1 - \Omega)\,\gamma^\mu\,(1 + \Omega) = \gamma^\mu - [\Omega, \gamma^\mu]$, and the condition becomes
+
+$$-[\Omega, \gamma^\mu] = \omega^\mu{}_\nu\,\gamma^\nu.$$
+
+The claim is $\Omega = -\frac{i}{4}\,\omega_{\rho\sigma}\,\sigma^{\rho\sigma}$ with $\sigma^{\rho\sigma} = \frac{i}{2}[\gamma^\rho, \gamma^\sigma]$, and its verification needs one commutator identity. For any three matrices, $[AB, C] = A\{B, C\} - \{A, C\}B$, as expanding both sides shows. With $A = \gamma^\rho$, $B = \gamma^\sigma$, $C = \gamma^\mu$, and the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2g^{\mu\nu}$,
+
+$$[\gamma^\rho\gamma^\sigma, \gamma^\mu] = \gamma^\rho\,\{\gamma^\sigma, \gamma^\mu\} - \{\gamma^\rho, \gamma^\mu\}\,\gamma^\sigma = 2\,(g^{\mu\sigma}\gamma^\rho - g^{\mu\rho}\gamma^\sigma).$$
+
+The commutator inside $\sigma^{\rho\sigma}$ is this twice over, once for each ordering of the two $\gamma$'s,
+
+$$[\sigma^{\rho\sigma}, \gamma^\mu] = \frac{i}{2}\,\big([\gamma^\rho\gamma^\sigma, \gamma^\mu] - [\gamma^\sigma\gamma^\rho, \gamma^\mu]\big) = 2i\,(g^{\mu\sigma}\gamma^\rho - g^{\mu\rho}\gamma^\sigma).$$
+
+Substituting into the left side of the condition,
+
+$$-[\Omega, \gamma^\mu] = \frac{i}{4}\,\omega_{\rho\sigma}\cdot 2i\,(g^{\mu\sigma}\gamma^\rho - g^{\mu\rho}\gamma^\sigma) = -\frac{1}{2}\,\omega_{\rho\sigma}\,(g^{\mu\sigma}\gamma^\rho - g^{\mu\rho}\gamma^\sigma) = -\omega^\mu{}_\nu\,\gamma^\nu,$$
+
+where the last step raises an index, $g^{\mu\sigma}\omega_{\rho\sigma} = \omega_\rho{}^\mu = -\omega^\mu{}_\rho$, and uses antisymmetry: the two metric terms come out equal rather than opposite. This satisfies the condition exactly, so the exponential form of the main text works to first order in $\omega$, and since parameters of composed transformations add, exponentiation promotes first order to all orders.
+
+The derivation above stands on its own, so the following checks are optional even by this subsection's standards. But they serve a second purpose: anyone content to take the formula as given can watch it act in two explicit cases, a rotation and a boost. Two cases suffice, because any Lorentz transformation connected to the identity is a composition of a rotation and a boost, so a formula that reproduces both reproduces the general case.
+
+- **Rotation.** Only $\omega_{ij}$ is nonzero, and $\sigma^{ij} = \frac{i}{2}[\gamma^i, \gamma^j] = \epsilon^{ijk}\,\Sigma^k$ is Hermitian, so $S = \exp(-\frac{i}{2}\,\boldsymbol\theta\cdot\boldsymbol\Sigma)$, the unitary rotation matrix of the main text.
+- **Boost along $x$.** Only $\omega_{01} = -\varphi$ is nonzero, and $\sigma^{01} = \frac{i}{2}[\gamma^0, \gamma^1] = i\,\alpha^1$ is anti-Hermitian, so the exponent collapses to one term, $-\frac{i}{2}\,\omega_{01}\,\sigma^{01} = -\frac{\varphi}{2}\,\alpha^1$: the matrix carried the factor of $i$ inside itself.
+
+Expand the exponential once, because later pages quote its matrix. Since $(\alpha^1)^2 = 1$, the even powers of $\alpha^1$ are the identity and the odd powers are $\alpha^1$ itself, so
+
+$$e^{-\varphi\alpha^1/2} = \underbrace{\Big[1 + \tfrac{(\varphi/2)^2}{2!} + \cdots\Big]}_{\cosh(\varphi/2)} \;-\; \alpha^1\underbrace{\Big[\tfrac{\varphi}{2} + \tfrac{(\varphi/2)^3}{3!} + \cdots\Big]}_{\sinh(\varphi/2)},$$
+
+the same even/odd split that makes $e^x = \cosh x + \sinh x$.
+
+The unitary/Hermitian split of the two cases is decided in the generators: rotations exponentiate Hermitian $\sigma^{ij}$ into unitary matrices, boosts exponentiate anti-Hermitian $\sigma^{0i}$ into Hermitian ones.
 
 ## 6. General Solution
 
