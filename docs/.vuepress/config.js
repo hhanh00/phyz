@@ -31,6 +31,7 @@ export default {
         children: [
           { text: 'Fields and Quanta', link: '/qft.html' },
           { text: 'Action and Lagrangians', link: '/qft-action.html' },
+          { text: 'Field Quantization', link: '/field-quantization.html' },
         ],
       },
     ],
@@ -43,6 +44,7 @@ export default {
       { text: 'Dirac Equation', link: '/dirac-equation.html' },
       { text: 'Fields and Quanta', link: '/qft.html' },
       { text: 'Action and Lagrangians', link: '/qft-action.html' },
+      { text: 'Field Quantization', link: '/field-quantization.html' },
     ],
   }),
 
