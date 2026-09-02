@@ -138,7 +138,7 @@ The two families of [§3](#_3-antiparticles) — the positive-energy $u$-branch 
 
 The historical route to the same place was Dirac's **hole theory**, proposed before quantization. The vacuum is not empty: every negative-energy state is occupied — a filled sea of electrons, protected from further occupancy by the exclusion principle. A missing electron in the sea then behaves as a positive-energy particle of positive charge: a **hole**, the positron. An electron falling into a hole disappears with it — pair annihilation; lifting an electron out leaves a hole behind — pair creation. The picture predicted the positron and named the processes, but its two load-bearing props — fermionic statistics and a many-particle vacuum — are exactly what the quantized theory supplies properly: the sea is the vacuum, and the hole is what the positron's creation operator creates. When the [QFT](qft.md) page says the hole picture is *replaced* by operators, this is the face of the replacement.
 
-## 5. Spinors (Transformations)
+## 5. Spinors
 
 The four-component object transforms differently from anything encountered so far. Under a Lorentz transformation $x' = \Lambda x$, the spinor transforms as
 
@@ -182,10 +182,121 @@ $$-[\Omega, \gamma^\mu] = \frac{i}{4}\,\omega_{\rho\sigma}\cdot 2i\,(g^{\mu\sigm
 
 where the last step raises an index, $g^{\mu\sigma}\omega_{\rho\sigma} = \omega_\rho{}^\mu = -\omega^\mu{}_\rho$, and uses antisymmetry: the two metric terms come out equal rather than opposite. This satisfies the condition exactly, so the exponential form of the main text works to first order in $\omega$, and since parameters of composed transformations add, exponentiation promotes first order to all orders.
 
+### An even more detailed derivation
+
 The derivation above stands on its own, so the following checks are optional even by this subsection's standards. But they serve a second purpose: anyone content to take the formula as given can watch it act in two explicit cases, a rotation and a boost. Two cases suffice, because any Lorentz transformation connected to the identity is a composition of a rotation and a boost, so a formula that reproduces both reproduces the general case.
 
-- **Rotation.** Only $\omega_{ij}$ is nonzero, and $\sigma^{ij} = \frac{i}{2}[\gamma^i, \gamma^j] = \epsilon^{ijk}\,\Sigma^k$ is Hermitian, so $S = \exp(-\frac{i}{2}\,\boldsymbol\theta\cdot\boldsymbol\Sigma)$, the unitary rotation matrix of the main text.
-- **Boost along $x$.** Only $\omega_{01} = -\varphi$ is nonzero, and $\sigma^{01} = \frac{i}{2}[\gamma^0, \gamma^1] = i\,\alpha^1$ is anti-Hermitian, so the exponent collapses to one term, $-\frac{i}{2}\,\omega_{01}\,\sigma^{01} = -\frac{\varphi}{2}\,\alpha^1$: the matrix carried the factor of $i$ inside itself.
+Before either case, pause over what the formula asserts, since the rest of this subsection only unpacks it. The matrix $S$ is an exponential, $S = e^{\Omega}$ with $\Omega = -\frac{i}{4}\sum_{\mu,\nu}\omega_{\mu\nu}\sigma^{\mu\nu}$. The exponential of a matrix is defined by the same power series as the exponential of a number, $e^{M} = 1 + M + \frac{1}{2!}M^2 + \frac{1}{3!}M^3 + \cdots$, where $1$ now means the $4\times4$ identity matrix, $M^2$ means the matrix product $M\cdot M$, and so on. Two properties of this series do all the work below. Because the dagger (conjugate transpose) reverses the order of a product, $(AB)^\dagger = B^\dagger A^\dagger$, every power satisfies $(M^n)^\dagger = (M^\dagger)^n$, so taking the dagger of the whole series term by term gives $(e^M)^\dagger = e^{M^\dagger}$. And because a matrix commutes with every power of itself, the series obeys $e^M e^{-M} = e^{M-M} = 1$: the exponential of $-M$ is the inverse of the exponential of $M$. Both properties are used below.
+
+The symbols $\omega$ and $\sigma$ are objects of different kinds, and telling them apart prevents most of the confusion. The $\omega_{\mu\nu}$ are numbers. They are the parameters of the transformation, the amounts by which it departs from doing nothing, and they are read off the Lorentz matrix. The indices $\mu,\nu$ run over the four coordinates, with $0$ standing for time and $1,2,3$ for space, and a Lorentz transformation $\Lambda$ relates the coordinates of an event in two frames by $x'^\mu = \sum_\nu \Lambda^\mu{}_\nu x^\nu$, so $\Lambda$ is a $4\times4$ table of numbers. Near the identity that table is nearly the identity table $\delta$, which has $1$'s on the diagonal and $0$'s elsewhere, and one writes $\Lambda^\mu{}_\nu = \delta^\mu{}_\nu + \omega^\mu{}_\nu$, with $\omega^\mu{}_\nu$ the small corrections. The $\omega_{\mu\nu}$ that appear in the formula are the same numbers with the first index lowered by the metric, $\omega_{\mu\nu} = g_{\mu\rho}\,\omega^\rho{}_\nu$; on this page $g_{00} = 1$ and $g_{11} = g_{22} = g_{33} = -1$, and the only lowering we will need has the first index equal to $0$, where the metric leaves the number alone. The parameters are antisymmetric, $\omega_{\nu\mu} = -\omega_{\mu\nu}$. This is not an extra assumption: a Lorentz transformation is defined by preserving the interval, which in matrix form is $\Lambda^T g\Lambda = g$, and expanding $\Lambda = 1 + \omega$ in that condition gives exactly $\omega_{\nu\mu} = -\omega_{\mu\nu}$ at first order. Antisymmetry makes the diagonal entries vanish (a number equal to its own negative is zero) and reduces the sixteen entries to six independent ones, one for each pair $\mu<\nu$. Those six split into two types: the pairs $(0,1), (0,2), (0,3)$ carry a time index and describe boosts, which mix time with one spatial direction, and the pairs $(1,2), (1,3), (2,3)$ are purely spatial and describe rotations.
+
+The $\sigma^{\mu\nu}$ are matrices, not numbers: $4\times4$ matrices acting on the spinor. Their definition, $\sigma^{\mu\nu} = \frac{i}{2}\left(\gamma^\mu\gamma^\nu - \gamma^\nu\gamma^\mu\right)$, uses nothing but the Dirac matrices, the fixed matrices of the equation, so the $\sigma$'s are the same for every transformation, and they are the raw material out of which $S$ is built. Matrices used this way, one attached to each index pair, multiplied by the corresponding parameter and summed inside an exponential, are called the **generators** of the transformation: for very small parameters the exponential is approximately $1 + \Omega$, so $\Omega$ is the infinitesimal change the transformation produces, and iterating many tiny transformations multiplies those changes into the finite exponential. Because $\sigma^{\mu\nu}$ is $\frac{i}{2}$ times a commutator, and a commutator changes sign when its two entries are swapped, the generators are antisymmetric in their indices too, $\sigma^{\nu\mu} = -\sigma^{\mu\nu}$, so the sixteen of them reduce to the same six pairs as the parameters.
+
+Both cases share one piece of bookkeeping, which is also where the factor $-\frac{i}{4}$ in the formula comes from. In the double sum over all $\mu$ and $\nu$, the term $(\mu,\nu)$ and the reversed term $(\nu,\mu)$ are equal, because each is the other's two minus signs multiplied out, and the diagonal terms vanish. Summing over all sixteen pairs therefore counts each unordered pair twice, so the sum halves to one term per pair with the coefficient doubled:
+
+$$\Omega = -\frac{i}{4}\sum_{\mu,\nu}\omega_{\mu\nu}\sigma^{\mu\nu} = -\frac{i}{2}\sum_{\mu<\nu}\omega_{\mu\nu}\,\sigma^{\mu\nu}.$$
+
+A rotation uses only the spatial pairs and a boost only one time–space pair, so each case evaluates its own few terms of this reduced sum. The recipe is the same in both: find which $\omega$ survive and what they are, compute the corresponding $\sigma$'s, multiply each generator by its parameter, and exponentiate.
+
+**Rotation.** A rotation turns the spatial axes and leaves time alone: in the rotated frame an event still has $t' = t$, so the Lorentz matrix has zeros wherever it would mix time with space. Near the identity that means $\omega_{0i} = 0$ for $i = 1,2,3$: the three boost pairs drop out, and only the numbers $\omega_{12}, \omega_{13}, \omega_{23}$ and the matrices $\sigma^{12}, \sigma^{13}, \sigma^{23}$ survive. The reduced exponent is
+
+$$\Omega_{\text{rot}} = -\frac{i}{2}\left(\omega_{12}\,\sigma^{12} + \omega_{13}\,\sigma^{13} + \omega_{23}\,\sigma^{23}\right).$$
+
+The whole rotation case is the computation of these three generators, each a commutator of two spatial Dirac matrices, $\sigma^{ij} = \frac{i}{2}\left(\gamma^i\gamma^j - \gamma^j\gamma^i\right)$, followed by a reassembly of the three terms.
+
+To compute the commutators one must multiply Dirac matrices, so we need their entries. In the standard representation of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation), $\gamma^0 = \beta$ and $\gamma^i = \beta\alpha_i$, where $\beta$ and $\alpha_i$ are known from [§1](#_1-spin). Written as $2\times2$ arrays of $2\times2$ blocks, with $0$ the zero block, $1$ the identity block, and $\sigma_i$ the Pauli matrices of [§1](#_1-spin),
+
+$$\beta = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}, \qquad \alpha_i = \begin{pmatrix}0 & \sigma_i \\ \sigma_i & 0\end{pmatrix}.$$
+
+Block multiplication works exactly like multiplication of ordinary $2\times2$ matrices, with the blocks playing the role of the entries: the block in row $a$, column $b$ of a product is the sum over $c$ of the block in row $a$, column $c$ of the first factor times the block in row $c$, column $b$ of the second. Applying the rule to $\beta\alpha_i$,
+
+$$\gamma^i = \beta\alpha_i = \begin{pmatrix}1\cdot 0 + 0\cdot\sigma_i & 1\cdot\sigma_i + 0\cdot 0 \\ 0\cdot 0 + (-1)\cdot\sigma_i & 0\cdot\sigma_i + (-1)\cdot 0\end{pmatrix} = \begin{pmatrix}0 & \sigma_i \\ -\sigma_i & 0\end{pmatrix}.$$
+
+Now multiply two of these matrices, $\gamma^i\gamma^j$ with $i\neq j$. The same rule gives four block products, of which the two off-diagonal ones vanish:
+
+$$\gamma^i\gamma^j = \begin{pmatrix}0\cdot 0 + \sigma_i\cdot(-\sigma_j) & 0\cdot\sigma_j + \sigma_i\cdot 0 \\ (-\sigma_i)\cdot 0 + 0\cdot(-\sigma_j) & (-\sigma_i)\cdot\sigma_j + 0\cdot 0\end{pmatrix} = \begin{pmatrix}-\sigma_i\sigma_j & 0 \\ 0 & -\sigma_i\sigma_j\end{pmatrix}.$$
+
+The result is block-diagonal, with both diagonal blocks equal to the Pauli product $-\sigma_i\sigma_j$. Swapping $i$ and $j$ and subtracting gives, in each diagonal block, $-\sigma_i\sigma_j - (-\sigma_j\sigma_i) = -[\sigma_i,\sigma_j]$, the negative of the Pauli commutator:
+
+$$[\gamma^i,\gamma^j] = \begin{pmatrix}-[\sigma_i,\sigma_j] & 0 \\ 0 & -[\sigma_i,\sigma_j]\end{pmatrix}.$$
+
+The Pauli commutators are known from [§1](#_1-spin): $[\sigma_i,\sigma_j] = 2i\varepsilon_{ijk}\sigma_k$, where $\varepsilon$ is the totally antisymmetric symbol — $\varepsilon_{123} = 1$, any exchange of two indices changes the sign, and the symbol is zero whenever two indices coincide. Substituting this and packing the two equal diagonal blocks into the block-diagonal matrix $\Sigma^k = \mathrm{diag}(\sigma_k,\sigma_k)$ of [§1](#_1-spin),
+
+$$[\gamma^i,\gamma^j] = -2i\,\varepsilon_{ijk}\,\Sigma^k.$$
+
+The generator multiplies this by $\frac{i}{2}$, and the numerical factor comes out real: $\frac{i}{2}\cdot(-2i) = -i^2 = 1$. Therefore
+
+$$\sigma^{ij} = \frac{i}{2}\,[\gamma^i,\gamma^j] = \varepsilon_{ijk}\,\Sigma^k.$$
+
+In particular $\sigma^{12} = \Sigma^3$, $\sigma^{13} = -\Sigma^2$, and $\sigma^{23} = \Sigma^1$: the generator of each pair points along the one axis not in the pair. Each $\Sigma^k$ is Hermitian, because its two diagonal blocks are the Hermitian matrices $\sigma_k$, and each $\sigma^{ij}$ is a $\Sigma^k$ up to a sign, so all three rotation generators are Hermitian.
+
+Inserting them into the exponent,
+
+$$\Omega_{\text{rot}} = -\frac{i}{2}\left(\omega_{12}\,\Sigma^3 - \omega_{13}\,\Sigma^2 + \omega_{23}\,\Sigma^1\right).$$
+
+The parameters are real numbers, so the parentheses hold a real linear combination of Hermitian matrices, which is itself Hermitian. Multiplying a Hermitian matrix $H$ by $-i$ makes the product anti-Hermitian, because $(-iH)^\dagger = iH = -(-iH)$. And the exponential of an anti-Hermitian matrix is unitary, by the two series properties above: $S^\dagger = e^{\Omega_{\text{rot}}^\dagger} = e^{-\Omega_{\text{rot}}} = S^{-1}$. Rotations are therefore represented by unitary matrices.
+
+One last step turns the three terms into the compact form quoted in the main text. The pair $(1,2)$ mixes the first two spatial coordinates, so it is a rotation about the third axis, and its generator is $\Sigma^3$; cyclically, the pair $(2,3)$ rotates about axis $1$ and the pair $(1,3)$ about axis $2$. Collecting the three parameters into the vector $\boldsymbol\theta = (\omega_{23}, -\omega_{13}, \omega_{12})$ — a rotation in the $xy$-plane, with only $\omega_{12}$ nonzero, has $\boldsymbol\theta = (0,0,\omega_{12})$ — turns the parentheses into the dot product $\boldsymbol\theta\cdot\boldsymbol\Sigma$, and
+
+$$S = \exp\!\left(-\frac{i}{2}\,\boldsymbol\theta\cdot\boldsymbol\Sigma\right),$$
+
+the unitary rotation matrix of the main text.
+
+For a concrete instance, rotate about the $z$-axis through an angle $\theta$, so that $\omega_{12} = \theta$ and $\boldsymbol\theta = (0,0,\theta)$. The result is $S = \exp(-\frac{i\theta}{2}\Sigma^3)$. The matrix $\Sigma^3$ is diagonal — it is two copies of $\sigma_3 = \mathrm{diag}(1,-1)$, so $\Sigma^3 = \mathrm{diag}(1,-1,1,-1)$ — and the exponential of a diagonal matrix is the diagonal matrix of the exponentials of its entries:
+
+$$S = \mathrm{diag}\!\left(e^{-i\theta/2},\, e^{i\theta/2},\, e^{-i\theta/2},\, e^{i\theta/2}\right).$$
+
+Each component picks up a phase, the two spin states opposite phases, and the upper and lower pairs acquire the same phases. Rotating by a full turn, $\theta = 2\pi$, gives $e^{\mp i\pi} = -1$ on every diagonal entry: the spinor returns to itself only up to a sign, which is the double-valuedness announced in [§5](#_5-spinors-transformations). Two full turns are needed to return exactly.
+
+**Boost along $x$.** A boost is a change into a frame that is moving, and it mixes time with the spatial direction of the motion. The boost case does the part the rotation case skipped, which is fixing the numerical value of the parameter, because that value is set by the velocity rather than chosen freely. For motion along $x$, only the pair $(0,1)$ survives: the transformation leaves $y$ and $z$ alone, so the other two boost parameters vanish, and no rotation is mixed in, so all $\omega_{ij}$ vanish too.
+
+First the parameter. If the new frame moves along the $x$-axis with velocity $v$ (in the units of this page, where the speed of light is $1$), the coordinate relations of [Special Relativity](special-relativity.md) are $t' = \gamma(t-vx)$ and $x' = \gamma(x-vt)$, with $\gamma = (1-v^2)^{-1/2}$. It helps to replace $v$ by the rapidity $\varphi$ defined by $v = \tanh\varphi$; then $\gamma = \cosh\varphi$ and $\gamma v = \sinh\varphi$, and the two relations read
+
+$$t' = t\cosh\varphi - x\sinh\varphi, \qquad x' = x\cosh\varphi - t\sinh\varphi.$$
+
+For a slow boost, $\varphi$ is small, and since $\cosh\varphi \approx 1$ and $\sinh\varphi \approx \varphi$, these reduce to $t' \approx t - \varphi x$ and $x' \approx x - \varphi t$. The entries of the Lorentz matrix are the coefficients in these two equations. The entry $\Lambda^0{}_1$ is the coefficient of $x$ in $t'$, namely $-\varphi$; the entry $\Lambda^1{}_0$ is the coefficient of $t$ in $x'$, also $-\varphi$; the diagonal entries are $1$. First order in $\varphi$ is all we need: as noted above, the parameters of composed transformations add, so exponentiating this first-order piece will produce the exact finite boost. Because $\Lambda = \delta + \omega$ with $\delta$ the identity, subtracting the identity leaves the off-diagonal entries as the parameters,
+
+$$\omega^0{}_1 = -\varphi, \qquad \omega^1{}_0 = -\varphi.$$
+
+Lowering the first index by the metric uses only $g_{00} = 1$, since no spatial metric entry meets an index that is $0$, so
+
+$$\omega_{01} = g_{00}\,\omega^0{}_1 = -\varphi.$$
+
+The reduced exponent therefore contains exactly one term:
+
+$$\Omega_{\text{boost}} = -\frac{i}{2}\,\omega_{01}\,\sigma^{01}.$$
+
+Next comes the generator $\sigma^{01} = \frac{i}{2}[\gamma^0,\gamma^1]$, which needs the two products $\gamma^0\gamma^1$ and $\gamma^1\gamma^0$. In the standard representation, $\gamma^0 = \beta = \mathrm{diag}(1,1,-1,-1)$, the block matrix with the $2\times2$ identity and its negative on the diagonal, and $\gamma^1$ is the block matrix computed in the rotation case, $\begin{pmatrix}0 & \sigma_1 \\ -\sigma_1 & 0\end{pmatrix}$. Multiplying the two block by block,
+
+$$\gamma^0\gamma^1 = \begin{pmatrix}1\cdot 0 + 0\cdot(-\sigma_1) & 1\cdot\sigma_1 + 0\cdot 0 \\ 0\cdot 0 + (-1)\cdot(-\sigma_1) & 0\cdot\sigma_1 + (-1)\cdot 0\end{pmatrix} = \begin{pmatrix}0 & \sigma_1 \\ \sigma_1 & 0\end{pmatrix}.$$
+
+The product is exactly the matrix $\alpha_1$ of [§1](#_1-spin), written $\alpha^1$ when its index is up. Reversing the order of the factors gives a product with the off-diagonal blocks negated,
+
+$$\gamma^1\gamma^0 = \begin{pmatrix}0\cdot 1 + \sigma_1\cdot 0 & 0\cdot 0 + \sigma_1\cdot(-1) \\ (-\sigma_1)\cdot 1 + 0\cdot 0 & (-\sigma_1)\cdot 0 + 0\cdot(-1)\end{pmatrix} = \begin{pmatrix}0 & -\sigma_1 \\ -\sigma_1 & 0\end{pmatrix} = -\alpha^1,$$
+
+so the two products differ by a sign, $\gamma^0\gamma^1 = -\gamma^1\gamma^0$ (the matrices anticommute). Therefore
+
+$$[\gamma^0,\gamma^1] = \gamma^0\gamma^1 - \gamma^1\gamma^0 = \alpha^1 - (-\alpha^1) = 2\alpha^1,$$
+
+and feeding the commutator into the definition gives
+
+$$\sigma^{01} = \frac{i}{2}\,[\gamma^0,\gamma^1] = i\,\alpha^1.$$
+
+This generator is not Hermitian, unlike the rotation generators. The matrix $\alpha^1$ has real, symmetric entries — it carries two copies of $\sigma_1 = \begin{pmatrix}0&1\\1&0\end{pmatrix}$ — so $(\alpha^1)^\dagger = \alpha^1$, and the factor of $i$ in front flips the dagger:
+
+$$(\sigma^{01})^\dagger = (i\alpha^1)^\dagger = -i\alpha^1 = -\sigma^{01}.$$
+
+The boost generator is anti-Hermitian.
+
+Now multiply out the exponent. Only the one term survives, and it is
+
+$$\Omega_{\text{boost}} = -\frac{i}{2}\,\omega_{01}\,\sigma^{01} = -\frac{i}{2}\,(-\varphi)\,(i\alpha^1).$$
+
+The operator content is the single matrix $\alpha^1$; everything in front of it is an ordinary complex number, and ordinary numbers commute, so we may multiply the three scalars in any order. Combine the first two first: $-\frac{i}{2}\cdot(-\varphi) = \frac{i\varphi}{2}$, the two minus signs canceling. Then multiply by the third, the $i$ that sits inside the generator: $\frac{i\varphi}{2}\cdot i = \frac{i^2\varphi}{2} = -\frac{\varphi}{2}$. This is where the generator's own factor of $i$ does its work: the $i$ in $\sigma^{01} = i\alpha^1$ multiplies the $i$ in the prefactor $-\frac{i}{2}$ to give $i^2 = -1$, and what looked like an imaginary coefficient turns into the real number $-\varphi/2$. The boost matrix is therefore
+
+$$S = \exp\!\left(-\frac{\varphi}{2}\,\alpha^1\right).$$
+
+Because $\varphi$ is real and $\alpha^1$ is Hermitian, the exponent is a Hermitian matrix, and $S^\dagger = e^{(\text{exponent})^\dagger} = e^{\text{exponent}} = S$: the boost is represented by a Hermitian matrix. It is not unitary, because $S^\dagger S = S^2 = e^{-\varphi\alpha^1}$, which differs from the identity.
 
 Expand the exponential once, because later pages quote its matrix. Since $(\alpha^1)^2 = 1$, the even powers of $\alpha^1$ are the identity and the odd powers are $\alpha^1$ itself, so
 
@@ -193,7 +304,9 @@ $$e^{-\varphi\alpha^1/2} = \underbrace{\Big[1 + \tfrac{(\varphi/2)^2}{2!} + \cdo
 
 the same even/odd split that makes $e^x = \cosh x + \sinh x$.
 
-The unitary/Hermitian split of the two cases is decided in the generators: rotations exponentiate Hermitian $\sigma^{ij}$ into unitary matrices, boosts exponentiate anti-Hermitian $\sigma^{0i}$ into Hermitian ones.
+At small velocity the result connects back to [§3](#_3-antiparticles). Keeping only the first term of each series gives $S \approx 1 - \frac{\varphi}{2}\alpha^1$, whose off-diagonal blocks mix the upper and lower pairs of the spinor with relative size $\varphi/2 = v/2$. For a slow particle $|\mathbf p| \approx m|v|$, so this is $|\mathbf p|/2m$ — the size of the small components that [§3](#_3-antiparticles) found by a separate route.
+
+The two cases differ in exactly one place, and the difference survives a change of axis. The rotation result is already axis-free, since $\boldsymbol\theta$ points along whatever axis the rotation uses. For a boost along any unit direction $\hat{\mathbf n}$, the parameters are $\omega_{0k} = -\varphi\,\hat n_k$, and the same block multiplication gives $\sigma^{0k} = i\alpha^k$, so the exponent collects into the real $-\frac{\varphi}{2}\,\boldsymbol\alpha\cdot\hat{\mathbf n}$: $\boldsymbol\alpha\cdot\hat{\mathbf n}$ is again Hermitian and squares to one. Rotations always produce unitary matrices, and boosts always produce Hermitian ones.
 
 ## 6. General Solution
 
