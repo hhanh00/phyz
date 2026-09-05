@@ -35,6 +35,7 @@ export default {
           { text: 'Field Quantization', link: '/field-quantization.html' },
         ],
       },
+      { text: 'Quantum Electrodynamics', link: '/qed.html' },
     ],
     // Reading order for the Prev/Next footer links on each page.
     sidebar: [
@@ -47,6 +48,7 @@ export default {
       { text: 'Fields and Quanta', link: '/qft.html' },
       { text: 'Action and Lagrangians', link: '/qft-action.html' },
       { text: 'Field Quantization', link: '/field-quantization.html' },
+      { text: 'Quantum Electrodynamics', link: '/qed.html' },
     ],
   }),
 
