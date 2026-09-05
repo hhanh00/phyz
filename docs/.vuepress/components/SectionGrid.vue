@@ -3,8 +3,7 @@ const groups = [
   {
     number: '01',
     name: 'Foundations',
-    eyebrow: 'Motion becomes mechanics',
-    desc: 'Build the language of states, operators, and discrete energy.',
+    desc: 'States, operators, and discrete energy.',
     color: '#2563eb',
     soft: '#dbeafe',
     items: [
@@ -16,8 +15,7 @@ const groups = [
   {
     number: '02',
     name: 'Relativity',
-    eyebrow: 'Space and time become spacetime',
-    desc: 'Follow the cost of making quantum mechanics relativistic.',
+    desc: 'Spacetime, relativistic wave equations, and spinors.',
     color: '#7c3aed',
     soft: '#ede9fe',
     items: [
@@ -29,8 +27,7 @@ const groups = [
   {
     number: '03',
     name: 'Quantum fields',
-    eyebrow: 'Particles become excitations',
-    desc: 'Treat each field mode as an oscillator and quantize the whole field.',
+    desc: 'Fields, actions, and quantization.',
     color: '#059669',
     soft: '#d1fae5',
     items: [
@@ -42,8 +39,7 @@ const groups = [
   {
     number: '04',
     name: 'Quantum Electrodynamics',
-    eyebrow: 'Symmetry demands the photon',
-    desc: 'Local U(1) symmetry produces the photon, and its rules yield the first amplitudes.',
+    desc: 'Electromagnetic interactions and scattering amplitudes.',
     color: '#d97706',
     soft: '#fef3c7',
     items: [
@@ -54,8 +50,7 @@ const groups = [
   {
     number: '05',
     name: 'Electroweak',
-    eyebrow: 'The weak force unifies',
-    desc: 'SU(2) and the Higgs unite the weak force with QED.',
+    desc: 'Weak interactions, unification, and the Higgs mechanism.',
     color: '#db2777',
     soft: '#fce7f3',
     items: [
@@ -67,8 +62,7 @@ const groups = [
   {
     number: '06',
     name: 'Strong & Standard Model',
-    eyebrow: 'The theory completes',
-    desc: 'Color, quarks, and confinement round out the gauge structure.',
+    desc: 'Color, quarks, confinement, and the complete gauge theory.',
     color: '#0e7490',
     soft: '#cffafe',
     items: [
@@ -83,18 +77,18 @@ const groups = [
   <div class="phyz-home">
     <section class="home-hero" aria-labelledby="home-title">
       <div class="hero-copy">
-        <p class="kicker"><span class="kicker-dot"></span>A guided physics sequence</p>
-        <h1 id="home-title">From motion<br><em>to fields.</em></h1>
+        <p class="kicker"><span class="kicker-dot"></span>Phyz</p>
+        <h1 id="home-title">Particle physics notes</h1>
         <p class="hero-text">
-          A connected set of notes that builds particle physics from first principles,
-          one idea at a time.
+          From classical mechanics to the Standard Model, with each chapter building
+          on the previous one.
         </p>
         <div class="hero-actions">
           <a class="start-button" href="/classical-mechanics.html">
-            Start with mechanics
+            Start reading
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
           </a>
-          <span class="chapter-count"><strong>16</strong> connected chapters</span>
+          <span class="chapter-count"><strong>16</strong> chapters</span>
         </div>
       </div>
 
@@ -121,19 +115,11 @@ const groups = [
       </div>
     </section>
 
-    <div class="concept-strip" aria-label="The conceptual progression through the course">
-      <span>trajectory</span><i>→</i>
-      <span>wavefunction</span><i>→</i>
-      <span>quantum field</span><i>→</i>
-      <span>interaction</span><i>→</i>
-      <span>standard model</span>
-    </div>
-
     <section class="curriculum" aria-labelledby="curriculum-title">
       <div class="curriculum-intro">
         <div>
-          <p class="section-label">The learning path</p>
-          <h2 id="curriculum-title">One argument, built in stages.</h2>
+          <p class="section-label">Contents</p>
+          <h2 id="curriculum-title">Chapters</h2>
         </div>
         <p>Read in order, or jump directly to the idea you need.</p>
       </div>
@@ -150,7 +136,7 @@ const groups = [
           </div>
 
           <header class="stage-head">
-            <p>{{ g.eyebrow }}</p>
+            <p>{{ g.items.length }} {{ g.items.length === 1 ? 'chapter' : 'chapters' }}</p>
             <h3>{{ g.name }}</h3>
             <div class="stage-rule"></div>
             <p class="stage-desc">{{ g.desc }}</p>
@@ -179,15 +165,6 @@ const groups = [
         </section>
       </div>
     </section>
-
-    <aside class="closing-note">
-      <span class="closing-symbol">∑</span>
-      <div>
-        <p class="section-label">The thread</p>
-        <p>Each chapter carries one tool forward, so the final theory feels constructed rather than announced.</p>
-      </div>
-      <a href="/classical-mechanics.html">Begin chapter 01 <span aria-hidden="true">→</span></a>
-    </aside>
   </div>
 </template>
 
@@ -220,13 +197,12 @@ const groups = [
 .kicker, .section-label { margin: 0; color: #2563eb; font-size: .73rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 .kicker { display: flex; align-items: center; gap: .6rem; }
 .kicker-dot { width: 7px; height: 7px; border-radius: 50%; background: #2563eb; box-shadow: 0 0 0 5px rgba(37, 99, 235, .12); }
-.home-hero h1 { margin: 1.25rem 0 1.35rem; color: var(--ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(3.8rem, 7vw, 6.5rem); font-weight: 500; letter-spacing: -.055em; line-height: .88; }
-.home-hero h1 em { color: #2563eb; font-weight: 500; }
+.home-hero h1 { max-width: 40rem; margin: 1.25rem 0 1.35rem; color: var(--ink); font-size: clamp(3.1rem, 6vw, 5.3rem); font-weight: 700; letter-spacing: -.055em; line-height: .98; }
 .hero-text { max-width: 35rem; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
 .start-button { display: inline-flex; align-items: center; gap: .7rem; padding: .85rem 1.1rem; border-radius: 8px; color: #fff !important; background: #152238; font-size: .9rem; font-weight: 650; text-decoration: none !important; box-shadow: 0 9px 24px rgba(21, 34, 56, .16); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
 .start-button:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37, 99, 235, .2); }
-.start-button:focus-visible, .chapter-card:focus-visible, .closing-note a:focus-visible { outline: 3px solid #60a5fa; outline-offset: 4px; }
+.start-button:focus-visible, .chapter-card:focus-visible { outline: 3px solid #60a5fa; outline-offset: 4px; }
 .start-button svg, .read-link svg { width: 18px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .chapter-count { color: var(--muted); font-size: .84rem; }
 .chapter-count strong { color: var(--ink); font-family: Georgia, serif; font-size: 1.2rem; }
@@ -247,11 +223,9 @@ const groups = [
 .axis-label { position: absolute; color: #8290a3; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
 .axis-x { right: 5%; top: 51%; }
 .axis-t { left: 51%; top: 4%; writing-mode: vertical-rl; }
-.concept-strip { display: flex; align-items: center; justify-content: center; gap: clamp(.8rem, 2.5vw, 2.5rem); padding: 1.05rem 2rem; border-block: 1px solid var(--line); color: #6d7786; background: #f6f8fb; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.concept-strip i { color: #aab3c0; font-size: 1rem; font-style: normal; }
-.curriculum { max-width: 1280px; margin: 0 auto; padding: 6rem clamp(2rem, 6vw, 5.5rem) 5rem; }
+.curriculum { max-width: 1280px; margin: 0 auto; padding: 4.5rem clamp(2rem, 6vw, 5.5rem) 5rem; border-top: 1px solid var(--line); }
 .curriculum-intro { display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-bottom: 2.5rem; }
-.curriculum-intro h2 { margin: .55rem 0 0; color: var(--ink); font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; letter-spacing: -.035em; }
+.curriculum-intro h2 { margin: .4rem 0 0; color: var(--ink); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -.035em; }
 .curriculum-intro > p { max-width: 20rem; margin: 0 0 .35rem; color: var(--muted); font-size: .9rem; line-height: 1.55; }
 .stages { position: relative; }
 .stages::before { content: ''; position: absolute; top: 1.6rem; bottom: 1.6rem; left: 25px; width: 1px; background: var(--line); }
@@ -260,7 +234,7 @@ const groups = [
 .stage-marker { position: relative; z-index: 1; padding-top: .1rem; }
 .stage-marker span { display: grid; place-items: center; width: 51px; height: 51px; border: 1px solid color-mix(in srgb, var(--accent) 35%, white); border-radius: 50%; color: var(--accent); background: var(--paper); font-family: Georgia, serif; font-size: .9rem; font-weight: 700; }
 .stage-head > p:first-child { margin: .1rem 0 .45rem; color: var(--accent); font-size: .65rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
-.stage-head h3 { margin: 0; border: 0; color: var(--ink); font-family: Georgia, serif; font-size: 1.7rem; font-weight: 500; letter-spacing: -.025em; }
+.stage-head h3 { margin: 0; border: 0; color: var(--ink); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
 .stage-rule { width: 2rem; height: 2px; margin: 1.1rem 0; background: var(--accent); }
 .stage-desc { max-width: 15rem; margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.6; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
@@ -271,19 +245,13 @@ const groups = [
 .card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .chapter-number { color: #8a94a3; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .chapter-symbol { display: grid; place-items: center; min-width: 38px; height: 30px; padding: 0 .35rem; border-radius: 6px; color: var(--accent); background: var(--accent-soft); font-family: Georgia, serif; font-size: .76rem; font-style: italic; }
-.chapter-card h4 { margin: 1.5rem 0 .65rem; color: var(--ink); font-family: Georgia, serif; font-size: 1.22rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.15; }
+.chapter-card h4 { margin: 1.5rem 0 .65rem; color: var(--ink); font-size: 1.05rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
 .chapter-card > p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.55; }
 .read-link { display: flex; align-items: center; gap: .4rem; margin-top: auto; padding-top: 1.1rem; color: var(--accent); font-size: .72rem; font-weight: 700; }
 .read-link svg { width: 15px; transition: transform .2s ease; }
 .chapter-card:hover .read-link svg { transform: translateX(3px); }
 .cards-single { grid-template-columns: minmax(240px, 1fr) 2fr; }
 .final-card { min-height: 200px; background: linear-gradient(135deg, #fff, color-mix(in srgb, var(--accent-soft) 52%, white)); }
-.closing-note { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.5rem; max-width: calc(1280px - clamp(4rem, 12vw, 11rem)); margin: 0 auto 6rem; padding: 1.6rem 1.8rem; border-radius: 12px; color: #fff; background: var(--ink); }
-.closing-symbol { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; color: #93c5fd; font-family: Georgia, serif; font-size: 1.7rem; }
-.closing-note .section-label { color: #93c5fd; }
-.closing-note div > p:last-child { max-width: 38rem; margin: .3rem 0 0; color: #cbd5e1; font-family: Georgia, serif; font-size: 1rem; line-height: 1.45; }
-.closing-note a { color: #fff !important; font-size: .75rem; font-weight: 700; text-decoration: none !important; white-space: nowrap; }
-.closing-note a span { margin-left: .35rem; color: #93c5fd; }
 @media (max-width: 960px) {
   .home-hero { grid-template-columns: 1fr minmax(310px, .75fr); min-height: 500px; gap: 2rem; }
   .stage { grid-template-columns: 52px 1fr; }
@@ -293,39 +261,28 @@ const groups = [
 @media (max-width: 720px) {
   .home-hero { grid-template-columns: 1fr; min-height: 0; padding-top: 4.5rem; }
   .field-visual { width: min(100%, 430px); margin-top: 1rem; }
-  .concept-strip { justify-content: flex-start; overflow-x: auto; }
-  .concept-strip span { white-space: nowrap; }
   .curriculum { padding-top: 4.5rem; }
   .curriculum-intro { display: block; }
   .curriculum-intro > p { margin-top: 1rem; }
   .cards { grid-template-columns: 1fr; }
   .cards-single { grid-template-columns: 1fr; }
   .chapter-card { min-height: 190px; }
-  .closing-note { grid-template-columns: auto 1fr; margin-inline: 1.25rem; }
-  .closing-note a { grid-column: 2; }
 }
 @media (max-width: 480px) {
   .home-hero, .curriculum { padding-inline: 1.25rem; }
-  .home-hero h1 { font-size: 3.65rem; }
+  .home-hero h1 { font-size: 3.25rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 1rem; }
   .field-visual { width: 108%; margin-left: -4%; }
   .stage { grid-template-columns: 40px 1fr; gap: 1rem; }
   .stages::before { left: 19px; }
   .stage-marker span { width: 39px; height: 39px; font-size: .72rem; }
   .cards { grid-column: 1 / -1; }
-  .closing-note { padding: 1.35rem; }
-  .closing-symbol { display: none; }
-  .closing-note, .closing-note a { grid-column: auto; }
 }
 [data-theme='dark'] .phyz-home { --ink: #edf3fb; --muted: #aab6c6; --paper: #1b1b1f; --line: #343b47; }
 [data-theme='dark'] .field-visual { background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, .13), transparent 24%), linear-gradient(145deg, rgba(30, 58, 138, .25), rgba(30, 41, 59, .08)); }
 [data-theme='dark'] .visual-core, [data-theme='dark'] .formula { background: rgba(27, 27, 31, .82); }
-[data-theme='dark'] .concept-strip { background: #202126; }
 [data-theme='dark'] .chapter-card { background: #202126; }
 [data-theme='dark'] .final-card { background: linear-gradient(135deg, #202126, rgba(120, 75, 10, .14)); }
-[data-theme='dark'] .closing-note { color: #152238; background: #e8eef7; }
-[data-theme='dark'] .closing-note div > p:last-child { color: #536072; }
-[data-theme='dark'] .closing-note a { color: #152238 !important; }
 @media (prefers-reduced-motion: reduce) {
   .start-button, .chapter-card, .chapter-card::before, .read-link svg { transition: none; }
 }
