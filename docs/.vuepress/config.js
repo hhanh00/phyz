@@ -21,6 +21,7 @@ export default {
         children: [
           { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
           { text: 'First Quantization', link: '/first-quantization.html' },
+          { text: 'Harmonic Oscillator', link: '/harmonic-oscillator.html' },
         ],
       },
       { text: 'Special Relativity', link: '/special-relativity.html' },
@@ -39,6 +40,7 @@ export default {
     sidebar: [
       { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
       { text: 'First Quantization', link: '/first-quantization.html' },
+      { text: 'Harmonic Oscillator', link: '/harmonic-oscillator.html' },
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
       { text: 'Dirac Equation', link: '/dirac-equation.html' },

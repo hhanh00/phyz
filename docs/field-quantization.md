@@ -1,8 +1,69 @@
 # Quantum Field Theory: Field Quantization
 
-This page continues from [Action and Lagrangians](qft-action.md). The previous pages promoted each field's plane-wave coefficients to operators, read the Lagrangians and Hamiltonians off the field equations, and previewed the algebra that the scalar operators obey: at equal times the field and its conjugate momentum commute to $i\hbar\,\delta^3$, and mode by mode the ladder operators satisfy the oscillator commutator. That preview ran on the correspondence rule rather than on a mode expansion, and the [previous page](qft-action.md) flagged it as such — concepts presented before the proof that supports them. This page carries out that proof for the real scalar field. It promotes the field's oscillators to operators, derives the ladder commutator from the equal-time one, reads the Hamiltonian as a sum of independent oscillator energies, and finds that a particle is one quantum of one oscillator. That is the construction the earlier pages promised, and it settles the scalar row of the field table.
+This page continues from [Action and Lagrangians](qft-action.md).
 
-The page runs on one reduction, and each section is one step of it. Quantizing a field is not a step we know how to take directly, but quantizing a single mechanical system is, because [First Quantization](first-quantization.md) already supplied the method: promote its coordinate and momentum to operators and impose the canonical commutator. So the page first shows that the free scalar field is not a new kind of system but a stack of independent harmonic oscillators, one per momentum, by substituting the field's Fourier modes into its Hamiltonian and watching the modes decouple. Once that identification stands, quantizing the field reduces to quantizing each oscillator. The method is known, but no earlier page actually carried it out, so this page does it once in the One oscillator per momentum section — build the ladder operators, read the spectrum — and then applies the result per momentum. The final section names what each oscillator's quantum is, which turns out to be a particle.
+## Outline
+
+**Setup.** The page quantizes the free real scalar field, closing the scalar row of the field table. Its logic is one reduction: a free field is a stack of independent harmonic oscillators, and quantizing one oscillator is already carried out on the [Harmonic Oscillator](harmonic-oscillator.md) page. So the page (1) shows the field decouples into oscillators, (2) promotes the field to operators, (3) derives the ladder algebra from the equal-time commutator, (4) quantizes one oscillator, and (5) names its quantum a particle.
+
+### The scalar field in modes
+
+The real scalar $\phi(x)$ obeys the Klein–Gordon equation
+$$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0.$$
+Plane waves $e^{-ip\cdot x/\hbar}$ solve it when energy satisfies the dispersion relation
+$$E_p = \sqrt{\mathbf p^2 + m^2}.$$
+Since $\phi$ is real, the general solution pairs each wave with its conjugate, one amplitude per momentum:
+$$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[a(p)e^{-ip\cdot x/\hbar} + a^*(p)e^{+ip\cdot x/\hbar}\right].$$
+To reach the Hamiltonian, the field is instead decomposed into *spatial* Fourier modes with time-dependent coefficients, $\pi_p = \dot\phi_p$:
+$$\phi(t,\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\phi_p(t)e^{i\mathbf p\cdot\mathbf x/\hbar}.$$
+Substituting into $H = \int d^3x\left(\tfrac12\pi^2 + \tfrac12(\nabla\phi)^2 + \tfrac{m^2}{2\hbar^2}\phi^2\right)$ and using plane-wave orthogonality $\int d^3x\,e^{i(\mathbf p+\mathbf q)\cdot\mathbf x/\hbar}=(2\pi\hbar)^3\delta^3(\mathbf p+\mathbf q)$ collapses the cross terms, leaving
+$$H = \int \frac{d^3p}{(2\pi\hbar)^3}\left[\tfrac12|\pi_p|^2 + \tfrac12\omega_p^2|\phi_p|^2\right],\qquad \omega_p^2 = \frac{E_p^2}{\hbar^2}.$$
+The bracket is a harmonic oscillator's Hamiltonian in $\phi_p,\pi_p$, one independent copy per momentum with frequency $E_p/\hbar$. This decoupling makes the oscillator picture exact, not an analogy.
+
+### Second quantization
+
+Promotion acts on the coefficients or, equivalently, on the field:
+$$a(p)\to\hat a(p),\qquad a^*(p)\to\hat a^\dagger(p),\qquad {}^*\to{}^\dagger,$$
+so that the field operator reads
+$$\hat\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[\hat a(p)e^{-ip\cdot x/\hbar} + \hat a^\dagger(p)e^{+ip\cdot x/\hbar}\right],$$
+with $\hat\pi = \dot{\hat\phi}$. The operator is Hermitian ($\hat\phi^\dagger = \hat\phi$) and strictly operator-valued (only integrals are well defined).
+
+### The canonical commutator
+
+First Quantization's $[\hat x,\hat p]=i\hbar$ repeats one level up, at each point of space, with a delta function keeping distinct oscillators independent:
+$$[\hat\phi(t,\mathbf x),\hat\pi(t,\mathbf x')] = i\hbar\,\delta^3(\mathbf x-\mathbf x'),\qquad [\hat\phi,\hat\phi]=0,\qquad [\hat\pi,\hat\pi]=0.$$
+This equal-time condition is imposed, not derived; it is the quantization postulate (equivalently, $\{\cdot,\cdot\}\to\tfrac{1}{i\hbar}[\cdot,\cdot]$ on the Poisson bracket $\{\phi,\pi\}=\delta^3$).
+
+### Ladder commutators
+
+Evaluating the expansions at $t=0$ gives, up to time factors,
+$$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
+$$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\frac{-iE_p}{\hbar}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} - \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right].$$
+The expansion can be inverted: multiplying $E_p\hat\phi + i\hbar\hat\pi$ by $e^{-i\mathbf p\cdot\mathbf x/\hbar}$ and integrating isolates $\hat a(p)$ (the $\hat a^\dagger$ half cancels because $E_{-p}=E_p$). Substituting this into $[\hat a(p),\hat a^\dagger(p')]$, only the $[\hat\phi,\hat\pi]$ term survives, and the plane-wave orthogonality leaves
+$$[\hat a(p),\hat a^\dagger(p')] = C\,\delta^3(p-p'),\qquad [\hat a,\hat a]=0,\qquad [\hat a^\dagger,\hat a^\dagger]=0.$$
+A mode commutes with every mode except its own adjoint, the signature of independent oscillators. In box normalization the constant $C$ is set to $1$, yielding $[\hat a,\hat a^\dagger]=1$.
+
+### One oscillator per momentum
+
+Quantizing one oscillator of frequency $\omega$ with $[\hat q,\hat p]=i\hbar$ is done on the [Harmonic Oscillator page](harmonic-oscillator.md); here fold the pair into ladders
+$$\hat a = \sqrt{\frac{\omega}{2\hbar}}\hat q + \frac{i}{\sqrt{2\hbar\omega}}\hat p,\qquad \hat a^\dagger = \sqrt{\frac{\omega}{2\hbar}}\hat q - \frac{i}{\sqrt{2\hbar\omega}}\hat p,$$
+so $[\hat a,\hat a^\dagger]=1$. The Hamiltonian becomes
+$$\hat H = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right).$$
+With $\hat N=\hat a^\dagger\hat a$, the commutators $[\hat N,\hat a]=-\hat a$, $[\hat N,\hat a^\dagger]=\hat a^\dagger$ show $\hat a$ lowers and $\hat a^\dagger$ raises by one. Nonnegativity of $\hat N$ forces a lowest state $\lvert 0\rangle$ with $\hat a\lvert 0\rangle=0$; repeated raising gives $\lvert n\rangle\propto(\hat a^\dagger)^n\lvert 0\rangle$ with energies $\hbar\omega(n+\tfrac12)$.
+
+Returning to the field and substituting the mode expansions, each momentum contributes one oscillator of frequency $E_p/\hbar$:
+$$\hat H = \int \frac{d^3p}{(2\pi\hbar)^3}E_p\,\hat a^\dagger(p)\hat a(p) + \text{const.}$$
+The constant collects all zero-point energies and is formally infinite; it joins the vacuum zero and drops from all physical differences. Each mode carries levels $E_p n_p$, with $\hat a^\dagger(p)$ adding exactly $E_p$.
+
+### Creation of particles
+
+The mode's quantum is a particle: one quantum of momentum $\mathbf p$ carries $(E_p,\mathbf p)$, exactly a relativistic particle of mass $m$. The state space is the product of mode spaces. The vacuum $\lvert 0\rangle$ is annihilated by every $\hat a(p)$ and has zero energy; general states are labeled by occupation numbers:
+$$\hat H\,\lvert\{n_p\}\rangle = \left(\sum_p E_p n_p\right)\lvert\{n_p\}\rangle.$$
+Because the creation operators commute, particles are identical bosons, matching the integer-spin scalar row. Energy is bounded below since every $E_p>0$ and $n_p\ge0$, so the negative-energy problem of the Klein–Gordon single-particle reading disappears: the negative-frequency term now carries $\hat a^\dagger$ and *adds* energy, and an empty mode cannot be lowered further. Particle number $\hat N=\int\frac{d^3p}{(2\pi\hbar)^3}\hat a^\dagger\hat a$ is conserved because $[\hat H,\hat N]=0$.
+
+That completes the construction: one real field, one oscillator family, quanta that are their own antiparticles, energy bounded below, with commutators derived from the field's mode structure rather than imposed.
+
+> Skip the sections below on a first reading — the storyboard above carries the argument, and what follows spells out each step with the detailed explanation and calculations.
 
 ## The scalar field in modes
 
@@ -32,7 +93,7 @@ The bracket is one harmonic oscillator's Hamiltonian: half a kinetic energy plus
 
 ## Second quantization
 
-The previous paragraphs described the field as a family of classical oscillators. Second quantization promotes that family to operators, and the promotion has two equivalent readings, one per description of the field.
+Second quantization promotes the family of oscillators to operators, and the promotion has two equivalent readings, one per description of the field.
 
 Read from the mode amplitudes, the promotion turns each coefficient into an operator. The amplitude $a(p)$ and its conjugate $a^*(p)$ become a pair of adjoint operators,
 
@@ -76,17 +137,11 @@ with $C$ a constant fixed by the normalization of the plane-wave expansion. The 
 
 ## One oscillator per momentum
 
-The ladder algebra of the previous section is shared by every momentum mode, because each mode is a copy of one and the same system, the harmonic oscillator. No earlier page quantized that system, so this section does it once, and then reads the field as a stack of copies.
+Every momentum mode shares the same ladder algebra, because each mode is a copy of one system, the harmonic oscillator. The [Harmonic Oscillator page](harmonic-oscillator.md) quantizes that system once — promoting the coordinate and momentum, folding them into ladder operators, and reading the spectrum — so here we recall the answer rather than redo the work. A single oscillator of frequency $\omega$ has ladder operators obeying $[\hat a, \hat a^\dagger] = 1$, Hamiltonian
 
-Quantize a single oscillator of frequency $\omega$. [First Quantization](first-quantization.md) promoted its coordinate and momentum to operators obeying $[\hat q, \hat p] = i\hbar$, with Hamiltonian $\hat H = \tfrac12\hat p^2 + \tfrac12\omega^2\hat q^2$. Fold the pair into ladder operators,
+$$\hat H = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right),$$
 
-$$\hat a = \sqrt{\frac{\omega}{2\hbar}}\,\hat q + \frac{i}{\sqrt{2\hbar\omega}}\,\hat p, \qquad \hat a^\dagger = \sqrt{\frac{\omega}{2\hbar}}\,\hat q - \frac{i}{\sqrt{2\hbar\omega}}\,\hat p,$$
-
-so that $[\hat a, \hat a^\dagger] = 1$ follows from $[\hat q, \hat p] = i\hbar$. Inverting the definitions and substituting into the Hamiltonian turns it into
-
-$$\hat H = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right).$$
-
-Now the spectrum falls out of the algebra. Let $\hat N = \hat a^\dagger\hat a$; since $\hat N = \hat N^\dagger$, its eigenvalues are nonnegative. From $[\hat a,\hat a^\dagger] = 1$ we get $[\hat N, \hat a] = -\hat a$ and $[\hat N, \hat a^\dagger] = \hat a^\dagger$, which means acting with $\hat a$ lowers $\hat N$ by one and acting with $\hat a^\dagger$ raises it by one. Repeated lowering cannot go on forever against the nonnegativity, so there is a lowest state $\lvert 0\rangle$ with $\hat a\lvert 0\rangle = 0$; it has $\hat N = 0$ and energy $\tfrac12\hbar\omega$. Raising it step by step, $\lvert n\rangle \propto (\hat a^\dagger)^n \lvert 0\rangle$, gives $\hat N\lvert n\rangle = n\lvert n\rangle$ for every nonnegative integer $n$, with energies $\hbar\omega(n + \tfrac12)$ spaced by $\hbar\omega$. So $\hat a^\dagger$ adds one quantum and $\hat a$ removes one, which is the content of calling $\hat a^\dagger$ a creation operator.
+and levels $\hbar\omega(n + \tfrac12)$ spaced by $\hbar\omega$: $\hat a^\dagger$ adds one quantum and $\hat a$ removes one.
 
 Now return to the field. Its operator Hamiltonian,
 
@@ -108,7 +163,19 @@ The state space is the product of all the mode spaces, and the occupation-number
 
 $$\hat H\,\lvert \{n_p\}\rangle = \left(\sum_p E_p\, n_p\right)\lvert \{n_p\}\rangle.$$
 
-Each creation operator adds one particle of its momentum, $\hat a^\dagger(p_1)\hat a^\dagger(p_2)\lvert 0\rangle$ holds a particle at $\mathbf p_1$ and one at $\mathbf p_2$, and a string of $\hat a^\dagger(p)$'s stacks several particles into one mode. Because the creation operators commute, $[\hat a^\dagger(p), \hat a^\dagger(p')] = 0$, the order of the factors never matters and a two-particle state is unchanged when the two particles are swapped. Particles built this way are identical and bosonic, which matches the integer-spin assignment of the scalar row in the [field table](qft.md#fields); the half-integer rows will rerun the whole construction with anticommutators, which is where the spin-statistics correlation is settled.
+Each creation operator adds one particle of its momentum, $\hat a^\dagger(p_1)\hat a^\dagger(p_2)\lvert 0\rangle$ holds a particle at $\mathbf p_1$ and one at $\mathbf p_2$, and a string of $\hat a^\dagger(p)$'s stacks several particles into one mode. Each mode is its own oscillator, so the operators act on the occupation number $n_p$ of mode $\mathbf p$ with the same $\sqrt{\,}$ factors as the single [Harmonic Oscillator](harmonic-oscillator.md):
+
+$$\hat a(p)\,\lvert n_p\rangle = \sqrt{n_p}\;\lvert n_p-1\rangle, \qquad \hat a^\dagger(p)\,\lvert n_p\rangle = \sqrt{n_p+1}\;\lvert n_p+1\rangle,$$
+
+leaving every other mode untouched. Because the creation operators commute, $[\hat a^\dagger(p), \hat a^\dagger(p')] = 0$, the order of the factors never matters and a two-particle state is unchanged when the two particles are swapped. Particles built this way are identical and bosonic, which matches the integer-spin assignment of the scalar row in the [field table](qft.md#fields); the half-integer rows will rerun the whole construction with anticommutators, which is where the spin-statistics correlation is settled.
+
+### Building states one quantum at a time
+
+The states above come from applying creation operators to the vacuum, and a picture keeps them straight. Lay a momentum axis down so each mode gets a position along it, and draw one filled dot per quantum, stacked above the momentum it occupies:
+
+![One particle at p, then two at p, then two at p plus one at q: each filled dot is one quantum stacked above its momentum](./manim/occupation-states.png)
+
+The left panel is $\hat a^\dagger(p)\lvert 0\rangle$, one particle at $p$. The middle is $\big(\hat a^\dagger(p)\big)^2\lvert 0\rangle$: the same operator applied twice stacks a second dot onto the same column, so the mode now holds two quanta. The right panel applies $\hat a^\dagger(q)$ as well, with $q \gg p$, adding a dot in a fresh column and so a particle at a much larger momentum. Each column is one mode's occupation number $n_p$, and each application of a creation operator grows its column by exactly one dot.
 
 The energy comes out bounded below. Every $E_p$ is positive and every occupation number is a nonnegative integer, so every energy eigenvalue is a sum of positive terms and the vacuum is the lowest state. This is the resolution the earlier pages advertised. The Klein–Gordon equation was [rejected as a single-particle equation](relativistic-qm.md#_2-klein-gordon) because it admitted negative energies; those solutions do not reappear here, because no mode can drop below empty. The second term of the expansion, $e^{+ip\cdot x/\hbar}$, was the negative-frequency term of the single-particle reading; here it carries $\hat a^\dagger$, which adds rather than subtracts energy, so the term that looked dangerous in the old reading is now the operator that creates a positive-energy particle. An annihilation operator removes quanta, and once a mode is empty it can do nothing more; no state carries negative energy. The negative-energy problem was not solved by discarding solutions but by reinterpreting them, exactly the move the [Dirac equation page](dirac-equation.md) made for its negative-frequency half.
 
