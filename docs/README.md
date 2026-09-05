@@ -3,7 +3,7 @@ home: true
 title: Home
 heroText: Phyz
 tagline: Particle physics, built from the ground up
-footer: Physics notes — built with VuePress, KaTeX, and Manim
+footer: Phyz — a connected path through modern physics
 ---
 
 <SectionGrid />
