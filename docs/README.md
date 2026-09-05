@@ -2,7 +2,8 @@
 home: true
 title: Home
 heroText: Phyz
-tagline: Physics notes — Particle Physics
+tagline: Particle physics, built from the ground up
+footer: Physics notes — built with VuePress, KaTeX, and Manim
 ---
 
 <SectionGrid />
