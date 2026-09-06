@@ -42,6 +42,13 @@ function scaleSvg(svg) {
     .replace('<svg ', '<svg style="max-width:100%;height:auto;display:block;margin:1.5rem auto" ')
 }
 
+function scopeSvgIds(svg, prefix) {
+  return svg
+    .replace(/\bid=(['"])([^'"]+)\1/g, (_, quote, id) => `id=${quote}${prefix}-${id}${quote}`)
+    .replace(/\b((?:xlink:)?href)=(['"])#([^'"]+)\2/g, (_, attr, quote, id) => `${attr}=${quote}#${prefix}-${id}${quote}`)
+    .replace(/url\(#([^)]+)\)/g, (_, id) => `url(#${prefix}-${id})`)
+}
+
 export function renderFeynmanSvg(code) {
   const body = String(code ?? '').trim()
   if (!body) return '<!-- empty feynman diagram -->'
@@ -53,7 +60,9 @@ export function renderFeynmanSvg(code) {
   const dvi = path.join(CACHE_DIR, `${id}.dvi`)
   const svg = path.join(CACHE_DIR, `${id}.svg`)
 
-  if (!fs.existsSync(svg)) {
+  // Older cached SVGs contain SVG fonts, unsupported by modern browsers.
+  const needsRender = !fs.existsSync(svg) || /<font\b/.test(fs.readFileSync(svg, 'utf8'))
+  if (needsRender) {
     fs.writeFileSync(tex, PREAMBLE + body + POSTAMBLE)
     try {
       execFileSync('lualatex', [
@@ -63,14 +72,15 @@ export function renderFeynmanSvg(code) {
         path.basename(tex),
       ], { cwd: CACHE_DIR, env, stdio: ['ignore', 'ignore', 'pipe'] })
 
-      execFileSync('dvisvgm', [path.basename(dvi), '-o', path.basename(svg)],
+      execFileSync('dvisvgm', ['--no-fonts', path.basename(dvi), '-o', path.basename(svg)],
         { cwd: CACHE_DIR, env, stdio: ['ignore', 'ignore', 'pipe'] })
     } catch (err) {
-      const log = err.stderr ? String(err.stderr).slice(0, 500) : String(err.message)
-      return `<!-- feynman compile error: ${log.replace(/-->/g, '').replace(/\n+/g, ' ')} -->`
+      const log = String(err.stderr || '').trim() || String(err.message)
+      throw new Error(`Feynman diagram ${id} failed to compile. See ${path.join(CACHE_DIR, `${id}.log`)}. ${log.slice(0, 500)}`, { cause: err })
     }
   }
 
   const out = fs.readFileSync(svg, 'utf8')
-  return `<div class="feynman-diagram">${scaleSvg(out)}</div>`
+  // dvisvgm reuses glyph IDs in each file; isolate references across diagrams.
+  return `<div class="feynman-diagram">${scaleSvg(scopeSvgIds(out, `feynman-${id}`))}</div>`
 }
