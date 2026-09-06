@@ -3,6 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import markdownItFootnote from 'markdown-it-footnote'
 import { renderExcalidrawSvg } from './lib/excalidraw-svg.js'
+import { renderFeynmanSvg } from './lib/feynman-svg.js'
 
 export default {
   lang: 'en-US',
@@ -44,6 +45,7 @@ export default {
         text: 'Quantum Electrodynamics',
         children: [
           { text: 'Quantum Electrodynamics', link: '/qed.html' },
+          { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
           { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
         ],
       },
@@ -75,6 +77,7 @@ export default {
       { text: 'Action and Lagrangians', link: '/qft-action.html' },
       { text: 'Field Quantization', link: '/field-quantization.html' },
       { text: 'Quantum Electrodynamics', link: '/qed.html' },
+      { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
       { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
       { text: 'Weak Interaction', link: '/weak-interaction.html' },
       { text: 'Electroweak Unification', link: '/electroweak-unification.html' },
@@ -100,6 +103,9 @@ export default {
       const token = tokens[idx]
       if (token.info.trim() === 'excalidraw') {
         return `${renderExcalidrawSvg(token.content)}\n`
+      }
+      if (token.info.trim() === 'feynman') {
+        return `${renderFeynmanSvg(token.content)}\n`
       }
       return defaultFence(tokens, idx, options, env, self)
     }
