@@ -45,7 +45,8 @@ const groups = [
     items: [
       { number: '10', title: 'Quantum Electrodynamics', desc: 'Connect photons and electrons through the electromagnetic field.', link: '/qed.html', symbol: 'eAμ' },
       { number: '11', title: 'From Lagrangian to Experiment', desc: 'See how a Lagrangian becomes the cross section an experiment measures.', link: '/lagrangian-to-experiment.html', symbol: 'L → σ' },
-      { number: '12', title: 'Feynman Rules for QED', desc: 'Turn the Lagrangian into rules that compute scattering amplitudes.', link: '/feynman-rules.html', symbol: 'iℳ' },
+      { number: '12', title: 'Perturbation Theory', desc: 'Expand the S-matrix in the coupling so the Lagrangian yields diagram rules.', link: '/perturbation-theory.html', symbol: '⟨f|S|i⟩' },
+      { number: '13', title: 'Feynman Rules for QED', desc: 'Turn the Lagrangian into rules that compute scattering amplitudes.', link: '/feynman-rules.html', symbol: 'iℳ' },
     ],
   },
   {
@@ -55,9 +56,9 @@ const groups = [
     color: '#db2777',
     soft: '#fce7f3',
     items: [
-      { number: '13', title: 'Weak Interaction', desc: 'Beta decay reveals a short-range force carried by the W bosons.', link: '/weak-interaction.html', symbol: 'W±' },
-      { number: '14', title: 'Electroweak Unification', desc: 'Unite the weak force with QED under SU(2)×U(1) symmetry.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
-      { number: '15', title: 'Higgs Mechanism', desc: 'Break the symmetry spontaneously and give the W and Z their mass.', link: '/higgs-mechanism.html', symbol: 'H' },
+      { number: '14', title: 'Weak Interaction', desc: 'Beta decay reveals a short-range force carried by the W bosons.', link: '/weak-interaction.html', symbol: 'W±' },
+      { number: '15', title: 'Electroweak Unification', desc: 'Unite the weak force with QED under SU(2)×U(1) symmetry.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
+      { number: '16', title: 'Higgs Mechanism', desc: 'Break the symmetry spontaneously and give the W and Z their mass.', link: '/higgs-mechanism.html', symbol: 'H' },
     ],
   },
   {
@@ -67,8 +68,8 @@ const groups = [
     color: '#0e7490',
     soft: '#cffafe',
     items: [
-      { number: '16', title: 'Quantum Chromodynamics', desc: 'Quarks carry color; SU(3) symmetry confines them into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
-      { number: '17', title: 'The Standard Model', desc: 'Assemble the full gauge theory of quarks, leptons, and forces.', link: '/standard-model.html', symbol: '3·2·1', final: true },
+      { number: '17', title: 'Quantum Chromodynamics', desc: 'Quarks carry color; SU(3) symmetry confines them into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
+      { number: '18', title: 'The Standard Model', desc: 'Assemble the full gauge theory of quarks, leptons, and forces.', link: '/standard-model.html', symbol: '3·2·1', final: true },
     ],
   },
 ]
@@ -89,7 +90,7 @@ const groups = [
             Start reading
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
           </a>
-          <span class="chapter-count"><strong>17</strong> chapters</span>
+          <span class="chapter-count"><strong>18</strong> chapters</span>
         </div>
       </div>
 

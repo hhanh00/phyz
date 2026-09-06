@@ -46,6 +46,7 @@ export default {
         children: [
           { text: 'Quantum Electrodynamics', link: '/qed.html' },
           { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
+          { text: 'Perturbation Theory', link: '/perturbation-theory.html' },
           { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
         ],
       },
@@ -78,6 +79,7 @@ export default {
       { text: 'Field Quantization', link: '/field-quantization.html' },
       { text: 'Quantum Electrodynamics', link: '/qed.html' },
       { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
+      { text: 'Perturbation Theory', link: '/perturbation-theory.html' },
       { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
       { text: 'Weak Interaction', link: '/weak-interaction.html' },
       { text: 'Electroweak Unification', link: '/electroweak-unification.html' },

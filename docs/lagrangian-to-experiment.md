@@ -1,10 +1,10 @@
 # From Lagrangian to Experiment
 
-The previous pages built Lagrangians — first for classical particles, then for fields, culminating in the QED Lagrangian. But none of them said what a Lagrangian is *for* in a way that reaches an experiment. This page closes that gap: given a Lagrangian, what do we compute, and how does the result meet a measurement? The short answer is that a Lagrangian's job changes as the theory goes from classical mechanics to quantum field theory, and this page follows that change to the one number an experiment actually reads off.
+The previous pages built Lagrangians for particles and fields. This page follows the calculation from a Lagrangian to a scattering cross section, the quantity we compare with experiment.
 
 ## The job of a Lagrangian
 
-In classical mechanics a Lagrangian's job is to produce a trajectory. The [Classical Mechanics](classical-mechanics.md) page built the principle of least action, and the [Action and Lagrangians](qft-action.md) page turned it into the Euler–Lagrange equation: feed the Lagrangian $L(q, \dot q)$ through the variational principle, get an equation of motion, and solve it for $q(t)$ and $\dot q(t)$ — where the particle is and how fast, at every instant. The trajectory is the entire output. A Lagrangian is worth having because one function $L$ generates every trajectory of the system, and an experiment picks one initial condition, not a new $L$.
+In classical mechanics a Lagrangian's job is to produce a trajectory. The [Classical Mechanics](classical-mechanics.md) page built the principle of least action, and the [Action and Lagrangians](qft-action.md) page turned it into the Euler–Lagrange equation: feed the Lagrangian $L(q, \dot q)$ through the variational principle, get an equation of motion, and solve it for $q(t)$ and $\dot q(t)$ — where the particle is and how fast, at every instant. The initial conditions select a particular trajectory.
 
 ## Why a trajectory is the wrong target
 
@@ -12,7 +12,7 @@ That output stops making sense at the quantum level. A quantum particle has no d
 
 ## What a scattering experiment measures
 
-A scattering experiment does the same thing in every subfield: it prepares a definite initial state — a beam of particles with chosen momenta and spins — and counts how often each possible final state appears. For Compton scattering the initial state is an electron and a photon with known momenta, and the detector counts scattered electrons and photons as a function of their angle and energy. The theory's job is to predict those counts. But counts depend on the apparatus — how dense the target is, how many particles the beam delivers — so the prediction is stated in an apparatus-independent form called the cross section.
+A scattering experiment does the same thing in every subfield: it prepares a definite initial state — a beam of particles with chosen momenta and spins — and counts how often each possible final state appears. For Compton scattering the initial state is an electron and a photon with known momenta, and the detector counts scattered electrons and photons as a function of their angle and energy. But counts depend on the apparatus — how dense the target is, how many particles the beam delivers — so the prediction is stated in an apparatus-independent form called the cross section.
 
 ## The cross section
 
@@ -20,7 +20,7 @@ The cross section $\sigma$ is the effective area a target presents to the beam. 
 
 $$\text{rate} = \Phi\,N\,\sigma.$$
 
-The cross section absorbs all the physics; the flux and the target count are experimental details that factor out. It has units of area, and the standard unit is the barn. Measuring a cross section means counting events for a known flux and target and solving for $\sigma$; predicting a cross section means computing $\sigma$ from the Lagrangian. Everything the theory has to say about an experiment is packaged in $\sigma$. A particle that decays is measured by the analogous number, the decay rate $\Gamma$, built from the amplitude in the same way.
+The cross section has units of area, and the standard unit is the barn. Experimenters determine $\sigma$ from the measured event rate, flux, and target count. A particle that decays is measured by the analogous number, the decay rate $\Gamma$, built from the amplitude in the same way.
 
 ## The amplitude and the S-matrix
 
@@ -32,7 +32,7 @@ where $S$ is the S-matrix, the operator that carries the incoming state to the o
 
 $$\langle f | S | i \rangle = \langle f | i \rangle + (2\pi)^4\,\delta^4(P_f - P_i)\;i\mathcal{M}.$$
 
-The labels $P_i$ and $P_f$ name the total four-momentum each state carries, the sum of the four-momenta of the particles it contains: for Compton scattering the initial state holds one electron and one photon, so $P_i$ is their two four-momenta added, and $P_f$ is the sum for the scattered pair. The delta $\delta^4(P_f - P_i)$ vanishes unless the two totals agree, and the conservation law it states is that the incoming and outgoing particles carry the same total energy and the same total momentum. $\mathcal{M}$ — the invariant amplitude — is the object that carries the dynamics. The name "invariant" means Lorentz invariant: $\mathcal{M}$ takes the same value in every frame, since observers may disagree on momenta but must agree on the outcome of the experiment. It is not a constant, however — it is a function of the momenta themselves, through combinations like the center-of-mass energy and scattering angle, so it varies from one final state to another. The Lagrangian determines $\mathcal{M}$, and the Feynman rules compute it.
+Here $P_i$ and $P_f$ are the total incoming and outgoing four-momenta. The delta function $\delta^4(P_f - P_i)$ enforces conservation of energy and momentum. $\mathcal{M}$ — the invariant amplitude — is the object that carries the dynamics. The name "invariant" means Lorentz invariant: $\mathcal{M}$ takes the same value in every frame, since observers may disagree on momenta but must agree on the outcome of the experiment. It is not a constant, however — it is a function of the momenta themselves, through combinations like the center-of-mass energy and scattering angle, so it varies from one final state to another.
 
 ## From amplitude to cross section
 
@@ -40,7 +40,7 @@ The cross section is built from the amplitude by squaring it and integrating ove
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
-where $d\Pi$ is the phase space, the measure over the final particles' momenta that enforces energy and momentum conservation. The formula splits into two independent ingredients. $|\mathcal{M}|^2$ carries the physics — it is where the interaction term of the Lagrangian lives, and the square is the Born rule of [First Quantization](first-quantization.md), which reads probabilities off squared amplitudes. $d\Pi$ carries the kinematics — it is geometry, the space of final states the conservation law permits. The kinematics can be handled once and for all; the physics is the part that changes from process to process.
+where $d\Pi$ is the phase space, the measure over the final particles' momenta that enforces energy and momentum conservation. The formula splits into two independent ingredients. $|\mathcal{M}|^2$ carries the physics — it is where the interaction term of the Lagrangian lives, and the square is the Born rule of [First Quantization](first-quantization.md), which reads probabilities off squared amplitudes. $d\Pi$ carries the kinematics — it is geometry, the space of final states the conservation law permits.
 
 ## The missing piece
 
@@ -48,4 +48,4 @@ The chain from a Lagrangian to a number an experiment can check is therefore
 
 $$\mathcal{L} \;\longrightarrow\; \mathcal{M} \;\longrightarrow\; \sigma,$$
 
-and every step except the first is mechanical. Squaring and integrating an amplitude is straightforward, given the amplitude. The one genuinely hard step is the first: turning the Lagrangian into the amplitude $\mathcal{M}$. For QED the interaction term $-q\bar\psi\gamma^\mu\psi\,A_\mu$ makes the theory nonlinear, so $\mathcal{M}$ must be assembled as a series in the charge $q$, and that series is the combinatorial bookkeeping the [Feynman Rules for QED](feynman-rules.md) page is about. This page has located $\mathcal{M}$; the next page describes how to get it.
+with the amplitude-to-cross-section step described above. What remains is to compute $\mathcal{M}$ from the interaction term of the Lagrangian. The next page, [Perturbation Theory](perturbation-theory.md), shows that the interaction term alone generates this computation, and the page after, [Feynman Rules for QED](feynman-rules.md), runs it for Compton scattering.

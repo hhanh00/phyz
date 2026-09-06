@@ -108,4 +108,4 @@ the photon's kinetic term, the free electron, and the interaction that couples t
 
 Nothing in this Lagrangian was put in by trial and error. A single demand — invariance under a local U(1) phase rotation — produced all of it: it forced the photon field $A_\mu$ into the electron's derivative, fixed its coupling to the current as $-q\bar\psi\gamma^\mu\psi\,A_\mu$, and selected the Maxwell term as the photon's kinetic energy. The same demand also explains a familiar fact. A mass term for the photon, $m^2 A_\mu A^\mu$, is not gauge invariant, so the gauge principle forbids it: the photon is massless because the U(1) symmetry that gives QED its photon leaves no room for a photon mass.
 
-That is QED as a Lagrangian theory. The next page, [Feynman Rules for QED](feynman-rules.md), reads the scattering amplitudes out of this Lagrangian.
+That is QED as a Lagrangian theory. The [next page](lagrangian-to-experiment.md) says where such a Lagrangian leads an experiment, and the pages after, [Perturbation Theory](perturbation-theory.md) and [Feynman Rules for QED](feynman-rules.md), read the scattering amplitudes out of this Lagrangian.
