@@ -11,7 +11,7 @@ $$i\hbar \frac{\partial \Psi(x,t)}{\partial t} = \left[-\frac{\hbar^2}{2m}\frac{
 ## 3. Wave Amplitude
 The solution $\Psi(x,t)$ to the Schrödinger equation is a complex-valued function called the wave amplitude, or wavefunction. On its own it is not directly observable — what is physical is $|\Psi(x,t)|^2$, the probability density for finding the particle at position $x$ at time $t$. Because it is a probability density, $\Psi$ must be normalized so that $\int |\Psi|^2\, dx = 1$ over all space, and its phase, though unobservable in isolation, is exactly what produces interference when amplitudes are added.
 
-## 4. Bohr Interpretation
+## 4. Copenhagen Interpretation
 The interpretation most often taught alongside this formalism — usually credited to Bohr and collaborators and known as the Copenhagen interpretation — treats $|\Psi|^2$ as a genuine probability rather than a description of hidden, already-determined values. Before a measurement, a system does not possess a definite value for an observable unless it happens to be in an eigenstate of that observable; measurement is taken to force the state to "collapse" onto one eigenstate, with outcome probabilities set by the Born rule. Bohr paired this with the principle of complementarity: quantities such as position and momentum, or wave and particle behavior, are both valid descriptions but can never be jointly and precisely observed in a single experiment.
 
 ## 5. Operators

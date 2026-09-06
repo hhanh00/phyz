@@ -108,4 +108,98 @@ the photon's kinetic term, the free electron, and the interaction that couples t
 
 Nothing in this Lagrangian was put in by trial and error. A single demand — invariance under a local U(1) phase rotation — produced all of it: it forced the photon field $A_\mu$ into the electron's derivative, fixed its coupling to the current as $-q\bar\psi\gamma^\mu\psi\,A_\mu$, and selected the Maxwell term as the photon's kinetic energy. The same demand also explains a familiar fact. A mass term for the photon, $m^2 A_\mu A^\mu$, is not gauge invariant, so the gauge principle forbids it: the photon is massless because the U(1) symmetry that gives QED its photon leaves no room for a photon mass.
 
-That is QED as a Lagrangian theory. The [next page](lagrangian-to-experiment.md) says where such a Lagrangian leads an experiment, and the pages after, [Perturbation Theory](perturbation-theory.md) and [Feynman Rules for QED](feynman-rules.md), read the scattering amplitudes out of this Lagrangian.
+## Quantizing the Photon Field
+
+The Feynman machinery of the pages ahead needs the photon's propagator, and propagators come from quantizing the free field, which the [Field Quantization page](field-quantization.md) did for the scalar and then for the spinor. The photon field cannot be quantized that way directly, because it is a gauge field: its components overcount the physics, and the overcounting must be removed before the field can be split into independent oscillators. The section does this in five steps. It works out what a free electromagnetic wave contains, shows why the canonical construction stalls on the photon, removes the redundancy by fixing the gauge, quantizes what remains, and computes the propagator from the result.
+
+### What a free photon holds
+
+Start from the free equation of the recap, $\partial_\mu F^{\mu\nu} = 0$, and feed it a plane wave, $A_\mu(x) = \varepsilon_\mu\, e^{-ik\cdot x/\hbar}$. Each derivative brings down a factor $-ik_\mu/\hbar$, so the field strength of the wave is
+
+$$F^{\mu\nu} = \frac{-i}{\hbar}\left(k^\mu \varepsilon^\nu - k^\nu \varepsilon^\mu\right)e^{-ik\cdot x/\hbar},$$
+
+and substituting into the equation leaves, for each component $\nu$,
+
+$$k^2\,\varepsilon^\nu = k^\nu\,(k\cdot\varepsilon).$$
+
+Two conclusions follow from this one line. First, suppose $k^2 \neq 0$. Then the equation solves to $\varepsilon^\nu = k^\nu\,(k\cdot\varepsilon)/k^2$, so $\varepsilon$ points along $k$; but a wave whose polarization points along its own momentum has $F_{\mu\nu} = 0$ identically, because $k_\mu k_\nu - k_\nu k_\mu = 0$. Such a wave is not an electromagnetic field at all: it is a pure gauge ripple, $A_\mu = \partial_\mu\chi$ with $\chi \propto e^{-ik\cdot x/\hbar}$. A wave that carries a field therefore obeys $k^2 = 0$: the photon is massless, with $E_k = |\mathbf k|$. Second, with $k^2 = 0$ the equation degenerates to $k^\nu(k\cdot\varepsilon) = 0$, and this forces $k\cdot\varepsilon = 0$: the polarization is transverse to the direction of motion. Transversality removes one of the four components of $\varepsilon_\mu$, leaving three.
+
+The gauge freedom removes one more. A gauge transformation shifts $A_\mu$ by a gradient, and the gradient of the same plane wave is proportional to $k_\mu$, so the transformation acts on the polarization as
+
+$$\varepsilon_\mu \;\to\; \varepsilon_\mu + \alpha\, k_\mu,$$
+
+which changes nothing physical: $F_{\mu\nu}$ is unchanged by construction, and transversality survives because $k\cdot k = 0$. Two polarizations that differ by a multiple of $k_\mu$ describe the same photon in two descriptions.
+
+The counting becomes concrete for a wave moving along the $z$ axis, $k^\mu \propto (1,0,0,1)$. Transversality reads $k\cdot\varepsilon = \varepsilon^0 - \varepsilon^3 = 0$, so a transverse polarization has the form $(a, \varepsilon^1, \varepsilon^2, a)$: the two directions $(0,1,0,0)$ and $(0,0,1,0)$, plus the diagonal direction $(1,0,0,1)$ with any weight $a$. The diagonal direction is $k$ itself, which the paragraph above identified as pure gauge. Of the three transverse directions, one is gauge and two are physical:
+
+$$\varepsilon^{(1)} = (0,1,0,0), \qquad \varepsilon^{(2)} = (0,0,1,0).$$
+
+So the four components of $A_\mu$, minus one for the equation of motion and one for the gauge redundancy, leave two polarization states. Light has two polarizations because the photon's equation and its gauge symmetry each remove a component.
+
+### Why the canonical construction stalls
+
+The [Field Quantization construction](field-quantization.md#the-canonical-commutator) begins by pairing each field component with a conjugate momentum and imposing $[\hat\phi, \hat\pi] = i\hbar\,\delta^3$. For the photon the pairing fails at the first step. The conjugate momentum of $A_\mu$ follows from the Maxwell Lagrangian,
+
+$$\pi^\mu = \frac{\partial\mathcal{L}}{\partial(\partial_0 A_\mu)} = -F^{0\mu},$$
+
+and for the time component this is identically zero, $\pi^0 = -F^{00} = 0$, because $F$ is antisymmetric. The zero is structural, not small. Imposing the canonical commutator on $A_0$ would read $[\hat A_0,\, 0] = i\hbar\,\delta^3$, a contradiction. The physical content of the zero is that $A_0$ is not independent data: the $\nu = 0$ component of the free equation is Gauss's law, $\nabla\cdot\mathbf E = 0$, a constraint that ties $A_0$ to the other components instead of evolving it. A field whose components overcount the physics cannot be split into independent oscillators, and that split is the foundation the scalar construction stands on.
+
+### Fixing the gauge
+
+The repair is to spend the gauge freedom before quantizing, removing the overcounting at the classical level. The Lorenz condition[^lorenz] $\partial_\mu A^\mu = 0$ can always be imposed: under $A_\mu \to A_\mu + \partial_\mu\chi$ the divergence changes as $\partial\cdot A \to \partial\cdot A + \Box\chi$, so choosing $\chi$ to solve $\Box\chi = -\,\partial\cdot A$ reaches the condition. Some freedom survives, because any further $\chi$ with $\Box\chi = 0$ keeps it; that residue is precisely the plane-wave shift $\varepsilon \to \varepsilon + \alpha k$ of the first subsection.
+
+Imposing the condition directly on the operators fails again, because the operator identity $\partial\cdot\hat A = 0$ is as incompatible with the canonical algebra as $\pi^0 = 0$ was. The working method enforces the condition through the Lagrangian instead, by adding a **gauge-fixing term**
+
+$$\mathcal{L}_\text{gf} = -\tfrac{1}{2}\,(\partial_\mu A^\mu)^2 .$$
+
+The term costs nothing physical, since gauge-invariant quantities — everything built from $F_{\mu\nu}$ — do not depend on it, and it vanishes for fields that obey the Lorenz condition. What it buys is decoupling. Expand the Maxwell term,
+
+$$-\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu} \;=\; -\tfrac{1}{2}(\partial_\mu A_\nu)(\partial^\mu A^\nu) \;+\; \tfrac{1}{2}(\partial_\mu A_\nu)(\partial^\nu A^\mu),$$
+
+and integrate the last piece by parts. One pass writes $(\partial_\mu A_\nu)(\partial^\nu A^\mu) = \partial_\mu\big[A_\nu\,\partial^\nu A^\mu\big] - A_\nu\,\partial^\nu(\partial\cdot A)$, and a second pass moves the remaining derivative onto the divergence, $A_\nu\,\partial^\nu(\partial\cdot A) = \partial^\nu\big[A_\nu\,(\partial\cdot A)\big] - (\partial\cdot A)^2$. Up to the two boundary terms the result is
+
+$$(\partial_\mu A_\nu)(\partial^\nu A^\mu) \;=\; (\partial\cdot A)^2 \quad \text{(up to total derivatives)},$$
+
+so the gauge-fixing term cancels the second piece of the Maxwell term and the total Lagrangian collapses to
+
+$$\mathcal{L}_\text{Maxwell} + \mathcal{L}_\text{gf} \;=\; -\tfrac{1}{2}\,(\partial_\mu A_\nu)(\partial^\mu A^\nu) \quad \text{(up to total derivatives)}.$$
+
+Each component $A_\nu$ now enters as an independent massless scalar field: no mass term, because the gauge principle forbids one, and no coupling between components. The Euler–Lagrange equation of each component is the wave equation, $\Box A_\nu = 0$. This particular combination of Maxwell term plus gauge-fixing term is called **Feynman gauge**.
+
+### Quantizing the gauge-fixed field
+
+With the redundancy fixed away, the [Field Quantization](field-quantization.md) construction runs without obstruction. Expand the field on a basis of four polarization vectors per momentum: the two transverse polarizations $\varepsilon^{(1)}$, $\varepsilon^{(2)}$ of the first subsection, a timelike vector $\varepsilon^{(0)}$ with $\varepsilon^{(0)}\cdot\varepsilon^{(0)} = +1$ (for $k$ along $z$: $(1,0,0,0)$), and a longitudinal vector $\varepsilon^{(3)}$ (for $k$ along $z$: $(0,0,0,1)$). The promoted field reads
+
+$$\hat A_\mu(x) = \int \frac{d^3k}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_k}} \sum_{\lambda=0}^{3}\left[\hat c_\lambda(k)\,\varepsilon_\mu^{(\lambda)}(k)\,e^{-ik\cdot x/\hbar} \;+\; \hat c_\lambda^\dagger(k)\,\varepsilon_\mu^{(\lambda)*}(k)\,e^{+ik\cdot x/\hbar}\right], \qquad E_k = |\mathbf k|.$$
+
+The ladder algebra comes out as four copies of the scalar algebra, one per polarization, but with the metric signature attached. Write $\eta_\lambda$ for the polarization's scalar product with itself, $\eta_0 = +1$ for the timelike vector and $\eta_{1,2,3} = -1$ for the spacelike ones; then
+
+$$[\hat c_\lambda(k), \hat c_{\lambda'}^\dagger(k')] = -\eta_\lambda\;\delta_{\lambda\lambda'}\;\delta^3(k-k'),$$
+
+so the three spacelike families carry the standard $[\hat a, \hat a^\dagger] = 1$ algebra and the timelike family carries it with a minus sign. The sign is inherited from the kinetic term: for the time component the combination $-\tfrac12(\partial_\mu A_\nu)(\partial^\mu A^\nu)$ gives $-\tfrac12(\partial A_0)^2$, the negative of a scalar's kinetic term, because $g^{00} = +1$ while $g^{ii} = -1$, and that sign flows through the construction into the algebra. Substituting the expansion into the Hamiltonian, by the same orthogonality steps as the scalar case, gives per momentum
+
+$$\hat H = \int \frac{d^3k}{(2\pi\hbar)^3}\;E_k\left(\hat c_1^\dagger \hat c_1 + \hat c_2^\dagger \hat c_2 + \hat c_3^\dagger \hat c_3 - \hat c_0^\dagger \hat c_0\right) + \text{const.}$$
+
+Two families are healthy oscillators, and they are the transverse photons. The timelike and longitudinal families enter with opposite signs, and they are the modes the gauge freedom was supposed to remove: quantizing all four components has reintroduced them as bookkeeping. The definition of a physical state locks the pair together so that their contributions cancel in every observable[^gupta], and on the physical states the energy comes from the two transverse families alone. A photon state is therefore specified by a momentum $\mathbf k$ and a choice of $\varepsilon^{(1)}$ or $\varepsilon^{(2)}$, which matches the two-polarization count of the first subsection, and an external photon line in a diagram carries one of those two polarization vectors.
+
+### The propagator
+
+The contraction $\langle 0\rvert T\hat A_\mu(x)\hat A_\nu(y)\lvert 0\rangle$ computes mode by mode, exactly as the scalar contraction did. Each spacelike mode is a massless scalar and contributes the scalar propagator with $m = 0$; the timelike mode contributes the same expression with its minus sign. In momentum space the mode-by-mode sum reads
+
+$$\sum_{\lambda=0}^{3}\left(-\eta_\lambda\right)\,\varepsilon_\mu^{(\lambda)}\,\varepsilon_\nu^{(\lambda)}\;\frac{i}{k^2 + i\epsilon},$$
+
+and the polarization part of the sum is the completeness relation of the basis. The four vectors $\varepsilon^{(\lambda)}$ span the component space, and summing their outer products with the weights $\eta_\lambda$ reconstructs the metric,
+
+$$\sum_{\lambda=0}^{3}\eta_\lambda\;\varepsilon_\mu^{(\lambda)}\,\varepsilon_\nu^{(\lambda)} = g_{\mu\nu},$$
+
+which can be checked component by component in the $k$-along-$z$ basis. The contraction is therefore
+
+$$\frac{-i\,g_{\mu\nu}}{k^2 + i\epsilon}$$
+
+in momentum space, and this is the photon propagator. No mass term appears in the denominator because the photon is massless, so the only pole sits at $k^2 = 0$. The tensor $g_{\mu\nu}$ carries the vector structure, one index for each end of the line, and its sign pattern records the same timelike bookkeeping: an internal photon line effectively sums over all four polarization modes, with the unphysical pair canceling in every gauge-invariant result, which is why diagram calculations may use $-g_{\mu\nu}$ as the polarization sum on internal lines. This is the rule the [Feynman Rules page](feynman-rules.md) needs, and with it the free-field input of the QED rulebook is complete: the electron propagator from the spinor construction, the photon propagator from this one, and the interaction term supplying the vertex.
+
+That is QED as a Lagrangian theory, with both of its fields quantized. The [next page](lagrangian-to-experiment.md) says where such a Lagrangian leads an experiment, and the pages after, [Perturbation Theory](perturbation-theory.md) and [Feynman Rules for QED](feynman-rules.md), read the scattering amplitudes out of this Lagrangian.
+
+[^gupta]: The covariant statement is the **Gupta–Bleuler condition**: the Lorenz condition is imposed on physical states, using only the annihilation half of the operator, as $\big(\partial_\mu\hat A^\mu\big)^{(+)}\,\lvert\text{phys}\rangle = 0$. For $k$ along $z$ it pairs the timelike and longitudinal modes as $\big(\hat c_0 - \hat c_3\big)\lvert\text{phys}\rangle = 0$, so the two operators act identically on every physical state, and their Hamiltonian terms $\hat c_3^\dagger\hat c_3 - \hat c_0^\dagger\hat c_0$ have equal and opposite expectation values there. The construction is standard quantum field theory; this site uses only its conclusion, that the unphysical pair cancels in every observable, because the diagram rules build that cancellation into the $-g_{\mu\nu}$ polarization sum of internal lines.
+
+[^lorenz]: The condition is named for Ludvig Lorenz, who wrote it down in 1867, before Hendrik Lorentz's work on the coordinate transformations; the spelling with a "z" keeps the two physicists apart.
