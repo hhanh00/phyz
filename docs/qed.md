@@ -114,15 +114,45 @@ The Feynman machinery of the pages ahead needs the photon's propagator, and prop
 
 ### What a free photon holds
 
-Start from the free equation of the recap, $\partial_\mu F^{\mu\nu} = 0$, and feed it a plane wave, $A_\mu(x) = \varepsilon_\mu\, e^{-ik\cdot x/\hbar}$. Each derivative brings down a factor $-ik_\mu/\hbar$, so the field strength of the wave is
+What must a plane wave satisfy to represent a real, freely propagating electromagnetic field? Write the potential as
 
-$$F^{\mu\nu} = \frac{-i}{\hbar}\left(k^\mu \varepsilon^\nu - k^\nu \varepsilon^\mu\right)e^{-ik\cdot x/\hbar},$$
+$$A^\mu(x) = \varepsilon^\mu e^{-ik\cdot x/\hbar}.$$
 
-and substituting into the equation leaves, for each component $\nu$,
+Here $k^\mu = (E_k, \mathbf k)$ describes its energy and momentum, while $\varepsilon^\mu$ gives the amplitudes of the four components of the potential. The exponential describes how the wave oscillates in space and time.
 
-$$k^2\,\varepsilon^\nu = k^\nu\,(k\cdot\varepsilon).$$
+First, Maxwell's equation becomes an algebraic constraint. Differentiating the exponential multiplies it by $-ik_\mu/\hbar$, so the field strength is
 
-Two conclusions follow from this one line. First, suppose $k^2 \neq 0$. Then the equation solves to $\varepsilon^\nu = k^\nu\,(k\cdot\varepsilon)/k^2$, so $\varepsilon$ points along $k$; but a wave whose polarization points along its own momentum has $F_{\mu\nu} = 0$ identically, because $k_\mu k_\nu - k_\nu k_\mu = 0$. Such a wave is not an electromagnetic field at all: it is a pure gauge ripple, $A_\mu = \partial_\mu\chi$ with $\chi \propto e^{-ik\cdot x/\hbar}$. A wave that carries a field therefore obeys $k^2 = 0$: the photon is massless, with $E_k = |\mathbf k|$. Second, with $k^2 = 0$ the equation degenerates to $k^\nu(k\cdot\varepsilon) = 0$, and this forces $k\cdot\varepsilon = 0$: the polarization is transverse to the direction of motion. Transversality removes one of the four components of $\varepsilon_\mu$, leaving three.
+$$F^{\mu\nu} = \frac{-i}{\hbar}\left(k^\mu \varepsilon^\nu - k^\nu \varepsilon^\mu\right)e^{-ik\cdot x/\hbar}.$$
+
+Taking one more derivative and applying the free Maxwell equation, $\partial_\mu F^{\mu\nu} = 0$, gives
+
+$$0 = -\frac{1}{\hbar^2}\left[k^2\varepsilon^\nu - k^\nu(k\cdot\varepsilon)\right]e^{-ik\cdot x/\hbar}.$$
+
+Removing the common factors leaves
+
+$$k^2\varepsilon^\nu = k^\nu(k\cdot\varepsilon),$$
+
+where $k^2 = E_k^2 - |\mathbf k|^2$, using $c = 1$.
+
+Second, if $k^2 \neq 0$, the potential produces no electromagnetic field. Dividing by $k^2$ gives
+
+$$\varepsilon^\nu = Ck^\nu, \qquad C = \frac{k\cdot\varepsilon}{k^2}.$$
+
+Substituting this back into the field strength gives[^commuting-components]
+
+$$F^{\mu\nu} = \frac{-iC}{\hbar}(k^\mu k^\nu - k^\nu k^\mu)e^{-ik\cdot x/\hbar} = 0.$$
+
+The potential may oscillate, but both $\mathbf E$ and $\mathbf B$ vanish. This is what *pure gauge* means here: a nonzero potential describing zero physical field.[^longitudinal] Consequently, a plane wave with a nonzero electromagnetic field must have
+
+$$k^2 = 0 \quad\Longrightarrow\quad E_k = |\mathbf k|.$$
+
+That is the energy–momentum relation for a massless particle.[^null-momentum]
+
+Third, when $k^2 = 0$, Maxwell's equation also requires $k\cdot\varepsilon = 0$. The constraint becomes
+
+$$0 = k^\nu(k\cdot\varepsilon).$$
+
+For a nonzero wave momentum, at least one component of $k^\nu$ is nonzero, so the scalar $k\cdot\varepsilon$ must vanish. This is one constraint on the four components of $\varepsilon^\mu$, leaving three. It is called transversality, but at this stage it means four-dimensional orthogonality: it does not yet say that the spatial potential points sideways. For a wave travelling along $z$, it requires $\varepsilon^0 = \varepsilon^3$, rather than requiring both components to vanish. The gauge freedom will let us remove that remaining pair together.
 
 The gauge freedom removes one more. A gauge transformation shifts $A_\mu$ by a gradient, and the gradient of the same plane wave is proportional to $k_\mu$, so the transformation acts on the polarization as
 
@@ -130,7 +160,7 @@ $$\varepsilon_\mu \;\to\; \varepsilon_\mu + \alpha\, k_\mu,$$
 
 which changes nothing physical: $F_{\mu\nu}$ is unchanged by construction, and transversality survives because $k\cdot k = 0$. Two polarizations that differ by a multiple of $k_\mu$ describe the same photon in two descriptions.
 
-The counting becomes concrete for a wave moving along the $z$ axis, $k^\mu \propto (1,0,0,1)$. Transversality reads $k\cdot\varepsilon = \varepsilon^0 - \varepsilon^3 = 0$, so a transverse polarization has the form $(a, \varepsilon^1, \varepsilon^2, a)$: the two directions $(0,1,0,0)$ and $(0,0,1,0)$, plus the diagonal direction $(1,0,0,1)$ with any weight $a$. The diagonal direction is $k$ itself, which the paragraph above identified as pure gauge. Of the three transverse directions, one is gauge and two are physical:
+The counting becomes concrete for a wave moving along the $z$ axis, $k^\mu \propto (1,0,0,1)$. Transversality reads $k\cdot\varepsilon = \varepsilon^0 - \varepsilon^3 = 0$[^transverse], so a transverse polarization has the form $(a, \varepsilon^1, \varepsilon^2, a)$: the two directions $(0,1,0,0)$ and $(0,0,1,0)$, plus the diagonal direction $(1,0,0,1)$ with any weight $a$. The diagonal direction is $k$ itself, which the paragraph above identified as pure gauge. Of the three transverse directions, one is gauge and two are physical:
 
 $$\varepsilon^{(1)} = (0,1,0,0), \qquad \varepsilon^{(2)} = (0,0,1,0).$$
 
@@ -203,3 +233,11 @@ That is QED as a Lagrangian theory, with both of its fields quantized. The [next
 [^gupta]: The covariant statement is the **Gupta–Bleuler condition**: the Lorenz condition is imposed on physical states, using only the annihilation half of the operator, as $\big(\partial_\mu\hat A^\mu\big)^{(+)}\,\lvert\text{phys}\rangle = 0$. For $k$ along $z$ it pairs the timelike and longitudinal modes as $\big(\hat c_0 - \hat c_3\big)\lvert\text{phys}\rangle = 0$, so the two operators act identically on every physical state, and their Hamiltonian terms $\hat c_3^\dagger\hat c_3 - \hat c_0^\dagger\hat c_0$ have equal and opposite expectation values there. The construction is standard quantum field theory; this site uses only its conclusion, that the unphysical pair cancels in every observable, because the diagram rules build that cancellation into the $-g_{\mu\nu}$ polarization sum of internal lines.
 
 [^lorenz]: The condition is named for Ludvig Lorenz, who wrote it down in 1867, before Hendrik Lorentz's work on the coordinate transformations; the spelling with a "z" keeps the two physicists apart.
+
+[^longitudinal]: The vanishing is index bookkeeping, not dynamics. $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ is antisymmetric by construction, so it only picks up the antisymmetric part of anything it meets. When $\varepsilon_\mu \propto k_\mu$ the only tensor available is $k_\mu k_\nu$, which is symmetric under $\mu \leftrightarrow \nu$, and the antisymmetric part of a symmetric tensor is zero. Since $F_{\mu\nu}$ holds the physical $\mathbf E$ and $\mathbf B$, a polarization along $k$ has $\mathbf E = \mathbf B = 0$. Such a potential is a pure gradient, $A_\mu = \partial_\mu\chi$ with $\chi \propto e^{-ik\cdot x/\hbar}$, and $F_{\mu\nu}$ annihilates a gradient because $\partial_\mu\partial_\nu\chi - \partial_\nu\partial_\mu\chi = 0$.
+
+[^transverse]: The condition $k\cdot\varepsilon = 0$ is the covariant statement of transversality, written for the 4-potential $A^\mu = (\phi, \mathbf A)$, and it involves the scalar potential's component $\varepsilon^0$. The familiar 3D form, $\mathbf k\cdot\mathbf E = 0$ giving $E_z = 0$, is a statement about the fields $\mathbf E$ and $\mathbf B$, which have no time component — which is why the two versions look different. For the lightlike $k = (1,0,0,1)$ the dot product $k\cdot\varepsilon = k^0\varepsilon^0 - k^3\varepsilon^3$ reduces to $\varepsilon^0 = \varepsilon^3$, and the direction that satisfies it — the diagonal $(1,0,0,1)$ — is exactly the pure-gauge mode with $F_{\mu\nu} = 0$. The two statements agree: the physical polarizations $(0,1,0,0)$ and $(0,0,1,0)$ have zero $z$-component in the potential and in the field alike.
+
+[^null-momentum]: $k^2 = 0$ does not mean $k^\mu = 0$: this is a Minkowski square, $k^2 = E_k^2 - |\mathbf k|^2$, whose time and space contributions can cancel. For example, a photon travelling along $z$ has $k^\mu = (E_k,0,0,E_k)$, so $k^2 = E_k^2 - E_k^2 = 0$ even for nonzero energy. Unlike a Euclidean squared length, a zero Minkowski square does not force the vector to vanish. A nonzero vector with zero Minkowski square is called **null** or **lightlike**.
+
+[^commuting-components]: Each component $k^\mu$ is an ordinary number, so multiplication commutes: $k^\mu k^\nu = k^\nu k^\mu$. Their difference is therefore zero for every choice of $\mu$ and $\nu$; the indices only select components.
