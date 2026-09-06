@@ -32,7 +32,7 @@ where $S$ is the S-matrix, the operator that carries the incoming state to the o
 
 $$\langle f | S | i \rangle = \langle f | i \rangle + (2\pi)^4\,\delta^4(P_f - P_i)\;i\mathcal{M}.$$
 
-The delta enforces conservation of total four-momentum between the initial and final states, and $\mathcal{M}$ — the invariant amplitude — is the object that carries the dynamics. The Lagrangian determines $\mathcal{M}$, and the Feynman rules compute it.
+The labels $P_i$ and $P_f$ name the total four-momentum each state carries, the sum of the four-momenta of the particles it contains: for Compton scattering the initial state holds one electron and one photon, so $P_i$ is their two four-momenta added, and $P_f$ is the sum for the scattered pair. The delta $\delta^4(P_f - P_i)$ vanishes unless the two totals agree, and the conservation law it states is that the incoming and outgoing particles carry the same total energy and the same total momentum. $\mathcal{M}$ — the invariant amplitude — is the object that carries the dynamics. The name "invariant" means Lorentz invariant: $\mathcal{M}$ takes the same value in every frame, since observers may disagree on momenta but must agree on the outcome of the experiment. It is not a constant, however — it is a function of the momenta themselves, through combinations like the center-of-mass energy and scattering angle, so it varies from one final state to another. The Lagrangian determines $\mathcal{M}$, and the Feynman rules compute it.
 
 ## From amplitude to cross section
 
