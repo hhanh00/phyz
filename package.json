@@ -6,7 +6,8 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:clean-dev": "vuepress dev docs --clean-cache"
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
+    "docs:diagrams": "node scripts/render-feynman-diagrams.mjs"
   },
   "keywords": [],
   "author": "",

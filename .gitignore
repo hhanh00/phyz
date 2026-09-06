@@ -2,7 +2,10 @@ node_modules/
 docs/.vuepress/dist/
 docs/.vuepress/.cache/
 docs/.vuepress/.temp/
-docs/.vuepress/.feynman-cache/
+# Prebuilt TikZ-Feynman SVGs are committed so the site builds without TeX;
+# the .tex/.dvi intermediates stay ignored.
+docs/.vuepress/.feynman-cache/*
+!docs/.vuepress/.feynman-cache/*.svg
 .manim-venv/
 .DS_Store
 docs/manim/media/
