@@ -11,6 +11,9 @@ export default {
   description: 'A connected path from classical mechanics to the Standard Model',
   // Served from custom domain https://phyz.methyl.cc
   base: '/',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+  ],
 
   bundler: viteBundler(),
 
