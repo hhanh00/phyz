@@ -40,15 +40,15 @@ $$\psi \to e^{i\alpha}\psi, \qquad \bar\psi \to e^{-i\alpha}\bar\psi .$$
 
 The Dirac Lagrangian cannot tell that it happened. Every term pairs a $\bar\psi$ with a $\psi$, so the two phases cancel — $\bar\psi\psi \to e^{-i\alpha}e^{i\alpha}\bar\psi\psi = \bar\psi\psi$, and the kinetic term $\bar\psi\gamma^\mu\partial_\mu\psi$ cancels the same way. Because the action is built from these bilinears alone, the equations of motion, and with them the physics, are unchanged. The invariance is **global**: $\alpha$ is one number, the same at every point of spacetime.
 
-A continuous symmetry never sits idle. [Noether's theorem](qft-action.md) pairs every such symmetry with a conserved quantity, and this one is no exception: the re-phasing invariance guarantees a conserved current,
+A continuous symmetry always implies a conserved quantity. [Noether's theorem](qft-action.md) pairs every such symmetry with one, and this symmetry is no exception: the re-phasing invariance guarantees a conserved current,
 
 $$j^\mu = q\,\bar\psi\gamma^\mu\psi, \qquad \partial_\mu j^\mu = 0,$$
 
-whose conserved charge is the electric charge. Phase symmetry is therefore charge conservation in disguise — the freedom to re-phase the field is what makes a conserved electric current exist at all.
+whose conserved charge is the electric charge. Phase symmetry is therefore charge conservation expressed as a symmetry: the freedom to re-phase the field is what makes a conserved electric current exist at all.
 
-The family of re-phasings has a shape worth naming. As $\alpha$ runs over all angles, the factors $e^{i\alpha}$ trace out a circle, and a circle of transformations is the group called **U(1)**: unitary because $|e^{i\alpha}| = 1$, with the $1$ because a single angle labels every member. This section's global symmetry is a U(1) symmetry.
+The family of re-phasings has a standard name. As $\alpha$ runs over all angles, the factors $e^{i\alpha}$ trace out a circle, and a circle of transformations is the group called **U(1)**: unitary because $|e^{i\alpha}| = 1$, with the $1$ because a single angle labels every member. This section's global symmetry is a U(1) symmetry.
 
-That symmetry is also the seed of the next step. If the absolute phase is unobservable, singling out one common phase at every point is arbitrary — nothing in the physics prefers it. Promote $\alpha$ to a function $\alpha(x)$, letting each point choose its own phase, and the derivative no longer commutes past the phase: $\partial_\mu\big(e^{i\alpha(x)}\psi\big)$ leaves a $\partial_\mu\alpha(x)$ term behind, and the Lagrangian is no longer invariant. Restoring invariance forces a new field into the theory, the gauge field $A_\mu$, and with it a rule that trades the ordinary derivative for the covariant one. That demand is the local gauge symmetry of the next section, and it is exactly where the photon and the interaction term $-q\bar\psi\gamma^\mu\psi\,A_\mu$ come from.
+That symmetry also motivates the next step. If the absolute phase is unobservable, singling out one common phase at every point is arbitrary — nothing in the physics prefers it. Promote $\alpha$ to a function $\alpha(x)$, letting each point choose its own phase, and the derivative no longer commutes past the phase: $\partial_\mu\big(e^{i\alpha(x)}\psi\big)$ leaves a $\partial_\mu\alpha(x)$ term behind, and the Lagrangian is no longer invariant. Restoring invariance forces a new field into the theory, the gauge field $A_\mu$, and with it a rule that trades the ordinary derivative for the covariant one. That demand is the local gauge symmetry of the next section, and it is exactly where the photon and the interaction term $-q\bar\psi\gamma^\mu\psi\,A_\mu$ come from.
 
 ## Local Gauge Symmetry U(1)
 
@@ -70,7 +70,7 @@ $$\bar\psi\,i\hbar\gamma^\mu\partial_\mu\psi \;\to\; \bar\psi\,i\hbar\gamma^\mu\
 
 so the local transformation fails: the Lagrangian gains a term proportional to $\partial_\mu\alpha$ and is no longer invariant.
 
-The failure points at the fix. The unwanted term is a gradient of the phase, so cancel it with a field that shifts by that same gradient. Introduce a vector field $A_\mu$ that transforms as
+The failure shows what the correction must be. The unwanted term is a gradient of the phase, so cancel it with a field that shifts by that same gradient. Introduce a vector field $A_\mu$ that transforms as
 
 $$A_\mu \;\to\; A_\mu - \frac{\hbar}{q}\,\partial_\mu\alpha ,$$
 
@@ -86,7 +86,7 @@ so replacing $\partial_\mu$ by $D_\mu$ restores the symmetry: $\bar\psi\gamma^\m
 
 $$\bar\psi\,i\hbar\gamma^\mu D_\mu\psi \;=\; \bar\psi\,i\hbar\gamma^\mu\partial_\mu\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu ,$$
 
-and the extra term is precisely the interaction term of the recap: the photon field $A_\mu$ coupled to the electron current $\bar\psi\gamma^\mu\psi$, with the charge $q$ setting the strength. Local gauge invariance therefore explains why the photon couples to charge: the field the symmetry demands is the photon field $A_\mu$ already in the theory, not a new one. The photon still needs a kinetic term of its own — the Maxwell term, whose gauge invariance is the subject of the next section.
+and the extra term is precisely the interaction term of the recap: the photon field $A_\mu$ coupled to the electron current $\bar\psi\gamma^\mu\psi$, with the charge $q$ setting the strength. Local gauge invariance therefore explains why the photon couples to charge: the field the symmetry requires is the photon field $A_\mu$ already in the theory, not a new one. The photon still needs a kinetic term of its own — the Maxwell term, whose gauge invariance is the subject of the next section.
 
 ## QED Lagrangian
 
@@ -106,11 +106,11 @@ $$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\
 
 the photon's kinetic term, the free electron, and the interaction that couples the two.
 
-Nothing in this Lagrangian was put in by trial and error. A single demand — invariance under a local U(1) phase rotation — produced all of it: it forced the photon field $A_\mu$ into the electron's derivative, fixed its coupling to the current as $-q\bar\psi\gamma^\mu\psi\,A_\mu$, and selected the Maxwell term as the photon's kinetic energy. The same demand also explains a familiar fact. A mass term for the photon, $m^2 A_\mu A^\mu$, is not gauge invariant, so the gauge principle forbids it: the photon is massless because the U(1) symmetry that gives QED its photon leaves no room for a photon mass.
+Nothing in this Lagrangian was put in by trial and error. A single demand — invariance under a local U(1) phase rotation — produced all of it: it forced the photon field $A_\mu$ into the electron's derivative, fixed its coupling to the current as $-q\bar\psi\gamma^\mu\psi\,A_\mu$, and selected the Maxwell term as the photon's kinetic energy. The same demand also explains a familiar fact. A mass term for the photon, $m^2 A_\mu A^\mu$, is not gauge invariant, so the gauge principle forbids it: the photon is massless because the U(1) symmetry does not allow a photon mass.
 
 ## Quantizing the Photon Field
 
-The Feynman machinery of the pages ahead needs the photon's propagator, and propagators come from quantizing the free field, which the [Field Quantization page](field-quantization.md) did for the scalar and then for the spinor. The photon field cannot be quantized that way directly, because it is a gauge field: its components overcount the physics, and the overcounting must be removed before the field can be split into independent oscillators. The section does this in five steps. It works out what a free electromagnetic wave contains, shows why the canonical construction stalls on the photon, removes the redundancy by fixing the gauge, quantizes what remains, and computes the propagator from the result.
+The Feynman machinery of the pages ahead needs the photon's propagator, and propagators come from quantizing the free field, which the [Field Quantization page](field-quantization.md) did for the scalar and then for the spinor. The photon field cannot be quantized that way directly, because it is a gauge field: its components overcount the physics, and the overcounting must be resolved before the field can be quantized. The section does this in five steps. It works out what a free electromagnetic wave contains, shows why the canonical construction stalls on the photon, repairs the stall by fixing the gauge, quantizes the four dynamical components that result, and computes the propagator from them.
 
 ### What a free photon holds
 
@@ -130,7 +130,7 @@ $$0 = -\frac{1}{\hbar^2}\left[k^2\varepsilon^\nu - k^\nu(k\cdot\varepsilon)\righ
 
 Removing the common factors leaves
 
-$$k^2\varepsilon^\nu = k^\nu(k\cdot\varepsilon),$$
+$$k^2\varepsilon^\nu = k^\nu(k\cdot\varepsilon), \tag{1}$$
 
 where $k^2 = E_k^2 - |\mathbf k|^2$, using $c = 1$.
 
@@ -140,7 +140,7 @@ $$\varepsilon^\nu = Ck^\nu, \qquad C = \frac{k\cdot\varepsilon}{k^2}.$$
 
 Substituting this back into the field strength gives[^commuting-components]
 
-$$F^{\mu\nu} = \frac{-iC}{\hbar}(k^\mu k^\nu - k^\nu k^\mu)e^{-ik\cdot x/\hbar} = 0.$$
+$$F^{\mu\nu} = \frac{-iC}{\hbar}(k^\mu k^\nu - k^\nu k^\mu)e^{-ik\cdot x/\hbar} = 0. \tag{2}$$
 
 The potential may oscillate, but both $\mathbf E$ and $\mathbf B$ vanish. This is what *pure gauge* means here: a nonzero potential describing zero physical field.[^longitudinal] Consequently, a plane wave with a nonzero electromagnetic field must have
 
@@ -148,15 +148,17 @@ $$k^2 = 0 \quad\Longrightarrow\quad E_k = |\mathbf k|.$$
 
 That is the energy–momentum relation for a massless particle.[^null-momentum]
 
-Third, when $k^2 = 0$, Maxwell's equation also requires $k\cdot\varepsilon = 0$. The constraint becomes
+Third, when $k^2 = 0$, Maxwell's equation also requires $k\cdot\varepsilon = 0$. 
 
-$$0 = k^\nu(k\cdot\varepsilon).$$
+The constraint becomes
+
+$$0 = k^\nu(k\cdot\varepsilon). \tag{3}$$
 
 For a nonzero wave momentum, at least one component of $k^\nu$ is nonzero, so the scalar $k\cdot\varepsilon$ must vanish. This is one constraint on the four components of $\varepsilon^\mu$, leaving three. It is called transversality, but at this stage it means four-dimensional orthogonality: it does not yet say that the spatial potential points sideways. For a wave travelling along $z$, it requires $\varepsilon^0 = \varepsilon^3$, rather than requiring both components to vanish. The gauge freedom will let us remove that remaining pair together.
 
-The gauge freedom removes one more. A gauge transformation shifts $A_\mu$ by a gradient, and the gradient of the same plane wave is proportional to $k_\mu$, so the transformation acts on the polarization as
+The gauge freedom removes one more. A gauge transformation shifts $A_\mu$ by a gradient,[^gradient] and the gradient of the same plane wave is proportional to $k_\mu$, so the transformation acts on the polarization as
 
-$$\varepsilon_\mu \;\to\; \varepsilon_\mu + \alpha\, k_\mu,$$
+$$\varepsilon_\mu \;\to\; \varepsilon_\mu + \alpha\, k_\mu, \tag{4}$$
 
 which changes nothing physical: $F_{\mu\nu}$ is unchanged by construction, and transversality survives because $k\cdot k = 0$. Two polarizations that differ by a multiple of $k_\mu$ describe the same photon in two descriptions.
 
@@ -172,17 +174,21 @@ The [Field Quantization construction](field-quantization.md#the-canonical-commut
 
 $$\pi^\mu = \frac{\partial\mathcal{L}}{\partial(\partial_0 A_\mu)} = -F^{0\mu},$$
 
-and for the time component this is identically zero, $\pi^0 = -F^{00} = 0$, because $F$ is antisymmetric. The zero is structural, not small. Imposing the canonical commutator on $A_0$ would read $[\hat A_0,\, 0] = i\hbar\,\delta^3$, a contradiction. The physical content of the zero is that $A_0$ is not independent data: the $\nu = 0$ component of the free equation is Gauss's law, $\nabla\cdot\mathbf E = 0$, a constraint that ties $A_0$ to the other components instead of evolving it. A field whose components overcount the physics cannot be split into independent oscillators, and that split is the foundation the scalar construction stands on.
+and for the time component this is identically zero, $\pi^0 = -F^{00} = 0$: $F^{00}$ is $\partial^0 A^0$ subtracted from itself, one instance of the antisymmetry that empties every diagonal slot of $F$. The zero is a structural consequence of antisymmetry. Imposing the canonical commutator on $A_0$ would read $[\hat A_0,\, 0] = i\hbar\,\delta^3$, a contradiction. The construction cannot take its first step: the three spatial components pair with conjugate momenta — indeed $\pi^i = E^i$, the electric field itself — while the fourth has none.
+
+The proof is complete. The rest of this subsection explains the meaning of the zero, because that meaning determines the form of the repair. Physically, $\pi^0 = 0$ states that $A_0$ is not independent data. The $\nu = 0$ component of the free equation is Gauss's law, $\nabla\cdot\mathbf E = 0$: it contains no time derivative, so it does not describe time evolution; it constrains $A_0$ to the other components at each instant. The missing conjugate momentum is the Hamiltonian form of the same fact. This is half of the overcounting stated at the top of the section — four components, three of them dynamical. The other half is the gauge redundancy of the first subsection, which concerns the descriptions rather than the dynamics. The distinction matters because the repair uses the two differently: the redundancy justifies modifying the Lagrangian, and the missing velocity is what the modification must supply.
 
 ### Fixing the gauge
 
-The repair is to spend the gauge freedom before quantizing, removing the overcounting at the classical level. The Lorenz condition[^lorenz] $\partial_\mu A^\mu = 0$ can always be imposed: under $A_\mu \to A_\mu + \partial_\mu\chi$ the divergence changes as $\partial\cdot A \to \partial\cdot A + \Box\chi$, so choosing $\chi$ to solve $\Box\chi = -\,\partial\cdot A$ reaches the condition. Some freedom survives, because any further $\chi$ with $\Box\chi = 0$ keeps it; that residue is precisely the plane-wave shift $\varepsilon \to \varepsilon + \alpha k$ of the first subsection.
+The repair acts on the Lagrangian before quantization, and its goal is set by the previous subsection: the construction stalled because $\dot A_0$ never appears in the Maxwell Lagrangian, so $A_0$ has no conjugate momentum and the canonical pairing $[\hat A_\mu, \hat\pi^\nu] = i\hbar\,\delta^\nu{}_\mu\,\delta^3$ cannot be imposed. What the repair must accomplish is a velocity for every component of $A_\mu$, the time component included. Modifying the Lagrangian needs justification, because the equations of motion, the Hamiltonian, and the scattering rules are all derived from it. The justification is the redundancy the first subsection uncovered: only gauge-invariant quantities, everything built from $F_{\mu\nu}$, are physical, and the four components of $A_\mu$ include combinations that no gauge-invariant quantity depends on. A term that reorganizes the redundant descriptions can therefore be added without changing any observable.
 
-Imposing the condition directly on the operators fails again, because the operator identity $\partial\cdot\hat A = 0$ is as incompatible with the canonical algebra as $\pi^0 = 0$ was. The working method enforces the condition through the Lagrangian instead, by adding a **gauge-fixing term**
+The reorganization is built around the Lorenz condition[^lorenz] $\partial_\mu A^\mu = 0$, which meets the two requirements a gauge condition must satisfy. It is covariant: the left-hand side is a full contraction, with time and space treated alike, so the condition has the same form in every Lorentz frame. And it can always be imposed: under $A_\mu \to A_\mu + \partial_\mu\chi$ the divergence changes as $\partial\cdot A \to \partial\cdot A + \Box\chi$, so choosing $\chi$ to solve $\Box\chi = -\,\partial\cdot A$ produces a potential that obeys the condition. Some freedom survives, since any further $\chi$ with $\Box\chi = 0$ keeps the condition; for plane waves, that residue is precisely the shift $\varepsilon \to \varepsilon + \alpha k$ of the first subsection. This subsection does not remove the residue. The next subsection removes it at the level of states rather than fields, by the physical-state condition.
+
+For classical solutions, reachability settles the question: one restricts attention to fields that obey the condition. On the operators of the quantum theory, imposing it directly fails again, for the same structural reason as before: the identity $\partial\cdot\hat A = 0$ contradicts the canonical algebra exactly as $\pi^0 = 0$ did.[^operator-lorenz] The condition therefore enters through the Lagrangian, as a **gauge-fixing term**
 
 $$\mathcal{L}_\text{gf} = -\tfrac{1}{2}\,(\partial_\mu A^\mu)^2 .$$
 
-The term costs nothing physical, since gauge-invariant quantities — everything built from $F_{\mu\nu}$ — do not depend on it, and it vanishes for fields that obey the Lorenz condition. What it buys is decoupling. Expand the Maxwell term,
+The term has the two required properties. It changes no physics: it vanishes on every Lorenz-obeying field, so within each gauge orbit it changes only which representative the theory uses. And it supplies the missing velocity: among its pieces is $-\tfrac12(\partial_0 A_0)^2$, the term containing $\dot A_0$ that the Maxwell Lagrangian lacks, so the conjugate momentum of the time component becomes $\pi^0 = -\dot A^0$ instead of zero. All four components now have a conjugate momentum, and the construction of the previous subsection can proceed. The term also decouples the components. Expand the Maxwell term,
 
 $$-\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu} \;=\; -\tfrac{1}{2}(\partial_\mu A_\nu)(\partial^\mu A^\nu) \;+\; \tfrac{1}{2}(\partial_\mu A_\nu)(\partial^\nu A^\mu),$$
 
@@ -196,9 +202,11 @@ $$\mathcal{L}_\text{Maxwell} + \mathcal{L}_\text{gf} \;=\; -\tfrac{1}{2}\,(\part
 
 Each component $A_\nu$ now enters as an independent massless scalar field: no mass term, because the gauge principle forbids one, and no coupling between components. The Euler–Lagrange equation of each component is the wave equation, $\Box A_\nu = 0$. This particular combination of Maxwell term plus gauge-fixing term is called **Feynman gauge**.
 
+The method has one cost, which should be stated now. Making every component dynamical does not remove the redundant directions — it makes them dynamical like the physical ones, giving four oscillator families where the photon of the first subsection has two. These extra families are removed later, and in a different place: by a condition on the *states* of the theory rather than on the operators or the Lagrangian. This is the work of the next subsection.
+
 ### Quantizing the gauge-fixed field
 
-With the redundancy fixed away, the [Field Quantization](field-quantization.md) construction runs without obstruction. Expand the field on a basis of four polarization vectors per momentum: the two transverse polarizations $\varepsilon^{(1)}$, $\varepsilon^{(2)}$ of the first subsection, a timelike vector $\varepsilon^{(0)}$ with $\varepsilon^{(0)}\cdot\varepsilon^{(0)} = +1$ (for $k$ along $z$: $(1,0,0,0)$), and a longitudinal vector $\varepsilon^{(3)}$ (for $k$ along $z$: $(0,0,0,1)$). The promoted field reads
+With a canonical pair in hand for every component, the [Field Quantization](field-quantization.md) construction runs without obstruction. Expand the field on a basis of four polarization vectors per momentum: the two transverse polarizations $\varepsilon^{(1)}$, $\varepsilon^{(2)}$ of the first subsection, a timelike vector $\varepsilon^{(0)}$ with $\varepsilon^{(0)}\cdot\varepsilon^{(0)} = +1$ (for $k$ along $z$: $(1,0,0,0)$), and a longitudinal vector $\varepsilon^{(3)}$ (for $k$ along $z$: $(0,0,0,1)$). The promoted field reads
 
 $$\hat A_\mu(x) = \int \frac{d^3k}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_k}} \sum_{\lambda=0}^{3}\left[\hat c_\lambda(k)\,\varepsilon_\mu^{(\lambda)}(k)\,e^{-ik\cdot x/\hbar} \;+\; \hat c_\lambda^\dagger(k)\,\varepsilon_\mu^{(\lambda)*}(k)\,e^{+ik\cdot x/\hbar}\right], \qquad E_k = |\mathbf k|.$$
 
@@ -210,7 +218,7 @@ so the three spacelike families carry the standard $[\hat a, \hat a^\dagger] = 1
 
 $$\hat H = \int \frac{d^3k}{(2\pi\hbar)^3}\;E_k\left(\hat c_1^\dagger \hat c_1 + \hat c_2^\dagger \hat c_2 + \hat c_3^\dagger \hat c_3 - \hat c_0^\dagger \hat c_0\right) + \text{const.}$$
 
-Two families are healthy oscillators, and they are the transverse photons. The timelike and longitudinal families enter with opposite signs, and they are the modes the gauge freedom was supposed to remove: quantizing all four components has reintroduced them as bookkeeping. The definition of a physical state locks the pair together so that their contributions cancel in every observable[^gupta], and on the physical states the energy comes from the two transverse families alone. A photon state is therefore specified by a momentum $\mathbf k$ and a choice of $\varepsilon^{(1)}$ or $\varepsilon^{(2)}$, which matches the two-polarization count of the first subsection, and an external photon line in a diagram carries one of those two polarization vectors.
+Two families are healthy oscillators, and they are the transverse photons. The timelike and longitudinal families enter with opposite signs, and they are the redundant directions of the first subsection, made dynamical by the modification rather than removed, as stated at the end of the previous subsection. The definition of a physical state locks the pair together so that their contributions cancel in every observable[^gupta], and on the physical states the energy comes from the two transverse families alone. A photon state is therefore specified by a momentum $\mathbf k$ and a choice of $\varepsilon^{(1)}$ or $\varepsilon^{(2)}$, which matches the two-polarization count of the first subsection, and an external photon line in a diagram carries one of those two polarization vectors.
 
 ### The propagator
 
@@ -224,13 +232,17 @@ $$\sum_{\lambda=0}^{3}\eta_\lambda\;\varepsilon_\mu^{(\lambda)}\,\varepsilon_\nu
 
 which can be checked component by component in the $k$-along-$z$ basis. The contraction is therefore
 
-$$\frac{-i\,g_{\mu\nu}}{k^2 + i\epsilon}$$
+$$\frac{-i\,g_{\mu\nu}}{k^2 + i\epsilon} \tag{5}$$
 
-in momentum space, and this is the photon propagator. No mass term appears in the denominator because the photon is massless, so the only pole sits at $k^2 = 0$. The tensor $g_{\mu\nu}$ carries the vector structure, one index for each end of the line, and its sign pattern records the same timelike bookkeeping: an internal photon line effectively sums over all four polarization modes, with the unphysical pair canceling in every gauge-invariant result, which is why diagram calculations may use $-g_{\mu\nu}$ as the polarization sum on internal lines. This is the rule the [Feynman Rules page](feynman-rules.md) needs, and with it the free-field input of the QED rulebook is complete: the electron propagator from the spinor construction, the photon propagator from this one, and the interaction term supplying the vertex.
+in momentum space, and this is the photon propagator. No mass term appears in the denominator because the photon is massless, so the only pole sits at $k^2 = 0$. The tensor $g_{\mu\nu}$ carries the vector structure, one index for each end of the line, and its sign pattern records the same timelike bookkeeping: an internal photon line effectively sums over all four polarization modes, with the unphysical pair canceling in every gauge-invariant result, which is why diagram calculations may use $-g_{\mu\nu}$ as the polarization sum on internal lines. This is the rule the [Feynman Rules page](feynman-rules.md) needs, and with it the free-field input for the QED rules is complete: the electron propagator from the spinor construction, the photon propagator from this one, and the interaction term supplying the vertex.
 
 That is QED as a Lagrangian theory, with both of its fields quantized. The [next page](lagrangian-to-experiment.md) says where such a Lagrangian leads an experiment, and the pages after, [Perturbation Theory](perturbation-theory.md) and [Feynman Rules for QED](feynman-rules.md), read the scattering amplitudes out of this Lagrangian.
 
 [^gupta]: The covariant statement is the **Gupta–Bleuler condition**: the Lorenz condition is imposed on physical states, using only the annihilation half of the operator, as $\big(\partial_\mu\hat A^\mu\big)^{(+)}\,\lvert\text{phys}\rangle = 0$. For $k$ along $z$ it pairs the timelike and longitudinal modes as $\big(\hat c_0 - \hat c_3\big)\lvert\text{phys}\rangle = 0$, so the two operators act identically on every physical state, and their Hamiltonian terms $\hat c_3^\dagger\hat c_3 - \hat c_0^\dagger\hat c_0$ have equal and opposite expectation values there. The construction is standard quantum field theory; this site uses only its conclusion, that the unphysical pair cancels in every observable, because the diagram rules build that cancellation into the $-g_{\mu\nu}$ polarization sum of internal lines.
+
+[^gradient]: The gradient form follows from what a gauge transformation is: a shift of the potential that changes nothing physical. The physical content lives in the field strength $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, the container of $\mathbf E$ and $\mathbf B$. A general four-vector shift $\chi_\mu$ changes $F_{\mu\nu}$ by $\partial_\mu\chi_\nu - \partial_\nu\chi_\mu$ — a different electromagnetic field, not a re-description of one. A gradient shift leaves $F_{\mu\nu}$ unchanged because $F_{\mu\nu}$ is antisymmetric in $\mu \leftrightarrow \nu$, and an antisymmetric combination vanishes on a symmetric input: for $\chi_\mu = \partial_\mu\chi$ the extra terms are $\partial_\mu\partial_\nu\chi - \partial_\nu\partial_\mu\chi$, which vanish since mixed partial derivatives commute. Locally the converse holds as well, so the gradient shifts are the complete redundancy, not merely one example of it. This is the same transformation law, with the parameter renamed and rescaled ($\chi$ here, $-\hbar\alpha/q$ there), that the Local Gauge Symmetry section forced on the compensating field: the failure to be canceled there was itself a gradient, $\partial_\mu\alpha$, so only a gradient shift could cancel it. The shift that compensates the derivative is exactly the shift that leaves the field strength unchanged.
+
+[^operator-lorenz]: The incompatibility in one line. In the gauge-fixed theory the canonical momentum is $\hat\pi^\mu = -\partial^0\hat A^\mu$, so the divergence splits as $\partial_\mu\hat A^\mu = \partial_0\hat A^0 + \partial_i\hat A^i = -\hat\pi^0 + \partial_i\hat A^i$. Were $\partial\cdot\hat A = 0$ an operator identity, its commutator with $\hat A_0$ would have to vanish. The equal-time algebra $[\hat A_\mu(t,\mathbf x), \hat\pi^\nu(t,\mathbf y)] = i\hbar\,\delta^\nu{}_\mu\,\delta^3(\mathbf x-\mathbf y)$ instead gives $[\partial\cdot\hat A(t,\mathbf x), \hat A_0(t,\mathbf y)] = -[\hat\pi^0(t,\mathbf x), \hat A_0(t,\mathbf y)] = i\hbar\,\delta^3(\mathbf x-\mathbf y)$, the $\partial_i\hat A^i$ piece contributing nothing because field operators commute with each other at equal times. The identity and the algebra cannot both hold, so the condition cannot be imposed as an operator identity; it is imposed in the Lagrangian here, and on the states of the theory in the next subsection.
 
 [^lorenz]: The condition is named for Ludvig Lorenz, who wrote it down in 1867, before Hendrik Lorentz's work on the coordinate transformations; the spelling with a "z" keeps the two physicists apart.
 
