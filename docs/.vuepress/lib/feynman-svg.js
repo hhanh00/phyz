@@ -18,6 +18,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const CACHE_DIR = path.join(__dirname, '..', '.feynman-cache')
 
 const PREAMBLE = `\\documentclass[border=6pt]{standalone}
+\\def\\pgfsysdriver{pgfsys-dvisvgm.def}
 \\usepackage[compat=1.1.0]{tikz-feynman}
 \\begin{document}
 `
@@ -60,8 +61,9 @@ export function renderFeynmanSvg(code) {
   const dvi = path.join(CACHE_DIR, `${id}.dvi`)
   const svg = path.join(CACHE_DIR, `${id}.svg`)
 
-  // Older cached SVGs contain SVG fonts, unsupported by modern browsers.
-  const needsRender = !fs.existsSync(svg) || /<font\b/.test(fs.readFileSync(svg, 'utf8'))
+  // SVG fonts fail in modern browsers; the default LuaTeX DVI driver also
+  // loses TikZ geometry. Only reuse output made with the explicit SVG driver.
+  const needsRender = !fs.existsSync(svg) || !fs.readFileSync(svg, 'utf8').includes('<!-- feynman-driver: dvisvgm -->')
   if (needsRender) {
     fs.writeFileSync(tex, PREAMBLE + body + POSTAMBLE)
     try {
@@ -74,6 +76,7 @@ export function renderFeynmanSvg(code) {
 
       execFileSync('dvisvgm', ['--no-fonts', path.basename(dvi), '-o', path.basename(svg)],
         { cwd: CACHE_DIR, env, stdio: ['ignore', 'ignore', 'pipe'] })
+      fs.appendFileSync(svg, '\n<!-- feynman-driver: dvisvgm -->\n')
     } catch (err) {
       const log = String(err.stderr || '').trim() || String(err.message)
       throw new Error(`Feynman diagram ${id} failed to compile. See ${path.join(CACHE_DIR, `${id}.log`)}. ${log.slice(0, 500)}`, { cause: err })
