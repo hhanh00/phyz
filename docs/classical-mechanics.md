@@ -1,7 +1,7 @@
 # Classical Mechanics
 
 ## 1. Newtonian Formulation
-Classical mechanics in its original form rests on Newton's second law, $F = ma$: given the forces acting on a particle and its position and velocity at one instant, the entire future trajectory is determined. This is the deterministic picture most people meet first — a particle traces a single, well-defined path through space, and solving the equation of motion means integrating a second-order differential equation twice, once for velocity and once for position. The formulation is powerful but coordinate-dependent and geometrically awkward once a system has constraints (a bead on a wire, a pendulum on a rod), which is precisely the gap the Lagrangian approach closes.
+Classical mechanics in its original form rests on Newton's second law, $F = ma$: given the forces acting on a particle and its position and velocity at one instant, the entire future trajectory is determined. This is the deterministic picture most people encounter first — a particle traces a single, well-defined path through space, and solving the equation of motion means integrating a second-order differential equation twice, once for velocity and once for position. The formulation is powerful but coordinate-dependent and geometrically awkward once a system has constraints (a bead on a wire, a pendulum on a rod), which is precisely the gap the Lagrangian approach closes.
 
 ## 2. Lagrangian and the Euler–Lagrange Derivation
 The Lagrangian approach reframes dynamics as an optimization problem. Define the Lagrangian $L = T - V$, kinetic energy minus potential energy, as a function of generalized coordinates $q$ and velocities $\dot q$. The claim — the principle of stationary action — is that the true path a system follows between two fixed endpoints in time is the one that makes the action
@@ -17,7 +17,7 @@ $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L
 one such equation per generalized coordinate. It reproduces $F = ma$ exactly when $L$ is built from ordinary kinetic and potential energy, but it generalizes cleanly to angles, constrained coordinates, and — later — fields, which is why it survives essentially unchanged into quantum field theory.
 
 ## 3. Hamiltonian and State Space
-The Hamiltonian formulation performs a Legendre transform on the Lagrangian, trading velocities for momenta: define the conjugate momentum $p = \partial L/\partial \dot q$ and set $H(q,p) = p\dot q - L$. Rewritten this way, the single second-order Euler–Lagrange equation splits into two first-order equations, Hamilton's equations,
+The Hamiltonian formulation performs a Legendre transform on the Lagrangian, replacing velocities with momenta: define the conjugate momentum $p = \partial L/\partial \dot q$ and set $H(q,p) = p\dot q - L$. Rewritten this way, the single second-order Euler–Lagrange equation splits into two first-order equations, Hamilton's equations,
 
 $$\dot q = \frac{\partial H}{\partial p}, \qquad \dot p = -\frac{\partial H}{\partial q}$$
 
@@ -30,7 +30,7 @@ Once a system is described in phase space, any two dynamical quantities $f(q,p)$
 
 $$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q}$$
 
-summed over all coordinate pairs. It is antisymmetric, bilinear, and satisfies the Jacobi identity — an algebraic structure, not just a computational shortcut. Its physical payoff is that it governs time evolution directly: for any quantity $f$ with no explicit time dependence, $\dot f = \{f, H\}$. The bracket between a coordinate and its conjugate momentum, $\{q, p\} = 1$, is the classical shadow of what becomes the canonical commutation relation in quantum mechanics — the single most important bridge between the two formalisms.
+summed over all coordinate pairs. It is antisymmetric, bilinear, and satisfies the Jacobi identity — an algebraic structure, not just a computational shortcut. Its main physical consequence is that it governs time evolution directly: for any quantity $f$ with no explicit time dependence, $\dot f = \{f, H\}$. The bracket between a coordinate and its conjugate momentum, $\{q, p\} = 1$, is the classical counterpart of what becomes the canonical commutation relation in quantum mechanics — the single most important bridge between the two formalisms.
 
 *Why it matters later*: quantization is often summarized as the replacement $\{\cdot,\cdot\} \to \frac{1}{i\hbar}[\cdot,\cdot]$ — Poisson brackets become commutators, scaled by $i\hbar$. Every classical structure built from brackets has a direct quantum counterpart.
 

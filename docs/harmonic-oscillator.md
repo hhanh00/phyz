@@ -6,7 +6,7 @@ A harmonic oscillator is a system whose potential energy grows as the square of 
 
 $$V(x) \approx V(x_0) + \tfrac12 V''(x_0)\,(x - x_0)^2.$$
 
-So a pendulum at small angles, an atom rattling inside a molecule, and the atoms of a crystal lattice all behave as oscillators when disturbed gently. This is why the oscillator, rather than any more complicated system, is the standard first worked example in quantum mechanics — and why it returns in field theory, where each momentum mode of a free field turns out to be exactly such a system.
+So a pendulum at small angles, an atom vibrating inside a molecule, and the atoms of a crystal lattice all behave as oscillators when disturbed gently. This is why the oscillator, rather than any more complicated system, is the standard first worked example in quantum mechanics — and why it returns in field theory, where each momentum mode of a free field turns out to be exactly such a system.
 
 ## 2. The classical oscillator
 
@@ -16,7 +16,7 @@ $$H = \frac{p^2}{2m} + \tfrac12 m\omega^2 x^2, \qquad \omega = \sqrt{k/m},$$
 
 with $\omega$ the natural frequency. The two terms are the kinetic and elastic energies. The frequency is fixed by the system; the energy is set by how hard you drive it. Drive gently and the mass oscillates with a small amplitude, drive hard and the amplitude grows, always at the same frequency.
 
-In phase space the state is a point $(x, p)$, and a fixed-energy orbit is an ellipse: as the spring stores and releases energy, $x$ and $p$ trade places around that ellipse. The [Field Quantization](field-quantization.md) page reuses this picture, one momentum mode at a time.
+In phase space the state is a point $(x, p)$, and a fixed-energy orbit is an ellipse: as the spring stores and releases energy, $x$ and $p$ exchange roles around that ellipse. The [Field Quantization](field-quantization.md) page reuses this picture, one momentum mode at a time.
 
 ## 3. Quantization
 
@@ -54,7 +54,7 @@ $$[\hat N, \hat a] = -\hat a, \qquad [\hat N, \hat a^\dagger] = \hat a^\dagger,$
 
 which say that $\hat a$ lowers the count by one and $\hat a^\dagger$ raises it by one. Lowering cannot continue forever, because $\hat N$ has nonnegative eigenvalues: for any state, $\langle\psi|\hat N|\psi\rangle = \lVert \hat a|\psi\rangle\rVert^2 \ge 0$. There is therefore a lowest state $\lvert 0\rangle$ that lowering annihilates, $\hat a\lvert 0\rangle = 0$, with $\hat N = 0$.
 
-Raising from the floor generates the whole spectrum. The state $\lvert n\rangle \propto (\hat a^\dagger)^n\lvert 0\rangle$ has $\hat N\lvert n\rangle = n\lvert n\rangle$ for every nonnegative integer $n$, and energy
+Raising from the lowest state generates the whole spectrum. The state $\lvert n\rangle \propto (\hat a^\dagger)^n\lvert 0\rangle$ has $\hat N\lvert n\rangle = n\lvert n\rangle$ for every nonnegative integer $n$, and energy
 
 $$E_n = \hbar\omega\left(n + \tfrac12\right).$$
 
@@ -62,11 +62,11 @@ The levels form an evenly spaced ladder with spacing $\hbar\omega$: $\hat a^\dag
 
 $$\hat a\,\lvert n\rangle = \sqrt{n}\;\lvert n-1\rangle, \qquad \hat a^\dagger\,\lvert n\rangle = \sqrt{n+1}\;\lvert n+1\rangle,$$
 
-with $\hat a\lvert 0\rangle = 0$, since nothing sits below the floor. The $\sqrt{\,}$ factors normalize the states: because $\lvert n\rangle = \frac{(\hat a^\dagger)^n}{\sqrt{n!}}\lvert 0\rangle$, each application of $\hat a$ or $\hat a^\dagger$ must multiply by the constant that keeps $\langle n\lvert n\rangle = 1$.
+with $\hat a\lvert 0\rangle = 0$, since no state exists below $\lvert 0\rangle$. The $\sqrt{\,}$ factors normalize the states: because $\lvert n\rangle = \frac{(\hat a^\dagger)^n}{\sqrt{n!}}\lvert 0\rangle$, each application of $\hat a$ or $\hat a^\dagger$ must multiply by the constant that keeps $\langle n\lvert n\rangle = 1$.
 
 ## 6. Zero-point energy
 
-The floor itself is nonzero. The lowest state carries energy $\tfrac12\hbar\omega$, so the oscillator never rests. This follows from $[\hat x, \hat p] = i\hbar$: a state at rest would have $\hat x$ and $\hat p$ both fixed, and no state can fix two noncommuting observables at once. The $\tfrac12\hbar\omega$ is the price of position and momentum failing to commute.
+The lowest level itself is nonzero. The lowest state carries energy $\tfrac12\hbar\omega$, so the oscillator is never at rest. This follows from $[\hat x, \hat p] = i\hbar$: a state at rest would have $\hat x$ and $\hat p$ both fixed, and no state can fix two noncommuting observables at once. The $\tfrac12\hbar\omega$ is the consequence of position and momentum failing to commute.
 
 ## 7. Why it matters later
 

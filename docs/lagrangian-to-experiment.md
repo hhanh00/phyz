@@ -4,11 +4,11 @@ The previous pages built Lagrangians for particles and fields. This page follows
 
 ## The job of a Lagrangian
 
-In classical mechanics a Lagrangian's job is to produce a trajectory. The [Classical Mechanics](classical-mechanics.md) page built the principle of least action, and the [Action and Lagrangians](qft-action.md) page turned it into the Euler–Lagrange equation: feed the Lagrangian $L(q, \dot q)$ through the variational principle, get an equation of motion, and solve it for $q(t)$ and $\dot q(t)$ — where the particle is and how fast, at every instant. The initial conditions select a particular trajectory.
+In classical mechanics a Lagrangian's purpose is to produce a trajectory. The [Classical Mechanics](classical-mechanics.md) page built the principle of least action, and the [Action and Lagrangians](qft-action.md) page turned it into the Euler–Lagrange equation: insert the Lagrangian $L(q, \dot q)$ into the variational principle, get an equation of motion, and solve it for $q(t)$ and $\dot q(t)$ — where the particle is and how fast, at every instant. The initial conditions select a particular trajectory.
 
 ## Why a trajectory is the wrong target
 
-That output stops making sense at the quantum level. A quantum particle has no definite position to trace, and a quantum field can create and destroy particles, so there is no fixed list of "the particles" whose path we follow. [First Quantization](first-quantization.md) already traded the trajectory for the wave function $\psi$, an amplitude for *where* the particle is; [Field Quantization](field-quantization.md) went one level further, so the natural object is an amplitude for *which particles are present* in the final state. In place of a path, the Lagrangian must produce transition amplitudes.
+That output stops making sense at the quantum level. A quantum particle has no definite position to trace, and a quantum field can create and destroy particles, so there is no fixed list of "the particles" whose path we follow. [First Quantization](first-quantization.md) already replaced the trajectory with the wave function $\psi$, an amplitude for *where* the particle is; [Field Quantization](field-quantization.md) extends this one step further, so the natural object is an amplitude for *which particles are present* in the final state. In place of a path, the Lagrangian must produce transition amplitudes.
 
 ## What a scattering experiment measures
 
@@ -24,7 +24,7 @@ The cross section has units of area, and the standard unit is the barn. Experime
 
 ## The amplitude and the S-matrix
 
-Between the Lagrangian and the cross section sits the scattering amplitude. When a state $\lvert i\rangle$ is prepared and later measured as $\lvert f\rangle$, the amplitude for that transition is the matrix element
+Between the Lagrangian and the cross section is the scattering amplitude. When a state $\lvert i\rangle$ is prepared and later measured as $\lvert f\rangle$, the amplitude for that transition is the matrix element
 
 $$\langle f | S | i \rangle,$$
 
@@ -40,7 +40,7 @@ The cross section is built from the amplitude by squaring it and integrating ove
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
-where $d\Pi$ is the phase space, the measure over the final particles' momenta that enforces energy and momentum conservation. The formula splits into two independent ingredients. $|\mathcal{M}|^2$ carries the physics — it is where the interaction term of the Lagrangian lives, and the square is the Born rule of [First Quantization](first-quantization.md), which reads probabilities off squared amplitudes. $d\Pi$ carries the kinematics — it is geometry, the space of final states the conservation law permits.
+where $d\Pi$ is the phase space, the measure over the final particles' momenta that enforces energy and momentum conservation. The formula splits into two independent ingredients. $|\mathcal{M}|^2$ carries the physics — it is determined by the interaction term of the Lagrangian, and the square is the Born rule of [First Quantization](first-quantization.md), which reads probabilities off squared amplitudes. $d\Pi$ carries the kinematics — it is geometry, the space of final states the conservation law permits.
 
 ## The missing piece
 

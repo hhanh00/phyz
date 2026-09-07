@@ -8,9 +8,9 @@ The second postulate is the one that breaks with Newtonian intuition: the **inva
 
 ## 2. Galilean Transformation
 
-Before Einstein, frames in relative motion were related by the Galilean transformation: $t' = t$ and $x' = x - vt$, with $y$ and $z$ unchanged. Time is universal, and velocities add without limit — if a train moves at $v$ and a passenger walks at $u$ relative to the train, a platform observer sees them at $u + v$, with no ceiling. There is nothing in the Galilean rules that forbids speeds larger than $c$; light has no special status.
+Before Einstein, frames in relative motion were related by the Galilean transformation: $t' = t$ and $x' = x - vt$, with $y$ and $z$ unchanged. Time is universal, and velocities add without limit — if a train moves at $v$ and a passenger walks at $u$ relative to the train, a platform observer sees them at $u + v$, with no upper limit. There is nothing in the Galilean rules that forbids speeds larger than $c$; light has no special status.
 
-The geometric picture makes the problem vivid. Draw a spacetime diagram with $x$ on the vertical axis and $t$ on the horizontal (with $c = 1$, a light ray travels one unit of distance per unit of time). A light ray therefore traces a 45° line — it bisects the angle between the $t$- and $x$-axes. Under a Galilean boost the time axis stays horizontal ($t' = t$) while the $x'$-axis tilts upward toward it, so in the new frame the light ray no longer sits at 45° between $t'$ and $x'$: different observers assign different speeds to light.
+The geometric picture shows the problem clearly. Draw a spacetime diagram with $x$ on the vertical axis and $t$ on the horizontal (with $c = 1$, a light ray travels one unit of distance per unit of time). A light ray therefore traces a 45° line — it bisects the angle between the $t$- and $x$-axes. Under a Galilean boost the time axis stays horizontal ($t' = t$) while the $x'$-axis tilts upward toward it, so in the new frame the light ray no longer sits at 45° between $t'$ and $x'$: different observers assign different speeds to light.
 
 The Lorentz transformation fixes this by tilting *both* axes symmetrically toward the 45° light ray — the $x'$-axis rotates up toward the light ray and the $t'$-axis rotates up toward the $x$-axis, both by the same hyperbolic angle — so the light ray always bisects them regardless of $v$. Keeping that bisector fixed at 45° is exactly what it means to preserve the speed of light in every frame.
 ![Galilean vs Lorentz boosts](./manim/boost-diagrams.png)
@@ -67,7 +67,7 @@ where $E$ is the relativistic energy and $\mathbf{p} = \gamma m \mathbf{v}$ is t
 
 ## 6. Metric Tensor, Covariance, and Contravariance
 
-Most of this section is bookkeeping — and the bookkeeping is the point. On the earlier pages a vector was a list of three coordinates, $(x, y, z)$, and beyond the count nothing about the notation demanded care: dimensionality was all we ever asked of it. Spacetime adds a fourth coordinate — that part is trivial. What is not trivial is the Lorentz transformation: it no longer treats every list of coordinates the same way. Some objects transform *with* the new frame, some *against* it, and a calculation that mixes the two without tracking which is which produces frame-dependent nonsense. The upper and lower indices are the tracking device — a notation tool, nothing deeper. The reader who takes away one rule is equipped for everything between here and the [QFT](qft.md) page: **pair an upper index with a lower one, and the result is the same number in every frame.** The rest of this section unpacks the rule.
+Most of this section is bookkeeping — and the bookkeeping is the point. On the earlier pages a vector was a list of three coordinates, $(x, y, z)$, and beyond the count nothing about the notation required care: only its dimensionality ever mattered. Spacetime adds a fourth coordinate — that part is trivial. What is not trivial is the Lorentz transformation: it no longer treats every list of coordinates the same way. Some objects transform *with* the new frame, some *against* it, and a calculation that mixes the two without tracking which is which produces frame-dependent nonsense. The upper and lower indices are the tracking device — a notation tool, nothing deeper. A reader who remembers one rule can handle everything between here and the [QFT](qft.md) page: **pair an upper index with a lower one, and the result is the same number in every frame.** The rest of this section explains the rule.
 
 The two behaviors get names. A **contravariant** vector $A^\mu$ (index up) transforms the same way the coordinate displacement $dx^\mu$ does under a Lorentz transformation $\Lambda^\mu{}_\nu$:
 
@@ -89,15 +89,15 @@ A **contraction** pairs one upper index with one lower index and sums over it, p
 
 $$A^\mu B_\mu = A^0 B_0 + A^1 B_1 + A^2 B_2 + A^3 B_3 = A^0 B_0 - \mathbf{A}\cdot\mathbf{B}$$
 
-This Einstein summation convention — repeated index up/down means sum — is in force throughout. A fully contracted object has no free indices and is a **Lorentz scalar**: it takes the same numerical value in every inertial frame. The invariant interval $s^2 = x^\mu x_\mu$, the rest mass $m^2 = p^\mu p_\mu$, and the phase of a plane wave $\phi = k^\mu x_\mu$ are all scalars.
+This Einstein summation convention — repeated index up/down means sum — is used throughout. A fully contracted object has no free indices and is a **Lorentz scalar**: it takes the same numerical value in every inertial frame. The invariant interval $s^2 = x^\mu x_\mu$, the rest mass $m^2 = p^\mu p_\mu$, and the phase of a plane wave $\phi = k^\mu x_\mu$ are all scalars.
 
 A **tensor** of type $(r, s)$ carries $r$ contravariant and $s$ covariant indices, each transforming with its own $\Lambda$ or $\Lambda^{-1}$:
 
 $$T'^{\mu_1\cdots\mu_r}{}_{\nu_1\cdots\nu_s} = \Lambda^{\mu_1}{}_{\alpha_1}\cdots\Lambda^{\mu_r}{}_{\alpha_r}\,(\Lambda^{-1})^{\beta_1}{}_{\nu_1}\cdots(\Lambda^{-1})^{\beta_s}{}_{\nu_s}\; T^{\alpha_1\cdots\alpha_r}{}_{\beta_1\cdots\beta_s}$$
 
-The metric itself is a $(0,2)$ tensor. Any equation written as a tensor equality — same index structure on both sides, all free indices consistent — is automatically valid in every Lorentz frame. This is the practical content of covariance: write physics as tensor equations and relativistic invariance is built in.
+The metric itself is a $(0,2)$ tensor. Any equation written as a tensor equality — same index structure on both sides, all free indices consistent — is automatically valid in every Lorentz frame. This is the practical content of covariance: write physics as tensor equations and relativistic invariance follows.
 
-A word on scope: the general tensor definition above is the heaviest formalism in the sequence so far, and it is introduced here once — the pages in between need only the four-vectors and contractions already in hand, and the general machinery returns when the transformation laws of *fields* take the stage on the [QFT](qft.md) page.
+A word on scope: the general tensor definition above is the most demanding formalism in the sequence so far, and it is introduced here once — the pages in between need only the four-vectors and contractions already introduced, and the general machinery returns when the transformation laws of *fields* are treated on the [QFT](qft.md) page.
 
 
 ## 7. Mass, Energy
@@ -114,11 +114,11 @@ For a particle at rest ($\mathbf{p} = 0$) this collapses to $E = mc^2$ — rest 
 
 The total relativistic energy $E = \gamma mc^2$ splits into rest energy $mc^2$ and kinetic energy $(\gamma - 1)mc^2$. In the limit $v \ll c$, $\gamma - 1 \approx v^2/2c^2$, so kinetic energy $\to \tfrac{1}{2}mv^2$ — again, Newtonian mechanics is recovered as the low-velocity limit.
 
-The energy–momentum relation is the starting point for relativistic quantum mechanics: replacing $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$ in $E^2 = (mc^2)^2 + (pc)^2$ gives the Klein–Gordon equation, the first attempt at a relativistic wave equation, and the road that eventually leads to the Dirac equation and quantum field theory.
+The energy–momentum relation is the starting point for relativistic quantum mechanics: replacing $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$ in $E^2 = (mc^2)^2 + (pc)^2$ gives the Klein–Gordon equation, the first attempt at a relativistic wave equation, and the development that eventually leads to the Dirac equation and quantum field theory.
 
 ## 8. Maxwell Equations
 
-Section 1 left a claim dangling: the two postulates are "what Maxwell's equations require." The reason is that Maxwell's equations are already Lorentz-covariant — they assemble out of four-vector and tensor objects exactly as §6 prescribes, so they keep the same form in every inertial frame. Special relativity did not fix Maxwell; it was built to accommodate it.
+Section 1 left one claim unproved: the two postulates are "what Maxwell's equations require." The reason is that Maxwell's equations are already Lorentz-covariant — they assemble out of four-vector and tensor objects exactly as §6 specifies, so they keep the same form in every inertial frame. Special relativity did not fix Maxwell; it was built to accommodate it.
 
 In natural units ($c = 1$), the four equations are
 
@@ -126,7 +126,7 @@ $$\nabla \cdot \mathbf{E} = \rho, \qquad \nabla \cdot \mathbf{B} = 0, \qquad \na
 
 Gauss and Ampère involve the sources; Faraday and "no magnetic monopoles" involve only the fields.
 
-The covariant form packages charge density and current into the **four-current** $J^\mu = (\rho, \mathbf{j})$, a four-vector whose divergence vanishes, $\partial_\mu J^\mu = 0$ — the continuity equation. The fields assemble into the **electromagnetic field tensor**, the antisymmetric derivative of the four-potential $A^\mu = (\varphi, \mathbf{A})$:
+The covariant form collects charge density and current into the **four-current** $J^\mu = (\rho, \mathbf{j})$, a four-vector whose divergence vanishes, $\partial_\mu J^\mu = 0$ — the continuity equation. The fields assemble into the **electromagnetic field tensor**, the antisymmetric derivative of the four-potential $A^\mu = (\varphi, \mathbf{A})$:
 
 $$F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & -B_z & B_y \\ E_y & B_z & 0 & -B_x \\ E_z & -B_y & B_x & 0 \end{pmatrix}.$$
 
@@ -140,9 +140,9 @@ $$\mathbf{E}'_\parallel = \mathbf{E}_\parallel, \quad \mathbf{E}'_\perp = \gamma
 
 The classic illustration: a point charge at rest produces a purely electric field; an observer moving past it sees the same $F^{\mu\nu}$ sliced differently and reports a magnetic field as well — which is why moving charges experience magnetic forces in the first place. There is no "real" versus "apparent" field; the frame-invariant reality is the field tensor.
 
-Conversely, the four familiar equations are the **component expansion of the two tensor equations**. In $\partial_\mu F^{\mu\nu} = J^\nu$, the $\nu = 0$ component is Gauss's law $\nabla\cdot\mathbf{E} = \rho$ and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law; in the cyclic identity, the purely spatial index choice $(\lambda\mu\nu) = (123)$ is $\nabla\cdot\mathbf{B} = 0$ and the choices with one temporal index give Faraday's law. Maxwell's equations are not four independent postulates — they are the components of two tensor equations, unpacked in a chosen frame. That is why a boost merely rotates the components into one another (the mixing above) while the equations themselves never change form. The homogeneous pair is automatic: it is an identity once $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ is substituted — the field tensor is the exterior derivative of the four-potential.
+Conversely, the four familiar equations are the **component expansion of the two tensor equations**. In $\partial_\mu F^{\mu\nu} = J^\nu$, the $\nu = 0$ component is Gauss's law $\nabla\cdot\mathbf{E} = \rho$ and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law; in the cyclic identity, the purely spatial index choice $(\lambda\mu\nu) = (123)$ is $\nabla\cdot\mathbf{B} = 0$ and the choices with one temporal index give Faraday's law. Maxwell's equations are not four independent postulates — they are the components of two tensor equations, written out in a chosen frame. That is why a boost merely rotates the components into one another (the mixing above) while the equations themselves never change form. The homogeneous pair is automatic: it is an identity once $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ is substituted — the field tensor is the exterior derivative of the four-potential.
 
-Both tensor equations are contractions of four-vector/tensor objects, hence **manifestly Lorentz-covariant**: by §6 they hold unchanged in every inertial frame, and in particular the wave equation they imply propagates disturbances at exactly $c$ for every observer. That is the precise sense in which Maxwell is compatible with the Lorentz transformation — the equations are *the same* in every frame, not merely similar.
+Both tensor equations are contractions of four-vector/tensor objects, hence **manifestly Lorentz-covariant**: by §6 they hold unchanged in every inertial frame, and in particular in the wave equation they imply, disturbances propagate at exactly $c$ for every observer. That is the precise sense in which Maxwell is compatible with the Lorentz transformation — the equations are *the same* in every frame, not merely similar.
 
 ## 9. Schrödinger Equation
 
@@ -154,6 +154,6 @@ $$i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2 \psi,$$
 
 with a potential term $V(\mathbf{x})\psi$ added by hand for interacting particles. The equation is first order in time but second order in space.
 
-That asymmetry is exactly why it cannot be Lorentz-invariant. The Lorentz scalar built from two derivatives is the d'Alembertian $\partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$, which treats time and space democratically; the Schrödinger operator $i\hbar\partial_t + \tfrac{\hbar^2}{2m}\nabla^2$ has no such four-vector form, so a Lorentz boost does not preserve the equation — observers in relative motion would not agree that it holds.
+That asymmetry is exactly why it cannot be Lorentz-invariant. The Lorentz scalar built from two derivatives is the d'Alembertian $\partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$, which treats time and space alike; the Schrödinger operator $i\hbar\partial_t + \tfrac{\hbar^2}{2m}\nabla^2$ has no such four-vector form, so a Lorentz boost does not preserve the equation — observers in relative motion would not agree that it holds.
 
-Equivalently, look at plane waves $\psi \propto e^{i(\mathbf{p}\cdot\mathbf{x} - Et)/\hbar}$. The equation enforces the dispersion relation $E = \mathbf{p}^2/2m$, which is only approximate: it is the low-velocity limit of the exact relation $E^2 = m^2 + \mathbf{p}^2$ (§7), valid when $|\mathbf{p}| \ll m$. Special relativity demands the second-order Klein–Gordon equation instead — at the price of negative-energy solutions, which point the way to the Dirac equation and antiparticles. The Schrödinger equation is the $v \ll c$ limit of that story, and the starting point of [First Quantization](first-quantization.md).
+Equivalently, look at plane waves $\psi \propto e^{i(\mathbf{p}\cdot\mathbf{x} - Et)/\hbar}$. The equation enforces the dispersion relation $E = \mathbf{p}^2/2m$, which is only approximate: it is the low-velocity limit of the exact relation $E^2 = m^2 + \mathbf{p}^2$ (§7), valid when $|\mathbf{p}| \ll m$. Special relativity requires the second-order Klein–Gordon equation instead — with negative-energy solutions, which led to the Dirac equation and antiparticles. The Schrödinger equation is the $v \ll c$ limit of that development, and the starting point of [First Quantization](first-quantization.md).
