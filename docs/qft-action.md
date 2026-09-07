@@ -1,217 +1,257 @@
 # Quantum Field Theory: Action and Lagrangians
 
-This page continues from [Quantum Field Theory](qft.md). The promoted operators there have their actions assigned, but the theory still needs its dynamics, an algebra for the operators and a Hamiltonian to generate evolution. The classical machinery that supplies both is the principle of least action, taken from particles and extended to fields. The page ends by reading a Lagrangian density off each row of the field table. The Klein–Gordon equation, Maxwell's equations, and the Dirac equation come out as Euler–Lagrange equations of those densities.
+The [Quantum Field Theory page](qft.md) introduced field operators. We now need equations for their evolution and an algebra specifying how they combine.
+
+**Start from a classical action.** Its variation gives the field equations, and its Hamiltonian supplies the generator of time evolution. We will apply this construction to scalar, electromagnetic, and spinor fields, obtaining the Klein–Gordon, Maxwell, and Dirac equations.
 
 ## Principle of Least Action
 
-The [previous page](qft.md) never needed one more piece of classical machinery, but this one does. [Classical Mechanics §2](classical-mechanics.md#_2-lagrangian-and-the-euler-lagrange-derivation) reframed dynamics as optimization. To every path $q(t)$ between fixed endpoints in time it attaches the **action**
+To derive dynamics for the fields introduced on the [previous page](qft.md), begin with the particle construction in [Classical Mechanics §2](classical-mechanics.md#_2-lagrangian-and-the-euler-lagrange-derivation). For a path $q(t)$, define the **action**
 
 $$S[q] = \int_{t_1}^{t_2} L(q, \dot q)\,dt, \qquad L = T - V,$$
 
-and requires that the true path leave $S$ stationary against every variation that leaves the endpoints fixed. The variation itself took two lines. We perturb the path by a small function that vanishes at the endpoints, expand to first order, and integrate the velocity term by parts. The boundary term vanishes because the perturbation vanishes at the endpoints. Demanding that the remainder vanish for every perturbation leaves the Euler–Lagrange equation,
+The physical path makes $S$ **stationary**: its first-order change vanishes for every small variation with fixed endpoints. Despite the name “least action,” the stationary value need not be a minimum.
+
+Perturb $q(t)$, expand the action to first order, and integrate the velocity term by parts. The endpoint condition removes the boundary term. Setting the remaining variation to zero gives
 
 $$\frac{d}{dt}\,\frac{\partial L}{\partial \dot q} - \frac{\partial L}{\partial q} = 0,$$
 
-which is Newton's law in a different form, and the difference matters. The Newtonian formulation names a force and a coordinate, while the Lagrangian formulation names only a scalar $L$. The equation of motion follows mechanically. Nothing in the input refers to vectors, forces, or geometry. A formulation with so little structure transfers to relativity unchanged, and that is exactly what this page needs it for. The promoted theory requires a Hamiltonian, the generator whose commutators defined conservation back in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators) and the thing the negative-energy problem of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability) is about. The Hamiltonian comes from $L$.
+For $L=T-V$, this reproduces Newton's equation. The advantage is that we can derive motion from one scalar function instead of specifying force components separately. We can use the same variational method with a relativistic Lagrangian.
+
+The Lagrangian also determines the Hamiltonian. Its quantum version generates time evolution, as in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators), and its spectrum is central to the negative-energy problem in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
 
 ### From particles to fields
 
-The step to a field changes the integration variable, and that is all it changes. Mechanics solved for $q(t)$, a function of time only, the position of the one unknown. A field solves for the value at every point. In $\phi(t, \mathbf x)$ the $\mathbf x$ is not an unknown but a fixed label, one degree of freedom per point of space. The configuration at one instant is the whole function. What gets integrated is therefore not a function of time but a **Lagrangian density** $\mathcal{L}(\phi, \partial_\mu\phi)$ over all of spacetime,
+**Replace the particle coordinate with a field configuration.** In mechanics, $q(t)$ is the unknown position. For a field $\phi(t,\mathbf x)$, the unknown is the field value at every spatial point; $\mathbf x$ labels those points.
+
+The Lagrangian becomes a spatial integral of a **Lagrangian density** $\mathcal L(\phi,\partial_\mu\phi)$. Integrating over time gives the spacetime action
 
 $$S[\phi] = \int d^4x\;\mathcal{L}(\phi, \partial_\mu\phi),$$
 
-Run the variation in full once, because the field version adds one structural step. Perturb the field by a small function $\delta\phi(x)$ that vanishes on the boundary of the spacetime region. The fixed endpoints of mechanics become a fixed initial configuration, a fixed final configuration, and decay far enough away in space. To first order in the perturbation, the chain rule gives
+Perturb the field by $\delta\phi(x)$, chosen to vanish on the spacetime boundary. This fixes the initial and final configurations and removes spatial boundary contributions. Expanding to first order gives
 
 $$\delta S = \int d^4x\left[\frac{\partial\mathcal{L}}{\partial\phi}\,\delta\phi + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\,\partial_\mu(\delta\phi)\right].$$
 
-The second term still differentiates the perturbation, and the derivative must be taken off it. Integrate that term by parts in each of the four directions. Every pass leaves a total divergence $\partial_\mu(\,\cdot\,\delta\phi)$, which integrates to a surface term over the boundary. The surface term vanishes because $\delta\phi$ vanishes there. What remains is
+**Remove the derivative from the variation.** Integrate the second term by parts in each spacetime direction. The resulting surface term vanishes because $\delta\phi$ is zero on the boundary. We obtain
 
 $$\delta S = \int d^4x\left[\frac{\partial\mathcal{L}}{\partial\phi} - \partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right)\right]\delta\phi.$$
 
-For the particle, the bracket had to vanish at each time, because $\delta q(t)$ was arbitrary at each time. The same requirement now applies point by point through space. Since $\delta\phi$ may perturb one point of the field while leaving all its neighbors fixed, the bracket must vanish at every point of spacetime,
+We can choose $\delta\phi$ freely inside any small region. For the integral to vanish for every such choice, its coefficient must vanish point by point:
 
 $$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0,$$
 
-the Euler–Lagrange equation for a field, the particle's equation with the time derivative replaced by a four-dimensional divergence.
+This is the **Euler–Lagrange equation for a field**. The particle's time derivative has become a spacetime divergence.
 
-The gain from the principle is exactly what the field classification needed, Lorentz invariance built into the derivation rather than checked afterward. Let $\mathcal{L}$ be a Lorentz scalar built from the field and its derivatives. The action is then a single number that every observer agrees on. The stationary configuration cannot depend on a frame, and the equation that comes out is automatically covariant. Each row of the table's wave equations is the Euler–Lagrange equation of the simplest invariant density its field admits: the scalar's $\mathcal{L} = \tfrac{1}{2}\,(\partial_\mu\phi)(\partial^\mu\phi) - \tfrac{m^2}{2\hbar^2}\,\phi^2$ gives the Klein–Gordon equation, the vector's $\mathcal{L} = -\tfrac{1}{4}F^{\mu\nu}F_{\mu\nu}$ gives Maxwell with the massless term, and the spinor's $\mathcal{L} = \bar\psi\,(i\hbar\gamma^\mu\partial_\mu - m)\,\psi$ gives the Dirac equation. The "essentially unique" of the [Fields section](qft.md#fields) becomes a computation here. Write down the simplest scalar density the representation allows, and the wave equation of that row follows.
+**Build Lorentz invariance into the action.** If $\mathcal L$ is a Lorentz scalar, then $S=\int d^4x\,\mathcal L$ has the same value in every inertial frame. Its stationary configurations therefore satisfy covariant field equations.
 
-The Hamiltonian is extracted the same way as in [Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space), with one conjugate momentum per field, $\pi(t, \mathbf x) = \partial\mathcal{L}/\partial\dot\phi$, and the density
+For the scalar, vector, and spinor fields in the [Fields section](qft.md#fields), we will use the simplest standard free-field densities: $\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)-\tfrac{m^2}{2\hbar^2}\phi^2$, $-\tfrac14F^{\mu\nu}F_{\mu\nu}$, and $\bar\psi(i\hbar\gamma^\mu\partial_\mu-m)\psi$. Their variations give the Klein–Gordon, source-free Maxwell, and Dirac equations.
+
+To construct the Hamiltonian, follow [Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space). Define the momentum density conjugate to the field, $\pi(t,\mathbf x)=\partial\mathcal L/\partial\dot\phi$, and take the Legendre transform:
 
 $$\mathcal{H} = \pi\,\dot\phi - \mathcal{L}, \qquad \hat H = \int d^3x\;\mathcal{H},$$
 
-which is the total energy that the quantum theory will inherit as its operator. Here the conflict that the [Fields section](qft.md#fields) exposed must be addressed directly. The asymmetry between $t$ and $\mathbf x$ is real, and the Hamiltonian framework is built on it by design. A state is "the condition of the whole system at an instant," and an initial-value problem needs a distinguished instant. No Lorentz-invariant object supplies one, because a boost maps every slicing of spacetime into a different one. The covariant statement of the theory survives intact. The field equation stays symmetric in $t$ and $\mathbf x$, with one operator $\Box$ and no distinguished time, and the action is a Lorentz scalar with $t$ and $\mathbf x$ contained in a single $d^4x$. The Hamiltonian is what that statement yields after one slicing is chosen. The definition $\pi = \partial\mathcal{L}/\partial\dot\phi$ already picks out a frame's time derivative. Each inertial observer slices the same solution differently and reads off a different pair $(\phi, \pi)$. A change of frame is a rotation of axes in spacetime, and covariance means the physics does not depend on which axes describe it. The split is bookkeeping, exactly as with the two pictures, and both readings come from the same $\mathcal{L}$.
+The spatial integral is the total Hamiltonian; after quantization it becomes the operator $\hat H$.
+
+**The Hamiltonian uses a chosen time coordinate.** As discussed in the [Fields section](qft.md#fields), a state specifies the whole system at one instant. Defining that instant chooses a slicing of spacetime, and $\pi=\partial\mathcal L/\partial\dot\phi$ uses that frame's time derivative.
+
+A boosted observer uses different time slices and hence different functions $(\phi,\pi)$ to describe the same field history. The covariant action and field equations remain valid. The Hamiltonian formulation expresses their evolution relative to the chosen frame.
 
 ### The geometry of H
 
-[Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space) named the arena **state space**. A system's entire condition at one instant is one point of it, and dynamics is the path that point traces. For a field the point has more structure. The mechanical pair $(q, p)$ becomes the pair of functions $(\phi, \pi)$, one $q$ and one $p$ per point of space, with $\pi = \partial\mathcal{L}/\partial\dot\phi$ the field version of $p = \partial L/\partial\dot q$. Freeze $t$ and both become functions of $\mathbf x$ alone. That pair $(\phi(\mathbf x), \pi(\mathbf x))$ is one state, the whole configuration at that instant. The space of all such pairs is infinite-dimensional, and a classical history of the field is a curve in it. What moves the point along the curve is $H$, a single scalar on state space, $H = \int d^3x\,\mathcal{H}$. It is a number attached to every state, the energy. At every point it assigns a direction, the direction the state must next flow. Hamilton's equations state that direction coordinate by coordinate, $\dot\phi = \delta H/\delta\pi$ and $\dot\pi = -\delta H/\delta\phi$, with functional derivatives in place of partial ones and the mechanical equations unchanged in form. Nothing else enters the theory. There is no force and no law beyond the flow that $H$ assigns. The physical histories of the field are the flow lines, so determinism here is geometric. One point determines one arrow, and one arrow determines one curve.
+A point in **state space** specifies the system at one instant, as in [Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space). For a particle it is the pair $(q,p)$. For a field it is the pair of functions $(\phi(\mathbf x),\pi(\mathbf x))$, with one conjugate pair at each spatial point. This state space is infinite-dimensional.
+
+The Hamiltonian $H=\int d^3x\,\mathcal H$ assigns an energy to each configuration. Hamilton's equations give its evolution, $\dot\phi=\delta H/\delta\pi$ and $\dot\pi=-\delta H/\delta\phi$. Here a **functional derivative** measures how $H$ changes when we vary the field function locally.
+
+A field history traces a curve through state space. For a well-posed evolution problem, the initial configuration and momentum determine that curve. The image below illustrates this flow for one oscillator mode.
 
 ![Hamiltonian flow in the $(\phi,\pi)$ plane of one oscillator mode: circles are the states of constant energy, the gray arrows are the directions $H$ assigns, and the orbits close because $H$ is conserved](./manim/hamiltonian-flow.png)
 
-Two readings of $H$ follow from the flow, and the quantum theory will inherit both. $H$ is the **energy**. A density with no explicit time dependence keeps $H$ constant along its own flow, because the curve never changes the value of the function that generates it. Conservation is thereby stated as geometry. $H$ is also the **generator of time translations**. Flowing along the arrows is what moving forward in time means on state space, which is the Noether statement that the symmetry "shift $t$" is carried by the charge $\int d^3x\,\mathcal{H}$. The operator version of the second reading is already on the page. The formula $\hat\phi(t) = e^{i\hat H t/\hbar}\,\hat\phi(0)\,e^{-i\hat H t/\hbar}$, the Heisenberg formula of the [Fields section](qft.md#fields), is conjugation by the generator, the quantum version of flowing along the classical arrows.
+The Hamiltonian has two related roles. It is the **energy**, conserved when there is no explicit time dependence. It also **generates time translations** through Hamilton's equations. Noether's theorem connects these roles: time-translation symmetry gives the conserved energy.
 
-The flow has an algebra, and the algebra is what connects it to the quantum theory. [Classical Mechanics §4](classical-mechanics.md#_4-the-poisson-bracket) paired any two observables on state space with a bracket $\{\cdot, \cdot\}$, which measures how the flow generated by one displaces the other, and compressed the dynamics to a single line, $\dot F = \{F, H\}$. [First Quantization](first-quantization.md) then fixed the bracket's quantum replacement, $\{\cdot, \cdot\} \to \tfrac{1}{i\hbar}[\hat{\cdot}, \hat{\cdot}]$, a rule whose one known case was $\{x, p\} = 1 \to [\hat x, \hat p] = i\hbar$. Running the rule on the field, where $\phi$ and $\pi$ are conjugate at every point of space, states the answer to the algebra question that the [previous page](qft.md) opened with. The rule gives $[\hat\phi(t, \mathbf x), \hat\pi(t, \mathbf x')] = i\hbar\,\delta^3(\mathbf x - \mathbf x')$, and mode by mode, with each momentum $\mathbf k$ of the free field an oscillator on its own, the oscillator algebra $[\hat a(\mathbf k), \hat a^\dagger(\mathbf k')] \propto \delta^3(\mathbf k - \mathbf k')$. We state both lines here rather than prove them. The rule has one worked case, $[x, p] = i\hbar$, and the step from a single oscillator to a field's oscillator at every momentum has not been carried out. [Field Quantization](field-quantization.md) carries out that step, expanding the field in its modes and running the commutator through the expansion, so the two lines return there with their derivation attached. They are the commutators the promotion's operators will obey, and the construction does not postulate this algebra. It confirms it. The half-integer rows will repeat the derivation with the bracket's graded replacement, which is where the choice reopens and the spin-statistics question of the previous page is settled.
+After quantization, Heisenberg evolution takes the form $\hat\phi(t)=e^{i\hat Ht/\hbar}\hat\phi(0)e^{-i\hat Ht/\hbar}$ from the [Fields section](qft.md#fields). This is the operator version of classical Hamiltonian evolution.
+
+**Quantization also changes the algebra.** [Classical Mechanics §4](classical-mechanics.md#_4-the-poisson-bracket) expressed evolution through the Poisson bracket, $\dot F=\{F,H\}$ for an observable with no explicit time dependence. [First Quantization](first-quantization.md) introduced its canonical quantum replacement, $\{\cdot,\cdot\}\to[\hat{\cdot},\hat{\cdot}]/(i\hbar)$, giving $[\hat x,\hat p]=i\hbar$.
+
+Apply that prescription to the conjugate fields at equal time. We get $[\hat\phi(t,\mathbf x),\hat\pi(t,\mathbf x')]=i\hbar\delta^3(\mathbf x-\mathbf x')$. The delta function expresses the local pairing of field and momentum. Expanding in oscillator modes then gives $[\hat a(\mathbf k),\hat a^\dagger(\mathbf k')]\propto\delta^3(\mathbf k-\mathbf k')$.
+
+These are the operator relations needed on the [previous page](qft.md). [Field Quantization](field-quantization.md) derives the mode algebra from the canonical field commutator and fixes its normalization. Canonical quantization supplies the starting prescription; it is not itself a consequence of classical mechanics. For half-integer-spin fields, we will use anticommutators and examine their relation to spin and statistics.
 
 ## Lagrangians of QFT
 
 ### Klein Gordon
 
-The simplest relativistic field is a scalar field $\phi(x)$, uncharged and massive. Its Lagrangian density is
+Begin with a real scalar field $\phi(x)$ of mass $m$. Its free Lagrangian density is
 
 $$\mathcal{L} = \frac{1}{2}(\partial_\mu\phi)(\partial^\mu\phi) - \frac{m^2}{2\hbar^2}\phi^2,$$
 
-where the first term is the kinetic density and the second the mass term. The notation is compact, so expand it with indices,
+The derivative term describes variations in spacetime, and the second term contains the mass. To interpret the derivative term, expand its repeated index:
 
 $$(\partial_\mu\phi)(\partial^\mu\phi) = \sum_{\mu=0}^{3} \partial_\mu\phi\,\partial^\mu\phi,$$
 
-then recall from [Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance) that $\partial^\mu = g^{\mu\nu}\partial_\nu$ where $g^{\mu\nu} = \text{diag}(1, -1, -1, -1)$ is the Minkowski metric. Write out the sum explicitly, with $\partial_0 = \partial_t$ and $\partial_i = \partial_{x^i}$ for $i=1,2,3$,
+Raise an index with the Minkowski metric, $\partial^\mu=g^{\mu\nu}\partial_\nu$, as in [Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance). With $g^{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$, $\partial_0=\partial_t$, and $\partial_i=\partial_{x^i}$, the sum is
 
 $$(\partial_\mu\phi)(\partial^\mu\phi) = (\partial_t\phi)(\partial_t\phi) + (\partial_1\phi)(-\partial_1\phi) + (\partial_2\phi)(-\partial_2\phi) + (\partial_3\phi)(-\partial_3\phi) = \dot\phi^2 - (\nabla\phi)^2,$$
 
-combining the spatial derivatives into the squared gradient.
+Here $(\nabla\phi)^2$ is the sum of the squares of the three spatial derivatives.
 
-To find the equation of motion, apply the Euler–Lagrange formula,
+**Differentiate the density to find the motion.** Use
 
 $$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0.$$
 
-For the gradient derivative, expand $(\partial^\mu\phi) = g^{\mu\nu}\partial_\nu\phi$ so that the kinetic term is built from one kind of object, then differentiate by the product rule. The rule gives two terms, and they are equal because $g^{\mu\nu}$ is symmetric:
+First differentiate with respect to $\partial_\mu\phi$. Rewrite the kinetic term with the metric so that both factors use lower-index derivatives. The product rule gives two equal terms because $g^{\mu\nu}$ is symmetric:
 
 $$\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)} = \frac{1}{2}\,g^{\mu\nu}\partial_\nu\phi + \frac{1}{2}\,g^{\nu\mu}\partial_\nu\phi = g^{\mu\nu}\partial_\nu\phi = \partial^\mu\phi.$$
 
-The tempting shortcut treats $\partial_\mu\phi$ and $\partial^\mu\phi$ as independent variables, so that only one product term survives. It fails, because the metric relates them and both terms count. The factor of two is what the kinetic term's $\tfrac{1}{2}$ is there to cancel.
+Both derivative factors contribute. Treating $\partial_\mu\phi$ and $\partial^\mu\phi$ as independent would miss one term, because the metric relates them. Their factor of two cancels the $\tfrac12$ in the density.
 
-The mass term carries no derivatives, so this is the whole gradient derivative. Now apply $\partial_\mu$, the divergence in spacetime:
+The mass term has no field derivatives. Applying the spacetime divergence to the result therefore gives
 
 $$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right) = \partial_\mu\partial^\mu\phi = \Box\phi = \ddot\phi - \nabla^2\phi,$$
 
-with $\Box = \partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$ the **d'Alembertian**[^square-vs-iterate], the four-dimensional Laplacian of Minkowski space.
+The operator $\Box=\partial_t^2-\nabla^2$ is the **d'Alembertian**[^square-vs-iterate], the Minkowski-space counterpart of the Laplacian.
 
-[^square-vs-iterate]: $\ddot\phi - \nabla^2\phi$ here is not the kinetic density $\dot\phi^2 - (\nabla\phi)^2$ above, though the notation looks similar. A superscript $2$ on a value squares it: $(\nabla\phi)^2 = \nabla\phi\cdot\nabla\phi$, first derivatives multiplied together; on an operator it iterates: $\nabla^2\phi = \nabla\cdot(\nabla\phi)$, a second derivative applied once. The kinetic density is the input to the Euler–Lagrange step, and $\Box\phi$ is what comes out.
+[^square-vs-iterate]: Distinguish a squared derivative value from a repeated derivative. $(\nabla\phi)^2=\nabla\phi\cdot\nabla\phi$ multiplies first derivatives. By contrast, $\nabla^2\phi=\nabla\cdot(\nabla\phi)$ takes a second derivative. The Lagrangian contains the former; varying it produces the latter.
 
-Next, the derivative with respect to $\phi$ itself,
+Now differentiate the mass term with respect to the field value:
 
 $$\frac{\partial\mathcal{L}}{\partial\phi} = -\frac{m^2}{\hbar^2}\phi.$$
 
-Substituting into the Euler–Lagrange equation,
+Substitute both derivatives into the Euler–Lagrange equation:
 
 $$\Box\phi + \frac{m^2}{\hbar^2}\phi = 0,$$
 
-which is the **Klein–Gordon equation**, the simplest relativistic wave equation for a scalar field. [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon) met it already and rejected it as a single-particle wave equation. The equation is second order in time and space alike, because both derivatives are squared inside the d'Alembertian $\Box$. Initial data for $\phi$ and $\dot\phi$ at one time therefore determines the solution everywhere, and disturbances propagate within the light cone.
+This is the **Klein–Gordon equation**. [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon) introduced it and explained the difficulty of treating it as a single-particle probability equation. Here it governs a field.
+
+Because it is second order in time, initial data must specify both $\phi$ and $\dot\phi$. With suitable boundary conditions, those data determine the evolution, with disturbances propagating within the light cone.
 
 ### Maxwell
 
-The table's second row is the vector, the four-potential $A^\mu(x)$, which is massless. Its density is built from the field tensor of [Special Relativity §8](special-relativity.md#_8-maxwell-equations) rather than from $A^\mu$ directly:
+For electromagnetism, use the four-potential $A^\mu(x)$. Build its free density from the field tensor introduced in [Special Relativity §8](special-relativity.md#_8-maxwell-equations):
 
 $$\mathcal{L} = -\frac{1}{4}\,F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
 
-The density has one term, which is purely kinetic. The scalar's mass term has no counterpart here, and the computation below will show exactly where such a term would enter.
+This density contains derivatives of the potential and no mass term. We will see how that absence enters the field equation.
 
-The Euler–Lagrange formula runs on the four components $A_\nu$ of the potential. Its first input is the derivative with respect to $\partial_\mu A_\nu$, and the chain rule makes each of the two $F$ factors contribute:
+Apply the Euler–Lagrange equation to each component $A_\nu$. First differentiate with respect to $\partial_\mu A_\nu$. Both factors of $F$ contribute:
 
 $$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\left[\frac{\partial F_{\rho\sigma}}{\partial(\partial_\mu A_\nu)}\,F^{\rho\sigma} \;+\; F_{\rho\sigma}\,\frac{\partial F^{\rho\sigma}}{\partial(\partial_\mu A_\nu)}\right].$$
 
-Both component derivatives are built from deltas, and the first is worth writing out in detail, since differentiating through an index structure is new. The variable is the collection $\partial_\mu A_\nu$ of sixteen independent numbers, and $F_{\rho\sigma} = \partial_\rho A_\sigma - \partial_\sigma A_\rho$ contains exactly two of them. These are its own $(\rho, \sigma)$ entry with coefficient $+1$ and its transposed $(\sigma, \rho)$ entry with coefficient $-1$. Asking how $F_{\rho\sigma}$ responds to a change in the one entry $\partial_\mu A_\nu$ therefore has a three-way answer: $+1$ when $(\mu, \nu) = (\rho, \sigma)$, $-1$ when $(\mu, \nu) = (\sigma, \rho)$, and $0$ otherwise. Kronecker deltas combine the three cases into one formula, because $\delta^\mu_\rho\,\delta^\nu_\sigma$ equals $1$ only when both indices match, which happens only in the first case, and $\delta^\mu_\sigma\,\delta^\nu_\rho$ only in the second:
+**Differentiate one tensor component at a time.** Treat the sixteen entries $\partial_\mu A_\nu$ as independent variables for this partial derivative. The component $F_{\rho\sigma}=\partial_\rho A_\sigma-\partial_\sigma A_\rho$ depends on two entries, with coefficients $+1$ and $-1$.
+
+A Kronecker delta is $1$ when its indices match and $0$ otherwise. The derivative is therefore
 
 $$\frac{\partial F_{\rho\sigma}}{\partial(\partial_\mu A_\nu)} = \delta^\mu_\rho\,\delta^\nu_\sigma - \delta^\mu_\sigma\,\delta^\nu_\rho.$$
 
-As a concrete check, take $(\rho, \sigma) = (0, 1)$. The component $F_{01} = \partial_0 A_1 - \partial_1 A_0$ responds to $\partial_0 A_1$ with $+1$, to $\partial_1 A_0$ with $-1$, and to every other entry with $0$, which is exactly what the delta combination returns. Differentiating the raised-index copy gives the same deltas with indices raised, because the constant metric does nothing but raise indices,
+For example, $F_{01}=\partial_0 A_1-\partial_1 A_0$ has derivative $+1$ with respect to $\partial_0 A_1$, derivative $-1$ with respect to $\partial_1 A_0$, and zero for all other entries.
+
+Raising the indices with the constant metric gives the second derivative:
 
 $$\frac{\partial F^{\rho\sigma}}{\partial(\partial_\mu A_\nu)} = g^{\rho\mu}\,g^{\sigma\nu} - g^{\rho\nu}\,g^{\sigma\mu}.$$
 
-Each delta combination contracts one antisymmetric pair against another. The first gives
+Contract the first result with $F^{\rho\sigma}$. Antisymmetry, $F^{\nu\mu}=-F^{\mu\nu}$, gives
 
 $$(\delta^\mu_\rho\,\delta^\nu_\sigma - \delta^\mu_\sigma\,\delta^\nu_\rho)\,F^{\rho\sigma} = F^{\mu\nu} - F^{\nu\mu} = 2F^{\mu\nu},$$
 
-and the second acts identically on the lowered copy,
+The raised-index derivative gives the same result:
 
 $$F_{\rho\sigma}\,(g^{\rho\mu}\,g^{\sigma\nu} - g^{\rho\nu}\,g^{\sigma\mu}) = F^{\mu\nu} - F^{\nu\mu} = 2F^{\mu\nu},$$
 
-the antisymmetry making each difference equal to twice the tensor. Substituting both,
+Each product contributes $2F^{\mu\nu}$. Substituting both into the density derivative gives
 
 $$\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)} = -\frac{1}{4}\,\big[2F^{\mu\nu} + 2F^{\mu\nu}\big] = -F^{\mu\nu}.$$
 
-The formula's second input is the derivative with respect to $A_\nu$ itself. Every factor of the density is built from derivatives of the potential, so this derivative vanishes:
+Next differentiate with respect to $A_\nu$ itself. The density depends only on its derivatives, so
 
 $$\frac{\partial\mathcal{L}}{\partial A_\nu} = 0.$$
 
-The vanishing is the empty slot promised above. A mass term, the vector analogue of the scalar's $-\tfrac{m^2}{2\hbar^2}\phi^2$, would contribute exactly here, and the density has none.
+A mass term proportional to $A_\nu A^\nu$ would contribute here and change the equation to the massive-vector, or Proca, equation. The electromagnetic density has no such term.
 
-Recall the formula and substitute both inputs,
+**Combine the two derivatives.** The Euler–Lagrange equation becomes
 
 $$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu A_\nu)}\right) - \frac{\partial\mathcal{L}}{\partial A_\nu} \;=\; \partial_\mu\big(-F^{\mu\nu}\big) - 0 \;=\; 0.$$
 
-The second term is the absent mass term, zero by the vanishing shown above. The first carries only a constant overall sign, and the linearity of $\partial_\mu$ lets the sign be moved outside:
+The derivative with respect to $A_\nu$ is zero. Removing the overall minus sign from the remaining term gives
 
 $$\partial_\mu F^{\mu\nu} = 0,$$
 
-which is [§8](special-relativity.md#_8-maxwell-equations)'s $\partial_\mu F^{\mu\nu} = J^\nu$ with the current set to zero. The $\nu = 0$ component is Gauss's law, and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law.
+This is the source-free version of $\partial_\mu F^{\mu\nu}=J^\nu$ from [§8](special-relativity.md#_8-maxwell-equations). The component $\nu=0$ gives Gauss's law; the three spatial components give Ampère–Maxwell's law. The other two Maxwell equations follow from the definition of $F_{\mu\nu}$ in terms of $A_\mu$.
 
 
 ### Dirac
 
-The table's third row is the **spinor**, a field $\psi(x)$ that transforms by $S(\Lambda)$ ([§5](dirac-equation.md#_5-spinors-transformations)). It is massive and charged, and its four complex components carry over from [The Dirac Equation](dirac-equation.md). The word needs an introduction. *Scalar* and *vector* belong to school mathematics, but *spinor* was invented for exactly this object, as *spin* plus the *-or* of vector and tensor. Ehrenfest coined the word in 1928, and van der Waerden's spinor analysis (1929) made it standard. In the table, spin is the output. One transformation law gives one spin. The actual order of discovery was the reverse. Spin came first, in the spectroscopy of 1925, and the transformation law was built to carry it.
+The **spinor** $\psi(x)$ has four complex components and transforms between frames by the matrix $S(\Lambda)$ from [§5](dirac-equation.md#_5-spinors-transformations). [The Dirac Equation](dirac-equation.md) introduced this field for massive spin-$\tfrac12$ particles; it can also carry charge.
 
-A Lagrangian density pairs the field with itself, and the pairing must be a Lorentz scalar for the action to be frame-independent. The plain dagger contraction $\psi^\dagger\psi$ is the natural candidate, so the first task is to test it against a change of frame.
+The name combines “spin” with the ending of “vector” and “tensor.” Ehrenfest introduced it in 1928, and van der Waerden's 1929 spinor analysis established the terminology. Historically, the evidence for spin preceded this mathematical description.
 
-The spinor transforms as $\psi'(x') = S(\Lambda)\,\psi(x)$, so the plain contraction transforms as
+**First find a Lorentz-invariant pairing.** The Lagrangian must be a scalar. A candidate is $\psi^\dagger\psi$, so test whether it has the same value in every frame.
+
+Using $\psi'(x')=S(\Lambda)\psi(x)$, we obtain
 
 $$\psi'^\dagger\,\psi' = \psi^\dagger\,S^\dagger S\,\psi,$$
 
-and for this to equal $\psi^\dagger\psi$ in every frame, $S$ would have to be unitary. The spinor representation of the Lorentz group is not. Rotations are represented unitarily because the rotation parameter is an angle, and angles are periodic. Compose enough copies of a rotation and you return to the identity. The matrix is $S = e^{-i\theta\Sigma/2}$[^op-exp], the same construction as the time-evolution operator $e^{-i\hat Ht/\hbar}$ of [First Quantization](first-quantization.md). Each is the exponential of $i$ times a Hermitian generator. An exponential of that form is unitary, because daggering flips the sign of the $i$. The dagger of the matrix carries the opposite exponent, which is its inverse: $(e^{-i\theta\Sigma/2})^\dagger = e^{+i\theta\Sigma/2} = (e^{-i\theta\Sigma/2})^{-1}$. Hence $S^\dagger S = 1$. Boost parameters are not periodic. Composing two boosts adds their rapidities, and no finite rapidity reproduces the identity. The periodicity argument therefore does not carry over.
+For this to equal $\psi^\dagger\psi$, we would need $S^\dagger S=1$, or **unitarity**. Spatial rotations satisfy this: their spinor matrices have the form $S=e^{-i\theta\Sigma/2}$[^op-exp], with a Hermitian generator $\Sigma$. Taking the adjoint reverses the exponent, so $S^\dagger=S^{-1}$.
 
-Since [§5](dirac-equation.md#_5-spinors-transformations) sits several sections back, recall what $S$ is. It is the matrix of numbers that carries the spinor's four components between frames, $\psi'(x') = S(\Lambda)\,\psi(x)$, which is the spinor's counterpart of the matrix $\Lambda^\mu{}_\nu$ acting on vectors. The rotation above was its matrix for a rotated frame. Along one axis, a boosted frame acts on the spinor as
+This is the same exponential construction used for $e^{-i\hat Ht/\hbar}$ in [First Quantization](first-quantization.md). Lorentz boosts, however, do not act unitarily on the finite spinor components. We can check this directly.
+
+The matrix $S$ acts on spinor components, just as $\Lambda^\mu{}_\nu$ acts on vector components. For a boost along the first spatial axis, [§5](dirac-equation.md#_5-spinors-transformations) gives
 
 $$S = \cosh\frac{\varphi}{2} - \alpha^1\sinh\frac{\varphi}{2} = e^{-\varphi\alpha^1/2},$$
 
-with $\alpha^1 = \gamma^0\gamma^1$ and $\tanh\varphi = v$.
+Here $\alpha^1=\gamma^0\gamma^1$ is Hermitian, and the **rapidity** $\varphi$ satisfies $\tanh\varphi=v$.
 
-Both pieces of the display come out of [§5](dirac-equation.md#_5-spinors-transformations)'s general formula, $S(\Lambda) = \exp(-\frac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$. That page's extra subsection carries out the reduction from $\omega_{01}$ and $\sigma^{01}$ to the exponential and expands the power series, so this section quotes the result.
+This follows from the general expression $S(\Lambda)=\exp(-\tfrac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$ in [§5](dirac-equation.md#_5-spinors-transformations), which also derives the hyperbolic-function expansion.
 
-The exponential is the rotation's with the $i$ missing. The exponent is Hermitian, not anti-Hermitian, with the real eigenvalues $\pm\varphi/2$ in place of imaginary ones. Therefore $S$ is Hermitian rather than unitary, $S^\dagger S = S^2 = e^{-\varphi\alpha^1} \neq 1$, and $\psi^\dagger\psi$ takes different values in different frames. In the single-particle theory it was the probability density. Densities are not invariants, because a boost dilates them.
+The boost exponent has no factor of $i$. Because $\alpha^1$ is Hermitian, $S$ is Hermitian and $S^\dagger S=S^2=e^{-\varphi\alpha^1}\ne1$ for a nonzero boost. Thus $\psi^\dagger\psi$ is not a Lorentz scalar.
 
-[^op-exp]: The exponential of an operator is defined by the same power series as the number: $e^A = 1 + A + A^2/2! + A^3/3! + \cdots$. Two properties follow from the series, and both use the fact that $A$ commutes with every power of itself. Multiplying the two series term by term gives $e^A e^{-A} = 1$, so $e^{-A}$ is the inverse of $e^A$. Daggering term by term gives $(e^A)^\dagger = e^{A^\dagger}$. For $A = -i\theta\Sigma/2$ with $\Sigma$ Hermitian, $A^\dagger = -A$ and $(e^A)^\dagger = e^{-A} = (e^A)^{-1}$, which is the unitarity used in the text.
+In single-particle Dirac theory, this quantity is a probability density, the time component of a current. A boost mixes that density with the spatial current, so its value can change between frames.
 
-The pairing is corrected by inserting $\gamma^0$ between the two factors, which defines the **adjoint** $\bar\psi = \psi^\dagger\gamma^0$. The transformed adjoint follows from one identity,
+[^op-exp]: Define a matrix or operator exponential by $e^A=1+A+A^2/2!+A^3/3!+\cdots$. The series gives $e^Ae^{-A}=1$ and $(e^A)^\dagger=e^{A^\dagger}$. If $A^\dagger=-A$, then $(e^A)^\dagger=e^{-A}=(e^A)^{-1}$, so the exponential is unitary.
+
+**Insert $\gamma^0$ to obtain an invariant pairing.** Define the **Dirac adjoint** $\bar\psi=\psi^\dagger\gamma^0$. The useful transformation identity is
 
 $$S^\dagger\,\gamma^0 = \gamma^0\,S^{-1}:$$
 
-Rotations satisfy it because they are unitary and commute with $\gamma^0$, and boosts satisfy it because $\gamma^0$ anticommutes with $\alpha^1$. Conjugation flips the sign of the exponent, $\gamma^0 S \gamma^0 = S^{-1}$, while Hermiticity makes the dagger redundant, $S^\dagger = S$. The adjoint therefore transforms as
+For rotations, this follows from unitarity and commutation with $\gamma^0$. For the boost above, $\gamma^0$ anticommutes with $\alpha^1$, so $\gamma^0S\gamma^0=S^{-1}$; also $S^\dagger=S$. The adjoint therefore transforms as
 
 $$\bar\psi' = \psi'^\dagger\gamma^0 = \psi^\dagger S^\dagger\gamma^0 = \bar\psi\,S^{-1},$$
 
-and the contraction comes out invariant,
+The transformation matrices now cancel in the pairing:
 
 $$\bar\psi'\,\psi' = \bar\psi\,S^{-1}S\,\psi = \bar\psi\,\psi.$$
 
-The inserted $\gamma^0$ is the spinor's metric. As $g^{\mu\nu}$ pairs $\partial_\mu\phi$ with $\partial^\mu\phi$ into a scalar, $\gamma^0$ converts $\psi^\dagger$ into the object $\bar\psi$ whose pairing with $\psi$ gives the same number in every frame.
+The matrix $\gamma^0$ thus serves as the invariant pairing matrix for spinors. Its role here is analogous to the Minkowski metric in vector contractions: $\bar\psi\psi$ has the same value in every frame.
 
-With the invariant pairing in hand, the density is
+We can now write the free Dirac density:
 $$\mathcal{L} = \bar\psi\,(i\hbar\,\gamma^\mu\partial_\mu - m)\,\psi = i\hbar\,\bar\psi\gamma^\mu\,\partial_\mu\psi - m\,\bar\psi\psi,$$
 
-with the kinetic density first and the mass term second. The kinetic contraction carries no metric to expand, unlike the scalar's $(\partial_\mu\phi)(\partial^\mu\phi)$. The $\gamma^\mu$ themselves transform as a vector ([§5](dirac-equation.md#_5-spinors-transformations)), so $\gamma^\mu\partial_\mu$ is a direct vector-on-covector contraction with the metric pre-absorbed in the matrices,
+The first term is kinetic and the second is the mass term. The gamma-matrix transformation identity from [§5](dirac-equation.md#_5-spinors-transformations) makes $\gamma^\mu\partial_\mu\psi$ transform as a spinor, so pairing it with $\bar\psi$ gives a scalar.
+
+Expanding the repeated index gives
 
 $$i\hbar\,\gamma^\mu\partial_\mu\psi = i\hbar\,(\gamma^0\,\partial_t + \gamma^1\,\partial_{x^1} + \gamma^2\,\partial_{x^2} + \gamma^3\,\partial_{x^3})\,\psi,$$
 
-and no sign flip appears on the spatial terms.
+No additional minus sign belongs in the spatial terms: the contraction already uses the upper-index matrices $\gamma^\mu$ and lower-index derivatives $\partial_\mu$.
 
-Every term of the density is of the form $\bar\psi(\cdots)\psi$. The kinetic term pairs $\bar\psi$ with $\gamma^\mu\partial_\mu\psi$, and the mass term pairs it with $\psi$ itself. Only $\bar\psi$-pairings give Lorentz scalars, and the action must be a scalar for the least-action principle to be frame-independent. The invariant pairing is therefore what makes both terms admissible. That is the adjoint's entire purpose, fulfilled before the variation starts. What follows is pure mechanics.
+Both terms now have the form $\bar\psi(\cdots)\psi$ and are Lorentz scalars. We can vary the action to obtain their equations of motion.
 
-The Euler–Lagrange formula applies to each component of each input, and the density has two inputs, $\psi$ and $\bar\psi$. Varying them independently looks unjustified, because one is built from the other. But it is the variational principle's standard bookkeeping. [Classical Mechanics §2](classical-mechanics.md#_2-lagrangian-and-the-euler-lagrange-derivation) already treated $q$ and $\dot q$ as separate coordinates of $\mathcal{L}(q, \dot q)$ even though a derivative relates them. For a complex field the same freedom appears as independence of value and conjugate, since the real and imaginary parts are the true independent data.
+**Vary $\psi$ and $\bar\psi$ separately.** For a complex field, varying its real and imaginary parts is equivalent to treating the field and its complex conjugate as independent variables during differentiation. Since $\bar\psi=\psi^\dagger\gamma^0$ differs from the conjugate by an invertible constant matrix, we can use $\psi$ and $\bar\psi$ instead.
 
-Vary $\bar\psi$ first. No term of $\mathcal{L}$ contains a derivative of $\bar\psi$, so the $\partial_\mu(\cdot)$ piece of the formula contributes nothing. The equation reduces to the algebraic statement
+This is a choice of variables in the variational calculation. We then apply the Euler–Lagrange method introduced in [Classical Mechanics §2](classical-mechanics.md#_2-lagrangian-and-the-euler-lagrange-derivation) to each component.
+
+Start with $\bar\psi$. There is no derivative of $\bar\psi$ in this density, so its Euler–Lagrange equation reduces to
 
 $$\frac{\partial\mathcal{L}}{\partial\bar\psi} = (i\hbar\,\gamma^\mu\partial_\mu - m)\,\psi = 0,$$
 
-which is the **Dirac equation**, obtained with none of the previous sections' work, no metric expansion and no product rule. The reason is that the equation is first order in the derivatives. The kinetic density is linear in $\partial_\mu\psi$, so the variation takes a coefficient rather than expanding a square.
+This is the **Dirac equation**. The kinetic term is linear in $\partial_\mu\psi$, so the variation leaves a first-order differential equation.
 
-Now vary $\psi$, which appears in the derivative terms. The kinetic term's derivative is its coefficient. The dependence is linear again, so no factor of two appears and there is no $\tfrac12$ to cancel:
+Next vary $\psi$. Differentiating its derivative term and mass term gives
 
 $$\frac{\partial\mathcal{L}}{\partial(\partial_\mu\psi)} = i\hbar\,\bar\psi\gamma^\mu, \qquad\qquad \frac{\partial\mathcal{L}}{\partial\psi} = -m\,\bar\psi.$$
 
-Feed both derivatives into the formula and apply $\partial_\mu$. The $\gamma^\mu$ are constant matrices, so the product rule passes through them:
+Insert both expressions into the Euler–Lagrange equation. Since the gamma matrices are constant, the spacetime derivative acts only on $\bar\psi$:
 
 $$i\hbar\,(\partial_\mu\bar\psi)\,\gamma^\mu + m\,\bar\psi = 0,$$
 
-which is the **adjoint equation**. It is not new physics but the Dirac equation's conjugate, which we could obtain by daggering the equation and multiplying by $\gamma^0$. Here it is obtained directly, as the second variation's output, mirroring the first's.
+This is the **adjoint Dirac equation**. We could also obtain it by taking the adjoint of the Dirac equation and multiplying by $\gamma^0$. The two variations give mutually conjugate equations.
 
-The equation is first order in time and space alike, which was the requirement of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). Covariance forces space to enter at the same order as time. The initial data is therefore $\psi$ at one instant alone, with no $\dot\psi$ beside it. This is the factoring of the Klein–Gordon operator that [The Dirac Equation](dirac-equation.md) performed, recovered as the structure of the density.
+The Dirac equation is first order in both time and space, as sought in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). Initial data specify $\psi$ at one instant; an independent $\dot\psi$ is unnecessary. This Lagrangian therefore reproduces the first-order dynamics constructed by factoring the Klein–Gordon operator in [The Dirac Equation](dirac-equation.md).

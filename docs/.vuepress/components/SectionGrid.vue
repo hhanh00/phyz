@@ -3,73 +3,73 @@ const groups = [
   {
     number: '01',
     name: 'Foundations',
-    desc: 'States, operators, and discrete energy.',
+    desc: 'Describe motion, then introduce quantum states and energy levels.',
     color: '#2563eb',
     soft: '#dbeafe',
     items: [
-      { number: '01', title: 'Classical Mechanics', desc: 'From Newton’s laws to motion through phase space.', link: '/classical-mechanics.html', symbol: 'q, p' },
-      { number: '02', title: 'First Quantization', desc: 'Replace classical coordinates with operators and commutators.', link: '/first-quantization.html', symbol: '[x̂, p̂]' },
-      { number: '03', title: 'Harmonic Oscillator', desc: 'Use ladder operators to uncover a spectrum of quanta.', link: '/harmonic-oscillator.html', symbol: 'a†' },
+      { number: '01', title: 'Classical Mechanics', desc: 'Describe motion with position and momentum, then derive Hamilton’s equations.', link: '/classical-mechanics.html', symbol: 'q, p' },
+      { number: '02', title: 'First Quantization', desc: 'Represent position and momentum as operators acting on quantum states.', link: '/first-quantization.html', symbol: '[x̂, p̂]' },
+      { number: '03', title: 'Harmonic Oscillator', desc: 'Calculate equally spaced energy levels with creation and annihilation operators.', link: '/harmonic-oscillator.html', symbol: 'a†' },
     ],
   },
   {
     number: '02',
     name: 'Relativity',
-    desc: 'Spacetime, relativistic wave equations, and spinors.',
+    desc: 'Apply special relativity to quantum wave equations.',
     color: '#7c3aed',
     soft: '#ede9fe',
     items: [
-      { number: '04', title: 'Special Relativity', desc: 'See how boosts, intervals, and light cones organize spacetime.', link: '/special-relativity.html', symbol: 'xμ' },
-      { number: '05', title: 'Relativistic QM', desc: 'Meet the Klein–Gordon equation and the problem it exposes.', link: '/relativistic-qm.html', symbol: '□ + m²' },
-      { number: '06', title: 'The Dirac Equation', desc: 'Bring spinors, antiparticles, and negative energy into view.', link: '/dirac-equation.html', symbol: 'γμ' },
+      { number: '04', title: 'Special Relativity', desc: 'Relate measurements in moving frames using Lorentz transformations.', link: '/special-relativity.html', symbol: 'xμ' },
+      { number: '05', title: 'Relativistic QM', desc: 'Derive a relativistic wave equation and examine its probability density.', link: '/relativistic-qm.html', symbol: '□ + m²' },
+      { number: '06', title: 'The Dirac Equation', desc: 'Derive the electron’s wave equation and interpret its spinor solutions.', link: '/dirac-equation.html', symbol: 'γμ' },
     ],
   },
   {
     number: '03',
     name: 'Quantum fields',
-    desc: 'Fields, actions, and quantization.',
+    desc: 'Describe particles as quanta of fields.',
     color: '#059669',
     soft: '#d1fae5',
     items: [
-      { number: '07', title: 'Fields and Quanta', desc: 'Let field operators create and destroy particles.', link: '/qft.html', symbol: 'φ̂(x)' },
-      { number: '08', title: 'Action and Lagrangians', desc: 'Move from field equations to actions and conserved structure.', link: '/qft-action.html', symbol: 'ℒ' },
-      { number: '09', title: 'Field Quantization', desc: 'Assemble the free scalar field from infinitely many oscillators.', link: '/field-quantization.html', symbol: '∫d³p' },
+      { number: '07', title: 'Fields and Quanta', desc: 'Use quantum fields to describe states with different particle numbers.', link: '/qft.html', symbol: 'φ̂(x)' },
+      { number: '08', title: 'Action and Lagrangians', desc: 'Derive field equations and conserved quantities from an action.', link: '/qft-action.html', symbol: 'ℒ' },
+      { number: '09', title: 'Field Quantization', desc: 'Quantize free scalar and spinor fields, then calculate their propagators.', link: '/field-quantization.html', symbol: '∫d³p' },
     ],
   },
   {
     number: '04',
     name: 'Quantum Electrodynamics',
-    desc: 'Electromagnetic interactions and scattering amplitudes.',
+    desc: 'Calculate how electrons and photons interact.',
     color: '#d97706',
     soft: '#fef3c7',
     items: [
-      { number: '10', title: 'Quantum Electrodynamics', desc: 'Connect photons and electrons through the electromagnetic field.', link: '/qed.html', symbol: 'eAμ' },
-      { number: '11', title: 'From Lagrangian to Experiment', desc: 'See how a Lagrangian becomes the cross section an experiment measures.', link: '/lagrangian-to-experiment.html', symbol: 'L → σ' },
-      { number: '12', title: 'Perturbation Theory', desc: 'Expand the S-matrix in the coupling so the Lagrangian yields diagram rules.', link: '/perturbation-theory.html', symbol: '⟨f|S|i⟩' },
-      { number: '13', title: 'Feynman Rules for QED', desc: 'Turn the Lagrangian into rules that compute scattering amplitudes.', link: '/feynman-rules.html', symbol: 'iℳ' },
+      { number: '10', title: 'Quantum Electrodynamics', desc: 'Derive the electron–photon coupling from local phase symmetry.', link: '/qed.html', symbol: 'eAμ' },
+      { number: '11', title: 'From Lagrangian to Experiment', desc: 'Connect a scattering amplitude to a measurable cross section.', link: '/lagrangian-to-experiment.html', symbol: 'L → σ' },
+      { number: '12', title: 'Perturbation Theory', desc: 'Approximate scattering amplitudes by expanding in the interaction strength.', link: '/perturbation-theory.html', symbol: '⟨f|S|i⟩' },
+      { number: '13', title: 'Feynman Rules for QED', desc: 'Assign a mathematical factor to each part of a Feynman diagram.', link: '/feynman-rules.html', symbol: 'iℳ' },
     ],
   },
   {
     number: '05',
     name: 'Electroweak',
-    desc: 'Weak interactions, unification, and the Higgs mechanism.',
+    desc: 'Study the weak force and its relation to electromagnetism.',
     color: '#db2777',
     soft: '#fce7f3',
     items: [
-      { number: '14', title: 'Weak Interaction', desc: 'Beta decay reveals a short-range force carried by the W bosons.', link: '/weak-interaction.html', symbol: 'W±' },
-      { number: '15', title: 'Electroweak Unification', desc: 'Unite the weak force with QED under SU(2)×U(1) symmetry.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
-      { number: '16', title: 'Higgs Mechanism', desc: 'Break the symmetry spontaneously and give the W and Z their mass.', link: '/higgs-mechanism.html', symbol: 'H' },
+      { number: '14', title: 'Weak Interaction', desc: 'Outline: beta decay, neutrinos, and interactions mediated by W bosons.', link: '/weak-interaction.html', symbol: 'W±' },
+      { number: '15', title: 'Electroweak Unification', desc: 'Outline: describe weak and electromagnetic interactions in one gauge theory.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
+      { number: '16', title: 'Higgs Mechanism', desc: 'Outline: explain how the Higgs field gives mass to the W and Z bosons.', link: '/higgs-mechanism.html', symbol: 'H' },
     ],
   },
   {
     number: '06',
     name: 'Strong & Standard Model',
-    desc: 'Color, quarks, confinement, and the complete gauge theory.',
+    desc: 'Study the strong force and combine the Standard Model interactions.',
     color: '#0e7490',
     soft: '#cffafe',
     items: [
-      { number: '17', title: 'Quantum Chromodynamics', desc: 'Quarks carry color; SU(3) symmetry confines them into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
-      { number: '18', title: 'The Standard Model', desc: 'Assemble the full gauge theory of quarks, leptons, and forces.', link: '/standard-model.html', symbol: '3·2·1', final: true },
+      { number: '17', title: 'Quantum Chromodynamics', desc: 'Outline: color charge, gluons, and the confinement of quarks into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
+      { number: '18', title: 'The Standard Model', desc: 'Outline: combine quarks, leptons, gauge fields, and the Higgs field.', link: '/standard-model.html', symbol: '3·2·1', final: true },
     ],
   },
 ]
@@ -82,8 +82,8 @@ const groups = [
         <p class="kicker"><span class="kicker-dot"></span>Phyz</p>
         <h1 id="home-title">Particle physics notes</h1>
         <p class="hero-text">
-          From classical mechanics to the Standard Model, with each chapter building
-          on the previous one.
+          Work through particle physics one step at a time, starting with classical
+          mechanics. Each chapter explains the ideas and equations used in the next.
         </p>
         <div class="hero-actions">
           <a class="start-button" href="/classical-mechanics.html">

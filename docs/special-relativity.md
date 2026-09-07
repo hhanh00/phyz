@@ -2,158 +2,178 @@
 
 ## 1. The Two Postulates
 
-Special relativity rests on exactly two assumptions. The first is the **principle of relativity**, which says that the laws of physics are the same in every inertial frame. No experiment performed entirely within a uniformly moving laboratory can detect that motion. There is no preferred rest frame. This was already implicit in Newtonian mechanics, where Newton's laws take the same form after a Galilean boost, but Einstein elevated it to a universal principle covering electromagnetism as well.
+An **inertial frame** is a reference frame in which a force-free object moves at constant velocity. The first postulate, the **principle of relativity**, states that the laws of physics have the same form in every inertial frame. No experiment inside a uniformly moving laboratory can identify an absolute state of rest.
 
-The second postulate is the one that breaks with Newtonian intuition, the **invariance of the speed of light**. The speed of light in vacuum, $c \approx 3 \times 10^8\ \text{m/s}$, is the same for all inertial observers regardless of the motion of the source or the observer. This is not obvious, since it contradicts the Galilean addition of velocities, but it is what Maxwell's equations require, and every precision experiment since Michelson–Morley has confirmed it. Taken together, the two postulates force a revision of how time and space relate across different frames.
+Newtonian mechanics already has this property under Galilean transformations. Special relativity extends it to all physical laws, including electromagnetism.
+
+The second postulate is the **invariance of the speed of light**. Every inertial observer measures the same vacuum light speed, $c\approx3\times10^8\ \text{m/s}$, regardless of the motion of the source.
+
+Ordinary velocity addition would give a different answer to a moving observer. To satisfy both postulates, we must change how space and time coordinates transform between frames.
 
 ## 2. Galilean Transformation
 
-Before Einstein, frames in relative motion were related by the Galilean transformation, $t' = t$ and $x' = x - vt$, with $y$ and $z$ unchanged. Time is universal, and velocities add without limit. If a train moves at $v$ and a passenger walks at $u$ relative to the train, a platform observer sees them at $u + v$, with no upper limit. There is nothing in the Galilean rules that forbids speeds larger than $c$. Light has no special status.
+The Galilean transformation relates frames moving at relative velocity $v$ along $x$: $t'=t$ and $x'=x-vt$, with $y$ and $z$ unchanged. All observers share the same time.
 
-The geometric picture shows the problem clearly. Draw a spacetime diagram with $x$ on the vertical axis and $t$ on the horizontal (with $c = 1$, a light ray travels one unit of distance per unit of time). A light ray therefore traces a 45° line, bisecting the angle between the $t$- and $x$-axes. Under a Galilean boost the time axis stays horizontal ($t' = t$) while the $x'$-axis tilts upward toward it, so in the new frame the light ray no longer sits at 45° between $t'$ and $x'$. Different observers assign different speeds to light.
+Differentiating gives ordinary velocity addition. A passenger walking at $u$ relative to a train moving at $v$ has platform-frame velocity $u+v$. Applied to light, this rule would give different speeds in different frames.
 
-The Lorentz transformation fixes this by tilting *both* axes symmetrically toward the 45° light ray, so the light ray always bisects them regardless of $v$. The $x'$-axis rotates up toward the light ray and the $t'$-axis rotates up toward the $x$-axis, both by the same hyperbolic angle. Keeping that bisector fixed at 45° is exactly what it means to preserve the speed of light in every frame.
+We can see the difference on a spacetime diagram. Put $t$ horizontally and $x$ vertically, using $c=1$. A light ray through the origin follows $x=t$, a 45° line.
+
+The moving frame's time axis is the set $x'=0$, so $x=vt$; it tilts away from the original time axis. Under a Galilean transformation, its spatial axis is the set $t'=0$, so $t=0$; that axis stays vertical. The light line no longer bisects the two axes.
+
+Under a Lorentz transformation, both axes tilt toward the light line. The time axis still satisfies $x=vt$, but the spatial axis satisfies $t=vx$ in units $c=1$. With equally scaled original axes, the light line bisects them. This is the diagrammatic form of light-speed invariance.
 ![Galilean vs Lorentz boosts](./manim/boost-diagrams.png)
 
-*Figure: the same boost in both frameworks — Galilean (left): $t' = t$ stays horizontal and only $x'$ tilts up, so light no longer bisects the axes; Lorentz (right): both axes tilt symmetrically, so light always bisects $t'$ and $x'$.*
+*Figure: Galilean and Lorentz boosts. Interpret each coordinate axis as the line on which the other coordinate vanishes. Galilean boosts retain absolute simultaneity; Lorentz boosts change both time and space coordinates while preserving the light cone.*
 
 ## 3. Lorentz Transformations
 
-If two inertial frames $S$ and $S'$ are aligned along the $x$-axis with $S'$ moving at velocity $v$ relative to $S$, the Lorentz transformation relating their coordinates is
+Let frame $S'$ move at velocity $v$ along the $x$-axis of frame $S$, with coincident origins at $t=t'=0$. The coordinate change that preserves light speed is
 
 $$t' = \gamma\!\left(t - \frac{vx}{c^2}\right), \qquad x' = \gamma(x - vt), \qquad y' = y, \qquad z' = z$$
 
-where $\gamma = 1/\sqrt{1 - v^2/c^2}$ is the **Lorentz factor**, always $\geq 1$ and diverging as $v \to c$. In the limit $v \ll c$, $\gamma \to 1$ and these reduce to the Galilean transformation $t' = t$, $x' = x - vt$. Newton's kinematics is recovered as a low-velocity approximation.
+The **Lorentz factor** is $\gamma=1/\sqrt{1-v^2/c^2}$. It is at least one and grows without bound as $v$ approaches $c$. At speeds much smaller than $c$, the leading non-relativistic approximation recovers the Galilean transformation.
 
-The crucial novelty is the mixing of $t$ and $x$, which means that time is no longer universal. What one observer calls "simultaneous" ($t_1 = t_2$ at different $x$) another observer in relative motion generally does not. Simultaneity is frame-dependent, and this is not a failure of perception but a structural feature of spacetime.
+**Time depends on position as well as time in the other frame.** If two events have $t_1=t_2$ but different positions, they generally have different values of $t'$. Observers in relative motion therefore disagree about which spatially separated events are simultaneous.
 
-Velocity addition is also modified. If an object moves at speed $u$ in $S$, its speed in $S'$ is
+Differentiating the transformed position with respect to the transformed time gives the velocity rule. For motion along $x$, an object with velocity $u$ in $S$ has
 
 $$u' = \frac{u - v}{1 - uv/c^2}$$
 
-Setting $u = c$ gives $u' = c$ for any $v$, so light speed is the same in every frame, as required.
+Substituting $u=c$ gives $u'=c$. The extra denominator is what keeps light speed unchanged.
 
 ## 4. Spacetime and the Invariant Interval
 
-Minkowski's insight was that the Lorentz transformations are rotations in a four-dimensional spacetime, but with a metric that mixes a spatial sign with a temporal one. Define the **spacetime interval** between two events as
+A Lorentz boost mixes time and space while preserving a particular combination of their differences. For two events, define the **spacetime interval**
 
 $$s^2 = c^2\Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2$$
 
-This quantity is the same in every inertial frame, and it is the Lorentz-invariant analog of distance. Depending on its sign, the separation is classified:
+Every inertial observer obtains the same $s^2$. Its sign determines how the events can be connected:
 
-- $s^2 > 0$: **timelike**. A signal traveling slower than $c$ can connect the events, and one can always find a frame where they occur at the same place at different times
-- $s^2 = 0$: **lightlike** (null). Only light connects them
-- $s^2 < 0$: **spacelike**. No causal influence can connect them, and one can find a frame where they are simultaneous
+- $s^2>0$: **timelike**. A slower-than-light signal can connect the events. There is a frame in which they occur at the same place at different times.
+- $s^2=0$: **lightlike**, or null. For distinct events, a light signal can connect them.
+- $s^2<0$: **spacelike**. No signal traveling at or below $c$ can connect the events. There is a frame in which they are simultaneous.
 
-The invariant interval replaces the Euclidean notion of absolute distance. Just as a rotation in space changes $x$ and $y$ individually while preserving $x^2 + y^2$, a Lorentz boost changes $t$ and $x$ individually while preserving $c^2 t^2 - x^2$.
+A spatial rotation preserves $x^2+y^2$. A Lorentz boost instead preserves $c^2t^2-x^2$ along the boost direction. The minus sign distinguishes spacetime geometry from Euclidean geometry; boosts are hyperbolic rotations.
 
 ## 5. Four-Vectors and Covariant Notation
 
-The natural objects in special relativity are **four-vectors**, which transform under Lorentz boosts the same way $(ct, x, y, z)$ does. The prototype is the spacetime four-position:
+To express this geometry compactly, group time and position into a **four-vector**. Its four components transform together under a Lorentz transformation:
 
 $$x^\mu = (ct,\, x,\, y,\, z), \qquad \mu = 0, 1, 2, 3$$
 
-The Minkowski metric $\eta_{\mu\nu} = \text{diag}(+1,-1,-1,-1)$ defines the inner product:
+To form the invariant interval from these components, use the **Minkowski metric** $\eta_{\mu\nu}=\text{diag}(+1,-1,-1,-1)$:
 
 $$x^\mu x_\mu = \eta_{\mu\nu}x^\mu x^\nu = c^2t^2 - x^2 - y^2 - z^2 = s^2$$
 
-Any combination of four-vectors contracted with $\eta_{\mu\nu}$ is a Lorentz scalar, frame-independent by construction. This is the systematic way to write physical laws that are automatically consistent with special relativity. Build them out of four-vector contractions, and they hold in every inertial frame.
+Repeated upper and lower indices mean that we sum over the four components. Here $s^2$ is the interval from the origin to $x^\mu$. Fully contracting four-vectors with the metric gives a **Lorentz scalar**, a quantity with the same value in every inertial frame.
 
-The **four-velocity** $u^\mu = dx^\mu/d\tau$ (derivative with respect to proper time) satisfies $u^\mu u_\mu = c^2$ identically, and in the rest frame reduces to $(c, 0, 0, 0)$. The **four-momentum** $p^\mu = m u^\mu$ has components
+For a massive particle, **proper time** $\tau$ is the time measured by a clock traveling with it. Its **four-velocity** is $u^\mu=dx^\mu/d\tau$, with $u^\mu u_\mu=c^2$. In the rest frame it is $(c,0,0,0)$.
+
+Multiplying by the rest mass gives the **four-momentum**, $p^\mu=mu^\mu$:
 
 $$p^\mu = \left(\frac{E}{c},\, p_x,\, p_y,\, p_z\right)$$
 
-where $E$ is the relativistic energy and $\mathbf{p} = \gamma m \mathbf{v}$ is the relativistic three-momentum.
+The time component contains energy $E$, while the spatial components form the ordinary three-momentum $\mathbf p=\gamma m\mathbf v$.
 
 ## 6. Metric Tensor, Covariance, and Contravariance
 
-Most of this section is bookkeeping, and the bookkeeping is the point. On the earlier pages a vector was a list of three coordinates, $(x, y, z)$, and beyond the count nothing about the notation required care, since only its dimensionality ever mattered. Spacetime adds a fourth coordinate, which is the trivial part. What is not trivial is the Lorentz transformation, which no longer treats every list of coordinates the same way. Some objects transform *with* the new frame, some *against* it, and a calculation that mixes the two without tracking which is which produces frame-dependent nonsense. The upper and lower indices are the tracking device, a notation tool and nothing deeper. A reader who remembers one rule can handle everything between here and the [QFT](qft.md) page. The rule is this. **Pair an upper index with a lower one, and the result is the same number in every frame.** The rest of this section explains the rule.
+Upper and lower indices distinguish two transformation rules. We must keep track of them so that equations remain valid when we change frames.
 
-The two behaviors get names. A **contravariant** vector $A^\mu$ (index up) transforms the same way the coordinate displacement $dx^\mu$ does under a Lorentz transformation $\Lambda^\mu{}_\nu$:
+The rule used throughout this sequence, including [QFT](qft.md), is: **sum a paired upper and lower index**. If no free indices remain, the result is a Lorentz scalar. With free indices remaining, the result is a tensor of lower rank.
+
+A **contravariant** vector has an upper index, $A^\mu$. Its components transform like the coordinate displacement $dx^\mu$. Writing the Lorentz transformation as $\Lambda^\mu{}_\nu$, we have
 
 $$A'^\mu = \Lambda^\mu{}_\nu\, A^\nu$$
 
-A **covariant** vector $A_\mu$ (index down) transforms by the inverse transpose, which for Lorentz transformations is $(\Lambda^{-1})^\nu{}_\mu$:
+A **covariant** vector has a lower index, $A_\mu$. Its components transform with the inverse matrix arranged as
 
 $$A'_\mu = (\Lambda^{-1})^\nu{}_\mu\, A_\nu$$
 
-Contravariant components go *against* the basis vectors, covariant ones *with* them. Derivatives $\partial/\partial x^\mu$ are the prototype covariant object, and coordinate increments $dx^\mu$ the prototype contravariant one.
+These inverse transformation rules make the changes cancel in $A^\mu B_\mu$. Coordinate increments $dx^\mu$ have upper indices, while derivatives $\partial/\partial x^\mu$ have lower indices. The derivative rule follows from the chain rule.
 
-The **Minkowski metric** $\eta_{\mu\nu} = \text{diag}(+1,-1,-1,-1)$ is the machine that converts between them:
+We convert between upper and lower components with the **Minkowski metric** $\eta_{\mu\nu}=\text{diag}(+1,-1,-1,-1)$:
 
 $$A_\mu = \eta_{\mu\nu} A^\nu, \qquad A^\mu = \eta^{\mu\nu} A_\nu$$
 
-where $\eta^{\mu\nu} = \text{diag}(+1,-1,-1,-1)$ is the inverse metric (numerically identical here, though that is special to flat spacetime). Lowering the index on the four-position gives $x_\mu = (t, -x, -y, -z)$. The time component is unchanged, and the spatial components flip sign.
+The inverse metric $\eta^{\mu\nu}$ has the same diagonal entries in these coordinates. For example, lowering the four-position index gives $x_\mu=(ct,-x,-y,-z)$. From here, expressions that omit $c$ use $c=1$, so this becomes $(t,-x,-y,-z)$. Lowering leaves the time component unchanged and reverses the spatial signs.
 
-A **contraction** pairs one upper index with one lower index and sums over it, producing an object with two fewer indices:
+A **contraction** sums a matched upper and lower index. Contracting two four-vectors gives
 
 $$A^\mu B_\mu = A^0 B_0 + A^1 B_1 + A^2 B_2 + A^3 B_3 = A^0 B_0 - \mathbf{A}\cdot\mathbf{B}$$
 
-This Einstein summation convention, in which a repeated index up/down means sum, is used throughout. A fully contracted object has no free indices and is a **Lorentz scalar**, taking the same numerical value in every inertial frame. The invariant interval $s^2 = x^\mu x_\mu$, the rest mass $m^2 = p^\mu p_\mu$, and the phase of a plane wave $\phi = k^\mu x_\mu$ are all scalars.
+This is **Einstein summation notation**. Each summed index occurs once up and once down. An index that remains unsummed is a free index.
 
-A **tensor** of type $(r, s)$ carries $r$ contravariant and $s$ covariant indices, each transforming with its own $\Lambda$ or $\Lambda^{-1}$:
+A fully contracted expression is a Lorentz scalar. Examples include the interval $s^2=x^\mu x_\mu$, the squared rest mass $m^2=p^\mu p_\mu$ in units $c=1$, and the plane-wave phase $\phi=k^\mu x_\mu$.
+
+A **tensor** with $r$ upper and $s$ lower indices has type $(r,s)$. Transform each upper index with $\Lambda$ and each lower index with its inverse:
 
 $$T'^{\mu_1\cdots\mu_r}{}_{\nu_1\cdots\nu_s} = \Lambda^{\mu_1}{}_{\alpha_1}\cdots\Lambda^{\mu_r}{}_{\alpha_r}\,(\Lambda^{-1})^{\beta_1}{}_{\nu_1}\cdots(\Lambda^{-1})^{\beta_s}{}_{\nu_s}\; T^{\alpha_1\cdots\alpha_r}{}_{\beta_1\cdots\beta_s}$$
 
-The metric itself is a $(0,2)$ tensor. Any equation written as a tensor equality, with the same index structure on both sides and all free indices consistent, is automatically valid in every Lorentz frame. This is the practical content of covariance. Write physics as tensor equations, and relativistic invariance follows.
+For example, the metric is a $(0,2)$ tensor. To write a covariant equation, give both sides the same free indices and contract every summed index correctly. Each side then transforms in the same way, so equality holds in every Lorentz frame.
 
-A word on scope. The general tensor definition above is the most demanding formalism in the sequence so far, and it is introduced here once. The pages in between need only the four-vectors and contractions already introduced, and the general machinery returns when the transformation laws of *fields* are treated on the [QFT](qft.md) page.
+Most of the following pages use only four-vectors and contractions. The general tensor rule becomes useful again when we study field transformations in [QFT](qft.md).
 
 
 ## 7. Mass, Energy
 
-The Lorentz-invariant norm of the four-momentum gives the **energy–momentum relation**:
+Restoring $c$, contract the four-momentum with itself to obtain the **energy–momentum relation**:
 
 $$p^\mu p_\mu = \frac{E^2}{c^2} - \lvert\mathbf{p}\rvert^2 = m^2 c^2$$
 
-Rearranged:
+Multiplying by $c^2$ and rearranging gives
 
 $$E^2 = (mc^2)^2 + (pc)^2$$
 
-For a particle at rest ($\mathbf{p} = 0$) this collapses to $E = mc^2$, so rest mass is a form of energy. For a massless particle ($m = 0$, e.g. a photon) it gives $E = pc$, and from the four-velocity construction one can show such a particle must always travel at exactly $c$.
+At rest, $\mathbf p=0$, and the positive-energy solution is $E=mc^2$. For a massless particle such as a photon, $m=0$ and $E=pc$. Its speed follows from $dE/dp=c$. A massless particle has no rest frame or proper-time four-velocity.
 
-The total relativistic energy $E = \gamma mc^2$ splits into rest energy $mc^2$ and kinetic energy $(\gamma - 1)mc^2$. In the limit $v \ll c$, $\gamma - 1 \approx v^2/2c^2$, so kinetic energy $\to \tfrac{1}{2}mv^2$. Again, Newtonian mechanics is recovered as the low-velocity limit.
+For a massive particle, $E=\gamma mc^2$. Subtracting the rest energy leaves kinetic energy $(\gamma-1)mc^2$. At low speed, $\gamma-1\approx v^2/(2c^2)$, giving the familiar $\tfrac12mv^2$.
 
-The energy–momentum relation is the starting point for relativistic quantum mechanics. Replacing $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$ in $E^2 = (mc^2)^2 + (pc)^2$ gives the Klein–Gordon equation, the first attempt at a relativistic wave equation, and the development that eventually leads to the Dirac equation and quantum field theory.
+To obtain a relativistic quantum wave equation, replace $E\to i\hbar\,\partial/\partial t$ and $\mathbf p\to-i\hbar\nabla$ in the squared energy relation. This gives the Klein–Gordon equation. Its interpretation will lead us to the Dirac equation and quantum field theory.
 
 ## 8. Maxwell Equations
 
-Section 1 left one claim unproved, the claim that the two postulates are "what Maxwell's equations require." The reason is that Maxwell's equations are already Lorentz-covariant. They assemble out of four-vector and tensor objects exactly as §6 specifies, so they keep the same form in every inertial frame. Special relativity did not fix Maxwell. It was built to accommodate it.
+We can now check that Maxwell's equations satisfy the first postulate. Write them using four-vectors and tensors, then verify that both sides transform alike. Their wave solutions also have the same vacuum speed $c$ in every inertial frame.
 
-In natural units ($c = 1$), the four equations are
+In rationalized units with $c=1$ and vacuum electromagnetic constants absorbed, the four equations are
 
 $$\nabla \cdot \mathbf{E} = \rho, \qquad \nabla \cdot \mathbf{B} = 0, \qquad \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}, \qquad \nabla \times \mathbf{B} = \frac{\partial \mathbf{E}}{\partial t} + \mathbf{j}.$$
 
-Gauss and Ampère involve the sources, while Faraday and "no magnetic monopoles" involve only the fields.
+Here $\rho$ is charge density and $\mathbf j$ is current density. Gauss's electric law and Ampère's law contain these sources. Faraday's law and the vanishing magnetic divergence involve only the fields.
 
-The covariant form collects charge density and current into the **four-current** $J^\mu = (\rho, \mathbf{j})$, a four-vector whose divergence vanishes, $\partial_\mu J^\mu = 0$, the continuity equation. The fields assemble into the **electromagnetic field tensor**, the antisymmetric derivative of the four-potential $A^\mu = (\varphi, \mathbf{A})$:
+**Combine the sources and fields.** The four-current is $J^\mu=(\rho,\mathbf j)$. Charge conservation is its vanishing divergence, $\partial_\mu J^\mu=0$.
+
+Write the scalar and vector potentials as $A^\mu=(\varphi,\mathbf A)$. Their antisymmetric derivative gives the **electromagnetic field tensor**:
 
 $$F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu = \begin{pmatrix} 0 & -E_x & -E_y & -E_z \\ E_x & 0 & -B_z & B_y \\ E_y & B_z & 0 & -B_x \\ E_z & -B_y & B_x & 0 \end{pmatrix}.$$
 
-The electric and magnetic fields are not separate invariant objects, because under a boost they mix into each other. The invariant is $F^{\mu\nu}$. Maxwell's equations are then two tensor equations:
+The components of this tensor contain both electric and magnetic fields. Under a boost, the components mix; $F^{\mu\nu}$ transforms as a tensor and is not itself a scalar invariant. Maxwell's equations take the compact form
 
 $$\partial_\mu F^{\mu\nu} = J^\nu, \qquad \partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu} = 0.$$
 
-$\mathbf{E}$ and $\mathbf{B}$ are therefore not distinct physical quantities but frame-dependent *manifestations* of the single object $F^{\mu\nu}$, and different observers slice the same antisymmetric tensor into different electric and magnetic parts. For a boost along $\hat{\mathbf{x}}$ (with $c = 1$),
+The split into $\mathbf E$ and $\mathbf B$ depends on the observer. For a boost along $\hat{\mathbf x}$, the components parallel and perpendicular to the boost transform as follows, with $c=1$:
 
 $$\mathbf{E}'_\parallel = \mathbf{E}_\parallel, \quad \mathbf{E}'_\perp = \gamma(\mathbf{E}_\perp + \mathbf{v}\times\mathbf{B}), \qquad \mathbf{B}'_\parallel = \mathbf{B}_\parallel, \quad \mathbf{B}'_\perp = \gamma(\mathbf{B}_\perp - \mathbf{v}\times\mathbf{E}).$$
 
-The classic illustration is this. A point charge at rest produces a purely electric field. An observer moving past it sees the same $F^{\mu\nu}$ sliced differently and reports a magnetic field as well, which is why moving charges experience magnetic forces in the first place. There is no "real" versus "apparent" field. The frame-invariant reality is the field tensor.
+A charge at rest produces an electric field and no magnetic field in its rest frame. An observer moving relative to the charge generally measures both. Both descriptions refer to the same electromagnetic field, expressed in different frames.
 
-Conversely, the four familiar equations are the **component expansion of the two tensor equations**. In $\partial_\mu F^{\mu\nu} = J^\nu$, the $\nu = 0$ component is Gauss's law $\nabla\cdot\mathbf{E} = \rho$ and the $\nu = 1, 2, 3$ components are the three space components of Ampère's law. In the cyclic identity, the purely spatial index choice $(\lambda\mu\nu) = (123)$ is $\nabla\cdot\mathbf{B} = 0$ and the choices with one temporal index give Faraday's law. Maxwell's equations are not four independent postulates. They are the components of two tensor equations, written out in a chosen frame. That is why a boost merely rotates the components into one another (the mixing above) while the equations themselves never change form. The homogeneous pair is automatic. It is an identity once $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ is substituted, which says that the field tensor is the exterior derivative of the four-potential.
+**Recover the familiar equations.** In $\partial_\mu F^{\mu\nu}=J^\nu$, setting $\nu=0$ gives Gauss's law. Setting $\nu=1,2,3$ gives the three components of Ampère's law.
 
-Both tensor equations are contractions of four-vector/tensor objects, hence **manifestly Lorentz-covariant**. By §6 they hold unchanged in every inertial frame. In particular, in the wave equation they imply, disturbances propagate at exactly $c$ for every observer. That is the precise sense in which Maxwell is compatible with the Lorentz transformation. The equations are *the same* in every frame, not merely similar.
+In the cyclic identity, choosing $(\lambda\mu\nu)=(123)$ gives $\nabla\cdot\mathbf B=0$. Choices with one time index give Faraday's law. These homogeneous equations follow automatically when we substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$, because partial derivatives commute. In differential-geometric language, the field tensor is the exterior derivative of the potential.
+
+Both tensor equations retain their form under Lorentz transformations. In vacuum, their wave equations imply propagation at $c$ for every inertial observer. Maxwell's equations therefore fit both postulates without modification.
 
 ## 9. Schrödinger Equation
 
-The Schrödinger equation is what you get by quantizing the *non-relativistic* energy–momentum relation, and it is not Lorentz-covariant. Time and space enter at different orders, so the equation singles out one frame.
+The free Schrödinger equation starts from the non-relativistic kinetic energy. To see why its relativistic behavior differs from Maxwell's equations, follow the same operator substitution.
 
-Restoring $\hbar$ (still $c = 1$), the non-relativistic energy is $E = \mathbf{p}^2/2m$. Applying the quantization prescription of §7, $E \to i\hbar\,\partial/\partial t$ and $\mathbf{p} \to -i\hbar\nabla$, gives the free Schrödinger equation
+Keep $c=1$ and write $\hbar$ explicitly. Starting with $E=\mathbf p^2/2m$, substitute $E\to i\hbar\,\partial/\partial t$ and $\mathbf p\to-i\hbar\nabla$. Acting on a wave function gives
 
 $$i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2 \psi,$$
 
-with a potential term $V(\mathbf{x})\psi$ added by hand for interacting particles. The equation is first order in time but second order in space.
+For a particle in a potential, add $V(\mathbf x)\psi$ on the right. The free equation already has a first derivative in time and second derivatives in space.
 
-That asymmetry is exactly why it cannot be Lorentz-invariant. The Lorentz scalar built from two derivatives is the d'Alembertian $\partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$, which treats time and space alike. The Schrödinger operator $i\hbar\partial_t + \tfrac{\hbar^2}{2m}\nabla^2$ has no such four-vector form, so a Lorentz boost does not preserve the equation. Observers in relative motion would not agree that it holds.
+A Lorentz boost mixes time and space derivatives. The second-order scalar combination is the **d'Alembertian**, $\partial_\mu\partial^\mu=\partial_t^2-\nabla^2$. The Schrödinger operator $i\hbar\partial_t+\tfrac{\hbar^2}{2m}\nabla^2$ does not retain its form under that mixing.
 
-Equivalently, look at plane waves $\psi \propto e^{i(\mathbf{p}\cdot\mathbf{x} - Et)/\hbar}$. The equation enforces the dispersion relation $E = \mathbf{p}^2/2m$, which is only approximate. It is the low-velocity limit of the exact relation $E^2 = m^2 + \mathbf{p}^2$ (§7), valid when $|\mathbf{p}| \ll m$. Special relativity requires the second-order Klein–Gordon equation instead, with negative-energy solutions, which led to the Dirac equation and antiparticles. The Schrödinger equation is the $v \ll c$ limit of that development, and the starting point of [First Quantization](first-quantization.md).
+We can also check a plane wave, $\psi\propto e^{i(\mathbf p\cdot\mathbf x-Et)/\hbar}$. The Schrödinger equation gives the **dispersion relation**, the relation between energy and momentum, $E=\mathbf p^2/2m$. This approximates the kinetic energy from $E^2=m^2+\mathbf p^2$ when $|\mathbf p|\ll m$, after subtracting the rest energy.
+
+Using the exact squared relation gives the Klein–Gordon equation. Its negative-energy solutions and probability interpretation motivate the next developments, including Dirac's equation and antiparticles. The Schrödinger equation remains useful in the low-speed regime described in [First Quantization](first-quantization.md).

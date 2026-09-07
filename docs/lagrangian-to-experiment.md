@@ -1,51 +1,61 @@
 # From Lagrangian to Experiment
 
-The previous pages built Lagrangians for particles and fields. This page follows the calculation from a Lagrangian to a scattering cross section, the quantity we compare with experiment.
+We have built Lagrangians for particles and fields. Now we will use them to predict a **scattering cross section**, the quantity that connects a scattering calculation to measured event rates.
 
 ## The job of a Lagrangian
 
-In classical mechanics a Lagrangian's purpose is to produce a trajectory. The [Classical Mechanics](classical-mechanics.md) page built the principle of least action, and the [Action and Lagrangians](qft-action.md) page turned it into the Euler–Lagrange equation: insert the Lagrangian $L(q, \dot q)$ into the variational principle, get an equation of motion, and solve it for $q(t)$ and $\dot q(t)$ (where the particle is and how fast, at every instant). The initial conditions select a particular trajectory.
+**Start with the classical calculation.** The [Classical Mechanics](classical-mechanics.md) page introduced stationary action, and [Action and Lagrangians](qft-action.md) derived the Euler–Lagrange equation. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
 
 ## Why a trajectory is the wrong target
 
-That output stops making sense at the quantum level. A quantum particle has no definite position to trace, and a quantum field can create and destroy particles. There is therefore no fixed list of "the particles" whose path we follow. [First Quantization](first-quantization.md) already replaced the trajectory with the wave function $\psi$, an amplitude for *where* the particle is. [Field Quantization](field-quantization.md) extends this one step further, so the natural object is an amplitude for *which particles are present* in the final state. In place of a path, the Lagrangian must produce transition amplitudes.
+In quantum mechanics we predict probabilities for measurement outcomes. [First Quantization](first-quantization.md) introduced the wave function $\psi$, whose squared magnitude gives a position probability density.
+
+[Field Quantization](field-quantization.md) also permits particle creation and annihilation. We therefore calculate an amplitude for each possible final collection of particles. The quantum calculation takes us from the Lagrangian to **transition amplitudes**.
 
 ## What a scattering experiment measures
 
-A scattering experiment does the same thing in every subfield. It prepares a definite initial state (a beam of particles with chosen momenta and spins) and counts how often each possible final state appears. For Compton scattering the initial state is an electron and a photon with known momenta. The detector counts scattered electrons and photons as a function of their angle and energy. But counts depend on the apparatus (how dense the target is, how many particles the beam delivers), so the prediction is stated in an apparatus-independent form called the cross section.
+A scattering experiment prepares incoming particles with specified beam properties, such as momenta and polarizations, and counts the outgoing particles. In Compton scattering, an electron and a photon enter. Detectors record the energies and directions of the scattered electron and photon.
+
+The count also depends on beam intensity and the amount of target material. To compare the interaction across experiments, divide out those effects and report a cross section.
 
 ## The cross section
 
-The cross section $\sigma$ is the effective area a target presents to the beam. If the beam delivers $\Phi$ particles per unit area per unit time (the flux) and the target presents $N$ particles, then the rate of scattering events is
+The **cross section** $\sigma$ measures the strength of scattering in units of area. Let $\Phi$ be the incident flux, the number of beam particles crossing unit area per unit time, and let $N$ be the number of exposed target particles. For a thin target with independent scattering, the event rate is
 
 $$\text{rate} = \Phi\,N\,\sigma.$$
 
-The cross section has units of area, and the standard unit is the barn. Experimenters determine $\sigma$ from the measured event rate, flux, and target count. A particle that decays is measured by the analogous number, the decay rate $\Gamma$, built from the amplitude in the same way.
+Experimenters infer $\sigma$ from the event rate, flux, and target count. A standard unit is the barn. For an unstable particle, the corresponding observable is its **decay rate** $\Gamma$, which we also calculate from a transition amplitude.
 
 ## The amplitude and the S-matrix
 
-Between the Lagrangian and the cross section is the scattering amplitude. When a state $\lvert i\rangle$ is prepared and later measured as $\lvert f\rangle$, the amplitude for that transition is the matrix element
+**First calculate the amplitude.** Write the incoming state as $\lvert i\rangle$ and the outgoing state as $\lvert f\rangle$. Their transition amplitude is the matrix element
 
 $$\langle f | S | i \rangle,$$
 
-where $S$ is the S-matrix, the operator that carries the incoming state to the outgoing one. If nothing happens (the particles pass through freely), the matrix element is just the overlap $\langle f | i \rangle$. The interesting part is what remains, conventionally written
+A **matrix element** is the number obtained by applying an operator to one state and taking its overlap with another. Here $S$, the **S-matrix**, maps incoming free-particle states to outgoing ones.
+
+The overlap $\langle f|i\rangle$ is the contribution from free passage without scattering. Separate it from the interaction contribution using the convention
 
 $$\langle f | S | i \rangle = \langle f | i \rangle + (2\pi)^4\,\delta^4(P_f - P_i)\;i\mathcal{M}.$$
 
-Here $P_i$ and $P_f$ are the total incoming and outgoing four-momenta. The delta function $\delta^4(P_f - P_i)$ enforces conservation of energy and momentum. $\mathcal{M}$, the invariant amplitude, is the object that carries the dynamics. The name "invariant" means Lorentz invariant. $\mathcal{M}$ takes the same value in every frame, since observers may disagree on momenta but must agree on the outcome of the experiment. It is not a constant, however. It is a function of the momenta themselves, through combinations like the center-of-mass energy and scattering angle, so it varies from one final state to another.
+Here $P_i$ and $P_f$ are the total incoming and outgoing four-momenta. The delta function enforces energy and momentum conservation. After factoring it out, the remaining quantity $\mathcal M$ is the **invariant amplitude**.
+
+The amplitude depends on the interaction and on the external momenta and spin states. Lorentz-invariant combinations of momenta describe its kinematic dependence. Changing the physical collision energy or scattering angle changes the amplitude; describing the same process in another frame preserves the corresponding physical prediction.
 
 ## From amplitude to cross section
 
-The cross section is built from the amplitude by squaring it and integrating over the allowed final states,
+**Square the amplitude and sum over allowed outcomes.** Schematically, the cross section has the form
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
-where $d\Pi$ is the phase space, the measure over the final particles' momenta that enforces energy and momentum conservation. The formula splits into two independent ingredients. $|\mathcal{M}|^2$ carries the physics. It is determined by the interaction term of the Lagrangian, and the square is the Born rule of [First Quantization](first-quantization.md), which reads probabilities off squared amplitudes. $d\Pi$ carries the kinematics. It is geometry, the space of final states the conservation law permits.
+Here $d\Pi$ is the **phase-space measure**, which integrates over final momenta and includes energy and momentum conservation. The denominator represents the incident-flux normalization appropriate to the scattering states; its precise form depends on their normalization and is not the laboratory particle flux used above.
+
+The factor $|\mathcal M|^2$ depends on the dynamics through the interaction Lagrangian. Squaring follows the Born rule introduced in [First Quantization](first-quantization.md). The phase-space measure supplies the kinematics: which final momenta are possible and how to count them. Sum over unobserved final spins and average over an unpolarized initial ensemble when needed.
 
 ## The missing piece
 
-The chain from a Lagrangian to a number an experiment can check is therefore
+We can now separate the calculation into two steps:
 
 $$\mathcal{L} \;\longrightarrow\; \mathcal{M} \;\longrightarrow\; \sigma,$$
 
-with the amplitude-to-cross-section step described above. What remains is to compute $\mathcal{M}$ from the interaction term of the Lagrangian. The next page, [Perturbation Theory](perturbation-theory.md), shows that the interaction term alone generates this computation. The page after, [Feynman Rules for QED](feynman-rules.md), runs it for Compton scattering.
+We have described the second step, from amplitude to cross section. [Perturbation Theory](perturbation-theory.md) derives the amplitude from the interaction Lagrangian. [Feynman Rules for QED](feynman-rules.md) then applies that method to Compton scattering.

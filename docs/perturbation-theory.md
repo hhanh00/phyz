@@ -1,109 +1,132 @@
 # Perturbation Theory: From the Lagrangian to the Feynman Rules
 
-The [Feynman Rules page](feynman-rules.md) states a set of rules (a vertex factor, propagators, external-line wave functions) and translates diagrams with them. This page supplies the justification they require. It derives those rules from the Lagrangian. The argument uses only methods the site has already built. The [Field Quantization page](field-quantization.md) showed that a free field is a collection of harmonic oscillators whose quanta are particles, which gives the free-theory part of the derivation. What remains is the interacting part. The Lagrangian contains a term that couples fields, and the S-matrix of [From Lagrangian to Experiment](lagrangian-to-experiment.md) must be expanded in that coupling. Two tools carry the expansion, the Dyson series and Wick's theorem, and both are bookkeeping. One organizes the orders, the other organizes the field pairings. We run them on the simplest interacting field theory, a real scalar with a three-field interaction, where no spin structure or gauge symmetry obscures the logic. We then read the rules off what the expansion computes. The final section carries the same dictionary to QED.
+The [Feynman Rules page](feynman-rules.md) assigns a mathematical factor to each vertex and line in a diagram. We will derive those factors from the Lagrangian.
 
-We work in natural units, $\hbar = c = 1$, and use the metric $g_{\mu\nu} = \operatorname{diag}(1,-1,-1,-1)$. Then $p^2 = p^\mu p_\mu = E^2 - \mathbf p^2$, and an on-shell particle of mass $m$ obeys $p^2 = m^2$. This matches the convention the route to cross sections has already adopted.
+The [Field Quantization page](field-quantization.md) supplied the free fields and their particle states. To include interactions, expand the S-matrix introduced in [From Lagrangian to Experiment](lagrangian-to-experiment.md) in powers of the coupling. The **Dyson series** organizes the powers, and **Wick's theorem** organizes the field pairings within each term.
+
+We will first use a real scalar field with a cubic interaction. It has no spin indices or gauge freedom, so we can follow the calculation before adding those features in QED.
+
+We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$. Thus $p^2=E^2-\mathbf p^2$. A physical free particle of mass $m$ is **on shell**, meaning $p^2=m^2$.
 
 ## Outline of the argument
 
-The derivation runs in six steps, and each section of this page carries out one of them.
+Each section develops one step of the calculation.
 
-1. **Define the theory.** Add the interaction $-g\phi^3/3!$ to the free scalar Lagrangian, so that quanta can meet and scatter.
-2. **Write the S-matrix.** In the interaction picture, the Schrödinger equation with the interaction as its generator solves, by time-slicing, to the time-ordered exponential $S = T\exp[i\int d^4x\,\mathcal{L}_{\mathrm{int}}]$.
-3. **Expand it.** The Taylor series of that exponential is the Dyson series, a sum over how many times the interaction acts. The time ordering is the only part of it that still needs to be dealt with.
-4. **Sort the operators.** Wick's theorem rewrites each time-ordered product as normal-ordered fields plus pairings. Each pairing contributes a number called a contraction.
-5. **Compute the contraction.** The free-field mode expansion turns the contraction into the propagator $i/(p^2 - m^2 + i\epsilon)$, the inverse of the free kinetic operator.
-6. **Assemble amplitudes.** Uncontracted fields become external lines, contractions become internal lines, the position integrals become momentum-conserving deltas, and the pairing counts fix the combinatorial factors.
+1. **Define the interaction.** Add $-g\phi^3/3!$ to the free scalar Lagrangian.
+2. **Write the S-matrix.** Solve the interaction-picture evolution equation as a time-ordered exponential, $S=T\exp[i\int d^4x\,\mathcal L_{\mathrm{int}}]$.
+3. **Expand in the coupling.** The Dyson series groups contributions by their number of interaction factors.
+4. **Reorder the fields.** Wick's theorem replaces time-ordered products with normal-ordered products and pair contractions.
+5. **Evaluate each contraction.** The free-field expansion gives the propagator $i/(p^2-m^2+i\epsilon)$.
+6. **Assemble the amplitude.** Attach the remaining fields to external particles, integrate over interaction positions, and count equivalent pairings.
 
-The final section carries the finished dictionary to QED by changing only the free-field input.
+We then apply the same method to QED, using its electron and photon fields.
 
-In plain terms:
-- The S matrix sums over every number of interaction events, every position for each event, and every way of assigning the fields' creation and annihilation parts. We sum over everything because during the interaction we do not know what is happening. Only the terms that connect the initial state to the final state survive the evaluation.
-- Operators at different times do not commute, and evolution composes in sequence. Each product therefore carries a canonical order, later times to the left. That is what the $T$ symbol imposes.
-- Separately, evaluating against the states has its own rules. An annihilation part with no particle to annihilate gives zero, and a creation part adjacent to the vacuum bra gives zero. These rules select which terms survive.
-- Time-ordered products are hard to evaluate, so Wick's theorem replaces them with normal-ordered products plus leftover numbers. Those numbers are the contractions.
-- A contraction is not the commutator itself. It is the vacuum expectation value of the reordering residue, a plain number that depends only on the separation of the two points.
-- After this replacement, we evaluate the normal-ordered products directly against the states and add the contractions as numbers.
-- In the diagrams, uncontracted fields are the external lines, contractions are the internal lines, and the interaction factors together with their position integrals are the vertices.
+**The sums arise from quantum evolution.** Each term integrates over possible interaction positions and adds all operator pairings that connect the chosen initial and final states. We add amplitudes before calculating probabilities.
+
+Two kinds of ordering enter. Time ordering places later operators on the left, as required by successive evolution. Normal ordering places creation operators on the left, which makes matrix elements easier to evaluate. Moving between these orders produces contractions, ordinary numerical factors associated with pairs of fields.
 
 
 ## The setup: an interacting scalar
 
-The [Field Quantization page](field-quantization.md) solved a free real scalar field $\phi$, with Lagrangian density
+Begin with the free real scalar field from [Field Quantization](field-quantization.md):
 
 $$\mathcal{L}_0 = \tfrac12 (\partial_\mu\phi)(\partial^\mu\phi) - \tfrac{m^2}{2}\phi^2.$$
 
-Free fields cannot scatter, because their quanta never meet. To let them interact we add a term built from three fields,
+Free quanta propagate without scattering. Add a cubic term to permit interactions:
 
 $$\mathcal{L} = \mathcal{L}_0 - \frac{g}{3!}\,\phi^3.$$
 
-The coupling $g$ sets the strength of the interaction. The factor $3!$ is a combinatorial convenience whose purpose appears when the field pairings are counted. The theory this defines contains exactly one field, a real scalar of spin 0. Every vertex joins three quanta of that one field. It is not QED. QED contains two fields, the spinor $\psi$ and the vector $A_\mu$. Its interaction $-q\bar\psi\gamma^\mu\psi A_\mu$ joins two quanta of the electron field to one quantum of the photon field at each vertex. The two interactions are nonetheless analogues, because both join three fields at a point and so produce the same kind of diagrammatic vertex. We derive the rules for the scalar theory because it is the simplest interacting field theory. Its single field carries no spin indices and no gauge freedom, so fewer structures appear alongside the derivation itself. The same derivation then transfers to QED. The interaction makes the theory nonlinear, exactly as in [QED](qed.md), so we treat $g$ as small and expand.
+The **coupling** $g$ sets the interaction strength. The factor $3!$ will cancel the number of ways to assign three identical fields to a vertex's three legs.
+
+This theory contains one spin-zero field, so all three legs belong to the same species. QED instead has a spinor $\psi$ and a vector $A_\mu$, with interaction $-q\bar\psi\gamma^\mu\psi A_\mu$. Both interactions contain three fields at one point, but QED has additional spin and polarization factors.
+
+The cubic term makes the field equation nonlinear, as the interaction did in [QED](qed.md). We approximate amplitudes by expanding in small $g$. Here the cubic theory serves as a formal perturbative example; its potential alone has no stable global minimum.
 
 ## The S-matrix as a series
 
-The interaction picture does the bookkeeping for time. States evolve freely, and the operators carry the interaction. The S-matrix, the operator that maps a free initial state at $t \to -\infty$ to a free final state at $t \to +\infty$, is then the time evolution generated by the interaction alone. For a time-independent interaction that evolution is an exponential,
+**Separate free evolution from the interaction.** In the interaction picture, field operators evolve with the free Hamiltonian, while states evolve with the interaction Hamiltonian. The S-matrix connects asymptotic incoming and outgoing free-particle states.
+
+For this interaction, $H_{\mathrm{int}}=-\int d^3x\,\mathcal L_{\mathrm{int}}$. Solving the evolution equation gives
 
 $$S = T \exp\!\left[i \int d^4x\; \mathcal{L}_{\mathrm{int}}(x)\right],$$
 
-where $T$ is the time-ordering symbol, which arranges the operators in each product by their time arguments, later times to the left[^time]. On two fields it reads $T[\phi(x)\phi(y)] = \phi(x)\phi(y)$ when $x^0 > y^0$ and $\phi(y)\phi(x)$ when $y^0 > x^0$. On a product of any length it applies the same rule field by field. Here $\mathcal{L}_{\mathrm{int}} = -g\phi^3/3!$. The time ordering matters because field operators at different times do not commute. The order of a product changes its value, and $T$ fixes one canonical order. The exponential is shorthand for its Taylor series,
+The symbol $T$ means **time ordering**: place later operators to the left[^time]. For two scalar fields, $T[\phi(x)\phi(y)]=\phi(x)\phi(y)$ if $x^0>y^0$, and $\phi(y)\phi(x)$ if $y^0>x^0$.
+
+This matters because field operators at different times generally do not commute. With $\mathcal L_{\mathrm{int}}=-g\phi^3/3!$, expand the exponential as
 
 $$S = \sum_{n=0}^\infty \frac{i^n}{n!} \int d^4x_1 \cdots d^4x_n\; T\big[\mathcal{L}_{\mathrm{int}}(x_1) \cdots \mathcal{L}_{\mathrm{int}}(x_n)\big].$$
 
-Each factor of $\mathcal{L}_{\mathrm{int}}$ carries one power of the coupling, so the $n$ th term of the series is the contribution of $n$ interactions. A scattering amplitude computed from $S$ is therefore a sum over the number of times the interaction acts, which is the perturbative expansion in $g$ whose diagrammatic organization the [Feynman Rules page](feynman-rules.md) states. Each term integrates over $n$ positions $x_i$, one per interaction. The time-ordering symbol is the only subtlety left in the expression, and Wick's theorem removes it.
+The term with $n$ interaction factors has order $g^n$ and integrates over $n$ spacetime positions. This is the **Dyson series**. The diagrams on the [Feynman Rules page](feynman-rules.md) organize its terms.
+
+To evaluate a term between particle states, we next rewrite its time-ordered field product using Wick's theorem.
 
 ## Wick's theorem
 
-The time-ordered product in the series is a product of field operators at different points, and fields split into creation and annihilation parts, $\phi = \phi^+ + \phi^-$, where $\phi^-$ creates a particle and $\phi^+$ destroys one. Each part carries a plane-wave factor from the mode expansion of the [Field Quantization page](field-quantization.md). Acting on a state, a creation operator adds a particle; acting on the vacuum, an annihilation operator gives zero. The **normal-ordered product** $:\!\phi_1\cdots\phi_n\!:$ moves every creation operator to the left of every annihilation operator, so that it annihilates a vacuum on the right. Consider a matrix element built from a normal-ordered product, $\langle 0|\,:\!\phi_1\cdots\phi_n\!:\,|\text{particles}\rangle$, with the vacuum bra on the left and a state of particles on the right. The annihilation parts sit on the right, next to the particle state, and the creation parts sit on the left. You can then check every operator one by one. An annihilation part either removes one particle and leaves a plane-wave factor, or no particle remains for it and it gives zero, which makes the whole term zero. A creation part adjacent to the vacuum bra also gives zero, because a creation operator annihilates the vacuum bra from the left. A term survives only when every operator contributes a nonzero factor. A surviving term is then a product of plane-wave factors. A time-ordered product cannot be checked this way, because it is sorted by time rather than by operator type. It can contain an annihilation part to the left of a creation part. Moving such a pair toward the states forces an annihilation part past a creation part, and their commutator is a nonzero number. That number does not come from any external particle. It is a leftover of the ordering itself, and the next paragraph accounts for it.
+**Separate creation from annihilation.** The free-field expansion from [Field Quantization](field-quantization.md) has the form $\phi=\phi^++\phi^-$, where $\phi^+$ annihilates and $\phi^-$ creates a particle. Each part includes a plane-wave factor.
 
-**Wick's theorem** rewrites the one as the other. Its elementary form for two fields states the pattern:
+A **normal-ordered product** $:\!\phi_1\cdots\phi_n\!:$ places every creation operator to the left of every annihilation operator. This makes matrix elements easier to evaluate. An annihilation operator removes an incoming particle, or gives zero if none is available. A creation operator acting leftward on the vacuum bra also gives zero. The surviving terms contain the plane-wave factors associated with the external particles.
+
+Time ordering sorts by time instead. To put a time-ordered product into normal order, we must sometimes commute an annihilation operator past a creation operator. Their nonzero commutator contributes an extra number. Wick's theorem accounts for all such terms.
+
+For two free scalar fields, **Wick's theorem** states
 
 $$T\big[\phi(x)\phi(y)\big] = \;:\!\phi(x)\phi(y)\!: \;+\; \langle 0\lvert T\big[\phi(x)\phi(y)\big]\rvert 0\rangle.$$
 
-The last term is a number, the vacuum expectation of the time-ordered product. It is called the **contraction** of the two fields. As an operation, contracting a pair means deleting those two fields from the product and multiplying everything else by this number, which depends only on the separation $x - y$. Physically, the contraction is the amplitude for one quantum to be created at one of the two points and destroyed at the other. The vacuum states on the two sides ensure that nothing else enters the process.
+The second term is the **contraction**, a vacuum expectation value and therefore an ordinary number. Contracting two fields means replacing them by that number in the product. For a translation-invariant vacuum it depends only on $x-y$.
 
-For $n$ fields the theorem says that a time-ordered product equals the normal-ordered product of all the fields, plus the sum over every way of replacing some pairs of fields by their contractions, with the uncontracted fields left in normal order. Every term in that sum is a possible way the product could resolve. The external states determine which terms survive. An uncontracted field has exactly one way to contribute. It must act on a real particle supplied by the initial or final state. A term that leaves uncontracted fields with no particle to act on gives zero, because a normal-ordered product annihilates the vacuum on its right. So the surviving terms are fixed by counting. At order $n$ the series supplies $3n$ fields. If the process has $k$ external particles, a surviving term contracts exactly $3n - k$ fields among themselves (in pairs, so $3n - k$ must be even) and lets the remaining $k$ fields meet the particles. The theory at hand supplies two checks. First-order decay $\phi \to \phi\phi$ has three fields and three particles, so no contraction appears and the amplitude is the single vertex factor. Second-order scattering $\phi\phi \to \phi\phi$ has six fields and four particles, so two fields must contract with each other, and that contraction is the internal line between the two interaction points.
+The contraction describes free propagation between the two spacetime points. It will become the internal-line factor in a diagram.
+
+For a longer product, sum over every possible choice of disjoint contracted pairs. Leave all remaining fields in normal order, then evaluate them against the external states.
+
+For a connected contribution with $k$ external particles, $k$ fields attach to those particles. At order $n$ in this cubic theory there are $3n$ fields, so the remaining $3n-k$ must contract in pairs. In particular, $3n-k$ must be even.
+
+A three-leg contribution at first order has three fields and no internal contraction. A $2\to2$ contribution at second order has six fields: four attach to the external particles and two contract into one internal line. We will evaluate both patterns below.
 
 ## The propagator from the free field
 
-The contraction is computable because the free field is known. Evaluate $\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle$ with the mode expansion. When $x^0 > y^0$ the time-ordering puts $\phi(x)$ first. Only the annihilation half of $\phi(x)$ followed by the creation half of $\phi(y)$ survives between vacua, leaving the phase $e^{-ip\cdot(x-y)}$ and the weight $1/\sqrt{2E_p}$ from the expansion's normalization:
+**Evaluate the contraction with the known free field.** For $x^0>y^0$, only the annihilation part of $\phi(x)$ followed by the creation part of $\phi(y)$ survives between vacuum states. The two mode-normalization factors multiply to $1/(2E_p)$, with $E_p=\sqrt{\mathbf p^2+m^2}$. Including both time orderings gives
 
 $$\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle = \int \frac{d^3p}{(2\pi)^3}\,\frac{1}{2E_p}\left[\theta(x^0-y^0)\,e^{-ip\cdot(x-y)} + \theta(y^0-x^0)\,e^{+ip\cdot(x-y)}\right].$$
 
-When $y^0 > x^0$ the roles reverse, which is the second term. The two orderings are both contained in one four-momentum integral once the contour is chosen correctly:
+The step function $\theta$ selects the appropriate ordering. We can express both terms as one four-momentum integral:
 
 $$\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle = \int \frac{d^4p}{(2\pi)^4}\,\frac{i}{p^2 - m^2 + i\epsilon}\,e^{-ip\cdot(x-y)}.$$
 
-The integrand has poles where $p^2 = m^2$, the mass shell. A wave with $e^{-ip\cdot(x-y)}$ is a positive-frequency wave propagating forward in time when the integral closes in the lower half of the $p^0$ plane. The $+i\epsilon$ shifts the pole at $E_p$ up and the pole at $-E_p$ down, so that closing the contour picks up exactly the pole that belongs to the ordering $\theta(x^0-y^0)$[^contour]. Time ordering, not a convention, determines which side of each pole the integral passes. That choice is the origin of the $i\epsilon$ that appears in every propagator. In momentum space the result is simple: the contraction is the Fourier transform of
+The denominator has poles near the mass-shell energies $p^0=\pm E_p$. The $+i\epsilon$ prescription shifts the positive-energy pole slightly **below** the real axis and the negative-energy pole slightly **above** it.
+
+For $x^0-y^0>0$, close the contour in the lower half-plane to recover the first time ordering. For negative time separation, close it above to recover the second[^contour]. These pole positions implement the Feynman time-ordering prescription. The momentum-space contraction is therefore
 
 $$\frac{i}{p^2 - m^2 + i\epsilon},$$
 
-which is the inverse of the Klein–Gordon operator $p^2 - m^2$ times $i$. The free term of the Lagrangian determines the propagator because the propagator undoes the free equation of motion. A particle that travels between two interactions obeys the free dynamics, so the factor that carries it between points is the inverse of the free kinetic operator. This is the first rule, and it came from the free theory alone.
+This is $i$ times the inverse of the free momentum-space quadratic operator $p^2-m^2$, with the specified boundary prescription. That is why the free Lagrangian determines the **propagator** used between interaction vertices. An internal momentum need not be on shell.
 
 ## Building amplitudes: the dictionary
 
-Now assemble a transition amplitude. Insert the Dyson series between a final state and an initial state, apply Wick's theorem term by term, and collect the pieces. Three kinds of object appear.
+Insert the Dyson series between the incoming and outgoing states. Apply Wick's theorem to each term. The surviving factors have three roles.
 
-**External lines.** An uncontracted field meets a particle in the initial or final state. A field's creation half acting on an initial state adds the particle with phase $e^{+ip\cdot x}$. Its annihilation half removes a particle from a final state with phase $e^{-ip\cdot x}$ (by Hermitian conjugation of the creation amplitude). For the real scalar there is nothing else. A one-particle state is fully specified by its momentum, so the external-line factor carries no spinor or polarization index.
+**External lines.** An uncontracted field annihilates an incoming particle with phase $e^{-ip\cdot x}$ or creates an outgoing particle with phase $e^{+ip\cdot x}$. A scalar has no spin or polarization index. After extracting the conventional external-state normalization, its external-line factor is $1$.
 
-**Contractions.** A pair of fields contracted with each other contributes the propagator computed above, evaluated at the momentum that flows between their positions.
+**Internal lines.** Each contracted pair contributes the free propagator, with momentum flowing between the two field positions.
 
-**Vertex integrals.** Each factor of $\mathcal{L}_{\mathrm{int}}$ integrates over its position and contributes its three fields. Writing $P$ for the total of the momenta meeting at the vertex, integrating the position $x$ against the plane-wave phases of those fields produces $\int d^4x\, e^{-ix\cdot P} = (2\pi)^4\delta^4(P)$, a momentum-conserving delta for each vertex.
+**Vertices.** Each interaction factor contributes three fields and an integral over its position. Let $P$ be the signed sum of momenta entering that vertex. The plane waves give $\int d^4x\,e^{-ix\cdot P}=(2\pi)^4\delta^4(P)$, which enforces energy and momentum conservation there.
 
-Counting the fields determines which pairings survive. At a vertex of $\phi^3$ the three fields are identical, and the $3!$ ways of assigning them to the three legs cancel the $3!$ in the denominator of the interaction. The combinatorial factor exists so that permuting the legs does not multiply the answer. Reading a diagram is then mechanical: multiply $-ig$ for each vertex, $i/(p^2-m^2+i\epsilon)$ for each internal line, and integrate over any momentum not fixed by conservation.
+At a vertex, the $3!$ assignments of the identical fields cancel the $3!$ in $\mathcal L_{\mathrm{int}}$. The remaining vertex factor is $-ig$. Multiply it by a propagator $i/(p^2-m^2+i\epsilon)$ for each internal line, and integrate over momenta that conservation does not fix. Diagrams with equivalent pairings can also require symmetry factors.
 
-The simplest process shows how the dictionary is applied. A scalar of momentum $p$ decays into two scalars of momenta $p_1, p_2$, $\phi(p) \to \phi(p_1)\phi(p_2)$. First order in the series has one vertex, and Wick's theorem leaves the three fields to create the two daughters and destroy the parent:
+**First check the three-leg factor.** Formally attach one incoming scalar of momentum $p$ and two outgoing scalars of momenta $p_1,p_2$ to one vertex. The three fields annihilate the incoming particle and create the outgoing pair, giving
 
 $$i\mathcal{M} = -ig,$$
 
-with the momenta constrained by $\delta^4(p - p_1 - p_2)$, energy and momentum conserved at the single vertex. A vertex contributes the coupling; that is all a vertex is.
+The position integral also gives $\delta^4(p-p_1-p_2)$. For three on-shell particles of the same positive mass, this conservation law forbids the decay $\phi\to\phi\phi$: one mass-$m$ particle cannot produce two. The expression still establishes the vertex factor used inside allowed scattering processes.
 
-A second example involves the internal line. For two-to-two scattering $\phi(p_1)\phi(p_2) \to \phi(p_3)\phi(p_4)$ at second order, two vertices appear, each supplying three fields. Six fields must pair against four external particles, so two fields contract with each other and form the propagator that connects the vertices. One routing has the incoming pair fuse at the first vertex, an internal line of momentum $q = p_1 + p_2$ carry the result to the second vertex, and the pair split there. That routing contributes
+**Now include an internal line.** In $\phi(p_1)\phi(p_2)\to\phi(p_3)\phi(p_4)$ at second order, two vertices supply six fields. Four attach to external particles, and the remaining pair forms a propagator.
+
+For the routing in which both incoming particles attach to the first vertex, momentum conservation gives $q=p_1+p_2$ on the internal line. Its contribution is
 
 $$i\mathcal{M}_s = (-ig)^2\, \frac{i}{q^2 - m^2 + i\epsilon}, \qquad q^2 = (p_1+p_2)^2.$$
 
-Because the scattered particles are identical bosons, the other two routings (pairing the momenta in the alternative ways) contribute the same expression with $q$ replaced by the other momentum combinations. The full amplitude is their sum[^identical]. The diagram rules reproduce the algebra term by term, which is the agreement this page set out to show. A diagram is not a picture of a process. It is the expansion drawn as a diagram, and the rules are the translation back.
+The other two pairings give the same form with different internal momentum combinations. Add all three contributions because they connect the same initial and final states[^identical]. Each diagram records one group of terms in the operator expansion.
 
-The scalar rules that have now been derived, not asserted, are:
+The resulting scalar rules are:
 
 | Diagram element | Factor |
 | --- | --- |
@@ -111,20 +134,26 @@ The scalar rules that have now been derived, not asserted, are:
 | Internal line, momentum $r$ | $\displaystyle \frac{i}{r^2 - m^2 + i\epsilon}$ |
 | External line | $1$ |
 
-An amplitude $\mathcal{M}$ is the product of these factors, with momentum conservation enforced at each vertex and the overall delta $\delta^4(P_f - P_i)$ factored out to define $\mathcal{M}$, exactly as the S-matrix split of [From Lagrangian to Experiment](lagrangian-to-experiment.md) requires[^lsz].
+The product of these factors gives $i\mathcal M$, with any loop integrations and symmetry factors included. Enforce conservation at each vertex, then factor out the overall $\delta^4(P_f-P_i)$ according to [From Lagrangian to Experiment](lagrangian-to-experiment.md)[^lsz].
 
 ## QED's rules are the same dictionary
 
-Nothing in the derivation used a property specific to the real scalar except the free-field results. The machinery (Dyson series, Wick's theorem, propagator as inverse of the free kinetic operator, delta at each vertex) runs unchanged for the fields of QED. The interaction there is $-q\bar\psi\gamma^\mu\psi A_\mu$. Expanding the S-matrix in $q$ organizes the same way, because that interaction also joins three fields at a point. What changes is only the free-theory input, the propagators of the individual fields.
+**Keep the method and change the fields.** For QED, expand in the charge $q$ using $\mathcal L_{\mathrm{int}}=-q\bar\psi\gamma^\mu\psi A_\mu$. The Dyson series, contractions, and position integrals work as above. Fermionic reordering also introduces minus signs.
 
-The electron's free Lagrangian gives its propagator as the inverse of its kinetic operator, $i(\not r + m)/(r^2 - m^2 + i\epsilon)$, and the photon's gives $-ig_{\mu\nu}/(r^2 + i\epsilon)$. Each carries the indices and spinor structure its field carries. The vertex factor follows from the interaction. The contraction structure of $\bar\psi\gamma^\mu\psi A_\mu$ produces $-iq\gamma^\mu$, the object the [Feynman Rules page](feynman-rules.md) reads off diagrams. External lines differ only because the fields differ. A one-electron state is not fully specified by momentum, so the electron field's uncontracted factor carries the spinor $u(p)$ or $\bar u(p')$. A photon's carries its polarization $\varepsilon_\mu(k)$. Wick's theorem supplies the same pairings, the vertex delta functions enforce momentum conservation, and the resulting diagram rules are precisely those stated on the Feynman Rules page.
+The free electron and photon fields determine their propagators and external-state factors. The interaction determines which fields meet at a vertex.
 
-The electron and photon propagators quoted above are not derived on this page. They are the results of the two remaining free-field quantizations: the spinor construction, which is carried out on the [Field Quantization page](field-quantization.md#the-spinor-field), and the photon construction with its gauge fixing, which is carried out on the [QED page](qed.md#quantizing-the-photon-field). Given those free-field results, the perturbative expansion produces the QED rules by the argument of this page. The [next page](feynman-rules.md) applies those rules to Compton scattering and then extends them to loop diagrams and renormalization, where the divergences of the higher-order terms are handled.
+The electron propagator is $i(\not r+m)/(r^2-m^2+i\epsilon)$, where $\not r=\gamma^\mu r_\mu$. In Feynman gauge, the photon propagator is $-ig_{\mu\nu}/(r^2+i\epsilon)$. Their matrix and vector indices reflect the fields they connect.
 
-[^contour]: The detail of which pole belongs to which ordering is a residue computation. In the $p^0$ plane the propagator has poles at $p^0 = \pm E_p$. Closing the contour below the real axis for $x^0 - y^0 > 0$ and above it for $x^0 - y^0 < 0$ selects the pole whose exponential decays in the right half of spacetime. The $+i\epsilon$ is precisely the shift that makes those two closure choices select the correct poles. The sign of $\epsilon$ is fixed by demanding that positive-energy states propagate forward in time, which is causality.
+The interaction gives the vertex factor $-iq\gamma^\mu$. External electrons contribute $u(p)$ or $\bar u(p')$, and external photons contribute polarization vectors $\varepsilon_\mu(k)$ or their outgoing conjugates. These are the factors used on the [Feynman Rules page](feynman-rules.md).
 
-[^identical]: For two identical final scalars the alternative routings are the t- and u-channels, named after the Mandelstam variables of the channel discussion on the Feynman Rules page. The same bookkeeping that produced the one routing produces the others. They are added because the field that creates the final particles does not distinguish which particle is which.
+The [Field Quantization page](field-quantization.md#the-spinor-field) derives the electron propagator. The [QED page](qed.md#quantizing-the-photon-field) derives the photon propagator and explains its gauge fixing. With those free-field results, the expansion above produces the QED rules.
 
-[^lsz]: This page computes $S$-matrix elements between normalized free-particle states, whose mode expansions carry factors of $1/\sqrt{2E_p}$. Conventional amplitudes $\mathcal{M}$ absorb those factors together with the wave-function residues into the definition of $\mathcal{M}$, which is why the amplitude written for the decay above has no such factors. The precise statement that a scattering amplitude is obtained from fully amputated, on-shell Feynman diagrams is the **LSZ reduction formula**. It is standard quantum field theory and is not derived here.
+The [next page](feynman-rules.md) applies them to Compton scattering, then explains loop corrections and renormalization.
 
-[^time]: The symbol $T$ for time ordering is standard notation across quantum field theory, QED included. Dyson introduced it in 1949 in the course of deriving the series below, which is why the expansion of $S$ is called the **Dyson series**. One refinement appears when the theory contains fermion fields, as QED does. Fermion operators anticommute, so there $T$ also multiplies by $-1$ for each pair of fermionic operators swapped in the reordering. The scalar field of this page is bosonic, so no signs arise. The final section transfers the machinery to QED with that single amendment.
+[^contour]: Integrate over complex $p^0$. The poles lie at $+E_p-i0$ and $-E_p+i0$. For positive $x^0-y^0$, the exponential decays below the real axis, so closing there selects the positive-energy pole. For negative separation, closing above selects the negative-energy pole. This reproduces the two time-ordered terms; the Feynman propagator is distinct from the retarded Green function.
+
+[^identical]: The other routings are the t- and u-channels, named using the Mandelstam variables discussed on the Feynman Rules page. Identical scalar particles have no distinguishing label that would exclude either pairing, so both contribute to the same amplitude.
+
+[^lsz]: Free-field expansions contain normalization factors $1/\sqrt{2E_p}$. With conventional relativistic normalization of external states, the scalar external-line rule for $\mathcal M$ is $1$. The **LSZ reduction formula** relates scattering amplitudes to correlation functions by removing external propagators and including the appropriate one-particle residues. We do not derive it here.
+
+[^time]: $T$ is the standard symbol for time ordering. The Dyson series takes its name from Dyson's 1949 work. For fermion fields, time ordering includes a factor $-1$ for each exchange of two fermionic operators. The scalar calculation has no such signs; the QED calculation must include them.

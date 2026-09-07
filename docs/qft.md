@@ -1,26 +1,32 @@
 # Quantum Field Theory: Fields and Quanta
 
-This page continues from [The Dirac Equation](dirac-equation.md) and carries out the transition promised at its end. The single-particle equation cannot describe particles that are created and destroyed, so we change the object. The wave function is not the fundamental object of the theory but a coefficient. The fundamental objects are **field operators**, operator-valued functions of space and time that create and annihilate particles. On this reading the negative-energy solutions of the Dirac equation require no separate interpretation. Creation and annihilation operators acting on the vacuum replace the hole picture of its §4, the antiparticle of its §3 becomes the positron that the electron field creates, and the physics of the positron follows from the mathematics of the field.
+A single-particle wave function cannot describe pair creation or annihilation. To continue from [The Dirac Equation](dirac-equation.md), we therefore introduce **field operators**: operators assigned to spacetime points that act on states with different particle numbers.
+
+For the electron field, these operators remove electrons and create positrons. This gives the negative-frequency solutions a precise role without a filled sea of negative-energy electrons.
 
 ## Recap of Dirac Equation
 
-The starting point is the general solution at the end of [The Dirac Equation §6](dirac-equation.md#_6-general-solution). For the free equation,
+Start with the general free solution from [The Dirac Equation §6](dirac-equation.md#_6-general-solution):
 
 $$\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + b_s^*(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
-with $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$ and $E_p = \sqrt{\mathbf p^2 + m^2}$. The formula holds two kinds of terms and two coefficients. The $u$-terms oscillate at positive frequency and describe the electron. The $v$-terms oscillate at negative frequency. [§3](dirac-equation.md#_3-antiparticles) identified them as the antiparticle, while [§4](dirac-equation.md#_4-negative-energy-solutions) could only interpret them as holes in a sea. The coefficients $a_s(p)$ and $b_s^*(p)$ are complex numbers, the amplitudes fixed by the initial conditions. Every construction on this page acts on this formula.
+Here $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$ and $E_p = \sqrt{\mathbf p^2 + m^2}$. The index $s$ labels the two spin states. The coefficients $a_s(p)$ and $b_s^*(p)$ are complex amplitudes fixed by the initial field.
+
+The $u$-terms have positive frequency; the $v$-terms have negative frequency. [§3](dirac-equation.md#_3-antiparticles) related the second family to antiparticles, and [§4](dirac-equation.md#_4-negative-energy-solutions) introduced the historical hole interpretation. We will now describe both families with operators.
 
 ### The promotion
 
-A coefficient can multiply a term of the solution, but it cannot create or destroy a particle. That is exactly what describing the negative-frequency terms requires ([§4](dirac-equation.md#_4-negative-energy-solutions)). The solution, announced at the end of [§6](dirac-equation.md#_6-general-solution), is to promote the coefficients to operators,
+To describe changing particle numbers, replace the numerical amplitudes by operators. This implements the step discussed in [§4](dirac-equation.md#_4-negative-energy-solutions) and proposed after the general solution in [§6](dirac-equation.md#_6-general-solution):
 
 $$a_s(p) \to \hat a_s(p), \qquad b_s^*(p) \to \hat b_s^\dagger(p),$$
 
-where $\hat a_s(p)$ annihilates an electron of momentum $\mathbf p$ and spin $s$, and $\hat b_s^\dagger(p)$ creates a positron of the same momentum and spin. The star on $b_s^*$ is not arbitrary. When numbers become operators, the complex conjugate becomes the adjoint, ${}^* \to {}^\dagger$. [§6](dirac-equation.md#_6-general-solution) therefore wrote the second coefficient conjugated, because the notation already had the form of the quantized field. After the promotion the same expansion reads
+The operator $\hat a_s(p)$ removes an electron of momentum $\mathbf p$ and spin label $s$. The operator $\hat b_s^\dagger(p)$ creates a positron with those labels.
+
+For operators, the counterpart of complex conjugation is the **adjoint**, denoted by $\dagger$. This explains the notation $b_s^*$ in [§6](dirac-equation.md#_6-general-solution): after quantization it becomes $\hat b_s^\dagger$. The expansion is now
 
 $$\hat\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[\hat a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + \hat b_s^\dagger(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
-and the object has changed kind. It is no longer a wave function but the **electron field operator**. Grouped by frequency, $\hat\psi = \hat\psi^{(+)} + \hat\psi^{(-)}$, with the adjoint field $\hat\psi^\dagger$ carrying the reversed halves. The full dictionary:
+This is the **electron field operator**. Split it into its positive- and negative-frequency parts, $\hat\psi = \hat\psi^{(+)} + \hat\psi^{(-)}$. Taking the adjoint reverses the phases and exchanges creation with annihilation:
 
 | half | operator | plane wave | action |
 | --- | --- | --- | --- |
@@ -29,21 +35,29 @@ and the object has changed kind. It is no longer a wave function but the **elect
 | $\hat\psi^{(+)\dagger}$ | $\hat a_s^\dagger(p)$ | $e^{+ip\cdot x/\hbar}$ | creates an electron |
 | $\hat\psi^{(-)\dagger}$ | $\hat b_s(p)$ | $e^{-ip\cdot x/\hbar}$ | annihilates a positron |
 
-The action column requires justification. The symbols alone do not decide it, because each species appears with both signs of plane wave across the field and its adjoint. The sign of the plane wave does. A state with energy $E$ oscillates in time as $e^{-iEt/\hbar}$. The $\hat a_s(p)$ term's plane wave, $e^{-ip\cdot x/\hbar}$ with $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$, splits into the time factor $e^{-iE_p t/\hbar}$ and the spatial factor $e^{+i\mathbf p\cdot\mathbf x/\hbar}$. Sandwich the field between an initial state of energy $E_i$ and a final state of energy $E_f$ and read off the time dependence of $\langle f|\hat\psi|i\rangle$. The field's action turns $|i\rangle$ into a new vector, $\hat\psi|i\rangle$. The component of this vector along $|f\rangle$ is the amplitude $\langle f|\hat\psi|i\rangle$, whose squared modulus is the transition's probability. Time evolution alone never moves $|i\rangle$ out of its eigenstate, so the components of $\hat\psi|i\rangle$ determine the entire result. The three factors line up, $e^{-iE_i t/\hbar}$ from the initial state, $e^{+iE_f t/\hbar}$ from the final one, and $e^{-iE_p t/\hbar}$ from the operator. The product is steady only when $E_f = E_i - E_p$. For any other pair of states the matrix element oscillates in time, and its time average vanishes. The term therefore participates in no other transitions. The $\hat a_s(p)$ term therefore removes energy $E_p$. Acting on a state, it produces, where it produces anything, a component whose energy is lower by exactly $E_p$. The same matching on the spatial factors removes momentum $\mathbf p$. Removing a quantum of energy and momentum is what "annihilates" means. Strictly, the matching establishes only the removal. Calling what is removed a particle adds the identification of a particle with one quantum of energy and momentum, a claim about the theory's spectrum. The construction to come confirms it when the Hamiltonian arrives as a sum of terms $E_p\,\hat a^\dagger\hat a$. The $e^{+ip\cdot x/\hbar}$ terms match with the signs reversed. They add energy and momentum instead, and their operators create.
+**The phase determines the energy change.** A **matrix element** $\langle f|\hat\psi|i\rangle$ is the component of $\hat\psi|i\rangle$ along a chosen final state $|f\rangle$. It measures how the field connects the two states.
 
-Here is the argument in brief. The amplitude $\langle f|\hat\psi|i\rangle$ is the one with which the field's action connects $|i\rangle$ to $|f\rangle$. The $\hat a_s(p)$ term contributes to it only when $E_f = E_i - E_p$. Every other pair of states gives an oscillation that averages away. The term therefore removes one quantum of energy and momentum, and removal is annihilation. Naming is the open part. Which particle the term removes comes in the next paragraph, and whether the removed quantum can yet be called a particle comes with the Hamiltonian of the construction to come.
+For energy eigenstates, Heisenberg evolution gives this matrix element a time factor $e^{i(E_f-E_i)t/\hbar}$. Compare that with the factor $e^{-iE_p t/\hbar}$ multiplying $\hat a_s(p)$. A nonzero contribution requires $E_f-E_i=-E_p$, so this operator lowers the energy by $E_p$. Matching the spatial phases likewise shows that it removes momentum $\mathbf p$.
 
-The phase matching fixes the action but not the name. [The Dirac Equation](dirac-equation.md) identified the positive-frequency $u$-terms as the electron's solutions, and the name carries over to the operator that multiplies such a term. The $v$-terms' operator takes the remaining label, positron. Choice enters only here, as continuity with the single-particle theory.
+The opposite phase, $e^{+ip\cdot x/\hbar}$, corresponds to adding energy $E_p$ and momentum $\mathbf p$. This is why its coefficient is a creation operator. To identify each added quantum as a particle, we still have to construct the Hamiltonian and its spectrum.
 
-The field and its adjoint mirror each other. Each carries one annihilation half and one creation half. Nothing removed the negative-frequency terms. Their role changed, from states an electron might fall into to the operators that create antiparticles.
+The phases determine whether an operator creates or annihilates. The species labels follow the convention in [The Dirac Equation](dirac-equation.md): the $u$-family describes electrons and the $v$-family describes positrons.
+
+Both the field and its adjoint contain creation and annihilation terms. We retain the negative-frequency solutions, but use them to create positive-energy antiparticles.
 
 ### What the promotion does not yet have
 
-We have asserted the promotion but not constructed it. Three things remain to be built. The first is the space the operators act on, namely states of any particle number, built from a vacuum $|0\rangle$ annihilated by every $\hat a$ and $\hat b$. This vacuum replaces the filled sea of [§4](dirac-equation.md#_4-negative-energy-solutions), and pair annihilation becomes the operator statement $\hat a\,\hat b\,|e^-\,e^+\rangle = |0\rangle$. The second is the algebra the operators obey, commutators or anticommutators. That choice separates bosons from fermions and answers the statistics caveat of [§4](dirac-equation.md#_4-negative-energy-solutions). The third is the Hamiltonian. Rebuilt from the promoted operators, it must come out bounded below, so that the negative-energy solutions of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability) are finally accounted for. The sections that follow prepare for this construction, after one more preliminary. The preliminary concerns what a field is and in which picture it is formulated.
+Three ingredients remain:
+
+- **States with arbitrary particle number.** Start from a vacuum $|0\rangle$ that every $\hat a$ and $\hat b$ annihilates. This replaces the sea in [§4](dirac-equation.md#_4-negative-energy-solutions). Schematically, pair annihilation becomes $\hat a\,\hat b\,|e^-\,e^+\rangle = |0\rangle$, up to the ordering convention for fermion states.
+- **An operator algebra.** Commutators or anticommutators determine how multiparticle states behave under exchange, addressing the statistics assumption in [§4](dirac-equation.md#_4-negative-energy-solutions).
+- **A Hamiltonian bounded below.** A lowest-energy vacuum must exist despite the negative-frequency solutions of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+
+Before constructing these, we need to distinguish the field types and the quantum pictures.
 
 ## Fields
 
-Fields come in kinds. The previous pages already classified them by how the objects transform under Lorentz transformations ([The Dirac Equation §5](dirac-equation.md#_5-spinors-transformations)). A classical field assigns a value to every point of spacetime. The representation under which those values transform fixes both the field's kind and the spin of the particles it will carry:
+A classical field assigns a value to each spacetime point. We classify fields by how those values change under Lorentz transformations, as in [The Dirac Equation §5](dirac-equation.md#_5-spinors-transformations). This transformation law also determines the spin content of the quantized field:
 
 | field | transformation law | spin | quanta |
 | --- | --- | --- | --- |
@@ -51,74 +65,100 @@ Fields come in kinds. The previous pages already classified them by how the obje
 | vector $A^\mu(x)$ | $A'^\mu(x') = \Lambda^\mu{}_{\nu}\,A^\nu(x)$ | $1$ | photon |
 | spinor $\psi(x)$ | $\psi'(x') = S(\Lambda)\,\psi(x)$ | $\tfrac{1}{2}$ | electron |
 
-Each row comes with its wave equation, and the correspondence is forced rather than memorized. Once a field transforms by a fixed representation, we can build a relativistic wave equation only from combinations that are themselves Lorentz-invariant, or that transform consistently with the field ([Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance)). For each row, the simplest such equation is essentially unique.
+To write a relativistic equation, combine fields and derivatives so that every term transforms consistently ([Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance)). The familiar free equations follow from the simplest choices for these field types.
 
-The scalar offers only $\phi$ itself, so its equation is built from the one Lorentz scalar a derivative can form, $\Box = \partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$:
+**Scalar field.** A derivative combination that transforms as a scalar is $\Box = \partial_\mu\partial^\mu = \partial_t^2 - \nabla^2$. Combining it with a mass term gives
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0,$$
 
-which is the Klein–Gordon equation of [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon). That page derived it from the exact relation $E^2 = \mathbf p^2 + m^2$ and rejected it as a single-particle wave equation because its probability density came out negative. As a *classical field equation* the Klein–Gordon equation has no such flaw, so the earlier rejection no longer applies. A classical $\phi$ carries energy and momentum, not probability, and no positivity condition applies to it.
+This is the Klein–Gordon equation from [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), with dispersion relation $E^2 = \mathbf p^2 + m^2$.
 
-The spinor transforms by $S(\Lambda)$, and the matrices $S(\Lambda)$ are built from the $\gamma^\mu$ of [The Dirac Equation](dirac-equation.md). The same matrices assemble its equation when we contract them with the derivative to make a Lorentz scalar:
+Its earlier difficulty concerned interpreting the conserved density as a single-particle probability density. A classical field $\phi$ is not a probability amplitude, so that interpretation is unnecessary here.
+
+**Spinor field.** The spinor transformation $S(\Lambda)$ and the gamma matrices from [The Dirac Equation](dirac-equation.md) satisfy a compatibility relation. As a result, the derivative term $\gamma^\mu\partial_\mu\psi$ transforms as a spinor, just like $\psi$. We can combine them as
 
 $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
-which is the Dirac equation itself, first order in time and space together. [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) aimed at exactly this resolution of the Klein–Gordon equation's negative density, with the complication, already familiar, that the first-order equation came with four components and antiparticles attached.
+The Dirac equation is first order in both time and space. [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced it to obtain a positive single-particle density. We now use the same equation for a field with spin and antiparticle modes.
 
-The vector row carries the electromagnetic four-potential. The field it enters physics through is the tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ of [Special Relativity §8](special-relativity.md#_8-maxwell-equations). In empty space its equation is
+**Vector field.** The electromagnetic potential $A^\mu$ enters the field tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ from [Special Relativity §8](special-relativity.md#_8-maxwell-equations). In empty space,
 
 $$\partial_\mu F^{\mu\nu} = 0 \quad\Longleftrightarrow\quad \Box A^\nu - \partial^\nu(\partial_\mu A^\mu) = 0,$$
 
-which is Maxwell's equations in free space, the wave equation with $m = 0$. Disturbances propagate at exactly $c$ in every frame. The zero on the right-hand side is physical. The vector family also admits a massive equation, $\partial_\mu F^{\mu\nu} + \tfrac{m^2}{\hbar^2}A^\nu = 0$. The photon's masslessness is read off which member of the family light obeys.
+These are the source-free Maxwell equations. Their physical waves propagate at $c$, corresponding to massless photons. A massive vector field instead satisfies $\partial_\mu F^{\mu\nu} + \tfrac{m^2}{\hbar^2}A^\nu = 0$. The transformation law alone does not fix the mass.
 
-So the table is closed on the left as well as the right: one transformation law, one wave equation, one spin, one species of quantum. The sequence met all three equations before, but as candidates for a different purpose, wave equations of a single particle. The Klein–Gordon equation was tried and rejected ([Relativistic QM §2](relativistic-qm.md#_2-klein-gordon)), the Dirac equation tried and successful ([The Dirac Equation](dirac-equation.md)), and Maxwell was never a particle equation at all. In this table they return in their original role as equations of fields, and the single-particle readings of the previous pages were borrowed from it. Spin comes from transformation, the lesson of [§5](dirac-equation.md#_5-spinors-transformations). The table lists the fields of particle physics, with one row per species of carrier. One example belongs to a later stage. The Higgs field has not been met in the sequence so far. It is a scalar field of the interacting theory, and it appears later on this page.
+We have met these equations before: Klein–Gordon in [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
+
+The relation between transformation law and spin is the one developed in [§5](dirac-equation.md#_5-spinors-transformations). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
 
 ### What the table does not cover
 
-The classification by Lorentz transformation continues beyond these three rows, into field types above spin $1$ that no confirmed particle fills. The rows the table does carry describe **elementary** fields only, and that restriction matters. Composite particles fill in other spins (the $\Delta$ baryon carries spin $\tfrac{3}{2}$, and nuclei and atoms higher still), but they take no independent row. The pion already present in the scalar row is the standing example. Its field is an effective description assembled from the quark fields that compose it, not a representation of the Lorentz group in its own right.
+The table is not exhaustive. Higher-spin representations exist, and composite particles can have higher spins: the $\Delta$ baryon has spin $\tfrac32$, for example.
+
+The pion is itself composite. Its scalar field is an effective description of a quark bound state, but it still transforms as a scalar under Lorentz transformations. A field's transformation law and whether its particle is elementary are separate questions.
 
 ### Second quantization
 
-The quantum step has a name, and the name is a count of quantizations. [First Quantization](first-quantization.md) turned a particle's classical quantities, position and momentum and energy, into operators acting on a wave function. The promotion of the previous section quantizes once more, at the next level. The wave function's own coefficients become operators. This is **second quantization**, and it applies to every row of the table. Each classical field becomes an operator-valued function of spacetime, $\hat\phi(x)$, $\hat A^\mu(x)$, $\hat\psi(x)$ (strictly, operator-valued distributions, since the momentum integrals are what make them well-defined), acting on the state space to create and annihilate the field's quanta. The name is slightly misleading, and the misleading part is instructive. Nothing is quantized twice. A different object, the classical field rather than the classical particle, is quantized once. Read that way, the outcome is concrete. There is one field per particle species, and a particle is what that field's creation operator produces from the vacuum. Thus $\hat a_s^\dagger(\mathbf p)\,|0\rangle$ is a state with one electron of momentum $\mathbf p$ and spin $s$. Electrons and positrons come from $\hat\psi$'s operators, photons from $\hat A^\mu$'s, and the Higgs from $\hat\phi$'s.
+[First Quantization](first-quantization.md) promoted a particle's position and momentum to operators. **Second quantization** instead quantizes a classical field, replacing its mode amplitudes by operators. Despite the name, we do not quantize the same object twice.
+
+The resulting fields $\hat\phi(x)$, $\hat A^\mu(x)$, and $\hat\psi(x)$ act on a space containing different particle numbers. For example, $\hat a_s^\dagger(\mathbf p)|0\rangle$ contains one electron of momentum $\mathbf p$ and spin $s$. The electron field also has positron operators; the electromagnetic field has photon operators.
+
+Strictly, quantum fields are **operator-valued distributions**. To obtain well-defined operators and normalizable states, we integrate them against suitable smooth functions rather than evaluate them at an exact point.
 
 ### Choosing a picture
 
-A quantum field can be formulated in either picture, and the choice determines which object carries the spacetime labels, the state or the operators. The previous pages never addressed the choice directly. [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators) established that conservation means commutation with the Hamiltonian, and proved it with the equation of motion $d\hat A/dt = \tfrac{i}{\hbar}[\hat H, \hat A]$, an equation that already places the time dependence on the operator without presenting that as a choice. Here the choice is explicit. In the **Schrödinger picture** the states evolve and the operators stand still,
+We can place time dependence in the states or in the operators. These are two equivalent descriptions of the same predictions. [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators) already used the second description to derive $d\hat A/dt = \tfrac{i}{\hbar}[\hat H,\hat A]$.
+
+In the **Schrödinger picture**, states evolve. Operators without explicit time dependence stay fixed:
 
 $$|\Psi_S(t)\rangle = e^{-i\hat H t/\hbar}\,|\Psi_S(0)\rangle, \qquad \hat O_S \;\text{ fixed};$$
 
-in the **Heisenberg picture** the states stand still and the operators evolve,
+In the **Heisenberg picture**, states stay fixed in time and operators evolve:
 
 $$|\Psi_H\rangle \;\text{ fixed}, \qquad \hat\phi(t, \mathbf x) = e^{i\hat H t/\hbar}\,\hat\phi(0, \mathbf x)\,e^{-i\hat H t/\hbar}.$$
 
-Note where the plus sign comes from. The Schrödinger equation evolves only the ket, using $e^{-i\hat H t/\hbar}$, the time-evolution operator of [First Quantization](first-quantization.md). Its adjoint evolves the bra, $\langle\Psi(t)| = \langle\Psi(0)|\,e^{+i\hat H t/\hbar}$, so the plus-signed factor was present all along, on the left of every expectation value. The Heisenberg formula moves both factors from the state onto the operator, forming the same sandwich that [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators) differentiated to get its equation of motion. Every prediction of the theory is an expectation value, and the two pictures agree on every one of them.
+The plus sign on the left comes from taking the adjoint of the time-evolution operator in [First Quantization](first-quantization.md). The ket evolves with $e^{-i\hat Ht/\hbar}$, while the bra evolves with $e^{+i\hat Ht/\hbar}$.
+
+Moving both factors onto the operator gives the Heisenberg expression differentiated in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators). The expectation values agree:
 
 $$\langle\Psi_S(t)|\,\hat O_S\,|\Psi_S(t)\rangle = \langle\Psi_H|\,\hat O_H(t)\,|\Psi_H\rangle,$$
 
-The choice between pictures is bookkeeping rather than physics. Which bookkeeping to adopt is a question of convenience, and relativity constrains the choice, as the Why Heisenberg section explains.
+The pictures differ in where we write the time dependence. Heisenberg fields make Lorentz covariance easier to display, as discussed below.
 
 ### State versus field
 
-The promotion moves the spacetime labels from the state to the operators. The notation hides this structural change, because $\hat\psi(x)$ still looks like the old $\psi(x)$. In wave mechanics the state carried the labels. There, $\psi(\mathbf x)$ was an amplitude at every point of space, and the operators $\hat{\mathbf x}$, $\hat{\mathbf p}$, and $\hat H$ acted on that function. After the promotion the direction reverses. The **state** $|\Psi\rangle$ is a vector with no spacetime label of its own. It records only what it contains, "the vacuum" or "one electron of momentum $\mathbf p$" or "two photons", never where or when. The **field** $\hat\psi(x)$ is the object spread over spacetime, with one operator attached to every point. And because the states are no longer functions of position, $\hat{\mathbf x}$, which multiplies by $\mathbf x$, has no wave function left to act on. Position survives only as the label $x$ carried by the fields.
+In wave mechanics, $\psi(\mathbf x)$ is the position-space representation of a state. In field theory, $\hat\psi(x)$ is an operator acting on a state $|\Psi\rangle$; it is not that state's wave function.
+
+The state can describe a vacuum, a momentum eigenstate, or a localized wave packet with many particles. It still contains spatial information, although we need not represent it as a function of a fixed list of particle positions. The coordinate $x$ on a field operator labels where the operator acts. Particle position is therefore no longer a universal canonical coordinate for the whole theory.
 
 ### Building one-particle states
 
-States get built by applying fields to the vacuum, so it is worth doing one application in full. Apply the adjoint field to $|0\rangle$ and substitute the promoted expansion above. The halves separate. The annihilation half gives zero on the vacuum, $\hat b_s(p)\,|0\rangle = 0$, and the creation half survives,
+Apply $\hat\psi^\dagger(x)$ to the vacuum. Its positron-annihilation terms vanish because $\hat b_s(p)|0\rangle=0$. The electron-creation terms remain:
 
 $$\hat\psi^\dagger(x)\,|0\rangle \;=\; \sum_s\int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\;u_s^\dagger(p)\,e^{+ip\cdot x/\hbar}\,\hat a_s^\dagger(p)\,|0\rangle.$$
 
-Every term carries exactly one $\hat a_s^\dagger(p)$, which creates an electron with momentum $\mathbf p$ and spin $s$. So $\hat\psi^\dagger(x)|0\rangle$ is a one-electron state, a superposition over all momenta, with the electron created at the point $x$. The same computation with $\hat\psi$ kills the $\hat a_s(p)$ half and keeps the $\hat b_s^\dagger$ half, so $\hat\psi(x)|0\rangle$ is a one-positron state. This is the basic vocabulary of QFT read literally. *A one-electron state* means $\hat a_s^\dagger(p)\,|0\rangle$, or a superposition of these. The left-hand side assembles such a superposition, and the state space of the construction below takes it as its building block.
+Each surviving term contains one electron creation operator. Thus the result is a superposition of one-electron momentum states. Applying $\hat\psi(x)$ instead leaves the $\hat b_s^\dagger$ terms and creates a positron superposition.
+
+The point label $x$ fixes the relative phases of the momentum components. A field at an exact point gives a formal distributional state; integrating it with a suitable spatial profile produces a wave packet. This is the precise sense in which fields build one-particle states.
 
 ### Why Heisenberg
 
-Carried into a relativistic theory, the Schrödinger picture uses time in a way that Lorentz invariance does not permit. The trouble is visible in its evolution equation, $i\hbar\,\partial_t|\Psi_S(t)\rangle = \hat H|\Psi_S(t)\rangle$, which is first order in $t$ and makes one observer's time coordinate the parameter of all change. The state it defines is an object at a time. What such a state becomes in field theory makes the difficulty concrete. Wave mechanics carried one amplitude per position of one particle, $\psi(\mathbf x)$; many-particle mechanics carried one amplitude per configuration, $\psi(\mathbf x_1, \ldots, \mathbf x_N)$; field theory goes further still,
+The Schrödinger picture remains valid in relativistic field theory, but its covariance is less explicit. The equation $i\hbar\partial_t|\Psi_S(t)\rangle=\hat H|\Psi_S(t)\rangle$ refers to a chosen time coordinate and a spatial slice at that time.
+
+The state representation also becomes more elaborate as we move from one particle to many particles and then to a field:
 
 $$\psi(\mathbf x) \;\longrightarrow\; \psi(\mathbf x_1, \ldots, \mathbf x_N) \;\longrightarrow\; \Psi[\varphi(\mathbf x)],$$
 
-one amplitude per whole configuration $\varphi(\mathbf x)$ of the field at one instant of time, an amplitude on the space of functions. The construction is legitimate, but "all of space at one instant" is not a Lorentz-invariant notion, and neither is a state defined that way. The reason is that a boost mixes space with time. What one observer calls all of space at the instant $t$ is, for another, a spread over earlier and later times. The sequence has met this obstruction before. [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) required that a first-order-in-time equation be first order in space as well, and the Dirac equation satisfies it. But that property belongs to the equation, not to the picture, so a Schrödinger state of the Dirac field is still defined at one frame's times, however covariant the equation it obeys. The Heisenberg picture removes the problem by moving the coordinates to where transformations act on them. The states are fixed, the operators carry the labels, and a Lorentz transformation acts on the label, $\hat U(\Lambda)\,\hat\phi(x)\,\hat U^{-1}(\Lambda) = \hat\phi(\Lambda x)$, which is the quantum version of the table's transformation laws, with the vector and spinor rows acquiring their $\Lambda$ and $S(\Lambda)$ alongside. The state never moves. In the Heisenberg view the wave function is fixed once and for all, and all of the dynamics is carried by the fields. For the free theory nothing is lost by keeping the states fixed, because free evolution creates and destroys nothing.
+The **wave functional** $\Psi[\varphi(\mathbf x)]$ assigns an amplitude to each whole field configuration on a spatial slice. A Lorentz boost changes that slice: events simultaneous in one frame are generally not simultaneous in another.
 
-One further fact belongs here, to be confirmed rather than assumed. The wave equations survive the promotion. The operator $\hat\phi(x)$ obeys the Klein–Gordon equation of [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), and the operator $\hat\psi(x)$ obeys the Dirac equation of [The Dirac Equation](dirac-equation.md). The equations of the previous pages were field equations all along.
+This does not invalidate Schrödinger evolution. It means that covariance involves transforming the slice as well as the state. The first-order Dirac equation from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) does not remove this distinction.
 
-The algebra choice that the previous section left open is already visible in the table, because the rows quantize differently. Integer-spin rows carry commutators, half-integer rows anticommutators. That correlation of spin and statistics is established in what follows. Here it is stated as a claim to be proved later.
+In the Heisenberg picture, the field already carries a spacetime label. With a consistent convention, a scalar transforms as $\hat U(\Lambda)\hat\phi(x)\hat U^{-1}(\Lambda)=\hat\phi(\Lambda x)$; vector and spinor fields also acquire their component matrices. We can therefore express covariance directly through local field transformations. States remain fixed under time evolution in this picture, though they still transform when we change reference frame.
 
-Everything so far has been the promotion, the expansion's coefficients turned into operators with assigned actions. Two choices are still open, and fixing them turns the promoted expansion into a working theory. First, the algebra. Will the operators obey commutators or anticommutators? Second, the Hamiltonian. When we build it from these operators, will the energy come out bounded below, so that the negative-energy solutions of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability) are finally accounted for? The [next page](qft-action.md) settles the algebra for the scalar field $\hat\phi$, the simplest case with no spin to keep track of, and extracts the Hamiltonian that the second question is about. The spinor row gets its answer the same way, on the [Field Quantization page](field-quantization.md#the-spinor-field), where the algebra must change to anticommutators. The vector row needs gauge fixing before it can be quantized at all, and its construction runs on the [QED page](qed.md#quantizing-the-photon-field).
+The free field operators obey the same wave equations as the classical fields: Klein–Gordon for $\hat\phi(x)$ ([Relativistic QM §2](relativistic-qm.md#_2-klein-gordon)) and Dirac for $\hat\psi(x)$ ([The Dirac Equation](dirac-equation.md)). Quantization changes the amplitudes into operators; it preserves these free equations.
+
+The field types differ in their operator algebra. Integer-spin fields use commutators, while half-integer-spin fields use anticommutators. The constructions ahead illustrate this spin–statistics connection; a general proof requires further assumptions, including locality.
+
+We can now construct the operator algebra, the state space, and the Hamiltonian. In particular, we must check that energy has a lower bound, resolving the problem in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+
+The [next page](qft-action.md) starts with the scalar field and its action. The [Field Quantization page](field-quantization.md#the-spinor-field) develops the spinor algebra. The photon also has gauge redundancy, which we handle on the [QED page](qed.md#quantizing-the-photon-field).

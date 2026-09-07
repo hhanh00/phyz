@@ -1,40 +1,72 @@
 # First Quantization
 
 ## 1. From Classical to Quantum State Space
-First quantization is the procedure of promoting a classical system to a quantum one while keeping its basic structure intact. Phase space $(q, p)$ is replaced by a Hilbert space of state vectors, dynamical quantities become linear operators acting on that space, and the Poisson bracket is replaced by the commutator via $\{\cdot,\cdot\} \to \frac{1}{i\hbar}[\cdot,\cdot]$. The immediate consequence is that a system's state is no longer a single point specifying definite values for every quantity at once. It is a vector that, in general, does not have a definite value for every observable simultaneously. Everything that follows is really an unpacking of what that shift entails.
+
+In classical mechanics, a state specifies position and momentum $(q,p)$. In quantum mechanics, we describe a state by a vector in **Hilbert space**, a vector space with an inner product for calculating probabilities.
+
+**First quantization** replaces classical quantities with operators acting on these vectors. The canonical prescription replaces Poisson brackets with commutators, $\{\cdot,\cdot\}\to\frac{1}{i\hbar}[\cdot,\cdot]$. A quantum state generally predicts several possible measurement outcomes, rather than definite values of every quantity at once.
 
 ## 2. The Schrödinger Equation
-Time evolution of a quantum state is governed by the Schrödinger equation, $i\hbar\, \partial \Psi/\partial t = \hat H \Psi$, the direct quantum analogue of Hamilton's equations. Given the state now and the Hamiltonian operator, the equation determines the state at every later time, deterministically and unitarily. For a Hamiltonian with no explicit time dependence this separates into a time-independent form, $\hat H \Psi = E\Psi$, an eigenvalue equation whose solutions are the stationary states and allowed energies of the system.
+
+The Hamiltonian operator $\hat H$ determines how the state changes through the **Schrödinger equation**, $i\hbar\,\partial\Psi/\partial t=\hat H\Psi$. Given an initial state, this equation determines its later evolution. Unitary evolution preserves the total probability.
+
+For a time-independent Hamiltonian, we can separate the time dependence and solve $\hat H\Psi=E\Psi$ for the spatial states of definite energy. These are stationary states: their time dependence changes only their overall phase.
+
+For a particle of mass $m$ moving in one dimension with potential energy $V(x)$, the time-dependent equation is
 
 $$i\hbar \frac{\partial \Psi(x,t)}{\partial t} = \left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V(x)\right]\Psi(x,t)$$
 
 ## 3. Wave Amplitude
-The solution $\Psi(x,t)$ to the Schrödinger equation is a complex-valued function called the wave amplitude, or wavefunction. On its own it is not directly observable. What is physical is $|\Psi(x,t)|^2$, the probability density for finding the particle at position $x$ at time $t$. Because it is a probability density, $\Psi$ must be normalized so that $\int |\Psi|^2\, dx = 1$ over all space. Its phase, though unobservable in isolation, is exactly what produces interference when amplitudes are added.
+
+In the position representation, the state is a complex function $\Psi(x,t)$ called the **wave function** or probability amplitude. The Born rule converts it into a measurable probability density: $|\Psi(x,t)|^2$.
+
+Integrating this density over a region gives the probability of finding the particle there. A normalized state satisfies $\int|\Psi|^2\,dx=1$. An overall phase does not affect probabilities, but relative phases between contributions affect their sum and produce interference.
 
 ## 4. Copenhagen Interpretation
-The interpretation most often taught alongside this formalism is usually credited to Bohr and collaborators and is known as the Copenhagen interpretation. It treats $|\Psi|^2$ as a genuine probability rather than a description of hidden, already-determined values. Before a measurement, a system does not possess a definite value for an observable unless it happens to be in an eigenstate of that observable. Measurement is taken to force the state to "collapse" onto one eigenstate, with outcome probabilities set by the Born rule. Bohr paired this with the principle of complementarity. Quantities such as position and momentum, or wave and particle behavior, are both valid descriptions but can never be jointly and precisely observed in a single experiment.
+
+The **Copenhagen interpretation**, associated with Bohr and his collaborators, treats the Born probabilities as fundamental. It does not assign an unmeasured observable a definite value unless the state is an eigenstate of that observable.
+
+In the ideal measurement rule, an outcome projects the state into its corresponding eigenspace. This is called **collapse**. Bohr's **complementarity** emphasizes that different experimental arrangements reveal different aspects of a system. For example, we cannot measure position and momentum with arbitrarily sharp precision in the same state.
 
 ## 5. Operators
-Every classical dynamical variable is promoted to a linear operator acting on the Hilbert space of states. Position becomes the operator $\hat x$ (multiplication by $x$ in the position representation[^pos-rep]), and momentum becomes $\hat p = -i\hbar\, \partial/\partial x$. Operators act on state vectors to produce new state vectors, and the order in which two operators are applied can matter. This is a departure from classical variables, which are just numbers and always commute.
+
+An operator acts on a state vector to produce another vector. **Linear** means that it acts on a sum by acting on each term separately.
+
+In the position representation[^pos-rep], $\hat x$ multiplies a wave function by $x$, while $\hat p=-i\hbar\,\partial/\partial x$ differentiates it. Unlike multiplication by ordinary numbers, applying two operators in different orders can give different results.
 
 ## 6. Observables
-Not every operator corresponds to something measurable. Physical observables (energy, position, momentum, spin) are represented by Hermitian operators[^linalg] specifically. Hermiticity guarantees real eigenvalues, and a measurement can only ever return a real number. The Hamiltonian $\hat H$ is itself an observable. It represents total energy, and its eigenvalues are the energies the system can actually be measured to have.
+
+A measurable quantity is an **observable**. We represent energy, position, momentum, and spin by Hermitian operators[^linalg], whose eigenvalues are real. Those eigenvalues are the possible measurement outcomes.
+
+The Hamiltonian $\hat H$ is the energy observable. Solving its eigenvalue equation gives the allowed energies.
 
 ## 7. Eigenvectors and Eigenvalues
-For an observable $\hat A$, a state satisfying $\hat A \psi = a\psi$ is an eigenstate, and $a$ is its eigenvalue. Physically, eigenstates are exactly the states with a definite value for that observable. Measuring $\hat A$ on the state $\psi$ is guaranteed to return $a$. Because $\hat A$ is Hermitian, its eigenvectors form a complete orthonormal basis for the Hilbert space. Every possible state can be written as a combination of them, which is what makes superposition meaningful.
+
+If $\hat A\psi=a\psi$, applying $\hat A$ changes only the vector's scale. We call $\psi$ an **eigenstate** and $a$ its **eigenvalue**. Measuring $\hat A$ in that state gives $a$ with certainty.
+
+For a Hermitian matrix, we can choose a complete orthonormal basis of eigenvectors. Expanding a state in that basis gives its measurement amplitudes. Observables with continuous spectra, such as position, use the corresponding generalized eigenstates and integrals.
 
 ## 8. Commutators
-The commutator of two operators, $[\hat A, \hat B] = \hat A \hat B - \hat B \hat A$, measures the extent to which order of operation matters. It is the quantum counterpart of the classical Poisson bracket. Position and momentum satisfy the canonical commutation relation $[\hat x, \hat p] = i\hbar$, which is never zero. This single nonzero result is the algebraic root of most distinctly quantum behavior, including the uncertainty principle. Two observables that do commute share a common set of eigenstates and can, in principle, be known simultaneously with arbitrary precision.
+
+To compare two orders of operation, subtract them: $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$. This is the **commutator**, the quantum counterpart of the Poisson bracket.
+
+Position and momentum obey the canonical relation $[\hat x,\hat p]=i\hbar$. Their nonzero commutator leads to the uncertainty relation below. Commuting observables can have a common basis of eigenstates, in which both values are definite.
 
 ## 9. Superposition
-Because the Schrödinger equation is linear, any combination $\psi = c_1\psi_1 + c_2\psi_2 + \dots$ of valid states is itself a valid state. When the $\psi_i$ are eigenstates of some observable with distinct eigenvalues $a_i$, a system in the superposition $\psi$ does not have a definite value of that observable at all. Measurement returns $a_i$ with probability $|c_i|^2$, and only after the measurement is the state left in the corresponding eigenstate. Superposition is the formal statement of what it means for a quantum state to be genuinely indefinite, rather than merely unknown to the observer.
+
+Linearity means that a combination $\psi=c_1\psi_1+c_2\psi_2+\dots$ evolves as the same combination of the individual solutions. After normalization, it is another valid state.
+
+If the $\psi_i$ form an orthonormal eigenbasis with distinct outcomes $a_i$, measurement gives $a_i$ with probability $|c_i|^2$. An ideal measurement leaves the state in the corresponding eigenstate. Before measurement, the relative phases of the coefficients can affect other observables, so the superposition carries more information than a list of classical probabilities.
 
 ## 10. Uncertainty Principle
-Because position and momentum operators do not commute, no state can be a simultaneous eigenstate of both. There is no state with an exactly definite position and an exactly definite momentum at once. This is formalized by the Heisenberg uncertainty relation,
+
+No state has both exactly definite position and exactly definite momentum. Their nonzero commutator gives the **Heisenberg uncertainty relation**,
 
 $$\Delta x \, \Delta p \geq \frac{\hbar}{2}$$
 
-where $\Delta x$ and $\Delta p$ are the standard deviations of position and momentum in a given state. The result generalizes to any pair of non-commuting observables, $\Delta A\, \Delta B \geq \tfrac{1}{2}\left|\langle[\hat A, \hat B]\rangle\right|$. The uncertainty principle is thus a direct algebraic consequence of the commutator structure introduced above, not an added postulate.
+where $\Delta x$ and $\Delta p$ are the standard deviations of measurement outcomes in the same state. Reducing one spread therefore places a lower bound on the other.
+
+For general observables, $\Delta A\,\Delta B\geq\tfrac12|\langle[\hat A,\hat B]\rangle|$. The brackets $\langle\cdot\rangle$ denote the expectation value in that state. This bound follows from the operator algebra and the inner product.
 
 ---
 
@@ -42,42 +74,51 @@ Previous: [Lesson 01a — Classical Mechanics](./classical-mechanics.md)
 
 Next: [The Harmonic Oscillator](./harmonic-oscillator.md)
 
-[^linalg]: The linear algebra underlying quantum mechanics has two widely used classes of operator, each chosen because it preserves something physically essential.
+[^linalg]: Two classes of operators appear repeatedly: Hermitian operators describe observables, and unitary operators preserve inner products.
 
-    A **Hermitian** (or self-adjoint) operator $\hat A$ satisfies $\hat A = \hat A^\dagger$, where the adjoint $\hat A^\dagger$ is defined by demanding $\langle \phi \vert \hat A^\dagger \psi \rangle = \langle \hat A \phi \vert \psi \rangle$ for all states. In matrix language this means $\hat A^\dagger = (\hat A^*)^T$, which says to conjugate every entry and then transpose. Two consequences follow immediately from this definition. First, all eigenvalues are real. If $\hat A \psi = \lambda \psi$ then $\lambda = \langle \psi \vert \hat A \psi \rangle / \langle \psi \vert \psi \rangle$, and Hermiticity forces that ratio to equal its own complex conjugate. Hence $\lambda \in \mathbb{R}$. Since every measurement outcome must be a real number, observables must be Hermitian. There is no other choice consistent with the formalism. Second, eigenvectors belonging to distinct eigenvalues are orthogonal. If $\hat A \psi_1 = \lambda_1 \psi_1$ and $\hat A \psi_2 = \lambda_2 \psi_2$ with $\lambda_1 \neq \lambda_2$, then $(\lambda_1 - \lambda_2)\langle \psi_2 \vert \psi_1 \rangle = 0$, forcing $\langle \psi_2 \vert \psi_1 \rangle = 0$. Taken together these two facts mean a Hermitian operator always supplies a complete orthonormal basis of eigenstates for the Hilbert space (the spectral theorem), which is exactly what is needed to expand an arbitrary state as a superposition and read off measurement probabilities as squared coefficients.
+    A **Hermitian** operator satisfies $\hat A=\hat A^\dagger$. The adjoint is defined by $\langle\phi\vert\hat A^\dagger\psi\rangle=\langle\hat A\phi\vert\psi\rangle$. For matrices, $\hat A^\dagger=(\hat A^*)^T$: conjugate the entries, then transpose.
 
-    A **unitary** operator $\hat U$ satisfies $\hat U^\dagger \hat U = \hat U \hat U^\dagger = \hat I$, the identity. Equivalently, $\hat U^\dagger = \hat U^{-1}$. In matrix language every column (and every row) of a unitary matrix forms an orthonormal set. Unitarity is the condition that preserves the inner product, $\langle \hat U \phi \vert \hat U \psi \rangle = \langle \phi \vert \hat U^\dagger \hat U \psi \rangle = \langle \phi \vert \psi \rangle$. Because the norm $\lVert \psi \rVert^2 = \langle \psi \vert \psi \rangle$ is the total probability, a norm-preserving map is one that keeps total probability equal to one. Time evolution must therefore be unitary. If $\hat H$ is Hermitian, the time-evolution operator $\hat U(t) = e^{-i\hat H t/\hbar}$ is unitary, and the Schrödinger equation is precisely the statement that states evolve by unitary maps. Measurement, by contrast, is not unitary. It collapses the state onto an eigenspace, which does not preserve the inner product with the pre-measurement state. This non-unitarity is the formal expression of the irreversibility of measurement.
+    Its eigenvalues are real. If $\hat A\psi=\lambda\psi$, then $\lambda=\langle\psi\vert\hat A\psi\rangle/\langle\psi\vert\psi\rangle$, and Hermiticity makes this ratio equal to its complex conjugate. Eigenvectors with distinct eigenvalues are orthogonal because $(\lambda_1-\lambda_2)\langle\psi_2\vert\psi_1\rangle=0$.
 
-    The two classes are related by a simple correspondence. If $\hat A$ is Hermitian then $e^{i\hat A}$ is unitary, and conversely every unitary operator near the identity can be written in this exponential form with a Hermitian generator. In physics this connection appears everywhere. The Hamiltonian generates time translations, the momentum operator generates spatial translations, and angular momentum generates rotations. In each case the generator is Hermitian (an observable) while the finite transformation it produces is unitary (a symmetry operation that preserves probability).
+    The spectral theorem gives a complete orthonormal eigenbasis for a Hermitian matrix. In infinite-dimensional Hilbert spaces, self-adjointness also involves the operator's domain, and a continuous spectrum requires generalized eigenstates. These are the mathematical qualifications behind expansions in position or momentum states.
+
+    A **unitary** operator satisfies $\hat U^\dagger\hat U=\hat U\hat U^\dagger=\hat I$, or equivalently $\hat U^\dagger=\hat U^{-1}$. Its matrix rows and columns form orthonormal sets. It preserves inner products because $\langle\hat U\phi\vert\hat U\psi\rangle=\langle\phi\vert\hat U^\dagger\hat U\psi\rangle=\langle\phi\vert\psi\rangle$.
+
+    In particular, it preserves the norm $\lVert\psi\rVert^2=\langle\psi\vert\psi\rangle$, so a normalized state stays normalized. For a time-independent Hermitian Hamiltonian, $\hat U(t)=e^{-i\hat Ht/\hbar}$ is unitary and solves the Schrödinger equation.
+
+    Conditioning on a particular measurement outcome instead projects onto an eigenspace and renormalizes. This state update is not unitary and generally loses information about the original state.
+
+    Exponentiating a Hermitian operator gives a unitary operator: $e^{i\hat A}$. Conversely, a unitary transformation near the identity has a Hermitian generator. The Hamiltonian generates time translations, momentum generates spatial translations, and angular momentum generates rotations. The generator is an observable; the finite transformation preserves probability.
 
 ## 11. Personal Notes
 
-The most important point for me is the introduction of the system state as something different from the positions and velocities of the parts. In mechanics, classical or not, we are interested in the evolution of a system, that is, where "things" are at some later point in the future. So we naturally take the positions (and velocities) as the state. That works as long as the equations directly involve positions, and Newton's law gives us exactly that. But in quantum mechanics, position is no longer certain.
+For me, the key change is what we mean by a **state**. In classical mechanics, positions and velocities specify the motion. In quantum mechanics, we use a state from which we calculate probabilities for position and other measurements.
 
-Not *uniformly* uncertain, though. In most cases we can make educated guesses about where the particle is. We just cannot be 100% sure it is at a given spot. The best tool for capturing this situation is the wave function, and it is already very odd. It looks like an evasion: "you say we MUST use a probability, but really it's because you do not know your system fully. Git gud bro." The rebuttal is Bell's inequality[^bell]. The debate about interpretations continues. What is undeniable is that *mathematically*, we can solve problems without hidden variables. IMO this is like thermodynamics. We know temperature comes from the agitation of molecules, but we don't care, since we get results by using the macroscopic view. I am sure some people will say it is not the same in QM. In QM there is *no* hidden variable, etc. It's philosophical and I don't want to get into it. But, as a result, QM is rejected by many as nonsensical, obviously wrong, stupid, and so on. I don't particularly care. I take it as a different set of rules. Our intuition does not apply here. It is a new "game". Learn the rules and follow them.
+Those probabilities are not necessarily broad or uniform. A wave function can make some outcomes very likely and others negligible. It is tempting to interpret the remaining uncertainty as missing information about hidden variables, but Bell's inequality[^bell] places strong limits on that explanation.
 
-Speaking of games, back to the system state. In QM, position (and many other quantities) is no longer deterministic, but that's not the complete description either. We can know with great precision, but there will always be *some* uncertainty left over. In theory, we could know the position exactly but then we would know nothing about the momentum (which could even be faster than light).
+I prefer to learn the mathematical rules before choosing an interpretation. We can calculate predictions without resolving every philosophical question, much as we can use thermodynamics without tracking individual molecules. That comparison concerns how I use a theory; it does not settle whether quantum probabilities have a deeper explanation.
 
-Our best tool is the mathematics of probabilities.
-If you played Poker, you know what I mean.
+The uncertainty relation makes the limitation precise. A narrower position distribution requires a broader momentum distribution. An ideal position eigenstate has no finite momentum spread. This does not imply motion faster than light: large momentum and superluminal speed are different claims.
 
-Usually, when we don't know something for sure, we replace it with a probability. That turns out to be useless here, because probabilities don't add the way QM requires. Instead, QM tracks the **probability amplitude** (the wave function), which relates to the position probability by
+Probability is familiar from games such as poker, but quantum calculations require an extra ingredient.
+
+We add **probability amplitudes** before taking their squared magnitude. Adding ordinary probabilities would miss interference. For position measurements,
 
 $$P(x, t) = |\Psi(x, t)|^2 = \Psi^*(x, t)\,\Psi(x, t).$$
 
-The amplitude is an intermediate value that greatly simplifies the math. It is complex, and its phase is exactly what produces interference ([§3](#_3-wave-amplitude)), something no plain probability can do.
+The complex amplitude includes a phase. Relative phases affect the probability when contributions combine, as in [§3](#_3-wave-amplitude).
 
-Imagine you make a video game. You have sprites. You need to animate them according to the game logic. In a platform game, sprites move, jump, but don't go through platforms. To track all of this, you keep the sprite coordinates, so the logic can check collisions. But the player does not see any of that. He sees the sprites drawn on the screen.
+My useful analogy is a video game. The game stores an internal state, updates it using its rules, and then draws a visible scene. The stored state and the displayed image serve different purposes.
 
-In QM, we track the wave function because we have tools that work on it: the Schrödinger equation for the evolution of the system, the momentum operator for momenta, and so on. The logic runs on the state. The observable outcomes are "rendered" at the end.
+Likewise, we evolve the wave function with the Schrödinger equation and apply operators to calculate observables. The state is the input to those calculations; the observable probabilities are the output.
 
-These calculations preserve the character of the state. Inputs are probability-like (more precisely, vectors), outputs are probability-like too, and the maps between them are *linear*. That linearity is the mathematical statement that a superposition of states evolves into the superposition of their evolutions. It doesn't have to be this way, but it is what makes a theory usable. You can decompose a complicated situation into manageable pieces, evolve the pieces, and recombine.
+The evolution is linear. We can decompose a state into simpler parts, evolve each part, and recombine the amplitudes. This is why superposition is useful for solving complicated problems.
 
-We have to be careful about what the state is *made of*, though. If we represented states by ordinary real numbers (0, 1, 1.3, etc.), the theory's predictions would not match experiments. With complex numbers (numbers with two parts, a real and an imaginary part), we can predict the experimental results. In particular, we get interference. So even though complex numbers are impossible to visualize, we must use them if we want the theory to work. Relativity requires the same step. Spacetime is impossible to visualize, but it is an invaluable tool. The mathematics there gets harder because distance in spacetime is not the usual one. But there is a branch of mathematics (differential geometry) that deals with exactly that.
+Complex numbers make the phase information explicit. We can visualize a complex number as a point in a plane, even though a full quantum state may be harder to picture. Relativity uses a similar mathematical habit: we calculate with spacetime geometry even when a four-dimensional picture is difficult to imagine. Its interval differs from ordinary Euclidean distance, so we must use the appropriate geometry.
 
-I think the main point is that the theory is much easier to work with when we don't try to interpret the equations along the way. Like the video game, do the logic and calculations with the state, then "render", i.e. calculate the probabilities that can be observed.
+I find it easier to keep the calculation and its interpretation separate: evolve the state, then calculate the probabilities of the outcomes we can observe.
 
-[^pos-rep]: A state vector $\psi$ is an abstract object in Hilbert space. It does not inherently "live" anywhere. A **representation** is a choice of basis that turns that abstract vector into a concrete function. In the **position representation** you project onto eigenstates of $\hat x$, giving the wavefunction $\psi(x)$, a complex amplitude at each point in space. In that basis $\hat x$ acts by multiplying by $x$ and $\hat p$ acts by $-i\hbar\,\partial/\partial x$. In the **momentum representation** the roles swap, so $\hat p$ multiplies by $p$ and $\hat x$ acts by $i\hbar\,d/dp$. The two pictures are related by a Fourier transform. The form $\hat p = -i\hbar\,\partial/\partial x$ is therefore not a fundamental definition. It is what the abstract momentum operator looks like once you have committed to describing states as functions of position.
+[^pos-rep]: A state vector $\psi$ is an abstract Hilbert-space vector. A **representation** chooses a basis for writing its components. In the position representation, the components are amplitudes $\psi(x)$ for position eigenstates. Then $\hat x$ multiplies by $x$ and $\hat p$ acts as $-i\hbar\,\partial/\partial x$. In the momentum representation, $\hat p$ multiplies by $p$ and $\hat x$ acts as $i\hbar\,d/dp$. A Fourier transform relates these representations. The derivative formula for momentum is therefore its form in the position basis, rather than a basis-independent definition.
 
-[^bell]: The "you just don't know the system fully" program is called a **hidden-variable** theory. Bell's theorem (J. S. Bell, *On the Einstein–Podolsky–Rosen paradox*, Physics 1, 195 (1964)) shows that any such theory obeys an inequality that quantum mechanics violates. The violation is not subjective. It was measured, first by Clauser and Freedman (1972), more sharply by Aspect (1982), and in loophole-free form by the experiments recognized with the 2022 Nobel Prize (Aspect, Clauser, Zeilinger). So the "Git gud" reading, restoring certainty by finding the hidden layer, is not merely unfinished. It is experimentally excluded for the whole class of theories Bell's argument covers. What survives the theorem are escapes of a subtler kind (superdeterminism, many worlds, and other reinterpretations), which is why the debate the text mentions is philosophical rather than empirical.
+[^bell]: A **hidden-variable theory** supplements the quantum state with additional variables. Bell's theorem (J. S. Bell, *On the Einstein–Podolsky–Rosen paradox*, Physics 1, 195 (1964)) derives inequalities for theories satisfying specific locality and independence assumptions. Quantum mechanics predicts violations. Experiments by Clauser and Freedman (1972), Aspect (1982), and later experiments closing major loopholes observed such violations. The 2022 Nobel Prize recognized Aspect, Clauser, and Zeilinger for work on entanglement and Bell inequalities. These results exclude local hidden-variable explanations under Bell's assumptions; they do not exclude every hidden-variable theory. Nonlocal theories and proposals that relax other assumptions remain part of the interpretation debate.
 

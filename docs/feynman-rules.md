@@ -2,25 +2,27 @@
 
 ## The need for Feynman diagrams
 
-The [From Lagrangian to Experiment page](lagrangian-to-experiment.md) connected the scattering amplitude $\mathcal{M}$ to a measurable cross section. The [Perturbation Theory page](perturbation-theory.md) derived the rules by which a Lagrangian's interaction term generates amplitudes. We now apply those rules to the [QED Lagrangian](qed.md),
+The [From Lagrangian to Experiment page](lagrangian-to-experiment.md) connected the amplitude $\mathcal M$ to a measured cross section. [Perturbation Theory](perturbation-theory.md) derived the factors associated with vertices and propagators. We will now use them for the [QED Lagrangian](qed.md):
 
 $$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\hbar\gamma^\mu\partial_\mu - m\right)\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
 
-The first two pieces describe free photons and electrons. The interaction term $-q\bar\psi\gamma^\mu\psi\,A_\mu$ couples the photon field to the electron current. We expand the scattering amplitude in powers of the charge $q$, with each application of the interaction contributing one more power. This is a perturbative expansion. We approximate the amplitude by retaining the lowest orders, then include higher orders to refine the calculation.
+The first two terms describe free photons and electrons. The interaction $-q\bar\psi\gamma^\mu\psi A_\mu$ couples the photon field to the electron current.
 
-Each application also contributes two fermion fields and one photon field. Computing a term in the expansion means accounting for how these fields connect to the incoming and outgoing particles and pair with one another. The number of possible pairings grows quickly with the order of the expansion.
+**Expand in the charge $q$.** Each interaction factor contributes one power of $q$. Keeping the lowest nonzero orders gives an approximation; higher orders supply corrections.
 
-A Feynman diagram organizes these contributions as a picture. Lines represent particles, and vertices represent applications of the interaction. The Feynman rules translate each diagram into its contribution to the amplitude.
+Each interaction factor contains two fermion fields and one photon field. To calculate an amplitude, attach fields to the external particles and pair the remaining fields with one another. The number of possible pairings grows with the order.
+
+A **Feynman diagram** records one group of these terms. External lines attach to particle states, internal lines represent contractions, and vertices represent interaction factors. The **Feynman rules** turn each diagram into an amplitude contribution.
 
 ## Compton Scattering Example
 
-In Compton scattering, an electron and a photon enter, and an electron and a photon leave:
+In **Compton scattering**, the incoming and outgoing states each contain an electron and a photon:
 
 $$e^-(p) + \gamma(k) \;\longrightarrow\; e^-(p') + \gamma(k').$$
 
-The labels denote four-momenta, with $p+k=p'+k'$. From here onward we use natural units, $\hbar=c=1$, and the metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$.
+The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onward, use $\hbar=c=1$ and $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$.
 
-The QED interaction contains one photon field, so a single vertex cannot accommodate both the incoming and outgoing photon. The lowest-order contribution needs two vertices joined by an electron line. There are two ways to attach the photons along that line.
+**Count the required vertices.** Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices, joined by an electron line. There are two distinct photon attachments.
 
 ```feynman
 \begin{tikzpicture}
@@ -40,9 +42,9 @@ The QED interaction contains one photon field, so a single vertex cannot accommo
 \end{tikzpicture}
 ```
 
-*s-channel[^mandelstam]: the incoming photon attaches at the first vertex, and the internal electron carries $p+k$.*
+*s-channel: the incoming photon attaches at the first vertex, and the internal electron carries $p+k$.*
 
-In the first diagram, the incoming photon attaches first when we follow the electron arrow. Momentum conservation gives the internal electron momentum $p+k$.
+Follow the electron arrow in the first diagram. The incoming photon attaches first, so momentum conservation gives $p+k$ for the internal electron. This is the **s-channel**[^mandelstam].
 
 ```feynman
 \begin{tikzpicture}
@@ -64,21 +66,25 @@ In the first diagram, the incoming photon attaches first when we follow the elec
 
 *u-channel: the incoming photon attaches at the second vertex, and the internal electron carries $p-k'$.*
 
-In the second diagram, the outgoing photon attaches first, giving internal momentum $p-k'$. These are two contributions to the same transition amplitude, not two experimentally distinguishable histories. We add them before squaring.
+In the second diagram, the outgoing photon attaches first. The internal momentum is $p-k'$, giving the **u-channel**.
+
+Both diagrams contribute to the same measured transition. We must add their amplitudes before squaring.
 
 ## Building Blocks of Feynman Diagrams
 
-A **fermion line** is a straight line with an arrow. It represents the Dirac field, which describes both electrons and positrons. The arrow follows fermion-number flow. It points along an electron's physical propagation and against a positron's. A **photon line** is wavy and has no fermion arrow.
+A **fermion line** is straight and has an arrow. It represents the Dirac field, which describes electrons and positrons. The arrow follows fermion-number flow: along an electron's propagation and opposite a positron's. A **photon line** is wavy and has no fermion arrow.
 
-A **vertex** joins two fermion-line ends and one photon line, matching the fields in $-q\bar\psi\gamma^\mu\psi A_\mu$. Charge and four-momentum are conserved at every vertex. QED has no elementary vertex joining photons alone.
+A **vertex** joins two fermion ends and one photon line, corresponding to $-q\bar\psi\gamma^\mu\psi A_\mu$. Charge and four-momentum are conserved at each vertex. The QED Lagrangian has no elementary vertex made only of photons.
 
-An **external line** ends at an incoming or outgoing state. Its momentum satisfies the physical mass relation, $p^2=m^2$ for an electron or $k^2=0$ for a photon. We call this being **on shell**. An **internal line** connects vertices and contributes a propagator, the factor describing propagation between interactions. Its momentum need not satisfy the mass relation, so it can be **off shell**. Such internal contributions are often called virtual particles. They are not separately detected particles, and they do not violate energy conservation.
+An **external line** connects to an incoming or outgoing particle. Its momentum is **on shell**: $p^2=m^2$ for an electron and $k^2=0$ for a photon.
 
-Both Compton diagrams have four external lines, two vertices, and one internal electron line. Their different photon attachments change the internal momentum and therefore the propagator.
+An **internal line** connects two vertices and contributes a propagator. Its momentum can be **off shell**, meaning it need not satisfy the free-particle mass relation. The phrase **virtual particle** refers to this internal contribution. It is not a separately detected particle; energy and momentum remain conserved at the vertices.
+
+Each Compton diagram has four external lines, two vertices, and one internal electron line. Changing the photon attachments changes the internal momentum and hence the propagator.
 
 ## Feynman Rules and Amplitudes
 
-Reading a diagram back into an amplitude follows a fixed translation, the **Feynman rules**: the interaction term fixes the factor at each vertex, the free terms fix the factors on the internal lines, and the external lines carry the single-particle wave functions. Compton scattering needs only these four rules.
+**Assign a factor to each element.** Interaction terms determine vertex factors, free terms determine propagators, and external particle states determine spinors or polarization vectors. The two Compton diagrams use four rules:
 
 | Diagram element | Factor |
 | --- | --- |
@@ -87,9 +93,13 @@ Reading a diagram back into an amplitude follows a fixed translation, the **Feyn
 | Incoming / outgoing electron | $u(p)$ / $\bar u(p')$ |
 | Incoming / outgoing photon | $\varepsilon_\mu(k)$ / $\varepsilon_\mu^*(k')$ |
 
-The table abbreviates objects the site has already introduced. The vertex factor $-iq\gamma^\mu$ is the interaction term $-q\bar\psi\gamma^\mu\psi A_\mu$ with its three fields removed, and $\gamma^\mu$ are the Dirac matrices of [The Dirac Equation page](dirac-equation.md). The symbol $\not r$ is shorthand for the contraction $\gamma^\mu r_\mu$. The internal-electron factor is the propagator of that Dirac field. Promoting the field the way the [Field Quantization page](field-quantization.md) promotes the scalar yields the vertex at every interaction and this factor between them, which is why it carries the electron mass and its Dirac structure. The $+i\epsilon$ in the denominator handles the propagator's poles and stays inert until an internal momentum is integrated over, as in the loop diagrams below[^epsilon]. The spinor $u(p)$ on the electron's external lines is the momentum-dependent positive-energy solution of the Dirac equation that [The Dirac Equation page](dirac-equation.md) built. Its adjoint is $\bar u(p')=u(p')^\dagger\gamma^0$. The photon's factor $\varepsilon_\mu(k)$ is its polarization four-vector, which no earlier page has needed and which this page defines in a footnote[^polarization]. The remaining QED rules (the photon propagator, positron lines, and the gauge choice behind them) do not enter these two diagrams, so we defer them to a footnote[^rulebook].
+The vertex factor is $-iq\gamma^\mu$, with $\gamma^\mu$ the matrices introduced on [The Dirac Equation page](dirac-equation.md). Removing the three fields from the interaction term leaves this factor, including the $i$ from the S-matrix expansion.
 
-To translate the first Compton diagram into an amplitude, read along the electron's arrow: put the outgoing electron's factor $\bar u(p')$ on the left, the vertex factors and the electron propagator in the order the arrow meets them, and finish with the incoming electron's factor $u(p)$ on the right:
+For the internal electron, $\not r$ abbreviates $\gamma^\mu r_\mu$. The numerator retains the field's spinor structure, while the denominator has its mass-shell poles. Quantizing the Dirac field by the method of [Field Quantization](field-quantization.md) gives this propagator. The $+i\epsilon$ specifies how to pass the poles in momentum integrals[^epsilon].
+
+For an external electron, $u(p)$ is a positive-energy spinor solution from [The Dirac Equation page](dirac-equation.md), and $\bar u(p')=u(p')^\dagger\gamma^0$ is its adjoint. For a photon, $\varepsilon_\mu(k)$ is the polarization four-vector; an outgoing photon uses its complex conjugate[^polarization]. The additional photon-propagator and positron rules appear in a footnote[^rulebook].
+
+**Write the electron factors in matrix order.** Start with $u(p)$ on the right and follow the electron arrow, adding each new factor to its left. Finish with $\bar u(p')$. Multiply by the photon polarization factors. For the first diagram this gives
 
 $$
 i\mathcal{M}_s = \bar u(p')(-iq\gamma^\nu)
@@ -98,7 +108,7 @@ i\mathcal{M}_s = \bar u(p')(-iq\gamma^\nu)
 \varepsilon_\mu(k)\varepsilon_\nu^*(k').
 $$
 
-The second diagram reverses the photon attachments:
+Reverse the photon attachments for the second contribution:
 
 $$
 i\mathcal{M}_u = \bar u(p')(-iq\gamma^\mu)
@@ -107,49 +117,57 @@ i\mathcal{M}_u = \bar u(p')(-iq\gamma^\mu)
 \varepsilon_\mu(k)\varepsilon_\nu^*(k').
 $$
 
-The subscripts refer to the momentum combinations $s=(p+k)^2$ and $u=(p-k')^2$. Spin labels are suppressed. Gamma matrices do not generally commute, so their order matters. The diagram factors give $i\mathcal{M}$, matching the S-matrix convention of the [From Lagrangian to Experiment page](lagrangian-to-experiment.md).
+The labels refer to $s=(p+k)^2$ and $u=(p-k')^2$. We have suppressed spin labels. Keep the gamma matrices in the displayed order, because they generally do not commute.
 
-The leading amplitude is $\mathcal{M}_{\mathrm{tree}}=\mathcal{M}_s+\mathcal{M}_u$. Its square contains interference:
+The factors produce $i\mathcal M$, using the S-matrix convention in [From Lagrangian to Experiment](lagrangian-to-experiment.md).
+
+**Add the contributions, then square.** At leading order, $\mathcal M_{\mathrm{tree}}=\mathcal M_s+\mathcal M_u$, so
 
 $$|\mathcal{M}_{\mathrm{tree}}|^2
 =|\mathcal{M}_s|^2+|\mathcal{M}_u|^2
 +2\operatorname{Re}(\mathcal{M}_s\mathcal{M}_u^*).$$
 
-For unpolarized beams, average this expression over the two initial electron spins and two initial photon polarizations, and sum over the unobserved final spins and polarizations. The result enters the phase-space integral for the cross section.
+The final term is the **interference** between the two contributions. For unpolarized incoming particles, average over two electron spins and two photon polarizations. Sum over unobserved final spins and polarizations, then insert the result into the cross-section phase-space integral.
 
 ## Tree-level and Loop Diagrams
 
-A **tree diagram** has no closed cycle of internal lines. Once the external momenta are specified, conservation at its vertices fixes every internal momentum. Both diagrams above are trees, and each has two vertices. The Compton tree amplitude is therefore of order $q^2$, and its squared amplitude is of order $q^4$.
+A **tree diagram** has no closed cycle of internal lines. Momentum conservation fixes every internal momentum once the external momenta are given.
 
-At higher orders, an additional internal photon can connect two points on the electron line, forming a cycle together with the electron segment between them. Momentum conservation now leaves a four-momentum $\ell$ undetermined. We integrate over it, including a factor
+Both Compton diagrams are trees with two vertices. Each vertex contributes one $q$, so their amplitudes have order $q^2$ and their squared sum has order $q^4$.
+
+**A loop introduces an unfixed momentum.** For example, connect two points on the electron line with an additional internal photon. That photon and the electron segment form a closed cycle. Conservation leaves a four-momentum $\ell$ free, so the amplitude includes
 
 $$\int\frac{d^4\ell}{(2\pi)^4}$$
 
-for each independent loop. A loop need not consist of a closed fermion line. The electron–photon cycle just described is already a loop. A closed fermion line contributes an additional minus sign and a trace over its spinor indices.
+for each independent loop. The cycle need not be a closed fermion line: this electron–photon cycle is already a loop. When a loop does consist of a closed fermion line, also include a minus sign and a trace over spinor indices.
 
-For Compton scattering, one-loop contributions have four interaction vertices and are of order $q^4$ in the amplitude. Their interference with the tree amplitude gives a correction of order $q^6$ to the squared amplitude:
+Compton one-loop contributions contain four QED vertices and have order $q^4$ in the amplitude. Interference with the order-$q^2$ tree amplitude therefore changes the squared amplitude at order $q^6$:
 
 $$|\mathcal{M}|^2
 =|\mathcal{M}_{\mathrm{tree}}|^2
 +2\operatorname{Re}\!\left(\mathcal{M}_{\mathrm{tree}}^*
 \mathcal{M}_{\mathrm{one\ loop}}\right)+\cdots.$$
 
-We must include all diagrams and counterterms at the chosen order. Keeping one selected loop diagram generally does not give a complete physical correction.
+At a chosen order, include the full set of diagrams and counterterms. A single selected loop diagram generally gives only part of the physical correction.
 
 ## Infinities in Loop Diagrams
 
-The loop integral ranges over arbitrarily large momenta. If the propagators and numerator do not suppress the integrand sufficiently, this region produces an **ultraviolet divergence**. For example, an integral with large-momentum behavior $\int d^4\ell/(\ell^2)^2$ diverges logarithmically. Not every loop integral diverges.
+A loop integral includes arbitrarily large momenta. If its integrand falls too slowly there, the result has an **ultraviolet divergence**. For example, the large-momentum behavior $\int d^4\ell/(\ell^2)^2$ gives a logarithmic divergence. Some loop integrals are finite.
 
-To calculate with such expressions, first introduce a **regulator**, a temporary modification that makes the divergence explicit. Dimensional regularization continues the integral to $d=4-2\delta$ dimensions, where ultraviolet divergences appear as poles in $1/\delta$.
+**First regulate the integral.** A **regulator** temporarily modifies the calculation so we can identify its divergent part. In dimensional regularization, continue the integral to $d=4-2\delta$ dimensions. Ultraviolet divergences then appear as poles in $1/\delta$.
 
-Next, express the Lagrangian's parameters and field normalizations in terms of renormalized quantities plus **counterterms**. These additional terms cancel the regulated ultraviolet divergences order by order. Fix the renormalized mass and charge through specified measurement conditions, and remove the regulator from the resulting predictions. This procedure is **renormalization**. In QED, the required counterterms have the same forms as terms already present in the Lagrangian, so a finite set of parameter and field redefinitions suffices at every perturbative order. [Forshaw's QED and QCD lectures](https://users.hep.manchester.ac.uk/u/jforshaw/NorthWest/QED.pdf) introduce this construction.
+**Then relate the parameters to measurements.** Write the original masses, charges, and field normalizations as renormalized quantities plus **counterterms**. Choose the counterterms to cancel the regulated ultraviolet divergences, order by order. Specify measurement conditions for the renormalized parameters and remove the regulator from predictions.
 
-Massless photons also produce **infrared divergences** when a loop photon's momentum approaches zero. Renormalization does not remove these. A detector cannot distinguish an event with no extra photon from one with an additional photon below its energy resolution. Including that unresolved real emission together with the virtual corrections cancels the soft divergences in the inclusive observable. Thus a correction to the measured Compton rate includes both loop diagrams and sufficiently soft additional-photon emission.
+This procedure is **renormalization**. In QED, counterterms have the same forms as terms already in the Lagrangian. A finite set of parameter and field redefinitions therefore suffices at every perturbative order. [Forshaw's QED and QCD lectures](https://users.hep.manchester.ac.uk/u/jforshaw/NorthWest/QED.pdf) develop this construction.
 
-[^mandelstam]: The channel names come from the Mandelstam variables, the three Lorentz-invariant ways to pair the four external momenta of a $2\to2$ process: $s=(p+k)^2=(p'+k')^2$, $t=(p-p')^2$, and $u=(p-k')^2$. Each variable is the squared total momentum of the pair that fuses into the exchanged line, so the name of a channel records which momentum combination appears in its propagator. In both diagrams here the exchanged line is the electron. An incoming electron and the incoming photon fuse at a vertex into $p+k$, which names the **s-channel**. An incoming electron and an *outgoing* photon pair as $p-k'$, which names the **u-channel**. The third pairing, $t=(p-p')^2$, would put the two electrons at one vertex and the two photons at the other. That pairing cannot appear in QED, because each vertex couples one photon to two fermion lines and never two photons to each other. Compton scattering therefore has no t-channel diagram. The Mandelstam variables are not independent, since for massless external particles $s+t+u=0$.
+**Small photon momenta cause a different divergence.** An **infrared divergence** can arise when a massless loop photon's momentum approaches zero. Ultraviolet renormalization does not remove it.
 
-[^epsilon]: The denominator $r^2-m^2$ of the electron propagator vanishes on the electron's mass shell, $r^2=m^2$. The infinitesimal $+i\epsilon$ shifts those poles slightly off the real axis and records which way a momentum integral is to pass them. When an internal momentum is fixed by the external momenta, as in both tree diagrams here, the propagator never sits exactly on a pole and the prescription stays inert. It becomes essential in the loop integrals of the last sections.
+A detector cannot resolve a photon below its energy threshold. Its measured Compton rate therefore includes events with sufficiently soft extra photons. Adding this unresolved real emission to the virtual loop corrections cancels the soft divergences in the inclusive observable.
 
-[^polarization]: The photon is massless and transverse, so its polarization has two independent states, the two transverse directions (equivalently the two helicities). The four-vector $\varepsilon_\mu(k)$ points along the oscillation direction of a photon with momentum $k$ and is transverse to it, $k^\mu\varepsilon_\mu(k)=0$. An outgoing photon carries the complex conjugate $\varepsilon_\mu^*(k')$.
+[^mandelstam]: **Mandelstam variables** are Lorentz-invariant combinations of the external momenta: $s=(p+k)^2=(p'+k')^2$, $t=(p-p')^2$, and $u=(p-k')^2$. The channel name identifies the momentum combination in the exchanged propagator. Here the internal electron carries $p+k$ in the s-channel and $p-k'$ in the u-channel. A tree-level t-channel would require a two-photon vertex on one end of the exchanged line, which elementary QED does not have. For Compton scattering, $s+t+u=2m^2$; the relation $s+t+u=0$ applies when all four external particles are massless.
 
-[^rulebook]: The complete set of QED rules adds two rules this page never needs. An internal photon line carries the propagator $-ig_{\mu\nu}/(r^2+i\epsilon)$, written in Feynman gauge and derived on the [QED page](qed.md#quantizing-the-photon-field). Positron external lines carry $\bar v(p)$ and $v(p)$ instead of the electron spinors, the negative-frequency solutions of the Dirac equation's [general solution](dirac-equation.md). The conventions used throughout agree with [David Tong's QED notes](https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html).
+[^epsilon]: The electron denominator vanishes at $r^2=m^2$. The infinitesimal $+i\epsilon$ displaces its poles to implement Feynman time ordering and fixes their treatment in momentum integrals. For ordinary Compton tree kinematics with nonzero photon energies, the internal momentum is fixed away from the poles. In loop integrals, the prescription remains essential.
+
+[^polarization]: A photon has two physical transverse polarizations, equivalently two helicities. Its polarization four-vector satisfies $k^\mu\varepsilon_\mu(k)=0$, with vectors that differ by a multiple of $k_\mu$ describing the same physical polarization. In a transverse gauge, its spatial part specifies the electric-field oscillation direction. The outgoing factor is $\varepsilon_\mu^*(k')$.
+
+[^rulebook]: An internal photon contributes $-ig_{\mu\nu}/(r^2+i\epsilon)$ in Feynman gauge, derived on the [QED page](qed.md#quantizing-the-photon-field). Incoming and outgoing positrons contribute $\bar v(p)$ and $v(p')$, respectively, using the negative-frequency solutions in the Dirac equation's [general solution](dirac-equation.md). These conventions agree with [David Tong's QED notes](https://www.damtp.cam.ac.uk/user/tong/qft/qfthtml/S6.html).

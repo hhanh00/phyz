@@ -1,6 +1,6 @@
 # Quantum Chromodynamics
 
-> Placeholder — the sections below are the planned outline.
+> This chapter is planned. The headings below outline the topics it will cover.
 
 ## Introducing Quarks
 

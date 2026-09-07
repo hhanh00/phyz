@@ -2,61 +2,61 @@
 
 ## 1. Plane Wave
 
-Start from the non-relativistic Schrödinger equation (Special Relativity §9) and ask what its simplest solutions are, namely the states of definite energy.
+Before changing the Schrödinger equation, we will solve it for a free particle with definite energy and momentum. These plane-wave solutions make it easy to compare non-relativistic and relativistic energy relations.
 
-**A state of definite energy.** In quantum mechanics an observable takes a sharp, predictable value only when the system is in an eigenstate of the corresponding operator. The energy observable is the **Hamiltonian** $\hat H$, so a state of definite energy $E$ satisfies
+**Specify a definite energy.** The Hamiltonian $\hat H$ is the energy operator. A state with a definite energy $E$ satisfies its eigenvalue equation,
 
 $$\hat H \psi = E \psi .$$
 
-Measurement of the energy on such a state returns $E$ with certainty, and the state is stationary in distribution. Under time evolution the wave function changes, but every expectation value (in particular $|\psi|^2$) does not.
+Measuring energy in this state gives $E$ with certainty. For a time-independent Hamiltonian, time evolution changes only its overall phase. Its probability distribution and the expectation values of observables with no explicit time dependence stay constant.
 
-**Solve the Schrödinger equation.** The time-dependent Schrödinger equation is
+**Find the time dependence.** Start with the time-dependent Schrödinger equation,
 
 $$i\hbar \frac{\partial \psi}{\partial t} = \hat H \psi$$
 
-(restoring $\hbar$, still $c = 1$, as in Special Relativity §9). We want its definite-energy solutions.
+using $c=1$ and keeping $\hbar$ explicit, as in Special Relativity §9.
 
-**Separation of variables.** Assume the wave function factors into spatial and temporal parts, $\psi(x, t) = \phi(x)\,\tau(t)$. Substituting into the Schrödinger equation and dividing by $\psi$,
+For a definite-energy solution, factor the wave function as $\psi(x,t)=\phi(x)\tau(t)$. Substitute this into the equation and divide by the product:
 
 $$i\hbar \frac{\dot\tau(t)}{\tau(t)} = \frac{\hat H \phi(x)}{\phi(x)} = E,$$
 
-where the two sides depend on $t$ and $x$ separately, so both must equal the same constant, which we call $E$. The temporal equation integrates immediately,
+The left side depends only on time and the right side only on position. Both must therefore equal a constant, which we identify as the energy $E$. Integrating the time equation gives
 
 $$\tau(t) = e^{-iEt/\hbar},$$
 
-and the spatial equation is the **time-independent Schrödinger equation**
+up to a constant factor. The spatial equation is the **time-independent Schrödinger equation**,
 
 $$\hat H \phi = E \phi .$$
 
-**The spatial part, $\phi = \ldots$.** For a free particle the Hamiltonian is the kinetic operator $\hat H = \hat{\mathbf p}^2/2m$ with $\hat{\mathbf p} = -i\hbar\nabla$, so
+**Find the spatial dependence.** For a free particle, $\hat H=\hat{\mathbf p}^2/2m$ and $\hat{\mathbf p}=-i\hbar\nabla$, so
 
 $$-\frac{\hbar^2}{2m}\nabla^2 \phi = E \phi,$$
 
-whose solutions (up to normalization) are the plane waves $\phi(\mathbf x) = e^{i\mathbf p\cdot\mathbf x/\hbar}$ with $E = \mathbf p^2/2m$. Assembling the two factors gives the full solution
+A momentum eigenfunction $\phi(\mathbf x)=e^{i\mathbf p\cdot\mathbf x/\hbar}$ satisfies this equation when $E=\mathbf p^2/2m$. Multiplying by the time factor gives
 
 $$\psi(x, t) = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar},$$
 
-the **plane wave**, a state of definite momentum $\mathbf p$ and definite energy $E = \mathbf p^2/2m$. Note the consequence of definiteness. Since $|\psi|^2 = 1$ everywhere, a state with sharp momentum carries no position information at all, the extreme limit of the Heisenberg uncertainty relation.
+a **plane wave** with definite momentum $\mathbf p$ and energy $E=\mathbf p^2/2m$. Its squared magnitude is constant across space, so it has no localized position distribution. An exact plane wave is an idealized generalized eigenstate; a normalizable particle state uses a superposition, or wave packet.
 
-The plane wave is the natural eigen-solution of the non-relativistic theory, but its dispersion relation $E = \mathbf p^2/2m$ is precisely the one Special Relativity §9 showed to be incompatible with Lorentz covariance. The next step is to replace the Schrödinger operator with the relativistic wave equation, the Klein–Gordon equation, and see what a definite-energy plane wave looks like there.
+The plane-wave form will also solve relativistic equations. What changes is the dispersion relation connecting $E$ and $\mathbf p$. We next derive an equation with the exact relativistic relation.
 
 ## 2. Klein Gordon
 
-The Schrödinger equation failed the Lorentz test (Special Relativity §9) because it quantized the *approximate* energy relation. The Klein–Gordon equation is what you get by quantizing the exact one.
+The non-relativistic equation uses an approximation to the energy. To retain Lorentz covariance, start instead with the exact energy–momentum relation.
 
-**Take the definition of $E$ in special relativity.** The exact relation between energy and momentum (Special Relativity §7) is
+**Start with relativistic energy.** In units $c=1$, Special Relativity §7 gives
 
 $$E^2 = \mathbf p^2 + m^2$$
 
-With $c = 1$ this is the Lorentz-invariant norm $p^\mu p_\mu = m^2$ of the four-momentum. The non-relativistic relation $E = \mathbf p^2/2m$ of §1 is only its low-velocity limit, valid when $|\mathbf p| \ll m$.
+This is the invariant four-momentum norm $p^\mu p_\mu=m^2$. At low momentum, the positive energy is approximately $m+\mathbf p^2/2m$. Subtracting the rest energy $m$ gives the non-relativistic kinetic energy.
 
-**Promote to operators.** Apply the same quantization prescription used in Special Relativity §7 and in §1, replacing the classical energy and momentum by operators:
+**Replace energy and momentum by operators.** Use the same prescription as before:
 
 $$E \to i\hbar\,\frac{\partial}{\partial t}, \qquad \mathbf p \to -i\hbar\nabla .$$
 
-The difference from §1 is that the exact, Lorentz-invariant relation is quantized. No small-velocity approximation was made.
+Apply these operators to the squared relation, without making a low-speed approximation.
 
-**Derive the Klein–Gordon equation.** Acting on the wave function,
+**Collect the derivatives.** Acting on $\psi$ gives the following steps:
 
 $$\left(i\hbar\,\frac{\partial}{\partial t}\right)^2 \psi = \left(m^2 - \hbar^2\nabla^2\right)\psi,$$
 
@@ -64,124 +64,150 @@ $$-\hbar^2\,\partial_t^2\psi = m^2\psi - \hbar^2\nabla^2\psi,$$
 
 $$\partial_t^2\psi - \nabla^2\psi + \frac{m^2}{\hbar^2}\psi = 0,$$
 
-or, in covariant notation,
+Define $\Box$, the d'Alembertian, to write the result compactly:
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\psi = 0, \qquad \Box \equiv \partial_\mu\partial^\mu = \partial_t^2 - \nabla^2,$$
 
-the **Klein–Gordon equation**. It is manifestly Lorentz-invariant. The operator $\Box$ is the Lorentz scalar built from derivatives (Special Relativity §9), $m$ is a scalar, and the equation is a scalar equation. A boost cannot change its form. This is the solution §9 pointed to.
+This is the **Klein–Gordon equation**. For a scalar field $\psi$, each term transforms as a Lorentz scalar: $\Box$ contracts the derivative indices, and $m$ is invariant. The equation therefore has the same form in every inertial frame.
 
-Plane-wave solutions $\psi = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar}$ reproduce the dispersion relation
+Substituting the plane wave $\psi=e^{i(\mathbf p\cdot\mathbf x-Et)/\hbar}$ gives
 
 $$E^2 = \mathbf p^2 + m^2,$$
 
-so $E = \pm\sqrt{\mathbf p^2 + m^2}$. The equation admits **negative-energy solutions**, and because it is second order in *time* it no longer supports the probability interpretation of §1, since the conserved density is not positive. The equation restored covariance but introduced two new problems, negative energies and a probability that can go negative. They are taken up in the next section.
+Both $E=+\sqrt{\mathbf p^2+m^2}$ and $E=-\sqrt{\mathbf p^2+m^2}$ satisfy the equation. We must explain the negative-energy solutions and determine whether the wave function still has a single-particle probability interpretation.
 
 ## 3. Negative Energy and Probability
 
-The Klein–Gordon equation restored Lorentz covariance but introduced two problems, both already visible in its plane-wave solutions $\psi = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar}$.
+The Klein–Gordon equation has the correct relativistic energy relation. The difficulty is interpreting all of its solutions as states of one particle.
 
-**Negative energy.** The dispersion relation admits both signs,
+**Negative energies.** The plane-wave energies have both signs:
 
 $$E = \pm\sqrt{\mathbf p^2 + m^2},$$
 
-so for every momentum there is a negative-energy solution with $E \leq -m$. Three consequences follow. First, the energy is *unbounded below*. There is no ground state, and any interaction would let the system radiate energy indefinitely, falling through negative levels forever. The theory has no stable matter. Second, this is not what is observed. A real electron always carries $E \geq m$, never the negative branch. Third, and this is the key point, a negative-energy plane wave with momentum $\mathbf p$ is mathematically the same as a positive-energy state with momentum $-\mathbf p$ and *opposite charge* propagating backward in time. That is the **Stückelberg–Feynman interpretation**. Negative-frequency solutions are antiparticles moving backward in time, and the emission of a negative-energy particle is the absorption of an antiparticle. The difficulty is that interpreting them this way requires particle number to change (creation and annihilation), which a single-particle wave function cannot describe. Negative energies are the first sign that one-particle relativistic wave mechanics is incomplete.
+For every momentum, there is a solution with $E\leq-m$. If these represented accessible particle energies, there would be no lowest energy: the negative values decrease without bound as momentum increases. Interactions coupling positive- and negative-energy states could then destabilize a one-particle description.
 
-**The probability problem.** The same two-branch structure appears in the theory's conserved quantity. In §1 the interpretation of $|\psi|^2$ as a probability density rested on a conservation law, and the conservation law rested on the equation being first order in time. Writing the Schrödinger equation as
+In field theory, we interpret negative-frequency modes through **antiparticles**, with positive energy and the opposite charge. The **Stückelberg–Feynman interpretation** expresses the same relation by reversing the direction of a charged particle line in time. A negative-energy contribution with momentum $\mathbf p$ corresponds to an antiparticle contribution with positive energy and reversed momentum. Emission and absorption exchange roles under this reinterpretation.
+
+This does not mean that observed antiparticles travel backward on laboratory clocks. The full description uses particle creation and annihilation, which a fixed single-particle wave function cannot represent.
+
+**Find a conserved probability.** For comparison, consider the Schrödinger equation with a real local potential $V$:
 
 $$i\hbar\,\partial_t \psi = \left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\psi,$$
 
-the density's time derivative is $\partial_t|\psi|^2 = \psi^*\partial_t\psi + \psi\,\partial_t\psi^*$. Substituting the equation for $\partial_t\psi$ and its complex conjugate for $\partial_t\psi^*$,
+Differentiate the candidate density: $\partial_t|\psi|^2=\psi^*\partial_t\psi+\psi\,\partial_t\psi^*$. Substitute the Schrödinger equation and its complex conjugate:
 
 $$\partial_t|\psi|^2 = \frac{1}{i\hbar}\left[\psi^*\left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\psi - \psi\left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\psi^*\right].$$
 
-The potential terms cancel, since the same operator acts on both sides of the bilinear, so a Hermitian potential cannot change the density. The remainder is a pure divergence, because $\nabla\cdot(\psi^*\nabla\psi - \psi\nabla\psi^*) = \psi^*\nabla^2\psi - \psi\nabla^2\psi^*$. Hence
+The terms containing the real potential cancel. The derivative terms form a divergence because $\nabla\cdot(\psi^*\nabla\psi-\psi\nabla\psi^*)=\psi^*\nabla^2\psi-\psi\nabla^2\psi^*$. Therefore,
 
 $$\partial_t |\psi|^2 = -\nabla\cdot\mathbf j, \qquad \mathbf j = \frac{\hbar}{2mi}\left(\psi^*\nabla\psi - \psi\,\nabla\psi^*\right).$$
 
-Probability obeys a *local* conservation law. It can flow from place to place but never appear or vanish, and $\int |\psi|^2\, d^3x$ is constant and positive, the total probability. All of this worked only because $\partial_t\psi$ is fixed by the equation itself. That is the derivation's whole point. It exhibits the mechanism that the second-order equation will lack. The equation is first order in time, so it fixes $\partial_t\psi$, and so it fixes $\partial_t|\psi|^2$. The Klein–Gordon equation is second order in time. The functions $\psi$ and $\partial_t\psi$ are independent initial data, and $|\psi|^2$ obeys no such conservation law. The quantity that *is* conserved is different. Multiplying the equation by $\psi^*$, subtracting the complex conjugate, and rearranging the derivatives gives the **Klein–Gordon current**,
+This is a **continuity equation**: a change in probability inside a region equals the net flow through its boundary. With no probability flux at infinity, $\int|\psi|^2\,d^3x$ stays constant. The density is also nonnegative, so we can normalize it as a probability.
+
+The derivation used the Schrödinger equation to determine $\partial_t\psi$ from $\psi$. The Klein–Gordon equation instead determines the second time derivative. We must specify both $\psi$ and $\partial_t\psi$ initially, and $|\psi|^2$ generally does not obey this conservation law.
+
+To find a conserved quantity, multiply the Klein–Gordon equation by $\psi^*$ and subtract its complex conjugate multiplied by $\psi$. Rearranging gives the **Klein–Gordon current**,
 
 $$j^\mu = i\left(\psi^*\partial^\mu\psi - \psi\,\partial^\mu\psi^*\right), \qquad \partial_\mu j^\mu = 0,$$
 
-whose time component is
+with time component
 
 $$\rho = j^0 = i\left(\psi^*\partial_t\psi - \psi\,\partial_t\psi^*\right).$$
 
-For a plane wave, $\partial_t\psi = -iE\psi/\hbar$, and the expression collapses to
+For a plane wave, substitute $\partial_t\psi=-iE\psi/\hbar$ to obtain
 
 $$\rho = \frac{2E}{\hbar}\,|\psi|^2,$$
 
-whose sign is the sign of the *energy*, the very sign that produced the negative-energy solutions above. The structural reason is the same. The density is forced to involve $\partial_t\psi$, and for a plane wave $\partial_t\psi$ *is* proportional to $E$. A negative-energy wave therefore carries negative density. The theory requires negative probabilities, which no observer could interpret. Read instead as a charge density, the sign flip is exactly the opposite charge of the antiparticle, the same Stückelberg–Feynman picture from above.
+The sign of this density follows the sign of $E$. It can therefore be negative, so we cannot use it as an ordinary probability density for all Klein–Gordon solutions.
 
-The contrast, in one table:
+A charge density can have either sign. In the quantized complex field, this current describes charge, and the two signs correspond to the charges of particles and antiparticles.
+
+The difference is:
 
 | Schrödinger (first order) | Klein–Gordon (second order) |
 | --- | --- |
-| $\partial_t\psi$ fixed by the equation $\Rightarrow$ $\partial_t\lvert\psi\rvert^2 = -\nabla\cdot\mathbf j$ $\Rightarrow$ $\int\lvert\psi\rvert^2\,d^3x$ conserved — positive, a probability | $\partial_t\psi$ NOT fixed: $\psi$ and $\partial_t\psi$ are independent initial data $\Rightarrow$ no conservation law for $\lvert\psi\rvert^2$ $\Rightarrow$ the conserved density must borrow $\partial_t\psi$ $\Rightarrow$ $\rho = \frac{2E}{\hbar}\lvert\psi\rvert^2$ — the sign of $E$ |
+| Specify $\psi$ initially; the equation fixes $\partial_t\psi$. | Specify both $\psi$ and $\partial_t\psi$ initially. |
+| $\lvert\psi\rvert^2$ is nonnegative and obeys a continuity equation. | $\lvert\psi\rvert^2$ is generally not the conserved density. |
+| Normalize $\int\lvert\psi\rvert^2\,d^3x$ as total probability. | The conserved density is $\rho=\frac{2E}{\hbar}\lvert\psi\rvert^2$ for a plane wave and can have either sign. |
 
-**The end of the single-particle picture.** The two problems have the same cause. Negative energies mean that states can be created and destroyed. Negative densities mean that the conserved quantity is a charge, not a count of one particle. Both force the same conclusion. The wave function of §1 is not a probability amplitude for a fixed number of particles, and the probability interpretation must be replaced by **second quantization**, which promotes the field $\psi$ itself to an operator that creates and annihilates particles, with the negative-frequency modes creating antiparticles. That is the modern resolution, and the direction of this page's argument. Historically the first step was Dirac's. He factored the Klein–Gordon operator so the equation becomes first order in time with a manifestly positive density, $\rho = \psi^\dagger\psi$. This is the Dirac equation, which postpones but does not remove the negative energies. The negative energies are reinterpreted there as holes in a sea, that is, antiparticles.
+**Move beyond one particle.** In **second quantization**, the field becomes an operator with terms that create and annihilate particles. Negative-frequency terms then describe antiparticles, while physical excitations have positive energies. For a complex field, the conserved Klein–Gordon quantity becomes charge.
+
+Historically, Dirac first sought a relativistic equation with a positive density $\rho=\psi^\dagger\psi$. His equation achieves that by using a multicomponent wave function and a first time derivative. It still has negative-energy solutions, which he later interpreted using a filled sea and holes. Field quantization provides the modern interpretation.
 
 ## 4. Dirac Equation
 
-In 1928 Dirac solved the probability problem by construction. He wrote down an equation that is first order in time, so that §3's machinery runs and the density is positive, while remaining Lorentz-covariant, so that the dispersion relation of §2 is unchanged.
+In 1928, Dirac sought an equation that combined Lorentz covariance with a positive conserved density. We can reconstruct it by requiring a first-order equation that reproduces the relativistic energy relation when squared.
 
-**The requirements.** First, the equation must be first order in time. Then $\partial_t\psi$ is fixed by the equation, and the density $\psi^\dagger\psi$ obeys a continuity equation with positive total probability, exactly as in the Schrödinger case of §3. Second, it must be Lorentz-covariant. A first-order-in-time equation can only be covariant if space enters at the same order. Otherwise the equation singles out the time direction, the same asymmetry argument as in §9. Third, plane waves must still satisfy $E^2 = \mathbf p^2 + m^2$, so that iterating the equation reproduces the Klein–Gordon result.
+**Set the conditions.** A first time derivative determines $\partial_t\psi$ from the state. With a suitable Hermitian Hamiltonian, this gives a continuity equation for $\psi^\dagger\psi$.
 
-**The guess.** The most general first-order equation with these properties is
+For a local Lorentz-covariant equation linear in derivatives, time and spatial derivatives must enter together. We therefore try first derivatives in space as well. Finally, plane waves must satisfy $E^2=\mathbf p^2+m^2$.
+
+**Try a linear Hamiltonian.** Write
 
 $$i\hbar\,\partial_t\psi = \left(-i\hbar\,\boldsymbol\alpha\cdot\nabla + \beta m\right)\psi,$$
 
-with three objects $\boldsymbol\alpha = (\alpha_1, \alpha_2, \alpha_3)$ and $\beta$ to be determined.
+where the coefficients $\boldsymbol\alpha=(\alpha_1,\alpha_2,\alpha_3)$ and $\beta$ are constant objects we must determine.
 
-**Squaring reproduces the Klein–Gordon equation.** Iterating the operator must reproduce the squared energy relation,
+**Square the equation.** Applying the time-evolution operator again must reproduce the Klein–Gordon equation:
 
 $$(i\hbar\,\partial_t)^2\psi = \left(-i\hbar\,\boldsymbol\alpha\cdot\nabla + \beta m\right)^2\psi = \left(m^2 - \hbar^2\nabla^2\right)\psi.$$
 
-Expanding the square,
+Expanding the Hamiltonian square makes the required conditions explicit:
 
 $$-\hbar^2\sum_{ij}\alpha_i\alpha_j\,\partial_i\partial_j\,\psi + m^2\beta^2\,\psi - i\hbar m\sum_i\left(\alpha_i\beta + \beta\alpha_i\right)\partial_i\psi = m^2\psi - \hbar^2\nabla^2\psi.$$
 
-For this to hold identically, $\beta^2 = \mathbb{1}$. The cross terms must vanish, $\alpha_i\beta + \beta\alpha_i = 0$. The diagonal derivative terms must combine into $\nabla^2$, which requires $\alpha_i\alpha_j + \alpha_j\alpha_i = 2\delta_{ij}$. No ordinary numbers satisfy anticommutation. The $\alpha$'s and $\beta$ must be **matrices**, and $\psi$ must therefore be a multicomponent object.
+Matching the mass term gives $\beta^2=\mathbb1$. Removing mixed mass–derivative terms gives $\alpha_i\beta+\beta\alpha_i=0$. Matching the Laplacian gives $\alpha_i\alpha_j+\alpha_j\alpha_i=2\delta_{ij}$.
 
-**The matrices and the spinor.** Three anticommuting objects already exist, the Pauli matrices, but a fourth that anticommutes with all of them forces the size up to $4 \times 4$. In the standard representation,
+These are **anticommutation relations**: the sum of two operator orderings vanishes when the indices differ. Ordinary numbers cannot satisfy all these conditions. Matrices can, so $\psi$ must have multiple components.
+
+**Choose the matrices.** The three Pauli matrices anticommute with one another. To include a fourth independent matrix that anticommutes with all three and has square one, the smallest complex representation has size $4\times4$. A standard choice is
 
 $$\alpha_i = \begin{pmatrix} 0 & \sigma_i \\ \sigma_i & 0 \end{pmatrix}, \qquad \beta = \begin{pmatrix} \mathbb{1} & 0 \\ 0 & -\mathbb{1} \end{pmatrix},$$
 
-so $\psi$ is a **four-component spinor**, written as two two-component pairs, $\psi = \begin{pmatrix} u \\ v \end{pmatrix}$. The block form of the equation shows what the pairs do. For a plane wave ($i\hbar\partial_t \to E$),
+where each displayed block is $2\times2$. The wave function is then a **four-component spinor**, which we write as two pairs, $\psi=\begin{pmatrix}u\\v\end{pmatrix}$. Substituting a plane wave, so that $i\hbar\partial_t\to E$, gives
 
 $$(E - m)\,u = \boldsymbol\sigma\cdot\mathbf p\,v, \qquad (E + m)\,v = \boldsymbol\sigma\cdot\mathbf p\,u,$$
 
-so the pairs are coupled, not independent. For a positive-energy state, $E \approx m$, and the second equation gives
+These equations couple the upper and lower pairs. For a positive-energy state at low momentum, $E\approx m$. Solving the second equation gives
 
 $$v = \frac{\boldsymbol\sigma\cdot\mathbf p}{E + m}\,u \approx \frac{\boldsymbol\sigma\cdot\mathbf p}{2m}\,u,$$
 
-of order $v/c$ compared with $u$. These are the **small components**. In the non-relativistic limit the lower pair is suppressed, which is why at low velocity the equation effectively acts on the upper pair alone. For a negative-energy state, $E \approx -m$, the denominator is small and the roles reverse, so the lower pair becomes the large one. The two pairs are the particle and antiparticle components.
+The lower pair is smaller than the upper pair by a factor of order speed divided by $c$. These are the **small components**. At low speed, the positive-energy solution therefore reduces mainly to the upper two components.
 
-Spin is not added by hand. The matrices in the equation contain the Pauli matrices, so a scalar wave function cannot satisfy the equation at all. The wave function is forced to carry its components in pairs. What those extra components *are* (they are the spin states of a spin-½ particle) is taken up on the next page, [The Dirac Equation](dirac-equation.md). For now the content is structural. The Dirac equation cannot be defined on a scalar wave function, and the mathematics forces the four-component form used above.
+For a negative-energy solution near $E=-m$, use the first coupled equation instead. The upper pair is then small compared with the lower pair. At general momentum, both pairs contribute; they do not separately represent particle and antiparticle states.
 
-**Probability restored.** Because the equation is first order in time, §3's argument now applies directly:
+The two components within each pair are associated with the two spin states of a spin-½ particle. We did not insert those spin states into a scalar equation: they follow from the matrix structure needed for Dirac's construction. [The Dirac Equation](dirac-equation.md) develops their transformation and physical meaning.
+
+**Check the density.** Use the Dirac equation and its adjoint to differentiate $\psi^\dagger\psi$. The result is
 
 $$\partial_t\left(\psi^\dagger\psi\right) = -\nabla\cdot\left(\psi^\dagger\boldsymbol\alpha\,\psi\right),$$
 
-so $\rho = \psi^\dagger\psi$ is positive and conserved, and the probability problem of §3 is solved by construction. Writing $\gamma^0 = \beta$, $\gamma^i = \beta\alpha_i$, the equation takes the covariant form
+The density $\rho=\psi^\dagger\psi$ is nonnegative, and the equation conserves its integral when there is no boundary flux. This resolves the density problem for the Dirac wave equation.
+
+Define $\gamma^0=\beta$ and $\gamma^i=\beta\alpha_i$. Multiplying the equation by $\beta$ gives the covariant form
 
 $$\left(i\hbar\,\gamma^\mu\partial_\mu - m\right)\psi = 0,$$
 
-with conserved current $j^\mu = \bar\psi\gamma^\mu\psi$, $\bar\psi = \psi^\dagger\gamma^0$.
+The conserved current is $j^\mu=\bar\psi\gamma^\mu\psi$, where $\bar\psi=\psi^\dagger\gamma^0$ is the **Dirac adjoint**. Its time component is the positive density above.
 
-**Negative energies remain.** Iterating the Dirac equation reproduces the Klein–Gordon equation, so plane waves still give $E = \pm\sqrt{\mathbf p^2 + m^2}$. The equation did not remove the negative-energy branch, and in one way it makes the situation *sharper*. Both branches now carry positive density, so nothing in the wave function marks a negative-energy state as unphysical. Interpreting the branch is not possible at this point. The available pictures (Dirac's filled sea; §3's Feynman–Stückelberg reading) both require particles to be created and destroyed, which single-particle wave mechanics cannot provide. The negative-energy question, like the spin question above, is taken up on the [Dirac Equation](dirac-equation.md) page. Its full resolution still requires second quantization.
+**Interpret the remaining energies.** Squaring the Dirac equation reproduces Klein–Gordon, so $E=\pm\sqrt{\mathbf p^2+m^2}$ remains. Both signs now have nonnegative probability density. Positivity alone therefore does not resolve the negative energies.
 
-**The new physics.** The Dirac equation is not a modified version of an old theory. It is the equation of a new object. Two of its famous results are settled even at this level. One is the prediction of the electron's magnetic moment, $g = 2$. The other is the existence of a particle of opposite charge, the positron, discovered in 1932, six years after the equation. The relativistic wave mechanics of §1–§3 is now complete. The single-particle equation with a consistent probability interpretation is the Dirac equation. Its unresolved parts, the meaning of the extra components and the meaning of the negative-energy solutions, are the questions taken up on the next page, [The Dirac Equation](dirac-equation.md).
+Dirac's filled-sea interpretation and the Stückelberg–Feynman interpretation both introduce antiparticles. The [Dirac Equation](dirac-equation.md) page develops these ideas. A full account of creation and annihilation still requires field quantization.
+
+**Connect to observations.** Coupling the Dirac equation to electromagnetism predicts $g=2$ for the electron at this level of approximation. Its antiparticle interpretation predicts an oppositely charged particle, the positron, discovered in 1932, four years after the equation.
+
+We now have a relativistic wave equation with a positive probability density. The next page, [The Dirac Equation](dirac-equation.md), explains the spinor components and the negative-energy solutions in more detail.
 
 ## 5. Summary
 
-The page's argument in four steps:
+The derivation used four steps:
 
-**1. Relativistic energy.** The exact energy–momentum relation is $E^2 = \mathbf p^2 + m^2$, the Lorentz-invariant norm $p^\mu p_\mu = m^2$. The non-relativistic relation $E = \mathbf p^2/2m$ is its low-velocity limit. Quantizing that limit produced the Schrödinger equation, which Special Relativity §9 showed is not Lorentz-covariant.
+**1. Start with the exact energy relation.** Special relativity gives $E^2=\mathbf p^2+m^2$. At low momentum, subtracting the rest energy from its positive solution gives $E_{\mathrm{kin}}\approx\mathbf p^2/2m$. The Schrödinger equation uses this approximation.
 
-**2. The quantization rule.** Replace energy and momentum by operators, $E \to i\hbar\,\partial_t$ and $\mathbf p \to -i\hbar\nabla$. Applied to the non-relativistic relation this gives the Schrödinger equation of §1, while applied to the exact relation it gives the relativistic equation.
+**2. Substitute operators.** Replace $E\to i\hbar\,\partial_t$ and $\mathbf p\to-i\hbar\nabla$. The kinetic-energy approximation gives Schrödinger; the exact squared relation gives Klein–Gordon.
 
-**3. The Klein–Gordon attempt.** Quantizing $E^2 = \mathbf p^2 + m^2$ yields $(\Box + m^2/\hbar^2)\psi = 0$, which is manifestly Lorentz-covariant but second order in time. The consequence (§3) is that the conserved density must involve $\partial_t\psi$, its sign follows $E$, and negative-energy solutions appear. The two problems have one cause. A single-particle probability interpretation cannot be maintained.
+**3. Check the Klein–Gordon interpretation.** The equation $(\Box+m^2/\hbar^2)\psi=0$ is Lorentz-covariant. It has both energy signs, and its conserved density can be negative. We therefore cannot interpret that density as a single-particle probability for all solutions.
 
-**4. The Dirac equation.** To restore probability, demand first order in time, and covariance then forces first order in space. Consistency with the squared relation forces anticommuting matrices and a four-component spinor. The density $\psi^\dagger\psi$ is positive again, but the extra components and the negative-energy branch raise questions that single-particle mechanics cannot answer.
+**4. Construct the Dirac equation.** A first-order equation whose square gives the same dispersion relation requires anticommuting matrices and a four-component spinor. Its density $\psi^\dagger\psi$ is nonnegative, but negative-energy solutions remain.
 
-**The overall argument.** Each step is forced by the failure of the previous one: the Schrödinger equation fails covariance $\Rightarrow$ the Klein–Gordon equation restores it but loses probability $\Rightarrow$ the Dirac equation restores probability but raises questions that only second quantization can answer.
+Field quantization completes the interpretation by describing particles and antiparticles with positive excitation energies, including processes that change their numbers.

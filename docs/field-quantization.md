@@ -1,225 +1,299 @@
 # Quantum Field Theory: Field Quantization
 
-This page continues from [Action and Lagrangians](qft-action.md).
+We now quantize the fields introduced in [Action and Lagrangians](qft-action.md).
 
 ## Outline
 
-**Setup.** The page quantizes the free real scalar field, closing the scalar row of the field table, and then repeats the promotion for the spinor field with anticommutators in place of commutators. Its logic is one reduction. A free field is a collection of independent harmonic oscillators, and quantizing one oscillator is already carried out on the [Harmonic Oscillator](harmonic-oscillator.md) page. So the page (1) shows the field decouples into oscillators, (2) promotes the field to operators, (3) derives the ladder algebra from the equal-time commutator, (4) quantizes one oscillator, (5) names its quantum a particle, and (6) reruns the promotion on the Dirac field, where the algebra must change to anticommutators and the quanta come out as electrons, positrons, and the Pauli principle.
+**The main idea is to quantize each momentum mode as a harmonic oscillator.** The [Harmonic Oscillator](harmonic-oscillator.md) page already gives its energy levels and ladder operators.
+
+We first decompose a real scalar field into modes, promote its amplitudes to operators, and derive their commutators. Each oscillator quantum then has the energy and momentum of a particle. Finally, we repeat the construction for the Dirac field, where anticommutators give electrons, positrons, and the Pauli exclusion principle.
 
 ### The scalar field in modes
 
 The real scalar $\phi(x)$ obeys the Klein–Gordon equation
+
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0.$$
+
 Plane waves $e^{-ip\cdot x/\hbar}$ solve it when energy satisfies the dispersion relation
+
 $$E_p = \sqrt{\mathbf p^2 + m^2}.$$
+
 Since $\phi$ is real, the general solution pairs each wave with its conjugate, one amplitude per momentum:
-$$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[a(p)e^{-ip\cdot x/\hbar} + a^*(p)e^{+ip\cdot x/\hbar}\right].$$
-To reach the Hamiltonian, the field is instead decomposed into *spatial* Fourier modes with time-dependent coefficients, $\pi_p = \dot\phi_p$:
+
+$$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{\hbar}{\sqrt{2E_p}}\left[a(p)e^{-ip\cdot x/\hbar} + a^*(p)e^{+ip\cdot x/\hbar}\right].$$
+
+To compute the Hamiltonian, expand in *spatial* Fourier modes with time-dependent coefficients, $\pi_p = \dot\phi_p$:
+
 $$\phi(t,\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\phi_p(t)e^{i\mathbf p\cdot\mathbf x/\hbar}.$$
+
 Substituting into $H = \int d^3x\left(\tfrac12\pi^2 + \tfrac12(\nabla\phi)^2 + \tfrac{m^2}{2\hbar^2}\phi^2\right)$ and using plane-wave orthogonality $\int d^3x\,e^{i(\mathbf p+\mathbf q)\cdot\mathbf x/\hbar}=(2\pi\hbar)^3\delta^3(\mathbf p+\mathbf q)$ collapses the cross terms, leaving
+
 $$H = \int \frac{d^3p}{(2\pi\hbar)^3}\left[\tfrac12|\pi_p|^2 + \tfrac12\omega_p^2|\phi_p|^2\right],\qquad \omega_p^2 = \frac{E_p^2}{\hbar^2}.$$
-The bracket is a harmonic oscillator's Hamiltonian in $\phi_p,\pi_p$, one independent copy per momentum with frequency $E_p/\hbar$. This decoupling makes the oscillator picture exact, not an analogy.
+
+Each term has the harmonic oscillator form, with frequency $E_p/\hbar$. For a real field, the $p$ and $-p$ Fourier amplitudes are complex conjugates; independent sine and cosine coordinates give independent real oscillators.
 
 ### Second quantization
 
-Promotion acts on the coefficients or, equivalently, on the field:
+Replace the numerical amplitudes by operators:
+
 $$a(p)\to\hat a(p),\qquad a^*(p)\to\hat a^\dagger(p),\qquad {}^*\to{}^\dagger,$$
+
 so that the field operator reads
-$$\hat\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[\hat a(p)e^{-ip\cdot x/\hbar} + \hat a^\dagger(p)e^{+ip\cdot x/\hbar}\right],$$
-with $\hat\pi = \dot{\hat\phi}$. The operator is Hermitian ($\hat\phi^\dagger = \hat\phi$) and strictly operator-valued (only integrals are well defined).
+
+$$\hat\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{\hbar}{\sqrt{2E_p}}\left[\hat a(p)e^{-ip\cdot x/\hbar} + \hat a^\dagger(p)e^{+ip\cdot x/\hbar}\right],$$
+
+with $\hat\pi = \dot{\hat\phi}$. The field is Hermitian, $\hat\phi^\dagger = \hat\phi$. Strictly, it is an operator-valued distribution: integrate it against a suitable smooth function to obtain an operator.
 
 ### The canonical commutator
 
-First Quantization's $[\hat x,\hat p]=i\hbar$ repeats at the field level, at each point of space, with a delta function keeping distinct oscillators independent:
+Impose the field counterpart of $[\hat x,\hat p]=i\hbar$. At equal times,
+
 $$[\hat\phi(t,\mathbf x),\hat\pi(t,\mathbf x')] = i\hbar\,\delta^3(\mathbf x-\mathbf x'),\qquad [\hat\phi,\hat\phi]=0,\qquad [\hat\pi,\hat\pi]=0.$$
+
 This equal-time condition is imposed, not derived. It is the quantization postulate (equivalently, $\{\cdot,\cdot\}\to\tfrac{1}{i\hbar}[\cdot,\cdot]$ on the Poisson bracket $\{\phi,\pi\}=\delta^3$).
 
 ### Ladder commutators
 
-Evaluating the expansions at $t=0$ gives, up to time factors,
-$$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
-$$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{1}{\sqrt{2E_p}}\frac{-iE_p}{\hbar}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} - \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right].$$
+Set $t=0$ so the temporal phases equal $1$:
+
+$$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{\hbar}{\sqrt{2E_p}}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
+
+$$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\frac{\hbar}{\sqrt{2E_p}}\frac{-iE_p}{\hbar}\left[\hat a(p)e^{i\mathbf p\cdot\mathbf x/\hbar} - \hat a^\dagger(p)e^{-i\mathbf p\cdot\mathbf x/\hbar}\right].$$
+
 The expansion can be inverted. Multiplying $E_p\hat\phi + i\hbar\hat\pi$ by $e^{-i\mathbf p\cdot\mathbf x/\hbar}$ and integrating isolates $\hat a(p)$ (the $\hat a^\dagger$ half cancels because $E_{-p}=E_p$). Substituting this into $[\hat a(p),\hat a^\dagger(p')]$, only the $[\hat\phi,\hat\pi]$ term survives, and the plane-wave orthogonality leaves
-$$[\hat a(p),\hat a^\dagger(p')] = C\,\delta^3(p-p'),\qquad [\hat a,\hat a]=0,\qquad [\hat a^\dagger,\hat a^\dagger]=0.$$
-A mode commutes with every mode except its own adjoint, the signature of independent oscillators. In box normalization the constant $C$ is set to $1$, yielding $[\hat a,\hat a^\dagger]=1$.
+
+$$[\hat a(p),\hat a^\dagger(p')] = (2\pi\hbar)^3\,\delta^3(p-p'),\qquad [\hat a,\hat a]=0,\qquad [\hat a^\dagger,\hat a^\dagger]=0.$$
+
+Distinct momentum modes commute. For discrete box modes, rescale the operators to obtain $[\hat a,\hat a^\dagger]=1$.
 
 ### One oscillator per momentum
 
-Quantizing one oscillator of frequency $\omega$ with $[\hat q,\hat p]=i\hbar$ is done on the [Harmonic Oscillator page](harmonic-oscillator.md). Here we combine the pair into ladders
+For one mode, use the [Harmonic Oscillator page](harmonic-oscillator.md). Combine its coordinate and momentum, with $[\hat q,\hat p]=i\hbar$, into ladder operators:
+
 $$\hat a = \sqrt{\frac{\omega}{2\hbar}}\hat q + \frac{i}{\sqrt{2\hbar\omega}}\hat p,\qquad \hat a^\dagger = \sqrt{\frac{\omega}{2\hbar}}\hat q - \frac{i}{\sqrt{2\hbar\omega}}\hat p,$$
+
 so $[\hat a,\hat a^\dagger]=1$. The Hamiltonian becomes
+
 $$\hat H = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right).$$
+
 With $\hat N=\hat a^\dagger\hat a$, the commutators $[\hat N,\hat a]=-\hat a$, $[\hat N,\hat a^\dagger]=\hat a^\dagger$ show $\hat a$ lowers and $\hat a^\dagger$ raises by one. Nonnegativity of $\hat N$ forces a lowest state $\lvert 0\rangle$ with $\hat a\lvert 0\rangle=0$. Repeated raising gives $\lvert n\rangle\propto(\hat a^\dagger)^n\lvert 0\rangle$ with energies $\hbar\omega(n+\tfrac12)$.
 
 Returning to the field and substituting the mode expansions, each momentum contributes one oscillator of frequency $E_p/\hbar$:
+
 $$\hat H = \int \frac{d^3p}{(2\pi\hbar)^3}E_p\,\hat a^\dagger(p)\hat a(p) + \text{const.}$$
-The constant collects all zero-point energies and is formally infinite. It is absorbed into the vacuum's zero of energy and drops from all physical differences. Each mode carries levels $E_p n_p$, with $\hat a^\dagger(p)$ adding exactly $E_p$.
+
+The constant is the formally infinite sum of zero-point energies. In this free theory without gravity, subtract it and measure energy relative to the vacuum. Each mode carries levels $E_p n_p$, with $\hat a^\dagger(p)$ adding exactly $E_p$.
 
 ### Creation of particles
 
 The mode's quantum is a particle. One quantum of momentum $\mathbf p$ carries $(E_p,\mathbf p)$, exactly a relativistic particle of mass $m$. The state space is the product of mode spaces. The vacuum $\lvert 0\rangle$ is annihilated by every $\hat a(p)$ and has zero energy. General states are labeled by occupation numbers:
+
 $$\hat H\,\lvert\{n_p\}\rangle = \left(\sum_p E_p n_p\right)\lvert\{n_p\}\rangle.$$
+
 Because the creation operators commute, particles are identical bosons, matching the integer-spin scalar row. Energy is bounded below since every $E_p>0$ and $n_p\ge0$, so the negative-energy problem of the Klein–Gordon single-particle reading disappears. The negative-frequency term now carries $\hat a^\dagger$ and *adds* energy, and an empty mode cannot be lowered further. Particle number $\hat N=\int\frac{d^3p}{(2\pi\hbar)^3}\hat a^\dagger\hat a$ is conserved because $[\hat H,\hat N]=0$.
 
-That completes the scalar construction: one real field, one oscillator family, quanta that are their own antiparticles, energy bounded below, with commutators derived from the field's mode structure rather than imposed.
+The real scalar therefore has one family of particle operators. Its quanta are their own antiparticles. We impose the canonical field commutator and derive the mode commutators from it.
 
 ### The spinor field
 
-The spinor row runs the same promotion with a different algebra. The Dirac field's expansion carries two operator families, $\hat a_s(p)$ beside the positive-frequency spinors $u_s(p)$ and $\hat b_s^\dagger(p)$ beside the negative-frequency spinors $v_s(p)$. Its Hamiltonian per mode reads $E_p(\hat a^\dagger\hat a - \hat b\hat b^\dagger)$. If the operators commuted, the minus sign would let $\hat b^\dagger$ build states of ever lower energy, and no ground state would exist. Imposing anticommutators instead turns $\hat b\hat b^\dagger$ into $1 - \hat b^\dagger\hat b$, both terms of $\hat H$ become nonnegative, and a vacuum annihilated by every $\hat a$ and $\hat b$ exists. The same algebra forces $\big(\hat a^\dagger\big)^2 = 0$. There can be at most one quantum per mode, which is the Pauli principle, and swapping two creation operators flips a state's sign, which is the antisymmetry of fermions. The $\hat b^\dagger$ quanta are antiparticles of positive energy and opposite charge, so the spinor row closes with two particle species where the real scalar had one.
+The Dirac field has two operator families: $\hat a_s(p)$ for positive-frequency modes and $\hat b_s^\dagger(p)$ for negative-frequency modes. Before reordering, each mode contributes $E_p(\hat a^\dagger\hat a-\hat b\hat b^\dagger)$ to the Hamiltonian.
 
-> Skip the sections below on a first reading. The outline above carries the argument, and what follows spells out each step with the detailed explanation and calculations.
+Ordinary commutators would make the antiparticle energy negative and unbounded below. With **anticommutators**, $\hat b\hat b^\dagger=1-\hat b^\dagger\hat b$, so both species have positive energy after subtracting the vacuum constant.
+
+The same algebra gives $(\hat a^\dagger)^2=0$: each momentum-and-spin mode holds at most one fermion. Exchanging two creation operators changes the state's sign. The second family creates antiparticles of the same mass and opposite charge.
+
+> The outline gives the main argument. The sections below work through the expansions and calculations in detail.
 
 ## The scalar field in modes
 
-[The Action and Lagrangians page](qft-action.md) built the simplest relativistic field in its Klein–Gordon section, a real scalar $\phi(x)$ with the density $\mathcal{L} = \tfrac12(\partial_\mu\phi)(\partial^\mu\phi) - \tfrac{m^2}{2\hbar^2}\phi^2$, whose Euler–Lagrange equation is the Klein–Gordon equation,
+Start with the real scalar field from [The Action and Lagrangians page](qft-action.md). Its Lagrangian density is $\mathcal L=\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)-\tfrac{m^2}{2\hbar^2}\phi^2$. Applying the Euler–Lagrange equation gives
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0,$$
 
-with $\Box = \partial_t^2 - \nabla^2$ the d'Alembertian. Recall the objects this equation admits, because quantization will act on them. The plane wave $e^{-ip\cdot x/\hbar}$, with $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$, solves the equation when its energy obeys the relativistic dispersion relation of a particle of mass $m$,
+Here $\Box=\partial_t^2-\nabla^2$ is the **d'Alembertian**, the relativistic wave operator. Substitute a plane wave $e^{-ip\cdot x/\hbar}$, where $p\cdot x=E_pt-\mathbf p\cdot\mathbf x$. It solves the equation when
 
 $$E_p = \sqrt{\mathbf p^2 + m^2}.$$
 
-Choosing $\phi$ real is consistent because the equation contains only real terms. The d'Alembertian and the mass term carry real coefficients $1$ and $m^2/\hbar^2$ and never mix $\phi$ with $\phi^*$. A real equation maps real functions to real functions, so real data at one time evolve into a real field at every time. Since $\phi$ is real, the general solution carries each plane wave together with its complex conjugate, one complex amplitude $a(p)$ per momentum:
+We choose real initial values for $\phi$ and $\dot\phi$. Because the equation has real coefficients, the field remains real during evolution.
 
-$$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[a(p)\,e^{-ip\cdot x/\hbar} + a^*(p)\,e^{+ip\cdot x/\hbar}\right].$$
+To keep the plane-wave expansion real, pair each term with its complex conjugate. The general solution is
 
-The star marks the complex conjugate, and the term it conjugates is the same plane wave with the sign of the phase reversed. So the field's data at one time is the function $a(p)$ over momenta. The conjugate momentum of [Action and Lagrangians](qft-action.md) is $\pi = \partial\mathcal{L}/\partial\dot\phi = \dot\phi$.
+$$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\left[a(p)\,e^{-ip\cdot x/\hbar} + a^*(p)\,e^{+ip\cdot x/\hbar}\right].$$
 
-The free theory decouples by momentum, which is what makes the oscillator picture exact rather than an analogy. To see it, decompose the field and its conjugate momentum in space only, at each instant, into spatial Fourier modes with time-dependent amplitudes,
+The star denotes complex conjugation. One complex function $a(p)$ therefore specifies both frequency halves and encodes the initial field and its time derivative. We include $\hbar/\sqrt{2E_p}$ so that the canonical commutator gives $[\hat a(p),\hat a^\dagger(p')]=(2\pi\hbar)^3\delta^3(p-p')$ and the Hamiltonian counts each quantum with energy $E_p$. From [Action and Lagrangians](qft-action.md), the conjugate momentum is $\pi=\partial\mathcal L/\partial\dot\phi=\dot\phi$.
+
+**Separate the momentum modes.** To evaluate the Hamiltonian, Fourier-expand the field and momentum on a spatial slice. In this form, the coefficients depend on time:
 
 $$\phi(t, \mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\; \phi_p(t)\, e^{i\mathbf p\cdot\mathbf x/\hbar}, \qquad \pi(t, \mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\; \pi_p(t)\, e^{i\mathbf p\cdot\mathbf x/\hbar},$$
 
-where the momentum mode is the time derivative of the field mode, $\pi_p = \dot\phi_p$, because $\pi = \dot\phi$. The basis wave $e^{i\mathbf p\cdot\mathbf x/\hbar}$ is spatial only, so the time dependence resides entirely in the coefficients $\phi_p(t)$, $\pi_p(t)$. That is the complement of the general solution above, whose waves $e^{\mp ip\cdot x/\hbar}$ are full spacetime waves with $E_p t$ in the exponent and constant coefficients $a(p)$, $a^*(p)$. There the time dependence resides in the wave, and here it resides in the coefficient. The mode form suits the Hamiltonian, because classically the Hamiltonian is a function on phase space. Feed it any state $(\phi, \pi)$ at one instant and it returns that state's energy as a number. It needs the field as data at that instant, not as a solution whose time dependence is already determined. Eigenstates play no part in this reading. They enter only after the promotion, when $\hat H$ becomes an operator and only the occupation-number states of the construction below carry definite energies. Substitute into the Hamiltonian of [the Action page](qft-action.md#the-geometry-of-h), $H = \int d^3x\,\big(\tfrac12\pi^2 + \tfrac12(\nabla\phi)^2 + \tfrac{m^2}{2\hbar^2}\phi^2\big)$. The gradient pulls down $i\mathbf p/\hbar$, so $\tfrac12(\nabla\phi)^2$ contributes $\tfrac12(p^2/\hbar^2)|\phi_p|^2$ and the mass term contributes $\tfrac12(m^2/\hbar^2)|\phi_p|^2$. Cross terms between different momenta integrate away by orthogonality of the plane waves, $\int d^3x\, e^{i(\mathbf p+\mathbf q)\cdot\mathbf x/\hbar} = (2\pi\hbar)^3\delta^3(\mathbf p+\mathbf q)$, which vanishes unless $\mathbf q = -\mathbf p$. What remains is
+Since $\pi=\dot\phi$, we have $\pi_p=\dot\phi_p$. Unlike the constant $a(p)$ above, $\phi_p(t)$ contains the mode's time dependence. This form specifies the field and momentum at an instant without first solving their evolution.
+
+Substitute these expansions into [the Action page's Hamiltonian](qft-action.md#the-geometry-of-h), $H=\int d^3x\,\big(\tfrac12\pi^2+\tfrac12(\nabla\phi)^2+\tfrac{m^2}{2\hbar^2}\phi^2\big)$. Each gradient contributes $i\mathbf p/\hbar$.
+
+The spatial integral uses $\int d^3x\,e^{i(\mathbf p+\mathbf q)\cdot\mathbf x/\hbar}=(2\pi\hbar)^3\delta^3(\mathbf p+\mathbf q)$, leaving only pairs with $\mathbf q=-\mathbf p$. Reality gives $\phi_{-p}=\phi_p^*$ and $\pi_{-p}=\pi_p^*$, so
 
 $$H = \int \frac{d^3p}{(2\pi\hbar)^3}\left[\tfrac12|\pi_p|^2 + \tfrac12\,\omega_p^2\,|\phi_p|^2\right], \qquad \omega_p^2 = \frac{\mathbf p^2 + m^2}{\hbar^2} = \frac{E_p^2}{\hbar^2}.$$
 
-The bracket is one harmonic oscillator's Hamiltonian, half a kinetic energy plus half a frequency-squared times a coordinate squared, with $\phi_p$ the oscillator's coordinate and $\pi_p = \dot\phi_p$ its momentum. Each momentum carries an independent copy of it, with natural frequency $E_p/\hbar$ set by the energy of the dispersion relation. The coefficients $a(p)$, $a^*(p)$ of the general solution are this oscillator written on shell[^on-shell]. When the mode oscillates as $e^{\mp iE_p t/\hbar}$, they encode its amplitude and phase, and the field is the infinite family of these oscillators, one per momentum. The picture on the [Action page](qft-action.md) of Hamiltonian flow in one mode's $(\phi,\pi)$ plane is exactly this oscillator viewed from one mode.
+Each contribution has the form of a harmonic oscillator Hamiltonian, with frequency $\omega_p=E_p/\hbar$. The Fourier amplitudes at $p$ and $-p$ obey the reality relation; the independent real coordinates can equivalently be written as sine and cosine modes.
+
+The coefficients $a(p)$ describe the amplitudes and phases once the modes evolve on shell[^on-shell]. This is the oscillator whose phase-space motion appeared on the [Action page](qft-action.md).
 
 ## Second quantization
 
-Second quantization promotes the family of oscillators to operators, and the promotion has two equivalent readings, one per description of the field.
+We can quantize either the mode amplitudes or the field and conjugate momentum. These are two descriptions of the same step.
 
-Read from the mode amplitudes, the promotion turns each coefficient into an operator. The amplitude $a(p)$ and its conjugate $a^*(p)$ become a pair of adjoint operators,
+For the mode description, replace each amplitude and its complex conjugate by a pair of adjoint operators:
 
 $$a(p) \to \hat a(p), \qquad a^*(p) \to \hat a^\dagger(p),$$
 
-with the complex conjugate replaced by the Hermitian adjoint, ${}^* \to {}^\dagger$, because the objects are no longer numbers but operators. This is the same promotion the [Fields and Quanta page](qft.md#the-promotion) performed on the Dirac field's coefficients, and the name second quantization counts the steps. [First quantization](first-quantization.md) turned a particle's $x$ and $p$ into operators, and this second step turns the field's own amplitudes into operators. Nothing is quantized twice. The object quantized here is the field. The real scalar carries one independent operator family per mode, and its quanta serve as their own antiparticles. A charged field would carry a second, independent family whose creation operators build the antiparticles. That is the role the $b$-coefficients played in the [Fields and Quanta promotion](qft.md#the-promotion).
+The adjoint $\dagger$ replaces complex conjugation. This is the step used for the Dirac field on the [Fields and Quanta page](qft.md#the-promotion).
 
-Written in the field variables rather than the coefficients, the same promotion acts on the canonical pair. At every point of space the field value and its conjugate momentum become operators, $\phi(\mathbf x) \to \hat\phi(\mathbf x)$ and $\pi(\mathbf x) \to \hat\pi(\mathbf x)$, and the expansion reads
+[First quantization](first-quantization.md) quantized a classical particle. Here we quantize a classical field, so “second quantization” does not mean quantizing the same object twice. A real scalar has one independent operator family. A charged field has a separate antiparticle family, like the $b$-operators in the [Fields and Quanta promotion](qft.md#the-promotion).
 
-$$\hat\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[\hat a(p)\,e^{-ip\cdot x/\hbar} + \hat a^\dagger(p)\,e^{+ip\cdot x/\hbar}\right],$$
+Equivalently, promote the canonical variables at every point: $\phi(\mathbf x)\to\hat\phi(\mathbf x)$ and $\pi(\mathbf x)\to\hat\pi(\mathbf x)$. The field becomes
 
-with the conjugate momentum operator the time derivative of the field operator, $\hat\pi = \dot{\hat\phi}$. The two readings agree term by term. Promoting the coefficient in front of each plane wave and promoting the field are the same operation. The operator $\hat\phi(x)$ is Hermitian, $\hat\phi^\dagger = \hat\phi$, because the expansion pairs each operator with its adjoint. It is also strictly an operator-valued distribution, since only integrals of it are well defined. The [Fields and Quanta page](qft.md#second-quantization) noted that qualification.
+$$\hat\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\left[\hat a(p)\,e^{-ip\cdot x/\hbar} + \hat a^\dagger(p)\,e^{+ip\cdot x/\hbar}\right],$$
+
+The conjugate momentum is $\hat\pi=\dot{\hat\phi}$. Taking the adjoint swaps the two terms, so $\hat\phi^\dagger=\hat\phi$, the operator counterpart of a real field.
+
+Strictly, $\hat\phi(x)$ is an operator-valued distribution. Integrating it against a suitable smooth function gives a well-defined operator, as explained in [Fields and Quanta](qft.md#second-quantization).
+
 ## The canonical commutator
 
-The single-particle stage of the sequence left one algebraic fact. Position and momentum do not commute, $[\hat x, \hat p] = i\hbar$, and every other quantum behavior follows from it. The promotion that produced that pair runs again here, at the level of the field. The oscillator at each point of space has a coordinate, the field value $\phi(\mathbf x)$, and a momentum, its conjugate $\pi(\mathbf x)$. Promoting the field promotes the coordinate to $\hat\phi(\mathbf x)$ and the momentum to $\hat\pi(\mathbf x)$ at that point. Distinct points are distinct oscillators, so the single commutator of the particle becomes a commutator at every point, with the delta function enforcing that distinct oscillators stay independent,
+For a particle, canonical quantization imposes $[\hat x,\hat p]=i\hbar$. For a field, we impose the corresponding relation at every pair of spatial points:
 
 $$[\hat\phi(t, \mathbf x), \hat\pi(t, \mathbf x')] = i\hbar\,\delta^3(\mathbf x - \mathbf x'), \qquad [\hat\phi, \hat\phi] = 0, \qquad [\hat\pi, \hat\pi] = 0.$$
 
-This is the equal-time commutator, and the qualifier matters. The operators stand in the Heisenberg picture, where time dependence is carried by the operators, so the commutator of fields at two different times would be a derived quantity, governed by the evolution $\hat\phi(t) = e^{i\hat H t/\hbar}\,\hat\phi(0)\,e^{-i\hat H t/\hbar}$ of the [Fields and Quanta page](qft.md#choosing-a-picture). The quantization condition is imposed at one instant only, and evolution then determines everything else.
+Both operators refer to the same time. This is the **equal-time canonical commutator**. The delta function is the continuous counterpart of a Kronecker delta: field and momentum variables at distinct points commute.
 
-The equal-time commutator is imposed in exactly the sense that $[\hat x, \hat p] = i\hbar$ was imposed. It is the promotion's quantization condition, not something derived from within the theory. The [Action page](qft-action.md) made the same point by applying the correspondence rule $\{\cdot,\cdot\} \to \tfrac{1}{i\hbar}[\cdot,\cdot]$ on the field's Poisson bracket. The two routes agree, since the field's Poisson bracket $\{\phi(\mathbf x), \pi(\mathbf x')\} = \delta^3(\mathbf x-\mathbf x')$ is the classical image of the same fact. What the equal-time commutator forces the mode operators to do is derived in the next step. There the field's own structure, not a new postulate, supplies the answer.
+[Heisenberg evolution](qft.md#choosing-a-picture) determines commutators at other times; we do not impose this same formula for arbitrary pairs of times.
+
+This commutator is a quantization postulate. Following the [Action page](qft-action.md), we can also obtain it by applying the correspondence rule $\{\cdot,\cdot\}\to\tfrac1{i\hbar}[\cdot,\cdot]$ to the classical Poisson bracket $\{\phi(\mathbf x),\pi(\mathbf x')\}=\delta^3(\mathbf x-\mathbf x')$. Once we impose it, the mode-operator commutators follow.
 
 ## Ladder commutators
 
-The equal-time commutator was imposed on the field. The commutators the mode operators obey are consequences, and deriving them answers the algebra question that the earlier pages left open. Evaluate the expansions at one instant, $t = 0$, where the time factors are $1$ and the plane wave $e^{-ip\cdot x/\hbar}$ reduces to the spatial wave $e^{+i\mathbf p\cdot\mathbf x/\hbar}$ while $e^{+ip\cdot x/\hbar}$ reduces to $e^{-i\mathbf p\cdot\mathbf x/\hbar}$:
+To derive the mode algebra, evaluate the field and momentum at $t=0$. The temporal phases become $1$, leaving
 
-$$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[\hat a(p)\,e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
+$$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\left[\hat a(p)\,e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
 
-$$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\,\frac{-iE_p}{\hbar}\left[\hat a(p)\,e^{i\mathbf p\cdot\mathbf x/\hbar} - \hat a^\dagger(p)\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\right].$$
+$$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\,\frac{-iE_p}{\hbar}\left[\hat a(p)\,e^{i\mathbf p\cdot\mathbf x/\hbar} - \hat a^\dagger(p)\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\right].$$
 
-The point of the mode expansion is that it can be undone. Multiply $E_p\,\hat\phi(\mathbf x) + i\hbar\,\hat\pi(\mathbf x)$ by $e^{-i\mathbf p'\cdot\mathbf x/\hbar}$ and integrate over space, using the plane-wave orthogonality $\int d^3x\, e^{i(\mathbf p - \mathbf p')\cdot\mathbf x/\hbar} = (2\pi\hbar)^3\,\delta^3(\mathbf p - \mathbf p')$. The annihilation operator $\hat a(k)$ survives only at $k = p'$, and there the field and the momentum operator contribute with the same sign. The relation $\hat\pi = \dot{\hat\phi}$ brings down $-iE_k/\hbar$, and the $i\hbar$ in the combination flips it back to $+E_k$, so the two add to $2E_{p'}$. The creation operator $\hat a^\dagger(k)$ can survive only at $k = -p'$, and there the field contributes $+E_{p'}$ while the momentum operator contributes $-E_{p'}$. The creation half of $\hat\pi$ carries $+iE_k/\hbar$, which the $i\hbar$ leaves with the sign flipped. The two cancel, because $E_{-p'} = E_{p'}$. Only the annihilation operator remains,
+**Isolate one annihilation operator.** Multiply $E_p\hat\phi(\mathbf x)+i\hbar\hat\pi(\mathbf x)$ by $e^{-i\mathbf p\cdot\mathbf x/\hbar}$ and integrate over space.
+
+Fourier orthogonality selects the annihilation term at momentum $p$. Its two contributions add because $i\hbar\hat\pi$ contributes $+E_p$. The creation term is selected at $-p$, but its contributions cancel because $i\hbar\hat\pi$ contributes $-E_{-p}$ and $E_{-p}=E_p$. Thus
 
 $$\hat a(p) \;\propto\; \int d^3x\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\left(E_p\,\hat\phi(\mathbf x) + i\hbar\,\hat\pi(\mathbf x)\right),$$
 
-and its adjoint comes from conjugating the formula. This is the field analogue of expressing a harmonic oscillator's lowering operator in terms of its position and momentum, which is exactly what the mode is.
-Now substitute these integrals into $[\hat a(p), \hat a^\dagger(p')]$. The only nonzero input is the equal-time commutator $[\hat\phi, \hat\pi] = i\hbar\delta^3$. The $[\hat\phi,\hat\phi]$ and $[\hat\pi,\hat\pi]$ terms drop out. The double integral collapses by the delta function, and the plane-wave orthogonality leaves one momentum delta on the right,
+Taking the adjoint gives the corresponding expression for $\hat a^\dagger$. This is the field version of expressing oscillator ladder operators in terms of coordinate and momentum.
 
-$$[\hat a(p), \hat a^\dagger(p')] = C\,\delta^3(p - p'), \qquad [\hat a(p), \hat a(p')] = 0, \qquad [\hat a^\dagger(p), \hat a^\dagger(p')] = 0,$$
+Substitute both integrals into $[\hat a(p),\hat a^\dagger(p')]$. The field–field and momentum–momentum commutators vanish. The mixed terms give a spatial delta function, and Fourier orthogonality then gives a momentum delta function:
 
-with $C$ a constant fixed by the normalization of the plane-wave expansion. The structure carries the physics. The commutator is a delta in momentum, so a mode commutes with every other mode and only with its own adjoint, which is the signature of independent oscillators. The magnitude of $C$ is a convention, since rescaling $\hat a(p)$ and the plane-wave coefficient together changes it without touching any observable. In the box normalization, where we confine the field to a large box so that momenta become a discrete grid and the delta $\delta^3(p-p')$ becomes a Kronecker delta, the constant is chosen so that each single mode obeys $[\hat a, \hat a^\dagger] = 1$, which is the oscillator algebra the [Action page](qft-action.md) previewed. That page presented the algebra as the correspondence rule's output. Here it comes out of the field's own mode structure, and the construction did not postulate it.
+$$[\hat a(p), \hat a^\dagger(p')] = (2\pi\hbar)^3\,\delta^3(p - p'), \qquad [\hat a(p), \hat a(p')] = 0, \qquad [\hat a^\dagger(p), \hat a^\dagger(p')] = 0,$$
+
+The factor $(2\pi\hbar)^3$ matches the momentum integration measure. The momentum delta means different modes commute; a mode has a nonzero commutator only with its own adjoint.
+
+In a finite box, momenta are discrete. Rescale each discrete mode operator so that $[\hat a,\hat a^\dagger]=1$. This is the independent-oscillator algebra previewed on the [Action page](qft-action.md). We derived it from the canonical field commutator, rather than imposing a second algebra independently.
 
 ## One oscillator per momentum
 
-Every momentum mode shares the same ladder algebra, because each mode is a copy of one system, the harmonic oscillator. The [Harmonic Oscillator page](harmonic-oscillator.md) quantizes that system once, promoting the coordinate and momentum, combining them into ladder operators, and reading the spectrum. Here we recall the answer rather than redo the work. A single oscillator of frequency $\omega$ has ladder operators obeying $[\hat a, \hat a^\dagger] = 1$, Hamiltonian
+Each discrete momentum mode now has the algebra of the [Harmonic Oscillator](harmonic-oscillator.md). For one oscillator of frequency $\omega$, $[\hat a,\hat a^\dagger]=1$ gives
 
 $$\hat H = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right),$$
 
-and levels $\hbar\omega(n + \tfrac12)$ spaced by $\hbar\omega$. Here $\hat a^\dagger$ adds one quantum and $\hat a$ removes one.
+Its levels are $\hbar\omega(n+\tfrac12)$. The creation operator $\hat a^\dagger$ raises $n$ by one; $\hat a$ lowers it by one.
 
-Now return to the field. Its operator Hamiltonian,
+To identify the field's mode energies, start with its Hamiltonian:
 
 $$\hat H = \int d^3x\left[\tfrac12\hat\pi^2 + \tfrac12(\nabla\hat\phi)^2 + \frac{m^2}{2\hbar^2}\hat\phi^2\right],$$
 
-is the integral of the classical density with $\phi$ and $\pi$ promoted. Substitute the mode expansions. The orthogonality of the plane waves kills the cross terms between different momenta, and each momentum contributes one copy of the oscillator just solved, with frequency $E_p/\hbar$,
+Substitute the field and momentum expansions. Spatial orthogonality removes the coupling between different modes. Each mode has frequency $E_p/\hbar$, so the result has the form
 
 $$\hat H = \int \frac{d^3p}{(2\pi\hbar)^3}\,E_p\,\hat a^\dagger(p)\hat a(p) \;+\; \text{const.}$$
 
-The additive constant collects the ground-state energies of all the modes. A single oscillator with frequency $E_p/\hbar$ has zero-point energy $\tfrac12 E_p$, and the free field holds one such oscillator per momentum. The constant is therefore formally infinite, a divergence of the sum rather than of any one mode. Only energy differences are physical, so the constant is absorbed into the vacuum's zero of energy and drops out of every prediction. What remains is a clean statement. The field's energy is the sum, over momenta, of $E_p$ times the occupation of that momentum.
+Each oscillator contributes a vacuum energy $\tfrac12E_p$. Summing over infinitely many modes gives a formally divergent constant. In this free theory without gravity, we subtract that constant and measure energies relative to the vacuum.
 
-With the zero point absorbed, each mode is the solved oscillator with its levels relabeled. The state $\lvert n_p\rangle$ of $n_p$ quanta in momentum mode $\mathbf p$ carries energy $E_p n_p$, and $\hat a^\dagger(p)$ raises that energy by exactly $E_p$ while $\hat a(p)$ lowers it by the same amount. The [Fields and Quanta page](qft.md#the-promotion) assigned $\hat a^\dagger$ to the positive-frequency coefficients and called it a creator. The oscillator spectrum now shows what it creates, one quantum of the mode, which the next section names a particle.
+With this mode normalization, the remaining energy is $E_p$ times the occupation number of each mode.
+
+A state $|n_p\rangle$ with $n_p$ quanta in one mode has energy $E_pn_p$ above the vacuum. Applying $\hat a^\dagger(p)$ adds $E_p$; applying $\hat a(p)$ removes it. This verifies the creation and annihilation interpretation introduced in [Fields and Quanta](qft.md#the-promotion).
 
 ## Creation of particles
 
-The mode's quantum is a particle, and the identification closes the construction. A quantum of the mode with momentum $\mathbf p$ carries energy $E_p = \sqrt{\mathbf p^2 + m^2}$ and momentum $\mathbf p$, which is precisely the relation a relativistic particle of mass $m$ obeys. The state $\hat a^\dagger(p)\lvert 0\rangle$, one quantum in that mode and none elsewhere, is a particle of momentum $\mathbf p$. Nothing new was added to the theory to hold a particle. The field already contained the oscillators, and each oscillator's excitation levels turned out to be the possible particle numbers.
+One quantum in momentum mode $\mathbf p$ has momentum $\mathbf p$ and energy $E_p=\sqrt{\mathbf p^2+m^2}$. These are the energy and momentum of a relativistic particle of mass $m$. We therefore identify $\hat a^\dagger(p)|0\rangle$ as a one-particle momentum state.
 
-The state space is the product of all the mode spaces, and the occupation-number picture uses the box normalization, where the momenta form a discrete grid. The **vacuum** $\lvert 0\rangle$ has every mode empty and is annihilated by every $\hat a(p)$, $\hat a(p)\lvert 0\rangle = 0$. After the constant is absorbed it carries energy zero. A general state is labeled by the **occupation numbers** $\{n_p\}$, how many quanta occupy each momentum mode, with energy
+In box normalization, label states by the **occupation numbers** $\{n_p\}$: the number of quanta in each discrete momentum mode. The **vacuum** has every occupation zero and satisfies $\hat a(p)|0\rangle=0$ for all $p$. After subtracting its energy,
 
 $$\hat H\,\lvert \{n_p\}\rangle = \left(\sum_p E_p\, n_p\right)\lvert \{n_p\}\rangle.$$
 
-Each creation operator adds one particle of its momentum. The state $\hat a^\dagger(p_1)\hat a^\dagger(p_2)\lvert 0\rangle$ holds a particle at $\mathbf p_1$ and one at $\mathbf p_2$, and a product of $\hat a^\dagger(p)$ factors puts several particles into one mode. Each mode is its own oscillator, so the operators act on the occupation number $n_p$ of mode $\mathbf p$ with the same $\sqrt{\,}$ factors as the single [Harmonic Oscillator](harmonic-oscillator.md):
+Applying $\hat a^\dagger(p_1)\hat a^\dagger(p_2)$ to the vacuum creates particles in those two modes. Repeating one creation operator puts several particles in the same mode.
+
+Each operator changes only its own occupation number, with the normalization factors derived for the [Harmonic Oscillator](harmonic-oscillator.md):
 
 $$\hat a(p)\,\lvert n_p\rangle = \sqrt{n_p}\;\lvert n_p-1\rangle, \qquad \hat a^\dagger(p)\,\lvert n_p\rangle = \sqrt{n_p+1}\;\lvert n_p+1\rangle,$$
 
-leaving every other mode untouched. Because the creation operators commute, $[\hat a^\dagger(p), \hat a^\dagger(p')] = 0$, the order of the factors never matters and a two-particle state is unchanged when the two particles are swapped. Particles built this way are identical and bosonic, which matches the integer-spin assignment of the scalar row in the [field table](qft.md#fields). The half-integer rows rerun the construction with anticommutators, in the next section, which is where this site settles the spin-statistics correlation.
+Every other mode remains unchanged. Since the creation operators commute, exchanging their order leaves the state unchanged. The particles are therefore **bosons**, with symmetric multiparticle states. This matches the scalar entry in the [field table](qft.md#fields). We will use anticommutators for the spinor field below.
 
 ### Building states one quantum at a time
 
-The states above come from applying creation operators to the vacuum, and a picture helps distinguish them. Lay a momentum axis down so each mode gets a position along it, and draw one filled dot per quantum, stacked above the momentum it occupies:
+The image shows how repeated creation changes occupation numbers. Each horizontal position labels a momentum mode, and each filled dot represents one quantum:
 
 ![One particle at p, then two at p, then two at p plus one at q: each filled dot is one quantum stacked above its momentum](./manim/occupation-states.png)
 
-The left panel is $\hat a^\dagger(p)\lvert 0\rangle$, one particle at $p$. The middle is $\big(\hat a^\dagger(p)\big)^2\lvert 0\rangle$. The same operator applied twice stacks a second dot onto the same column, so the mode now holds two quanta. The right panel applies $\hat a^\dagger(q)$ as well, with $q \gg p$, adding a dot in a new column and so a particle at a much larger momentum. Each column is one mode's occupation number $n_p$, and each application of a creation operator grows its column by exactly one dot.
+The left panel shows $\hat a^\dagger(p)|0\rangle$, one particle at $p$. The middle shows $(\hat a^\dagger(p))^2|0\rangle$, two particles in the same mode. The right applies $\hat a^\dagger(q)$ as well, adding one particle at a larger momentum $q$.
 
-The energy comes out bounded below. Every $E_p$ is positive and every occupation number is a nonnegative integer, so every energy eigenvalue is a sum of positive terms and the vacuum is the lowest state. This is the resolution the earlier pages announced. The Klein–Gordon equation was [rejected as a single-particle equation](relativistic-qm.md#_2-klein-gordon) because it admitted negative energies. Those solutions do not reappear here, because no mode can drop below empty. The second term of the expansion, $e^{+ip\cdot x/\hbar}$, was the negative-frequency term of the single-particle reading. Here it carries $\hat a^\dagger$, which adds rather than subtracts energy. The term that was problematic in the old reading is now the operator that creates a positive-energy particle. An annihilation operator removes quanta, and once a mode is empty there is nothing left to remove. No state carries negative energy. The negative-energy problem was not solved by discarding solutions but by reinterpreting them, exactly the step the [Dirac equation page](dirac-equation.md) made for its negative-frequency half.
+These expressions specify the occupations. Repeated creation also produces normalization factors, as in the ladder formulas above.
 
-The scalar row of the field table is now complete: one real field, one family of oscillators, quanta that are their own antiparticles, energy bounded below, and particle number conserved because $\hat H$ and $\hat N = \int \frac{d^3p}{(2\pi\hbar)^3}\,\hat a^\dagger(p)\hat a(p)$ commute. The construction used only the field's mode structure, and the commutators it produced match the [Action page's](qft-action.md) preview rather than being imposed to fit it.
+**The energy has a lower bound.** Every $E_p$ is nonnegative and every $n_p$ is a nonnegative integer. An annihilation operator cannot lower an empty mode further.
+
+This resolves the negative-energy problem in the [single-particle Klein–Gordon interpretation](relativistic-qm.md#_2-klein-gordon). We retain the negative-frequency term $e^{+ip\cdot x/\hbar}$, but its coefficient is now $\hat a^\dagger$: it creates a particle with positive energy. The [Dirac equation page](dirac-equation.md) previewed the corresponding reinterpretation for antiparticles.
+
+The real scalar has one operator family and particles that are their own antiparticles. In the free theory, the number operator $\hat N=\int\frac{d^3p}{(2\pi\hbar)^3}\hat a^\dagger(p)\hat a(p)$ commutes with $\hat H$, so particle number is conserved. The construction gives the oscillator algebra previewed on the [Action page](qft-action.md).
 
 ## The spinor field
 
-The scalar row is closed and the spinor row, the electron, is next. The [Fields and Quanta page](qft.md#the-promotion) already promoted the Dirac field's coefficients into two operator families with a spin label, $\hat a_s(p)$ and $\hat b_s(p)$ with $s = 1, 2$. It left open the question of which algebra those operators obey. The scalar's answer cannot be carried over, because the spinor Hamiltonian carries a minus sign the scalar lacks. This section shows that the minus sign determines the algebra.
+The [Fields and Quanta page](qft.md#the-promotion) introduced two Dirac-field operator families, $\hat a_s(p)$ and $\hat b_s(p)$, with spin label $s=1,2$. To quantize them, we must choose their algebra. The free Hamiltonian makes the consequence of that choice explicit.
 
-Write the promoted Dirac field in modes. The [general solution of the Dirac equation](dirac-equation.md#_6-general-solution) pairs each momentum with a positive-frequency spinor $u_s(p)$ and a negative-frequency spinor $v_s(p)$, two of each for the two spin states, so the promoted field reads
+The [general Dirac solution](dirac-equation.md#_6-general-solution) has two positive-frequency spinors $u_s(p)$ and two negative-frequency spinors $v_s(p)$ per momentum. Replace their coefficients by operators:
 
 $$\hat\psi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}} \sum_{s=1}^{2}\left[\hat a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} \;+\; \hat b_s^\dagger(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
-with the adjoint field $\hat{\bar\psi} = \hat\psi^\dagger\gamma^0$ expanded the same way. The field is not Hermitian, $\hat\psi^\dagger \neq \hat\psi$, because the negative-frequency solutions of the Dirac equation are independent solutions rather than the conjugates of the positive-frequency ones, as they were for the real scalar. The negative-frequency wave carries a creation operator $\hat b^\dagger$, and the [mode analysis of Fields and Quanta](qft.md#fields) is what puts it there. That term removes energy $E_p$ from a state, the promotion reads the removal of a negative-energy quantum as the addition of a positive-energy one, and [the reinterpretation the Dirac Equation page previewed](dirac-equation.md#_4-negative-energy-solutions) becomes a statement about operators.
+The Dirac adjoint is $\hat{\bar\psi}=\hat\psi^\dagger\gamma^0$. Unlike a real scalar, this field is not Hermitian; it has distinct particle and antiparticle operator families.
 
-Substituting the expansion into the free Dirac Hamiltonian and running the same orthogonality steps as the scalar case, with the orthogonality of the spinor solutions in place of the plane-wave orthogonality, leaves one oscillator statement per momentum and spin:
+The negative-frequency term contains $\hat b^\dagger$. As the [mode analysis in Fields and Quanta](qft.md#fields) explains, this term raises the state's energy by $E_p$. It implements the [negative-energy solutions](dirac-equation.md#_4-negative-energy-solutions).
+
+Substitute the expansion into the free Dirac Hamiltonian. Integrate the plane waves and use the spinor orthogonality relations. Before reordering the operators, the result is
 
 $$\hat H = \int \frac{d^3p}{(2\pi\hbar)^3}\,\sum_{s=1}^{2} E_p\left(\hat a_s^\dagger \hat a_s \;-\; \hat b_s \hat b_s^\dagger\right).$$
 
-The minus sign in front of the $\hat b$ product is the negative-frequency branch of the equation, still present in the operator formalism. It is the source of the whole difficulty. If the $\hat b$ operators obeyed the scalar's commutators, $\hat b\hat b^\dagger = \hat b^\dagger\hat b + 1$ would rewrite the bracket as $\hat a^\dagger\hat a - \hat b^\dagger\hat b$, and $\hat b^\dagger$ would add quanta of energy $-E_p$. Repeated application would build states of ever lower energy, with no ground state and no vacuum. That is the Dirac sea problem, reappearing as algebra in field quantization.
+The antiparticle term has a minus sign. If we used bosonic commutators, $\hat b\hat b^\dagger=\hat b^\dagger\hat b+1$, it would become $-E_p\hat b^\dagger\hat b$ plus a constant. Repeated creation would then lower the energy indefinitely. There would be no lowest-energy vacuum.
 
-The solution is to change the algebra. Impose anticommutators instead of commutators,
+Instead impose **anticommutators**, defined by $\{A,B\}=AB+BA$. With the momentum measure used above, they take the form
 
-$$\{\hat a_s(p), \hat a_{s'}^\dagger(p')\} = \delta_{ss'}\,\delta^3(p-p'), \qquad \{\hat b_s(p), \hat b_{s'}^\dagger(p')\} = \delta_{ss'}\,\delta^3(p-p'),$$
+$$\{\hat a_s(p), \hat a_{s'}^\dagger(p')\} = (2\pi\hbar)^3\,\delta_{ss'}\,\delta^3(p-p'), \qquad \{\hat b_s(p), \hat b_{s'}^\dagger(p')\} = (2\pi\hbar)^3\,\delta_{ss'}\,\delta^3(p-p'),$$
 
-with every other anticommutator of the $\hat a$ and $\hat b$ families zero. The braces $\{A, B\} = AB + BA$ are the anticommutator. This is the same kind of postulate as the scalar's equal-time commutator, imposed rather than derived. With it, $\hat b\hat b^\dagger = 1 - \hat b^\dagger\hat b$, and the Hamiltonian becomes
+All other anticommutators within and between the two families vanish. This is a quantization postulate, analogous to the scalar's canonical commutator.
+
+For a normalized discrete mode, $\hat b\hat b^\dagger=1-\hat b^\dagger\hat b$. Substituting this relation reverses the sign of the antiparticle number term:
 
 $$\hat H = \int \frac{d^3p}{(2\pi\hbar)^3}\,\sum_{s=1}^{2} E_p\left(\hat a_s^\dagger \hat a_s + \hat b_s^\dagger \hat b_s\right) + \text{const},$$
 
-whose every term is nonnegative. A vacuum $\lvert 0\rangle$ annihilated by every $\hat a_s(p)$ and every $\hat b_s(p)$ is now the lowest state, and the constant, formally divergent as for the scalar, is absorbed into the vacuum's zero of energy and drops from all differences.
+Both number terms now have positive coefficients. Choose a vacuum that every $\hat a_s(p)$ and $\hat b_s(p)$ annihilates, and subtract its constant energy as in the scalar theory. Exciting either species increases the energy.
 
-The anticommutator fixes three things at once, and each is a central fact of fermion physics.
+The anticommutators also determine occupancy, exchange symmetry, and the antiparticle interpretation.
 
-**One quantum per mode.** $\{\hat a^\dagger, \hat a^\dagger\} = 0$ means $\big(\hat a_s^\dagger(p)\big)^2 = 0$. Applying the same creation operator twice annihilates the state, so a mode holds either zero quanta or one, never more. The occupation numbers of the scalar construction, $n_p = 0, 1, 2, \dots$, become $n_p = 0, 1$. This is the **Pauli exclusion principle**, and it emerged from the algebra rather than being imposed on the states. The spin label $s$ supplies two modes per momentum, spin up and spin down, so an electron state is specified by momentum and spin.
+**One fermion per mode.** From $\{\hat a^\dagger,\hat a^\dagger\}=0$ we get $(\hat a_s^\dagger(p))^2=0$. Creating a second identical fermion in the same mode gives the zero vector. Thus $n_{p,s}$ can only be $0$ or $1$.
 
-**Antisymmetric states.** Swapping two creation operators flips the state's sign, $\hat a^\dagger(p)\hat a^\dagger(q)\lvert 0\rangle = -\,\hat a^\dagger(q)\hat a^\dagger(p)\lvert 0\rangle$, because the two operators anticommute. Multiparticle states built this way are antisymmetric under particle exchange, which is Fermi–Dirac statistics. The contrast with the scalar is exact. Commuting creation operators gave symmetric states and bosons, and anticommuting ones give antisymmetric states and fermions. The algebra choice on the operators determined the statistics of the particles. The correlation it settles, integer spin with commutators and half-integer spin with anticommutators, is the spin-statistics correlation the [field table](qft.md#fields) encodes. The full theorem, which proves both directions and adds locality, is deeper than this site needs. What this construction shows is the mechanism on the spinor side.
+This is the **Pauli exclusion principle**. A mode includes both momentum and spin, so two electrons can share a momentum if they occupy different spin states.
 
-**Antiparticles.** The $\hat b^\dagger$ operator creates a quantum of positive energy $E_p$. Because the two families are independent (the field is not Hermitian), that quantum is a different particle from the $\hat a^\dagger$ one, the **antiparticle**, same mass and opposite charge. Charge is not visible in the free theory, but the two families carry it oppositely. The charge operator counts particles minus antiparticles, $\hat Q \propto \int \frac{d^3p}{(2\pi\hbar)^3}\sum_s\big(\hat a_s^\dagger\hat a_s - \hat b_s^\dagger\hat b_s\big)$. The [QED page](qed.md) will identify $\hat Q$ with the charge of the U(1) symmetry. For the real scalar the antiparticle was the particle itself. For the spinor the two rows of the promotion describe two species, electron and positron.
+**Antisymmetric states.** Interchanging two creation operators gives $\hat a^\dagger(p)\hat a^\dagger(q)|0\rangle=-\hat a^\dagger(q)\hat a^\dagger(p)|0\rangle$. The multiparticle state changes sign under exchange, giving Fermi–Dirac statistics.
 
-The rest of the scalar construction transfers unchanged. Wick's machinery contracts $\hat\psi$ with $\hat{\bar\psi}$, the contraction $\langle 0\rvert T\hat\psi(x)\hat{\bar\psi}(y)\lvert 0\rangle$ computes by the same mode-expansion steps, and in momentum space it is the inverse of the Dirac kinetic operator, $i(\not r + m)/(r^2 - m^2 + i\epsilon)$, the factor the [Perturbation Theory page](perturbation-theory.md) quotes. The spinor row of the field table is now closed the way the scalar row was: two operator families, fermionic quanta obeying the Pauli principle, a distinct antiparticle, and energy bounded below. One row of the field table remains, the vector. Its quantization needs an extra step, gauge fixing, because the photon field carries a redundancy, and the [QED page](qed.md) carries out that construction after it has built the gauge symmetry the redundancy comes from.
+For scalars, commuting operators gave symmetric states. For spinors, anticommuting operators give antisymmetric states. These examples illustrate the spin–statistics relation in the [field table](qft.md#fields); a proof for general relativistic fields also uses locality and other assumptions.
 
+**Antiparticles.** The independent operator $\hat b^\dagger$ creates a particle of energy $E_p$ with the same mass as the $\hat a^\dagger$ particle. The two species carry opposite charge. Their charge operator has the form $\hat Q\propto\int\frac{d^3p}{(2\pi\hbar)^3}\sum_s(\hat a_s^\dagger\hat a_s-\hat b_s^\dagger\hat b_s)$.
 
-[^on-shell]: **On shell** is the field theorist's name for obeying the relativistic energy–momentum relation. The four-momenta $p$ with $E = \sqrt{\mathbf p^2 + m^2}$ form a surface in energy–momentum space, the **mass shell**, and a particle or plane wave whose energy is tied to its momentum that way sits on the shell. A single spatial snapshot $\phi(\mathbf x)$ does not yet tie its Fourier amplitudes to any energies. Only when the field is a solution of the free equation does each momentum mode acquire its fixed frequency $E_p/\hbar$, and the general solution above combines those on-shell modes into the oscillating waves $e^{\mp iE_p t/\hbar}$. The Hamiltonian computation on this page deliberately stays off shell. It treats $\phi_p$ and $\pi_p$ as arbitrary phase-space data at one instant and lets $\hat H$ generate the evolution that puts them on the shell.
+The [QED page](qed.md) derives this charge from U(1) symmetry. For the electron field, the species are electron and positron. A real scalar instead has no distinct antiparticle species.
+
+We can also compute the time-ordered vacuum expectation value $\langle0|T\hat\psi(x)\hat{\bar\psi}(y)|0\rangle$. This is the spinor propagator used in Wick contractions. In momentum space, using natural units $\hbar=c=1$, it is the inverse Dirac kinetic operator, $i(\not r+m)/(r^2-m^2+i\epsilon)$, as used on the [Perturbation Theory page](perturbation-theory.md).
+
+We have now quantized scalar and spinor fields. The vector field has an additional gauge redundancy, so its quantization includes gauge fixing. The [QED page](qed.md) develops that step.
+
+[^on-shell]: **On shell** means satisfying the relativistic energy–momentum relation. For a positive-energy mode, $E=\sqrt{\mathbf p^2+m^2}$; these four-momenta lie on the **mass shell**. A spatial Fourier expansion describes initial field data without specifying its time dependence. Free evolution then gives each mode frequency $E_p/\hbar$. The Hamiltonian acts on arbitrary initial field and momentum data, so evaluating it does not require first substituting an on-shell solution.
