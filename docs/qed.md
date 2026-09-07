@@ -98,6 +98,10 @@ The second term is the interaction between the electron current and the photon p
 
 We have introduced $A_\mu$ into the electron's dynamics. We now add a kinetic term for $A_\mu$ itself, so that electromagnetic disturbances can propagate.
 
+![A global phase rotation uses one angle everywhere. A local rotation has a position-dependent angle, whose derivative requires a compensating transformation of the gauge potential.](./manim/global-local-phase.png)
+
+*A global phase rotation uses one angle everywhere. A local rotation has a position-dependent angle, whose derivative requires a compensating transformation of the gauge potential.*
+
 ## QED Lagrangian
 
 **Build the photon kinetic term from a gauge-invariant quantity.** Under the gradient shift of $A_\mu$, the field strength
@@ -196,6 +200,10 @@ $$\varepsilon^{(1)}=(0,1,0,0), \qquad \varepsilon^{(2)}=(0,0,1,0).$$
 
 For a free photon, the count is therefore **four potential components, minus one Maxwell constraint, minus one gauge freedom, leaving two physical polarizations**.
 
+![A photon moving along z: the Maxwell constraint ties the time and z components together, and a gauge transformation removes that shared component, leaving two transverse polarizations.](./manim/photon-polarizations.png)
+
+*A photon moving along z: the Maxwell constraint ties the time and z components together, and a gauge transformation removes that shared component, leaving two transverse polarizations.*
+
 ### Why the canonical construction stalls
 
 **Canonical quantization starts with a field and its conjugate momentum.** For each component of the potential, calculate
@@ -239,6 +247,10 @@ Choosing $\chi$ to solve
 $$\Box\chi=-\partial\cdot A$$
 
 therefore gives a potential satisfying the Lorenz condition, with suitable boundary conditions in the flat spacetime setting used here. Some freedom remains: a further transformation with $\Box\chi=0$ preserves the condition. For plane waves, this includes the shift along $k$ that we used to remove the amplitude $a$.
+
+![Equivalent potentials belong to one gauge orbit and produce the same electromagnetic field. The Lorenz condition still permits residual gauge transformations.](./manim/gauge-descriptions.png)
+
+*Equivalent potentials belong to one gauge orbit and produce the same electromagnetic field. The Lorenz condition still permits residual gauge transformations.*
 
 **In the quantum theory, we cannot make this an exact identity between independent canonical field operators.** The divergence contains $\dot{\hat A}^0$, which will be related to the momentum of $\hat A_0$. Setting that divergence identically to zero conflicts with the canonical commutator.[^operator-lorenz] We will instead impose a weaker condition on physical states.
 
@@ -337,6 +349,10 @@ On physical states, the last two terms have equal and opposite expectation value
 One final identification removes the remaining gauge redundancy: physical states that differ only by a null gauge state represent the same physical state. These null states have zero norm and no effect on physical matrix elements. After this identification, the photon has the two transverse polarizations we found from Maxwell's equation.
 
 An external photon in a scattering calculation therefore carries one of these two polarizations, or a superposition of them such as circular polarization.
+
+![Gauge fixing gives four quantizable modes. The physical-state condition and identification of null gauge states recover the two physical photon polarizations.](./manim/photon-quantization-route.png)
+
+*Gauge fixing gives four quantizable modes. The physical-state condition and identification of null gauge states recover the two physical photon polarizations.*
 
 ### The propagator
 

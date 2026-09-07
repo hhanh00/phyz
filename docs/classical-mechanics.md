@@ -6,6 +6,10 @@ Newton's second law, $F = ma$, relates a particle's acceleration to the force on
 
 The equation is second order in position. Integrating once gives the velocity; integrating again gives the position. For constrained motion, such as a bead on a wire, we must also account for the forces that keep the particle on its allowed path. Generalized coordinates make these constraints easier to handle.
 
+![For constant force, acceleration is constant, velocity changes linearly, and position changes quadratically.](./manim/newton-motion.png)
+
+*For constant force, acceleration is constant, velocity changes linearly, and position changes quadratically.*
+
 ## 2. Lagrangian and the Euler–Lagrange Derivation
 
 For a pendulum, an angle describes the motion more directly than three Cartesian coordinates. The Lagrangian method works with such **generalized coordinates** $q$, which specify the allowed configurations of the system.
@@ -22,6 +26,10 @@ $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L
 
 with one equation for each generalized coordinate. For $L = \tfrac12m\dot q^2-V(q)$, it gives $m\ddot q=-\partial V/\partial q$, Newton's second law. The same procedure works for angular coordinates and, later, for fields.
 
+![Vary a free-particle path while fixing its endpoints. The physical path makes the first-order action variation vanish.](./manim/stationary-action-paths.png)
+
+*Vary a free-particle path while fixing its endpoints. The physical path makes the first-order action variation vanish.*
+
 ## 3. Hamiltonian and State Space
 
 To describe the state using position and momentum, define the **conjugate momentum** $p = \partial L/\partial \dot q$. Then form the Hamiltonian $H(q,p) = p\dot q - L$, expressing $\dot q$ in terms of $q$ and $p$. This change of variables is a **Legendre transform**.
@@ -35,6 +43,10 @@ For the usual kinetic energy and a velocity-independent potential, $H$ is the to
 The pair $(q,p)$ specifies a point in **phase space**, the space of classical states. Position alone specifies the configuration; momentum also specifies how it is moving. Hamilton's equations determine a trajectory through phase space, and uniqueness prevents distinct trajectories from crossing at the same time.
 
 Quantum mechanics keeps the idea of a state evolving under a Hamiltonian. We will replace phase-space points with vectors in Hilbert space and replace the classical Hamiltonian with an operator.
+
+![Two states can have the same position and opposite momenta. Phase space distinguishes them.](./manim/phase-space-states.png)
+
+*Two states can have the same position and opposite momenta. Phase space distinguishes them.*
 
 ## 4. The Poisson Bracket
 

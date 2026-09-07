@@ -138,6 +138,10 @@ Each contribution has the form of a harmonic oscillator Hamiltonian, with freque
 
 The coefficients $a(p)$ describe the amplitudes and phases once the modes evolve on shell[^on-shell]. This is the oscillator whose phase-space motion appeared on the [Action page](qft-action.md).
 
+![A field profile decomposes into spatial modes. Each mode evolves as an oscillator with frequency E divided by hbar.](./manim/field-modes.png)
+
+*A field profile decomposes into spatial modes. Each mode evolves as an oscillator with frequency E divided by hbar.*
+
 ## Second quantization
 
 We can quantize either the mode amplitudes or the field and conjugate momentum. These are two descriptions of the same step.
@@ -287,6 +291,10 @@ This is the **Pauli exclusion principle**. A mode includes both momentum and spi
 **Antisymmetric states.** Interchanging two creation operators gives $\hat a^\dagger(p)\hat a^\dagger(q)|0\rangle=-\hat a^\dagger(q)\hat a^\dagger(p)|0\rangle$. The multiparticle state changes sign under exchange, giving Fermi–Dirac statistics.
 
 For scalars, commuting operators gave symmetric states. For spinors, anticommuting operators give antisymmetric states. These examples illustrate the spin–statistics relation in the [field table](qft.md#fields); a proof for general relativistic fields also uses locality and other assumptions.
+
+![Commuting creation operators allow repeated boson occupation. Anticommuting fermion creation operators square to zero, giving at most one quantum per momentum-and-spin mode.](./manim/boson-fermion-occupancy.png)
+
+*Commuting creation operators allow repeated boson occupation. Anticommuting fermion creation operators square to zero, giving at most one quantum per momentum-and-spin mode.*
 
 **Antiparticles.** The independent operator $\hat b^\dagger$ creates a particle of energy $E_p$ with the same mass as the $\hat a^\dagger$ particle. The two species carry opposite charge. Their charge operator has the form $\hat Q\propto\int\frac{d^3p}{(2\pi\hbar)^3}\sum_s(\hat a_s^\dagger\hat a_s-\hat b_s^\dagger\hat b_s)$.
 

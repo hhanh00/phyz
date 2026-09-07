@@ -41,6 +41,10 @@ $$u' = \frac{u - v}{1 - uv/c^2}$$
 
 Substituting $u=c$ gives $u'=c$. The extra denominator is what keeps light speed unchanged.
 
+![Events at the same unprimed time can have different primed times because the Lorentz time transformation includes position.](./manim/relative-simultaneity.png)
+
+*Events at the same unprimed time can have different primed times because the Lorentz time transformation includes position.*
+
 ## 4. Spacetime and the Invariant Interval
 
 A Lorentz boost mixes time and space while preserving a particular combination of their differences. For two events, define the **spacetime interval**
@@ -54,6 +58,10 @@ Every inertial observer obtains the same $s^2$. Its sign determines how the even
 - $s^2<0$: **spacelike**. No signal traveling at or below $c$ can connect the events. There is a frame in which they are simultaneous.
 
 A spatial rotation preserves $x^2+y^2$. A Lorentz boost instead preserves $c^2t^2-x^2$ along the boost direction. The minus sign distinguishes spacetime geometry from Euclidean geometry; boosts are hyperbolic rotations.
+
+![The sign of the spacetime interval separates timelike, lightlike, and spacelike events relative to the origin.](./manim/light-cone-intervals.png)
+
+*The sign of the spacetime interval separates timelike, lightlike, and spacelike events relative to the origin.*
 
 ## 5. Four-Vectors and Covariant Notation
 

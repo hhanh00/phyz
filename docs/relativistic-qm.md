@@ -76,6 +76,10 @@ $$E^2 = \mathbf p^2 + m^2,$$
 
 Both $E=+\sqrt{\mathbf p^2+m^2}$ and $E=-\sqrt{\mathbf p^2+m^2}$ satisfy the equation. We must explain the negative-energy solutions and determine whether the wave function still has a single-particle probability interpretation.
 
+![The exact relativistic dispersion has positive- and negative-energy solutions. The negative values are unbounded below in a single-particle interpretation.](./manim/relativistic-energy-solutions.png)
+
+*The exact relativistic dispersion has positive- and negative-energy solutions. The negative values are unbounded below in a single-particle interpretation.*
+
 ## 3. Negative Energy and Probability
 
 The Klein–Gordon equation has the correct relativistic energy relation. The difficulty is interpreting all of its solutions as states of one particle.
@@ -133,6 +137,10 @@ The difference is:
 **Move beyond one particle.** In **second quantization**, the field becomes an operator with terms that create and annihilate particles. Negative-frequency terms then describe antiparticles, while physical excitations have positive energies. For a complex field, the conserved Klein–Gordon quantity becomes charge.
 
 Historically, Dirac first sought a relativistic equation with a positive density $\rho=\psi^\dagger\psi$. His equation achieves that by using a multicomponent wave function and a first time derivative. It still has negative-energy solutions, which he later interpreted using a filled sea and holes. Field quantization provides the modern interpretation.
+
+![A Klein–Gordon plane wave has conserved density proportional to its signed energy. This density cannot be a probability for all solutions.](./manim/klein-gordon-density.png)
+
+*A Klein–Gordon plane wave has conserved density proportional to its signed energy. This density cannot be a probability for all solutions.*
 
 ## 4. Dirac Equation
 
@@ -197,6 +205,10 @@ Dirac's filled-sea interpretation and the Stückelberg–Feynman interpretation 
 **Connect to observations.** Coupling the Dirac equation to electromagnetism predicts $g=2$ for the electron at this level of approximation. Its antiparticle interpretation predicts an oppositely charged particle, the positron, discovered in 1932, four years after the equation.
 
 We now have a relativistic wave equation with a positive probability density. The next page, [The Dirac Equation](dirac-equation.md), explains the spinor components and the negative-energy solutions in more detail.
+
+![Squaring a first-order Hamiltonian fixes anticommutation relations that require matrix coefficients and a multicomponent wave function.](./manim/dirac-linearization.png)
+
+*Squaring a first-order Hamiltonian fixes anticommutation relations that require matrix coefficients and a multicomponent wave function.*
 
 ## 5. Summary
 

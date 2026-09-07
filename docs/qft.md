@@ -91,6 +91,10 @@ We have met these equations before: Klein–Gordon in [Relativistic QM §2](rela
 
 The relation between transformation law and spin is the one developed in [§5](dirac-equation.md#_5-spinors-transformations). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
 
+![Scalar, vector, and spinor fields use different component transformation laws for the same Lorentz change of frame.](./manim/field-transformation-types.png)
+
+*Scalar, vector, and spinor fields use different component transformation laws for the same Lorentz change of frame.*
+
 ### What the table does not cover
 
 The table is not exhaustive. Higher-spin representations exist, and composite particles can have higher spins: the $\Delta$ baryon has spin $\tfrac32$, for example.
@@ -125,11 +129,19 @@ $$\langle\Psi_S(t)|\,\hat O_S\,|\Psi_S(t)\rangle = \langle\Psi_H|\,\hat O_H(t)\,
 
 The pictures differ in where we write the time dependence. Heisenberg fields make Lorentz covariance easier to display, as discussed below.
 
+![Schrödinger and Heisenberg pictures place the time dependence in different objects while preserving all expectation values.](./manim/quantum-pictures.png)
+
+*Schrödinger and Heisenberg pictures place the time dependence in different objects while preserving all expectation values.*
+
 ### State versus field
 
 In wave mechanics, $\psi(\mathbf x)$ is the position-space representation of a state. In field theory, $\hat\psi(x)$ is an operator acting on a state $|\Psi\rangle$; it is not that state's wave function.
 
 The state can describe a vacuum, a momentum eigenstate, or a localized wave packet with many particles. It still contains spatial information, although we need not represent it as a function of a fixed list of particle positions. The coordinate $x$ on a field operator labels where the operator acts. Particle position is therefore no longer a universal canonical coordinate for the whole theory.
+
+![A creation operator adds a quantum to a particular mode. A field operator combines creation and annihilation operators for many modes.](./manim/state-and-field.png)
+
+*A creation operator adds a quantum to a particular mode. A field operator combines creation and annihilation operators for many modes.*
 
 ### Building one-particle states
 

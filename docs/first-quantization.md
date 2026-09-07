@@ -22,6 +22,10 @@ In the position representation, the state is a complex function $\Psi(x,t)$ call
 
 Integrating this density over a region gives the probability of finding the particle there. A normalized state satisfies $\int|\Psi|^2\,dx=1$. An overall phase does not affect probabilities, but relative phases between contributions affect their sum and produce interference.
 
+![The squared magnitude of the wave function gives a nonnegative density. Integrating a normalized density over an interval gives a probability.](./manim/born-density.png)
+
+*The squared magnitude of the wave function gives a nonnegative density. Integrating a normalized density over an interval gives a probability.*
+
 ## 4. Copenhagen Interpretation
 
 The **Copenhagen interpretation**, associated with Bohr and his collaborators, treats the Born probabilities as fundamental. It does not assign an unmeasured observable a definite value unless the state is an eigenstate of that observable.
@@ -46,6 +50,10 @@ If $\hat A\psi=a\psi$, applying $\hat A$ changes only the vector's scale. We cal
 
 For a Hermitian matrix, we can choose a complete orthonormal basis of eigenvectors. Expanding a state in that basis gives its measurement amplitudes. Observables with continuous spectra, such as position, use the corresponding generalized eigenstates and integrals.
 
+![Resolve a state into the measurement eigenbasis. Squared coefficient magnitudes give the outcome probabilities.](./manim/eigenbasis-probabilities.png)
+
+*Resolve a state into the measurement eigenbasis. Squared coefficient magnitudes give the outcome probabilities.*
+
 ## 8. Commutators
 
 To compare two orders of operation, subtract them: $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$. This is the **commutator**, the quantum counterpart of the Poisson bracket.
@@ -67,6 +75,10 @@ $$\Delta x \, \Delta p \geq \frac{\hbar}{2}$$
 where $\Delta x$ and $\Delta p$ are the standard deviations of measurement outcomes in the same state. Reducing one spread therefore places a lower bound on the other.
 
 For general observables, $\Delta A\,\Delta B\geq\tfrac12|\langle[\hat A,\hat B]\rangle|$. The brackets $\langle\cdot\rangle$ denote the expectation value in that state. This bound follows from the operator algebra and the inner product.
+
+![For Gaussian wave packets, a narrower position distribution accompanies a wider momentum distribution.](./manim/fourier-uncertainty.png)
+
+*For Gaussian wave packets, a narrower position distribution accompanies a wider momentum distribution.*
 
 ---
 

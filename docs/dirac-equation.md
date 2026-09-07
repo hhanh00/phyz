@@ -62,6 +62,10 @@ $$\boldsymbol\mu = -\frac{e}{m}\,\mathbf S, \qquad g = 2,$$
 
 The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with minimal coupling. This answers the spin question from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). We examine how the spin components transform in [§5](#_5-spinors-transformations).
 
+![An ideal measurement of spin along z has outcomes plus or minus hbar over two. The displayed equal superposition gives equal probabilities.](./manim/spin-measurement.png)
+
+*An ideal measurement of spin along z has outcomes plus or minus hbar over two. The displayed equal superposition gives equal probabilities.*
+
 ## 2. Conservation and Commutators
 
 To justify the conservation test used in [§1](#_1-spin), derive the **Heisenberg equation of motion**. For an operator with no explicit time dependence,
@@ -144,6 +148,10 @@ This connects to the Stückelberg–Feynman interpretation in [Relativistic QM �
 
 The free equation supplies both frequency branches. A precise particle interpretation requires a theory in which particles can be created and destroyed, which a fixed one-particle wave function cannot provide.
 
+![At rest in the standard Dirac representation, two basis solutions occupy the upper pair and two the lower pair. A boost mixes the components.](./manim/rest-spinor-basis.png)
+
+*At rest in the standard Dirac representation, two basis solutions occupy the upper pair and two the lower pair. A boost mixes the components.*
+
 ## 4. Negative Energy Solutions
 
 The branches in [§3](#_3-antiparticles) both have nonnegative density $\psi^\dagger\psi$. We cannot reject the negative-energy branch on probability grounds. As [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) noted, treating it as ordinary electron states would leave energy unbounded below: an interacting electron could keep radiating into lower levels.
@@ -171,6 +179,10 @@ The real antisymmetric parameters $\omega_{\mu\nu}$ specify rotations and boosts
 3. **Reducible.** In a chiral basis, the Dirac representation splits as $(\tfrac12,0)\oplus(0,\tfrac12)$. Its two **Weyl spinors** are the left- and right-handed components. They transform identically under rotations, with the generators from [§1](#_1-spin), and oppositely under boosts.
 
 For rotations, $S=\exp(-\tfrac i2\boldsymbol\theta\cdot\boldsymbol\Sigma)$. The generator is $\mathbf S/\hbar$, using the spin operator from [§1](#_1-spin). The calculations below derive the general form and compare rotations with boosts.
+
+![For a spin-up component, a rotation about z contributes the phase exp(-i theta/2). A 2 pi rotation changes its sign; a 4 pi rotation restores it.](./manim/spinor-rotation-sign.png)
+
+*For a spin-up component, a rotation about z contributes the phase exp(-i theta/2). A 2 pi rotation changes its sign; a 4 pi rotation restores it.*
 
 ### Extra: Deriving the Spinor Transformation
 

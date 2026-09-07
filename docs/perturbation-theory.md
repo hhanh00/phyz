@@ -60,6 +60,10 @@ The term with $n$ interaction factors has order $g^n$ and integrates over $n$ sp
 
 To evaluate a term between particle states, we next rewrite its time-ordered field product using Wick's theorem.
 
+![Time ordering places later interactions on the left. Normal ordering places creation operators on the left; commutators supply the extra terms.](./manim/operator-ordering.png)
+
+*Time ordering places later interactions on the left. Normal ordering places creation operators on the left; commutators supply the extra terms.*
+
 ## Wick's theorem
 
 **Separate creation from annihilation.** The free-field expansion from [Field Quantization](field-quantization.md) has the form $\phi=\phi^++\phi^-$, where $\phi^+$ annihilates and $\phi^-$ creates a particle. Each part includes a plane-wave factor.
@@ -82,6 +86,10 @@ For a connected contribution with $k$ external particles, $k$ fields attach to t
 
 A three-leg contribution at first order has three fields and no internal contraction. A $2\to2$ contribution at second order has six fields: four attach to the external particles and two contract into one internal line. We will evaluate both patterns below.
 
+![At second order in a cubic scalar interaction, one contracted pair forms an internal propagator and four remaining fields attach to external particles.](./manim/contractions-to-diagram.png)
+
+*At second order in a cubic scalar interaction, one contracted pair forms an internal propagator and four remaining fields attach to external particles.*
+
 ## The propagator from the free field
 
 **Evaluate the contraction with the known free field.** For $x^0>y^0$, only the annihilation part of $\phi(x)$ followed by the creation part of $\phi(y)$ survives between vacuum states. The two mode-normalization factors multiply to $1/(2E_p)$, with $E_p=\sqrt{\mathbf p^2+m^2}$. Including both time orderings gives
@@ -99,6 +107,10 @@ For $x^0-y^0>0$, close the contour in the lower half-plane to recover the first 
 $$\frac{i}{p^2 - m^2 + i\epsilon},$$
 
 This is $i$ times the inverse of the free momentum-space quadratic operator $p^2-m^2$, with the specified boundary prescription. That is why the free Lagrangian determines the **propagator** used between interaction vertices. An internal momentum need not be on shell.
+
+![The positive-energy pole lies below the real axis and the negative-energy pole above it. The sign of the time separation determines which half-plane closes the contour.](./manim/feynman-pole-prescription.png)
+
+*The positive-energy pole lies below the real axis and the negative-energy pole above it. The sign of the time separation determines which half-plane closes the contour.*
 
 ## Building amplitudes: the dictionary
 

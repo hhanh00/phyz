@@ -10,6 +10,10 @@ The constant $V(x_0)$ only sets the zero of energy. The quadratic term describes
 
 A pendulum at small angles, molecular vibrations, and lattice vibrations all approximate this motion. We study the quantum oscillator because the same calculation will apply to each momentum mode of a free field.
 
+![Near equilibrium, a smooth potential agrees with its quadratic approximation. The curvature determines the restoring force.](./manim/oscillator-approximation.png)
+
+*Near equilibrium, a smooth potential agrees with its quadratic approximation. The curvature determines the restoring force.*
+
 ## 2. The classical oscillator
 
 For a mass $m$ on a spring of stiffness $k$, add the kinetic and elastic potential energies:
@@ -19,6 +23,10 @@ $$H = \frac{p^2}{2m} + \tfrac12 m\omega^2 x^2, \qquad \omega = \sqrt{k/m},$$
 Here $\omega$ is the angular frequency. The constants $m$ and $k$ fix it. Increasing the initial displacement or momentum increases the energy and amplitude, while the ideal oscillator's frequency stays the same.
 
 A state is a point $(x,p)$ in phase space. At fixed energy, the equation above describes an ellipse. As the mass oscillates, energy alternates between kinetic and potential forms. The [Field Quantization](field-quantization.md) page applies this description to individual field modes.
+
+![A classical orbit has constant total energy. Potential energy is greatest at the turning points; kinetic energy is greatest at equilibrium.](./manim/classical-oscillator-energy.png)
+
+*A classical orbit has constant total energy. Potential energy is greatest at the turning points; kinetic energy is greatest at equilibrium.*
 
 ## 3. Quantization
 
@@ -68,11 +76,19 @@ $$\hat a\,\lvert n\rangle = \sqrt{n}\;\lvert n-1\rangle, \qquad \hat a^\dagger\,
 
 The factors $\sqrt n$ and $\sqrt{n+1}$ follow from normalizing the states to $\langle n\lvert n\rangle=1$. Equivalently, $\lvert n\rangle=(\hat a^\dagger)^n\lvert0\rangle/\sqrt{n!}$. Acting on the ground state gives $\hat a\lvert0\rangle=0$, so there is no lower energy level.
 
+![Creation and annihilation operators connect neighboring energy states. The lowest state has energy one-half hbar omega, and lowering it gives the zero vector.](./manim/oscillator-ladder.png)
+
+*Creation and annihilation operators connect neighboring energy states. The lowest state has energy one-half hbar omega, and lowering it gives the zero vector.*
+
 ## 6. Zero-point energy
 
 Even the ground state has energy $\tfrac12\hbar\omega$, called **zero-point energy**. Zero total energy would require both position and momentum to be sharply zero. The relation $[\hat x,\hat p]=i\hbar$ forbids that state.
 
 The ground state is stationary, but its position and momentum distributions both have nonzero width. Zero-point energy does not mean that the particle follows a definite classical oscillation.
+
+![The stationary ground state has Gaussian position and momentum distributions. Their finite widths saturate the uncertainty bound.](./manim/oscillator-ground-state.png)
+
+*The stationary ground state has Gaussian position and momentum distributions. Their finite widths saturate the uncertainty bound.*
 
 ## 7. Why it matters later
 

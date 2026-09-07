@@ -56,6 +56,10 @@ The spatial integral is the total Hamiltonian; after quantization it becomes the
 
 A boosted observer uses different time slices and hence different functions $(\phi,\pi)$ to describe the same field history. The covariant action and field equations remain valid. The Hamiltonian formulation expresses their evolution relative to the chosen frame.
 
+![A field history assigns a value to each spacetime point. A time slice gives one configuration; its conjugate momentum is also needed to specify the classical state.](./manim/field-history-slice.png)
+
+*A field history assigns a value to each spacetime point. A time slice gives one configuration; its conjugate momentum is also needed to specify the classical state.*
+
 ### The geometry of H
 
 A point in **state space** specifies the system at one instant, as in [Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space). For a particle it is the pair $(q,p)$. For a field it is the pair of functions $(\phi(\mathbf x),\pi(\mathbf x))$, with one conjugate pair at each spatial point. This state space is infinite-dimensional.
@@ -75,6 +79,10 @@ After quantization, Heisenberg evolution takes the form $\hat\phi(t)=e^{i\hat Ht
 Apply that prescription to the conjugate fields at equal time. We get $[\hat\phi(t,\mathbf x),\hat\pi(t,\mathbf x')]=i\hbar\delta^3(\mathbf x-\mathbf x')$. The delta function expresses the local pairing of field and momentum. Expanding in oscillator modes then gives $[\hat a(\mathbf k),\hat a^\dagger(\mathbf k')]\propto\delta^3(\mathbf k-\mathbf k')$.
 
 These are the operator relations needed on the [previous page](qft.md). [Field Quantization](field-quantization.md) derives the mode algebra from the canonical field commutator and fixes its normalization. Canonical quantization supplies the starting prescription; it is not itself a consequence of classical mechanics. For half-integer-spin fields, we will use anticommutators and examine their relation to spin and statistics.
+
+![Vary the field inside a small region while keeping boundary data fixed. Stationarity for every such variation gives the local Euler–Lagrange equation.](./manim/local-field-variation.png)
+
+*Vary the field inside a small region while keeping boundary data fixed. Stationarity for every such variation gives the local Euler–Lagrange equation.*
 
 ## Lagrangians of QFT
 

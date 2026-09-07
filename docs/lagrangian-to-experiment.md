@@ -2,6 +2,10 @@
 
 We have built Lagrangians for particles and fields. Now we will use them to predict a **scattering cross section**, the quantity that connects a scattering calculation to measured event rates.
 
+![The Lagrangian determines amplitudes; squared amplitudes and phase space determine cross sections; beam and target properties determine event rates.](./manim/prediction-workflow.png)
+
+*The Lagrangian determines amplitudes; squared amplitudes and phase space determine cross sections; beam and target properties determine event rates.*
+
 ## The job of a Lagrangian
 
 **Start with the classical calculation.** The [Classical Mechanics](classical-mechanics.md) page introduced stationary action, and [Action and Lagrangians](qft-action.md) derived the Euler–Lagrange equation. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
@@ -25,6 +29,10 @@ The **cross section** $\sigma$ measures the strength of scattering in units of a
 $$\text{rate} = \Phi\,N\,\sigma.$$
 
 Experimenters infer $\sigma$ from the event rate, flux, and target count. A standard unit is the barn. For an unstable particle, the corresponding observable is its **decay rate** $\Gamma$, which we also calculate from a transition amplitude.
+
+![For a thin target, the scattering rate scales with incident flux, target count, and cross section.](./manim/scattering-event-rate.png)
+
+*For a thin target, the scattering rate scales with incident flux, target count, and cross section.*
 
 ## The amplitude and the S-matrix
 
@@ -51,6 +59,10 @@ $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 Here $d\Pi$ is the **phase-space measure**, which integrates over final momenta and includes energy and momentum conservation. The denominator represents the incident-flux normalization appropriate to the scattering states; its precise form depends on their normalization and is not the laboratory particle flux used above.
 
 The factor $|\mathcal M|^2$ depends on the dynamics through the interaction Lagrangian. Squaring follows the Born rule introduced in [First Quantization](first-quantization.md). The phase-space measure supplies the kinematics: which final momenta are possible and how to count them. Sum over unobserved final spins and average over an unpolarized initial ensemble when needed.
+
+![In the center-of-momentum frame, two outgoing momenta are opposite. Energy fixes their magnitude while their direction remains variable.](./manim/two-body-phase-space.png)
+
+*In the center-of-momentum frame, two outgoing momenta are opposite. Energy fixes their magnitude while their direction remains variable.*
 
 ## The missing piece
 

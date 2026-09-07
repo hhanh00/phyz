@@ -121,6 +121,10 @@ The labels refer to $s=(p+k)^2$ and $u=(p-k')^2$. We have suppressed spin labels
 
 The factors produce $i\mathcal M$, using the S-matrix convention in [From Lagrangian to Experiment](lagrangian-to-experiment.md).
 
+![Complex amplitudes add as vectors. Their squared sum includes an interference term that depends on relative phase.](./manim/amplitude-interference.png)
+
+*Complex amplitudes add as vectors. Their squared sum includes an interference term that depends on relative phase.*
+
 **Add the contributions, then square.** At leading order, $\mathcal M_{\mathrm{tree}}=\mathcal M_s+\mathcal M_u$, so
 
 $$|\mathcal{M}_{\mathrm{tree}}|^2
@@ -149,6 +153,10 @@ $$|\mathcal{M}|^2
 \mathcal{M}_{\mathrm{one\ loop}}\right)+\cdots.$$
 
 At a chosen order, include the full set of diagrams and counterterms. A single selected loop diagram generally gives only part of the physical correction.
+
+![An electron–photon loop can carry photon momentum ℓ and electron momentum P − ℓ. Conservation fixes their sum but leaves ℓ to be integrated.](./manim/loop-momentum-freedom.png)
+
+*An electron–photon loop can carry photon momentum ℓ and electron momentum P − ℓ. Conservation fixes their sum but leaves ℓ to be integrated.*
 
 ## Infinities in Loop Diagrams
 
