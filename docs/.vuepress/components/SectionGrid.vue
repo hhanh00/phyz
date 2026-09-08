@@ -86,6 +86,20 @@ const groups = [
       { number: '23', title: 'Renormalization at One Loop', desc: 'Connect regulated loop corrections to measured masses and interaction strengths.', link: '/path-integrals-renormalization.html', symbol: 'δm²' },
     ],
   },
+  {
+    number: 'A',
+    name: 'Math Refresher',
+    desc: 'Reference for the mathematical tools used across the chapters. Skim ahead, or revisit a topic when it appears.',
+    color: '#64748b',
+    soft: '#f1f5f9',
+    items: [
+      { number: '24', title: 'Calculus', desc: 'Derivatives, integration by parts, Taylor series, and vector calculus.', link: '/appendix-math-calculus.html', symbol: '∂, ∫' },
+      { number: '25', title: 'Complex Numbers', desc: "Euler's formula, phases, and the Fourier transform.", link: '/appendix-math-complex.html', symbol: 'ℂ' },
+      { number: '26', title: 'Linear Algebra', desc: 'Matrices, eigenvalues, and bra-ket notation.', link: '/appendix-math-linear-algebra.html', symbol: '⟨φ|ψ⟩' },
+      { number: '27', title: 'Index Notation and Tensors', desc: 'Einstein summation, the metric, and contractions.', link: '/appendix-math-tensors.html', symbol: 'ημν' },
+      { number: '28', title: 'Groups and Symmetry', desc: 'U(1), SU(2), generators, and why order matters.', link: '/appendix-math-groups.html', symbol: 'SU(2)' },
+    ],
+  },
 ]
 </script>
 
@@ -104,7 +118,7 @@ const groups = [
             Start reading
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
           </a>
-          <span class="chapter-count"><strong>23</strong> chapters</span>
+          <span class="chapter-count"><strong>28</strong> chapters</span>
         </div>
       </div>
 
