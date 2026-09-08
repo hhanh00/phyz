@@ -24,7 +24,7 @@ The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onwar
 
 **Count the required vertices.** Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices. At the lowest nonzero order, there are exactly two diagrams, each with two vertices joined by an internal electron line. They differ in how the photons attach.
 
-Follow the electron arrow from the incoming electron to compare the attachments. Here “first” means first along that line; the diagram does not specify a chronological sequence of events. The photon labels identify incoming and outgoing states regardless of their positions on the page.
+Follow the electron arrow from the incoming electron to compare the attachments. Here “first” means first along that line.[^diagram-time] The photon labels identify incoming and outgoing states regardless of their positions on the page.
 
 ```feynman
 \begin{tikzpicture}
@@ -143,6 +143,93 @@ $$|\mathcal{M}_{\mathrm{tree}}|^2
 
 The final term is the **interference** between the two contributions. For unpolarized incoming particles, average over two electron spins and two photon polarizations. Sum over unobserved final spins and polarizations, then insert the result into the cross-section phase-space integral.
 
+## The Same Amplitude Without Diagrams
+
+**Diagrams organize an algebraic calculation.** We can obtain the same Compton amplitude directly from the Dyson series and [Wick's theorem](perturbation-theory.md#wick-s-theorem), without drawing any lines.
+
+Write the incoming and outgoing states as $|i\rangle=|e^-(p),\gamma(k)\rangle$ and $|f\rangle=|e^-(p'),\gamma(k')\rangle$, with spin and polarization labels suppressed. The interaction-picture S-matrix is
+
+$$S=T\exp\!\left[-iq\int d^4x\,\bar\psi(x)\gamma^\mu\psi(x)A_\mu(x)\right].$$
+
+The zeroth-order term describes no scattering. The first-order term has only one photon field and cannot attach to both external photons. The leading connected contribution therefore comes from
+
+$$
+\langle f|S^{(2)}|i\rangle_{\mathrm{conn}}
+=\frac{(-iq)^2}{2!}\int d^4x\,d^4y\,
+\langle f|T\!\left[
+(\bar\psi\gamma^\mu\psi A_\mu)_x
+(\bar\psi\gamma^\nu\psi A_\nu)_y
+\right]|i\rangle_{\mathrm{conn}}.
+$$
+
+Here “connected” keeps the terms in which all four external particles participate in the same interaction process.
+
+**Attach the external states and contract the remaining fields.** The free-field expansions give the external factors
+
+$$
+\begin{aligned}
+\langle0|\psi(x)|e^-(p)\rangle&=u(p)e^{-ip\cdot x},
+&\langle e^-(p')|\bar\psi(y)|0\rangle&=\bar u(p')e^{ip'\cdot y},\\
+\langle0|A_\mu(x)|\gamma(k)\rangle&=\varepsilon_\mu(k)e^{-ik\cdot x},
+&\langle\gamma(k')|A_\nu(y)|0\rangle&=\varepsilon_\nu^*(k')e^{ik'\cdot y}.
+\end{aligned}
+$$
+
+Choose $x$ as the point where the incoming electron attaches and $y$ as the point where the outgoing electron attaches. The remaining fermion fields contract into
+
+$$
+S_F(y-x)\equiv\langle0|T\psi(y)\bar\psi(x)|0\rangle
+=\int\frac{d^4r}{(2\pi)^4}\,
+\frac{i(\not r+m)}{r^2-m^2+i\epsilon}\,e^{-ir\cdot(y-x)}.
+$$
+
+The other electron attachment exchanges the dummy integration variables $x$ and $y$ and gives an equal contribution, canceling the $2!$ in the Dyson expansion. There are still two distinct ways to attach the photons. Defining $\not\!\varepsilon=\gamma^\mu\varepsilon_\mu$, Wick's theorem gives
+
+$$
+\begin{aligned}
+\langle f|S^{(2)}|i\rangle_{\mathrm{conn}}
+=(-iq)^2\int d^4x\,d^4y\,\bar u(p')\Big[&
+\not\!\varepsilon^{\,*}(k')S_F(y-x)\not\!\varepsilon(k)
+e^{-i(p+k)\cdot x+i(p'+k')\cdot y}\\
+{}+{}&\not\!\varepsilon(k)S_F(y-x)\not\!\varepsilon^{\,*}(k')
+e^{-i(p-k')\cdot x+i(p'-k)\cdot y}
+\Big]u(p).
+\end{aligned}
+$$
+
+In the first term, the incoming photon attaches at $x$ and the outgoing photon at $y$. In the second, those attachments are reversed. The two terms have the same relative sign; exchanging these photon attachments introduces no fermionic exchange sign.
+
+**Integrate over the interaction positions.** Insert the Fourier expression for $S_F(y-x)$. For the first term, the $x$ and $y$ integrals give
+
+$$
+(2\pi)^4\delta^4(r-p-k)\,
+(2\pi)^4\delta^4(p'+k'-r).
+$$
+
+The $r$ integral fixes $r=p+k$ and leaves the overall momentum-conservation delta function. For the second term, the same steps fix $r=p-k'$ and leave the same overall delta function. Thus
+
+$$
+\langle f|S^{(2)}|i\rangle_{\mathrm{conn}}
+=(2\pi)^4\delta^4(p'+k'-p-k)\,i\mathcal M_{\mathrm{tree}},
+$$
+
+with
+
+$$
+\begin{aligned}
+\mathcal M_{\mathrm{tree}}=-q^2\bar u(p')\Bigg[&
+\not\!\varepsilon^{\,*}(k')
+\frac{\not p+\not k+m}{(p+k)^2-m^2+i\epsilon}
+\not\!\varepsilon(k)\\
+{}+{}&\not\!\varepsilon(k)
+\frac{\not p-\not k'+m}{(p-k')^2-m^2+i\epsilon}
+\not\!\varepsilon^{\,*}(k')
+\Bigg]u(p).
+\end{aligned}
+$$
+
+These are exactly $\mathcal M_s$ and $\mathcal M_u$ obtained above. Each diagram records one of the two contraction patterns: its external lines record the state factors, its internal line records $S_F$, and its vertices record the interaction factors and momentum constraints. The Feynman rules let us write the result without repeating this field-by-field calculation.
+
 ## Tree-level and Loop Diagrams
 
 A **tree diagram** has no closed cycle of internal lines. Momentum conservation fixes every internal momentum once the external momenta are given.
@@ -181,6 +268,8 @@ This procedure is **renormalization**. In QED, counterterms have the same forms 
 **Small photon momenta cause a different divergence.** An **infrared divergence** can arise when a massless loop photon's momentum approaches zero. Ultraviolet renormalization does not remove it.
 
 A detector cannot resolve a photon below its energy threshold. Its measured Compton rate therefore includes events with sufficiently soft extra photons. Adding this unresolved real emission to the virtual loop corrections cancels the soft divergences in the inclusive observable.
+
+[^diagram-time]: **Left and right are not a time axis.** These covariant Feynman diagrams do not specify which vertex occurs earlier in time. Incoming and outgoing particles are identified by the process equation and labels, not by their positions on the page. Moving vertices or bending lines leaves the amplitude unchanged as long as the connections, arrows, labels, and incoming/outgoing assignments are preserved.
 
 [^mandelstam]: **Mandelstam variables** are Lorentz-invariant combinations of the external momenta: $s=(p+k)^2=(p'+k')^2$, $t=(p-p')^2$, and $u=(p-k')^2$. The channel name identifies the momentum combination in the exchanged propagator. Here the internal electron carries $p+k$ in the s-channel and $p-k'$ in the u-channel. A tree-level t-channel would require a two-photon vertex on one end of the exchanged line, which elementary QED does not have. For Compton scattering, $s+t+u=2m^2$; the relation $s+t+u=0$ applies when all four external particles are massless.
 
