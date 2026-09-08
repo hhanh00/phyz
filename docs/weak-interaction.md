@@ -4,6 +4,21 @@ In [QED](qed.md), the photon couples to a current built from one charged fermion
 
 ## Beta Decay and Neutrinos
 
+Protons and neutrons are the particles that make up atomic nuclei; together we call them **nucleons**. Both are composite particles built from quarks. Electrons and neutrinos are **leptons**, elementary spin-½ particles that do not participate in the strong interaction that binds quarks.
+
+The particles needed for beta decay are:
+
+| Particle | Symbol | Electric charge |
+| --- | --- | --- |
+| Neutron | $n$ | $0$ |
+| Proton | $p$ | $+e$ |
+| Electron | $e^-$ | $-e$ |
+| Electron neutrino / antineutrino | $\nu_e$ / $\bar\nu_e$ | $0$ |
+| Up quark | $u$ | $+2e/3$ |
+| Down quark | $d$ | $-e/3$ |
+
+The subscript $e$ identifies the neutrino **flavour** associated with an electron in a charged weak interaction. Flavour means particle species here; an electron neutrino is not an electron with its charge removed.
+
 A free neutron undergoes **beta decay**:
 
 $$n\longrightarrow p+e^-+\bar\nu_e.$$
@@ -29,11 +44,17 @@ Here $\bar\nu_e$ is the electron antineutrino. Electric charge balances: the neu
 
 *Neutron beta decay, with the incoming neutron on the left and the three outgoing particles on the right. The shaded vertex summarizes the low-energy interaction of these composite nucleons; we resolve the quark transition and $W$ exchange later in this chapter. The antineutrino arrow points inward because arrows indicate fermion flow, not motion.*
 
-If the final state contained only a proton and an electron, conservation of energy and momentum would fix the electron energy in the neutron rest frame. Instead, experiments show a continuous range of electron energies. A third particle can carry different amounts of energy and momentum in different decays. The neutrino hypothesis accounted for this missing energy; experiments later detected neutrinos directly.
+If the final state contained only a proton and an electron, momentum conservation in the neutron rest frame would give $\mathbf p_p=-\mathbf p_e$. Writing their common momentum magnitude as $k$, energy conservation would then require
+
+$$m_n=\sqrt{m_p^2+k^2}+\sqrt{m_e^2+k^2}.$$
+
+Both terms increase with $k$, so this fixes one momentum magnitude and hence one electron energy. Instead, experiments show a continuous range of electron energies. With a third particle, the proton and electron momenta need not be opposite: the antineutrino carries the remaining momentum and energy. Different three-particle configurations give different electron energies. The neutrino hypothesis accounted for this missing energy; experiments later detected neutrinos directly.
+
+Charge conservation cannot distinguish a neutrino from an antineutrino because both are neutral. For these reactions, assign **lepton number** $+1$ to leptons, $-1$ to antileptons, and $0$ to quarks and nucleons. Beta decay preserves the total: the electron contributes $+1$ and the antineutrino $-1$, matching the neutron's zero. The charged weak coupling we derive below produces precisely this pair. This bookkeeping concerns the processes here; it does not settle whether neutrinos are fundamentally distinct from their antiparticles when their masses are included.
 
 Neutrinos have no electric charge, so they have no direct photon coupling of the kind used in QED. They participate in weak interactions, which makes them difficult to detect. The electron and antineutrino are created in the decay; they are not constituents stored inside the neutron.
 
-At the quark level, a neutron has valence-quark content $udd$ and a proton has $uud$. The decay changes a down quark into an up quark:
+At the quark level, a neutron has **valence-quark content** $udd$ and a proton has $uud$. Valence content specifies the net quark numbers after subtracting antiquarks of each species; the full bound state also contains gluons and quark–antiquark contributions. The decay changes a down quark into an up quark:
 
 $$d\longrightarrow u+e^-+\bar\nu_e.$$
 
@@ -41,30 +62,82 @@ The charges again balance, since $-\tfrac13=\tfrac23-1$. Photon exchange cannot 
 
 ## From Dirac to Weak Interaction
 
-There is also a difference in spin dependence. **Parity** reverses spatial coordinates, $\mathbf x\to-\mathbf x$. Momentum reverses under parity, while angular momentum does not. In polarized beta-decay experiments, electrons emerge preferentially in one direction relative to the nuclear spin. The parity-reversed process would have the opposite preference. The weak interaction therefore violates parity.
+There is also a difference in spin dependence. **Parity** reverses spatial coordinates, $\mathbf x\to-\mathbf x$, and hence momentum, $\mathbf p\to-\mathbf p$. Orbital angular momentum stays unchanged because $(-\mathbf r)\times(-\mathbf p)=\mathbf r\times\mathbf p$. Intrinsic spin transforms in the same way as angular momentum under parity.
+
+A **polarized** sample has a preferred spin orientation instead of randomly oriented nuclear spins. Experimenters can compare how often beta-decay electrons emerge along or against that orientation. Under parity,
+
+$$\mathbf S\cdot\mathbf p_e\longrightarrow-\mathbf S\cdot\mathbf p_e.$$
+
+Thus the reversed experiment exchanges emission along the spin with emission against it, while retaining the same spin orientation. If the interaction preserved parity, those two directions would have equal rates. Experiments find an asymmetry, so the weak interaction violates parity.
 
 To express this distinction using Dirac fields, define
 
 $$\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3,\qquad
 P_L=\frac{1-\gamma^5}{2},\qquad P_R=\frac{1+\gamma^5}{2}.$$
 
-Because $(\gamma^5)^2=1$, its eigenvalues are $-1$ and $+1$. The matrices $P_L$ and $P_R$ select these respective eigenspaces. They are **projectors**: applying either twice has the same effect as applying it once. They separate a field into its left- and right-handed **chiral components**:
+To check these definitions, use $\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}$ from the Dirac chapter. Distinct gamma matrices anticommute, while $(\gamma^0)^2=1$ and $(\gamma^i)^2=-1$ for spatial indices. Bringing equal matrices together in the squared four-matrix product takes six exchanges, so
+
+$$\begin{aligned}
+(\gamma^5)^2
+&=i^2(\gamma^0\gamma^1\gamma^2\gamma^3)^2\\
+&=-(-1)^6(\gamma^0)^2(\gamma^1)^2(\gamma^2)^2(\gamma^3)^2
+=-1\cdot1\cdot(-1)^3=1.
+\end{aligned}$$
+
+Moving any $\gamma^\mu$ through the other three distinct matrices gives three minus signs, hence $\gamma^\mu\gamma^5=-\gamma^5\gamma^\mu$. Also, $(\gamma^0)^\dagger=\gamma^0$ and $(\gamma^i)^\dagger=-\gamma^i$ give
+
+$$ (\gamma^5)^\dagger
+=(-i)(-1)^3\gamma^3\gamma^2\gamma^1\gamma^0
+=i\gamma^0\gamma^1\gamma^2\gamma^3=\gamma^5,$$
+
+where reversing the four matrices again takes six exchanges. Thus $\gamma^5$ is Hermitian and has eigenvalues $\pm1$. On a $-1$ eigenvector, $P_L$ acts as $1$ and $P_R$ as $0$; on a $+1$ eigenvector, the roles reverse. Direct multiplication gives
+
+$$P_L^2=\frac{1-2\gamma^5+(\gamma^5)^2}{4}=P_L,\qquad
+P_R^2=P_R,\qquad P_LP_R=0,\qquad P_L+P_R=1.$$
+
+The matrices are therefore **projectors** onto the left- and right-handed **chiral components**:
 
 $$\psi_L=P_L\psi,\qquad \psi_R=P_R\psi,\qquad
 \psi=\psi_L+\psi_R.$$
 
-Chirality labels these two spinor components. **Helicity** describes whether a particle's spin points along or against its momentum. In the massless limit, a left-chiral field annihilates negative-helicity particles and creates positive-helicity antiparticles. For massive particles, a state of definite helicity generally contains both chiral components. We neglect neutrino masses in the processes discussed here.
+Chirality labels these two parts of the spinor. It is different from spin up/down along a chosen axis. It is also different from the upper/lower pair used for the rest solutions in [The Dirac Equation](dirac-equation.md): in that standard basis, $\gamma^5$ mixes the upper and lower pairs. A change to a **chiral basis** makes $\gamma^5$ diagonal, so the left and right parts occupy separate pairs of entries. The projectors select the same physical chiral parts in either basis.
 
-The identity $\{\gamma^5,\gamma^\mu\}=0$ means that $\gamma^5$ anticommutes with each gamma matrix, so $P_R\gamma^\mu=\gamma^\mu P_L$. Together with $\bar\psi_L=\bar\psi P_R$, this gives the current identities below. The electromagnetic current contains both components with equal coupling:
+**Helicity** describes spin relative to the particle's own momentum: positive helicity means aligned, and negative helicity means opposed. For a massive particle, an observer who overtakes it can reverse its momentum without reversing its spin, changing the helicity label. Chirality instead labels the spinor's transformation under rotations and boosts. In the massless limit, a left-chiral field annihilates negative-helicity particles and creates positive-helicity antiparticles. For massive particles, a state of definite helicity generally contains both chiral components. We neglect neutrino masses in the processes discussed here.
+
+**Given without proof:** the relation between chirality and particle/antiparticle helicity above. Proving it requires solving the Dirac equation in a helicity basis and identifying the particle and antiparticle modes, a longer calculation than the projector algebra here.
+
+To form currents, first move a projector through a gamma matrix:
+
+$$P_L\gamma^\mu=\frac{1-\gamma^5}{2}\gamma^\mu
+=\gamma^\mu\frac{1+\gamma^5}{2}=\gamma^\mu P_R.$$
+
+Interchanging $L$ and $R$ gives $P_R\gamma^\mu=\gamma^\mu P_L$. Since $P_L^\dagger=P_L$, taking the Dirac adjoint gives
+
+$$\bar\psi_L\equiv\overline{P_L\psi}
+=(P_L\psi)^\dagger\gamma^0
+=\psi^\dagger P_L\gamma^0
+=\psi^\dagger\gamma^0P_R=\bar\psi P_R.$$
+
+Consequently, the mixed current vanishes:
+
+$$\bar\psi_L\gamma^\mu\psi_R
+=\bar\psi P_R\gamma^\mu P_R\psi
+=\bar\psi\gamma^\mu P_LP_R\psi=0.$$
+
+The other mixed current vanishes in the same way. Expanding $\psi=\psi_L+\psi_R$ therefore leaves the two electromagnetic contributions with equal coupling:
 
 $$\bar\psi\gamma^\mu\psi
 =\bar\psi_L\gamma^\mu\psi_L+\bar\psi_R\gamma^\mu\psi_R.$$
 
 The charged weak interaction instead couples the left-handed fermion fields. For electrons and electron neutrinos, the relevant current is
 
-$$\bar\nu_{eL}\gamma^\mu e_L
-=\bar\nu_e\gamma^\mu P_L e
-=\frac12\bar\nu_e\gamma^\mu(1-\gamma^5)e.$$
+$$\begin{aligned}
+\bar\nu_{eL}\gamma^\mu e_L
+&=\bar\nu_e P_R\gamma^\mu P_L e
+=\bar\nu_e\gamma^\mu P_L^2e\\
+&=\bar\nu_e\gamma^\mu P_L e
+=\frac12\bar\nu_e\gamma^\mu(1-\gamma^5)e.
+\end{aligned}$$
 
 The factor $1-\gamma^5$ gives the name **vector minus axial vector**, or **V−A**: the current contains a vector term with $\gamma^\mu$ and an axial-vector term with $\gamma^\mu\gamma^5$.
 
@@ -84,13 +157,26 @@ An $SU(2)$ transformation acts on this doublet as
 
 $$L\to UL,\qquad U=\exp(i\alpha^aT^a),\qquad T^a=\frac{\sigma^a}{2}.$$
 
-The $\sigma^a$ are the three Pauli matrices, now acting on the doublet rather than spatial spin. An $SU(2)$ matrix is a unitary two-by-two matrix with determinant one. Its three **generators** $T^a$ specify the infinitesimal transformations. Repeated indices $a=1,2,3$ are summed.
+The $\sigma^a$ are the three Pauli matrices, now acting on the doublet rather than spatial spin. An $SU(2)$ matrix is a unitary two-by-two matrix with determinant one. Its three **generators** $T^a$ specify the infinitesimal transformations. For example, using $T^1=\tfrac12\begin{pmatrix}0&1\\1&0\end{pmatrix}$ and a small angle $\alpha$ gives
+
+$$U\simeq1+i\alpha T^1,\qquad
+\begin{pmatrix}\nu_{eL}\\e_L\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}\nu_{eL}+\tfrac{i\alpha}{2}e_L\\e_L+\tfrac{i\alpha}{2}\nu_{eL}\end{pmatrix}.$$
+
+Unlike a common phase, this transformation mixes the two field entries. We call it an **internal** transformation because it acts on species components at a fixed spacetime point, without rotating or moving that point. The corresponding generators are called **weak isospin** generators; they do not describe spatial spin.
+
+We use three different kinds of indices. Gamma matrices act on spinor components, the two-by-two matrices $T^a$ act on doublet components, and $a=1,2,3$ labels which generator we use. Repeated $a,b,c$ indices are summed with the internal Euclidean metric $\delta^{ab}$, so we often write both upstairs. The spacetime indices $\mu,\nu$ still use the Minkowski metric and the upper/lower convention from Special Relativity.
 
 For a constant $U$, the massless kinetic term
 
 $$\mathcal L_0=i\bar L\gamma^\mu\partial_\mu L$$
 
-is unchanged: $U$ passes through the derivative and cancels against $U^\dagger$. This is global $SU(2)$ symmetry. We start with the kinetic term because the physical electron mass needs additional structure, developed in [Higgs Mechanism](higgs-mechanism.md).
+is unchanged: $U$ passes through the derivative and cancels against $U^\dagger$. This is global $SU(2)$ symmetry of the massless kinetic term. Both entries have the same kinetic form, so mixing them preserves their sum.
+
+The electron and neutrino do have different physical masses and electric charges. We are constructing one sector of the theory, not asserting that the two observed particles are interchangeable. The full electroweak theory also contains a $U(1)$ factor; after Higgs symmetry breaking, a particular combination of generators defines electric charge. The Higgs couplings account for the electron mass. We develop those steps in the next chapters.
+
+When we make this symmetry local, a gauge transformation changes the fermion and gauge fields together as an equivalent description. Applying that transformation is not an electron physically decaying into a neutrino. Actual transitions follow from the interaction terms and must conserve energy, momentum, and electric charge.
 
 For a local transformation, $U=U(x)$, differentiation gives an extra term:
 
@@ -100,7 +186,18 @@ As in QED, replace the ordinary derivative by a covariant derivative. Using the 
 
 $$D_\mu=\partial_\mu+igW_\mu,\qquad W_\mu=W_\mu^aT^a.$$
 
-Here $g$ is the weak gauge coupling. We introduce three gauge fields $W_\mu^1,W_\mu^2,W_\mu^3$, one for each generator. Requiring $D'_\mu L'=U D_\mu L$ gives
+Here $g$ is the weak gauge coupling. We introduce three gauge fields $W_\mu^1,W_\mu^2,W_\mu^3$, one for each generator. To find their transformation, expand both sides of $D'_\mu L'=U D_\mu L$:
+
+$$\begin{aligned}
+D'_\mu(UL)&=(\partial_\mu U)L+U\partial_\mu L+igW'_\mu UL,\\
+UD_\mu L&=U\partial_\mu L+igUW_\mu L.
+\end{aligned}$$
+
+Cancel $U\partial_\mu L$. Equality for every doublet $L$ requires
+
+$$\partial_\mu U+igW'_\mu U=igUW_\mu.$$
+
+Multiply on the right by $U^{-1}$, then divide by $ig$. Since $-1/i=i$, this gives
 
 $$W'_\mu=UW_\mu U^{-1}+\frac{i}{g}(\partial_\mu U)U^{-1}.$$
 
@@ -118,6 +215,28 @@ The gauge fields also need kinetic terms. In QED we used the electromagnetic fie
 
 $$[D_\mu,D_\nu]=igW_{\mu\nu},$$
 
+Apply the two derivatives to an arbitrary test doublet $f(x)$. The product rule is essential because $W_\nu$ also depends on position:
+
+$$\begin{aligned}
+D_\mu D_\nu f
+={}&\partial_\mu\partial_\nu f
++ig(\partial_\mu W_\nu)f
++igW_\nu\partial_\mu f\\
+&+igW_\mu\partial_\nu f-g^2W_\mu W_\nu f.
+\end{aligned}$$
+
+Exchange $\mu$ and $\nu$ and subtract. The second derivatives cancel, as do the terms with one derivative acting on $f$. What remains is
+
+$$\begin{aligned}
+[D_\mu,D_\nu]f
+&=\left[ig(\partial_\mu W_\nu-\partial_\nu W_\mu)
+-g^2(W_\mu W_\nu-W_\nu W_\mu)\right]f\\
+&=ig\left[\partial_\mu W_\nu-\partial_\nu W_\mu
++ig[W_\mu,W_\nu]\right]f.
+\end{aligned}$$
+
+Comparing with the definition gives
+
 $$W_{\mu\nu}=\partial_\mu W_\nu-\partial_\nu W_\mu+ig[W_\mu,W_\nu].$$
 
 The last term differs from electromagnetism. The generators obey
@@ -126,7 +245,16 @@ $$[T^a,T^b]=i\epsilon^{abc}T^c,$$
 
 where $\epsilon^{abc}$ is completely antisymmetric and $\epsilon^{123}=1$. Two transformations generally give different results when applied in the opposite order. We call such a group **non-Abelian**. A gauge theory built from this structure is a **Yang–Mills theory**.
 
-Writing $W_{\mu\nu}=W_{\mu\nu}^aT^a$ gives
+To extract components, substitute $W_\mu=W_\mu^bT^b$ into the last term. The component fields commute as classical coefficients; the generator matrices do not:
+
+$$\begin{aligned}
+ig[W_\mu,W_\nu]
+&=igW_\mu^bW_\nu^c[T^b,T^c]\\
+&=igW_\mu^bW_\nu^c\,i\epsilon^{bca}T^a
+=-g\epsilon^{abc}W_\mu^bW_\nu^cT^a.
+\end{aligned}$$
+
+We named the remaining generator index $a$ and used $\epsilon^{bca}=\epsilon^{abc}$: a cyclic permutation makes two exchanges and preserves the sign. The minus sign comes from $i^2=-1$. Comparing coefficients of $T^a$ in $W_{\mu\nu}=W_{\mu\nu}^aT^a$ gives
 
 $$\boxed{W_{\mu\nu}^a=\partial_\mu W_\nu^a-\partial_\nu W_\mu^a
 -g\epsilon^{abc}W_\mu^bW_\nu^c.}$$
@@ -190,7 +318,27 @@ W_\mu^3&W_\mu^1-iW_\mu^2\\
 W_\mu^1+iW_\mu^2&-W_\mu^3
 \end{pmatrix}.$$
 
-The off-diagonal entries couple the two members of the doublet. They are $W_\mu^+/\sqrt2$ and $W_\mu^-/\sqrt2$, using the charged combinations defined above. Expanding the fermion interaction gives
+The off-diagonal entries couple the two members of the doublet. They are $W_\mu^+/\sqrt2$ and $W_\mu^-/\sqrt2$, using the charged combinations defined above. First multiply the matrix by $L$:
+
+$$W_\mu L=
+\begin{pmatrix}
+\tfrac12W_\mu^3\nu_{eL}+\tfrac{1}{\sqrt2}W_\mu^+e_L\\
+\tfrac{1}{\sqrt2}W_\mu^-\nu_{eL}-\tfrac12W_\mu^3e_L
+\end{pmatrix}.$$
+
+Now multiply by $-g\bar L\gamma^\mu$. The gamma matrix acts on each spinor entry, while $\bar L=(\bar\nu_{eL},\bar e_L)$ contracts the doublet index:
+
+$$\begin{aligned}
+-g\bar L\gamma^\mu W_\mu L
+={}&-\frac{g}{\sqrt2}\left(
+\bar\nu_{eL}\gamma^\mu e_LW_\mu^+
++\bar e_L\gamma^\mu\nu_{eL}W_\mu^-\right)\\
+&-\frac g2\left(
+\bar\nu_{eL}\gamma^\mu\nu_{eL}
+-\bar e_L\gamma^\mu e_L\right)W_\mu^3.
+\end{aligned}$$
+
+The second line is the neutral $SU(2)_L$ contribution, which will combine with the $U(1)$ contribution in Electroweak Unification. Keeping the charged terms here gives
 
 $$\boxed{\mathcal L_{\mathrm{CC}}=-\frac{g}{\sqrt2}
 \left(\bar\nu_{eL}\gamma^\mu e_LW_\mu^+
@@ -198,7 +346,15 @@ $$\boxed{\mathcal L_{\mathrm{CC}}=-\frac{g}{\sqrt2}
 
 The subscript CC means **charged current**: the current connects fermions whose electric charges differ by one unit. The factor $1/\sqrt2$ follows from the generator normalization and the definition of $W^\pm$. In the conventions used here, the $W^+\bar\nu_e e$ vertex has factor $-ig\gamma^\mu P_L/\sqrt2$.
 
-Quarks have the same kind of coupling. Ignoring mixing between generations, arrange their left-handed fields into a doublet $Q_L=(u_L,d_L)^T$, just as we did for the neutrino and electron. Including mixing gives the beta-decay term
+The same pattern occurs in three **generations**, repeated sets of fermions with the same gauge-charge pattern but different masses:
+
+| Generation | Quarks | Charged lepton | Neutrino flavour |
+| --- | --- | --- | --- |
+| First | up $u$, down $d$ | electron $e$ | $\nu_e$ |
+| Second | charm $c$, strange $s$ | muon $\mu$ | $\nu_\mu$ |
+| Third | top $t$, bottom $b$ | tau $\tau$ | $\nu_\tau$ |
+
+Quarks have the same kind of charged weak coupling as leptons. Ignoring mixing between generations, arrange their left-handed fields into a doublet $Q_L=(u_L,d_L)^T$, just as we did for the neutrino and electron. In the full theory, a charged weak interaction can also connect quarks from different rows of the table. Including mixing gives the beta-decay term
 
 $$\mathcal L_{\mathrm{CC}}^{ud}
 =-\frac{g}{\sqrt2}V_{ud}\bar u_L\gamma^\mu d_LW_\mu^+
@@ -241,7 +397,12 @@ We now use the physical $W$ mass $m_W$ as an input; the Higgs chapter explains i
 
 $$\frac{1}{q^2-m_W^2}\simeq-\frac{1}{m_W^2}.$$
 
-At leading order in external momenta divided by $m_W$, the massive-vector propagator reduces to $D_{\mu\nu}(q)\simeq ig_{\mu\nu}/m_W^2$. Define the external-state currents
+**Given without proof:** the massive-vector propagator below. Its derivation requires a longer treatment of the massive gauge field and its constraints. Here we use the result and work out its low-energy limit. In **unitary gauge**, a choice in which the physical massive vector field appears explicitly, it is
+
+$$D_{\mu\nu}(q)=\frac{-i}{q^2-m_W^2+i\epsilon}
+\left(g_{\mu\nu}-\frac{q_\mu q_\nu}{m_W^2}\right).$$
+
+Compared with the photon propagator, this has a massive denominator and an additional momentum-dependent numerator. At energies and momentum transfers small compared with $m_W$, the second numerator term is suppressed, and the denominator has the expansion above. Thus $D_{\mu\nu}(q)\simeq ig_{\mu\nu}/m_W^2$. We can use this limit without deriving massive-vector quantization. Define the external-state currents
 
 $$J_q^\mu=\bar u_u\gamma^\mu P_Lu_d,\qquad
 J_\ell^\nu=\bar u_e\gamma^\nu P_Lv_{\bar\nu_e}.$$
