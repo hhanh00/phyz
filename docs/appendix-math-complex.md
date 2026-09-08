@@ -28,6 +28,10 @@ This is **Euler's formula**. It connects the angle $\theta$ to the exponential $
 
 Because $\cos^2\theta+\sin^2\theta=1$, every number $e^{i\theta}$ has magnitude exactly $1$. A complex number of general magnitude $r$ and phase $\theta$ is $re^{i\theta}$.
 
+![A point at angle θ on the unit circle has coordinates (cos θ, sin θ), so it is written as the phase e^{iθ}.](./manim/euler-circle.png)
+
+*A point at angle θ on the unit circle has coordinates (cos θ, sin θ), so it is written as the phase e^{iθ}.*
+
 ## 3. Multiplying adds phases
 
 Multiplying two numbers multiplies their magnitudes and adds their phases:

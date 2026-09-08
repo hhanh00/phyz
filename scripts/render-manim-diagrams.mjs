@@ -50,6 +50,9 @@ const diagrams = [
   { source: 'page_diagrams.py', scene: 'OperatorOrdering', output: 'operator-ordering.png', page: 'perturbation-theory' },
   { source: 'page_diagrams.py', scene: 'FeynmanPolePrescription', output: 'feynman-pole-prescription.png', page: 'perturbation-theory' },
   { source: 'page_diagrams.py', scene: 'LoopMomentumFreedom', output: 'loop-momentum-freedom.png', page: 'feynman-rules' },
+  { source: 'math_refresher.py', scene: 'EulerCircle', output: 'euler-circle.png', page: 'appendix-math-complex' },
+  { source: 'math_refresher.py', scene: 'EigenvectorScaling', output: 'eigenvector-scaling.png', page: 'appendix-math-linear-algebra' },
+  { source: 'math_refresher.py', scene: 'RotationGenerator', output: 'rotation-generator.png', page: 'appendix-math-groups' },
 ]
 
 const args = process.argv.slice(2)

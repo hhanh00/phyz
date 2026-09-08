@@ -79,6 +79,12 @@ Fields vary over space, so we need derivatives that act on all three directions 
 - **Curl**, $\nabla\times\mathbf v$: a vector measuring circulation of $\mathbf v$ around each axis.
 - **Laplacian**, $\nabla^2 f=\nabla\cdot(\nabla f)=\partial_x^2 f+\partial_y^2 f+\partial_z^2 f$: the divergence of the gradient.
 
+The multidimensional analogue of the integration by parts in [§4](#_4-integrals-and-integration-by-parts) is the **divergence theorem**:
+
+$$\int_V \nabla\cdot\mathbf v\,d^3x=\oint_{\partial V}\mathbf v\cdot\mathbf n\,dA.$$
+
+The integral of a divergence over a volume equals the flux of the vector through the volume's boundary. It turns a continuity equation into a conservation statement: a change in a quantity inside a region equals the net flow through the boundary, so a flow that vanishes at infinity leaves the total unchanged, as in the [probability current](relativistic-qm.md#_3-negative-energy-and-probability) argument.
+
 These appear in the [Maxwell equations](special-relativity.md#_8-maxwell-equations): $\nabla\cdot\mathbf E=\rho$, $\nabla\times\mathbf E=-\partial_t\mathbf B$, and so on. The relativistic wave operator combines a time derivative with the Laplacian,
 
 $$\Box = \partial_t^2-\nabla^2,$$
