@@ -66,6 +66,34 @@ The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with m
 
 *An ideal measurement of spin along z has outcomes plus or minus hbar over two. The displayed equal superposition gives equal probabilities.*
 
+### Extra: the nonrelativistic limit and $g=2$
+
+The factor $g=2$ quoted above follows from taking the Dirac equation at low momentum. Split the spinor into upper and lower pairs, $\psi=(u,v)$, and use minimal substitution $\hat{\mathbf p}\to\hat{\mathbf p}-q\mathbf A$ in the coupled equations of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation):
+
+$$(E-m)\,u = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,v, \qquad (E+m)\,v = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,u,$$
+
+with $c=1$. For a positive-energy solution at low momentum, $E\approx m$ and the lower pair $v$ is the small component. Solve the second equation to leading order,
+
+$$v \approx \frac{\boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)}{2m}\,u,$$
+
+and substitute it into the first equation:
+
+$$(E-m)\,u \approx \frac{\left[\boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\right]^2}{2m}\,u.$$
+
+Evaluate the square with the Pauli identity $(\boldsymbol\sigma\cdot\mathbf a)(\boldsymbol\sigma\cdot\mathbf b)=\mathbf a\cdot\mathbf b+i\boldsymbol\sigma\cdot(\mathbf a\times\mathbf b)$, taking $\mathbf a=\mathbf b=\hat{\mathbf p}-q\mathbf A$. The cross product does not vanish, because the momentum operator does not commute with $\mathbf A$: $(\hat{\mathbf p}-q\mathbf A)\times(\hat{\mathbf p}-q\mathbf A)=i\hbar q\,\mathbf B$. The square is therefore
+
+$$\left[\boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\right]^2 = (\hat{\mathbf p}-q\mathbf A)^2 - \hbar q\,\boldsymbol\sigma\cdot\mathbf B.$$
+
+Inserting this and using the spin operator $\mathbf S=\tfrac\hbar2\boldsymbol\sigma$ from [§1](#_1-spin), the two-component equation for the upper pair becomes
+
+$$(E-m)\,u = \left[\frac{(\hat{\mathbf p}-q\mathbf A)^2}{2m} - \frac{q}{m}\,\mathbf S\cdot\mathbf B\right]u.$$
+
+The first term is the ordinary kinetic energy of a charged particle; the second is a magnetic interaction of the form $-\boldsymbol\mu\cdot\mathbf B$ with
+
+$$\boldsymbol\mu = \frac{q}{m}\,\mathbf S.$$
+
+For an electron, $q=-e$, so $\boldsymbol\mu=-\tfrac em\mathbf S$. Writing the magnetic moment in the standard form $\boldsymbol\mu=g\tfrac{q}{2m}\mathbf S$ fixes $g=2$. The factor of $2$ comes from the Pauli identity, which in turn reflects the anticommutation of the Pauli matrices.
+
 ## 2. Conservation and Commutators
 
 To justify the conservation test used in [§1](#_1-spin), derive the **Heisenberg equation of motion**. For an operator with no explicit time dependence,
@@ -145,6 +173,28 @@ For plane waves this maps $\eta u_s(p)^*$ to a negative-energy solution $v_{s'}(
 To see why this changes charge, restore the electromagnetic coupling from [§1](#_1-spin): $\partial_\mu\to\partial_\mu+\tfrac{iq}{\hbar}A_\mu$. Complex conjugation reverses the sign of $i$, so $\psi_c$ obeys the equation with charge $-q$. It describes the **antiparticle**, with the same mass and opposite charge. In the full electromagnetic theory, charge conjugation also reverses $A_\mu$.
 
 This connects to the Stückelberg–Feynman interpretation in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability). For electrons the antiparticle is the positron, discovered in 1932.
+
+### Extra: verifying the charge-conjugation map
+
+To see the map in coordinates, use the two-component form. A momentum-space plane wave $w=(\phi,\chi)$ solves the coupled equations
+
+$$(E-m)\,\phi = \boldsymbol\sigma\cdot\mathbf p\,\chi, \qquad (E+m)\,\chi = \boldsymbol\sigma\cdot\mathbf p\,\phi.$$
+
+For a positive-energy solution, $\phi$ is the large upper pair and $\chi$ the small lower pair. Now conjugate both equations. The Pauli matrices obey $\sigma_1^*=\sigma_1$, $\sigma_3^*=\sigma_3$, and $\sigma_2^*=-\sigma_2$, so $\boldsymbol\sigma^*=(\sigma_1,-\sigma_2,\sigma_3)$, and
+
+$$(E-m)\,\phi^* = \boldsymbol\sigma^*\cdot\mathbf p\,\chi^*, \qquad (E+m)\,\chi^* = \boldsymbol\sigma^*\cdot\mathbf p\,\phi^*.$$
+
+The matrix $i\sigma^2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ satisfies $(i\sigma^2)\,\boldsymbol\sigma^*\,(i\sigma^2)^{-1}=-\boldsymbol\sigma$, the property that will flip the frequency sign. In the standard representation $\eta=i\gamma^2$ has the block form $\eta=\begin{pmatrix}0&i\sigma^2\\-i\sigma^2&0\end{pmatrix}$, so applying it to $w^*$ gives
+
+$$\psi_c=\eta\,w^*=\begin{pmatrix}i\sigma^2\,\chi^*\\-i\sigma^2\,\phi^*\end{pmatrix}\equiv\begin{pmatrix}\phi_c\\\chi_c\end{pmatrix}.$$
+
+Multiply the conjugated equations by $i\sigma^2$. Because $(i\sigma^2)(\boldsymbol\sigma^*\cdot\mathbf p)=-(\boldsymbol\sigma\cdot\mathbf p)(i\sigma^2)$, they become
+
+$$(E+m)\,\phi_c = \boldsymbol\sigma\cdot\mathbf p\,\chi_c, \qquad (E-m)\,\chi_c = \boldsymbol\sigma\cdot\mathbf p\,\phi_c.$$
+
+These are the coupled equations of a negative-energy solution: the large and small roles have interchanged, which is the signature of the $v$ spinor in [§3](#_3-antiparticles). Substituting the explicit $u_s(p)$ of [§3](#_3-antiparticles) shows that $\psi_c$ is a $v_{s'}(p)$ with the spin label flipped, up to an overall phase.
+
+To restore charge, reinsert the coupling $\partial_\mu\to\partial_\mu+\tfrac{iq}{\hbar}A_\mu$ from [§1](#_1-spin). Conjugation reverses the sign of every $i$, so $\psi_c$ obeys the equation with $q\to-q$: the antiparticle, with opposite charge and the same mass.
 
 The free equation supplies both frequency branches. A precise particle interpretation requires a theory in which particles can be created and destroyed, which a fixed one-particle wave function cannot provide.
 

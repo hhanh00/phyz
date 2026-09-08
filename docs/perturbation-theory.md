@@ -8,7 +8,7 @@ The [Field Quantization page](field-quantization.md) supplied the free fields an
 
 We will first use a real scalar field with a cubic interaction. It has no spin indices or gauge freedom, so we can follow the calculation before adding those features in QED.
 
-We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$. Thus $p^2=E^2-\mathbf p^2$. A physical free particle of mass $m$ is **on shell**, meaning $p^2=m^2$.
+We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$. Setting $\hbar$ and $c$ to $1$ is a choice of units, not an approximation: energy, mass, and momentum share one unit, and distance is measured in units of time, so factors of $\hbar$ and $c$ drop out of the formulas. Thus $p^2=E^2-\mathbf p^2$. A physical free particle of mass $m$ is **on shell**, meaning $p^2=m^2$.
 
 ## Outline of the argument
 

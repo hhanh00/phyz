@@ -1,9 +1,9 @@
 // TikZ-Feynman → inline SVG renderer for the docs.
 //
 // Compiles a ```feynman code fence (the body is raw TikZ-Feynman source)
-// with lualatex + dvisvgm and returns a self-contained <svg> fragment, the
-// same "static diagram baked at build time" pattern as the excalidraw
-// renderer. Output is cached by content hash so a diagram compiles once.
+// with lualatex + dvisvgm and returns a self-contained <svg> fragment, a
+// "static diagram baked at build time" pattern. Output is cached by content
+// hash so a diagram compiles once.
 //
 // Requires: lualatex and dvisvgm on PATH, with the tikz and tikz-feynman
 // packages (both ship in the Homebrew TeX Live this site already uses).

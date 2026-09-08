@@ -2,7 +2,6 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import markdownItFootnote from 'markdown-it-footnote'
-import { renderExcalidrawSvg } from './lib/excalidraw-svg.js'
 import { renderFeynmanSvg } from './lib/feynman-svg.js'
 
 export default {
@@ -78,6 +77,16 @@ export default {
           { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
         ],
       },
+      {
+        text: 'Math Refresher',
+        children: [
+          { text: 'Calculus', link: '/appendix-math-calculus.html' },
+          { text: 'Complex Numbers', link: '/appendix-math-complex.html' },
+          { text: 'Linear Algebra', link: '/appendix-math-linear-algebra.html' },
+          { text: 'Index Notation and Tensors', link: '/appendix-math-tensors.html' },
+          { text: 'Groups and Symmetry', link: '/appendix-math-groups.html' },
+        ],
+      },
     ],
     // Reading order for the Prev/Next footer links on each page.
     sidebar: [
@@ -109,26 +118,33 @@ export default {
           { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
         ],
       },
+      {
+        text: 'Math Refresher',
+        children: [
+          { text: 'Calculus', link: '/appendix-math-calculus.html' },
+          { text: 'Complex Numbers', link: '/appendix-math-complex.html' },
+          { text: 'Linear Algebra', link: '/appendix-math-linear-algebra.html' },
+          { text: 'Index Notation and Tensors', link: '/appendix-math-tensors.html' },
+          { text: 'Groups and Symmetry', link: '/appendix-math-groups.html' },
+        ],
+      },
     ],
   }),
 
   plugins: [
-    markdownMathPlugin({ type: 'katex' }),
+    markdownMathPlugin({ type: 'katex', output: 'html' }),
   ],
 
   extendsMarkdown(md) {
     md.use(markdownItFootnote)
 
-    // ```excalidraw fenced blocks → static inline SVG, baked into the page
-    // at build/render time (see lib/excalidraw-svg.js). No client JS, no
+    // ```feynman fenced blocks → static inline SVG, baked into the page
+    // at build/render time (see lib/feynman-svg.js). No client JS, no
     // iframe — the diagram is part of the HTML itself.
     const defaultFence = md.renderer.rules.fence.bind(md.renderer.rules)
 
     md.renderer.rules.fence = (tokens, idx, options, env, self) => {
       const token = tokens[idx]
-      if (token.info.trim() === 'excalidraw') {
-        return `${renderExcalidrawSvg(token.content)}\n`
-      }
       if (token.info.trim() === 'feynman') {
         return `${renderFeynmanSvg(token.content)}\n`
       }

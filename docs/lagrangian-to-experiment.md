@@ -52,13 +52,25 @@ The amplitude depends on the interaction and on the external momenta and spin st
 
 ## From amplitude to cross section
 
-**Square the amplitude and sum over allowed outcomes.** Schematically, the cross section has the form
+**Square the amplitude and sum over allowed outcomes.** The cross section combines three ingredients: the squared amplitude supplies the dynamics, the phase-space measure supplies the kinematics, and the incident flux supplies the normalization. Schematically,
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
-Here $d\Pi$ is the **phase-space measure**, which integrates over final momenta and includes energy and momentum conservation. The denominator represents the incident-flux normalization appropriate to the scattering states; its precise form depends on their normalization and is not the laboratory particle flux used above.
+where squaring follows the Born rule introduced in [First Quantization](first-quantization.md).
 
-The factor $|\mathcal M|^2$ depends on the dynamics through the interaction Lagrangian. Squaring follows the Born rule introduced in [First Quantization](first-quantization.md). The phase-space measure supplies the kinematics: which final momenta are possible and how to count them. Sum over unobserved final spins and average over an unpolarized initial ensemble when needed.
+The **phase-space measure** for a final state of $n$ particles is
+
+$$d\Pi_n = (2\pi)^4\,\delta^4\!\Big(P-\sum_f p_f\Big)\prod_{f=1}^n \frac{d^3p_f}{(2\pi)^3\,2E_f},$$
+
+where $P$ is the total four-momentum. The delta function enforces energy and momentum conservation, and each factor in the product counts the momentum states of one final particle. For a $2\to2$ process in the center-of-momentum frame, the measure reduces to
+
+$$d\Pi = \frac{1}{16\pi^2}\,\frac{\lvert\mathbf p_f\rvert}{\sqrt{s}}\,d\Omega,$$
+
+with $\mathbf p_f$ the outgoing momentum magnitude, $\sqrt{s}$ the total center-of-momentum energy, and $d\Omega$ the outgoing solid angle. Dividing by the flux and integrating over solid angle gives the differential cross section
+
+$$\frac{d\sigma}{d\Omega} = \frac{1}{64\pi^2 s}\,\frac{\lvert\mathbf p_f\rvert}{\lvert\mathbf p_i\rvert}\,\overline{\lvert\mathcal M\rvert^2},$$
+
+where $\mathbf p_i$ is the incoming momentum magnitude and the bar denotes averaging over initial spins and polarizations and summing over final ones. The flux factor is folded into this formula through the relativistic normalization of the external states; it is not the laboratory particle flux used above.
 
 ![In the center-of-momentum frame, two outgoing momenta are opposite. Energy fixes their magnitude while their direction remains variable.](./manim/two-body-phase-space.png)
 

@@ -1,20 +1,18 @@
 ---
 name: phyz-vuepress-quirks
-description: "Phyz site (VuePress 2) setup quirks — component registration, dev server usage, diagram rendering"
+description: "Phyz (VuePress 2) build/verify commands and diagram rendering pipeline"
 metadata: 
   node_type: memory
   type: project
-  originSessionId: b7f03ddf-5a19-4e00-a467-087bf4052f77
 ---
 
-The Phyz docs site is VuePress 2 (`docs/` dir, config at `docs/.vuepress/config.js`), user runs it with `pnpm docs:dev` (port 8080).
+Build/verify and diagram rendering for the Phyz docs (`docs/`, config at `docs/.vuepress/config.js`).
 
-Non-obvious facts learned:
-- VuePress 2 does **not** auto-register components from `docs/.vuepress/components/` (the existing `SpacetimeDiagram.vue` there is an orphan, rendered nowhere — if the user expects it on the special-relativity page, it needs explicit registration or a reference).
-- The user found the standalone `.vuepress/components/ExcalidrawScene.vue` approach unnecessary; diagrams are now rendered as static inline SVG at build time by a dependency-free renderer at `docs/.vuepress/lib/excalidraw-svg.js`, hooked into the markdown-it `fence` rule in `config.js` for ```` ```excalidraw ```` blocks.
-- excalidraw.com's current app no longer loads scenes from the `#json=` hash (backend share links only) — if iframe embeds are ever reconsidered, the `#url=` + data-URI loader is the only client-side path.
-- Port 8080 being in use usually means the user's own `pnpm docs:dev` is running; don't start a second dev server on the same project — they share `docs/.vuepress/.temp` and conflict.
-
-**Why:** These quirks cost real debugging time (stale config, `.temp` conflict, orphan component). A scripted md edit once silently dropped the file's front section (`slice` bug) — build still passed, so always **back up a markdown file before scripted edits** and re-read the top of the file afterwards.
-
-**How to apply:** When editing this site's markdown pipeline or components, restart with `pnpm docs:clean-dev`; verify via `npm --prefix . run docs:build` and grepping `docs/.vuepress/dist/` for the rendered markup.
+- Dev: `pnpm docs:dev` (port 8080). A second dev server on the same project conflicts (shared `docs/.vuepress/.temp`); after editing the markdown pipeline use `pnpm docs:clean-dev`.
+- Verify: `pnpm docs:build`, then grep `docs/.vuepress/dist/` for the rendered markup.
+- Diagrams render at build time as static SVG via markdown-it fence rules in `config.js`:
+  - ` ```feynman ` → `lib/feynman-svg.js`
+  - Manim renders → `scripts/render-manim-diagrams.mjs` (`pnpm docs:manim`); Feynman pre-render → `scripts/render-feynman-diagrams.mjs` (`pnpm docs:diagrams`). See [[phyz-manim-setup]].
+- Global Vue components (e.g. `SectionGrid.vue` on the home page) are registered explicitly in `docs/.vuepress/client.js`.
+- Math is rendered with `markdownMathPlugin({ type: 'katex', output: 'html' })` in `config.js` — HTML only, no MathML accessibility copy (chosen to shrink per-page chunks).
+- Back up a markdown file before scripted edits; a scripted edit once dropped the file's front section silently and the build still passed.

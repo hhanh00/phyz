@@ -143,6 +143,28 @@ $$|\mathcal{M}_{\mathrm{tree}}|^2
 
 The final term is the **interference** between the two contributions. For unpolarized incoming particles, average over two electron spins and two photon polarizations. Sum over unobserved final spins and polarizations, then insert the result into the cross-section phase-space integral.
 
+## Completing the cross section
+
+To turn $\lvert\mathcal M\rvert^2$ into a number, supply the spin sums and the phase-space measure. The external spinors obey the completeness relations
+
+$$\sum_s u_s(p)\,\bar u_s(p) = \not p + m, \qquad \sum_s v_s(p)\,\bar v_s(p) = \not p - m,$$
+
+where the sum runs over the two spin states. The physical photon polarizations obey
+
+$$\sum_{\lambda}\varepsilon_\mu^{(\lambda)}(k)\,\varepsilon_\nu^{(\lambda)*}(k) = -g_{\mu\nu} + \frac{k_\mu \bar k_\nu + \bar k_\mu k_\nu}{k\cdot\bar k},$$
+
+where $\bar k$ is a fixed reference four-vector. When a photon attaches to a conserved current, the $\bar k$ terms give zero, so inside a gauge-invariant amplitude the sum may be replaced by $-g_{\mu\nu}$.
+
+These identities turn the spin and polarization sums into **traces** of products of gamma matrices, a step called **Casimir's trick**. Each external spinor pair $u\bar u$ becomes a factor $\not p+m$, each polarization pair becomes $-g_{\mu\nu}$, and multiplying everything together and taking the trace sums the internal spinor indices. The spin-averaged, polarization-summed square is therefore
+
+$$\overline{\lvert\mathcal M\rvert^2} = \frac14\sum_{\text{spins, pols}}\lvert\mathcal M\rvert^2,$$
+
+where the factor $\tfrac14$ averages over the two electron spins and two photon polarizations of the initial state. Evaluating the traces is mechanical but lengthy. For unpolarized Compton scattering it gives the **Klein–Nishina formula**,
+
+$$\frac{d\sigma}{d\Omega} = \frac{\alpha^2}{2m^2}\left(\frac{k'}{k}\right)^2\left[\frac{k'}{k}+\frac{k}{k'}-\sin^2\theta\right].$$
+
+Here $\alpha=e^2/(4\pi)\approx1/137$ is the fine-structure constant, $m$ the electron mass, $k$ and $k'$ the initial and final photon energies in the electron's rest frame, and $\theta$ the scattering angle. The scattered energy follows from momentum conservation, $k'=k/\big[1+\tfrac{k}{m}(1-\cos\theta)\big]$. Inserting this formula into the phase-space measure of [From Lagrangian to Experiment](lagrangian-to-experiment.md) closes the chain $\mathcal L\to\mathcal M\to\sigma$: the Lagrangian has produced a number a detector can measure.
+
 ## The Same Amplitude Without Diagrams
 
 **Diagrams organize an algebraic calculation.** We can obtain the same Compton amplitude directly from the Dyson series and [Wick's theorem](perturbation-theory.md#wick-s-theorem), without drawing any lines.

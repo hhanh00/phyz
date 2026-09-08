@@ -44,7 +44,7 @@ Every term in the free Dirac Lagrangian contains both $\psi$ and $\bar\psi$. In 
 
 We call this a **global symmetry** because one value of $\alpha$ applies throughout spacetime. A symmetry here means a transformation that leaves the action unchanged.
 
-**This symmetry gives charge conservation.** Applying [Noether's theorem](qft-action.md) to the continuous phase transformation gives the conserved current
+**This symmetry gives charge conservation.** Noether's theorem states that each continuous symmetry of the action carries a conserved current. Applying it to the phase transformation gives
 
 $$j^\mu = q\,\bar\psi\gamma^\mu\psi, \qquad \partial_\mu j^\mu = 0.$$
 

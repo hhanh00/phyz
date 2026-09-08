@@ -166,7 +166,7 @@ A charge at rest produces an electric field and no magnetic field in its rest fr
 
 **Recover the familiar equations.** In $\partial_\mu F^{\mu\nu}=J^\nu$, setting $\nu=0$ gives Gauss's law. Setting $\nu=1,2,3$ gives the three components of Ampère's law.
 
-In the cyclic identity, choosing $(\lambda\mu\nu)=(123)$ gives $\nabla\cdot\mathbf B=0$. Choices with one time index give Faraday's law. These homogeneous equations follow automatically when we substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$, because partial derivatives commute. In differential-geometric language, the field tensor is the exterior derivative of the potential.
+In the cyclic identity, choosing $(\lambda\mu\nu)=(123)$ gives $\nabla\cdot\mathbf B=0$. Choices with one time index give Faraday's law. These homogeneous equations follow automatically when we substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$, because partial derivatives commute.
 
 Both tensor equations retain their form under Lorentz transformations. In vacuum, their wave equations imply propagation at $c$ for every inertial observer. Maxwell's equations therefore fit both postulates without modification.
 

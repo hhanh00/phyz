@@ -42,6 +42,8 @@ In the position representation[^pos-rep], $\hat x$ multiplies a wave function by
 
 A measurable quantity is an **observable**. We represent energy, position, momentum, and spin by Hermitian operators[^linalg], whose eigenvalues are real. Those eigenvalues are the possible measurement outcomes.
 
+Before continuing, fix the notation used from here on. A state vector is written $\lvert\psi\rangle$, and the matching $\langle\phi\rvert$ (a "bra") forms inner products with it. The overlap $\langle\phi\vert\psi\rangle$ is the inner product of the two states, and $\langle\phi\vert\hat A\vert\psi\rangle$ is that overlap with $\hat A$ acting on the ket. The [Math Refresher](appendix-math-linear-algebra.md) develops this notation and the rule that moves an operator from one side to the other.
+
 The Hamiltonian $\hat H$ is the energy observable. Solving its eigenvalue equation gives the allowed energies.
 
 ## 7. Eigenvectors and Eigenvalues
@@ -126,7 +128,7 @@ Likewise, we evolve the wave function with the Schrödinger equation and apply o
 
 The evolution is linear. We can decompose a state into simpler parts, evolve each part, and recombine the amplitudes. This is why superposition is useful for solving complicated problems.
 
-Complex numbers make the phase information explicit. We can visualize a complex number as a point in a plane, even though a full quantum state may be harder to picture. Relativity uses a similar mathematical habit: we calculate with spacetime geometry even when a four-dimensional picture is difficult to imagine. Its interval differs from ordinary Euclidean distance, so we must use the appropriate geometry.
+Complex numbers make the phase information explicit. We can visualize a complex number as a point in a plane. A complex number of magnitude one lies on the unit circle and can be written $e^{i\theta}=\cos\theta+i\sin\theta$, with the angle $\theta$ as its phase. A full quantum state may still be harder to picture. Relativity uses a similar mathematical habit: we calculate with spacetime geometry even when a four-dimensional picture is difficult to imagine. Its interval differs from ordinary Euclidean distance, so we must use the appropriate geometry.
 
 I find it easier to keep the calculation and its interpretation separate: evolve the state, then calculate the probabilities of the outcomes we can observe.
 

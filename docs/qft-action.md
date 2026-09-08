@@ -70,7 +70,7 @@ A field history traces a curve through state space. For a well-posed evolution p
 
 ![Hamiltonian flow in the $(\phi,\pi)$ plane of one oscillator mode: circles are the states of constant energy, the gray arrows are the directions $H$ assigns, and the orbits close because $H$ is conserved](./manim/hamiltonian-flow.png)
 
-The Hamiltonian has two related roles. It is the **energy**, conserved when there is no explicit time dependence. It also **generates time translations** through Hamilton's equations. Noether's theorem connects these roles: time-translation symmetry gives the conserved energy.
+The Hamiltonian has two related roles. It is the **energy**, conserved when there is no explicit time dependence. It also **generates time translations** through Hamilton's equations. Noether's theorem connects these roles: every continuous symmetry of the action carries a conserved quantity, and time-translation symmetry gives the conserved energy. The same theorem later supplies the conserved charge of [QED](qed.md).
 
 After quantization, Heisenberg evolution takes the form $\hat\phi(t)=e^{i\hat Ht/\hbar}\hat\phi(0)e^{-i\hat Ht/\hbar}$ from the [Fields section](qft.md#fields). This is the operator version of classical Hamiltonian evolution.
 
