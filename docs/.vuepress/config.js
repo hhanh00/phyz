@@ -54,6 +54,16 @@ export default {
         ],
       },
       {
+        text: 'Path Integrals',
+        children: [
+          { text: 'Path Integrals in Quantum Mechanics', link: '/path-integrals.html' },
+          { text: 'Path Integrals for Fields', link: '/path-integrals-fields.html' },
+          { text: 'Fermionic Path Integrals', link: '/path-integrals-fermions.html' },
+          { text: 'Gauge Fixing', link: '/path-integrals-gauge-fixing.html' },
+          { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
+        ],
+      },
+      {
         text: 'Electroweak',
         children: [
           { text: 'Weak Interaction', link: '/weak-interaction.html' },
@@ -84,6 +94,16 @@ export default {
       { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
       { text: 'Perturbation Theory', link: '/perturbation-theory.html' },
       { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
+      {
+        text: 'Path Integrals',
+        children: [
+          { text: 'Path Integrals in Quantum Mechanics', link: '/path-integrals.html' },
+          { text: 'Path Integrals for Fields', link: '/path-integrals-fields.html' },
+          { text: 'Fermionic Path Integrals', link: '/path-integrals-fermions.html' },
+          { text: 'Gauge Fixing', link: '/path-integrals-gauge-fixing.html' },
+          { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
+        ],
+      },
       { text: 'Weak Interaction', link: '/weak-interaction.html' },
       { text: 'Electroweak Unification', link: '/electroweak-unification.html' },
       { text: 'Higgs Mechanism', link: '/higgs-mechanism.html' },

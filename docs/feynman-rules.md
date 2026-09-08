@@ -230,6 +230,8 @@ $$
 
 These are exactly $\mathcal M_s$ and $\mathcal M_u$ obtained above. Each diagram records one of the two contraction patterns: its external lines record the state factors, its internal line records $S_F$, and its vertices record the interaction factors and momentum constraints. The Feynman rules let us write the result without repeating this field-by-field calculation.
 
+The [Path Integrals sequence](path-integrals.md) develops another derivation of this bookkeeping, starting with particle histories and building toward field integrals, fermions, gauge fixing, and renormalization.
+
 ## Tree-level and Loop Diagrams
 
 A **tree diagram** has no closed cycle of internal lines. Momentum conservation fixes every internal momentum once the external momenta are given.
@@ -256,6 +258,8 @@ At a chosen order, include the full set of diagrams and counterterms. A single s
 *An electron–photon loop can carry photon momentum ℓ and electron momentum P − ℓ. Conservation fixes their sum but leaves ℓ to be integrated.*
 
 ## Infinities in Loop Diagrams
+
+For an explanation of how loop corrections and counterterms relate to physical inputs, see [Renormalization at One Loop](path-integrals-renormalization.md).
 
 A loop integral includes arbitrarily large momenta. If its integrand falls too slowly there, the result has an **ultraviolet divergence**. For example, the large-momentum behavior $\int d^4\ell/(\ell^2)^2$ gives a logarithmic divergence. Some loop integrals are finite.
 
