@@ -22,7 +22,9 @@ $$e^-(p) + \gamma(k) \;\longrightarrow\; e^-(p') + \gamma(k').$$
 
 The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onward, use $\hbar=c=1$ and $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$.
 
-**Count the required vertices.** Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices, joined by an electron line. There are two distinct photon attachments.
+**Count the required vertices.** Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices. At the lowest nonzero order, there are exactly two diagrams, each with two vertices joined by an internal electron line. They differ in how the photons attach.
+
+Follow the electron arrow from the incoming electron to compare the attachments. Here “first” means first along that line; the diagram does not specify a chronological sequence of events. The photon labels identify incoming and outgoing states regardless of their positions on the page.
 
 ```feynman
 \begin{tikzpicture}
@@ -31,8 +33,8 @@ The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onwar
 \vertex (a) at (0,0);
 \vertex (b) at (2,0);
 \vertex (f) at (4,-1) {$e^-(p')$};
-\vertex (ki) at (-2,1) {$\gamma(k)$};
-\vertex (kf) at (4,1) {$\gamma(k')$};
+\vertex (ki) at (-2,1) {incoming $\gamma(k)$};
+\vertex (kf) at (4,1) {outgoing $\gamma(k')$};
 \diagram* {
 (i) -- [fermion] (a) -- [fermion, edge label={$p+k$}] (b) -- [fermion] (f),
 (ki) -- [photon] (a),
@@ -42,9 +44,13 @@ The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onwar
 \end{tikzpicture}
 ```
 
-*s-channel: the incoming photon attaches at the first vertex, and the internal electron carries $p+k$.*
+*s-channel diagram.*
 
-Follow the electron arrow in the first diagram. The incoming photon attaches first, so momentum conservation gives $p+k$ for the internal electron. This is the **s-channel**[^mandelstam].
+The incoming photon attaches first. Calling the internal electron momentum $r_s$, momentum conservation at the two vertices gives
+
+$$r_s=p+k,\qquad r_s=p'+k'.$$
+
+This is the **s-channel**[^mandelstam], named for $s=(p+k)^2$.
 
 ```feynman
 \begin{tikzpicture}
@@ -53,8 +59,8 @@ Follow the electron arrow in the first diagram. The incoming photon attaches fir
 \vertex (a) at (0,0);
 \vertex (b) at (2,0);
 \vertex (f) at (4,-1) {$e^-(p')$};
-\vertex (kf) at (-2,1) {$\gamma(k')$};
-\vertex (ki) at (4,1) {$\gamma(k)$};
+\vertex (kf) at (-2,1) {outgoing $\gamma(k')$};
+\vertex (ki) at (4,1) {incoming $\gamma(k)$};
 \diagram* {
 (i) -- [fermion] (a) -- [fermion, edge label={$p-k'$}] (b) -- [fermion] (f),
 (a) -- [photon] (kf),
@@ -64,9 +70,13 @@ Follow the electron arrow in the first diagram. The incoming photon attaches fir
 \end{tikzpicture}
 ```
 
-*u-channel: the incoming photon attaches at the second vertex, and the internal electron carries $p-k'$.*
+*u-channel diagram.*
 
-In the second diagram, the outgoing photon attaches first. The internal momentum is $p-k'$, giving the **u-channel**.
+The outgoing photon attaches first. Calling the internal electron momentum $r_u$, momentum conservation gives
+
+$$p=r_u+k'\quad\Rightarrow\quad r_u=p-k',\qquad r_u+k=p'.$$
+
+This is the **u-channel**, named for $u=(p-k')^2$.
 
 Both diagrams contribute to the same measured transition. We must add their amplitudes before squaring.
 
