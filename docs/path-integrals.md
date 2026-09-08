@@ -1,6 +1,6 @@
 # Path Integrals in Quantum Mechanics
 
-**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+**Optional extra.** These five pages follow [The Standard Model](standard-model.md) and offer another perspective on quantum theory. They complement the main sequence and are not prerequisites for it.
 
 The [Feynman Rules page](feynman-rules.md) calculated amplitudes by expanding the S-matrix and pairing fields. **Path integrals provide another way to calculate the same amplitudes**, using the action introduced in [Classical Mechanics](classical-mechanics.md).
 

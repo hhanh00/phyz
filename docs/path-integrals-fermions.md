@@ -1,6 +1,6 @@
 # Fermionic Path Integrals
 
-**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+**Optional extra.** These five pages follow [The Standard Model](standard-model.md) and offer another perspective on quantum theory. They complement the main sequence and are not prerequisites for it.
 
 The [field path integral](path-integrals-fields.md) recovers propagators through free-field pairings. For electrons, those pairings must also reproduce the minus signs associated with exchanging fermions.
 

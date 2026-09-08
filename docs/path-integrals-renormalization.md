@@ -1,6 +1,6 @@
 # Renormalization at One Loop
 
-**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+**Optional extra.** These five pages follow [The Standard Model](standard-model.md) and offer another perspective on quantum theory. They complement the main sequence and are not prerequisites for it.
 
 The [Feynman Rules page](feynman-rules.md#infinities-in-loop-diagrams) introduced the problem: an internal loop momentum is not fixed by the external particles, so the calculation integrates over it. Large momenta can make that integral diverge.
 

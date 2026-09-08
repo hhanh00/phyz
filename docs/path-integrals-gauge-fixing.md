@@ -1,6 +1,6 @@
 # Gauge Fixing
 
-**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+**Optional extra.** These five pages follow [The Standard Model](standard-model.md) and offer another perspective on quantum theory. They complement the main sequence and are not prerequisites for it.
 
 The [QED page](qed.md) introduced gauge freedom: different potentials can describe the same electromagnetic field. A path integral over potentials must account for that freedom when calculating photon propagation.
 
