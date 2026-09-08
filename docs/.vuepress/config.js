@@ -54,7 +54,7 @@ export default {
         ],
       },
       {
-        text: 'Path Integrals',
+        text: 'Path Integrals (Optional)',
         children: [
           { text: 'Path Integrals in Quantum Mechanics', link: '/path-integrals.html' },
           { text: 'Path Integrals for Fields', link: '/path-integrals-fields.html' },
@@ -95,7 +95,7 @@ export default {
       { text: 'Perturbation Theory', link: '/perturbation-theory.html' },
       { text: 'Feynman Rules for QED', link: '/feynman-rules.html' },
       {
-        text: 'Path Integrals',
+        text: 'Path Integrals (Optional)',
         children: [
           { text: 'Path Integrals in Quantum Mechanics', link: '/path-integrals.html' },
           { text: 'Path Integrals for Fields', link: '/path-integrals-fields.html' },

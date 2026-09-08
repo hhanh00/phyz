@@ -2,7 +2,7 @@
 
 The [Feynman Rules page](feynman-rules.md) assigns a mathematical factor to each vertex and line in a diagram. We will derive those factors from the Lagrangian.
 
-The [Path Integrals sequence](path-integrals.md) gives a complementary derivation: Gaussian field integrals produce the same pairings and diagram rules.
+The optional [Path Integrals sequence](path-integrals.md) gives a complementary derivation: Gaussian field integrals produce the same pairings and diagram rules.
 
 The [Field Quantization page](field-quantization.md) supplied the free fields and their particle states. To include interactions, expand the S-matrix introduced in [From Lagrangian to Experiment](lagrangian-to-experiment.md) in powers of the coupling. The **Dyson series** organizes the powers, and **Wick's theorem** organizes the field pairings within each term.
 

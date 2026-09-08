@@ -1,5 +1,7 @@
 # Path Integrals for Fields
 
+**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+
 The [particle path integral](path-integrals.md) adds contributions from possible position histories. Quantum field theory extends this idea to **histories of fields throughout spacetime**.
 
 The destination is familiar: the same propagators, vertices, and amplitudes obtained in [Perturbation Theory](perturbation-theory.md). We use $\hbar=c=1$ on this and the following pages.

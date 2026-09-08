@@ -1,5 +1,7 @@
 # Gauge Fixing
 
+**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+
 The [QED page](qed.md) introduced gauge freedom: different potentials can describe the same electromagnetic field. A path integral over potentials must account for that freedom when calculating photon propagation.
 
 **Gauge fixing chooses how to represent the electromagnetic field during a calculation.** It does not change the measured electric and magnetic fields.

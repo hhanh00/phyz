@@ -51,8 +51,8 @@ const groups = [
   },
   {
     number: '05',
-    name: 'Path Integrals',
-    desc: 'Understand sums over histories, fermion signs, gauge freedom, and loop corrections.',
+    name: 'Path Integrals (Optional)',
+    desc: 'Optional background on sums over histories, fermion signs, gauge freedom, and loop corrections. The main sequence continues with Weak Interaction.',
     color: '#4f46e5',
     soft: '#e0e7ff',
     items: [

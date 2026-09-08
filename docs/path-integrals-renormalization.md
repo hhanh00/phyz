@@ -1,5 +1,7 @@
 # Renormalization at One Loop
 
+**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+
 The [Feynman Rules page](feynman-rules.md#infinities-in-loop-diagrams) introduced the problem: an internal loop momentum is not fixed by the external particles, so the calculation integrates over it. Large momenta can make that integral diverge.
 
 **Renormalization connects the parameters in the calculation to measured quantities.** It works in the operator and path-integral formulations alike.

@@ -230,7 +230,7 @@ $$
 
 These are exactly $\mathcal M_s$ and $\mathcal M_u$ obtained above. Each diagram records one of the two contraction patterns: its external lines record the state factors, its internal line records $S_F$, and its vertices record the interaction factors and momentum constraints. The Feynman rules let us write the result without repeating this field-by-field calculation.
 
-The [Path Integrals sequence](path-integrals.md) develops another derivation of this bookkeeping, starting with particle histories and building toward field integrals, fermions, gauge fixing, and renormalization.
+The optional [Path Integrals sequence](path-integrals.md) develops another derivation of this bookkeeping, starting with particle histories and building toward field integrals, fermions, gauge fixing, and renormalization.
 
 ## Tree-level and Loop Diagrams
 

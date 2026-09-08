@@ -1,5 +1,7 @@
 # Path Integrals in Quantum Mechanics
 
+**Optional sequence.** These five pages offer another perspective on quantum theory; they are not prerequisites for the later chapters. You can continue directly from Feynman Rules for QED to [Weak Interaction](weak-interaction.md).
+
 The [Feynman Rules page](feynman-rules.md) calculated amplitudes by expanding the S-matrix and pairing fields. **Path integrals provide another way to calculate the same amplitudes**, using the action introduced in [Classical Mechanics](classical-mechanics.md).
 
 This five-page sequence explains the ideas behind particle paths, field histories, fermions, gauge fixing, and renormalization. It complements the operator approach already developed in these notes. We keep $\hbar$ explicit on this page.
