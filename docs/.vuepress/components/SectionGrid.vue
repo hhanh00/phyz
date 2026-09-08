@@ -56,7 +56,7 @@ const groups = [
     color: '#db2777',
     soft: '#fce7f3',
     items: [
-      { number: '14', title: 'Weak Interaction', desc: 'Outline: beta decay, neutrinos, and interactions mediated by W bosons.', link: '/weak-interaction.html', symbol: 'W±' },
+      { number: '14', title: 'Weak Interaction', desc: 'Connect beta decay to chiral currents, Yang–Mills fields, and W-boson exchange.', link: '/weak-interaction.html', symbol: 'W±' },
       { number: '15', title: 'Electroweak Unification', desc: 'Outline: describe weak and electromagnetic interactions in one gauge theory.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
       { number: '16', title: 'Higgs Mechanism', desc: 'Outline: explain how the Higgs field gives mass to the W and Z bosons.', link: '/higgs-mechanism.html', symbol: 'H' },
     ],
