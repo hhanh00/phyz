@@ -32,6 +32,8 @@ This couples $W^3$ to the neutrino and the left-chiral electron. There is no rig
 
 The $W^3$ field interacts with the left-chiral neutrino, but the photon does not. Conversely, $W^3$ does not interact with the right-chiral electron, but the photon does. Changing the strength $g$ cannot fix this pattern, so we cannot identify $W^3$ alone with the photon. We introduce another electrically neutral field, $B_\mu$, and form the photon from a combination of the two fields. In that combination, their neutrino couplings cancel, while $B_\mu$ supplies the coupling to the right-chiral electron.
 
+![Coupling map for the neutral weak field and the photon. W³ couples to the left-chiral neutrino and electron but not to the right-chiral electron; the photon couples to both electron chiralities but not to the neutrino. The two patterns disagree, so W³ cannot be the photon.](./manim/w3-photon-mismatch.png)
+
 This is a motivation for extending the model, not a proof that there is only one possible extension. We will use the $SU(2)_L\times U(1)_Y$ structure of the **Glashow–Salam–Weinberg electroweak theory**. Its charge assignments and predictions must agree with experiment.
 
 ## Left and right parts need different weak charges
@@ -58,6 +60,8 @@ The factor $1/2$ is a normalization convention, not a physical requirement. We c
 Here $Q$ is the dimensionless electric-charge operator; a component with eigenvalue $Q_f$ has charge $eQ_f$. Within a doublet, $Y$ multiplies the identity matrix. It therefore adds the same offset to both entries without mixing them.
 
 For the lepton doublet, choose $Y_L=-1$. The upper and lower charges become $1/2-1/2=0$ and $-1/2-1/2=-1$. For the right-chiral electron, $t_3=0$, so $Y_{e_R}=-2$ gives the required charge $-1$.
+
+![The doublet's weak-isospin values, +1/2 and −1/2, shift downward together by Y/2 = −1/2 and become the electric charges 0 and −1. The shared offset moves both entries without changing their separation.](./manim/hypercharge-offset.png)
 
 We can also choose hypercharges to reproduce the observed charges of the up and down quarks. The table collects these assignments alongside the electron and its neutrino.[^generations][^neutrino-content]
 
@@ -143,6 +147,8 @@ Z_\mu&=c_WW_\mu^3-s_WB_\mu,
 s_W=\sin\theta_W,\quad c_W=\cos\theta_W.$$
 
 The angle $\theta_W$ is the **weak mixing angle**. This change of basis retains two independent neutral fields. We identify $A_\mu$ by demanding the electromagnetic coupling; the orthogonal combination is $Z_\mu$.
+
+![Weak isospin supplies W+, W−, and W³; hypercharge adds B. W³ and B each contribute to both the photon A and the Z, while W± continue unchanged into the charged weak interaction. Each connecting line means "contributes to this field combination": the neutral sector is a change of basis, not a particle conversion.](./manim/neutral-field-mixing.png)
 
 The coefficient of $A_\mu$ is $gs_Wt_3+g'c_WY/2$. To make it equal $e(t_3+Y/2)$, choose
 
