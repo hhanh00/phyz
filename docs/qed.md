@@ -1,23 +1,50 @@
 # Quantum Electrodynamics
 
-Experiments show electrons absorbing, emitting, and scattering photons. Quantum electrodynamics, or **QED**, describes the electron field, the photon field, and this interaction. The [Field Quantization page](field-quantization.md) built free quantum fields; this chapter adds their interaction, quantizes the photon field, and ends with the propagator used in scattering calculations.
+Two electrons that pass near each other come out moving in new directions. In quantum electrodynamics (QED) they scatter by exchanging a photon: one electron emits it and the other absorbs it, and neither the emission nor the absorption is seen directly. QED is the theory of the electron field, the photon field, and this coupling between them.
 
-The steps connect as follows:
+```feynman
+\begin{tikzpicture}
+\begin{feynman}
+\vertex (i1) at (-2.4,1.4) {$e^-$};
+\vertex (a) at (0,1.4);
+\vertex (f1) at (2.4,1.4) {$e^-$};
+\vertex (i2) at (-2.4,-1.4) {$e^-$};
+\vertex (b) at (0,-1.4);
+\vertex (f2) at (2.4,-1.4) {$e^-$};
+\diagram* {
+(i1) -- [fermion] (a) -- [fermion] (f1),
+(i2) -- [fermion] (b) -- [fermion] (f2),
+(a) -- [photon, edge label={$\gamma$}] (b),
+};
+\end{feynman}
+\end{tikzpicture}
+```
 
-1. **Assemble the free pieces.** The Dirac and Maxwell Lagrangians describe the electron and photon fields propagating independently.
-2. **Find the interaction.** Demanding invariance under local phase changes of the electron field forces a coupling to the photon potential.
-3. **Quantize the photon.** Four potential components describe only two physical polarizations, so the canonical construction needs a gauge-fixing step and a physical-state condition.
-4. **Extract the propagator.** The quantized field supplies the factor that an internal photon line contributes to a diagram.
+*Two electrons scatter by exchanging a photon. The exchanged photon is internal: it is created and absorbed inside the process and never reaches a detector. Predicting how often the electrons deflect through a given angle needs a numerical factor for each vertex where the photon meets an electron line, and a factor for the internal photon line.*
 
-We keep $\hbar$ explicit until the photon-quantization section, where we set $c=1$ and later also $\hbar=1$.
+To turn a diagram like this into a number, we need a factor for each vertex and a factor for the internal photon line. This chapter produces both.
+
+1. **The vertex factor** comes from an interaction term in the QED Lagrangian. Most of the chapter works out where that term comes from and why it has only one possible form.
+2. **The photon propagator** is the internal-line factor. Finding it means quantizing the photon field, which carries a complication the electron field did not: four potential components describe only two physical photons.
+
+A third QED building block, the propagator for an internal *electron* line, already came out of [Field Quantization](field-quantization.md#the-spinor-field). It appears in processes such as Compton scattering rather than the exchange drawn above. The [Perturbation Theory](perturbation-theory.md) and [Feynman Rules](feynman-rules.md) pages assemble all three factors into amplitudes.
+
+We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$, so $k^2 = E_k^2 - |\mathbf k|^2$.
+
+The route to the interaction term runs through symmetry:
+
+1. **Assemble the free pieces.** The Dirac and Maxwell Lagrangians describe the electron and photon fields propagating on their own.
+2. **Find the interaction.** Requiring the theory to be unchanged by a local phase convention for the electron field forces a coupling to the photon potential.
+3. **Quantize the photon.** The canonical construction needs a gauge-fixing step and a condition that picks out the physical states.
+4. **Extract the propagator.** The quantized field supplies the factor for an internal photon line.
 
 ## Recap of the Lagrangians
 
-We begin with the two free Lagrangians from [Action and Lagrangians](qft-action.md), then work out how to couple the fields.
+We begin with the two free Lagrangians from [Action and Lagrangians](qft-action.md).
 
 The Dirac Lagrangian describes the free electron field:
 
-$$\mathcal{L}_\text{Dirac} = \bar\psi\left(i\hbar\gamma^\mu\partial_\mu - m\right)\psi.$$
+$$\mathcal{L}_\text{Dirac} = \bar\psi\left(i\gamma^\mu\partial_\mu - m\right)\psi.$$
 
 Here $\psi$ is the electron's spinor field and $\bar\psi=\psi^\dagger\gamma^0$ is its Dirac adjoint. The derivative term describes propagation, and $-m\bar\psi\psi$ is the mass term. Applying the Euler–Lagrange equation gives the Dirac equation.
 
@@ -27,55 +54,37 @@ $$\mathcal{L}_\text{Maxwell} = -\tfrac14 F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu}
 
 Varying $A_\mu$ gives Maxwell's equations in free space, $\partial_\mu F^{\mu\nu}=0$.
 
-Adding these two Lagrangians would describe fields that propagate independently. To describe electromagnetic scattering, we also need an interaction between them. The complete expression will be
-
-$$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\hbar\gamma^\mu\partial_\mu - m\right)\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
-
-The first two terms describe the free fields. The third couples $A_\mu$ to the electron current $j^\mu=q\bar\psi\gamma^\mu\psi$, where $q$ is the signed charge.
-
-We obtain the interaction by changing the derivative. Replace
-
-$$\partial_\mu \;\to\; D_\mu = \partial_\mu + \frac{iq}{\hbar}A_\mu .$$
-
-Substituting $D_\mu$ into the Dirac kinetic term produces $-q\bar\psi\gamma^\mu\psi A_\mu$. This is the **minimal coupling** used in [The Dirac Equation §1](dirac-equation.md#_1-spin). The next two sections explain why local phase symmetry leads to this derivative and interaction.
+Adding these two Lagrangians describes fields that propagate independently, with nothing passing between them. Electromagnetic scattering needs an interaction term as well. The next two sections show that requiring the electron Lagrangian to respect a local phase symmetry forces that term into one particular shape, the **minimal coupling** used in [The Dirac Equation §1](dirac-equation.md#_1-spin).
 
 ## U(1) Global Symmetry
 
-Changing a common phase does not change probabilities. Multiply the electron wave function by $e^{i\alpha}$, with the same constant $\alpha$ everywhere. The probability expression from [First Quantization](first-quantization.md),
+Multiplying the electron field by a constant phase changes no prediction. Take
 
-$$P = |\psi|^2 = \psi^*\psi,$$
+$$\psi \to e^{i\alpha}\psi, \qquad \bar\psi \to e^{-i\alpha}\bar\psi,$$
 
-stays unchanged because the phase and its complex conjugate cancel. Relative phases can affect interference; the transformation here changes the overall phase of the entire wave function.
+with the same constant $\alpha$ everywhere. The probability density from [First Quantization](first-quantization.md), $P = \psi^*\psi$, is unchanged because the phase and its conjugate cancel. Relative phases between parts of a superposition still matter for interference; the transformation here rotates the whole field by one angle.
 
-For the Dirac field and its adjoint, the transformation is
+Every term in the free Dirac Lagrangian contains one $\psi$ and one $\bar\psi$. In the mass term the two phases cancel directly, $e^{-i\alpha}e^{i\alpha}=1$. In the kinetic term the constant phase passes through the derivative and then cancels the same way. The Lagrangian is therefore unchanged. A transformation that leaves the action unchanged is a **symmetry**, and this one is **global** because a single $\alpha$ applies across all of spacetime.
 
-$$\psi \to e^{i\alpha}\psi, \qquad \bar\psi \to e^{-i\alpha}\bar\psi .$$
-
-Every term in the free Dirac Lagrangian contains both $\psi$ and $\bar\psi$. In the mass term, $e^{-i\alpha}e^{i\alpha}=1$. In the kinetic term, the constant phase passes through the derivative and cancels in the same way. The Lagrangian therefore remains unchanged.
-
-We call this a **global symmetry** because one value of $\alpha$ applies throughout spacetime. A symmetry here means a transformation that leaves the action unchanged.
-
-This symmetry also gives charge conservation. Noether's theorem states that each continuous symmetry of the action carries a conserved current. Applying it to the phase transformation gives
+The symmetry also implies charge conservation. Noether's theorem attaches a conserved current to each continuous symmetry of the action, and for the phase transformation that current is
 
 $$j^\mu = q\,\bar\psi\gamma^\mu\psi, \qquad \partial_\mu j^\mu = 0.$$
 
-The time component is the charge density, and the spatial components describe charge flow. Integrating the density over space gives the total electric charge. The continuity equation states that charge can move between regions without being created or destroyed.
+Its time component is the charge density and its spatial components describe charge flow. Integrating the density over all space gives the total electric charge, and the continuity equation says that charge moving between regions is never created or destroyed.
 
-The phase factors $e^{i\alpha}$ form the group **U(1)**. Each factor is a unitary $1\times1$ matrix, or equivalently a complex number of unit magnitude. As $\alpha$ varies, these numbers trace out the unit circle.
-
-Next we make a stronger demand: allow a different phase at each spacetime point. Global symmetry alone does not require this extension. Imposing it leads to the local gauge symmetry of QED.
+The phases $e^{i\alpha}$ form the group **U(1)**. Each is a unitary $1\times1$ matrix, equivalently a complex number of unit magnitude, and as $\alpha$ varies these numbers trace out the unit circle.
 
 ## Local Gauge Symmetry U(1)
 
-The global symmetry suggests a stronger demand: allow a different phase at each spacetime point. Global symmetry alone does not require this extension. We pursue it because, as we will see, it produces exactly the interaction we need. Replace the constant $\alpha$ by a function $\alpha(x)$:
+The phase of the electron field is not measurable on its own, so it is natural to ask that the theory not depend on this convention even when it is chosen separately at each point rather than once for all of spacetime. Replace the constant $\alpha$ by a function $\alpha(x)$:
 
 $$\psi(x) \to e^{i\alpha(x)}\psi(x), \qquad \bar\psi(x) \to e^{-i\alpha(x)}\bar\psi(x).$$
 
-We seek a Lagrangian that remains invariant under this local transformation. The mass term stays unchanged, because its two phase factors occur at the same point and cancel:
+The free Dirac Lagrangian does not survive this stronger demand. The mass term still cancels, because its two phase factors sit at the same point:
 
 $$-m\,\bar\psi\psi \;\to\; -m\,e^{-i\alpha(x)}e^{i\alpha(x)}\,\bar\psi\psi = -m\,\bar\psi\psi .$$
 
-The kinetic term is different. The ordinary derivative now acts on the phase as well as on $\psi$, and the product rule produces an extra term proportional to $(\partial_\mu\alpha)\,\bar\psi\gamma^\mu\psi$. For a general $\alpha(x)$ this term does not vanish, so the free Dirac Lagrangian is not locally invariant.
+The kinetic term does not. The derivative now acts on the phase as well as on $\psi$, and the product rule leaves an extra term proportional to $(\partial_\mu\alpha)\,\bar\psi\gamma^\mu\psi$, which does not vanish for a general $\alpha(x)$.
 
 <details>
 <summary>How the derivative breaks local invariance</summary>
@@ -86,33 +95,33 @@ $$\partial_\mu\Big(e^{i\alpha(x)}\psi\Big) = e^{i\alpha(x)}\Big(\partial_\mu\psi
 
 Substituting into the kinetic term gives
 
-$$\bar\psi\,i\hbar\gamma^\mu\partial_\mu\psi \;\to\; \bar\psi\,i\hbar\gamma^\mu\partial_\mu\psi \;-\; \hbar\,(\partial_\mu\alpha)\,\bar\psi\gamma^\mu\psi .$$
+$$\bar\psi\,i\gamma^\mu\partial_\mu\psi \;\to\; \bar\psi\,i\gamma^\mu\partial_\mu\psi \;-\; (\partial_\mu\alpha)\,\bar\psi\gamma^\mu\psi .$$
 
 The last term does not vanish for a general $\alpha(x)$, so the free Dirac Lagrangian is not invariant under local phase changes.
 
 </details>
 
-The way out is to introduce a field whose transformation cancels the extra term. Give the vector potential the transformation rule
+To cancel the extra term, introduce a field that shifts under the same transformation. Give the vector potential the rule
 
-$$A_\mu \;\to\; A_\mu - \frac{\hbar}{q}\,\partial_\mu\alpha,$$
+$$A_\mu \;\to\; A_\mu - \frac1q\,\partial_\mu\alpha,$$
 
-and combine it with the derivative:
+and fold it into the derivative:
 
-$$D_\mu = \partial_\mu + \frac{iq}{\hbar}A_\mu .$$
+$$D_\mu = \partial_\mu + iq\,A_\mu .$$
 
-The shift in $A_\mu$ contributes $-i\partial_\mu\alpha$ inside $D_\mu$. This cancels the $+i\partial_\mu\alpha$ from differentiating the phase. As a result,
+The shift in $A_\mu$ places $-i\partial_\mu\alpha$ inside $D_\mu$, which cancels the $+i\partial_\mu\alpha$ from differentiating the phase. What remains is
 
-$$D_\mu\psi \;\to\; e^{i\alpha(x)}\,D_\mu\psi .$$
+$$D_\mu\psi \;\to\; e^{i\alpha(x)}\,D_\mu\psi ,$$
 
-We call $D_\mu$ the **covariant derivative** because $D_\mu\psi$ transforms with the same phase as $\psi$. Multiplying by $\bar\psi$ cancels that phase, so the kinetic term with $D_\mu$ is locally invariant.
+so $D_\mu\psi$ carries the same phase as $\psi$ itself. That is why $D_\mu$ is called the **covariant derivative**. Multiplying by $\bar\psi$ removes the phase, and the kinetic term built from $D_\mu$ is locally invariant.
 
-Expanding it gives
+Expanding it,
 
-$$\bar\psi\,i\hbar\gamma^\mu D_\mu\psi \;=\; \bar\psi\,i\hbar\gamma^\mu\partial_\mu\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
+$$\bar\psi\,i\gamma^\mu D_\mu\psi \;=\; \bar\psi\,i\gamma^\mu\partial_\mu\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu ,$$
 
-The second term is the interaction between the electron current and the photon potential. Local U(1) invariance thus fixes the form of the minimal coupling. The charge $q$ sets its strength; symmetry does not determine its numerical value.
+produces exactly one interaction term, coupling the electron current $j^\mu = q\bar\psi\gamma^\mu\psi$ to the potential $A_\mu$. Local U(1) invariance fixes its form. The charge $q$ sets its strength, and the symmetry argument does not predict the numerical value.
 
-We have introduced $A_\mu$ into the electron's dynamics. We now add a kinetic term for $A_\mu$ itself, so that electromagnetic disturbances can propagate.
+The photon potential now appears in the electron's dynamics. The next section adds a kinetic term for $A_\mu$ so that electromagnetic disturbances can propagate on their own.
 
 ![A global phase rotation uses one angle everywhere. A local rotation has a position-dependent angle, whose derivative requires a compensating transformation of the gauge potential.](./manim/global-local-phase.png)
 
@@ -120,50 +129,64 @@ We have introduced $A_\mu$ into the electron's dynamics. We now add a kinetic te
 
 ## QED Lagrangian
 
-The interaction is fixed, but $A_\mu$ cannot yet propagate: its equation of motion comes from a kinetic term, which we build from a gauge-invariant quantity. Under the gradient shift of $A_\mu$, the field strength
+The kinetic term for $A_\mu$ has to respect the same local symmetry, so build it from a quantity the gauge shift leaves alone. Under $A_\mu \to A_\mu - \frac1q\partial_\mu\alpha$, the field strength
 
 $$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$$
 
-stays unchanged. The extra contribution is proportional to $\partial_\mu\partial_\nu\alpha-\partial_\nu\partial_\mu\alpha$, which vanishes because mixed partial derivatives commute.
+is unchanged: the added piece is proportional to $\partial_\mu\partial_\nu\alpha-\partial_\nu\partial_\mu\alpha$, which vanishes because mixed partial derivatives commute.
 
-The Maxwell term $-\tfrac14F_{\mu\nu}F^{\mu\nu}$ therefore respects the local symmetry. It is the standard Lorentz-invariant kinetic term, quadratic in the field strength, used in QED. Gauge symmetry permits more complicated higher-order terms in an effective theory; it does not by itself uniquely specify every possible Lagrangian.
+The Maxwell term $-\tfrac14F_{\mu\nu}F^{\mu\nu}$ is therefore gauge invariant. It is the standard Lorentz-invariant term quadratic in the field strength. Gauge symmetry permits additional higher-order terms in an effective theory, so it constrains the Lagrangian rather than fixing it uniquely.
 
-Combining the photon term with the covariant Dirac term gives
+Combining the photon term with the covariant Dirac term,
 
-$$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\hbar\gamma^\mu D_\mu - m\right)\psi, \qquad D_\mu = \partial_\mu + \frac{iq}{\hbar}A_\mu .$$
+$$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\gamma^\mu D_\mu - m\right)\psi, \qquad D_\mu = \partial_\mu + iq\,A_\mu .$$
 
-Expanding the derivative makes the three contributions explicit:
+Expanding the covariant derivative separates the three contributions:
 
-$$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\hbar\gamma^\mu\partial_\mu - m\right)\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
+$$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\gamma^\mu\partial_\mu - m\right)\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
 
-They describe photon propagation, free electron propagation, and the electron–photon interaction. These are the terms we will use to derive propagators and scattering rules.
+They describe photon propagation, free electron propagation, and the electron–photon interaction.
 
-A direct photon mass term proportional to $m_\gamma^2 A_\mu A^\mu$ would change under the gauge transformation. It is therefore incompatible with the unbroken U(1) gauge symmetry in this QED Lagrangian. The photon field we quantize next is massless.
+The interaction term is the source of the vertex factor promised in the introduction. Stripping the three fields off $-q\bar\psi\gamma^\mu\psi A_\mu$ and keeping the factor of $i$ from the S-matrix expansion leaves
+
+$$-iq\gamma^\mu,$$
+
+the number attached to each point where a photon line meets an electron line. The [Feynman Rules page](feynman-rules.md) derives this in full.
+
+A direct photon mass term proportional to $m_\gamma^2 A_\mu A^\mu$ is not gauge invariant, because $A_\mu A^\mu$ changes under the gradient shift. An unbroken U(1) gauge symmetry therefore forbids it, and the photon we quantize next is massless.
 
 ## Quantizing the Photon Field
 
-Scattering calculations need the photon's **propagator** to evaluate what an internal photon line contributes to a Feynman diagram. The [Field Quantization page](field-quantization.md) obtained propagators by expanding a free field into modes and quantizing each mode as an oscillator. We follow that route here, with one extra complication: the four components of $A_\mu$ describe only two physical photon polarizations.
+The photon propagator is the factor for an internal photon line. The [Field Quantization page](field-quantization.md) built propagators by expanding a free field into modes and treating each mode as an oscillator. The photon follows the same route with one extra step: the four components of $A_\mu$ carry only two physical polarizations, and the construction has to remove the other two.
 
-The strategy is to make all four components easy to quantize, then restrict the quantum states so that only the two physical polarizations remain. We first work out where the two polarizations come from, then see why the ordinary canonical construction needs this extra step.
+On a first read, take two results from this section and move on. The photon has two physical polarizations, and its propagator in Feynman gauge is
 
-Throughout this section, $c = 1$ and the metric has signature $(+,-,-,-)$, so $k^2 = E_k^2 - |\mathbf k|^2$.
+$$D_{\mu\nu}(k)=\frac{-ig_{\mu\nu}}{k^2+i\epsilon}.$$
 
-### What a free photon holds
+The rest of the section works through the steps needed to reach it.
 
-Write the potential as one plane wave,
+The plan is to make all four components easy to quantize, then restrict the quantum states so that only the two physical polarizations survive. We first see where the two come from, then why the direct canonical construction stalls.
 
-$$A^\mu(x) = \varepsilon^\mu e^{-ik\cdot x/\hbar}.$$
+### Counting a free photon's polarizations
 
-The four-vector $k^\mu = (E_k, \mathbf k)$ specifies the energy and momentum. The polarization vector $\varepsilon^\mu$ specifies the amplitude of each component of the potential. We use a complex wave to simplify the algebra; taking its real part gives a real classical field.
+Write the potential as a single plane wave,
 
-Substituting this wave into the free Maxwell equation leaves one condition on the momentum and polarization, equation (1) below. It has two consequences. First, a wave with a nonzero electromagnetic field must have $k^2=0$, the massless energy–momentum relation, because any polarization proportional to $k$ produces a vanishing field strength — a **pure gauge** potential that oscillates without any $\mathbf E$ or $\mathbf B$. Second, with $k^2=0$ the condition forces $k\cdot\varepsilon=0$, which removes one of the four amplitude components.
+$$A^\mu(x) = \varepsilon^\mu e^{-ik\cdot x},$$
+
+where $k^\mu = (E_k, \mathbf k)$ sets the energy and momentum and the polarization vector $\varepsilon^\mu$ sets the amplitude of each component of the potential. A complex wave keeps the algebra short; its real part is the physical classical field.
+
+Putting this wave into the free Maxwell equation $\partial_\mu F^{\mu\nu}=0$ leaves one condition on the momentum and polarization,
+
+$$k^2\varepsilon^\nu=k^\nu(k\cdot\varepsilon). \tag{1}$$
+
+It has two consequences. First, a wave that carries a nonzero electromagnetic field must have $k^2=0$, the massless energy–momentum relation $E_k = |\mathbf k|$, because a polarization proportional to $k$ produces a vanishing field strength. Such a potential oscillates without any $\mathbf E$ or $\mathbf B$ and is called **pure gauge**. Second, with $k^2=0$ the condition becomes $k\cdot\varepsilon=0$, which ties the four amplitude components together and removes one of them.
 
 <details>
-<summary>Deriving the condition on momentum and polarization</summary>
+<summary>Deriving the condition, and the pure-gauge case</summary>
 
-Differentiating the exponential brings down $-ik_\mu/\hbar$, so the field strength is
+Differentiating the exponential brings down $-ik_\mu$, so the field strength is
 
-$$F^{\mu\nu} = -\frac{i}{\hbar}\left(k^\mu\varepsilon^\nu-k^\nu\varepsilon^\mu\right)e^{-ik\cdot x/\hbar}.$$
+$$F^{\mu\nu} = -i\left(k^\mu\varepsilon^\nu-k^\nu\varepsilon^\mu\right)e^{-ik\cdot x}.$$
 
 Now apply the free Maxwell equation, $\partial_\mu F^{\mu\nu}=0$. Another derivative brings down another momentum factor. After removing the common exponential and numerical factors, we get
 
@@ -195,11 +218,11 @@ For nonzero $k$, this requires $k\cdot\varepsilon=0$. One equation on four compo
 
 </details>
 
-Gauge freedom removes one more amplitude. A gauge transformation changes the potential by a gradient,
+Gauge freedom removes one more amplitude. A gauge transformation shifts the potential by a gradient,
 
 $$A_\mu\longrightarrow A_\mu+\partial_\mu\chi,$$
 
-which leaves $F_{\mu\nu}$ unchanged because the extra term is $\partial_\mu\partial_\nu\chi-\partial_\nu\partial_\mu\chi=0$. For a gauge function with the same plane-wave dependence, the gradient is proportional to $k_\mu$, so the polarization shifts as $\varepsilon^\mu\to\varepsilon^\mu+\alpha k^\mu$. Choosing $\alpha$ appropriately removes the remaining non-transverse amplitude. Only the two sideways directions remain as independent physical polarizations:
+which leaves $F_{\mu\nu}$ unchanged because the extra term is $\partial_\mu\partial_\nu\chi-\partial_\nu\partial_\mu\chi=0$. For a gauge function with the same plane-wave dependence, the gradient is proportional to $k_\mu$, so the polarization shifts as $\varepsilon^\mu\to\varepsilon^\mu+\alpha k^\mu$. Choosing $\alpha$ appropriately removes the remaining non-transverse amplitude. Only the two directions perpendicular to the motion remain as independent physical polarizations:
 
 $$\varepsilon^{(1)}=(0,1,0,0), \qquad \varepsilon^{(2)}=(0,0,1,0).$$
 
@@ -236,27 +259,19 @@ The electromagnetic field stays the same. Only the two transverse directions rem
 
 ### Why the canonical construction stalls
 
-Canonical quantization starts with a field and its conjugate momentum. For each component of the potential, calculate
+Canonical quantization pairs each field with a conjugate momentum. For each component of the potential, calculate
 
-$$\pi^\mu=\frac{\partial\mathcal L}{\partial(\partial_0 A_\mu)}.$$
+$$\pi^\mu=\frac{\partial\mathcal L}{\partial(\partial_0 A_\mu)} = -F^{0\mu}.$$
 
-The Maxwell Lagrangian gives
-
-$$\pi^\mu=-F^{0\mu}.$$
-
-The spatial components have momenta, $\pi^i=E^i$. But antisymmetry forces $F^{00}=0$, so
+The spatial components come out as $\pi^i=E^i$. The time component does not: antisymmetry forces $F^{00}=0$, so
 
 $$\pi^0=0.$$
 
-The same problem appears directly in the Lagrangian: $\dot A_0$ never appears. The time derivatives in $F_{\mu\nu}$ act on the spatial components of the potential.
+The same gap shows up directly in the Lagrangian, where $\dot A_0$ never appears, because the time derivatives in $F_{\mu\nu}$ act only on the spatial components of the potential.
 
-If we now tried to impose the usual canonical commutator on $A_0$, we would get
+A vanishing conjugate momentum blocks the usual canonical commutator. The standard relation for $A_0$ would set the right-hand delta function equal to zero, which cannot hold. The vanishing momentum instead marks $A_0$ as a constrained variable. Its Maxwell equation is Gauss's law, $\nabla\cdot\mathbf E=0$, a condition on the electric field at one instant with no time derivative to carry it to the next. In the Hamiltonian description, $A_0$ enforces that constraint.
 
-$$[\hat A_0(t,\mathbf x),0]=i\hbar\,\delta^3(\mathbf x-\mathbf y).$$
-
-The left side vanishes, so this cannot work. The vanishing commutator identifies $A_0$ as a constrained variable. Its Maxwell equation is Gauss's law, $\nabla\cdot\mathbf E=0$. This equation restricts the electric field at each instant; it contains no $\partial_t\mathbf E$ that would evolve it to the next instant. In the Hamiltonian description, $A_0$ enforces that constraint.
-
-We can quantize constrained systems with other methods. Here we will use a method that keeps Lorentz covariance explicit: add a gauge-fixing term to give all four components canonical momenta, then select the physical states afterward.
+Constrained systems can still be quantized. We use a method that keeps Lorentz covariance visible: add a gauge-fixing term that gives all four components a nonzero conjugate momentum, quantize, then select the physical states afterward.
 
 ### Fixing the gauge
 
@@ -310,7 +325,7 @@ Each component now obeys a massless wave equation,
 
 $$\Box A_\nu=0.$$
 
-This choice of gauge-fixing term is **Feynman gauge**. It gives us four decoupled wave equations, which we can quantize using the oscillator construction. We still need to recover the two-polarization physical state space.
+This choice of gauge-fixing term is **Feynman gauge**. It gives four decoupled wave equations, which we can quantize using the oscillator construction. We still need to recover the two-polarization physical state space.
 
 <details>
 <summary>Decoupling the components</summary>
@@ -337,9 +352,7 @@ $$\varepsilon^{(0)}=(1,0,0,0), \qquad \varepsilon^{(1)}=(0,1,0,0),$$
 
 $$\varepsilon^{(2)}=(0,0,1,0), \qquad \varepsilon^{(3)}=(0,0,0,1).$$
 
-The labels $1$ and $2$ are the transverse directions. The label $0$ is timelike, and $3$ is longitudinal, pointing along the spatial momentum.
-
-To keep the mode normalization and propagator formulas uncluttered, **from here to the end of this section we also set $\hbar=1$**. Promote each mode amplitude to an annihilation operator and its complex conjugate to a creation operator:
+The labels $1$ and $2$ are the transverse directions. The label $0$ is timelike, and $3$ is longitudinal, pointing along the spatial momentum. Promote each mode amplitude to an annihilation operator and its complex conjugate to a creation operator:
 
 $$\hat A_\mu(x)=\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2E_k}}\sum_{\lambda=0}^3
 \left[\hat c_\lambda(k)\varepsilon_\mu^{(\lambda)}(k)e^{-ik\cdot x}
@@ -347,12 +360,18 @@ $$\hat A_\mu(x)=\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2E_k}}\sum_{\lambda=0}^3
 
 This has the same structure as the scalar field expansion. The extra sum accounts for the four polarization directions. Each $\hat c_\lambda$ removes a quantum in its mode, and each $\hat c_\lambda^\dagger$ adds one.
 
-The timelike mode, however, carries a different sign. The metric gives the time component a kinetic term of the opposite sign from the three spatial components, and that sign carries through into the ladder algebra: the commutator of the timelike mode acquires a minus sign relative to the others. A timelike one-quantum state therefore has negative norm, and we cannot interpret the entire enlarged state space as physical photon states.
+Two of these four modes are unphysical, and the construction has to remove them. The timelike mode is the awkward one. The metric gives the time component a kinetic term of the opposite sign from the three spatial components, that sign carries through into the ladder algebra, and a single timelike quantum comes out with negative norm. A state space that contains negative-norm states cannot be read directly as a space of physical photons.
+
+The **Gupta–Bleuler condition** selects the physical states. It imposes the Lorenz condition on states, but only through its annihilation part:
+
+$$\boxed{\big(\partial_\mu\hat A^\mu\big)^{(+)}\lvert\mathrm{phys}\rangle=0,}$$
+
+where the superscript $(+)$ keeps the positive-frequency terms, those containing $\hat c_\lambda e^{-ik\cdot x}$. This restricts which states we accept while leaving the canonical operator algebra intact. For momentum along $z$ it forces $\hat c_0$ and $\hat c_3$ to act identically on a physical state, so their contributions to observable quantities cancel. A final identification then drops states that differ only by a zero-norm gauge mode. What remains are the two transverse polarizations found from Maxwell's equation.
 
 <details>
-<summary>The timelike commutator and the negative-norm state</summary>
+<summary>Negative norm, the physical-state condition, and the null states</summary>
 
-The metric makes the kinetic term
+**The timelike commutator.** The metric makes the kinetic term
 
 $$\mathcal L=-\frac12(\partial_\mu A^0)(\partial^\mu A^0)
 +\frac12\sum_{i=1}^3(\partial_\mu A^i)(\partial^\mu A^i).$$
@@ -366,19 +385,11 @@ $$[\hat c_\lambda(k),\hat c_{\lambda'}^\dagger(k')]
 
 The factor $(2\pi)^3$ matches the integration measure in the expansion. If we suppress the momentum normalization, the spatial modes have $[\hat c_i,\hat c_i^\dagger]=1$, while the timelike mode has $[\hat c_0,\hat c_0^\dagger]=-1$. That minus sign means a timelike one-quantum state has negative norm.
 
-</details>
-
-We select the physical states with the Lorenz condition, imposed through its annihilation part only:
-
-$$\boxed{\big(\partial_\mu\hat A^\mu\big)^{(+)}\lvert\mathrm{phys}\rangle=0.}$$
-
-The superscript $(+)$ means the positive-frequency terms, those containing $\hat c_\lambda e^{-ik\cdot x}$. This is the **Gupta–Bleuler condition**. It restricts which states we accept while leaving the canonical operator algebra intact.
-
-For momentum along $z$, the transverse modes contribute nothing to the divergence. The timelike and longitudinal modes contribute with opposite signs, giving
+**The condition on physical states.** For momentum along $z$, the transverse modes contribute nothing to the divergence. The timelike and longitudinal modes contribute with opposite signs, giving
 
 $$\big(\hat c_0(k)-\hat c_3(k)\big)\lvert\mathrm{phys}\rangle=0.$$
 
-Thus $\hat c_0$ and $\hat c_3$ act identically on a physical state. We can see one consequence in the Hamiltonian:
+Thus $\hat c_0$ and $\hat c_3$ act identically on a physical state. One consequence shows up in the Hamiltonian:
 
 $$\hat H=\int\frac{d^3k}{(2\pi)^3}E_k
 \left(\hat c_1^\dagger\hat c_1+\hat c_2^\dagger\hat c_2
@@ -386,7 +397,9 @@ $$\hat H=\int\frac{d^3k}{(2\pi)^3}E_k
 
 On physical states, the last two terms have equal and opposite expectation values. The transverse modes supply the physical excitation energy.
 
-One final identification removes the remaining gauge redundancy: physical states that differ only by a null gauge state represent the same physical state. These null states have zero norm and no effect on physical matrix elements. After this identification, the photon has the two transverse polarizations we found from Maxwell's equation.
+**The null states.** Physical states that differ only by a zero-norm gauge state represent the same physical state. These null states have no effect on physical matrix elements. After this identification, the photon has the two transverse polarizations found from Maxwell's equation.
+
+</details>
 
 An external photon in a scattering calculation therefore carries one of these two polarizations, or a superposition of them such as circular polarization.
 
@@ -406,7 +419,7 @@ Each mode contributes the massless scalar momentum-space factor $i/(k^2+i\epsilo
 
 $$\boxed{D_{\mu\nu}(k)=\frac{-ig_{\mu\nu}}{k^2+i\epsilon}.} \tag{5}$$
 
-This is the **photon propagator in Feynman gauge**, in the $\hbar=c=1$ convention used here.
+This is the **photon propagator in Feynman gauge**.
 
 <details>
 <summary>Summing the polarization modes</summary>
@@ -431,10 +444,36 @@ For the explicit basis above, the timelike vector contributes the $+1$ time entr
 
 The denominator has its massless pole at $k^2=0$. The $i\epsilon$ prescription specifies how to pass the poles in the energy integral and implements the time ordering. The numerator carries the vector indices that connect to the vertices at either end of the photon line.
 
-An internal photon can carry off-shell momentum, $k^2\ne0$, so it does not obey the same restrictions as a real, freely propagating photon. We use the full four-component propagator inside diagrams. Gauge constraints and current conservation ensure that the unphysical components do not produce extra observable photon polarizations; the propagator itself is a gauge-dependent intermediate quantity.
+### From ingredients to a prediction
 
-The chapter began with two free Lagrangians and one missing piece, the interaction. Local phase symmetry fixed that interaction, and quantizing the gauge-fixed field produced the photon propagator. Together with the electron propagator from [Field Quantization](field-quantization.md#the-spinor-field) and the vertex factor from $-q\bar\psi\gamma^\mu\psi A_\mu$, we now hold every ingredient that a QED scattering calculation needs. The [next page](lagrangian-to-experiment.md) defines the quantities that connect such calculations to measurements, and [Perturbation Theory](perturbation-theory.md) assembles these ingredients into diagrams; the [Feynman Rules page](feynman-rules.md) uses this propagator directly for internal photon lines.
+The chapter began with two free Lagrangians and one missing piece, the interaction. Local phase symmetry fixed the interaction, and quantizing the gauge-fixed field produced the propagator. Together with the electron propagator from [Field Quantization](field-quantization.md#the-spinor-field), the three factors that a QED scattering calculation needs are now in hand:
+
+| Factor | Expression | Source |
+| --- | --- | --- |
+| Electron–photon vertex | $-iq\gamma^\mu$ | interaction term $-q\bar\psi\gamma^\mu\psi A_\mu$ |
+| Internal electron line, momentum $r$ | $\dfrac{i(\not r+m)}{r^2-m^2+i\epsilon}$ | [Field Quantization](field-quantization.md#the-spinor-field) |
+| Internal photon line, momentum $k$ | $\dfrac{-ig_{\mu\nu}}{k^2+i\epsilon}$ | this chapter |
+
+Return to the two electrons from the opening diagram. At lowest order their amplitude has one photon line joining two vertices, one at each end:
+
+$$i\mathcal M = \big[\bar u(p_1')(-iq\gamma^\mu)u(p_1)\big]\,\frac{-ig_{\mu\nu}}{k^2+i\epsilon}\,\big[\bar u(p_2')(-iq\gamma^\nu)u(p_2)\big], \qquad k = p_1 - p_1'.$$
+
+Here $u(p)$ is an external-electron spinor from [The Dirac Equation](dirac-equation.md). Identical electrons also require a second diagram with the outgoing labels exchanged; the direct term is shown. Every tree-level QED amplitude is built from these same factors joined this way.
+
+The non-relativistic limit recovers Coulomb's law. When both electrons move slowly, the currents $\bar u\gamma^\mu u$ are dominated by their time components, $\bar u\gamma^0 u \approx 2m$, and the exchanged momentum is nearly spatial, $k^2 \approx -|\mathbf k|^2$. The amplitude reduces to
+
+$$\mathcal M \approx -(2m)^2\,\frac{q^2}{|\mathbf k|^2}.$$
+
+Dividing out the factor $(2m)^2$ from the spinor normalization leaves $-q^2/|\mathbf k|^2$. In the Born approximation, this quantity is minus the Fourier transform of the potential between the two electrons, so
+
+$$V(r) = \int\frac{d^3k}{(2\pi)^3}\,e^{i\mathbf k\cdot\mathbf r}\,\frac{q^2}{|\mathbf k|^2} = \frac{q^2}{4\pi r}.$$
+
+The propagator's $1/k^2$ is the momentum-space form of the $1/r$ potential. The result is positive, so like charges repel, and $q^2/4\pi$ is the fine-structure constant $\alpha$ in these units.
+
+An internal photon can carry off-shell momentum, $k^2\ne0$, so it does not obey the restrictions on a real, freely propagating photon. Diagrams use the full four-component propagator. Gauge invariance and current conservation ensure that the unphysical components produce no extra observable photon polarizations, and the propagator itself is a gauge-dependent intermediate quantity.
+
+The [next page](lagrangian-to-experiment.md) defines the quantities that connect an amplitude to a measured rate. [Perturbation Theory](perturbation-theory.md) derives the vertex and propagator factors from the S-matrix and assembles them into diagrams, and the [Feynman Rules page](feynman-rules.md) uses this propagator directly for internal photon lines.
 
 [^lorenz]: The Lorenz condition is named for Ludvig Lorenz. The spelling distinguishes his name from Hendrik Lorentz, whose name appears in Lorentz transformations.
 
-[^operator-lorenz]: Using the simplified gauge-fixed Lagrangian, $\hat\pi^0=-\dot{\hat A}^0$, so $\partial\cdot\hat A=-\hat\pi^0+\partial_i\hat A^i$. The equal-time canonical algebra then gives $[\partial\cdot\hat A(t,\mathbf x),\hat A_0(t,\mathbf y)]=i\hbar\delta^3(\mathbf x-\mathbf y)$, since the field components commute with each other at equal times. If the divergence were the zero operator, this commutator would have to vanish. The Gupta–Bleuler condition avoids that contradiction by constraining states with only the annihilation part of the divergence.
+[^operator-lorenz]: Using the simplified gauge-fixed Lagrangian, $\hat\pi^0=-\dot{\hat A}^0$, so $\partial\cdot\hat A=-\hat\pi^0+\partial_i\hat A^i$. The equal-time canonical algebra then gives $[\partial\cdot\hat A(t,\mathbf x),\hat A_0(t,\mathbf y)]=i\delta^3(\mathbf x-\mathbf y)$, since the field components commute with each other at equal times. If the divergence were the zero operator, this commutator would have to vanish. The Gupta–Bleuler condition avoids that contradiction by constraining states with only the annihilation part of the divergence.
