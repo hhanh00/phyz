@@ -1,12 +1,8 @@
 # Perturbation Theory: From the Lagrangian to the Feynman Rules
 
-The [Feynman Rules page](feynman-rules.md) assigns a mathematical factor to each vertex and line in a diagram. We will derive those factors from the Lagrangian.
+Adding an interaction to a quantum field theory leaves us with equations we cannot solve exactly. When the interaction is weak, we can approximate: expand the predicted amplitudes in powers of the coupling and keep the lowest nonzero terms. The [Field Quantization page](field-quantization.md) supplied the free fields and their particle states, and [From Lagrangian to Experiment](lagrangian-to-experiment.md) identified the S-matrix element as the quantity to calculate. This chapter expands that S-matrix in powers of the coupling. The **Dyson series** organizes the powers, and **Wick's theorem** organizes the field pairings within each term. The outcome is a short dictionary of factors — the Feynman rules that the [next page](feynman-rules.md) assigns to each vertex and line in a diagram.
 
-The optional [Path Integrals sequence](path-integrals.md) gives a complementary derivation: Gaussian field integrals produce the same pairings and diagram rules.
-
-The [Field Quantization page](field-quantization.md) supplied the free fields and their particle states. To include interactions, expand the S-matrix introduced in [From Lagrangian to Experiment](lagrangian-to-experiment.md) in powers of the coupling. The **Dyson series** organizes the powers, and **Wick's theorem** organizes the field pairings within each term.
-
-We will first use a real scalar field with a cubic interaction. It has no spin indices or gauge freedom, so we can follow the calculation before adding those features in QED.
+We will first use a real scalar field with a cubic interaction. It has no spin indices or gauge freedom, so we can follow the calculation before adding those features in QED. The optional [Path Integrals sequence](path-integrals.md) later gives a complementary derivation: Gaussian field integrals produce the same pairings and diagram rules.
 
 We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$. Setting $\hbar$ and $c$ to $1$ is a choice of units, not an approximation: energy, mass, and momentum share one unit, and distance is measured in units of time, so factors of $\hbar$ and $c$ drop out of the formulas. Thus $p^2=E^2-\mathbf p^2$. A physical free particle of mass $m$ is **on shell**, meaning $p^2=m^2$.
 
@@ -23,7 +19,7 @@ Each section develops one step of the calculation.
 
 We then apply the same method to QED, using its electron and photon fields.
 
-**The sums arise from quantum evolution.** Each term integrates over possible interaction positions and adds all operator pairings that connect the chosen initial and final states. We add amplitudes before calculating probabilities.
+The sums in this expansion arise from quantum evolution. Each term integrates over possible interaction positions and adds all operator pairings that connect the chosen initial and final states. We add amplitudes before calculating probabilities.
 
 Two kinds of ordering enter. Time ordering places later operators on the left, as required by successive evolution. Normal ordering places creation operators on the left, which makes matrix elements easier to evaluate. Moving between these orders produces contractions, ordinary numerical factors associated with pairs of fields.
 
@@ -46,7 +42,7 @@ The cubic term makes the field equation nonlinear, as the interaction did in [QE
 
 ## The S-matrix as a series
 
-**Separate free evolution from the interaction.** In the interaction picture, field operators evolve with the free Hamiltonian, while states evolve with the interaction Hamiltonian. The S-matrix connects asymptotic incoming and outgoing free-particle states.
+In the interaction picture, field operators evolve with the free Hamiltonian, while states evolve with the interaction Hamiltonian. The S-matrix connects asymptotic incoming and outgoing free-particle states.
 
 For this interaction, $H_{\mathrm{int}}=-\int d^3x\,\mathcal L_{\mathrm{int}}$. Solving the evolution equation gives
 
@@ -54,7 +50,7 @@ $$S = T \exp\!\left[i \int d^4x\; \mathcal{L}_{\mathrm{int}}(x)\right],$$
 
 The symbol $T$ means **time ordering**: place later operators to the left[^time]. For two scalar fields, $T[\phi(x)\phi(y)]=\phi(x)\phi(y)$ if $x^0>y^0$, and $\phi(y)\phi(x)$ if $y^0>x^0$.
 
-This matters because field operators at different times generally do not commute. With $\mathcal L_{\mathrm{int}}=-g\phi^3/3!$, expand the exponential as
+This ordering matters because field operators at different times generally do not commute. With $\mathcal L_{\mathrm{int}}=-g\phi^3/3!$, expand the exponential as
 
 $$S = \sum_{n=0}^\infty \frac{i^n}{n!} \int d^4x_1 \cdots d^4x_n\; T\big[\mathcal{L}_{\mathrm{int}}(x_1) \cdots \mathcal{L}_{\mathrm{int}}(x_n)\big].$$
 
@@ -68,7 +64,7 @@ To evaluate a term between particle states, we next rewrite its time-ordered fie
 
 ## Wick's theorem
 
-**Separate creation from annihilation.** The free-field expansion from [Field Quantization](field-quantization.md) has the form $\phi=\phi^++\phi^-$, where $\phi^+$ annihilates and $\phi^-$ creates a particle. Each part includes a plane-wave factor.
+The free-field expansion from [Field Quantization](field-quantization.md) has the form $\phi=\phi^++\phi^-$, where $\phi^+$ annihilates and $\phi^-$ creates a particle. Each part includes a plane-wave factor.
 
 A **normal-ordered product** $:\!\phi_1\cdots\phi_n\!:$ places every creation operator to the left of every annihilation operator. This makes matrix elements easier to evaluate. An annihilation operator removes an incoming particle, or gives zero if none is available. A creation operator acting leftward on the vacuum bra also gives zero. The surviving terms contain the plane-wave factors associated with the external particles.
 
@@ -94,21 +90,28 @@ A three-leg contribution at first order has three fields and no internal contrac
 
 ## The propagator from the free field
 
-**Evaluate the contraction with the known free field.** For $x^0>y^0$, only the annihilation part of $\phi(x)$ followed by the creation part of $\phi(y)$ survives between vacuum states. The two mode-normalization factors multiply to $1/(2E_p)$, with $E_p=\sqrt{\mathbf p^2+m^2}$. Including both time orderings gives
-
-$$\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle = \int \frac{d^3p}{(2\pi)^3}\,\frac{1}{2E_p}\left[\theta(x^0-y^0)\,e^{-ip\cdot(x-y)} + \theta(y^0-x^0)\,e^{+ip\cdot(x-y)}\right].$$
-
-The step function $\theta$ selects the appropriate ordering. We can express both terms as one four-momentum integral:
+The contraction can now be evaluated with the known free field. Including both time orderings and writing the result as one four-momentum integral gives
 
 $$\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle = \int \frac{d^4p}{(2\pi)^4}\,\frac{i}{p^2 - m^2 + i\epsilon}\,e^{-ip\cdot(x-y)}.$$
 
-The denominator has poles near the mass-shell energies $p^0=\pm E_p$. The $+i\epsilon$ prescription shifts the positive-energy pole slightly **below** the real axis and the negative-energy pole slightly **above** it.
+The momentum-space factor appearing here is the **propagator**,
 
-For $x^0-y^0>0$, close the contour in the lower half-plane to recover the first time ordering. For negative time separation, close it above to recover the second[^contour]. These pole positions implement the Feynman time-ordering prescription. The momentum-space contraction is therefore
+$$\frac{i}{p^2 - m^2 + i\epsilon}.$$
 
-$$\frac{i}{p^2 - m^2 + i\epsilon},$$
+This is $i$ times the inverse of the free momentum-space quadratic operator $p^2-m^2$, with a specified boundary prescription: the denominator has poles near the mass-shell energies $p^0=\pm E_p$, and the $+i\epsilon$ shifts the positive-energy pole slightly below the real axis and the negative-energy pole slightly above it, implementing the Feynman time-ordering prescription. That is why the free Lagrangian determines the factor used between interaction vertices. An internal momentum need not be on shell.
 
-This is $i$ times the inverse of the free momentum-space quadratic operator $p^2-m^2$, with the specified boundary prescription. That is why the free Lagrangian determines the **propagator** used between interaction vertices. An internal momentum need not be on shell.
+<details>
+<summary>Evaluating the contraction and fixing the pole prescription</summary>
+
+For $x^0>y^0$, only the annihilation part of $\phi(x)$ followed by the creation part of $\phi(y)$ survives between vacuum states. The two mode-normalization factors multiply to $1/(2E_p)$, with $E_p=\sqrt{\mathbf p^2+m^2}$. Including both time orderings gives
+
+$$\langle 0\lvert T\phi(x)\phi(y)\rvert 0\rangle = \int \frac{d^3p}{(2\pi)^3}\,\frac{1}{2E_p}\left[\theta(x^0-y^0)\,e^{-ip\cdot(x-y)} + \theta(y^0-x^0)\,e^{+ip\cdot(x-y)}\right].$$
+
+The step function $\theta$ selects the appropriate ordering. Both terms combine into the single four-momentum integral stated above.
+
+To see how the pole prescription reproduces the two orderings, integrate over complex $p^0$. The poles lie at $+E_p-i0$ and $-E_p+i0$. For $x^0-y^0>0$, the exponential decays below the real axis, so close the contour in the lower half-plane to recover the first time ordering. For negative time separation, close it above to recover the second[^contour].
+
+</details>
 
 ![The positive-energy pole lies below the real axis and the negative-energy pole above it. The sign of the time separation determines which half-plane closes the contour.](./manim/feynman-pole-prescription.png)
 
@@ -126,19 +129,24 @@ Insert the Dyson series between the incoming and outgoing states. Apply Wick's t
 
 At a vertex, the $3!$ assignments of the identical fields cancel the $3!$ in $\mathcal L_{\mathrm{int}}$. The remaining vertex factor is $-ig$. Multiply it by a propagator $i/(p^2-m^2+i\epsilon)$ for each internal line, and integrate over momenta that conservation does not fix. Diagrams with equivalent pairings can also require symmetry factors.
 
-**First check the three-leg factor.** Formally attach one incoming scalar of momentum $p$ and two outgoing scalars of momenta $p_1,p_2$ to one vertex. The three fields annihilate the incoming particle and create the outgoing pair, giving
+Two low-order checks confirm the dictionary. Attaching three external particles to a single vertex gives the amplitude $i\mathcal M=-ig$. At second order in $2\to2$ scattering, one contracted pair forms an internal line; the three distinct ways to route the external particles give three amplitudes of the same form, which add.
+
+<details>
+<summary>Checking the three-leg vertex and one internal line</summary>
+
+Formally attach one incoming scalar of momentum $p$ and two outgoing scalars of momenta $p_1,p_2$ to one vertex. The three fields annihilate the incoming particle and create the outgoing pair, giving
 
 $$i\mathcal{M} = -ig,$$
 
 The position integral also gives $\delta^4(p-p_1-p_2)$. For three on-shell particles of the same positive mass, this conservation law forbids the decay $\phi\to\phi\phi$: one mass-$m$ particle cannot produce two. The expression still establishes the vertex factor used inside allowed scattering processes.
 
-**Now include an internal line.** In $\phi(p_1)\phi(p_2)\to\phi(p_3)\phi(p_4)$ at second order, two vertices supply six fields. Four attach to external particles, and the remaining pair forms a propagator.
-
-For the routing in which both incoming particles attach to the first vertex, momentum conservation gives $q=p_1+p_2$ on the internal line. Its contribution is
+Now include an internal line. In $\phi(p_1)\phi(p_2)\to\phi(p_3)\phi(p_4)$ at second order, two vertices supply six fields. Four attach to external particles, and the remaining pair forms a propagator. For the routing in which both incoming particles attach to the first vertex, momentum conservation gives $q=p_1+p_2$ on the internal line. Its contribution is
 
 $$i\mathcal{M}_s = (-ig)^2\, \frac{i}{q^2 - m^2 + i\epsilon}, \qquad q^2 = (p_1+p_2)^2.$$
 
 The other two pairings give the same form with different internal momentum combinations. Add all three contributions because they connect the same initial and final states[^identical]. Each diagram records one group of terms in the operator expansion.
+
+</details>
 
 The resulting scalar rules are:
 
@@ -152,7 +160,7 @@ The product of these factors gives $i\mathcal M$, with any loop integrations and
 
 ## QED's rules are the same dictionary
 
-**Keep the method and change the fields.** For QED, expand in the charge $q$ using $\mathcal L_{\mathrm{int}}=-q\bar\psi\gamma^\mu\psi A_\mu$. The Dyson series, contractions, and position integrals work as above. Fermionic reordering also introduces minus signs.
+For QED, we keep the method and change the fields: expand in the charge $q$ using $\mathcal L_{\mathrm{int}}=-q\bar\psi\gamma^\mu\psi A_\mu$. The Dyson series, contractions, and position integrals work as above. Fermionic reordering also introduces minus signs.
 
 The free electron and photon fields determine their propagators and external-state factors. The interaction determines which fields meet at a vertex.
 
@@ -162,7 +170,7 @@ The interaction gives the vertex factor $-iq\gamma^\mu$. External electrons cont
 
 The [Field Quantization page](field-quantization.md#the-spinor-field) derives the electron propagator. The [QED page](qed.md#quantizing-the-photon-field) derives the photon propagator and explains its gauge fixing. With those free-field results, the expansion above produces the QED rules.
 
-The [next page](feynman-rules.md) applies them to Compton scattering, then explains loop corrections and renormalization.
+We set out to derive the diagram factors from the Lagrangian, and the expansion has now produced them: propagators come from the free terms, vertex factors from the interaction, and external factors from the particle states. The [next page](feynman-rules.md) applies them to Compton scattering, then explains loop corrections and renormalization.
 
 [^contour]: Integrate over complex $p^0$. The poles lie at $+E_p-i0$ and $-E_p+i0$. For positive $x^0-y^0$, the exponential decays below the real axis, so closing there selects the positive-energy pole. For negative separation, closing above selects the negative-energy pole. This reproduces the two time-ordered terms; the Feynman propagator is distinct from the retarded Green function.
 

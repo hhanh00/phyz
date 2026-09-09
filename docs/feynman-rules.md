@@ -1,14 +1,16 @@
 # Feynman Rules for QED
 
+The chain from [Lagrangian to experiment](lagrangian-to-experiment.md) has two links still open: calculate an amplitude for a concrete process, then turn it into a number. This chapter completes both for one process, Compton scattering. The [Perturbation Theory page](perturbation-theory.md) derived the factors associated with vertices and propagators; here we assemble them into diagrams, evaluate the amplitude, and obtain a cross-section formula that a detector can test. We close with the loop diagrams that correct the leading result.
+
 ## The need for Feynman diagrams
 
-The [From Lagrangian to Experiment page](lagrangian-to-experiment.md) connected the amplitude $\mathcal M$ to a measured cross section. [Perturbation Theory](perturbation-theory.md) derived the factors associated with vertices and propagators. We will now use them for the [QED Lagrangian](qed.md):
+The rules apply to the [QED Lagrangian](qed.md):
 
 $$\mathcal{L}_\text{QED} = -\tfrac14 F_{\mu\nu}F^{\mu\nu} \;+\; \bar\psi\left(i\hbar\gamma^\mu\partial_\mu - m\right)\psi \;-\; q\,\bar\psi\gamma^\mu\psi\,A_\mu .$$
 
 The first two terms describe free photons and electrons. The interaction $-q\bar\psi\gamma^\mu\psi A_\mu$ couples the photon field to the electron current.
 
-**Expand in the charge $q$.** Each interaction factor contributes one power of $q$. Keeping the lowest nonzero orders gives an approximation; higher orders supply corrections.
+Expanding in the charge $q$ organizes the calculation. Each interaction factor contributes one power of $q$. Keeping the lowest nonzero orders gives an approximation; higher orders supply corrections.
 
 Each interaction factor contains two fermion fields and one photon field. To calculate an amplitude, attach fields to the external particles and pair the remaining fields with one another. The number of possible pairings grows with the order.
 
@@ -22,7 +24,7 @@ $$e^-(p) + \gamma(k) \;\longrightarrow\; e^-(p') + \gamma(k').$$
 
 The labels $p,k,p',k'$ are four-momenta, satisfying $p+k=p'+k'$. From here onward, use $\hbar=c=1$ and $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$.
 
-**Count the required vertices.** Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices. At the lowest nonzero order, there are exactly two diagrams, each with two vertices joined by an internal electron line. They differ in how the photons attach.
+Counting the required vertices comes first. Each QED vertex has one photon leg. To attach both the incoming and outgoing photons, we need at least two vertices. At the lowest nonzero order, there are exactly two diagrams, each with two vertices joined by an internal electron line. They differ in how the photons attach.
 
 Follow the electron arrow from the incoming electron to compare the attachments. Here “first” means first along that line.[^diagram-time] The photon labels identify incoming and outgoing states regardless of their positions on the page.
 
@@ -94,7 +96,7 @@ Each Compton diagram has four external lines, two vertices, and one internal ele
 
 ## Feynman Rules and Amplitudes
 
-**Assign a factor to each element.** Interaction terms determine vertex factors, free terms determine propagators, and external particle states determine spinors or polarization vectors. The two Compton diagrams use four rules:
+Interaction terms determine vertex factors, free terms determine propagators, and external particle states determine spinors or polarization vectors. The two Compton diagrams use four rules:
 
 | Diagram element | Factor |
 | --- | --- |
@@ -109,7 +111,7 @@ For the internal electron, $\not r$ abbreviates $\gamma^\mu r_\mu$. The numerato
 
 For an external electron, $u(p)$ is a positive-energy spinor solution from [The Dirac Equation page](dirac-equation.md), and $\bar u(p')=u(p')^\dagger\gamma^0$ is its adjoint. For a photon, $\varepsilon_\mu(k)$ is the polarization four-vector; an outgoing photon uses its complex conjugate[^polarization]. The additional photon-propagator and positron rules appear in a footnote[^rulebook].
 
-**Write the electron factors in matrix order.** Start with $u(p)$ on the right and follow the electron arrow, adding each new factor to its left. Finish with $\bar u(p')$. Multiply by the photon polarization factors. For the first diagram this gives
+To evaluate a product of factors, write the electron factors in matrix order. Start with $u(p)$ on the right and follow the electron arrow, adding each new factor to its left. Finish with $\bar u(p')$. Multiply by the photon polarization factors. For the first diagram this gives
 
 $$
 i\mathcal{M}_s = \bar u(p')(-iq\gamma^\nu)
@@ -135,7 +137,7 @@ The factors produce $i\mathcal M$, using the S-matrix convention in [From Lagran
 
 *Complex amplitudes add as vectors. Their squared sum includes an interference term that depends on relative phase.*
 
-**Add the contributions, then square.** At leading order, $\mathcal M_{\mathrm{tree}}=\mathcal M_s+\mathcal M_u$, so
+At leading order the two contributions add before squaring, $\mathcal M_{\mathrm{tree}}=\mathcal M_s+\mathcal M_u$, so
 
 $$|\mathcal{M}_{\mathrm{tree}}|^2
 =|\mathcal{M}_s|^2+|\mathcal{M}_u|^2
@@ -145,7 +147,16 @@ The final term is the **interference** between the two contributions. For unpola
 
 ## Completing the cross section
 
-To turn $\lvert\mathcal M\rvert^2$ into a number, supply the spin sums and the phase-space measure. The external spinors obey the completeness relations
+To turn $\lvert\mathcal M\rvert^2$ into a number, supply the spin sums and the phase-space measure. The external spinors and photon polarizations obey completeness relations that convert the sums into traces of gamma-matrix products, a step called **Casimir's trick**. Evaluating the traces is mechanical but lengthy. For unpolarized Compton scattering it gives the **Klein–Nishina formula**,
+
+$$\frac{d\sigma}{d\Omega} = \frac{\alpha^2}{2m^2}\left(\frac{k'}{k}\right)^2\left[\frac{k'}{k}+\frac{k}{k'}-\sin^2\theta\right].$$
+
+Here $\alpha=e^2/(4\pi)\approx1/137$ is the fine-structure constant, $m$ the electron mass, $k$ and $k'$ the initial and final photon energies in the electron's rest frame, and $\theta$ the scattering angle. The scattered energy follows from momentum conservation, $k'=k/\big[1+\tfrac{k}{m}(1-\cos\theta)\big]$. Inserting this formula into the phase-space measure of [From Lagrangian to Experiment](lagrangian-to-experiment.md) closes the chain $\mathcal L\to\mathcal M\to\sigma$: the Lagrangian has produced a number a detector can measure.
+
+<details>
+<summary>The spin and polarization sums</summary>
+
+The external spinors obey the completeness relations
 
 $$\sum_s u_s(p)\,\bar u_s(p) = \not p + m, \qquad \sum_s v_s(p)\,\bar v_s(p) = \not p - m,$$
 
@@ -155,19 +166,20 @@ $$\sum_{\lambda}\varepsilon_\mu^{(\lambda)}(k)\,\varepsilon_\nu^{(\lambda)*}(k) 
 
 where $\bar k$ is a fixed reference four-vector. When a photon attaches to a conserved current, the $\bar k$ terms give zero, so inside a gauge-invariant amplitude the sum may be replaced by $-g_{\mu\nu}$.
 
-These identities turn the spin and polarization sums into **traces** of products of gamma matrices, a step called **Casimir's trick**. Each external spinor pair $u\bar u$ becomes a factor $\not p+m$, each polarization pair becomes $-g_{\mu\nu}$, and multiplying everything together and taking the trace sums the internal spinor indices. The spin-averaged, polarization-summed square is therefore
+Each external spinor pair $u\bar u$ becomes a factor $\not p+m$, each polarization pair becomes $-g_{\mu\nu}$, and multiplying everything together and taking the trace sums the internal spinor indices. The spin-averaged, polarization-summed square is therefore
 
 $$\overline{\lvert\mathcal M\rvert^2} = \frac14\sum_{\text{spins, pols}}\lvert\mathcal M\rvert^2,$$
 
-where the factor $\tfrac14$ averages over the two electron spins and two photon polarizations of the initial state. Evaluating the traces is mechanical but lengthy. For unpolarized Compton scattering it gives the **Klein–Nishina formula**,
+where the factor $\tfrac14$ averages over the two electron spins and two photon polarizations of the initial state.
 
-$$\frac{d\sigma}{d\Omega} = \frac{\alpha^2}{2m^2}\left(\frac{k'}{k}\right)^2\left[\frac{k'}{k}+\frac{k}{k'}-\sin^2\theta\right].$$
-
-Here $\alpha=e^2/(4\pi)\approx1/137$ is the fine-structure constant, $m$ the electron mass, $k$ and $k'$ the initial and final photon energies in the electron's rest frame, and $\theta$ the scattering angle. The scattered energy follows from momentum conservation, $k'=k/\big[1+\tfrac{k}{m}(1-\cos\theta)\big]$. Inserting this formula into the phase-space measure of [From Lagrangian to Experiment](lagrangian-to-experiment.md) closes the chain $\mathcal L\to\mathcal M\to\sigma$: the Lagrangian has produced a number a detector can measure.
+</details>
 
 ## The Same Amplitude Without Diagrams
 
-**Diagrams organize an algebraic calculation.** We can obtain the same Compton amplitude directly from the Dyson series and [Wick's theorem](perturbation-theory.md#wick-s-theorem), without drawing any lines.
+Diagrams organize an algebraic calculation. We can obtain the same Compton amplitude directly from the Dyson series and [Wick's theorem](perturbation-theory.md#wick-s-theorem), without drawing any lines. Working through the calculation once shows precisely what each diagram records: the external factors from the particle states, the contraction $S_F$ as the internal line, and the position integrals that fix the internal momentum.
+
+<details>
+<summary>Working through the Dyson-series calculation</summary>
 
 Write the incoming and outgoing states as $|i\rangle=|e^-(p),\gamma(k)\rangle$ and $|f\rangle=|e^-(p'),\gamma(k')\rangle$, with spin and polarization labels suppressed. The interaction-picture S-matrix is
 
@@ -186,7 +198,7 @@ $$
 
 Here “connected” keeps the terms in which all four external particles participate in the same interaction process.
 
-**Attach the external states and contract the remaining fields.** The free-field expansions give the external factors
+Attach the external states and contract the remaining fields. The free-field expansions give the external factors
 
 $$
 \begin{aligned}
@@ -221,14 +233,18 @@ $$
 
 In the first term, the incoming photon attaches at $x$ and the outgoing photon at $y$. In the second, those attachments are reversed. The two terms have the same relative sign; exchanging these photon attachments introduces no fermionic exchange sign.
 
-**Integrate over the interaction positions.** Insert the Fourier expression for $S_F(y-x)$. For the first term, the $x$ and $y$ integrals give
+Now integrate over the interaction positions. Insert the Fourier expression for $S_F(y-x)$. For the first term, the $x$ and $y$ integrals give
 
 $$
 (2\pi)^4\delta^4(r-p-k)\,
 (2\pi)^4\delta^4(p'+k'-r).
 $$
 
-The $r$ integral fixes $r=p+k$ and leaves the overall momentum-conservation delta function. For the second term, the same steps fix $r=p-k'$ and leave the same overall delta function. Thus
+The $r$ integral fixes $r=p+k$ and leaves the overall momentum-conservation delta function. For the second term, the same steps fix $r=p-k'$ and leave the same overall delta function.
+
+</details>
+
+The result is
 
 $$
 \langle f|S^{(2)}|i\rangle_{\mathrm{conn}}
@@ -260,7 +276,7 @@ A **tree diagram** has no closed cycle of internal lines. Momentum conservation 
 
 Both Compton diagrams are trees with two vertices. Each vertex contributes one $q$, so their amplitudes have order $q^2$ and their squared sum has order $q^4$.
 
-**A loop introduces an unfixed momentum.** For example, connect two points on the electron line with an additional internal photon. That photon and the electron segment form a closed cycle. Conservation leaves a four-momentum $\ell$ free, so the amplitude includes
+A loop introduces an unfixed momentum. For example, connect two points on the electron line with an additional internal photon. That photon and the electron segment form a closed cycle. Conservation leaves a four-momentum $\ell$ free, so the amplitude includes
 
 $$\int\frac{d^4\ell}{(2\pi)^4}$$
 
@@ -285,15 +301,17 @@ For an explanation of how loop corrections and counterterms relate to physical i
 
 A loop integral includes arbitrarily large momenta. If its integrand falls too slowly there, the result has an **ultraviolet divergence**. For example, the large-momentum behavior $\int d^4\ell/(\ell^2)^2$ gives a logarithmic divergence. Some loop integrals are finite.
 
-**First regulate the integral.** A **regulator** temporarily modifies the calculation so we can identify its divergent part. In dimensional regularization, continue the integral to $d=4-2\delta$ dimensions. Ultraviolet divergences then appear as poles in $1/\delta$.
+The first step is to regulate the integral. A **regulator** temporarily modifies the calculation so we can identify its divergent part. In dimensional regularization, continue the integral to $d=4-2\delta$ dimensions. Ultraviolet divergences then appear as poles in $1/\delta$.
 
-**Then relate the parameters to measurements.** Write the original masses, charges, and field normalizations as renormalized quantities plus **counterterms**. Choose the counterterms to cancel the regulated ultraviolet divergences, order by order. Specify measurement conditions for the renormalized parameters and remove the regulator from predictions.
+The second step relates the parameters to measurements. Write the original masses, charges, and field normalizations as renormalized quantities plus **counterterms**. Choose the counterterms to cancel the regulated ultraviolet divergences, order by order. Specify measurement conditions for the renormalized parameters and remove the regulator from predictions.
 
 This procedure is **renormalization**. In QED, counterterms have the same forms as terms already in the Lagrangian. A finite set of parameter and field redefinitions therefore suffices at every perturbative order. [Forshaw's QED and QCD lectures](https://users.hep.manchester.ac.uk/u/jforshaw/NorthWest/QED.pdf) develop this construction.
 
-**Small photon momenta cause a different divergence.** An **infrared divergence** can arise when a massless loop photon's momentum approaches zero. Ultraviolet renormalization does not remove it.
+Small photon momenta cause a different divergence. An **infrared divergence** can arise when a massless loop photon's momentum approaches zero. Ultraviolet renormalization does not remove it.
 
 A detector cannot resolve a photon below its energy threshold. Its measured Compton rate therefore includes events with sufficiently soft extra photons. Adding this unresolved real emission to the virtual loop corrections cancels the soft divergences in the inclusive observable.
+
+Compton scattering has now taken us from the QED Lagrangian to a measured number, and the loop discussion shows how that number receives corrections order by order in the charge. Throughout, one interaction and one force carrier did the work: the photon couples to a charged field without changing its species. The next chapter examines beta decay, where the interaction turns a neutron's down quark into an up quark and creates an electron–antineutrino pair. The same diagram methods apply, with new vertices and a new symmetry organizing their couplings.
 
 [^diagram-time]: **Left and right are not a time axis.** These covariant Feynman diagrams do not specify which vertex occurs earlier in time. Incoming and outgoing particles are identified by the process equation and labels, not by their positions on the page. Moving vertices or bending lines leaves the amplitude unchanged as long as the connections, arrows, labels, and incoming/outgoing assignments are preserved.
 

@@ -1,20 +1,16 @@
 # From Lagrangian to Experiment
 
-We have built Lagrangians for particles and fields. Now we will use them to predict a **scattering cross section**, the quantity that connects a scattering calculation to measured event rates.
+We have built Lagrangians for free fields and, in [QED](qed.md), their interaction. A Lagrangian is not itself a measurement: experiments prepare incoming particles and count outgoing ones. This chapter defines the chain of quantities connecting the two, ending with the **scattering cross section**, the number that a calculation predicts and a detector measures. We use natural units, $\hbar=c=1$.
 
 ![The Lagrangian determines amplitudes; squared amplitudes and phase space determine cross sections; beam and target properties determine event rates.](./manim/prediction-workflow.png)
 
 *The Lagrangian determines amplitudes; squared amplitudes and phase space determine cross sections; beam and target properties determine event rates.*
 
-## The job of a Lagrangian
+## From trajectories to transition amplitudes
 
-**Start with the classical calculation.** The [Classical Mechanics](classical-mechanics.md) page introduced stationary action, and [Action and Lagrangians](qft-action.md) derived the Euler–Lagrange equation. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
+The classical use of a Lagrangian is to compute a trajectory. The [Classical Mechanics](classical-mechanics.md) page introduced stationary action, and [Action and Lagrangians](qft-action.md) derived the Euler–Lagrange equation. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
 
-## Why a trajectory is the wrong target
-
-In quantum mechanics we predict probabilities for measurement outcomes. [First Quantization](first-quantization.md) introduced the wave function $\psi$, whose squared magnitude gives a position probability density.
-
-[Field Quantization](field-quantization.md) also permits particle creation and annihilation. We therefore calculate an amplitude for each possible final collection of particles. The quantum calculation takes us from the Lagrangian to **transition amplitudes**.
+A trajectory is the wrong target in quantum mechanics. We predict probabilities for measurement outcomes: [First Quantization](first-quantization.md) introduced the wave function $\psi$, whose squared magnitude gives a position probability density. [Field Quantization](field-quantization.md) also permits particle creation and annihilation. We therefore calculate an amplitude for each possible final collection of particles. The quantum calculation takes us from the Lagrangian to **transition amplitudes**.
 
 ## What a scattering experiment measures
 
@@ -36,7 +32,7 @@ Experimenters infer $\sigma$ from the event rate, flux, and target count. A stan
 
 ## The amplitude and the S-matrix
 
-**First calculate the amplitude.** Write the incoming state as $\lvert i\rangle$ and the outgoing state as $\lvert f\rangle$. Their transition amplitude is the matrix element
+Write the incoming state as $\lvert i\rangle$ and the outgoing state as $\lvert f\rangle$. Their transition amplitude is the matrix element
 
 $$\langle f | S | i \rangle,$$
 
@@ -52,7 +48,7 @@ The amplitude depends on the interaction and on the external momenta and spin st
 
 ## From amplitude to cross section
 
-**Square the amplitude and sum over allowed outcomes.** The cross section combines three ingredients: the squared amplitude supplies the dynamics, the phase-space measure supplies the kinematics, and the incident flux supplies the normalization. Schematically,
+The cross section combines three ingredients: the squared amplitude supplies the dynamics, the phase-space measure supplies the kinematics, and the incident flux supplies the normalization. Schematically,
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
@@ -82,4 +78,4 @@ We can now separate the calculation into two steps:
 
 $$\mathcal{L} \;\longrightarrow\; \mathcal{M} \;\longrightarrow\; \sigma,$$
 
-We have described the second step, from amplitude to cross section. [Perturbation Theory](perturbation-theory.md) derives the amplitude from the interaction Lagrangian. [Feynman Rules for QED](feynman-rules.md) then applies that method to Compton scattering.
+This page described the second step, from amplitude to cross section. The first step remains: [Perturbation Theory](perturbation-theory.md) derives the amplitude from the interaction Lagrangian, and [Feynman Rules for QED](feynman-rules.md) applies that method to Compton scattering, closing the chain with a number a detector can measure.
