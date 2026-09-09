@@ -44,7 +44,7 @@ export default {
         ],
       },
       {
-        text: 'Quantum Electrodynamics',
+        text: 'QED',
         children: [
           { text: 'Quantum Electrodynamics', link: '/qed.html' },
           { text: 'From Lagrangian to Experiment', link: '/lagrangian-to-experiment.html' },
@@ -61,14 +61,14 @@ export default {
         ],
       },
       {
-        text: 'Strong & Standard Model',
+        text: 'Standard Model',
         children: [
           { text: 'Quantum Chromodynamics', link: '/qcd.html' },
           { text: 'The Standard Model', link: '/standard-model.html' },
         ],
       },
       {
-        text: 'Path Integrals (Optional)',
+        text: 'Path Integrals',
         children: [
           { text: 'Path Integrals in Quantum Mechanics', link: '/path-integrals.html' },
           { text: 'Path Integrals for Fields', link: '/path-integrals-fields.html' },
