@@ -28,6 +28,15 @@ The Lagrangian becomes a spatial integral of a **Lagrangian density** $\mathcal 
 
 $$S[\phi] = \int d^4x\;\mathcal{L}(\phi, \partial_\mu\phi),$$
 
+Stationarity gives one local equation for each independent field component:
+
+$$\partial_\mu\left(\frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}\right)-\frac{\partial\mathcal L}{\partial\phi}=0.$$
+
+The equation relates the field's change in time to its spatial variation. We derive it by varying the field inside the spacetime region while holding its boundary values fixed.
+
+<details>
+<summary>Deriving the field Euler–Lagrange equation</summary>
+
 Perturb the field by $\delta\phi(x)$, chosen to vanish on the spacetime boundary. This fixes the initial and final configurations and removes spatial boundary contributions. Expanding to first order gives
 
 $$\delta S = \int d^4x\left[\frac{\partial\mathcal{L}}{\partial\phi}\,\delta\phi + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\,\partial_\mu(\delta\phi)\right].$$
@@ -42,13 +51,15 @@ $$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right
 
 This is the **Euler–Lagrange equation for a field**. The particle's time derivative has become a spacetime divergence.
 
+</details>
+
 **Build Lorentz invariance into the action.** If $\mathcal L$ is a Lorentz scalar, then $S=\int d^4x\,\mathcal L$ has the same value in every inertial frame. Its stationary configurations therefore satisfy covariant field equations.
 
 For the scalar, vector, and spinor fields in the [Fields section](qft.md#fields), we will use the simplest standard free-field densities: $\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)-\tfrac{m^2}{2\hbar^2}\phi^2$, $-\tfrac14F^{\mu\nu}F_{\mu\nu}$, and $\bar\psi(i\hbar\gamma^\mu\partial_\mu-m)\psi$. Their variations give the Klein–Gordon, source-free Maxwell, and Dirac equations.
 
 To construct the Hamiltonian, follow [Classical Mechanics §3](classical-mechanics.md#_3-hamiltonian-and-state-space). Define the momentum density conjugate to the field, $\pi(t,\mathbf x)=\partial\mathcal L/\partial\dot\phi$, and take the Legendre transform:
 
-$$\mathcal{H} = \pi\,\dot\phi - \mathcal{L}, \qquad \hat H = \int d^3x\;\mathcal{H},$$
+$$\mathcal{H} = \pi\,\dot\phi - \mathcal{L}, \qquad H = \int d^3x\;\mathcal{H},$$
 
 The spatial integral is the total Hamiltonian; after quantization it becomes the operator $\hat H$.
 
@@ -88,9 +99,18 @@ These are the operator relations needed on the [previous page](qft.md). [Field Q
 
 ### Klein Gordon
 
-Begin with a real scalar field $\phi(x)$ of mass $m$. Its free Lagrangian density is
+Begin with a real scalar field $\phi(x)$ of mass $m$. We want its small disturbances to obey the relativistic energy–momentum relation. Choose a density quadratic in the field and its first derivatives, contracting indices to make it Lorentz invariant:
 
 $$\mathcal{L} = \frac{1}{2}(\partial_\mu\phi)(\partial^\mu\phi) - \frac{m^2}{2\hbar^2}\phi^2,$$
+
+The derivative term is $\tfrac12\dot\phi^2-\tfrac12(\nabla\phi)^2$: time variation contributes kinetic energy, while spatial gradients contribute to the energy cost of a nonuniform configuration. Varying this density gives
+
+$$\left(\Box+\frac{m^2}{\hbar^2}\right)\phi=0.$$
+
+The two derivatives in $\Box$ arise when we integrate the variation of the first-derivative terms by parts.
+
+<details>
+<summary>Varying the scalar density</summary>
 
 The derivative term describes variations in spacetime, and the second term contains the mass. To interpret the derivative term, expand its repeated index:
 
@@ -128,6 +148,8 @@ Substitute both derivatives into the Euler–Lagrange equation:
 
 $$\Box\phi + \frac{m^2}{\hbar^2}\phi = 0,$$
 
+</details>
+
 This is the **Klein–Gordon equation**. [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon) introduced it and explained the difficulty of treating it as a single-particle probability equation. Here it governs a field.
 
 Because it is second order in time, initial data must specify both $\phi$ and $\dot\phi$. With suitable boundary conditions, those data determine the evolution, with disturbances propagating within the light cone.
@@ -139,6 +161,15 @@ For electromagnetism, use the four-potential $A^\mu(x)$. Build its free density 
 $$\mathcal{L} = -\frac{1}{4}\,F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
 
 This density contains derivatives of the potential and no mass term. We will see how that absence enters the field equation.
+
+Variation with respect to the potential gives
+
+$$\partial_\mu F^{\mu\nu}=0.$$
+
+The factor $-1/4$ compensates the repeated antisymmetric components when differentiating the two factors of $F$. A term proportional to $A_\mu A^\mu$ would instead add a massive-vector contribution; we have chosen the massless electromagnetic theory.
+
+<details>
+<summary>Varying the electromagnetic density</summary>
 
 Apply the Euler–Lagrange equation to each component $A_\nu$. First differentiate with respect to $\partial_\mu A_\nu$. Both factors of $F$ contribute:
 
@@ -182,16 +213,21 @@ The derivative with respect to $A_\nu$ is zero. Removing the overall minus sign 
 
 $$\partial_\mu F^{\mu\nu} = 0,$$
 
+</details>
+
 This is the source-free version of $\partial_\mu F^{\mu\nu}=J^\nu$ from [§8](special-relativity.md#_8-maxwell-equations). The component $\nu=0$ gives Gauss's law; the three spatial components give Ampère–Maxwell's law. The other two Maxwell equations follow from the definition of $F_{\mu\nu}$ in terms of $A_\mu$.
 
 
 ### Dirac
 
-The **spinor** $\psi(x)$ has four complex components and transforms between frames by the matrix $S(\Lambda)$ from [§5](dirac-equation.md#_5-spinors-transformations). [The Dirac Equation](dirac-equation.md) introduced this field for massive spin-$\tfrac12$ particles; it can also carry charge.
-
-The name combines “spin” with the ending of “vector” and “tensor.” Ehrenfest introduced it in 1928, and van der Waerden's 1929 spinor analysis established the terminology. Historically, the evidence for spin preceded this mathematical description.
+The **spinor** $\psi(x)$ has four complex components and transforms between frames by the matrix $S(\Lambda)$ from [§5](dirac-equation.md#_5-spinors). [The Dirac Equation](dirac-equation.md) introduced this field for massive spin-$\tfrac12$ particles; it can also carry charge.
 
 **First find a Lorentz-invariant pairing.** The Lagrangian must be a scalar. A candidate is $\psi^\dagger\psi$, so test whether it has the same value in every frame.
+
+The quantity $\psi^\dagger\psi$ is a density, the time component of a current. A boost mixes it with spatial current components, so we cannot use it as a scalar mass term. Its transformation matrix confirms this distinction.
+
+<details>
+<summary>Why the probability density is not a Lorentz scalar</summary>
 
 Using $\psi'(x')=S(\Lambda)\psi(x)$, we obtain
 
@@ -201,13 +237,13 @@ For this to equal $\psi^\dagger\psi$, we would need $S^\dagger S=1$, or **unitar
 
 This is the same exponential construction used for $e^{-i\hat Ht/\hbar}$ in [First Quantization](first-quantization.md). Lorentz boosts, however, do not act unitarily on the finite spinor components. We can check this directly.
 
-The matrix $S$ acts on spinor components, just as $\Lambda^\mu{}_\nu$ acts on vector components. For a boost along the first spatial axis, [§5](dirac-equation.md#_5-spinors-transformations) gives
+The matrix $S$ acts on spinor components, just as $\Lambda^\mu{}_\nu$ acts on vector components. For a boost along the first spatial axis, [§5](dirac-equation.md#_5-spinors) gives
 
 $$S = \cosh\frac{\varphi}{2} - \alpha^1\sinh\frac{\varphi}{2} = e^{-\varphi\alpha^1/2},$$
 
 Here $\alpha^1=\gamma^0\gamma^1$ is Hermitian, and the **rapidity** $\varphi$ satisfies $\tanh\varphi=v$.
 
-This follows from the general expression $S(\Lambda)=\exp(-\tfrac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$ in [§5](dirac-equation.md#_5-spinors-transformations), which also derives the hyperbolic-function expansion.
+This follows from the general expression $S(\Lambda)=\exp(-\tfrac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$ in [§5](dirac-equation.md#_5-spinors), which also derives the hyperbolic-function expansion.
 
 The boost exponent has no factor of $i$. Because $\alpha^1$ is Hermitian, $S$ is Hermitian and $S^\dagger S=S^2=e^{-\varphi\alpha^1}\ne1$ for a nonzero boost. Thus $\psi^\dagger\psi$ is not a Lorentz scalar.
 
@@ -215,9 +251,16 @@ In single-particle Dirac theory, this quantity is a probability density, the tim
 
 [^op-exp]: Define a matrix or operator exponential by $e^A=1+A+A^2/2!+A^3/3!+\cdots$. The series gives $e^Ae^{-A}=1$ and $(e^A)^\dagger=e^{A^\dagger}$. If $A^\dagger=-A$, then $(e^A)^\dagger=e^{-A}=(e^A)^{-1}$, so the exponential is unitary.
 
+</details>
+
 **Insert $\gamma^0$ to obtain an invariant pairing.** Define the **Dirac adjoint** $\bar\psi=\psi^\dagger\gamma^0$. The useful transformation identity is
 
 $$S^\dagger\,\gamma^0 = \gamma^0\,S^{-1}:$$
+
+This identity gives $\bar\psi'=\bar\psi S^{-1}$, so $\bar\psi'\psi'=\bar\psi\psi$. The matrices cancel between the two factors.
+
+<details>
+<summary>Checking the invariant spinor pairing</summary>
 
 For rotations, this follows from unitarity and commutation with $\gamma^0$. For the boost above, $\gamma^0$ anticommutes with $\alpha^1$, so $\gamma^0S\gamma^0=S^{-1}$; also $S^\dagger=S$. The adjoint therefore transforms as
 
@@ -227,18 +270,25 @@ The transformation matrices now cancel in the pairing:
 
 $$\bar\psi'\,\psi' = \bar\psi\,S^{-1}S\,\psi = \bar\psi\,\psi.$$
 
+</details>
+
 The matrix $\gamma^0$ thus serves as the invariant pairing matrix for spinors. Its role here is analogous to the Minkowski metric in vector contractions: $\bar\psi\psi$ has the same value in every frame.
 
 We can now write the free Dirac density:
 $$\mathcal{L} = \bar\psi\,(i\hbar\,\gamma^\mu\partial_\mu - m)\,\psi = i\hbar\,\bar\psi\gamma^\mu\,\partial_\mu\psi - m\,\bar\psi\psi,$$
 
-The first term is kinetic and the second is the mass term. The gamma-matrix transformation identity from [§5](dirac-equation.md#_5-spinors-transformations) makes $\gamma^\mu\partial_\mu\psi$ transform as a spinor, so pairing it with $\bar\psi$ gives a scalar.
+The first term is kinetic and the second is the mass term. The gamma-matrix transformation identity from [§5](dirac-equation.md#_5-spinors) makes $\gamma^\mu\partial_\mu\psi$ transform as a spinor, so pairing it with $\bar\psi$ gives a scalar.
+
+<details>
+<summary>Expanding the contracted Dirac derivative</summary>
 
 Expanding the repeated index gives
 
 $$i\hbar\,\gamma^\mu\partial_\mu\psi = i\hbar\,(\gamma^0\,\partial_t + \gamma^1\,\partial_{x^1} + \gamma^2\,\partial_{x^2} + \gamma^3\,\partial_{x^3})\,\psi,$$
 
 No additional minus sign belongs in the spatial terms: the contraction already uses the upper-index matrices $\gamma^\mu$ and lower-index derivatives $\partial_\mu$.
+
+</details>
 
 Both terms now have the form $\bar\psi(\cdots)\psi$ and are Lorentz scalars. We can vary the action to obtain their equations of motion.
 
@@ -263,3 +313,7 @@ $$i\hbar\,(\partial_\mu\bar\psi)\,\gamma^\mu + m\,\bar\psi = 0,$$
 This is the **adjoint Dirac equation**. We could also obtain it by taking the adjoint of the Dirac equation and multiplying by $\gamma^0$. The two variations give mutually conjugate equations.
 
 The Dirac equation is first order in both time and space, as sought in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). Initial data specify $\psi$ at one instant; an independent $\dot\psi$ is unnecessary. This Lagrangian therefore reproduces the first-order dynamics constructed by factoring the Klein–Gordon operator in [The Dirac Equation](dirac-equation.md).
+
+We have recovered the three free wave equations from actions and identified the conjugate variables used to quantize them. The next chapter carries out that step for scalar and spinor fields, checking that their excitations have positive energies and the appropriate particle statistics.
+
+Next: [Field Quantization](field-quantization.md)

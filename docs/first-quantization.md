@@ -1,16 +1,18 @@
 # First Quantization
 
+Quantum calculations predict distributions of measurement outcomes. We therefore need both a rule for evolving a state and a rule for extracting probabilities from it. This chapter introduces those rules, then explains how operators describe the measurements. The harmonic oscillator will provide our first calculation of discrete energy levels.
+
 ## 1. From Classical to Quantum State Space
 
 In classical mechanics, a state specifies position and momentum $(q,p)$. In quantum mechanics, we describe a state by a vector in **Hilbert space**, a vector space with an inner product for calculating probabilities.
 
-**First quantization** replaces classical quantities with operators acting on these vectors. The canonical prescription replaces Poisson brackets with commutators, $\{\cdot,\cdot\}\to\frac{1}{i\hbar}[\cdot,\cdot]$. A quantum state generally predicts several possible measurement outcomes, rather than definite values of every quantity at once.
+**First quantization** is a prescription, rather than a deduction from Newton’s law: it replaces classical quantities with operators acting on these vectors. The canonical prescription replaces Poisson brackets with commutators, $\{\cdot,\cdot\}\to\frac{1}{i\hbar}[\cdot,\cdot]$. A quantum state generally predicts several possible measurement outcomes, rather than definite values of every quantity at once.
 
 ## 2. The Schrödinger Equation
 
-The Hamiltonian operator $\hat H$ determines how the state changes through the **Schrödinger equation**, $i\hbar\,\partial\Psi/\partial t=\hat H\Psi$. Given an initial state, this equation determines its later evolution. Unitary evolution preserves the total probability.
+An initial state is not enough to predict later measurements; we also need its evolution. The Hamiltonian operator $\hat H$ determines how the state changes through the **Schrödinger equation**, $i\hbar\,\partial\Psi/\partial t=\hat H\Psi$. For an isolated system, this evolution is unitary: it preserves inner products and hence the total probability.
 
-For a time-independent Hamiltonian, we can separate the time dependence and solve $\hat H\Psi=E\Psi$ for the spatial states of definite energy. These are stationary states: their time dependence changes only their overall phase.
+For a time-independent Hamiltonian, we can separate the time dependence and solve $\hat H\Psi=E\Psi$ for the spatial states of definite energy. These are stationary states: $\Psi(x,t)=\psi_E(x)e^{-iEt/\hbar}$ changes only by an overall phase, so its position probability density remains $|\psi_E(x)|^2$.
 
 For a particle of mass $m$ moving in one dimension with potential energy $V(x)$, the time-dependent equation is
 
@@ -18,7 +20,7 @@ $$i\hbar \frac{\partial \Psi(x,t)}{\partial t} = \left[-\frac{\hbar^2}{2m}\frac{
 
 ## 3. Wave Amplitude
 
-In the position representation, the state is a complex function $\Psi(x,t)$ called the **wave function** or probability amplitude. The Born rule converts it into a measurable probability density: $|\Psi(x,t)|^2$.
+Evolving the state is the first part of a prediction. To compare it with measured positions, write it in the position representation. The state is then a complex function $\Psi(x,t)$ called the **wave function** or probability amplitude. The Born rule converts it into a measurable probability density: $|\Psi(x,t)|^2$.
 
 Integrating this density over a region gives the probability of finding the particle there. A normalized state satisfies $\int|\Psi|^2\,dx=1$. An overall phase does not affect probabilities, but relative phases between contributions affect their sum and produce interference.
 
@@ -28,13 +30,20 @@ Integrating this density over a region gives the probability of finding the part
 
 ## 4. Copenhagen Interpretation
 
+The probability and evolution rules support calculations before we settle their interpretation. The account below gives one interpretation and the ideal measurement update; the following sections explain the operators used to identify measurement outcomes.
+
+<details>
+<summary>Interpretation and the ideal measurement rule</summary>
+
 The **Copenhagen interpretation**, associated with Bohr and his collaborators, treats the Born probabilities as fundamental. It does not assign an unmeasured observable a definite value unless the state is an eigenstate of that observable.
 
 In the ideal measurement rule, an outcome projects the state into its corresponding eigenspace. This is called **collapse**. Bohr's **complementarity** emphasizes that different experimental arrangements reveal different aspects of a system. For example, we cannot measure position and momentum with arbitrarily sharp precision in the same state.
 
+</details>
+
 ## 5. Operators
 
-An operator acts on a state vector to produce another vector. **Linear** means that it acts on a sum by acting on each term separately.
+Position, momentum, and energy are different measurements on the same state. We represent each by an operator, which acts on a state vector to produce another vector. **Linear** means that it acts on a sum by acting on each term separately.
 
 In the position representation[^pos-rep], $\hat x$ multiplies a wave function by $x$, while $\hat p=-i\hbar\,\partial/\partial x$ differentiates it. Unlike multiplication by ordinary numbers, applying two operators in different orders can give different results.
 
@@ -58,9 +67,21 @@ For a Hermitian matrix, we can choose a complete orthonormal basis of eigenvecto
 
 ## 8. Commutators
 
-To compare two orders of operation, subtract them: $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$. This is the **commutator**, the quantum counterpart of the Poisson bracket.
+The position and momentum operators do not commute. To quantify the difference between the two orders of operation, subtract them: $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$. This is the **commutator**, the quantum counterpart of the Poisson bracket.
 
 Position and momentum obey the canonical relation $[\hat x,\hat p]=i\hbar$. Their nonzero commutator leads to the uncertainty relation below. Commuting observables can have a common basis of eigenstates, in which both values are definite.
+
+<details>
+<summary>Checking the position–momentum commutator</summary>
+
+Apply both orders to a differentiable wave function. The product rule gives
+
+$$[\hat x,\hat p]\psi=x(-i\hbar\partial_x\psi)+i\hbar\partial_x(x\psi)
+=-i\hbar x\partial_x\psi+i\hbar(\psi+x\partial_x\psi)=i\hbar\psi.$$
+
+Thus $[\hat x,\hat p]=i\hbar\hat I$, with the identity operator usually implicit. The nonzero term comes from differentiating the factor $x$ as well as the wave function.
+
+</details>
 
 ## 9. Superposition
 
@@ -76,11 +97,28 @@ $$\Delta x \, \Delta p \geq \frac{\hbar}{2}$$
 
 where $\Delta x$ and $\Delta p$ are the standard deviations of measurement outcomes in the same state. Reducing one spread therefore places a lower bound on the other.
 
-For general observables, $\Delta A\,\Delta B\geq\tfrac12|\langle[\hat A,\hat B]\rangle|$. The brackets $\langle\cdot\rangle$ denote the expectation value in that state. This bound follows from the operator algebra and the inner product.
+For general observables, $\Delta A\,\Delta B\geq\tfrac12|\langle[\hat A,\hat B]\rangle|$. The brackets $\langle\cdot\rangle$ denote the expectation value in that state: the average over repeated measurements on identically prepared systems. For a normalized state, $\langle A\rangle=\langle\psi|\hat A|\psi\rangle$ and $(\Delta A)^2=\langle A^2\rangle-\langle A\rangle^2$.
+
+<details>
+<summary>Why the commutator bounds the measurement spreads</summary>
+
+Define $|u\rangle=(\hat A-\langle A\rangle)|\psi\rangle$ and $|v\rangle=(\hat B-\langle B\rangle)|\psi\rangle$. Their squared norms are the variances. The Cauchy–Schwarz inequality for inner products gives
+
+$$(\Delta A)^2(\Delta B)^2\geq|\langle u|v\rangle|^2\geq\big(\operatorname{Im}\langle u|v\rangle\big)^2.$$
+
+Hermiticity gives $\langle v|u\rangle=\langle u|v\rangle^*$. Subtract the two inner products:
+
+$$2i\operatorname{Im}\langle u|v\rangle=\langle u|v\rangle-\langle v|u\rangle=\langle[\hat A,\hat B]\rangle.$$
+
+Taking square roots gives the stated bound. For position and momentum, insert $[\hat x,\hat p]=i\hbar\hat I$ to obtain $\Delta x\Delta p\geq\hbar/2$. This concerns the spreads within a state, independent of any additional disturbance caused by a measuring device.
+
+</details>
 
 ![For Gaussian wave packets, a narrower position distribution accompanies a wider momentum distribution.](./manim/fourier-uncertainty.png)
 
 *For Gaussian wave packets, a narrower position distribution accompanies a wider momentum distribution.*
+
+We now have the ingredients for an energy-level calculation: a state, a Hamiltonian, and the rule that its eigenvalues are the possible measured energies. The next chapter applies them to an oscillator, where the commutator determines the spacing of the levels.
 
 ---
 
@@ -105,6 +143,9 @@ Next: [The Harmonic Oscillator](./harmonic-oscillator.md)
     Exponentiating a Hermitian operator gives a unitary operator: $e^{i\hat A}$. Conversely, a unitary transformation near the identity has a Hermitian generator. The Hamiltonian generates time translations, momentum generates spatial translations, and angular momentum generates rotations. The generator is an observable; the finite transformation preserves probability.
 
 ## 11. Personal Notes
+
+<details>
+<summary>Personal interpretation and analogies</summary>
 
 For me, the key change is what we mean by a **state**. In classical mechanics, positions and velocities specify the motion. In quantum mechanics, we use a state from which we calculate probabilities for position and other measurements.
 
@@ -131,6 +172,8 @@ The evolution is linear. We can decompose a state into simpler parts, evolve eac
 Complex numbers make the phase information explicit. We can visualize a complex number as a point in a plane. A complex number of magnitude one lies on the unit circle and can be written $e^{i\theta}=\cos\theta+i\sin\theta$, with the angle $\theta$ as its phase. A full quantum state may still be harder to picture. Relativity uses a similar mathematical habit: we calculate with spacetime geometry even when a four-dimensional picture is difficult to imagine. Its interval differs from ordinary Euclidean distance, so we must use the appropriate geometry.
 
 I find it easier to keep the calculation and its interpretation separate: evolve the state, then calculate the probabilities of the outcomes we can observe.
+
+</details>
 
 [^pos-rep]: A state vector $\psi$ is an abstract Hilbert-space vector. A **representation** chooses a basis for writing its components. In the position representation, the components are amplitudes $\psi(x)$ for position eigenstates. Then $\hat x$ multiplies by $x$ and $\hat p$ acts as $-i\hbar\,\partial/\partial x$. In the momentum representation, $\hat p$ multiplies by $p$ and $\hat x$ acts as $i\hbar\,d/dp$. A Fourier transform relates these representations. The derivative formula for momentum is therefore its form in the position basis, rather than a basis-independent definition.
 

@@ -1,8 +1,15 @@
 # Relativistic QM
 
+Special relativity changes the relation between energy and momentum. We will put that relation into a quantum wave equation and check whether its solutions still admit the probability interpretation used in First Quantization. The first attempt gives the correct dispersion but introduces negative energies and a signed conserved density. Dirac’s construction addresses the density problem; particle creation and annihilation will still require field theory.
+
 ## 1. Plane Wave
 
 Before changing the Schrödinger equation, we will solve it for a free particle with definite energy and momentum. These plane-wave solutions make it easy to compare non-relativistic and relativistic energy relations.
+
+A free state with definite momentum has the plane-wave form $\psi\propto e^{i(\mathbf p\cdot\mathbf x-Et)/\hbar}$. Its phase changes with both position and time. Substituting it into a wave equation determines the allowed relation between $E$ and $\mathbf p$. An exact plane wave is an idealization; a localized particle uses a wave packet built from many momenta.
+
+<details>
+<summary>Obtaining the plane wave from energy and momentum eigenstates</summary>
 
 **Specify a definite energy.** The Hamiltonian $\hat H$ is the energy operator. A state with a definite energy $E$ satisfies its eigenvalue equation,
 
@@ -38,6 +45,8 @@ $$\psi(x, t) = e^{i(\mathbf p\cdot\mathbf x - Et)/\hbar},$$
 
 a **plane wave** with definite momentum $\mathbf p$ and energy $E=\mathbf p^2/2m$. Its squared magnitude is constant across space, so it has no localized position distribution. An exact plane wave is an idealized generalized eigenstate; a normalizable particle state uses a superposition, or wave packet.
 
+</details>
+
 The plane-wave form will also solve relativistic equations. What changes is the dispersion relation connecting $E$ and $\mathbf p$. We next derive an equation with the exact relativistic relation.
 
 ## 2. Klein Gordon
@@ -56,6 +65,9 @@ $$E \to i\hbar\,\frac{\partial}{\partial t}, \qquad \mathbf p \to -i\hbar\nabla 
 
 Apply these operators to the squared relation, without making a low-speed approximation.
 
+<details>
+<summary>Substituting the energy and momentum operators</summary>
+
 **Collect the derivatives.** Acting on $\psi$ gives the following steps:
 
 $$\left(i\hbar\,\frac{\partial}{\partial t}\right)^2 \psi = \left(m^2 - \hbar^2\nabla^2\right)\psi,$$
@@ -63,6 +75,8 @@ $$\left(i\hbar\,\frac{\partial}{\partial t}\right)^2 \psi = \left(m^2 - \hbar^2\
 $$-\hbar^2\,\partial_t^2\psi = m^2\psi - \hbar^2\nabla^2\psi,$$
 
 $$\partial_t^2\psi - \nabla^2\psi + \frac{m^2}{\hbar^2}\psi = 0,$$
+
+</details>
 
 Define $\Box$, the d'Alembertian, to write the result compactly:
 
@@ -94,6 +108,11 @@ In field theory, we interpret negative-frequency modes through **antiparticles**
 
 This does not mean that observed antiparticles travel backward on laboratory clocks. The full description uses particle creation and annihilation, which a fixed single-particle wave function cannot represent.
 
+A probability density must be nonnegative and keep total probability constant during free evolution. For Schrödinger evolution, $\rho=|\psi|^2$ obeys $\partial_t\rho+\nabla\cdot\mathbf j=0$, where $\mathbf j$ is the probability current.
+
+<details>
+<summary>Deriving probability conservation for the Schrödinger equation</summary>
+
 **Find a conserved probability.** For comparison, consider the Schrödinger equation with a real local potential $V$:
 
 $$i\hbar\,\partial_t \psi = \left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\psi,$$
@@ -105,6 +124,8 @@ $$\partial_t|\psi|^2 = \frac{1}{i\hbar}\left[\psi^*\left(-\frac{\hbar^2}{2m}\nab
 The terms containing the real potential cancel. The derivative terms form a divergence because $\nabla\cdot(\psi^*\nabla\psi-\psi\nabla\psi^*)=\psi^*\nabla^2\psi-\psi\nabla^2\psi^*$. Therefore,
 
 $$\partial_t |\psi|^2 = -\nabla\cdot\mathbf j, \qquad \mathbf j = \frac{\hbar}{2mi}\left(\psi^*\nabla\psi - \psi\,\nabla\psi^*\right).$$
+
+</details>
 
 This is a **continuity equation**: a change in probability inside a region equals the net flow through its boundary. With no probability flux at infinity, $\int|\psi|^2\,d^3x$ stays constant. The density is also nonnegative, so we can normalize it as a probability.
 
@@ -156,6 +177,11 @@ $$i\hbar\,\partial_t\psi = \left(-i\hbar\,\boldsymbol\alpha\cdot\nabla + \beta m
 
 where the coefficients $\boldsymbol\alpha=(\alpha_1,\alpha_2,\alpha_3)$ and $\beta$ are constant objects we must determine.
 
+Squaring this trial equation must reproduce Klein–Gordon. Matching the coefficients requires $\beta^2=1$, $\alpha_i\beta+\beta\alpha_i=0$, and $\alpha_i\alpha_j+\alpha_j\alpha_i=2\delta_{ij}$. These restrictions determine the kind of objects the coefficients must be.
+
+<details>
+<summary>Matching the squared Hamiltonian to the relativistic energy relation</summary>
+
 **Square the equation.** Applying the time-evolution operator again must reproduce the Klein–Gordon equation:
 
 $$(i\hbar\,\partial_t)^2\psi = \left(-i\hbar\,\boldsymbol\alpha\cdot\nabla + \beta m\right)^2\psi = \left(m^2 - \hbar^2\nabla^2\right)\psi.$$
@@ -166,13 +192,20 @@ $$-\hbar^2\sum_{ij}\alpha_i\alpha_j\,\partial_i\partial_j\,\psi + m^2\beta^2\,\p
 
 Matching the mass term gives $\beta^2=\mathbb1$. Removing mixed mass–derivative terms gives $\alpha_i\beta+\beta\alpha_i=0$. Matching the Laplacian gives $\alpha_i\alpha_j+\alpha_j\alpha_i=2\delta_{ij}$.
 
+</details>
+
 These are **anticommutation relations**: the sum of two operator orderings vanishes when the indices differ. Ordinary numbers cannot satisfy all these conditions. Matrices can, so $\psi$ must have multiple components.
+
+For three spatial dimensions, the smallest suitable complex matrices act on four components. We use this matrix-algebra result here without proving minimality; the explicit construction below is enough to check that four components work. The resulting wave function is a **spinor**. In the standard representation, positive-energy solutions at low speed have two large upper components and two small lower components; these pairs mix as momentum increases.
+
+<details>
+<summary>Choosing the matrices and examining the low-speed components</summary>
 
 **Choose the matrices.** The three Pauli matrices anticommute with one another. To include a fourth independent matrix that anticommutes with all three and has square one, the smallest complex representation has size $4\times4$. A standard choice is
 
 $$\alpha_i = \begin{pmatrix} 0 & \sigma_i \\ \sigma_i & 0 \end{pmatrix}, \qquad \beta = \begin{pmatrix} \mathbb{1} & 0 \\ 0 & -\mathbb{1} \end{pmatrix},$$
 
-where each displayed block is $2\times2$. The wave function is then a **four-component spinor**, which we write as two pairs, $\psi=\begin{pmatrix}u\\v\end{pmatrix}$. Substituting a plane wave, so that $i\hbar\partial_t\to E$, gives
+where each displayed block is $2\times2$ and $\sigma_i$ are the Pauli matrices, displayed in [the next chapter](dirac-equation.md#_1-spin). The wave function is then a **four-component spinor**, which we write as two pairs, $\psi=\begin{pmatrix}u\\v\end{pmatrix}$. Substituting a plane wave, so that $i\hbar\partial_t\to E$, gives
 
 $$(E - m)\,u = \boldsymbol\sigma\cdot\mathbf p\,v, \qquad (E + m)\,v = \boldsymbol\sigma\cdot\mathbf p\,u,$$
 
@@ -184,6 +217,8 @@ The lower pair is smaller than the upper pair by a factor of order speed divided
 
 For a negative-energy solution near $E=-m$, use the first coupled equation instead. The upper pair is then small compared with the lower pair. At general momentum, both pairs contribute; they do not separately represent particle and antiparticle states.
 
+</details>
+
 The two components within each pair are associated with the two spin states of a spin-½ particle. We did not insert those spin states into a scalar equation: they follow from the matrix structure needed for Dirac's construction. [The Dirac Equation](dirac-equation.md) develops their transformation and physical meaning.
 
 **Check the density.** Use the Dirac equation and its adjoint to differentiate $\psi^\dagger\psi$. The result is
@@ -191,6 +226,23 @@ The two components within each pair are associated with the two spin states of a
 $$\partial_t\left(\psi^\dagger\psi\right) = -\nabla\cdot\left(\psi^\dagger\boldsymbol\alpha\,\psi\right),$$
 
 The density $\rho=\psi^\dagger\psi$ is nonnegative, and the equation conserves its integral when there is no boundary flux. This resolves the density problem for the Dirac wave equation.
+
+<details>
+<summary>Checking the positive conserved density</summary>
+
+The Dirac equation and its adjoint give, using Hermitian $\alpha_i$ and $\beta$,
+
+$$\partial_t\psi=-\alpha_i\partial_i\psi-\frac{im}{\hbar}\beta\psi,
+\qquad \partial_t\psi^\dagger=-(\partial_i\psi^\dagger)\alpha_i+\frac{im}{\hbar}\psi^\dagger\beta.$$
+
+In $\partial_t(\psi^\dagger\psi)$, the mass terms cancel. The remaining terms combine by the product rule:
+
+$$\partial_t(\psi^\dagger\psi)=-(\partial_i\psi^\dagger)\alpha_i\psi-\psi^\dagger\alpha_i\partial_i\psi
+=-\partial_i(\psi^\dagger\alpha_i\psi).$$
+
+The density is a sum of four squared component magnitudes, so it cannot be negative.
+
+</details>
 
 Define $\gamma^0=\beta$ and $\gamma^i=\beta\alpha_i$. Multiplying the equation by $\beta$ gives the covariant form
 

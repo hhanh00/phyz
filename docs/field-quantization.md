@@ -1,14 +1,23 @@
 # Quantum Field Theory: Field Quantization
 
-We now quantize the fields introduced in [Action and Lagrangians](qft-action.md).
+The classical field equations describe waves, but they do not yet explain why detectors record individual particles. We now quantize the fields introduced in [Action and Lagrangians](qft-action.md), identify the energy of one excitation, and check that repeated creation cannot lower the energy without bound.
+
+For the scalar field, each independent momentum mode becomes a quantum harmonic oscillator. For the Dirac field, the required operator algebra also restricts each momentum-and-spin mode to one particle.
 
 ## Outline
+
+<details>
+<summary>Optional overview of the construction</summary>
 
 **The main idea is to quantize each momentum mode as a harmonic oscillator.** The [Harmonic Oscillator](harmonic-oscillator.md) page already gives its energy levels and ladder operators.
 
 We first decompose a real scalar field into modes, promote its amplitudes to operators, and derive their commutators. Each oscillator quantum then has the energy and momentum of a particle. Finally, we repeat the construction for the Dirac field, where anticommutators give electrons, positrons, and the Pauli exclusion principle.
 
-### The scalar field in modes
+#
+
+</details>
+
+## The scalar field in modes
 
 The real scalar $\phi(x)$ obeys the Klein–Gordon equation
 
@@ -102,7 +111,7 @@ Ordinary commutators would make the antiparticle energy negative and unbounded b
 
 The same algebra gives $(\hat a^\dagger)^2=0$: each momentum-and-spin mode holds at most one fermion. Exchanging two creation operators changes the state's sign. The second family creates antiparticles of the same mass and opposite charge.
 
-> The outline gives the main argument. The sections below work through the expansions and calculations in detail.
+The sections below develop these steps in order.
 
 ## The scalar field in modes
 
@@ -122,6 +131,11 @@ $$\phi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\left[a(p)
 
 The star denotes complex conjugation. One complex function $a(p)$ therefore specifies both frequency halves and encodes the initial field and its time derivative. We include $\hbar/\sqrt{2E_p}$ so that the canonical commutator gives $[\hat a(p),\hat a^\dagger(p')]=(2\pi\hbar)^3\delta^3(p-p')$ and the Hamiltonian counts each quantum with energy $E_p$. From [Action and Lagrangians](qft-action.md), the conjugate momentum is $\pi=\partial\mathcal L/\partial\dot\phi=\dot\phi$.
 
+The Hamiltonian separates into oscillator contributions with frequency $\omega_p=E_p/\hbar$. A real field ties the spatial Fourier coefficients at $\mathbf p$ and $-\mathbf p$ by complex conjugation; independent sine and cosine coordinates give the real oscillators. The following calculation checks that separation without assuming a particle interpretation.
+
+<details>
+<summary>Decomposing the Hamiltonian into oscillators</summary>
+
 **Separate the momentum modes.** To evaluate the Hamiltonian, Fourier-expand the field and momentum on a spatial slice. In this form, the coefficients depend on time:
 
 $$\phi(t, \mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\; \phi_p(t)\, e^{i\mathbf p\cdot\mathbf x/\hbar}, \qquad \pi(t, \mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\; \pi_p(t)\, e^{i\mathbf p\cdot\mathbf x/\hbar},$$
@@ -135,6 +149,8 @@ The spatial integral uses $\int d^3x\,e^{i(\mathbf p+\mathbf q)\cdot\mathbf x/\h
 $$H = \int \frac{d^3p}{(2\pi\hbar)^3}\left[\tfrac12|\pi_p|^2 + \tfrac12\,\omega_p^2\,|\phi_p|^2\right], \qquad \omega_p^2 = \frac{\mathbf p^2 + m^2}{\hbar^2} = \frac{E_p^2}{\hbar^2}.$$
 
 Each contribution has the form of a harmonic oscillator Hamiltonian, with frequency $\omega_p=E_p/\hbar$. The Fourier amplitudes at $p$ and $-p$ obey the reality relation; the independent real coordinates can equivalently be written as sine and cosine modes.
+
+</details>
 
 The coefficients $a(p)$ describe the amplitudes and phases once the modes evolve on shell[^on-shell]. This is the oscillator whose phase-space motion appeared on the [Action page](qft-action.md).
 
@@ -176,6 +192,16 @@ This commutator is a quantization postulate. Following the [Action page](qft-act
 
 ## Ladder commutators
 
+The equal-time field commutator implies
+
+$$[\hat a(p),\hat a^\dagger(p')]=(2\pi\hbar)^3\delta^3(p-p'),\qquad
+[\hat a(p),\hat a(p')]=[\hat a^\dagger(p),\hat a^\dagger(p')]=0.$$
+
+We obtain this by isolating each mode from the field and its conjugate momentum. Thus distinct momenta correspond to independent quantum oscillators.
+
+<details>
+<summary>Deriving the mode commutators</summary>
+
 To derive the mode algebra, evaluate the field and momentum at $t=0$. The temporal phases become $1$, leaving
 
 $$\hat\phi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}}\left[\hat a(p)\,e^{i\mathbf p\cdot\mathbf x/\hbar} + \hat a^\dagger(p)\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\right],$$
@@ -186,13 +212,15 @@ $$\hat\pi(\mathbf x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{\hbar}{\sqrt{2E_p}
 
 Fourier orthogonality selects the annihilation term at momentum $p$. Its two contributions add because $i\hbar\hat\pi$ contributes $+E_p$. The creation term is selected at $-p$, but its contributions cancel because $i\hbar\hat\pi$ contributes $-E_{-p}$ and $E_{-p}=E_p$. Thus
 
-$$\hat a(p) \;\propto\; \int d^3x\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\left(E_p\,\hat\phi(\mathbf x) + i\hbar\,\hat\pi(\mathbf x)\right),$$
+$$\hat a(p) = \frac{1}{\hbar\sqrt{2E_p}}\int d^3x\,e^{-i\mathbf p\cdot\mathbf x/\hbar}\left(E_p\,\hat\phi(\mathbf x) + i\hbar\,\hat\pi(\mathbf x)\right),$$
 
 Taking the adjoint gives the corresponding expression for $\hat a^\dagger$. This is the field version of expressing oscillator ladder operators in terms of coordinate and momentum.
 
 Substitute both integrals into $[\hat a(p),\hat a^\dagger(p')]$. The field–field and momentum–momentum commutators vanish. The mixed terms give a spatial delta function, and Fourier orthogonality then gives a momentum delta function:
 
 $$[\hat a(p), \hat a^\dagger(p')] = (2\pi\hbar)^3\,\delta^3(p - p'), \qquad [\hat a(p), \hat a(p')] = 0, \qquad [\hat a^\dagger(p), \hat a^\dagger(p')] = 0,$$
+
+</details>
 
 The factor $(2\pi\hbar)^3$ matches the momentum integration measure. The momentum delta means different modes commute; a mode has a nonzero commutator only with its own adjoint.
 
@@ -290,7 +318,7 @@ This is the **Pauli exclusion principle**. A mode includes both momentum and spi
 
 **Antisymmetric states.** Interchanging two creation operators gives $\hat a^\dagger(p)\hat a^\dagger(q)|0\rangle=-\hat a^\dagger(q)\hat a^\dagger(p)|0\rangle$. The multiparticle state changes sign under exchange, giving Fermi–Dirac statistics.
 
-For scalars, commuting operators gave symmetric states. For spinors, anticommuting operators give antisymmetric states. These examples illustrate the spin–statistics relation in the [field table](qft.md#fields); a proof for general relativistic fields also uses locality and other assumptions.
+For scalars, commuting operators gave symmetric states. For spinors, anticommuting operators give antisymmetric states. These examples illustrate the spin–statistics relation in the [field table](qft.md#fields); we state the general theorem without proof because a derivation requires a longer treatment of relativistic locality and the Hilbert-space assumptions.
 
 ![Commuting creation operators allow repeated boson occupation. Anticommuting fermion creation operators square to zero, giving at most one quantum per momentum-and-spin mode.](./manim/boson-fermion-occupancy.png)
 
@@ -300,7 +328,7 @@ For scalars, commuting operators gave symmetric states. For spinors, anticommuti
 
 The [QED page](qed.md) derives this charge from U(1) symmetry. For the electron field, the species are electron and positron. A real scalar instead has no distinct antiparticle species.
 
-We can also compute the time-ordered vacuum expectation value $\langle0|T\hat\psi(x)\hat{\bar\psi}(y)|0\rangle$. This is the spinor propagator used in Wick contractions. In momentum space, using natural units $\hbar=c=1$, it is the inverse Dirac kinetic operator, $i(\not r+m)/(r^2-m^2+i\epsilon)$, as used on the [Perturbation Theory page](perturbation-theory.md).
+For later interaction calculations, we will need an amplitude connecting two field insertions. We state its free-field form here; [Perturbation Theory](perturbation-theory.md) explains time ordering and how to use it. The time-ordered vacuum expectation value $\langle0|T\hat\psi(x)\hat{\bar\psi}(y)|0\rangle$. This is the spinor propagator used in Wick contractions. In momentum space, using natural units $\hbar=c=1$, it is the inverse Dirac kinetic operator, $i(\not r+m)/(r^2-m^2+i\epsilon)$, as used on the [Perturbation Theory page](perturbation-theory.md).
 
 We have now quantized scalar and spinor fields. The vector field has an additional gauge redundancy, so its quantization includes gauge fixing. The [QED page](qed.md) develops that step.
 

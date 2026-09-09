@@ -1,6 +1,6 @@
 # The Dirac Equation
 
-[Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced $(i\hbar\gamma^\mu\partial_\mu-m)\psi=0$. Its wave function has four components and both energy signs. We now derive the spin carried by those components, solve the two energy branches, and explain why antiparticles require a field theory.
+[Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced $(i\hbar\gamma^\mu\partial_\mu-m)\psi=0$. Its wave function has four components and both energy signs. We now derive the spin carried by those components, solve the positive- and negative-energy solutions, and explain why antiparticles require a field theory.
 
 ## 1. Spin
 
@@ -19,6 +19,17 @@ $$\frac{d\mathbf A}{dt} = \frac{i}{\hbar}[H, \mathbf A],$$
 Thus $[H,\mathbf A]=0$ means $\mathbf A$ is conserved. To obtain conserved total angular momentum, we need $\mathbf S$ to cancel the commutator of $\mathbf L$.
 
 The matrices $\boldsymbol\alpha$ act on the spinor components, whereas $\mathbf L$ acts on the spatial dependence. We therefore look for a spin operator acting on those components.
+
+The required operator is $\mathbf S=\hbar\boldsymbol\Sigma/2$, where $\Sigma_i=\mathrm{diag}(\sigma_i,\sigma_i)$ contains two copies of a Pauli matrix. Explicitly,
+
+$$\sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
+\sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
+
+With this choice, $[H,\mathbf L+\mathbf S]=0$. It also obeys the angular-momentum relations $[S_i,S_j]=i\hbar\varepsilon_{ijk}S_k$, where $\varepsilon_{ijk}$ changes sign under an index exchange and $\varepsilon_{123}=1$. These relations characterize rotations about different axes. Spin and orbital angular momentum can change individually while their sum stays conserved.
+
+<details>
+<summary>Checking the spin operator</summary>
 
 It must satisfy two conditions: cancel $[H,L_i]$ and obey the angular-momentum commutation relations. The first condition is
 
@@ -52,6 +63,8 @@ $$[S_i, S_j] = i\hbar\,\varepsilon_{ijk} S_k,$$
 
 These are the **angular-momentum commutation relations**. For example, $[S_x,S_y]=i\hbar S_z$, with cyclic versions for the other components. They describe the infinitesimal effect of rotations about different axes.
 
+</details>
+
 Since $\Sigma_z$ has eigenvalues $\pm1$, $S_z$ has eigenvalues $\pm\hbar/2$. The Dirac field therefore describes spin-½ particles. In each pair of components, the two basis states are spin up and spin down.
 
 **The magnetic moment follows from electromagnetic coupling.** For charge $q$, use **minimal substitution**: $\hat{\mathbf p}\to\hat{\mathbf p}-q\mathbf A$, or covariantly $\partial_\mu\to\partial_\mu+\tfrac{iq}{\hbar}A_\mu$. This couples the wave function to the electromagnetic potential and reproduces the classical Lorentz force in the appropriate limit.
@@ -60,7 +73,7 @@ For an electron, $q=-e$. Taking the nonrelativistic limit gives the Pauli equati
 
 $$\boldsymbol\mu = -\frac{e}{m}\,\mathbf S, \qquad g = 2,$$
 
-The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with minimal coupling. This answers the spin question from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). We examine how the spin components transform in [§5](#_5-spinors-transformations).
+The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with minimal coupling. This answers the spin question from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). We examine how the spin components transform in [§5](#_5-spinors).
 
 ![An ideal measurement of spin along z has outcomes plus or minus hbar over two. The displayed equal superposition gives equal probabilities.](./manim/spin-measurement.png)
 
@@ -68,11 +81,14 @@ The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with m
 
 ### Extra: the nonrelativistic limit and $g=2$
 
+<details>
+<summary>Deriving the magnetic moment at low speed</summary>
+
 The factor $g=2$ quoted above follows from taking the Dirac equation at low momentum. Split the spinor into upper and lower pairs, $\psi=(u,v)$, and use minimal substitution $\hat{\mathbf p}\to\hat{\mathbf p}-q\mathbf A$ in the coupled equations of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation):
 
 $$(E-m)\,u = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,v, \qquad (E+m)\,v = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,u,$$
 
-with $c=1$. For a positive-energy solution at low momentum, $E\approx m$ and the lower pair $v$ is the small component. Solve the second equation to leading order,
+with $c=1$ and a static magnetic field, choosing zero scalar potential. For a positive-energy solution at low momentum, $E\approx m$ and the lower pair $v$ is the small component. Solve the second equation to leading order,
 
 $$v \approx \frac{\boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)}{2m}\,u,$$
 
@@ -94,11 +110,16 @@ $$\boldsymbol\mu = \frac{q}{m}\,\mathbf S.$$
 
 For an electron, $q=-e$, so $\boldsymbol\mu=-\tfrac em\mathbf S$. Writing the magnetic moment in the standard form $\boldsymbol\mu=g\tfrac{q}{2m}\mathbf S$ fixes $g=2$. The factor of $2$ comes from the Pauli identity, which in turn reflects the anticommutation of the Pauli matrices.
 
+</details>
+
 ## 2. Conservation and Commutators
 
 To justify the conservation test used in [§1](#_1-spin), derive the **Heisenberg equation of motion**. For an operator with no explicit time dependence,
 
 $$\frac{d\mathbf A}{dt} = \frac{i}{\hbar}[H, \mathbf A],$$
+
+<details>
+<summary>Deriving the Heisenberg equation</summary>
 
 For a time-independent Hamiltonian, define the Heisenberg operator by moving the state-evolution factors onto it:
 
@@ -108,6 +129,8 @@ At $t=0$, $\mathbf A_H(0)=\mathbf A$. Differentiate both exponential factors usi
 
 $$\frac{d\mathbf A_H}{dt} = \frac{i}{\hbar}\left(H e^{iHt/\hbar}\mathbf A e^{-iHt/\hbar} - e^{iHt/\hbar}\mathbf A e^{-iHt/\hbar} H\right) = \frac{i}{\hbar}[H, \mathbf A_H].$$
 
+</details>
+
 Taking an expectation value gives $d\langle\mathbf A\rangle/dt=\tfrac{i}{\hbar}\langle[H,\mathbf A]\rangle$. A vanishing commutator guarantees conservation in every state. A particular state's expectation value can remain constant even when the operator commutator is nonzero.
 
 If $\mathbf A$ explicitly depends on time, add $\langle\partial\mathbf A/\partial t\rangle$. The angular momentum operators here have no such dependence.
@@ -116,7 +139,12 @@ Applying this to [§1](#_1-spin), $[H,\mathbf L]\ne0$ but $[H,\mathbf L+\mathbf 
 
 ## 3. Antiparticles
 
-To understand the negative-energy branch, solve the free equation. At rest, the four components separate; motion then mixes the upper and lower pairs.
+To understand the negative-energy solutions, solve the free equation. At rest, the four components separate; motion then mixes the upper and lower pairs.
+
+At rest, the energies are $E=+m$ and $E=-m$, each with two independent spin states. In the standard representation, the positive-energy states occupy the upper pair of components and the negative-energy states the lower pair. This separation applies at rest, not at arbitrary momentum.
+
+<details>
+<summary>Solving the rest-frame equation</summary>
 
 **At rest ($\mathbf p=0$).** The Hamiltonian reduces to $H=\beta m$. Substitute $\psi=w e^{-iEt/\hbar}$, where $w$ is a constant four-component spinor:
 
@@ -132,7 +160,7 @@ For a nonzero state, at least one component must survive. An upper component req
 2. **$E=m$:** $w_3=w_4=0$, while the two upper components are free.
 3. **$E=-m$:** $w_1=w_2=0$, while the two lower components are free.
 
-These are the two branches of $E^2=\mathbf p^2+m^2$ from [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), evaluated at rest. Squaring the Dirac Hamiltonian gives this dispersion relation because its matrices anticommute.
+These are the two signs in $E^2=\mathbf p^2+m^2$ from [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), evaluated at rest. Squaring the Dirac Hamiltonian gives this dispersion relation because its matrices anticommute.
 
 Each energy eigenspace has dimension two. A basis of the four independent rest solutions is
 
@@ -144,7 +172,14 @@ Choose the basis to diagonalize $S_z=\tfrac\hbar2\Sigma_z$. Label the rest solut
 
 $$S_z\,w^{(1)}_\pm = +\frac{\hbar}{2}\,w^{(1)}_\pm, \qquad S_z\,w^{(2)}_\pm = -\frac{\hbar}{2}\,w^{(2)}_\pm,$$
 
-Each energy branch therefore has one spin-up and one spin-down basis state. The choice of $z$ is a basis choice; we could diagonalize spin along any axis.
+Each energy sign therefore has one spin-up and one spin-down basis state. The choice of $z$ is a basis choice; we could diagonalize spin along any axis.
+
+</details>
+
+For a moving particle, write $E_p=\sqrt{\mathbf p^2+m^2}>0$. The energies remain $\pm E_p$, but the equation couples the upper and lower components. We call the two positive-energy spinors $u_s$ and the two negative-energy spinors $v_s$, with $s$ labeling the spin basis. Each is a whole four-component solution.
+
+<details>
+<summary>Solving for the moving spinors</summary>
 
 **Moving ($\mathbf p\ne0$).** Substituting a plane wave $\psi=w(p)e^{-ip\cdot x/\hbar}$ turns the differential equation into
 
@@ -164,7 +199,9 @@ $$v_s(p) = \begin{pmatrix} -\dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + 
 
 Their lower blocks dominate at low momentum, as in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation).
 
-**Charge conjugation relates the branches.** Complex-conjugate the equation and multiply by $\eta=i\gamma^2$ in the standard representation. Define
+</details>
+
+**Charge conjugation relates the two energy signs.** Complex-conjugate the equation and multiply by $\eta=i\gamma^2$ in the standard representation. Define
 
 $$\psi_c = \eta\,\psi^*,$$
 
@@ -175,6 +212,9 @@ To see why this changes charge, restore the electromagnetic coupling from [§1](
 This connects to the Stückelberg–Feynman interpretation in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability). For electrons the antiparticle is the positron, discovered in 1932.
 
 ### Extra: verifying the charge-conjugation map
+
+<details>
+<summary>Checking charge conjugation in components</summary>
 
 To see the map in coordinates, use the two-component form. A momentum-space plane wave $w=(\phi,\chi)$ solves the coupled equations
 
@@ -192,11 +232,13 @@ Multiply the conjugated equations by $i\sigma^2$. Because $(i\sigma^2)(\boldsymb
 
 $$(E+m)\,\phi_c = \boldsymbol\sigma\cdot\mathbf p\,\chi_c, \qquad (E-m)\,\chi_c = \boldsymbol\sigma\cdot\mathbf p\,\phi_c.$$
 
-These are the coupled equations of a negative-energy solution: the large and small roles have interchanged, which is the signature of the $v$ spinor in [§3](#_3-antiparticles). Substituting the explicit $u_s(p)$ of [§3](#_3-antiparticles) shows that $\psi_c$ is a $v_{s'}(p)$ with the spin label flipped, up to an overall phase.
+Multiplying both equations by $-1$ puts them in the original form with energy $-E$ and momentum $-\mathbf p$. Complex conjugation reverses both signs in the plane-wave phase as well. Thus the transformed spinor is proportional to $v_{s'}(-p)$ in the fixed-momentum convention of [§3](#_3-antiparticles), with the spin label interchanged. The reversal of momentum is essential to this identification.
 
 To restore charge, reinsert the coupling $\partial_\mu\to\partial_\mu+\tfrac{iq}{\hbar}A_\mu$ from [§1](#_1-spin). Conjugation reverses the sign of every $i$, so $\psi_c$ obeys the equation with $q\to-q$: the antiparticle, with opposite charge and the same mass.
 
-The free equation supplies both frequency branches. A precise particle interpretation requires a theory in which particles can be created and destroyed, which a fixed one-particle wave function cannot provide.
+</details>
+
+The free equation supplies both frequency signs. A precise particle interpretation requires a theory in which particles can be created and destroyed, which a fixed one-particle wave function cannot provide.
 
 ![At rest in the standard Dirac representation, two basis solutions occupy the upper pair and two the lower pair. A boost mixes the components.](./manim/rest-spinor-basis.png)
 
@@ -204,13 +246,20 @@ The free equation supplies both frequency branches. A precise particle interpret
 
 ## 4. Negative Energy Solutions
 
-The branches in [§3](#_3-antiparticles) both have nonnegative density $\psi^\dagger\psi$. We cannot reject the negative-energy branch on probability grounds. As [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) noted, treating it as ordinary electron states would leave energy unbounded below: an interacting electron could keep radiating into lower levels.
+The two families of solutions in [§3](#_3-antiparticles) both have nonnegative density $\psi^\dagger\psi$. We cannot reject the negative-energy solutions on probability grounds. As [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) noted, treating them as ordinary electron states would leave energy unbounded below: an interacting electron could keep radiating into lower levels.
+
+The field description assigns the negative-frequency terms to creation of positive-energy antiparticles. This is more than a relabeling of a single-particle state: we introduce operators that change particle number. The next chapter develops that construction; the algebra below previews how it removes the unbounded negative excitation energies.
+
+<details>
+<summary>Preview: positive energies after field quantization</summary>
 
 **Quantize the amplitudes.** The [QFT page](qft.md) replaces the coefficients of [§6](#_6-general-solution) by operators. Before reordering, one mode contributes $E_p(\hat a^\dagger\hat a-\hat b\hat b^\dagger)$ to the Hamiltonian.
 
 Fermion operators obey $\hat b\hat b^\dagger=1-\hat b^\dagger\hat b$. Substitution gives $E_p(\hat a^\dagger\hat a+\hat b^\dagger\hat b)$ plus a vacuum constant. After subtracting that constant, electrons and positrons both contribute positive energy $E_p$.
 
 Thus $\hat b^\dagger$ multiplies a negative-frequency solution but creates a positive-energy positron. This implements the reinterpretation in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+
+</details>
 
 Dirac's earlier **hole theory** assumed every negative-energy electron state was occupied. The exclusion principle then prevented another electron from falling into the filled sea. Removing one sea electron left a **hole** with positive energy and positive charge, interpreted as a positron.
 
@@ -226,15 +275,18 @@ The real antisymmetric parameters $\omega_{\mu\nu}$ specify rotations and boosts
 
 1. **Finite-dimensional.** $S$ acts on four components at each point. This component transformation is distinct from the transformation of the full function over space.
 2. **Double-valued.** A $2\pi$ rotation gives $S=-\mathbb1$; a $4\pi$ rotation returns the spinor exactly. This is the spin-½ transformation law.
-3. **Reducible.** In a chiral basis, the Dirac representation splits as $(\tfrac12,0)\oplus(0,\tfrac12)$. Its two **Weyl spinors** are the left- and right-handed components. They transform identically under rotations, with the generators from [§1](#_1-spin), and oppositely under boosts.
+3. **Reducible.** A change of component basis separates the Lorentz transformation into two two-component transformations. The corresponding **Weyl spinors** are the left- and right-handed components. They transform identically under rotations, with the generators from [§1](#_1-spin), and oppositely under boosts.
 
-For rotations, $S=\exp(-\tfrac i2\boldsymbol\theta\cdot\boldsymbol\Sigma)$. The generator is $\mathbf S/\hbar$, using the spin operator from [§1](#_1-spin). The calculations below derive the general form and compare rotations with boosts.
+For rotations, $S=\exp(-\tfrac i2\boldsymbol\theta\cdot\boldsymbol\Sigma)$. The generator is $\mathbf S/\hbar$, using the spin operator from [§1](#_1-spin). The calculations below derive the general form and compare rotations with boosts. The left/right decomposition is a further result stated here without proof; [Weak Interaction](weak-interaction.md) introduces the projectors used to separate these components when the distinction becomes physically necessary.
 
 ![For a spin-up component, a rotation about z contributes the phase exp(-i theta/2). A 2 pi rotation changes its sign; a 4 pi rotation restores it.](./manim/spinor-rotation-sign.png)
 
 *For a spin-up component, a rotation about z contributes the phase exp(-i theta/2). A 2 pi rotation changes its sign; a 4 pi rotation restores it.*
 
 ### Extra: Deriving the Spinor Transformation
+
+<details>
+<summary>Deriving the covariant spinor transformation</summary>
 
 This optional derivation checks that the spinor transformation preserves the Dirac equation. Later sections use the result without requiring these calculations.
 
@@ -266,7 +318,12 @@ In the last step, use $g^{\mu\sigma}\omega_{\rho\sigma}=-\omega^\mu{}_\rho$. The
 
 This verifies the infinitesimal transformation. Repeating a transformation along a fixed generator gives its finite exponential. Different generators generally do not commute, so composing arbitrary rotations and boosts requires matrix multiplication rather than adding their parameters.
 
+</details>
+
 ### An even more detailed derivation
+
+<details>
+<summary>Working out rotations and boosts explicitly</summary>
 
 The following calculations apply the formula to a rotation and a boost. These transformations generate the Lorentz transformations connected to the identity.
 
@@ -338,7 +395,7 @@ For a rotation about $z$, set $\omega_{12}=\theta$ and the other angles to zero.
 
 $$S = \mathrm{diag}\!\left(e^{-i\theta/2},\, e^{i\theta/2},\, e^{-i\theta/2},\, e^{i\theta/2}\right).$$
 
-Spin up and spin down acquire opposite phases. At $\theta=2\pi$, every entry is $-1$, so the spinor changes sign. At $4\pi$ it returns exactly, confirming the property described in [§5](#_5-spinors-transformations).
+Spin up and spin down acquire opposite phases. At $\theta=2\pi$, every entry is $-1$, so the spinor changes sign. At $4\pi$ it returns exactly, confirming the property described in [§5](#_5-spinors).
 
 **Boost along $x$.** A boost mixes time with one spatial coordinate. For motion along $x$, only the pair $(0,1)$ contributes. We first express its parameter in terms of the frame's velocity.
 
@@ -402,6 +459,8 @@ For a boost along a unit vector $\hat{\mathbf n}$, use $\omega_{0k}=-\varphi\hat
 
 In this representation, pure rotations give unitary component matrices and pure boosts give Hermitian component matrices. Their different factors of $i$ account for the different exponential forms.
 
+</details>
+
 ## 6. General Solution
 
 Because the free Dirac equation is linear, superpose its momentum modes. Each momentum has two spin labels and two frequency signs:
@@ -410,12 +469,19 @@ $$\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}
 
 Here $p\cdot x=E_pt-\mathbf p\cdot\mathbf x$, with $E_p>0$. The coefficients $a_s(p)$ and $b_s^*(p)$ are numerical amplitudes fixed by initial conditions. On the [QFT page](qft.md), they become electron-annihilation and positron-creation operators.
 
+The $u_s$ and $v_s$ now denote spinors accompanying the displayed phases. The sign of spatial momentum in the second phase differs from the convention used to solve the fixed-momentum equation in §3; the calculation below makes that change explicit.
+
+<details>
+<summary>Explicit spinors and the momentum convention</summary>
+
 For the negative-frequency phase written here, the spatial wave is $e^{-i\mathbf p\cdot\mathbf x/\hbar}$. Its classical momentum is therefore $-\mathbf p$. Replace $\mathbf p$ by $-\mathbf p$ in the negative-energy spinor of [§3](#_3-antiparticles). With $\chi_\uparrow=(1,0)^T$ and $\chi_\downarrow=(0,1)^T$, the spinors in this expansion are
 
 $$u_s(p) = \begin{pmatrix} \sqrt{E_p + m}\;\chi_s \\ \dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + m}}\;\chi_s \end{pmatrix}, \qquad v_s(p) = \begin{pmatrix} \dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + m}}\;\chi_s \\ \sqrt{E_p + m}\;\chi_s \end{pmatrix},$$
 
 The relabeling changes the sign of the upper block of $v$. The low-momentum structure remains the one found in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation): $u$ has a large upper block, while $v$ has a large lower block.
 
-Both branches contain the spin structure from [§1](#_1-spin) and obey the transformation law of [§5](#_5-spinors-transformations). The $v$-branch will become the antiparticle contribution discussed in [§3](#_3-antiparticles) and [§4](#_4-negative-energy-solutions).
+</details>
+
+Both families contain the spin structure from [§1](#_1-spin) and obey the transformation law of [§5](#_5-spinors). The $v$ contribution will become the antiparticle contribution discussed in [§3](#_3-antiparticles) and [§4](#_4-negative-energy-solutions).
 
 We write its coefficient as $b_s^*$ to prepare for quantization: complex conjugation becomes the adjoint, $b_s^*\to\hat b_s^\dagger$. The [QFT page](qft.md) turns this expansion into the electron field operator.

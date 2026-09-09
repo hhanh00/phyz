@@ -1,5 +1,7 @@
 # Special Relativity
 
+A change of observer should not change the laws of motion. But the familiar rule for adding velocities would give different light speeds to observers moving relative to one another. We will replace that rule, work out what observers can still agree on, and use those shared quantities to test our equations for particles and fields.
+
 ## 1. The Two Postulates
 
 An **inertial frame** is a reference frame in which a force-free object moves at constant velocity. The first postulate, the **principle of relativity**, states that the laws of physics have the same form in every inertial frame. No experiment inside a uniformly moving laboratory can identify an absolute state of rest.
@@ -27,7 +29,7 @@ Under a Lorentz transformation, both axes tilt toward the light line. The time a
 
 ## 3. Lorentz Transformations
 
-Let frame $S'$ move at velocity $v$ along the $x$-axis of frame $S$, with coincident origins at $t=t'=0$. The coordinate change that preserves light speed is
+Let frame $S'$ move at velocity $v$ along the $x$-axis of frame $S$, with coincident origins at $t=t'=0$. Assuming linear transformations between inertial coordinates, the two postulates give the following coordinate change. We state the full transformation here; deriving its general form requires imposing those assumptions on all its coefficients:
 
 $$t' = \gamma\!\left(t - \frac{vx}{c^2}\right), \qquad x' = \gamma(x - vt), \qquad y' = y, \qquad z' = z$$
 
@@ -39,7 +41,7 @@ Differentiating the transformed position with respect to the transformed time gi
 
 $$u' = \frac{u - v}{1 - uv/c^2}$$
 
-Substituting $u=c$ gives $u'=c$. The extra denominator is what keeps light speed unchanged.
+To obtain this result, divide $dx'=\gamma(dx-v\,dt)$ by $dt'=\gamma(dt-v\,dx/c^2)$ and use $u=dx/dt$. Substituting $u=c$ gives $u'=c$. The extra denominator is what keeps light speed unchanged.
 
 ![Events at the same unprimed time can have different primed times because the Lorentz time transformation includes position.](./manim/relative-simultaneity.png)
 
@@ -56,6 +58,19 @@ Every inertial observer obtains the same $s^2$. Its sign determines how the even
 - $s^2>0$: **timelike**. A slower-than-light signal can connect the events. There is a frame in which they occur at the same place at different times.
 - $s^2=0$: **lightlike**, or null. For distinct events, a light signal can connect them.
 - $s^2<0$: **spacelike**. No signal traveling at or below $c$ can connect the events. There is a frame in which they are simultaneous.
+
+<details>
+<summary>Checking that the boost preserves the interval</summary>
+
+For event differences, substitute the Lorentz formulas and expand:
+
+$$c^2\Delta t'^2-\Delta x'^2
+=\gamma^2\left[c^2\left(\Delta t-\frac{v\Delta x}{c^2}\right)^2-(\Delta x-v\Delta t)^2\right]
+=\gamma^2\left(1-\frac{v^2}{c^2}\right)(c^2\Delta t^2-\Delta x^2).$$
+
+The mixed terms cancel, and $\gamma^2(1-v^2/c^2)=1$. Since the transverse coordinates remain unchanged, the full spacetime interval is invariant as well.
+
+</details>
 
 A spatial rotation preserves $x^2+y^2$. A Lorentz boost instead preserves $c^2t^2-x^2$ along the boost direction. The minus sign distinguishes spacetime geometry from Euclidean geometry; boosts are hyperbolic rotations.
 
@@ -113,11 +128,16 @@ This is **Einstein summation notation**. Each summed index occurs once up and on
 
 A fully contracted expression is a Lorentz scalar. Examples include the interval $s^2=x^\mu x_\mu$, the squared rest mass $m^2=p^\mu p_\mu$ in units $c=1$, and the plane-wave phase $\phi=k^\mu x_\mu$.
 
+<details>
+<summary>The general tensor transformation rule</summary>
+
 A **tensor** with $r$ upper and $s$ lower indices has type $(r,s)$. Transform each upper index with $\Lambda$ and each lower index with its inverse:
 
 $$T'^{\mu_1\cdots\mu_r}{}_{\nu_1\cdots\nu_s} = \Lambda^{\mu_1}{}_{\alpha_1}\cdots\Lambda^{\mu_r}{}_{\alpha_r}\,(\Lambda^{-1})^{\beta_1}{}_{\nu_1}\cdots(\Lambda^{-1})^{\beta_s}{}_{\nu_s}\; T^{\alpha_1\cdots\alpha_r}{}_{\beta_1\cdots\beta_s}$$
 
 For example, the metric is a $(0,2)$ tensor. To write a covariant equation, give both sides the same free indices and contract every summed index correctly. Each side then transforms in the same way, so equality holds in every Lorentz frame.
+
+</details>
 
 Most of the following pages use only four-vectors and contractions. The general tensor rule becomes useful again when we study field transformations in [QFT](qft.md).
 
@@ -158,21 +178,33 @@ The components of this tensor contain both electric and magnetic fields. Under a
 
 $$\partial_\mu F^{\mu\nu} = J^\nu, \qquad \partial_\lambda F_{\mu\nu} + \partial_\mu F_{\nu\lambda} + \partial_\nu F_{\lambda\mu} = 0.$$
 
+Electric and magnetic fields are parts of one electromagnetic tensor. Observers in relative motion can disagree about their separate values while describing the same field.
+
+<details>
+<summary>The component transformation of electric and magnetic fields</summary>
+
 The split into $\mathbf E$ and $\mathbf B$ depends on the observer. For a boost along $\hat{\mathbf x}$, the components parallel and perpendicular to the boost transform as follows, with $c=1$:
 
 $$\mathbf{E}'_\parallel = \mathbf{E}_\parallel, \quad \mathbf{E}'_\perp = \gamma(\mathbf{E}_\perp + \mathbf{v}\times\mathbf{B}), \qquad \mathbf{B}'_\parallel = \mathbf{B}_\parallel, \quad \mathbf{B}'_\perp = \gamma(\mathbf{B}_\perp - \mathbf{v}\times\mathbf{E}).$$
 
+</details>
+
 A charge at rest produces an electric field and no magnetic field in its rest frame. An observer moving relative to the charge generally measures both. Both descriptions refer to the same electromagnetic field, expressed in different frames.
+
+<details>
+<summary>Recovering the four Maxwell equations from the tensor form</summary>
 
 **Recover the familiar equations.** In $\partial_\mu F^{\mu\nu}=J^\nu$, setting $\nu=0$ gives Gauss's law. Setting $\nu=1,2,3$ gives the three components of Ampère's law.
 
 In the cyclic identity, choosing $(\lambda\mu\nu)=(123)$ gives $\nabla\cdot\mathbf B=0$. Choices with one time index give Faraday's law. These homogeneous equations follow automatically when we substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$, because partial derivatives commute.
 
+</details>
+
 Both tensor equations retain their form under Lorentz transformations. In vacuum, their wave equations imply propagation at $c$ for every inertial observer. Maxwell's equations therefore fit both postulates without modification.
 
 ## 9. Schrödinger Equation
 
-The free Schrödinger equation starts from the non-relativistic kinetic energy. To see why its relativistic behavior differs from Maxwell's equations, follow the same operator substitution.
+Maxwell’s equations pass the change-of-frame test. The Schrödinger equation needs a separate check: it starts from the low-speed kinetic energy, so we should not expect it to hold at arbitrary speeds.
 
 Keep $c=1$ and write $\hbar$ explicitly. Starting with $E=\mathbf p^2/2m$, substitute $E\to i\hbar\,\partial/\partial t$ and $\mathbf p\to-i\hbar\nabla$. Acting on a wave function gives
 
