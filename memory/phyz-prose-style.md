@@ -37,3 +37,19 @@ Do not make the prose artificially formal. The goal is ordinary, natural human t
 **Why:** the docs' voice is dense literary exposition; failed attempts stand out badly against it.
 
 **How to apply:** when asked to "fill"/"expand" a section, draft tight; make the one needed distinction in one or two sentences; if a sentence needs a paragraph of chat explanation to interpret, rewrite the sentence instead.
+
+## Physics-led exposition and mathematical detail
+
+Use `docs/weak-interaction.md` as the reference for exposition, flow, and the level and placement of mathematical detail. The user explicitly selected this chapter as the writing model.
+
+- Start with physical observations and establish what the theory must explain.
+- Motivate each mathematical tool before introducing it. Explain why a projector, current, carrier, or symmetry is useful for the physical problem.
+- Keep the main argument understandable without opening the derivations. Include essential equations and their physical meaning in the main text; put detailed algebra in expandable `<details>` sections.
+- Preserve enough steps in those derivations for a learner to follow the calculation. Link to existing explanations or the Math Refresher for background mathematics rather than re-teaching it.
+- Interpret results in terms of particles, transitions, couplings, and measurable consequences. The physics determines which mathematics to include and where it belongs.
+- Connect sections explicitly: explain what the previous step established, what remains unresolved, and why the next step follows.
+- Distinguish experimental evidence, model choices, theoretical consistency arguments, and deductions. Do not imply that one experiment uniquely determines the chosen gauge theory.
+- Mark substantial results supplied without proof and briefly explain why their derivations are deferred.
+- Return to the starting phenomenon and explain what the construction accounts for, which predictions still require calculation, and what belongs in later chapters.
+
+**Why:** The user wants a continuous physical explanation with accessible mathematical support, rather than a sequence of formulas or an inline mathematics lecture. Detailed calculations should remain available without interrupting that explanation.
