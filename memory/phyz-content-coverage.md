@@ -4,6 +4,7 @@ description: "What the Phyz docs already cover — per-page scope, term→first-
 metadata:
   node_type: memory
   type: reference
+  originSessionId: 7a9bd30a-4fc0-4234-9e80-c0c25cc1e198
 ---
 
 A knowledge base of what the Phyz docs (`docs/*.md`) already explain, so new content can link to existing explanations instead of repeating them. The full line-by-line analysis (math-level audit, silent logic gaps) lives in `SITE-AUDIT.md` at the repo root; this file is the quick-reference source of truth.
@@ -27,9 +28,9 @@ Reading order is set by the `sidebar` array in `docs/.vuepress/config.js`.
 13. `feynman-rules.md` — Feynman diagrams, Compton s/u-channels, QED Feynman rules, full algebraic derivation, loops, UV/IR divergences, renormalization preview. Added: spin/polarization completeness relations, Casimir's trick, Klein–Nishina formula.
 14. `weak-interaction.md` — beta decay, neutrinos, parity violation, $\gamma^5$/chiral projectors, helicity vs chirality, SU(2) gauge symmetry, Yang–Mills field strength + self-interactions, charged current, CKM matrix, Fermi (low-energy) limit.
 15. `electroweak-unification.md` — why W³ cannot be the photon; chiral charge assignments; hypercharge and Q=T³+Y/2; local SU(2)L × U(1)Y and Bμ; photon/Z mixing and e=g sin θW=g′ cos θW; neutral-current couplings; νμ–electron scattering diagram and amplitude; gauge+fermion Lagrangian; gauge/fermion mass obstruction leading to Higgs. Short algebra in expandable sections. Higgs selection of mass eigenstates and masses deferred to the next chapter.
-16. `higgs-mechanism.md` — **STUB**.
-17. `qcd.md` — **STUB**.
-18. `standard-model.md` — **STUB**.
+16. `higgs-mechanism.md` — spontaneous symmetry breaking (mexican-hat potential, degenerate vacua, Goldstone boson); abelian Higgs U(1) toy model (unitary gauge, eaten Goldstone, DOF count, massive vector); SM Higgs doublet (Y=+1, φ⁺/φ⁰, VEV in neutral component leaves Q unbroken, m_h²=2λv², v≈246 GeV from G_F); fermion masses via Yukawa (m_f=y_f v/√2, conjugate doublet for up-type, neutrinos stay massless); gauge-boson masses (m_W=gv/2, m_Z=(v/2)√(g²+g'²), photon massless, m_W=m_Z cos θ_W, ρ=1). Detailed algebra in expandable sections.
+17. `qcd.md` — quark flavours and hadrons; valence content; colour versus electric charge; singlet mesons/baryons and confinement; global SU(3), eight generators, local symmetry and gluons; QCD Lagrangian and gluon self-interactions; asymptotic freedom (one-loop running supplied, integration shown), hadronization/jets, lattice QCD and limits of perturbation theory; product gauge group and independent colour/weak indices.
+18. `standard-model.md` — synthesis of gauge fields/self-interactions, quark and lepton assignments, Higgs masses, assembled gauge-invariant Lagrangian, Yukawa matrices, three generations, CKM from mismatched mass-basis rotations, neutrino-oscillation limitation, measured inputs versus predictions, and open questions.
 19–23. `path-integrals*.md` — optional sequence (paths, fields, fermions, gauge fixing, renormalization).
 24–28. `appendix-math-*.md` — **Math Refresher** appendix (calculus, complex numbers, linear algebra, index notation/tensors, groups/symmetry).
 
@@ -105,10 +106,13 @@ Unusual notation is still glossed inline at first use in the main text (e.g. bra
 | CKM matrix / Fermi constant | `weak-interaction.md` |
 | hypercharge / Bμ / weak mixing angle / photon–Z mixing | `electroweak-unification.md` |
 | neutral-current chiral coefficients / νμ–electron scattering | `electroweak-unification.md` |
+| spontaneous symmetry breaking / Goldstone boson / VEV | `higgs-mechanism.md` |
+| Higgs mechanism / unitary gauge / Higgs boson | `higgs-mechanism.md` |
+| Yukawa coupling / gauge-boson masses (m_W, m_Z) | `higgs-mechanism.md` |
 
 ## Open gaps (know before writing new content)
 
-- **Stub chapters**: `higgs-mechanism.md`, `qcd.md`, `standard-model.md` contain only planned headings. Earlier pages forward-reference them (gauge-boson masses, confinement, Yukawa couplings) — these are the highest-value missing content. Electroweak now derives the photon/Z coupling combinations; the Higgs derivation of their masses and selection as mass eigenstates remains open.
+- **Main sequence complete**: QCD and Standard Model are filled. Confinement is explained qualitatively, not derived. Earlier pages forward-reference them (confinement, full particle content) — these are the highest-value missing content. `higgs-mechanism.md` is now filled: it derives the W/Z masses (deferred from WI/electroweak) and the Yukawa fermion masses.
 - **Explicitly "given without proof"** (deferred by design): massive-vector propagator (`weak-interaction.md`), helicity↔chirality statement (`weak-interaction.md`), LSZ reduction (`perturbation-theory.md` footnote), general spin–statistics theorem (`qft.md`/`field-quantization.md`).
 - **Named but not computed**: symmetry factors (`perturbation-theory.md`).
 

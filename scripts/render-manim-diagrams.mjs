@@ -53,6 +53,8 @@ const diagrams = [
   { source: 'electroweak.py', scene: 'W3PhotonMismatch', output: 'w3-photon-mismatch.png', page: 'electroweak-unification' },
   { source: 'electroweak.py', scene: 'HyperchargeOffset', output: 'hypercharge-offset.png', page: 'electroweak-unification' },
   { source: 'electroweak.py', scene: 'NeutralFieldMixing', output: 'neutral-field-mixing.png', page: 'electroweak-unification' },
+  { source: 'higgs.py', scene: 'MexicanHatPotential', output: 'mexican-hat-potential.png', page: 'higgs-mechanism' },
+  { source: 'higgs.py', scene: 'GoldstoneModes', output: 'goldstone-modes.png', page: 'higgs-mechanism' },
   { source: 'math_refresher.py', scene: 'EulerCircle', output: 'euler-circle.png', page: 'appendix-math-complex' },
   { source: 'math_refresher.py', scene: 'EigenvectorScaling', output: 'eigenvector-scaling.png', page: 'appendix-math-linear-algebra' },
   { source: 'math_refresher.py', scene: 'RotationGenerator', output: 'rotation-generator.png', page: 'appendix-math-groups' },
