@@ -9,7 +9,7 @@ The steps are:
 1. **Compare the neutral weak coupling with electromagnetism.** Their different action on neutrinos and right-handed electrons rules out identifying $W^3$ with the photon.
 2. **Introduce a second charge and gauge field.** Hypercharge supplies the additional coupling needed to reproduce electric charges.
 3. **Combine the neutral fields.** One combination has the photon coupling; the other has the $Z$ coupling.
-4. **Read the physical interactions.** The photon preserves the electromagnetic coupling, while the $Z$ permits neutral weak scattering.
+4. **Read the physical interactions.** The photon preserves the electromagnetic coupling, while the $Z$ couples to neutral weak currents.
 5. **Identify the remaining mass problem.** The next chapter explains why the photon is massless while the $W$ and $Z$ are massive.
 
 We use $\hbar=c=1$, metric $(+,-,-,-)$, and the plus-sign convention for the covariant derivative used in QED and WI. Throughout, $e>0$ denotes the elementary charge; an electron has charge $-e$.
@@ -30,7 +30,7 @@ This couples $W^3$ to the neutrino and the left-chiral electron. There is no rig
 | $e_L$ | Nonzero | $-e$ |
 | $e_R$ | Zero | $-e$ |
 
-Changing the strength $g$ cannot fix this pattern. We need an additional neutral coupling that can cancel the neutrino's contribution in the electromagnetic combination and also reach the right-chiral electron.
+The $W^3$ field interacts with the left-chiral neutrino, but the photon does not. Conversely, $W^3$ does not interact with the right-chiral electron, but the photon does. Changing the strength $g$ cannot fix this pattern, so we cannot identify $W^3$ alone with the photon. We introduce another electrically neutral field, $B_\mu$, and form the photon from a combination of the two fields. In that combination, their neutrino couplings cancel, while $B_\mu$ supplies the coupling to the right-chiral electron.
 
 This is a motivation for extending the model, not a proof that there is only one possible extension. We will use the $SU(2)_L\times U(1)_Y$ structure of the **Glashow–Salam–Weinberg electroweak theory**. Its charge assignments and predictions must agree with experiment.
 
@@ -53,11 +53,13 @@ Introduce a $U(1)$ phase symmetry with charge **weak hypercharge**, denoted $Y$.
 
 $$\boxed{Q=T^3+\frac Y2.}$$
 
+The factor $1/2$ is a normalization convention, not a physical requirement. We could instead define $\widetilde Y=Y/2$ and write $Q=T^3+\widetilde Y$. The lepton doublet would then have $\widetilde Y=-1/2$ instead of $Y=-1$. Using that definition consistently in the coupling to $B_\mu$ gives the same physics.
+
 Here $Q$ is the dimensionless electric-charge operator; a component with eigenvalue $Q_f$ has charge $eQ_f$. Within a doublet, $Y$ multiplies the identity matrix. It therefore adds the same offset to both entries without mixing them.
 
 For the lepton doublet, choose $Y_L=-1$. The upper and lower charges become $1/2-1/2=0$ and $-1/2-1/2=-1$. For the right-chiral electron, $t_3=0$, so $Y_{e_R}=-2$ gives the required charge $-1$.
 
-We can make the same assignments for the first-generation quarks:
+We can also choose hypercharges to reproduce the observed charges of the up and down quarks. The table collects these assignments alongside the electron and its neutrino.[^generations][^neutrino-content]
 
 | Fields | $SU(2)_L$ type | $t_3$ for each entry | $Y$ | $Q_f=t_3+Y/2$ |
 | --- | --- | --- | --- | --- |
@@ -67,26 +69,26 @@ We can make the same assignments for the first-generation quarks:
 | $u_R$ | Singlet | $0$ | $+4/3$ | $+2/3$ |
 | $d_R$ | Singlet | $0$ | $-2/3$ | $-1/3$ |
 
-The other generations repeat this charge pattern. As in WI, we neglect neutrino masses and use the minimal fermion content without a right-chiral neutrino field. A singlet $\nu_R$ with $Y=0$, if added, would have no coupling to either electroweak gauge group.
-
 These assignments reproduce the known charges once we choose $Q=T^3+Y/2$. The gauge-group name alone does not determine them. Full quantum consistency also constrains the assignments across quarks and leptons; those checks are beyond this construction.[^charges]
 
 **Hypercharge is not electric charge.** In particular, a neutrino can have nonzero $Y$ while $Q_f=0$. The cancellation between $t_3$ and $Y/2$ will also cancel its photon coupling.
 
-<details>
-<summary>Checking the charge operator on a doublet</summary>
-
-For any doublet with common hypercharge $Y$, the charge matrix is
-
-$$Q=\begin{pmatrix}(1+Y)/2&0\\0&(Y-1)/2\end{pmatrix}.$$
-
-The two charges differ by one. Their average is $Y/2$. For $(u_L,d_L)$, the required average is $(2/3-1/3)/2=1/6$, hence $Y=1/3$. For $(\nu_{eL},e_L)$, the average is $-1/2$, hence $Y=-1$.
-
-For a singlet the matrix $T^3$ is zero, so $Y=2Q_f$. This gives the three right-chiral assignments in the table.
-
-</details>
-
 ## Making both symmetries local
+
+First consider the hypercharge transformation on its own. For a field $F$ with fixed hypercharge $Y_F$, multiply by a phase:
+
+$$F\longrightarrow e^{i\beta Y_F/2}F,\qquad
+\bar F\longrightarrow\bar F e^{-i\beta Y_F/2}.$$
+
+Here $\beta$ is the transformation parameter. The adjoint acquires the opposite phase because complex conjugation reverses the sign of $i$. For the lepton doublet, $Y_L=-1$, so both the neutrino and electron acquire the same factor $e^{-i\beta/2}$, without mixing.
+
+For constant $\beta$, the phase passes through the derivative. The two factors then cancel in the free kinetic term:
+
+$$i\bar F\gamma^\mu\partial_\mu F
+\longrightarrow i\bar F e^{-i\beta Y_F/2}\gamma^\mu e^{i\beta Y_F/2}\partial_\mu F
+=i\bar F\gamma^\mu\partial_\mu F.$$
+
+If $\beta$ varies with spacetime position, the derivative also acts on the phase, producing an extra term. As in QED, we need a compensating gauge field to make the kinetic term invariant under this local transformation.
 
 The product symbol in $SU(2)_L\times U(1)_Y$ means that we permit both types of transformation: an $SU(2)$ mixing and a hypercharge phase. They commute because the hypercharge is the same for both entries of a doublet. A field multiplet $F$ transforms as
 
@@ -145,6 +147,8 @@ The angle $\theta_W$ is the **weak mixing angle**. This change of basis retains 
 The coefficient of $A_\mu$ is $gs_Wt_3+g'c_WY/2$. To make it equal $e(t_3+Y/2)$, choose
 
 $$\boxed{e=gs_W=g'c_W,\qquad \tan\theta_W=\frac{g'}g.}$$
+
+These relations do not predict a numerical value for $\theta_W$. We must determine the weak mixing angle from experiment. Once $e$ and $\theta_W$ are known, they fix $g=e/\sin\theta_W$ and $g'=e/\cos\theta_W$. Thus we can describe the same two interaction strengths using either $(g,g')$ or $(e,\theta_W)$; the rotation relates these parameters rather than determining them without experimental input.
 
 With that choice, the interaction is exactly $-eQ_f\bar f\gamma^\mu f A_\mu$. Both electron chiralities have $Q_f=-1$, so both couple with the same electric charge. The neutrino has $Q_f=0$, so its two contributions cancel.
 
@@ -213,64 +217,6 @@ g_R^f=-s_W^2Q_f.$$
 
 The symbols $g_L^f,g_R^f$ are dimensionless coefficients; they are not new independent gauge couplings. Once $g$ and $g'$ are fixed, the charge assignments determine them. This is a testable consequence of electroweak unification: photon, charged weak, and neutral weak couplings follow from the same two parameters.[^neutral]
 
-## A neutrino can scatter without changing species
-
-Consider
-
-$$\nu_\mu+e^-\longrightarrow\nu_\mu+e^-.$$
-
-The muon-flavour neutrino remains a neutrino, and the electron remains an electron. A photon cannot connect the two currents because it has no direct coupling to the neutrino. The $Z$ has both required couplings:
-
-```feynman
-\begin{tikzpicture}
-\begin{feynman}
-\vertex (ni) at (-2,1.3) {$\nu_\mu$};
-\vertex (a) at (0,1.3);
-\vertex (nf) at (2,1.3) {$\nu_\mu$};
-\vertex (ei) at (-2,-1.3) {$e^-$};
-\vertex (b) at (0,-1.3);
-\vertex (ef) at (2,-1.3) {$e^-$};
-\diagram* {
-(ni) -- [fermion] (a) -- [fermion] (nf),
-(ei) -- [fermion] (b) -- [fermion] (ef),
-(a) -- [boson, edge label={$Z$}] (b),
-};
-\end{feynman}
-\end{tikzpicture}
-```
-
-*Neutral-current neutrino–electron scattering at tree level, with incoming particles on the left. Each fermion keeps its species, while the internal $Z$ transfers energy and momentum between the currents. The arrows indicate fermion flow.*
-
-We chose $\nu_\mu$ to separate this example from electron-neutrino elastic scattering, which also has a charged-$W$ contribution at tree level. The charged current pairs $\nu_\mu$ with a muon, so it does not supply that extra diagram for the external particles shown here.
-
-Experiments can observe the recoiling electron even when the outgoing neutrino escapes detection. In 1973, the Gargamelle collaboration announced evidence for weak neutral currents. That evidence supported the neutral interactions predicted by electroweak theory; it was not a direct observation of an on-shell $Z$. See [CERN's account of the discovery](https://timeline.web.cern.ch/discovery-weak-neutral-currents).
-
-The diagram establishes which coupling contributes. Predicting an event rate still requires an amplitude, spin sums, and the final-state phase space from [From Lagrangian to Experiment](lagrangian-to-experiment.md).
-
-<details>
-<summary>Writing the amplitude with the new neutral-current factors</summary>
-
-Let the incoming momenta be $k$ for the neutrino and $p$ for the electron, with outgoing momenta $k'$ and $p'$. The internal momentum is $q=k-k'=p'-p$. In the massless-neutrino approximation, the neutrino vertex is $-ig\gamma^\mu P_L/(2c_W)$. The electron vertex is $-ig\gamma^\nu(g_L^eP_L+g_R^eP_R)/c_W$.
-
-Using external spinors and the massive-vector propagator as in WI gives
-
-$$\begin{aligned}
-i\mathcal M={}&
-\left[\bar u_{\nu_\mu}(k')\left(-\frac{ig}{2c_W}\gamma^\mu P_L\right)u_{\nu_\mu}(k)\right]
-D^Z_{\mu\nu}(q)\\
-&\times\left[\bar u_e(p')\left(-\frac{ig}{c_W}\gamma^\nu(g_L^eP_L+g_R^eP_R)\right)u_e(p)\right].
-\end{aligned}$$
-
-At energies and momentum transfers small compared with $m_Z$, the supplied propagator result reduces to $D^Z_{\mu\nu}\simeq ig_{\mu\nu}/m_Z^2$. Thus
-
-$$i\mathcal M\simeq-\frac{ig^2}{2c_W^2m_Z^2}
-\left[\bar u_{\nu_\mu}(k')\gamma^\mu P_Lu_{\nu_\mu}(k)\right]
-\left[\bar u_e(p')\gamma_\mu(g_L^eP_L+g_R^eP_R)u_e(p)\right].$$
-
-This has the same current–current structure as the Fermi approximation in WI. The different chiral coefficients affect the angular distribution and rate. The mass $m_Z$ remains an input here; its origin and relation to $m_W$ come from the Higgs mechanism.
-
-</details>
-
 ## Assembling the electroweak Lagrangian
 
 We can now collect the gauge and fermion terms used above. Before symmetry breaking, they have the form
@@ -287,6 +233,18 @@ The first two terms describe the gauge fields. The $SU(2)$ field strength includ
 The full electroweak Lagrangian also contains a Higgs field, its potential, and its couplings to fermions. We have not supplied those terms yet. The expression above completes the gauge and fermion construction; it does not by itself describe the observed particle masses.
 
 Unification here means a common gauge theory whose fields combine into the photon, $W^\pm$, and $Z$, with related couplings. It does not mean that $g$ and $g'$ are equal or that low-energy electromagnetic and weak processes have equal strengths.
+
+The neutral-field construction introduced a useful technique: **changing the field basis**. We began with interactions written in terms of $W^3_\mu$ and $B_\mu$, then defined $A_\mu$ and $Z_\mu$ as two independent linear combinations of them. Substituting those definitions rewrote the same interaction as a photon term and a $Z$ term. We neither added nor removed a field; $W^3$ and $B$ remain expressible in terms of $A$ and $Z$. We chose this basis so that one combination couples to electric charge with coefficient $eQ_f$. The other has the neutral weak coupling derived above. The mixing angle requires experimental input, and the Higgs mechanism will explain why these combinations also describe particles with definite masses.
+
+WI ended with $W^+,W^-,W^3$. Here we added the hypercharge field $B$, then combined the two neutral fields $W^3,B$ into $Z,A$. We therefore have four electroweak gauge fields:
+
+| Fields | Interaction |
+| --- | --- |
+| $W^+,W^-$ | Charged weak interactions |
+| $Z$ | Neutral weak interactions |
+| $A$ (the photon) | Electromagnetic interactions |
+
+The charged fields remain as in WI. The neutral-field rotation keeps the number of fields unchanged: two before the rotation and two after it.
 
 ## The mass problem leads to the Higgs field
 
@@ -315,7 +273,11 @@ which differs from the original term for a general $\beta(x)$. The conjugate ter
 
 </details>
 
-The [Higgs mechanism](higgs-mechanism.md) supplies that field. Its vacuum configuration leaves electromagnetic charge unbroken while giving masses to the $W$ and $Z$; its fermion couplings produce charged-fermion masses. That chapter will derive these statements. Here we have established the coupling structure and shown how it permits neutral weak scattering while preserving the photon interactions from QED.
+The [Higgs mechanism](higgs-mechanism.md) supplies that field. Its vacuum configuration leaves electromagnetic charge unbroken while giving masses to the $W$ and $Z$; its fermion couplings produce charged-fermion masses. That chapter will derive these statements. Here we have established the coupling structure and identified the neutral weak couplings while preserving the photon interactions from QED.
+
+[^neutrino-content]: As in WI, we treat neutrinos as massless and include no separate right-chiral neutrino field. If we added a right-chiral field $\nu_R$ as an $SU(2)_L$ singlet with $Y=0$, all its weak-isospin generators and its hypercharge would vanish. It would therefore have no direct coupling to the electroweak gauge fields. This optional extension is not needed for the charge construction here.
+
+[^generations]: A **generation** is a set containing one charged lepton, its neutrino, one up-type quark, and one down-type quark. The particles in this table form the first generation. The second contains the muon, muon neutrino, charm quark, and strange quark; the third contains the tau, tau neutrino, top quark, and bottom quark. Corresponding particles have the same electric charges and electroweak assignments, although their masses differ. The charge construction below can be followed using only the particles in the table.
 
 [^charges]: These are the usual electroweak assignments in the convention $Q=T^3+Y/2$. Some texts absorb the factor $1/2$ into the definition of hypercharge. For example, [Tong's electroweak notes, §5.1](https://davidtong.org/pdfs/teaching/standard-model/standardmodel5.pdf) use hypercharges half as large with the corresponding change in the covariant derivative. The physical products of coupling and charge are unchanged. A **gauge anomaly** is a quantum failure of the classical gauge symmetry; cancellation across the fermion content is an additional consistency check, not derived here.
 
