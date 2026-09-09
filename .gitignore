@@ -12,3 +12,4 @@ docs/manim/media/
 media/
 __pycache__/
 .claude/settings.json
+*.code-workspace
