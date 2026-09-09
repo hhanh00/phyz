@@ -26,7 +26,7 @@ Reading order is set by the `sidebar` array in `docs/.vuepress/config.js`.
 12. `perturbation-theory.md` — interacting scalar ($\phi^3$), Dyson series, time ordering, Wick's theorem, propagator, vertex factor, QED rule dictionary. Natural units first glossed here (§1).
 13. `feynman-rules.md` — Feynman diagrams, Compton s/u-channels, QED Feynman rules, full algebraic derivation, loops, UV/IR divergences, renormalization preview. Added: spin/polarization completeness relations, Casimir's trick, Klein–Nishina formula.
 14. `weak-interaction.md` — beta decay, neutrinos, parity violation, $\gamma^5$/chiral projectors, helicity vs chirality, SU(2) gauge symmetry, Yang–Mills field strength + self-interactions, charged current, CKM matrix, Fermi (low-energy) limit.
-15. `electroweak-unification.md` — **STUB** (planned headings only).
+15. `electroweak-unification.md` — why W³ cannot be the photon; chiral charge assignments; hypercharge and Q=T³+Y/2; local SU(2)L × U(1)Y and Bμ; photon/Z mixing and e=g sin θW=g′ cos θW; neutral-current couplings; νμ–electron scattering diagram and amplitude; gauge+fermion Lagrangian; gauge/fermion mass obstruction leading to Higgs. Short algebra in expandable sections. Higgs selection of mass eigenstates and masses deferred to the next chapter.
 16. `higgs-mechanism.md` — **STUB**.
 17. `qcd.md` — **STUB**.
 18. `standard-model.md` — **STUB**.
@@ -51,6 +51,7 @@ Unusual notation is still glossed inline at first use in the main text (e.g. bra
 - Covariant derivative: QED $D_\mu=\partial_\mu+\frac{iq}{\hbar}A_\mu$; weak $D_\mu=\partial_\mu+igW_\mu$ (plus-sign convention, stated at `weak-interaction.md`).
 - Units: pages 1–9 keep $\hbar$ explicit (and often $c=1$); from `perturbation-theory.md` onward, natural units $\hbar=c=1$. Each page states its convention at the top.
 - Photon propagator in Feynman gauge: $-ig_{\mu\nu}/(k^2+i\epsilon)$.
+- Electroweak hypercharge: $Q=T^3+Y/2$, $D_\mu=\partial_\mu+igT^aW_\mu^a+ig'(Y/2)B_\mu$. Lepton doublet $Y=-1$, right electron $Y=-2$. Neutral mixing: $A=s_WW^3+c_WB$, $Z=c_WW^3-s_WB$; $e=gs_W=g'c_W$.
 - Spacetime diagrams: **x vertical, t horizontal** (see [[phyz-manim-setup]]).
 - Terminology: use "term"/"negative-energy solutions", not "branch" for the u/v solution parts (see [[phyz-terminology]]).
 
@@ -102,10 +103,12 @@ Unusual notation is still glossed inline at first use in the main text (e.g. bra
 | $\gamma^5$ / chiral projectors / V−A | `weak-interaction.md` |
 | SU(2) / generator / doublet / non-Abelian / Yang–Mills | `weak-interaction.md` |
 | CKM matrix / Fermi constant | `weak-interaction.md` |
+| hypercharge / Bμ / weak mixing angle / photon–Z mixing | `electroweak-unification.md` |
+| neutral-current chiral coefficients / νμ–electron scattering | `electroweak-unification.md` |
 
 ## Open gaps (know before writing new content)
 
-- **Stub chapters**: `electroweak-unification.md`, `higgs-mechanism.md`, `qcd.md`, `standard-model.md` contain only planned headings. Earlier pages forward-reference them (gauge-boson masses, $Z$/$W^3$/photon relation, confinement, Yukawa couplings) — these are the highest-value missing content.
+- **Stub chapters**: `higgs-mechanism.md`, `qcd.md`, `standard-model.md` contain only planned headings. Earlier pages forward-reference them (gauge-boson masses, confinement, Yukawa couplings) — these are the highest-value missing content. Electroweak now derives the photon/Z coupling combinations; the Higgs derivation of their masses and selection as mass eigenstates remains open.
 - **Explicitly "given without proof"** (deferred by design): massive-vector propagator (`weak-interaction.md`), helicity↔chirality statement (`weak-interaction.md`), LSZ reduction (`perturbation-theory.md` footnote), general spin–statistics theorem (`qft.md`/`field-quantization.md`).
 - **Named but not computed**: symmetry factors (`perturbation-theory.md`).
 
