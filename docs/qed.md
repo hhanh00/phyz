@@ -22,14 +22,53 @@ Two electrons that pass near each other come out moving in new directions. In qu
 
 *Two electrons scatter by exchanging a photon. The exchanged photon is internal: it is created and absorbed inside the process and never reaches a detector. Predicting how often the electrons deflect through a given angle needs a numerical factor for each vertex where the photon meets an electron line, and a factor for the internal photon line.*
 
-To turn a diagram like this into a number, we need a factor for each vertex and a factor for the internal photon line. This chapter produces both.
+To turn a diagram like this into a number, we need a factor for each vertex and a factor for the internal photon line. This chapter derives the QED interaction and quantizes the photon field; [Perturbation Theory](perturbation-theory.md) extracts the propagator and assembles the diagram factors.
 
 1. **The vertex factor** comes from an interaction term in the QED Lagrangian. Most of the chapter works out where that term comes from and why it has only one possible form.
-2. **The photon propagator** is the internal-line factor. Finding it means quantizing the photon field, which carries a complication the electron field did not: four potential components describe only two physical photons.
+2. **The photon field** supplies the internal-line factor. Quantizing it carries a complication the electron field did not: four potential components describe only two physical photons. The propagator is extracted later, after time ordering and contractions have been introduced.
 
 A third QED building block, the propagator for an internal *electron* line, already came out of [Field Quantization](field-quantization.md#the-spinor-field). It appears in processes such as Compton scattering rather than the exchange drawn above. The [Perturbation Theory](perturbation-theory.md) and [Feynman Rules](feynman-rules.md) pages assemble all three factors into amplitudes.
 
 We use natural units, $\hbar=c=1$, and metric $g_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$, so $k^2 = E_k^2 - |\mathbf k|^2$.
+
+The foundational distinction between spacetime labels and field-value spaces
+appears in [Quantum Field Theory: Fields and Quanta §Spacetime, components,
+and value spaces](qft.md#spacetime-components-and-value-spaces). QED brings
+several of those objects together, so the following recap collects the
+notation used most often in this chapter.
+
+<details>
+<summary>Expand the QED notation</summary>
+
+| Symbol | Meaning | Mathematical role |
+| --- | --- | --- |
+| $x^\mu$ | spacetime point | $x\in\mathbb R^{1,3}$, with $\mu=0,1,2,3$ |
+| $\psi(x)$ | electron field | four-component Dirac spinor, valued in $\mathbb C^4$ |
+| $\bar\psi=\psi^\dagger\gamma^0$ | Dirac adjoint | makes combinations such as $\bar\psi\psi$ Lorentz covariant |
+| $\gamma^\mu$ | gamma matrices | act on spinor components and carry a Lorentz index |
+| $A_\mu(x)$ | electromagnetic potential | Lorentz covector field; its four components are not four photons |
+| $F_{\mu\nu}$ | electromagnetic field strength | antisymmetric tensor, $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ |
+| $D_\mu$ | covariant derivative | $D_\mu=\partial_\mu+iqA_\mu$ |
+| $j^\mu$ | electric current | four-vector, $j^\mu=q\bar\psi\gamma^\mu\psi$ |
+| $\alpha(x)$, $\chi(x)$ | gauge functions | real-valued functions on spacetime |
+| $q$, $m$ | charge and mass | constants; $q$ sets the interaction strength |
+
+Repeated Lorentz indices are summed, so
+
+$$\bar\psi\gamma^\mu D_\mu\psi
+ =\sum_{\mu=0}^{3}\bar\psi\gamma^\mu D_\mu\psi.$$
+
+The position-space variable $x$ labels where a field is evaluated. The
+momentum-space variable $k^\mu$ labels a Fourier mode or an internal-line
+momentum, and $\varepsilon^\mu$ labels a polarization four-vector. A Lorentz
+index such as $\mu$ is different from a spinor component index: $\gamma^\mu$
+is a $4\times4$ matrix for each value of $\mu$.
+
+After quantization, hats distinguish operators when needed, for example
+$\hat\psi(x)$ and $\hat A_\mu(x)$. The fields remain operator-valued
+distributions; the indices still refer to the same Lorentz and spinor spaces.
+
+</details>
 
 The route to the interaction term runs through symmetry:
 
@@ -129,11 +168,34 @@ The photon potential now appears in the electron's dynamics. The next section ad
 
 ## QED Lagrangian
 
-The kinetic term for $A_\mu$ has to respect the same local symmetry, so build it from a quantity the gauge shift leaves alone. Under $A_\mu \to A_\mu - \frac1q\partial_\mu\alpha$, the field strength
+The potential $A_\mu$ now belongs to the same locally gauge-invariant theory as the electron field. Its kinetic term must therefore be the **same kinetic term** for two gauge-equivalent potentials. We do **not** modify the kinetic term itself: we transform $A_\mu$, then check that the existing Maxwell term is unchanged. The field strength here is the **same** $F_{\mu\nu}$ introduced in the free Maxwell theory. Write
+
+$$A'_\mu=A_\mu-\frac1q\partial_\mu\alpha.$$
+
+Substitute this transformed potential into the same definition:
 
 $$F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$$
 
-is unchanged: the added piece is proportional to $\partial_\mu\partial_\nu\alpha-\partial_\nu\partial_\mu\alpha$, which vanishes because mixed partial derivatives commute.
+$$\begin{aligned}
+F'_{\mu\nu}
+&=\partial_\mu A'_\nu-\partial_\nu A'_\mu\\
+&=F_{\mu\nu}-\frac1q\left(\partial_\mu\partial_\nu\alpha-\partial_\nu\partial_\mu\alpha\right)\\
+&=F_{\mu\nu}.
+\end{aligned}$$
+
+The added piece vanishes because mixed partial derivatives commute. Thus the transformation changes the potential's description but not the electromagnetic field strength.
+
+<details>
+<summary>Zero field strength does not require a constant potential</summary>
+
+Locally, $F_{\mu\nu}=0$ means that the potential can be a pure gradient,
+$A_\mu=\partial_\mu\chi$, not necessarily a constant. For example,
+$\chi=t^2$ gives $A_\mu=(2t,0,0,0)$ while
+
+$$F_{\mu\nu}=\partial_\mu\partial_\nu\chi-
+\partial_\nu\partial_\mu\chi=0.$$
+
+</details>
 
 The Maxwell term $-\tfrac14F_{\mu\nu}F^{\mu\nu}$ is therefore gauge invariant. It is the standard Lorentz-invariant term quadratic in the field strength. Gauge symmetry permits additional higher-order terms in an effective theory, so it constrains the Lagrangian rather than fixing it uniquely.
 
@@ -297,7 +359,17 @@ therefore gives a potential satisfying the Lorenz condition, with suitable bound
 
 In the quantum theory, this cannot become an exact identity between independent canonical field operators. The divergence contains $\dot{\hat A}^0$, which will be related to the momentum of $\hat A_0$. Setting that divergence identically to zero conflicts with the canonical commutator.[^operator-lorenz] We will instead impose a weaker condition on physical states.
 
-First, to make the canonical construction possible, add
+The gauge-fixing term is not unique. A Lorentz-covariant family is
+
+$$\mathcal L_\text{gf}=-\frac{1}{2\xi}(\partial_\mu A^\mu)^2.$$
+
+Different values of $\xi$ give different intermediate propagators and
+different treatments of the unphysical gauge directions. We choose
+$\xi=1$, called **Feynman gauge**, because it makes the four components
+decouple and gives the simplest canonical quantization. This is a choice of
+formalism, not a new physical interaction.
+
+For this choice, to make the canonical construction possible, add
 
 $$\mathcal L_\text{gf}=-\frac12(\partial_\mu A^\mu)^2.$$
 
@@ -309,7 +381,18 @@ the added term contains $-\tfrac12(\dot A^0)^2$. The missing velocity now appear
 
 $$\pi^0=-\partial\cdot A.$$
 
-We have made all four components dynamical. This enlarges the space of solutions we quantize, so **adding the term and selecting physical states must go together**. The fact that the term vanishes on Lorenz-obeying fields is not, by itself, a proof that the quantum predictions stay the same.
+We have made all four components dynamical. This enlarges the space of solutions we quantize, so **adding the term and selecting physical states must go together**. The fact that the term vanishes on Lorenz-obeying fields is not, by itself, a proof that the quantum predictions stay the same. The Gupta–Bleuler condition below removes the extra gauge-sector states; equivalently, in other quantization formalisms, Ward identities or BRST symmetry ensure that gauge-invariant observables do not depend on $\xi$.
+
+An arbitrary extra term would change the physical equations and could change
+the predictions. Gauge fixing is special because the original Maxwell action
+is constant along gauge orbits: all potentials $A_\mu+\partial_\mu\chi$ in
+one orbit describe the same physical field. The gauge-fixing term changes
+which representative is selected and adds motion in the redundant directions,
+but it does not remove the physical gauge-equivalence class. In a path
+integral, it changes the weighting of descriptions within each orbit; the
+physical-state restriction (or, in another formalism, the corresponding
+gauge-fixing determinant/BRST construction) removes that artificial change
+from gauge-invariant predictions.
 
 The added term also decouples the components: inside the action, the component-mixing part of the Maxwell term cancels against the gauge-fixing term after two integrations by parts. The equivalent Lagrangian is
 
@@ -325,7 +408,7 @@ Each component now obeys a massless wave equation,
 
 $$\Box A_\nu=0.$$
 
-This choice of gauge-fixing term is **Feynman gauge**. It gives four decoupled wave equations, which we can quantize using the oscillator construction. We still need to recover the two-polarization physical state space.
+This choice gives four decoupled wave equations, which we can quantize using the oscillator construction. We still need to recover the two-polarization physical state space.
 
 <details>
 <summary>Decoupling the components</summary>
@@ -353,6 +436,28 @@ $$\varepsilon^{(0)}=(1,0,0,0), \qquad \varepsilon^{(1)}=(0,1,0,0),$$
 $$\varepsilon^{(2)}=(0,0,1,0), \qquad \varepsilon^{(3)}=(0,0,0,1).$$
 
 The labels $1$ and $2$ are the transverse directions. The label $0$ is timelike, and $3$ is longitudinal, pointing along the spatial momentum. Promote each mode amplitude to an annihilation operator and its complex conjugate to a creation operator:
+
+<details>
+<summary>Example of the extra formal modes</summary>
+
+For momentum along $z$, the gauge-fixed equation $\Box A^\mu=0$ allows, as
+formal plane-wave solutions,
+
+$$A^\mu_{(0)}(x)=(1,0,0,0)e^{-ik\cdot x},\qquad
+A^\mu_{(3)}(x)=(0,0,0,1)e^{-ik\cdot x}.$$
+
+They lead to formal one-quantum states
+
+$$\hat c_0^\dagger(k)|0\rangle,\qquad
+\hat c_3^\dagger(k)|0\rangle.$$
+
+These are not physical photon states. The time-like and longitudinal modes
+are included so the four-component field can be quantized; the
+Gupta–Bleuler condition below removes their gauge-dependent combinations.
+The transverse states $\hat c_1^\dagger(k)|0\rangle$ and
+$\hat c_2^\dagger(k)|0\rangle$ satisfy the physical condition and remain.
+
+</details>
 
 $$\hat A_\mu(x)=\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2E_k}}\sum_{\lambda=0}^3
 \left[\hat c_\lambda(k)\varepsilon_\mu^{(\lambda)}(k)e^{-ik\cdot x}
@@ -407,72 +512,15 @@ An external photon in a scattering calculation therefore carries one of these tw
 
 *Gauge fixing gives four quantizable modes. The physical-state condition and identification of null gauge states recover the two physical photon polarizations.*
 
-### The propagator
+### Handoff to perturbation theory
 
-The propagator comes from contracting two field operators. As on the scalar field page, we calculate the time-ordered vacuum expectation value
-
-$$D_{\mu\nu}(x-y)=\langle0\rvert T\hat A_\mu(x)\hat A_\nu(y)\lvert0\rangle.$$
-
-The indices $\mu$ and $\nu$ specify the field component at each end. The time-ordering symbol $T$ places the later operator first.
-
-Each mode contributes the massless scalar momentum-space factor $i/(k^2+i\epsilon)$, its polarization vectors supply the two indices, and its commutator supplies the sign $-\eta_\lambda$. Summing the four modes and using the completeness relation for the polarization basis gives
-
-$$\boxed{D_{\mu\nu}(k)=\frac{-ig_{\mu\nu}}{k^2+i\epsilon}.} \tag{5}$$
-
-This is the **photon propagator in Feynman gauge**.
-
-<details>
-<summary>Summing the polarization modes</summary>
-
-Each mode obeys a massless wave equation, so it contributes the massless scalar momentum-space factor
-
-$$\frac{i}{k^2+i\epsilon}.$$
-
-Its polarization vectors supply the two indices, and its commutator supplies the sign $-\eta_\lambda$. Summing all four modes therefore gives
-
-$$D_{\mu\nu}(k)=\sum_{\lambda=0}^3(-\eta_\lambda)
-\varepsilon_\mu^{(\lambda)}\varepsilon_\nu^{(\lambda)*}\frac{i}{k^2+i\epsilon}.$$
-
-The four basis vectors span the four-vector component space, and their completeness relation is
-
-$$\sum_{\lambda=0}^3\eta_\lambda\,
-\varepsilon_\mu^{(\lambda)}\varepsilon_\nu^{(\lambda)*}=g_{\mu\nu}.$$
-
-For the explicit basis above, the timelike vector contributes the $+1$ time entry and the three spatial vectors contribute the three $-1$ entries. Applying the extra minus sign from the commutator gives the propagator above.
-
-</details>
-
-The denominator has its massless pole at $k^2=0$. The $i\epsilon$ prescription specifies how to pass the poles in the energy integral and implements the time ordering. The numerator carries the vector indices that connect to the vertices at either end of the photon line.
-
-### From ingredients to a prediction
-
-The chapter began with two free Lagrangians and one missing piece, the interaction. Local phase symmetry fixed the interaction, and quantizing the gauge-fixed field produced the propagator. Together with the electron propagator from [Field Quantization](field-quantization.md#the-spinor-field), the three factors that a QED scattering calculation needs are now in hand:
-
-| Factor | Expression | Source |
-| --- | --- | --- |
-| Electron–photon vertex | $-iq\gamma^\mu$ | interaction term $-q\bar\psi\gamma^\mu\psi A_\mu$ |
-| Internal electron line, momentum $r$ | $\dfrac{i(\not r+m)}{r^2-m^2+i\epsilon}$ | [Field Quantization](field-quantization.md#the-spinor-field) |
-| Internal photon line, momentum $k$ | $\dfrac{-ig_{\mu\nu}}{k^2+i\epsilon}$ | this chapter |
-
-Return to the two electrons from the opening diagram. At lowest order their amplitude has one photon line joining two vertices, one at each end:
-
-$$i\mathcal M = \big[\bar u(p_1')(-iq\gamma^\mu)u(p_1)\big]\,\frac{-ig_{\mu\nu}}{k^2+i\epsilon}\,\big[\bar u(p_2')(-iq\gamma^\nu)u(p_2)\big], \qquad k = p_1 - p_1'.$$
-
-Here $u(p)$ is an external-electron spinor from [The Dirac Equation](dirac-equation.md). Identical electrons also require a second diagram with the outgoing labels exchanged; the direct term is shown. Every tree-level QED amplitude is built from these same factors joined this way.
-
-The non-relativistic limit recovers Coulomb's law. When both electrons move slowly, the currents $\bar u\gamma^\mu u$ are dominated by their time components, $\bar u\gamma^0 u \approx 2m$, and the exchanged momentum is nearly spatial, $k^2 \approx -|\mathbf k|^2$. The amplitude reduces to
-
-$$\mathcal M \approx -(2m)^2\,\frac{q^2}{|\mathbf k|^2}.$$
-
-Dividing out the factor $(2m)^2$ from the spinor normalization leaves $-q^2/|\mathbf k|^2$. In the Born approximation, this quantity is minus the Fourier transform of the potential between the two electrons, so
-
-$$V(r) = \int\frac{d^3k}{(2\pi)^3}\,e^{i\mathbf k\cdot\mathbf r}\,\frac{q^2}{|\mathbf k|^2} = \frac{q^2}{4\pi r}.$$
-
-The propagator's $1/k^2$ is the momentum-space form of the $1/r$ potential. The result is positive, so like charges repel, and $q^2/4\pi$ is the fine-structure constant $\alpha$ in these units.
-
-An internal photon can carry off-shell momentum, $k^2\ne0$, so it does not obey the restrictions on a real, freely propagating photon. Diagrams use the full four-component propagator. Gauge invariance and current conservation ensure that the unphysical components produce no extra observable photon polarizations, and the propagator itself is a gauge-dependent intermediate quantity.
-
-The [next page](lagrangian-to-experiment.md) defines the quantities that connect an amplitude to a measured rate. [Perturbation Theory](perturbation-theory.md) derives the vertex and propagator factors from the S-matrix and assembles them into diagrams, and the [Feynman Rules page](feynman-rules.md) uses this propagator directly for internal photon lines.
+The photon field is now quantized, including its gauge fixing and physical-state
+restriction. The next step is to introduce time ordering and contractions, then
+extract the photon propagator from this field. [Perturbation Theory](perturbation-theory.md)
+performs that extraction and assembles the QED factors into amplitudes. The
+[Feynman Rules page](feynman-rules.md) then uses those factors in scattering
+calculations, and [From Lagrangian to Experiment](lagrangian-to-experiment.md)
+connects the resulting amplitude to measured rates.
 
 [^lorenz]: The Lorenz condition is named for Ludvig Lorenz. The spelling distinguishes his name from Hendrik Lorentz, whose name appears in Lorentz transformations.
 

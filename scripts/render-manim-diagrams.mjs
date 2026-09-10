@@ -17,6 +17,7 @@ const diagrams = [
   { source: 'concept_diagrams.py', scene: 'GaugeDescriptions', output: 'gauge-descriptions.png', page: 'qed' },
   { source: 'concept_diagrams.py', scene: 'PhotonQuantizationRoute', output: 'photon-quantization-route.png', page: 'qed' },
   { source: 'concept_diagrams.py', scene: 'FieldModes', output: 'field-modes.png', page: 'field-quantization' },
+  { source: 'concept_diagrams.py', scene: 'ScalarVacuumConfiguration', output: 'scalar-vacuum-configuration.png', page: 'qft' },
   { source: 'concept_diagrams.py', scene: 'ContractionsToDiagram', output: 'contractions-to-diagram.png', page: 'perturbation-theory' },
   { source: 'concept_diagrams.py', scene: 'StateAndField', output: 'state-and-field.png', page: 'qft' },
   { source: 'concept_diagrams.py', scene: 'AmplitudeInterference', output: 'amplitude-interference.png', page: 'feynman-rules' },

@@ -117,6 +117,37 @@ To see how the pole prescription reproduces the two orderings, integrate over co
 
 *The positive-energy pole lies below the real axis and the negative-energy pole above it. The sign of the time separation determines which half-plane closes the contour.*
 
+## The QED photon propagator
+
+The [QED page](qed.md#quantizing-the-gauge-fixed-field) supplied the
+gauge-fixed photon field and its four formal polarization modes. We can now
+use the contraction machinery just developed to extract its internal-line
+factor:
+
+$$D_{\mu\nu}(x-y)=\langle0\rvert T\hat A_\mu(x)\hat A_\nu(y)\lvert0\rangle.$$
+
+Each mode contributes the massless scalar factor $i/(k^2+i\epsilon)$. Its
+polarization vectors supply the indices $\mu$ and $\nu$, while the
+indefinite-sign commutator supplies $-\eta_\lambda$:
+
+$$D_{\mu\nu}(k)=\sum_{\lambda=0}^3(-\eta_\lambda)
+\varepsilon_\mu^{(\lambda)}\varepsilon_\nu^{(\lambda)*}
+\frac{i}{k^2+i\epsilon}.$$
+
+For the four-component basis used in QED,
+
+$$\sum_{\lambda=0}^3\eta_\lambda\,
+\varepsilon_\mu^{(\lambda)}\varepsilon_\nu^{(\lambda)*}=g_{\mu\nu}.$$
+
+Therefore, in Feynman gauge,
+
+$$\boxed{D_{\mu\nu}(k)=\frac{-ig_{\mu\nu}}{k^2+i\epsilon}.}$$
+
+The four components appear in this internal propagator because it belongs to
+the gauge-fixed formalism. Physical external photons still have only the two
+transverse polarizations. The internal momentum may be off shell, so it need
+not satisfy $k^2=0$.
+
 ## Building amplitudes: the dictionary
 
 Insert the Dyson series between the incoming and outgoing states. Apply Wick's theorem to each term. The surviving factors have three roles.
@@ -168,7 +199,7 @@ The electron propagator is $i(\not r+m)/(r^2-m^2+i\epsilon)$, where $\not r=\gam
 
 The interaction gives the vertex factor $-iq\gamma^\mu$. External electrons contribute $u(p)$ or $\bar u(p')$, and external photons contribute polarization vectors $\varepsilon_\mu(k)$ or their outgoing conjugates. These are the factors used on the [Feynman Rules page](feynman-rules.md).
 
-The [Field Quantization page](field-quantization.md#the-spinor-field) derives the electron propagator. The [QED page](qed.md#quantizing-the-photon-field) derives the photon propagator and explains its gauge fixing. With those free-field results, the expansion above produces the QED rules.
+The [Field Quantization page](field-quantization.md#the-spinor-field) derives the electron propagator. The [QED page](qed.md#quantizing-the-gauge-fixed-field) explains the photon’s gauge fixing, and the preceding section derives its propagator. With those free-field results, the expansion above produces the QED rules.
 
 We set out to derive the diagram factors from the Lagrangian, and the expansion has now produced them: propagators come from the free terms, vertex factors from the interaction, and external factors from the particle states. The [next page](feynman-rules.md) applies them to Compton scattering, then explains loop corrections and renormalization.
 

@@ -25,7 +25,7 @@ class HamiltonianFlow(Scene):
         mobs = []
 
         # --- title and formula ---
-        title = Text("Hamiltonian flow in state space", font="Helvetica",
+        title = Text("Hamiltonian flow in state space", font="Helvetica Neue",
                      color=GRAY, font_size=26).move_to([0, 3.35, 0])
         formula = MathTex(r"H = \tfrac{1}{2}\,\pi^2 + \tfrac{1}{2}\,\omega^2\phi^2",
                           color=GRAY).scale(0.9).next_to(title, DOWN, buff=0.22)
@@ -84,7 +84,7 @@ class HamiltonianFlow(Scene):
 
         # --- vacuum at the origin: the one state where the flow vanishes ---
         mobs.append(Dot([0, 0, 0], radius=0.05, color="#333333"))
-        mobs.append(Text("vacuum", font="Helvetica", color=GRAY,
+        mobs.append(Text("vacuum", font="Helvetica Neue", color=GRAY,
                          font_size=18).move_to([0.22, 0.5, 0]))
 
         # --- one state on the outer orbit, with the arrow H gives it ---
@@ -94,7 +94,7 @@ class HamiltonianFlow(Scene):
         mobs.append(Dot(p, radius=0.08, color=ORANGE))
         mobs.append(Arrow(p + 0.15 * t, p + 0.62 * t, color=ORANGE,
                           stroke_width=4, tip_length=0.16))
-        mobs.append(Text("one state", font="Helvetica", color=ORANGE,
+        mobs.append(Text("one state", font="Helvetica Neue", color=ORANGE,
                          font_size=18).move_to(p + np.array([-0.55, -0.45, 0])))
 
         # --- bottom note ---

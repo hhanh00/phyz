@@ -17,6 +17,36 @@ We first decompose a real scalar field into modes, promote its amplitudes to ope
 
 </details>
 
+## Notation recap
+
+<details>
+<summary>Expand the notation used on this page</summary>
+
+The spacetime point is
+
+$$x=(t,\mathbf x)\in\mathbb R^{1,3},$$
+
+and $\mathbf p$ is a spatial momentum. The associated four-momentum is
+$p^\mu=(E_p,\mathbf p)$, with
+
+$$E_p=\sqrt{|\mathbf p|^2+m^2},\qquad \omega_p=E_p/\hbar.$$
+
+| Symbol | Meaning | Before quantization | After quantization |
+| --- | --- | --- | --- |
+| $\phi(x)$ | real scalar field | number-valued field | $\hat\phi(x)$, an operator-valued distribution |
+| $\pi(x)=\dot\phi(x)$ | conjugate momentum density | number-valued field | $\hat\pi(x)$ |
+| $a(p)$ | amplitude of a momentum mode | complex number | $\hat a(p)$, annihilation operator |
+| $a^*(p)$ | complex-conjugate amplitude | complex number | $\hat a^\dagger(p)$, creation operator |
+| $\lvert 0\rangle$ | vacuum | not applicable | state annihilated by every $\hat a(p)$ |
+
+The Fourier labels $p$ and $-p$ are related for a real field, so they do not
+represent two independent complex modes. Independent sine and cosine
+coordinates, or equivalently a nonredundant choice of Fourier modes, give the
+independent real oscillators. The word “independent” applies to the normal
+modes of the free quadratic Hamiltonian; interactions can couple them.
+
+</details>
+
 ## The scalar field in modes
 
 The real scalar $\phi(x)$ obeys the Klein–Gordon equation

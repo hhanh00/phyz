@@ -19,7 +19,29 @@ PALE = '#eef3fa'
 
 
 def label(s, x, y, size=26, color=INK, width=None):
-    obj = Text(s, font_size=size, color=color)
+    replacements = {
+        '\\': r'\textbackslash{}', '&': r'\&', '%': r'\%', '$': r'\$',
+        '#': r'\#', '_': r'\_', '{': r'\{', '}': r'\}',
+        '~': r'\textasciitilde{}', '^': r'\textasciicircum{}',
+        '³': r'\textsuperscript{3}', '×': r'\ensuremath{\times}',
+        'θ': r'\ensuremath{\theta}', 'Λ': r'\ensuremath{\Lambda}',
+        'μ': r'\ensuremath{\mu}', 'π': r'\ensuremath{\pi}',
+        'ψ': r'\ensuremath{\psi}', 'φ': r'\ensuremath{\phi}',
+        'Δ': r'\ensuremath{\Delta}', 'ℳ': r'\ensuremath{\mathcal{M}}',
+        'ℓ': r'\ensuremath{\ell}', 'ε': r'\ensuremath{\varepsilon}',
+        'ν': r'\ensuremath{\nu}', 'γ': r'\ensuremath{\gamma}',
+        'ω': r'\ensuremath{\omega}', 'χ': r'\ensuremath{\chi}',
+        'λ': r'\ensuremath{\lambda}', '∑': r'\ensuremath{\sum}',
+        'ℏ': r'\ensuremath{\hbar}', '½': r'\ensuremath{\frac12}',
+        '₀': r'\ensuremath{{}_0}', '²': r'\ensuremath{{}^{2}}',
+        '−': '-', '′': "'", '…': r'\ldots',
+        '’': "'", '“': '``', '”': "''", '–': '--', '—': '---',
+    }
+    def escape(line):
+        return ''.join(replacements.get(char, char) for char in line)
+    lines = [Tex(r'\text{' + escape(line) + '}', font_size=size, color=color)
+             for line in s.split('\n')]
+    obj = VGroup(*lines).arrange(DOWN, buff=0.08)
     if width and obj.width > width:
         obj.scale_to_fit_width(width)
     return obj.move_to([x, y, 0])
@@ -148,6 +170,72 @@ class FieldModes(Scene):
             if i < 2:
                 self.add(math('+', 2.2, y-0.94, 30, MUTED))
         self.add(label('mode coordinate and frequency', 5.15, -3.7, 21, MUTED, 4.7))
+
+
+class ScalarVacuumConfiguration(Scene):
+    def construct(self):
+        heading(self, 'The scalar vacuum is a ground state for every mode',
+                'A lattice picture: two spatial directions, plus one field-value direction')
+        origin = np.array([-5.9, -2.45, 0])
+        ux = np.array([1.0, 0.34, 0])
+        uy = np.array([-0.55, 0.48, 0])
+        vz = np.array([0, 1.15, 0])
+        nx, ny = 6, 5
+        points = {}
+        for i in range(nx):
+            self.add(Line(origin + i*ux, origin + i*ux + (ny-1)*uy,
+                          color='#c7d2df', stroke_width=1.5))
+        for j in range(ny):
+            self.add(Line(origin + j*uy, origin + j*uy + (nx-1)*ux,
+                          color='#c7d2df', stroke_width=1.5))
+        for i in range(nx):
+            for j in range(ny):
+                p = origin + i*ux + j*uy
+                points[(i, j)] = p
+                self.add(Line(p - 0.20*vz, p + 0.30*vz,
+                              color=BLUE, stroke_width=2.2))
+                self.add(Line(p - 0.08*vz - np.array([0.08, 0, 0]),
+                              p - 0.08*vz + np.array([0.08, 0, 0]),
+                              color=BLUE, stroke_width=2))
+                self.add(Line(p + 0.18*vz - np.array([0.08, 0, 0]),
+                              p + 0.18*vz + np.array([0.08, 0, 0]),
+                              color=BLUE, stroke_width=2))
+                self.add(Ellipse(width=0.19, height=0.30, color=ORANGE,
+                                 stroke_width=1.5, fill_color=ORANGE,
+                                 fill_opacity=0.12).move_to(p + 0.05*vz))
+                self.add(Dot(p, color=INK, radius=0.045))
+        for i in range(nx):
+            for j in range(ny):
+                p = points[(i, j)]
+                if i + 1 < nx:
+                    self.add(Line(p, points[(i+1, j)], color=TEAL,
+                                  stroke_width=2.5))
+                if j + 1 < ny:
+                    self.add(Line(p, points[(i, j+1)], color=TEAL,
+                                  stroke_width=2.5))
+        self.add(Arrow(origin - 0.35*ux, origin + (nx-0.5)*ux,
+                       buff=0.05, color=MUTED, stroke_width=2),
+                 Arrow(origin - 0.35*uy, origin + (ny-0.5)*uy,
+                       buff=0.05, color=MUTED, stroke_width=2),
+                 Arrow(origin - 0.28*vz, origin + 2.0*vz,
+                       buff=0.05, color=ORANGE, stroke_width=2),
+                 label('x', -0.9, -2.85, 23, MUTED),
+                 label('y', -5.0, -0.15, 23, MUTED),
+                 math(r'\phi(x,y)', -6.15, -0.25, 29, ORANGE),
+                 label('field value', -6.0, 0.3, 20, ORANGE))
+        self.add(box(3.55, 0.25, 5.4, 3.4, BLUE),
+                 label('Vacuum state', 3.55, 1.42, 28, BLUE),
+                 math(r'\hat a_{\mathbf k}|0\rangle=0', 3.55, 0.72, 34),
+                 math(r'\langle0|\hat\phi|0\rangle=0,\quad\langle0|\hat\phi^2|0\rangle>0',
+                      3.55, 0.10, 25, width=4.8),
+                 label('Zero mean field, but nonzero quantum spread.',
+                       3.55, -0.48, 21, ORANGE, 4.7),
+                 label('The local oscillators are connected:\nneighboring values cannot vary freely.',
+                       3.55, -1.18, 22, TEAL, 4.7),
+                 math(r'H_{\mathrm{grad}}\propto\sum_{\langle ij\rangle}(\phi_i-\phi_j)^2',
+                      3.55, -2.10, 27, TEAL, width=4.8),
+                 label('The grid is a visualization of a field configuration,\nnot a collection of independent physical fields.',
+                       3.55, -3.02, 19, MUTED, 4.9))
 
 
 class ContractionsToDiagram(Scene):

@@ -4,6 +4,66 @@ A single-particle wave function cannot describe pair creation or annihilation. T
 
 For the electron field, these operators remove electrons and create positrons. This gives the negative-frequency solutions a precise role without a filled sea of negative-energy electrons.
 
+## Spacetime, components, and value spaces
+
+<details>
+<summary>Expand the notation</summary>
+
+Before discussing particular fields, it is useful to distinguish the point at
+which a field is evaluated from the kind of object the field returns. A
+spacetime point is
+
+$$x=(x^0,x^1,x^2,x^3)=(t,\mathbf x)\in\mathbb R^{1,3}.$$
+
+The superscripts on $x^\mu$ label spacetime components; they are not powers.
+A classical field is a function of $x$ whose values transform in some
+representation of the Lorentz group:
+
+| Field | Mathematical type before quantization | Components at each $x$ | Spin |
+| --- | --- | --- | --- |
+| real scalar $\phi(x)$ | $\mathbb R^{1,3}\to\mathbb R$ | one real number | $0$ |
+| complex scalar $\phi(x)$ | $\mathbb R^{1,3}\to\mathbb C$ | one complex number, or two real numbers | $0$ |
+| vector $A^\mu(x)$ | $\mathbb R^{1,3}\to\mathbb R^{1,3}$ | four-vector | $1$ |
+| Dirac spinor $\psi(x)$ | $\mathbb R^{1,3}\to\mathbb C^4$ | four spinor components | $\tfrac12$ |
+
+The four components of $\psi$ belong to **spinor space** $\mathbb C^4$;
+they are not the four spacetime components labelled by $\mu=0,1,2,3$.
+The matrices $\gamma^\mu$ act on those spinor components and carry a
+spacetime index so that $\gamma^\mu\partial_\mu\psi$ transforms as a
+spinor. Likewise, a vector's four entries are spacetime components, and
+raising or lowering its index uses the Minkowski metric.
+
+A **field value** is the value of a field at one point, such as $\phi(x)$.
+A **field configuration** is an entire assignment of field values over a
+region. In the canonical picture, a configuration on the time slice $t$ is
+often written
+
+$$\varphi(\mathbf x)=\phi(t,\mathbf x),$$
+
+so $\varphi$ is one point in an infinite-dimensional configuration space:
+each possible function $\mathbf x\mapsto\varphi(\mathbf x)$ is a different
+configuration. A wave functional $\Psi[\varphi]$ assigns an amplitude to
+such a whole configuration, just as an ordinary wave function assigns an
+amplitude to a particle position. In a path integral, one instead sums over
+whole spacetime configurations $x\mapsto\phi(x)$.
+
+After quantization, the fields acquire hats when useful in the notation:
+$\hat\phi(x)$, $\hat A^\mu(x)$, and $\hat\psi(x)$ are operator-valued
+distributions acting on a Hilbert (usually Fock) space of states. Their
+spacetime labels and component spaces remain the same, but their values are
+operators rather than ordinary numbers. Quantum fields are formally written
+at spacetime points, but mathematically they are operator-valued
+distributions. To obtain well-defined operators, we average them over a
+finite region using a smooth test function. For example,
+
+$$\hat\phi(f)=\int d^4x\,f(x)\hat\phi(x).$$
+
+Real detectors likewise have finite spatial and temporal resolution, so this
+smearing reflects physical measurement rather than a limitation of the
+theory.
+
+</details>
+
 ## Recap of Dirac Equation
 
 The free Dirac solution is a sum of plane waves. At each momentum and spin, $a_s(p)$ multiplies a positive-frequency $u$ solution and $b_s^*(p)$ a negative-frequency $v$ solution. These coefficients are still numbers: they specify a classical field and cannot yet remove or add a particle.
@@ -108,6 +168,66 @@ These are the source-free Maxwell equations. Their physical waves propagate at $
 
 </details>
 
+### Free scalar modes and the vacuum
+
+The harmonic-oscillator picture gives a concrete way to quantize a free
+scalar field. Fourier-expand one spatial snapshot as
+
+$$\phi(t,\mathbf x)=\int\frac{d^3k}{(2\pi)^3}\,q_{\mathbf k}(t)e^{i\mathbf k\cdot\mathbf x}.$$
+
+The quadratic free-field Hamiltonian becomes a sum of oscillator Hamiltonians,
+one for each independent Fourier mode:
+
+$$H=\sum_{\mathbf k}\hbar\omega_{\mathbf k}
+\left(\hat a^\dagger_{\mathbf k}\hat a_{\mathbf k}+\tfrac12\right),
+\qquad \omega_{\mathbf k}=\sqrt{|\mathbf k|^2+m^2}/\hbar.$$
+
+The vacuum is the state in which every mode occupies its oscillator ground
+state:
+
+$$\hat a_{\mathbf k}|0\rangle=0\qquad\text{for every }\mathbf k.$$
+
+The modes are **independent oscillators only for a free quadratic theory**,
+and “independent” refers to the diagonalization of the Hamiltonian, not to
+separate physical fields. A real field also obeys
+$q_{-\mathbf k}=q_{\mathbf k}^*$, so the $\mathbf k$ and $-\mathbf k$ terms
+are not two independent real modes. Interactions couple modes together. For
+example, a $\lambda\phi^4$ term produces products of four Fourier amplitudes
+whose momenta satisfy an overall conservation condition.
+
+Each oscillator has a formal zero-point contribution
+$\tfrac12\hbar\omega_{\mathbf k}$. In nongravitational QFT we normally
+normal-order the Hamiltonian and measure energy relative to the vacuum, so
+the vacuum energy is set to zero. Its absolute value becomes important when
+gravity is included.
+
+![A spatial scalar-field profile decomposes into Fourier modes, with each free mode behaving like a harmonic oscillator.](./manim/field-modes.png)
+
+*A spatial field profile is built from Fourier modes. The oscillator picture
+applies to the modes of a free field; interactions can couple them.*
+
+The same idea can be pictured in position space by putting one local field
+coordinate at each point of a spatial lattice. This is a useful visualization
+of a configuration, but the local oscillators are not independent: the
+gradient term in the Hamiltonian couples neighboring values. The independent
+oscillators of the free theory appear after changing to Fourier modes.
+
+This also separates the classical and quantum meanings of “vacuum.” A
+classical field might have the lowest-energy configuration
+$\phi_{\mathrm{cl}}(x,y)=0$ everywhere. The quantum vacuum is instead a
+state $|0\rangle$. It has zero mean field,
+$\langle0|\hat\phi(x)|0\rangle=0$, but nonzero fluctuations,
+$\langle0|\hat\phi(x)^2|0\rangle>0$. Thus it is not the statement that the
+field has the definite value zero everywhere; it is the ground state of all
+the coupled degrees of freedom, or equivalently of the independent Fourier
+modes.
+
+![A lattice visualization of a scalar-field configuration, with a tiny local oscillator at each spatial point and couplings between neighbors.](./manim/scalar-vacuum-configuration.png)
+
+*Each lattice site carries a local field coordinate. The connecting lines
+show why these local oscillators are coupled; Fourier transformation finds the
+independent normal modes in the free theory.*
+
 We have met these equations before: Klein–Gordon in [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
 
 The relation between transformation law and spin is the one developed in [§5](dirac-equation.md#_5-spinors). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
@@ -199,4 +319,4 @@ The field types differ in their operator algebra. Integer-spin fields use commut
 
 We can now construct the operator algebra, the state space, and the Hamiltonian. In particular, we must check that energy has a lower bound, resolving the problem in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
 
-The [next page](qft-action.md) starts with the scalar field and its action. The [Field Quantization page](field-quantization.md#the-spinor-field) develops the spinor algebra. The photon also has gauge redundancy, which we handle on the [QED page](qed.md#quantizing-the-photon-field).
+The [next page](qft-action.md) starts with the scalar field and its action. The [Field Quantization page](field-quantization.md#the-spinor-field) develops the spinor algebra. The photon also has gauge redundancy, which we handle on the [QED page](qed.md#quantizing-the-gauge-fixed-field).
