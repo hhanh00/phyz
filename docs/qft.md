@@ -26,6 +26,8 @@ representation of the Lorentz group:
 | vector $A^\mu(x)$ | $\mathbb R^{1,3}\to\mathbb R^{1,3}$ | four-vector | $1$ |
 | Dirac spinor $\psi(x)$ | $\mathbb R^{1,3}\to\mathbb C^4$ | four spinor components | $\tfrac12$ |
 
+In this text, $\phi$ and $\varphi$ denote scalar fields or scalar field configurations, while $\psi$ denotes a fermion (spinor) field. The change from $\phi$ to $\varphi$ is notation, not a change of field type; $\varphi(\mathbf x)$ specifically denotes a spatial configuration at fixed time in the canonical discussion below.
+
 The four components of $\psi$ belong to **spinor space** $\mathbb C^4$;
 they are not the four spacetime components labelled by $\mu=0,1,2,3$.
 The matrices $\gamma^\mu$ act on those spinor components and carry a
@@ -118,6 +120,24 @@ The opposite phase, $e^{+ip\cdot x/\hbar}$, corresponds to adding energy $E_p$ a
 The phases determine whether an operator creates or annihilates. The species labels follow the convention in [The Dirac Equation](dirac-equation.md): the $u$-family describes electrons and the $v$-family describes positrons.
 
 Both the field and its adjoint contain creation and annihilation terms. We retain the negative-frequency solutions, but use them to create positive-energy antiparticles.
+
+### Particles as field excitations
+
+For a free field, decompose a spatial configuration into independent wave
+modes. A mode is one wave pattern, labeled by momentum $\mathbf p$ in free
+space. Each mode evolves like a harmonic oscillator. Quantization promotes the
+mode amplitudes to operators, and the creation operator produces one quantum
+of that mode:
+
+$$|1_{\mathbf p}\rangle=\hat a^\dagger(\mathbf p)|0\rangle.$$
+
+Here $|0\rangle$ is the vacuum, $\hat a^\dagger(\mathbf p)$ creates one
+excitation with momentum $\mathbf p$, and $|1_{\mathbf p}\rangle$ is the
+corresponding one-particle state. A particle is therefore not a term in the
+Lagrangian or a field value at one point; it is a quantized excitation of a
+field. The quadratic part of the Lagrangian determines the free modes and
+their masses, while higher-order terms describe interactions among their
+excitations.
 
 ### What the promotion does not yet have
 

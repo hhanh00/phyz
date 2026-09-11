@@ -2,7 +2,7 @@
 
 In [Electroweak Unification](electroweak-unification.md), we identified the photon, $W^\pm$, and $Z$ and related their interactions. Their masses remained unexplained. Direct gauge-boson mass terms would violate the electroweak gauge symmetry, while an electron mass term joins left- and right-chiral fields with different electroweak charges.
 
-We now introduce a scalar field whose lowest-energy value is nonzero. Interactions with that vacuum value produce mass terms when we expand around the ground state, even though the original Lagrangian respects the full gauge symmetry. Fluctuations about the vacuum describe an additional particle, the Higgs boson. The field's vacuum value and the particle excitation play different roles; we will distinguish them throughout.
+We now introduce a scalar field whose lowest-energy value is nonzero. Interactions with that vacuum value produce mass terms when we expand around the ground state, even though the original Lagrangian respects the full gauge symmetry. These are different from explicit mass terms inserted directly into the Lagrangian: the mass terms here emerge from already-invariant interactions after the field is expanded around its vacuum value. Fluctuations about the vacuum describe an additional particle, the Higgs boson. The field's vacuum value and the particle excitation play different roles; we will distinguish them throughout.
 
 We use natural units, $\hbar=c=1$, the metric $(+,-,-,-)$, and the covariant-derivative conventions of the previous two chapters. The mass formulas below are at tree level, before quantum corrections.
 
@@ -25,15 +25,17 @@ V(\phi)=-\mu^2\phi^*\phi+\lambda(\phi^*\phi)^2,$$
 
 with $\mu^2>0$ and $\lambda>0$. The phase rotation leaves $\phi^*\phi$ unchanged, so $\mathcal L$ is invariant. The unusual part is the sign of the quadratic term. A positive $\mu^2$ in front of $-\phi^*\phi$ means the field configuration $\phi=0$ sits at a local maximum of $V$, not a minimum.
 
-The **vacuum** is the lowest-energy state. For a static, spatially uniform scalar field, derivative contributions to the energy vanish, so we find its classical vacuum by minimizing $V$. To find the minima, write $\phi^*\phi=\rho^2$ and minimize $V=-\mu^2\rho^2+\lambda\rho^4$. Treating $r=\rho^2$ as the variable gives $dV/dr=-\mu^2+2\lambda r=0$, hence
+The **vacuum** is the lowest-energy state. At the classical level, we find the corresponding vacuum field configuration by minimizing the potential. For a static, spatially uniform scalar field, derivative contributions to the energy vanish, so we minimize $V$. To find the minima, write $\phi^*\phi=\rho^2$ and minimize $V=-\mu^2\rho^2+\lambda\rho^4$. Treating $r=\rho^2$ as the variable gives $dV/dr=-\mu^2+2\lambda r=0$, hence
 
 $$\phi^*\phi=\frac{\mu^2}{2\lambda}\equiv\frac{v^2}{2}.$$
 
-The minimum is not a point but a circle in the complex plane: every $\phi$ with $|\phi|=v/\sqrt2$ has the same lowest energy. We use $v$ to parameterize the **vacuum expectation value**, the value of the field in the ground state; with our normalization, its magnitude is $v/\sqrt2$. We describe particles as excitations above that ground state. Choose the real point on the circle,
+The minimum is not a point but a circle in the complex plane: every $\phi$ with $|\phi|=v/\sqrt2$ has the same lowest energy. We use $v$ to parameterize the **vacuum expectation value**, the value of the field in the ground state; with our normalization, its magnitude is $v/\sqrt2$. The vacuum state means the lowest-energy state, not a state in which the field must have value zero. We describe particles as excitations above that ground state. Choose the real point on the circle,
 
 $$\langle\phi\rangle=\frac{v}{\sqrt2},$$
 
 taking the vacuum value real. The Lagrangian's $U(1)$ symmetry still holds, but this vacuum is not invariant under it: a phase rotation moves it to a different point on the circle. A symmetry of the Lagrangian that the chosen vacuum does not share is **spontaneously broken**. The potential still has the symmetry. The nonzero vacuum value specifies which member of the equal-energy, or **degenerate**, set we expand around.
+
+For the ideal uniform vacuum, this same minimum is chosen at every spacetime point, so $\phi(x)=v/\sqrt2$ is constant. Different choices around the circle describe different possible vacuum orientations; fluctuations around the chosen one are treated separately.
 
 ![The Mexican-hat potential V(φ) plotted over the complex φ plane. The centre φ=0 is a local maximum; the lowest energy lies on a circle of radius v/√2, the degenerate minima. One point on that circle is the chosen vacuum. Moving around the trough (the flat direction) costs no energy and gives the massless Goldstone mode χ; moving radially up the wall costs energy and gives the massive mode h.](./manim/mexican-hat-potential.png)
 
@@ -130,7 +132,39 @@ The key term in the main Lagrangian is therefore
 
 $$\mathcal L\supset-\frac14F_{\mu\nu}F^{\mu\nu}+\frac12q^2v^2A_\mu A^\mu.$$
 
-Its vector equation has the form $\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0$, with $m_A=qv$. The mass comes from the original gauge-invariant scalar kinetic term, evaluated around a nonzero vacuum. The Goldstone field did not simply vanish when we chose the gauge. A massless vector field has two polarizations, while a massive one has three, and the extra, longitudinal polarization is the mode that would otherwise have been the Goldstone boson. Counting the independent fields confirms this bookkeeping:
+Its vector equation has the form $\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0$, with $m_A=qv$. The mass comes from the original gauge-invariant scalar kinetic term, evaluated around a nonzero vacuum. The following three claims explain what happens to the Goldstone field.
+
+Before the gauge choice, the complex scalar contains the radial fluctuation $h$ and the phase fluctuation. In polar form,
+
+$$\phi(x)=\frac{v+h(x)}{\sqrt2}e^{i\theta(x)/v},$$
+
+where $\theta$ agrees with $\chi$ to first order in small fluctuations. The massless gauge field $A_\mu$ has two physical polarizations.
+
+First, the phase can be removed by a local gauge choice. Under
+
+$$\phi(x)\to e^{i\alpha(x)}\phi(x),$$
+
+the phase changes as $\theta/v\to\theta/v+\alpha$. Choosing $\alpha(x)=-\theta(x)/v$ gives
+
+$$\phi(x)\to\frac{v+h(x)}{\sqrt2}.$$
+
+This is unitary gauge. It removes $\theta$, and therefore $\chi$, from the scalar field displayed in the Lagrangian. The radial amount $v+h(x)$ is unchanged; only the orientation in the complex field-value plane has been rotated.
+
+Second, the gauge field changes at the same time:
+
+$$A_\mu\to A_\mu-\frac1q\partial_\mu\alpha
+=A_\mu+\frac{1}{qv}\partial_\mu\theta.$$
+
+Thus the Goldstone field did not simply disappear. The information carried by the varying phase is now contained in the gauge-field description. This is a change of variables or gauge choice, not the destruction of a physical degree of freedom.
+
+Third, after this change the Higgs kinetic term contains
+
+$$\frac12q^2v^2A_\mu A^\mu=\frac12m_A^2A_\mu A^\mu.$$
+
+The gauge field is therefore massive. A massless vector has two physical polarizations, while a massive vector has three. The additional longitudinal polarization is the role played by the former Goldstone degree of freedom. The bookkeeping is
+
+$$2\text{ (massless-vector polarizations)}+2\text{ (scalar degrees of freedom)}
+=3\text{ (massive-vector polarizations)}+1\text{ (scalar degree of freedom)}.$$
 
 | Before breaking | Degrees of freedom | After breaking | Degrees of freedom |
 | --- | --- | --- | --- |
