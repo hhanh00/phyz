@@ -2,6 +2,37 @@
 
 In [QED](qed.md), the photon couples to a current built from one charged fermion field. Weak interactions also connect different fermion species: a neutron can decay into a proton, an electron, and an antineutrino. We build an interaction that accounts for the particles and chiral preference seen in beta decay, then connect its strength to exchange of a heavy force carrier. We use natural units, $\hbar=c=1$.
 
+<details>
+<summary>Notation and mass dimensions</summary>
+
+In this table, $[X]$ means the **mass dimension** of $X$: its power of
+energy in natural units. In four spacetime dimensions the Lagrangian density
+has dimension $[\mathcal L]=4$.
+
+| Symbol | Meaning | Mathematical role | Mass dimension |
+| --- | --- | --- | ---: |
+| $x^\mu$ | spacetime point | $x\in\mathbb R^{1,3}$, $\mu=0,1,2,3$ | $-1$ |
+| $\partial_\mu$ | spacetime derivative | $\partial_\mu=\partial/\partial x^\mu$ | $1$ |
+| $p^\mu$, $k^\mu$, $q^\mu$ | particle, mode, or exchanged momentum | four-vectors | $1$ |
+| $e(x),\nu_e(x),u(x),d(x)$ | fermion fields | four-component Dirac spinor fields | $\tfrac32$ |
+| $\bar\psi$ | Dirac adjoint | $\bar\psi=\psi^\dagger\gamma^0$ | $\tfrac32$ |
+| $\gamma^\mu$, $\gamma^5$ | spinor matrices | act on Dirac components | $0$ |
+| $P_L$, $P_R$ | chiral projectors | $P_{L,R}=(1\mp\gamma^5)/2$ | $0$ |
+| $L$, $Q_L$ | left-chiral doublets | $L=(\nu_{eL},e_L)^T$, $Q_L=(u_L,d_L)^T$ | $\tfrac32$ |
+| $j^\mu$ | weak current | bilinear such as $\bar e_L\gamma^\mu\nu_{eL}$ | $3$ |
+| $W_\mu^a$, $W_\mu^\pm$ | weak gauge fields | $a=1,2,3$ labels the three $SU(2)$ generators | $1$ |
+| $T^a$ | $SU(2)$ generators | $T^a=\sigma^a/2$; act on doublet entries | $0$ |
+| $g$ | weak gauge coupling | coefficient in $D_\mu=\partial_\mu+igW_\mu^aT^a$ | $0$ |
+| $m_W$, $m_n$, $m_p$, $m_e$ | masses | parameters with dimensions of energy | $1$ |
+| $G_F$ | Fermi constant | low-energy four-fermion coupling | $-2$ |
+
+The $e$ in $e(x)$ denotes the **electron field**, while the $e$ in a charge
+such as $-e$ denotes the positive elementary-charge magnitude. The symbols
+$a,b,c$ label internal $SU(2)$ directions; $\mu,\nu$ label spacetime
+components. They are different kinds of indices.
+
+</details>
+
 The steps connect as follows:
 
 1. **Start with the observations.** Beta decay specifies the particles we must produce; parity and other weak-interaction measurements add a chiral preference.
@@ -80,7 +111,7 @@ A **polarized** sample has a preferred spin orientation instead of randomly orie
 
 $$\mathbf S\cdot\mathbf p_e\longrightarrow-\mathbf S\cdot\mathbf p_e.$$
 
-Thus the reversed experiment exchanges emission along the spin with emission against it, while retaining the same spin orientation. If the interaction preserved parity, those two directions would have equal rates. Wu and her collaborators observed this asymmetry in polarized cobalt-60 beta decay, in work published in 1957. The weak interaction therefore violates parity. This evidence comes from another beta-decay experiment, now measuring emission directions as well as energies. See the [NIST account of the experiment](https://www.nist.gov/pml/fall-parity/reversal-parity-law-nuclear-physics).
+Thus the reversed experiment exchanges emission along the spin with emission against it, while retaining the same spin orientation.[^mirror] If the interaction preserved parity, those two directions would have equal rates. Wu and her collaborators observed this asymmetry in polarized cobalt-60 beta decay, in work published in 1957. The weak interaction therefore violates parity. This evidence comes from another beta-decay experiment, now measuring emission directions as well as energies. See the [NIST account of the experiment](https://www.nist.gov/pml/fall-parity/reversal-parity-law-nuclear-physics).
 
 Parity violation tells us that the interaction distinguishes left from right. A Dirac field has two parts, called left- and right-chiral, which parity exchanges; we will define how to select them below. It does not, by itself, prove that only one chirality couples. The left-chiral charged current is a further empirical input, supported by weak-decay and neutrino measurements. We will build that choice into the theory.
 
@@ -103,6 +134,30 @@ $$\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3,\qquad
 P_L=\frac{1-\gamma^5}{2},\qquad P_R=\frac{1+\gamma^5}{2}.$$
 
 The four spacetime gamma matrices $\gamma^0\dots\gamma^3$ carry a spacetime index; $\gamma^5$ is their product, and its "5" is a conventional label, not a fifth direction — which is why there is no $\gamma^4$.
+
+It is useful to view $\gamma^5$ as a linear operator on the four-dimensional
+spinor space $\mathbb C^4$. It has two eigenvalues, $-1$ and $+1$. Each occurs
+twice: if their multiplicities are $n_-$ and $n_+$, then $n_-+n_+=4$, while
+$\operatorname{tr}(\gamma^5)=0$ gives $n_+-n_-=0$. The trace vanishes because
+$\gamma^0\gamma^5\gamma^0=-\gamma^5$ and the cyclic property of the trace
+leaves $\operatorname{tr}(\gamma^5)=-\operatorname{tr}(\gamma^5)$. Thus
+$n_-=n_+=2$. In a chiral basis,
+
+$$
+\gamma^5=\begin{pmatrix}
+-1&0&0&0\\
+0&-1&0&0\\
+0&0&+1&0\\
+0&0&0&+1
+\end{pmatrix},
+\qquad
+\mathbb C^4=\mathbb C^2_L\oplus\mathbb C^2_R.
+$$
+
+A general spinor is usually not an eigenvector of $\gamma^5$; it is a sum
+of a vector from each eigenspace. The projectors $P_L$ and $P_R$ extract
+those two components. This is an operation in spinor space, not a quantum
+field operator acting on a state.
 
 The useful properties are $(\gamma^5)^2=1$ and $(\gamma^5)^\dagger=\gamma^5$. Its eigenvalues are therefore $-1$ and $+1$. On the $-1$ part, $P_L=(1-(-1))/2=1$; on the $+1$ part, $P_L=(1-1)/2=0$. It keeps exactly the part we call left-chiral. $P_R$ does the reverse.
 
@@ -139,6 +194,32 @@ $$\psi_L=P_L\psi,\qquad \psi_R=P_R\psi,\qquad
 Chirality labels these two parts of the spinor. Each part is a two-component spinor, and the two transform oppositely under a boost; left and right name that distinction. Chirality is different from spin up/down along a chosen axis. It is also different from the upper/lower pair used for the rest solutions in [The Dirac Equation](dirac-equation.md): in that standard basis, $\gamma^5$ mixes the upper and lower pairs. A change to a **chiral basis** makes $\gamma^5$ diagonal, so the left and right parts occupy separate pairs of entries. The projectors select the same physical chiral parts in either basis.
 
 **Helicity** describes spin relative to the particle's own momentum: positive helicity means aligned, and negative helicity means opposed. For a massive particle, an observer who overtakes it can reverse its momentum without reversing its spin, changing the helicity label. Chirality instead labels the spinor's transformation under rotations and boosts. In the massless limit, a left-chiral field annihilates negative-helicity particles and creates positive-helicity antiparticles. For massive particles, a state of definite helicity generally contains both chiral components. We neglect neutrino masses in the processes discussed here.
+
+<details>
+<summary>Helicity versus chirality</summary>
+
+Helicity compares a particle's spin with its direction of motion:
+
+$$h\propto\frac{\mathbf S\cdot\mathbf p}{|\mathbf p|}.$$
+
+Spin aligned with momentum gives positive helicity; spin opposed to momentum gives negative helicity. For a massive particle, helicity depends on the observer. An observer moving faster than the particle can see its momentum reverse while its spin orientation remains unchanged, so the particle's helicity changes sign.
+
+Chirality is instead an intrinsic property of a spinor. The operators
+
+$$P_L=\frac{1-\gamma^5}{2},\qquad P_R=\frac{1+\gamma^5}{2}$$
+
+extract its left- and right-chiral components. These components transform differently under Lorentz transformations; chirality is therefore not simply spin up or spin down along a chosen axis.
+
+For a massless particle, chirality and helicity coincide for particles:
+
+$$\text{left-chiral particle}\leftrightarrow\text{negative helicity},\qquad
+\text{right-chiral particle}\leftrightarrow\text{positive helicity}.$$
+
+The relationship is reversed for antiparticles. Consequently, a left-chiral field annihilates negative-helicity particles and creates positive-helicity antiparticles. This is why the left-chiral weak interaction produces left-helicity neutrinos and right-helicity antineutrinos when neutrino masses are neglected.
+
+For a massive fermion, a definite-helicity state generally contains both chiral components. In the ultra-relativistic limit, the unwanted component is suppressed by roughly $m/E$, so helicity is a good approximation to chirality, but they are not exactly the same. In this chapter we neglect neutrino masses, so the massless correspondence is sufficient.
+
+</details>
 
 **Given without proof:** the relation between chirality and particle/antiparticle helicity above. Proving it requires solving the Dirac equation in a helicity basis and identifying the particle and antiparticle modes, a longer calculation than the projector algebra here.
 
@@ -192,8 +273,6 @@ $$\begin{aligned}
 
 </details>
 
-The factor $1-\gamma^5$ gives the name **vector minus axial vector**, or **V−A**. The $\gamma^\mu$ term is a **vector**: under a parity flip its spatial components change sign, like position. The $\gamma^\mu\gamma^5$ term is an **axial vector**: its spatial components keep their sign, like spin or angular momentum. Mixing the two, with a relative minus, produces a current with no definite parity.
-
 Parity exchanges left and right chirality. Because the charged weak interaction has no corresponding right-handed current, it does not preserve parity. A left-handed neutrino field also creates right-helicity antineutrinos in the massless limit, so this coupling includes the antineutrino in beta decay.
 
 The chiral choice comes from experiment. Extending gauge symmetry alone does not determine which chiral fields participate.
@@ -210,7 +289,9 @@ $$\mathcal L_{\mathrm{interaction}}\propto
 
 The coefficient sets the interaction strength; the conjugate term includes the reverse transitions. This is a **four-fermion interaction** because it contains four fermion fields. It treats the two parts of the decay as a single interaction at one spacetime point. With a strength determined from measurements, this gives Fermi's low-energy description of beta decay. We have introduced no new force carrier at this step.
 
-To go beyond this direct description, we propose that **a force-carrying field connects the two currents**, much as the photon connects currents in QED. One current couples to the carrier at one vertex, and the other current couples to it at another. An exchanged particle joins the vertices. We call this weak force carrier the $W$.
+To go beyond this direct description, we now hypothesize that **a force-carrying field connects the two currents**, much as the photon connects currents in QED. One current couples to the carrier at one vertex, and the other current couples to it at another. An exchanged particle joins the vertices. We will denote this proposed weak force carrier by $W$; its field content, couplings, and mass will be derived below.
+
+The four-fermion vertex is not wrong or merely a diagrammatic shortcut: it is the appropriate low-energy description. The $W$-exchange picture is a hypothesis about the more fundamental, shorter-distance interaction. At energies much smaller than $m_W$, the internal $W$ propagator is approximately constant, so its two vertices reduce to the same effective four-fermion interaction.
 
 Charge conservation tells us which charge it must carry in beta decay. The quark changes from charge $-e/3$ to $+2e/3$, so the exchanged carrier takes charge $-e$: it is a $W^-$. At the other vertex, that charge goes into the electron, while the antineutrino is neutral.
 
@@ -219,6 +300,23 @@ If the carrier is very massive compared with the energies involved, the exchange
 We could stop here and write a model with a charged $W$ field and its couplings to the two currents. That field describes both $W^-$ and its antiparticle $W^+$. For low-energy beta decay, this is enough to describe the exchange. To describe higher-energy processes too, we need to examine the limits of this model.
 
 We want the theory to work when there is enough energy to produce the carriers themselves. A massive spin-1 particle has an additional polarization, called longitudinal, that the photon does not have. In a model with only the massive $W$ and the fermion couplings written above, some calculated scattering amplitudes involving this polarization grow too rapidly with energy. Eventually, the lowest-order calculations exceed the bounds required for consistent probabilities. This signals a breakdown of the approximation: we need additional physics or a different treatment at those energies.
+
+<details>
+<summary>Why a massive vector has a longitudinal polarization</summary>
+
+The distinction comes from the polarization constraints. For a massive vector,
+
+$$k^2=m^2,qquad k\cdot\varepsilon=0.$$
+
+In the particle's rest frame, $k^\mu=(m,0,0,0)$, so the second condition sets $\varepsilon^0=0$ but leaves three independent spatial directions. These are the two transverse polarizations and one longitudinal polarization. For motion along the $z$-axis, a convenient longitudinal choice is
+
+$$\varepsilon_L^\mu=\left(\frac{|\mathbf k|}{m},0,0,\frac{E}{m}\right),$$
+
+which still satisfies $k\cdot\varepsilon_L=0$.
+
+For comparison, the [earlier massless photon treatment](qed.md#counting-a-free-photons-polarizations) has $k^2=0$ and also imposes $k\cdot\varepsilon=0$. The massless gauge redundancy $\varepsilon^\mu\sim\varepsilon^\mu+\alpha k^\mu$ removes the remaining non-transverse direction, leaving only two physical polarizations. A massive $W$ has no such removable longitudinal mode, so its third polarization is physical.
+
+</details>
 
 **This is a theoretical consistency check, not a report that the model failed a beta-decay experiment.** We find the limitation by calculating consequences of the proposed model. Experiments have a separate role: they determine which extension describes nature. The high-energy argument alone does not uniquely select SU(2).
 
@@ -291,6 +389,8 @@ $$\partial_\mu(UL)=U\partial_\mu L+(\partial_\mu U)L.$$
 
 The extra term spoils the invariance. As in QED, we introduce compensating fields and include them in a modified derivative, called the **covariant derivative**, so that changes in our description do not alter the physics.
 
+Conceptually, this is similar to working in a rotating or otherwise non-inertial frame. When the frame changes from place to place, differentiating a quantity produces extra terms, and a connection term keeps track of how to compare descriptions at neighboring points. In mechanics those terms appear as inertial forces; here the compensating connection is the gauge field. The analogy concerns the method of introducing a connection, not the underlying physics: the gauge field can have a physical field strength and propagating particles.
+
 The number of fields comes from the symmetry. SU(2) has three **generators**, three independent matrix directions for infinitesimal transformations. Each needs its own compensating field:
 
 | Symmetry | Independent generators | Gauge fields |
@@ -303,6 +403,51 @@ Each gauge field has four spacetime components indexed by $\mu$. The superscript
 $$D_\mu=\partial_\mu+ig\left(W_\mu^1T^1+W_\mu^2T^2+W_\mu^3T^3\right).$$
 
 Here $T^1,T^2,T^3$ are the generator matrices and $g$ sets the coupling strength. We have not added $W^3$ separately to fix a decay diagram: it enters with the other two because we chose local SU(2).
+
+<details>
+<summary>Expanding the matrix-valued four-vector</summary>
+
+The notation $W_\mu$ combines two kinds of information. The index $\mu$ tells us which spacetime component we are using, while the matrix structure acts on the two entries of the weak doublet. For each fixed $\mu$,
+
+$$
+W_\mu=W_\mu^aT^a
+=\frac12
+\begin{pmatrix}
+W_\mu^3 & W_\mu^1-iW_\mu^2\\
+W_\mu^1+iW_\mu^2 & -W_\mu^3
+\end{pmatrix}.
+$$
+
+Thus $W_\mu$ means four separate $2\times2$ matrices:
+
+$$
+W_0,\qquad W_1,\qquad W_2,\qquad W_3.
+$$
+
+They act on the doublet
+
+$$
+L=\begin{pmatrix}\nu_{eL}\\ e_L\end{pmatrix}
+$$
+
+one spacetime component at a time. For example,
+
+$$
+D_\mu L
+=\begin{pmatrix}
+\partial_\mu\nu_{eL}\\
+\partial_\mu e_L
+\end{pmatrix}
++\frac{ig}{2}
+\begin{pmatrix}
+W_\mu^3\nu_{eL}+(W_\mu^1-iW_\mu^2)e_L\\
+(W_\mu^1+iW_\mu^2)\nu_{eL}-W_\mu^3e_L
+\end{pmatrix}.
+$$
+
+The fields $\nu_{eL}$ and $e_L$ are still spinors; the displayed matrix multiplication concerns only which weak species are mixed.
+
+</details>
 
 A gauge transformation changes the fermion and gauge fields together as an equivalent description. Actual particle transitions follow from the interaction terms we obtain next, and conserve energy, momentum, and electric charge.
 
@@ -544,5 +689,7 @@ The large $W$ mass suppresses low-energy amplitudes through $1/m_W^2$. The weak 
 We have recovered the direct low-energy interaction from an exchange theory, while retaining the particle content and chiral preference that motivated it. Computing the neutron lifetime or the detailed spectrum still requires the nucleon structure and final-state phase space; we have not calculated those observables here.
 
 The same charged-current coupling produces muon decay, $\mu^-\to\nu_\mu+e^-+\bar\nu_e$, with a muon–neutrino current in place of the quark current. Weak interactions also include neutral-current processes mediated by the $Z$. The next chapter develops the neutral sector and its relation to electromagnetism; the [Higgs chapter](higgs-mechanism.md) explains the origin of the gauge-boson masses used here.
+
+[^mirror]: The “mirror experiment” is a transformed comparison, not necessarily a second apparatus physically reflected in a laboratory. The experiment measures the parity-sensitive correlation $\mathbf S\cdot\mathbf p_e$: parity changes its sign, so parity conservation would require equal rates for emission along and opposite to the nuclear spin. Wu’s 1957 cobalt-60 experiment observed the asymmetry. The 1958 Goldhaber experiment measured the helicity of neutrinos produced in electron capture, and later beta-decay, muon-decay, and neutrino-scattering experiments reinforced the left-chiral structure of the charged weak interaction. Electrons with either spin or helicity can still be observed through other interactions; the asymmetry concerns how the weak interaction couples to the corresponding chiral components.
 
 [^valence]: A neutron has **valence-quark content** $udd$ and a proton $uud$: the net quark numbers after subtracting antiquarks of each species. The full bound state also contains gluons and quark–antiquark contributions, which belong to the discussion of [Quantum Chromodynamics](qcd.md).
