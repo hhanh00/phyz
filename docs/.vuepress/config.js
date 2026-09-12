@@ -19,6 +19,7 @@ export default {
   theme: defaultTheme({
     navbar: [
       { text: 'Home', link: '/' },
+      { text: 'Quiz', link: '/quiz.html' },
       {
         text: 'Foundations',
         children: [
