@@ -2,47 +2,84 @@
 
 Since it's a recap, there are no proofs here.
 
-- Classical System
+We use **natural units** $c=\hbar=1$ throughout.
+
+- **Classical System**
   - Given the force laws and suitable initial position and velocity, the equations determine future and past motion wherever a unique solution exists.
-- Newtonian Formulation
+- **Newtonian Formulation**
   - For a constant-mass particle in an inertial frame, $\mathbf F = m\mathbf a$.
   - Tracking forces and constraints can become cumbersome in complicated systems.
   - The vector law does not depend on a particular choice of Cartesian axes; its component expressions depend on the coordinates used.
-- Lagrangian Formulation
+- **Lagrangian Formulation**
   - For ordinary particles with standard kinetic energy and a velocity-independent potential, $L = K - V$. More general systems can require other forms of $L$.
-  - Action: $S = \int_{t_i}^{t_f} L(q,\dot q,t)\,dt$.
-  - Physical trajectories make the action stationary: $\delta S = 0$. A stationary point need not be a minimum or maximum.
+  - **Action**: $S = \int_{t_i}^{t_f} L(q,\dot q,t)\,dt$.
+  - Physical trajectories make the **action stationary**: $\delta S = 0$. A stationary point need not be a minimum or maximum.
+  - Stationary action gives the **Euler–Lagrange equations**: $\dfrac{d}{dt}\dfrac{\partial L}{\partial \dot q_i}-\dfrac{\partial L}{\partial q_i}=0$.
   - The usual variational derivation fixes the endpoint positions. These are boundary conditions for the variation, not initial conditions for predicting motion; we normally solve the resulting equations using initial positions and velocities.
-  - We choose generalized coordinates and encode the dynamics in $L$, often avoiding explicit constraint forces.
-- Hamiltonian Formulation
-  - Define the canonical momenta $p_i = \partial L / \partial \dot q_i$. When these relations can be inverted for the velocities, use $(q_i,p_i)$ as phase-space coordinates.
+  - We choose **generalized coordinates** and encode the dynamics in $L$, often avoiding explicit constraint forces.
+- **Hamiltonian Formulation**
+  - Define the **canonical momenta** $p_i = \partial L / \partial \dot q_i$. When these relations can be inverted for the velocities, use $(q_i,p_i)$ as phase-space coordinates.
   - The Hamiltonian is $H(q,p,t) = \sum_i p_i\dot q_i - L$, with the velocities expressed in terms of $q,p,t$. For standard kinetic energy and a velocity-independent potential in time-independent coordinates, $H = K + V$; this equality is not universal.
   - For each degree of freedom, replace a second-order ordinary differential equation with two first-order ordinary differential equations: $\dot q_i = \partial H / \partial p_i$ and $\dot p_i = -\partial H / \partial q_i$.
-  - The system follows a trajectory in $(q,p)$ phase space. Along that trajectory, $dH/dt = \partial H/\partial t$, so $H$ stays constant when it has no explicit time dependence.
-- Quantum System
+  - The system follows a trajectory in $(q,p)$ **phase space**. Along that trajectory, $dH/dt = \partial H/\partial t$, so $H$ stays constant when it has no explicit time dependence.
+- **Quantum System**
   - A quantum state generally predicts a distribution of measurement outcomes. Position and momentum cannot both have arbitrarily sharp distributions. An isolated state's evolution under the Schrödinger equation is deterministic, even though individual measurement outcomes are generally probabilistic.
-  - A pure state is represented by a normalized vector $|\phi\rangle$, up to an overall phase. A single measurement does not reveal that entire vector; mixed states require density operators.
-  - Observables are self-adjoint linear operators (Hermitian matrices in finite dimensions), so their possible measured values are real.
+  - A **pure state** is represented by a normalized vector $|\phi\rangle$, up to an overall phase. A single measurement does not reveal that entire vector; mixed states require density operators.
+  - Observables are **self-adjoint linear operators** (Hermitian matrices in finite dimensions), so their possible measured values are real.
   - A linear operator maps vectors in its domain to vectors. Its output need not be normalized and can be zero, so it is not automatically another physical state.
-  - An eigenvector satisfies $\hat A|a_n\rangle = a_n|a_n\rangle$. The nonzero vector keeps its direction under the operator, and $a_n$ is its eigenvalue. General operators can have complex eigenvalues, but self-adjoint observables have real ones.
+  - An **eigenvector** satisfies $\hat A|a_n\rangle = a_n|a_n\rangle$: the operator maps the nonzero vector to a scalar multiple of itself, and $a_n$ is its **eigenvalue**. General operators can have complex eigenvalues, but self-adjoint observables have real ones.
   - For an observable with a discrete orthonormal eigenbasis, expand the state itself as $|\phi\rangle = \sum_n c_n|a_n\rangle$, where $c_n = \langle a_n|\phi\rangle$.
-  - For a nondegenerate eigenvalue $a_n$, the probability of measuring it is $|c_n|^2$. The coefficient $c_n$ is a probability amplitude. For a degenerate eigenvalue, sum $|c_n|^2$ over an orthonormal basis of its eigenspace.
-  - Applying $\hat A$ to a state is not a model of performing a measurement. In an ideal projective measurement, the observed outcome selects an eigenspace, and projection followed by normalization gives the conditional state after measurement.
+  - For a nondegenerate eigenvalue $a_n$, the probability of measuring it is $|c_n|^2$. The coefficient $c_n$ is a **probability amplitude**. For a degenerate eigenvalue, sum $|c_n|^2$ over an orthonormal basis of its eigenspace.
+  - Applying $\hat A$ to a state is not a model of performing a measurement. In an **ideal projective measurement**, the observed outcome selects an eigenspace, and projection followed by normalization gives the conditional state after measurement.
   - Useful examples of observables:
-    - Position: possible outcomes are positions in space. In the position representation, $(\hat x\phi)(x) = x\phi(x)$.
-    - Momentum: possible outcomes are momenta. In the position representation for a particle on a line, $(\hat p\phi)(x) = -i\hbar\,\partial_x\phi(x)$.
-  - The wavefunction $\phi(x) = \langle x|\phi\rangle$ expresses the state in the position basis. It is not the result of applying $\hat x$ to the state.
-  - The momentum-space wavefunction $\tilde\phi(p) = \langle p|\phi\rangle$ expresses the same state in a different basis. A Fourier transform relates these two wavefunctions.
-  - Position and momentum on an infinite line have continuous spectra and use generalized eigenstates. Here $|\phi(x)|^2$ is a probability density: the probability of finding the particle in a region $R$ is $\int_R |\phi(x)|^2\,dx$.
-  - Evolution of a quantum system
+    - **Position:** possible outcomes are positions in space. In the position representation, $(\hat x\phi)(x) = x\phi(x)$.
+    - **Momentum:** possible outcomes are momenta. In the position representation for a particle on a line, $(\hat p\phi)(x) = -i\,\partial_x\phi(x)$.
+  - The **wavefunction** $\phi(x) = \langle x|\phi\rangle$ expresses the state in the position basis. It is not the result of applying $\hat x$ to the state.
+  - The **momentum-space wavefunction** $\tilde\phi(p) = \langle p|\phi\rangle$ expresses the same state in a different basis. A **Fourier transform** relates these two wavefunctions.
+  - Position and momentum on an infinite line have continuous spectra and use generalized eigenstates. Here $|\phi(x)|^2$ is a **probability density**: the probability of finding the particle in a region $R$ is $\int_R |\phi(x)|^2\,dx$.
+  - **Evolution of a quantum system**
     - The initial state determines how an isolated system evolves, so we usually study its time dependence.
-    - The Schrödinger equation governs the time evolution of the state $|\phi(t)\rangle$.
-- Harmonic Oscillator
-  - Important model system and the basis for ladder-operator quantization
+    - The **Schrödinger equation** governs the time evolution of the state: $i\partial_t|\phi(t)\rangle=\hat H|\phi(t)\rangle$.
+- **Harmonic Oscillator**
+  - Important model system and the basis for **ladder-operator quantization**
   - Restoring force proportional to displacement: $F=-kx$
   - Potential energy is quadratic about equilibrium: $V(x)=\tfrac12kx^2$
   - Hamiltonian: $H(x,p)=\dfrac{p^2}{2m}+\dfrac12m\omega^2x^2$, where $k=m\omega^2$
   - Constant-energy trajectories are ellipses in ordinary $(x,p)$ phase space and circles after rescaling the axes
-- First Quantization
-  - Replace p and x by their respective operator
-  - $[\hat x,\hat p]=i\hbar$
+- **First Quantization**
+  - In **canonical quantization**, promote position and momentum to operators satisfying $[\hat x,\hat p]=i$, then construct the Hamiltonian operator $\hat H$ from them.
+  - Products involving noncommuting variables can introduce **operator-ordering ambiguities**.
+- **Special Relativity**
+  - Particle physics often involves particles moving near the speed of light, so relativistic effects must be included.
+  - **Lorentz transformations** relate spacetime coordinates in different inertial frames with a common origin.
+  - The **Minkowski metric** with signature $(+,-,-,-)$ gives the **invariant spacetime interval squared**: $\Delta s^2 = (\Delta t)^2 - |\Delta \mathbf{x}|^2$.
+  - Energy and three-momentum form the **four-momentum** $p^\mu = (E,\mathbf p)$, which transforms as a four-vector under Lorentz transformations.
+  - Its invariant squared norm is $p^\mu p_\mu = E^2 - |\mathbf p|^2 = m^2$, where $m$ is the **rest mass**.
+- **Klein–Gordon Equation**
+  - The Klein–Gordon equation follows from the relativistic **energy–momentum relation** $E^2=|\mathbf p|^2+m^2$ by substituting $E\to i\partial_t$ and $\mathbf p\to-i\nabla$, giving $(\partial_t^2-\nabla^2+m^2)\phi=0$.
+  - Has positive- and negative-frequency plane-wave solutions, with $E=\pm\sqrt{|\mathbf p|^2+m^2}$. In quantum field theory, these are interpreted through particle and antiparticle modes with positive physical energies. For a real scalar field, the particle is its own antiparticle.
+  - Is **second order in time**, so specifying a solution requires both $\phi$ and $\partial_t\phi$ initially.
+  - Its conserved density is **not positive definite**, so it cannot serve as an ordinary position probability density. For a complex field, it is interpreted as a **charge density**.
+  - Describes spin-0 fields; particles with other spins require different field equations.
+- **Plane-Wave Solutions**
+  - A free particle with definite momentum has a plane wave $\psi(t,\mathbf x)=A e^{i(\mathbf p\cdot\mathbf x-Et)}=A e^{i(\mathbf k\cdot\mathbf x-\omega t)}$, where $\mathbf p=\mathbf k$ and $E=\omega$ in natural units.
+  - **Nonrelativistic:** this solves the free Schrödinger equation $i\partial_t\psi=-\frac{1}{2m}\nabla^2\psi$ when the kinetic energy is $E=|\mathbf p|^2/(2m)$. The corresponding relativistic total energy has the low-momentum expansion $E_{\mathrm{rel}}\approx m+|\mathbf p|^2/(2m)$.
+  - **Relativistic:** a free scalar field has plane-wave solutions $\phi(x)=A e^{-ip_\mu x^\mu}$, where $x^\mu=(t,\mathbf x)$ and $p_\mu x^\mu=Et-\mathbf p\cdot\mathbf x$ is Lorentz invariant. These solve the Klein–Gordon equation when $E^2=|\mathbf p|^2+m^2$.
+  - A single plane wave extends throughout space and is not square-normalizable on infinite space; superpositions can form localized, normalizable **wave packets**.
+- **Free Dirac Equation**
+  - The Dirac equation factorizes the Klein–Gordon operator using **gamma matrices**, which satisfy the Clifford algebra $\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}I$.
+  - Is **first order in time and space**: $(i\gamma^\mu\partial_\mu-m)\psi=0$.
+  - Applying $(i\gamma^\mu\partial_\mu+m)$ shows that the free Dirac equation implies $(\Box+m^2)\psi=0$, where $\Box=\partial_t^2-\nabla^2$. Thus each spinor component satisfies the Klein–Gordon equation, and plane-wave solutions satisfy $E^2=|\mathbf p|^2+m^2$. The Klein–Gordon equation alone does not imply the Dirac equation.
+  - Has a **nonnegative conserved probability density** $\rho=\psi^\dagger\psi$ in the single-particle interpretation.
+  - Describes spin-$\tfrac12$ particles.
+  - Still has positive- and negative-energy solutions; quantum field theory interprets these through particles and antiparticles with positive physical energies.
+  - **Spin**
+    - Spin is **intrinsic angular momentum** associated with how the Dirac spinor transforms under rotations; it is not literal rotation of a particle. Angular momentum conservation reveals why orbital angular momentum alone is insufficient.
+    - For the free Dirac Hamiltonian $H=\boldsymbol\alpha\cdot\mathbf p+\beta m$, with $\alpha^i=\gamma^0\gamma^i$ and $\beta=\gamma^0$, orbital angular momentum $\mathbf L=\mathbf x\times\mathbf p$ is not separately conserved: $[H,L_i]\ne0$ in general.
+    - **Spin operator**: $\mathbf S=\tfrac12\boldsymbol\Sigma$, where in the Dirac representation $\Sigma_i=\begin{pmatrix}\sigma_i&0\\0&\sigma_i\end{pmatrix}$ and $\sigma_i$ are the **Pauli matrices**. It obeys $[S_i,S_j]=i\epsilon_{ijk}S_k$ and $\mathbf S^2=\tfrac34 I$, corresponding to spin $s=\tfrac12$.
+    - **Total angular momentum** $\mathbf J=\mathbf L+\mathbf S$ is conserved: $[H,J_i]=0$. More precisely, the two commutators cancel, $[H,L_i]+[H,S_i]=0$, although neither $\mathbf L$ nor $\mathbf S$ is separately conserved in general.
+    - Along the $z$ axis, the two-component spin basis is $\chi_+=\begin{pmatrix}1\\0\end{pmatrix}$ and $\chi_-=\begin{pmatrix}0\\1\end{pmatrix}$, with $(\sigma_z/2)\chi_\pm=\pm\tfrac12\chi_\pm$.
+    - **Positive-frequency spinor solutions** have the form $\psi_s(x)=u_s(\mathbf p)e^{-ip_\mu x^\mu}$, where $E=\sqrt{|\mathbf p|^2+m^2}$ and $(\gamma^\mu p_\mu-m)u_s=0$.
+    - For $m>0$, in the Dirac representation one choice is $u_s(\mathbf p)=\sqrt{E+m}\begin{pmatrix}\chi_s\\\dfrac{\boldsymbol\sigma\cdot\mathbf p}{E+m}\chi_s\end{pmatrix}$, normalized so that $u_s^\dagger u_s=2E$. The label $s=\pm$ specifies the rest-frame spin projection; a moving spinor need not be an eigenvector of $S_z$.
+    - **Negative-frequency solutions** are $\psi_s(x)=v_s(\mathbf p)e^{+ip_\mu x^\mu}$ with $E>0$ and $(\gamma^\mu p_\mu+m)v_s=0$. In quantum field theory, these modes enter the antiparticle part of the field.
+    - A Dirac spinor has four components, but the free equation leaves **two independent spin states** for each energy branch. Under a $2\pi$ spatial rotation, a spinor changes sign; it returns to itself after $4\pi$.
