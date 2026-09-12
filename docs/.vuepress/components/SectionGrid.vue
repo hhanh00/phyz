@@ -69,7 +69,7 @@ const groups = [
     soft: '#cffafe',
     items: [
       { number: '17', title: 'Quantum Chromodynamics', desc: 'Outline: color charge, gluons, and the confinement of quarks into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
-      { number: '18', title: 'The Standard Model', desc: 'Outline: combine quarks, leptons, gauge fields, and the Higgs field.', link: '/standard-model.html', symbol: '3·2·1', final: true },
+      { number: '18', title: 'The Standard Model', desc: 'Outline: combine quarks, leptons, gauge fields, and the Higgs field.', link: '/standard-model.html', symbol: '3·2·1' },
     ],
   },
   {
@@ -84,6 +84,16 @@ const groups = [
       { number: '21', title: 'Fermionic Path Integrals', desc: 'Understand how anticommuting variables preserve fermion exchange signs.', link: '/path-integrals-fermions.html', symbol: 'ψ̄, ψ' },
       { number: '22', title: 'Gauge Fixing', desc: 'Explain why redundant potentials require a gauge choice when calculating propagation.', link: '/path-integrals-gauge-fixing.html', symbol: '∂·A' },
       { number: '23', title: 'Renormalization at One Loop', desc: 'Connect regulated loop corrections to measured masses and interaction strengths.', link: '/path-integrals-renormalization.html', symbol: 'δm²' },
+    ],
+  },
+  {
+    number: '08',
+    name: 'Final Recap',
+    desc: 'Connect the full journey from classical motion to quantum fields and experimental predictions.',
+    color: '#0f766e',
+    soft: '#ccfbf1',
+    items: [
+      { number: '24', title: 'Final Recap', desc: 'Bring together the core ideas, the Standard Model, and the calculation of observable rates.', link: '/recap.html', symbol: 'ℒ → σ', final: true },
     ],
   },
   {
@@ -119,7 +129,7 @@ const groups = [
             Start reading
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
           </a>
-          <span class="chapter-count"><strong>23</strong> chapters</span>
+          <span class="chapter-count"><strong>24</strong> chapters</span>
         </div>
       </div>
 

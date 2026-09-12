@@ -1,0 +1,48 @@
+# Final Recap
+
+Since it's a recap, there are no proofs here.
+
+- Classical System
+  - Given the force laws and suitable initial position and velocity, the equations determine future and past motion wherever a unique solution exists.
+- Newtonian Formulation
+  - For a constant-mass particle in an inertial frame, $\mathbf F = m\mathbf a$.
+  - Tracking forces and constraints can become cumbersome in complicated systems.
+  - The vector law does not depend on a particular choice of Cartesian axes; its component expressions depend on the coordinates used.
+- Lagrangian Formulation
+  - For ordinary particles with standard kinetic energy and a velocity-independent potential, $L = K - V$. More general systems can require other forms of $L$.
+  - Action: $S = \int_{t_i}^{t_f} L(q,\dot q,t)\,dt$.
+  - Physical trajectories make the action stationary: $\delta S = 0$. A stationary point need not be a minimum or maximum.
+  - The usual variational derivation fixes the endpoint positions. These are boundary conditions for the variation, not initial conditions for predicting motion; we normally solve the resulting equations using initial positions and velocities.
+  - We choose generalized coordinates and encode the dynamics in $L$, often avoiding explicit constraint forces.
+- Hamiltonian Formulation
+  - Define the canonical momenta $p_i = \partial L / \partial \dot q_i$. When these relations can be inverted for the velocities, use $(q_i,p_i)$ as phase-space coordinates.
+  - The Hamiltonian is $H(q,p,t) = \sum_i p_i\dot q_i - L$, with the velocities expressed in terms of $q,p,t$. For standard kinetic energy and a velocity-independent potential in time-independent coordinates, $H = K + V$; this equality is not universal.
+  - For each degree of freedom, replace a second-order ordinary differential equation with two first-order ordinary differential equations: $\dot q_i = \partial H / \partial p_i$ and $\dot p_i = -\partial H / \partial q_i$.
+  - The system follows a trajectory in $(q,p)$ phase space. Along that trajectory, $dH/dt = \partial H/\partial t$, so $H$ stays constant when it has no explicit time dependence.
+- Quantum System
+  - A quantum state generally predicts a distribution of measurement outcomes. Position and momentum cannot both have arbitrarily sharp distributions. An isolated state's evolution under the Schrödinger equation is deterministic, even though individual measurement outcomes are generally probabilistic.
+  - A pure state is represented by a normalized vector $|\phi\rangle$, up to an overall phase. A single measurement does not reveal that entire vector; mixed states require density operators.
+  - Observables are self-adjoint linear operators (Hermitian matrices in finite dimensions), so their possible measured values are real.
+  - A linear operator maps vectors in its domain to vectors. Its output need not be normalized and can be zero, so it is not automatically another physical state.
+  - An eigenvector satisfies $\hat A|a_n\rangle = a_n|a_n\rangle$. The nonzero vector keeps its direction under the operator, and $a_n$ is its eigenvalue. General operators can have complex eigenvalues, but self-adjoint observables have real ones.
+  - For an observable with a discrete orthonormal eigenbasis, expand the state itself as $|\phi\rangle = \sum_n c_n|a_n\rangle$, where $c_n = \langle a_n|\phi\rangle$.
+  - For a nondegenerate eigenvalue $a_n$, the probability of measuring it is $|c_n|^2$. The coefficient $c_n$ is a probability amplitude. For a degenerate eigenvalue, sum $|c_n|^2$ over an orthonormal basis of its eigenspace.
+  - Applying $\hat A$ to a state is not a model of performing a measurement. In an ideal projective measurement, the observed outcome selects an eigenspace, and projection followed by normalization gives the conditional state after measurement.
+  - Useful examples of observables:
+    - Position: possible outcomes are positions in space. In the position representation, $(\hat x\phi)(x) = x\phi(x)$.
+    - Momentum: possible outcomes are momenta. In the position representation for a particle on a line, $(\hat p\phi)(x) = -i\hbar\,\partial_x\phi(x)$.
+  - The wavefunction $\phi(x) = \langle x|\phi\rangle$ expresses the state in the position basis. It is not the result of applying $\hat x$ to the state.
+  - The momentum-space wavefunction $\tilde\phi(p) = \langle p|\phi\rangle$ expresses the same state in a different basis. A Fourier transform relates these two wavefunctions.
+  - Position and momentum on an infinite line have continuous spectra and use generalized eigenstates. Here $|\phi(x)|^2$ is a probability density: the probability of finding the particle in a region $R$ is $\int_R |\phi(x)|^2\,dx$.
+  - Evolution of a quantum system
+    - The initial state determines how an isolated system evolves, so we usually study its time dependence.
+    - The Schrödinger equation governs the time evolution of the state $|\phi(t)\rangle$.
+- Harmonic Oscillator
+  - Important model system and the basis for ladder-operator quantization
+  - Restoring force proportional to displacement: $F=-kx$
+  - Potential energy is quadratic about equilibrium: $V(x)=\tfrac12kx^2$
+  - Hamiltonian: $H(x,p)=\dfrac{p^2}{2m}+\dfrac12m\omega^2x^2$, where $k=m\omega^2$
+  - Constant-energy trajectories are ellipses in ordinary $(x,p)$ phase space and circles after rescaling the axes
+- First Quantization
+  - Replace p and x by their respective operator
+  - $[\hat x,\hat p]=i\hbar$
