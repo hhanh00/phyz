@@ -78,6 +78,7 @@ export default {
           { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
         ],
       },
+      { text: 'Exercises', link: '/exercises.html' },
       { text: 'Final Recap', link: '/recap.html' },
       {
         text: 'Math Refresher',
@@ -120,6 +121,7 @@ export default {
           { text: 'Renormalization at One Loop', link: '/path-integrals-renormalization.html' },
         ],
       },
+      { text: 'Exercises', link: '/exercises.html' },
       { text: 'Final Recap', link: '/recap.html' },
       {
         text: 'Math Refresher',
