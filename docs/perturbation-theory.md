@@ -74,19 +74,42 @@ For two free scalar fields, **Wick's theorem** states
 
 $$T\big[\phi(x)\phi(y)\big] = \;:\!\phi(x)\phi(y)\!: \;+\; \langle 0\lvert T\big[\phi(x)\phi(y)\big]\rvert 0\rangle.$$
 
-The second term is the **contraction**, a vacuum expectation value and therefore an ordinary number. Contracting two fields means replacing them by that number in the product. For a translation-invariant vacuum it depends only on $x-y$.
+The second term is the **contraction**, a vacuum expectation value and
+therefore an ordinary number. We call this operation a contraction because it
+pairs two field operators and replaces the pair by one function, reducing the
+number of unpaired operators by two. For example,
 
-The contraction describes free propagation between the two spacetime points. It will become the internal-line factor in a diagram.
+$$\phi(x)\phi(y)\quad\longrightarrow\quad
+\langle0|T[\phi(x)\phi(y)]|0\rangle=\Delta_F(x-y).$$
+
+This resembles contracting two tensor indices: two objects become linked and
+the result has fewer free parts. Here the resulting function is the
+propagator. It describes free propagation between $x$ and $y$, so a Feynman
+diagram represents the contraction by a line connecting those two interaction
+points.
+
+![Contracting one field at the interaction point x with one field at y replaces the operator pair by a propagator, drawn as the internal line between the two vertices.](./manim/contractions-to-diagram.png)
+
+*A contraction pairs two field operators and replaces them with a propagator. The Feynman diagram draws that propagator as the internal line between the vertices.*
+
+The vacuum also explains why complete contractions matter. Normal ordering
+places annihilation operators on the right, where they annihilate
+$|0\rangle$, and creation operators on the left, where they annihilate
+$\langle0|$. A vacuum expectation value therefore vanishes if any field
+operator remains unpaired. Only terms in which contractions pair every field
+can contribute to a vacuum-to-vacuum expectation value.
+
+Scattering matrix elements have external particle states rather than vacuum
+on both sides. In that case, some unpaired fields can annihilate incoming
+particles or create outgoing particles. A diagram draws these fields as
+external lines, while it draws contractions between interaction fields as
+internal propagator lines.
 
 For a longer product, sum over every possible choice of disjoint contracted pairs. Leave all remaining fields in normal order, then evaluate them against the external states.
 
 For a connected contribution with $k$ external particles, $k$ fields attach to those particles. At order $n$ in this cubic theory there are $3n$ fields, so the remaining $3n-k$ must contract in pairs. In particular, $3n-k$ must be even.
 
 A three-leg contribution at first order has three fields and no internal contraction. A $2\to2$ contribution at second order has six fields: four attach to the external particles and two contract into one internal line. We will evaluate both patterns below.
-
-![At second order in a cubic scalar interaction, one contracted pair forms an internal propagator and four remaining fields attach to external particles.](./manim/contractions-to-diagram.png)
-
-*At second order in a cubic scalar interaction, one contracted pair forms an internal propagator and four remaining fields attach to external particles.*
 
 ## The propagator from the free field
 
@@ -203,7 +226,7 @@ The [Field Quantization page](field-quantization.md#the-spinor-field) derives th
 
 We set out to derive the diagram factors from the Lagrangian, and the expansion has now produced them: propagators come from the free terms, vertex factors from the interaction, and external factors from the particle states. The [next page](feynman-rules.md) applies them to Compton scattering, then explains loop corrections and renormalization.
 
-[^contour]: Integrate over complex $p^0$. The poles lie at $+E_p-i0$ and $-E_p+i0$. For positive $x^0-y^0$, the exponential decays below the real axis, so closing there selects the positive-energy pole. For negative separation, closing above selects the negative-energy pole. This reproduces the two time-ordered terms; the Feynman propagator is distinct from the retarded Green function.
+[^contour]: Integrate over complex $p^0$. The poles lie at $+E_p-i0$ and $-E_p+i0$. For positive $x^0-y^0$, the exponential decays below the real axis, so closing there selects the positive-energy pole. For negative separation, closing above selects the negative-energy pole. This reproduces the two time-ordered terms.
 
 [^identical]: The other routings are the t- and u-channels, named using the Mandelstam variables discussed on the Feynman Rules page. Identical scalar particles have no distinguishing label that would exclude either pairing, so both contribute to the same amplitude.
 

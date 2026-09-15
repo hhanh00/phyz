@@ -1203,6 +1203,22 @@ This prevents imposing an ordinary canonical commutator for $A_0$. The component
 </details>
 
 <details>
+<summary>What is a gauge-fixing term?</summary>
+
+A gauge-fixing term is an extra term added to the QED Lagrangian to control
+the redundant descriptions related by gauge transformations. It is not added
+to the gauge potential $A_\mu$. A common choice is
+
+$$\mathcal L_{\rm QED}\longrightarrow
+\mathcal L_{\rm QED}+\mathcal L_{\rm gf},\qquad
+\mathcal L_{\rm gf}=-\frac{1}{2\xi}(\partial_\mu A^\mu)^2.$$
+
+It changes the equations for the redundant components used during
+quantization without changing gauge-invariant physical predictions.
+
+</details>
+
+<details>
 <summary>Why add a gauge-fixing term?</summary>
 
 The Feynman-gauge term
@@ -1256,13 +1272,6 @@ It prepares incoming beams with known momenta and quantum numbers, then counts s
 </details>
 
 <details>
-<summary>What is the S-matrix?</summary>
-
-The S-matrix maps asymptotic incoming states to outgoing states. Writing $S=1+iT$ separates no interaction from scattering, and matrix elements of $T$ define the invariant amplitude $\mathcal M$ together with the four-momentum delta function.
-
-</details>
-
-<details>
 <summary>What is Lorentz-invariant phase space?</summary>
 
 For each final particle it supplies $d^3p/[(2\pi)^3 2E]$, and a delta function enforces total four-momentum conservation. Integrating this measure sums over all final configurations accepted by the measurement.
@@ -1277,6 +1286,116 @@ Flux and phase space follow from kinematics once the external particles are spec
 </details>
 
 ## Perturbation Theory
+
+<details>
+<summary>What are we trying to calculate in perturbation theory?</summary>
+
+We want the transition amplitude between chosen initial and final states,
+$\langle f|S|i\rangle$. Its interacting part defines the invariant amplitude
+$\mathcal M$:
+
+$$\langle f|iT|i\rangle
+=(2\pi)^4\delta^4(P_f-P_i)\,i\mathcal M.$$
+
+Perturbation theory approximates $\mathcal M$ by expanding the S-matrix in
+powers of the interaction strength. We then use $|\mathcal M|^2$ to calculate
+measurable cross sections and decay rates.
+
+</details>
+
+<details>
+<summary>How do we split the full Lagrangian?</summary>
+
+Write
+
+$$\mathcal L=\mathcal L_0+\mathcal L_{\rm int}.$$
+
+The quadratic terms form the exactly solvable free Lagrangian $\mathcal L_0$.
+The remaining terms couple fields and form $\mathcal L_{\rm int}$. We quantize
+$\mathcal L_0$ exactly and expand the S-matrix in powers of
+$\mathcal L_{\rm int}$ and its coupling constants. We split the Lagrangian;
+we do not expand the Lagrangian itself.
+
+</details>
+
+<details>
+<summary>What is the interaction Lagrangian for a cubic scalar theory?</summary>
+
+For a real scalar field $\phi$,
+
+$$\mathcal L_{\rm int}=-\frac{g}{3!}\phi^3.$$
+
+The coupling $g$ sets the interaction strength. The factor $3!$ compensates
+for the equivalent ways of attaching three identical scalar lines to a
+vertex. Each insertion of $\mathcal L_{\rm int}$ in the Dyson series produces
+one three-legged vertex with factor $-ig$.
+
+</details>
+
+<details>
+<summary>Is the interaction Lagrangian different for QED?</summary>
+
+Yes. Cubic scalar theory has
+
+$$\mathcal L_{\rm int}=-\frac{g}{3!}\phi^3,$$
+
+which couples three identical scalar fields. QED instead has
+
+$$\mathcal L_{\rm int}=-q\bar\psi\gamma^\mu\psi A_\mu,$$
+
+which joins two fermion lines and one photon line and gives the vertex factor
+$-iq\gamma^\mu$. The perturbative method is the same, but the fields,
+propagators, spinor structure, and fermionic signs differ.
+
+</details>
+
+<details>
+<summary>What is the S-matrix?</summary>
+
+The S-matrix maps an incoming free-particle state in the distant past to an
+outgoing free-particle state in the distant future. After splitting
+
+$$\mathcal L=\mathcal L_0+\mathcal L_{\rm int},$$
+
+$\mathcal L_0$ defines the free fields and asymptotic particle states, while
+$\mathcal L_{\rm int}$ generates transitions between them. In the interaction
+picture,
+
+$$S=\mathcal T\exp\left(i\int d^4x\,\mathcal L_{\rm int}(x)\right),$$
+
+where $\mathcal T$ orders later interactions to the left. Expanding the
+exponential gives
+
+$$\begin{aligned}
+S={}&1+i\int d^4x\,\mathcal L_{\rm int}(x)\\
+&+\frac{i^2}{2!}\int d^4x\,d^4y\,
+\mathcal T[\mathcal L_{\rm int}(x)\mathcal L_{\rm int}(y)]+\cdots.
+\end{aligned}$$
+
+Each insertion of $\mathcal L_{\rm int}$ adds one interaction vertex. Writing
+$S=1+iT$ separates free passage from scattering, and matrix elements of $T$
+define the invariant amplitude $\mathcal M$.
+
+</details>
+
+<details>
+<summary>How do we calculate the transition operator T?</summary>
+
+Start from the interaction Lagrangian and expand the S-matrix:
+
+$$S=\mathcal T\exp\left(i\int d^4x\,\mathcal L_{\rm int}(x)\right)=1+iT.$$
+
+The Dyson expansion therefore determines $iT=S-1$. In practice, we usually
+calculate only the matrix element needed for a chosen process:
+
+$$\langle f|iT|i\rangle=(2\pi)^4\delta^4(P_f-P_i)\,i\mathcal M.$$
+
+Choose the initial and final states, expand to the required order in the
+coupling, and evaluate the result with Wick's theorem or the equivalent
+Feynman rules. Here $T$ is the transition operator, while $\mathcal T$ is the
+time-ordering operator.
+
+</details>
 
 <details>
 <summary>How does perturbation theory generate Feynman rules?</summary>
@@ -1304,16 +1423,28 @@ Expanding the time-ordered exponential gives terms with zero, one, two, and more
 </details>
 
 <details>
-<summary>What does Wick's theorem do?</summary>
+<summary>What is Wick's theorem?</summary>
 
-It rewrites a time-ordered product of free fields as normal-ordered products plus every possible contraction. Vacuum matrix elements remove terms with unpaired operators, so the surviving complete contractions map directly to diagrams.
+Wick's theorem rewrites a time-ordered product of free fields as its
+normal-ordered product plus every possible contraction. For two fields,
+
+$$\mathcal T[\phi(x)\phi(y)]
+=:\!\phi(x)\phi(y)\!:
++\langle0|\mathcal T[\phi(x)\phi(y)]|0\rangle.$$
+
+Each contraction is a propagator. In a vacuum expectation value, terms with
+unpaired field operators vanish, so the surviving contractions map directly
+to Feynman diagrams.
 
 </details>
 
 <details>
 <summary>What is a propagator mathematically?</summary>
 
-A propagator is a time-ordered two-point function and a Green function of the free wave operator. In momentum space, a scalar propagator has the form $i/(p^2-m^2+i\epsilon)$; the pole structure encodes free-particle propagation and the $i\epsilon$ specifies boundary conditions.
+A propagator is a time-ordered two-point function. In momentum space, the
+scalar propagator $i/(p^2-m^2+i\epsilon)$ is $i$ times the inverse of the free
+quadratic operator. Its pole structure encodes free-particle propagation, and
+the $i\epsilon$ specifies the time-ordering prescription.
 
 </details>
 

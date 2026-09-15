@@ -337,6 +337,27 @@ Constrained systems can still be quantized. We use a method that keeps Lorentz c
 
 ### Fixing the gauge
 
+Despite its name, **gauge fixing does not mean adding another field to the
+gauge potential**. These are two different operations:
+
+- A gauge transformation changes the potential,
+  $A_\mu\rightarrow A_\mu+\partial_\mu\chi$, without changing
+  $F_{\mu\nu}$.
+- Gauge fixing leaves $A_\mu$ as the field variable and adds a term
+  $\mathcal L_\text{gf}$ to the QED Lagrangian. The term controls the
+  redundant gauge freedom so that the field can be quantized covariantly.
+
+Thus it is the **Lagrangian**, not the potential, that is modified:
+
+$$
+\boxed{
+\mathcal L_\text{QED}
+\longrightarrow
+\mathcal L_\text{QED}^{(\xi)}
+=\mathcal L_\text{QED}+\mathcal L_\text{gf}
+}
+$$
+
 The gauge freedom lets many potentials describe the same $\mathbf E$ and $\mathbf B$. A useful choice is the **Lorenz condition**,[^lorenz]
 
 $$\partial_\mu A^\mu=0.$$
@@ -359,7 +380,10 @@ therefore gives a potential satisfying the Lorenz condition, with suitable bound
 
 In the quantum theory, this cannot become an exact identity between independent canonical field operators. The divergence contains $\dot{\hat A}^0$, which will be related to the momentum of $\hat A_0$. Setting that divergence identically to zero conflicts with the canonical commutator.[^operator-lorenz] We will instead impose a weaker condition on physical states.
 
-The gauge-fixing term is not unique. A Lorentz-covariant family is
+The name *gauge fixing* refers to controlling which representatives of each
+gauge-equivalence class occur in the calculation. It does not mean fixing or
+repairing the gauge field $A_\mu$ itself. The term is not unique. A
+Lorentz-covariant family is
 
 $$\mathcal L_\text{gf}=-\frac{1}{2\xi}(\partial_\mu A^\mu)^2.$$
 
@@ -369,7 +393,8 @@ $\xi=1$, called **Feynman gauge**, because it makes the four components
 decouple and gives the simplest canonical quantization. This is a choice of
 formalism, not a new physical interaction.
 
-For this choice, to make the canonical construction possible, add
+For this choice, to make the canonical construction possible, add the
+following term to $\mathcal L_\text{QED}$:
 
 $$\mathcal L_\text{gf}=-\frac12(\partial_\mu A^\mu)^2.$$
 
@@ -465,13 +490,19 @@ $$\hat A_\mu(x)=\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2E_k}}\sum_{\lambda=0}^3
 
 This has the same structure as the scalar field expansion. The extra sum accounts for the four polarization directions. Each $\hat c_\lambda$ removes a quantum in its mode, and each $\hat c_\lambda^\dagger$ adds one.
 
-Two of these four modes are unphysical, and the construction has to remove them. The timelike mode is the awkward one. The metric gives the time component a kinetic term of the opposite sign from the three spatial components, that sign carries through into the ladder algebra, and a single timelike quantum comes out with negative norm. A state space that contains negative-norm states cannot be read directly as a space of physical photons.
+At this stage, these operators build an **auxiliary state space**, not yet the physical photon space. For one momentum, a general candidate one-quantum state has the form
 
-The **Gupta–Bleuler condition** selects the physical states. It imposes the Lorenz condition on states, but only through its annihilation part:
+$$\lvert\Psi\rangle=\sum_{\lambda=0}^3 z_\lambda\,\hat c_\lambda^\dagger(k)\lvert0\rangle.$$
 
-$$\boxed{\big(\partial_\mu\hat A^\mu\big)^{(+)}\lvert\mathrm{phys}\rangle=0,}$$
+The coefficients $z_\lambda$ can initially include all four polarizations. The timelike mode is the awkward one. The metric gives the time component a kinetic term of the opposite sign from the three spatial components, and a single timelike quantum comes out with negative norm. We therefore need a test that distinguishes acceptable candidates from the extra states introduced by the gauge-fixed construction.
 
-where the superscript $(+)$ keeps the positive-frequency terms, those containing $\hat c_\lambda e^{-ik\cdot x}$. This restricts which states we accept while leaving the canonical operator algebra intact. For momentum along $z$ it forces $\hat c_0$ and $\hat c_3$ to act identically on a physical state, so their contributions to observable quantities cancel. A final identification then drops states that differ only by a zero-norm gauge mode. What remains are the two transverse polarizations found from Maxwell's equation.
+The **Gupta–Bleuler condition** supplies that test. Apply the annihilation part of the Lorenz condition to a candidate state:
+
+$$\boxed{\big(\partial_\mu\hat A^\mu\big)^{(+)}\lvert\Psi\rangle=0.}$$
+
+The superscript $(+)$ keeps the positive-frequency terms, which contain $\hat c_\lambda e^{-ik\cdot x}$. A candidate that satisfies this equation belongs to the physical subspace; only then do we call it a physical state. For a one-photon candidate, the test reduces to $k\cdot z=0$, the same polarization constraint that follows from Maxwell's equation.
+
+For momentum along $z$, the condition ties the timelike and longitudinal modes together so their contributions to observable quantities cancel. States that differ only by a zero-norm gauge mode then represent the same physical state. After this identification, the independent states contain only the two transverse polarizations.
 
 <details>
 <summary>Negative norm, the physical-state condition, and the null states</summary>
@@ -490,19 +521,19 @@ $$[\hat c_\lambda(k),\hat c_{\lambda'}^\dagger(k')]
 
 The factor $(2\pi)^3$ matches the integration measure in the expansion. If we suppress the momentum normalization, the spatial modes have $[\hat c_i,\hat c_i^\dagger]=1$, while the timelike mode has $[\hat c_0,\hat c_0^\dagger]=-1$. That minus sign means a timelike one-quantum state has negative norm.
 
-**The condition on physical states.** For momentum along $z$, the transverse modes contribute nothing to the divergence. The timelike and longitudinal modes contribute with opposite signs, giving
+**Test a candidate state.** For momentum along $z$, the transverse modes contribute nothing to the divergence. The timelike and longitudinal modes contribute with opposite signs, so the Gupta–Bleuler test becomes
 
-$$\big(\hat c_0(k)-\hat c_3(k)\big)\lvert\mathrm{phys}\rangle=0.$$
+$$\big(\hat c_0(k)-\hat c_3(k)\big)\lvert\Psi\rangle=0.$$
 
-Thus $\hat c_0$ and $\hat c_3$ act identically on a physical state. One consequence shows up in the Hamiltonian:
+A candidate that passes this test has matching timelike and longitudinal contributions. One consequence shows up in the Hamiltonian:
 
 $$\hat H=\int\frac{d^3k}{(2\pi)^3}E_k
 \left(\hat c_1^\dagger\hat c_1+\hat c_2^\dagger\hat c_2
 +\hat c_3^\dagger\hat c_3-\hat c_0^\dagger\hat c_0\right)+\text{const.}$$
 
-On physical states, the last two terms have equal and opposite expectation values. The transverse modes supply the physical excitation energy.
+On candidates that pass the condition, the last two terms have equal and opposite expectation values. The transverse modes supply the physical excitation energy.
 
-**The null states.** Physical states that differ only by a zero-norm gauge state represent the same physical state. These null states have no effect on physical matrix elements. After this identification, the photon has the two transverse polarizations found from Maxwell's equation.
+**Identify the null states.** Two accepted candidates that differ only by a zero-norm gauge state represent the same physical state. These null states have no effect on physical matrix elements. The physical photon space consists of the resulting equivalence classes and has the two transverse polarizations found from Maxwell's equation.
 
 </details>
 
