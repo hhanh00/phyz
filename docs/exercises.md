@@ -305,7 +305,7 @@ The model matters because many systems behave approximately like harmonic oscill
 </details>
 
 <details>
-<summary>If ω can have any value, how is the quantum harmonic oscillator's energy quantized?</summary>
+<summary>If $\omega$ can have any value, how is the quantum harmonic oscillator's energy quantized?</summary>
 
 The frequency $\omega$ can be any positive value because it is a parameter that defines the particular oscillator:
 
@@ -1663,7 +1663,7 @@ The full field is the sum of its two parts, $\psi=\psi_L+\psi_R$.
 </details>
 
 <details>
-<summary>What are the projectors P_L and P_R?</summary>
+<summary >What are the projectors $P_L$ and $P_R$?</summary>
 
 They are defined by
 
@@ -1701,7 +1701,7 @@ It converts a down quark into an up quark at the charged-current vertex. Togethe
 </details>
 
 <details>
-<summary>How does the weak interaction arise from SU(2) gauge symmetry?</summary>
+<summary>How does the weak interaction arise from $SU(2)$ gauge symmetry?</summary>
 
 The weak interaction acts on left-handed fermion doublets and violates parity. Making their SU(2) symmetry local introduces three gauge fields $W_\mu^a$ with self-interactions. The combinations $W^\pm$ mediate charged-current processes such as beta decay, while $W^3$ contributes to the neutral interaction. At low energy, massive-W exchange reduces to Fermi's effective four-fermion interaction.
 
@@ -1744,7 +1744,7 @@ Left-handed partners form doublets such as $(\nu_e,e)_L$. Off-diagonal SU(2) gen
 </details>
 
 <details>
-<summary>Why does local SU(2) introduce three weak gauge fields?</summary>
+<summary>Why does local $SU(2)$ introduce three weak gauge fields?</summary>
 
 SU(2) has three generators, so its covariant derivative needs three fields $W_\mu^a$. Their charged combinations are $W^\pm=(W^1\mp iW^2)/\sqrt2$, while $W^3$ is neutral.
 
@@ -1831,7 +1831,7 @@ then contains the related charged and neutral interactions. The off-diagonal gen
 </details>
 
 <details>
-<summary>What global SU(2) symmetry exists in the Weak Interaction chapter?</summary>
+<summary>What global $SU(2)$ symmetry exists in the Weak Interaction chapter?</summary>
 
 Before gauging the symmetry, a constant matrix $U\in SU(2)$ can mix each left-handed doublet without changing its free, massless kinetic term:
 
@@ -1914,7 +1914,7 @@ It packages the left-chiral up- and down-quark fields into one $SU(2)_L$ doublet
 </details>
 
 <details>
-<summary>What is the Lagrangian before making the global SU(2) symmetry local?</summary>
+<summary>What is the Lagrangian before making the global $SU(2)$ symmetry local?</summary>
 
 For the left-handed lepton and quark doublets, the relevant free, massless Lagrangian is
 
@@ -1929,7 +1929,7 @@ The right-handed singlets have their own free kinetic terms in the full theory. 
 </details>
 
 <details>
-<summary>What is the Lagrangian after making the global SU(2) symmetry local?</summary>
+<summary>What is the Lagrangian after making the global $SU(2)$ symmetry local?</summary>
 
 Replace the ordinary derivative by
 
@@ -2009,34 +2009,19 @@ When this is squared in the Yang–Mills kinetic term, it produces three- and fo
 </details>
 
 ## Electroweak Unification
-
 <details>
-<summary>How do SU(2)L and U(1)Y combine electromagnetism with the weak interaction?</summary>
+<summary>Can the neutral weak coupling be electromagnetism?</summary>
 
-The electroweak theory uses the gauge group $SU(2)_L\times U(1)_Y$ and charge relation
+The neutral weak field $W^3_\mu$ couples to the generator $T_3$, not directly to electric charge. It acts only on members of left-handed weak doublets, while electromagnetism must couple to the electric charge of both left- and right-handed fields. The electromagnetic generator therefore has to combine weak isospin with hypercharge:
 
 $$Q=T_3+\frac{Y}{2}.$$
 
-The neutral fields $W^3_\mu$ and $B_\mu$ mix to form the photon $A_\mu$ and the $Z_\mu$ boson. This structure gives the same electromagnetic charge to the appropriate left- and right-handed fields while allowing only left-handed fermions to carry weak isospin.
-
 </details>
 
 <details>
-<summary>How are the photon and Z boson formed?</summary>
+<summary>What is weak charge?</summary>
 
-The neutral gauge fields mix through the weak angle $\theta_W$:
-
-$$A_\mu=B_\mu\cos\theta_W+W_\mu^3\sin\theta_W,
-\qquad Z_\mu=-B_\mu\sin\theta_W+W_\mu^3\cos\theta_W.$$
-
-The photon combination couples to electric charge and remains massless; the orthogonal Z combination mediates the neutral weak current.
-
-</details>
-
-<details>
-<summary>Why can the neutral weak field not be the photon?</summary>
-
-$W^3$ couples to weak isospin and only to left-handed doublets, whereas the photon couples to electric charge for both chiralities. A second neutral U(1) hypercharge field is required.
+Weak charge is the charge associated with the weak-isospin generators $T^a$ of $SU(2)_L$. For neutral weak interactions, the relevant component is $T_3$. A left-handed doublet has nonzero $T_3$ eigenvalues, while a right-handed weak singlet has $T_3=0$. The phrase does not describe a new field; it describes how a field transforms under $SU(2)_L$.
 
 </details>
 
@@ -2048,9 +2033,138 @@ Hypercharge $Y$ is the U(1)Y charge chosen so $Q=T_3+Y/2$. Different left- and r
 </details>
 
 <details>
-<summary>How does the Z boson couple to matter?</summary>
+<summary>Is hypercharge the same as electric charge?</summary>
 
-The Z couples to a neutral current involving both weak isospin and electric charge. Its left- and right-handed couplings differ because only the left-handed fields carry $T_3$.
+No. Hypercharge is the charge of the $U(1)_Y$ factor, whereas electric charge is the combination $Q=T_3+Y/2$. A field can have hypercharge without having the same electric charge for all of its components. For example, the two components of a weak doublet share one hypercharge but have different $T_3$ values and therefore different electric charges.
+
+</details>
+
+<details>
+<summary>Is hypercharge a different field?</summary>
+
+No. Hypercharge is a quantum number assigned to a matter field. The gauge field associated with the $U(1)_Y$ symmetry is a separate field, conventionally called the hypercharge gauge field $B_\mu$.
+
+</details>
+
+<details>
+<summary>How does weak charge combine with hypercharge to form electric charge?</summary>
+
+The electromagnetic generator is the combination
+
+$$Q=T_3+\frac{Y}{2}.$$
+
+For a field with definite $T_3$ and $Y$, its electric charge is therefore $q=t_3+Y/2$. The photon couples to this combined charge rather than to $T_3$ or $Y$ separately.
+
+</details>
+
+<details>
+<summary>What is the global hypercharge symmetry?</summary>
+
+A global $U(1)_Y$ transformation uses one constant phase throughout spacetime. A field with hypercharge $Y$ transforms as
+
+$$\psi(x)\longrightarrow e^{i\alpha Y/2}\psi(x),
+\qquad \partial_\mu\alpha=0.$$
+
+The transformation changes the field's internal phase but not its spacetime position.
+
+</details>
+
+<details>
+<summary>How does a field that carries hypercharge transform under a global $U(1)$ symmetry?</summary>
+
+If $\psi$ carries hypercharge $Y$, then under global $U(1)_Y$ it transforms as
+
+$$\psi(x)\longrightarrow e^{i\alpha Y/2}\psi(x),$$
+
+where $\alpha$ is a constant real parameter. For example, a field with $Y=-1$ transforms as $\psi\to e^{-i\alpha/2}\psi$.
+
+</details>
+
+<details>
+<summary>How do we make the $U(1)$ symmetry local?</summary>
+
+Allow the phase to vary with position:
+
+$$\psi(x)\longrightarrow e^{i\alpha(x)Y/2}\psi(x).$$
+
+The ordinary derivative then produces an extra term involving $\partial_\mu\alpha$. Introduce the gauge field $B_\mu$ and the covariant derivative
+
+$$D_\mu=\partial_\mu+i g'\frac{Y}{2}B_\mu,$$
+
+with transformation
+
+$$B_\mu\longrightarrow B_\mu-\frac{1}{g'}\partial_\mu\alpha(x).$$
+
+Then $D_\mu\psi$ transforms in the same way as $\psi$.
+
+</details>
+
+<details>
+<summary>What is the name of the $U(1)_Y$ field?</summary>
+
+The gauge field of $U(1)_Y$ is the **hypercharge gauge field**, written $B_\mu$. Its Abelian field strength is
+
+$$B_{\mu\nu}=\partial_\mu B_\nu-\partial_\nu B_\mu.$$
+
+</details>
+
+<details>
+<summary>Does the hypercharge field produce the photon?</summary>
+
+Not by itself. The photon is a linear combination of the neutral gauge fields $B_\mu$ and $W_\mu^3$:
+
+$$A_\mu=B_\mu\cos\theta_W+W_\mu^3\sin\theta_W.$$
+
+The $B_\mu$ part supplies the hypercharge contribution and the $W_\mu^3$ part supplies the weak-isospin contribution.
+
+</details>
+
+<details>
+<summary>Why does the hypercharge field not produce the photon by itself?</summary>
+
+$B_\mu$ couples to $Y/2$, while the photon must couple to the full electric charge
+
+$$Q=T_3+\frac{Y}{2}.$$
+
+Since $B_\mu$ contains no $T_3$ contribution, it cannot reproduce the electromagnetic coupling on its own.
+
+</details>
+
+<details>
+<summary>Do we need the Higgs to make sense of $W_3$ and $B$ mixing?</summary>
+
+No, not to write a mathematical field rotation. One can define $A_\mu$ and $Z_\mu$ as linear combinations of $W_\mu^3$ and $B_\mu$. However, before specifying symmetry breaking, this is only a change of basis: the theory still has separate $SU(2)_L$ and $U(1)_Y$ gauge symmetries, and no mass matrix selects a preferred rotation. The physical identification of a massless photon and a massive $Z$ requires a later symmetry-breaking mechanism, which is treated in the Higgs section.
+
+</details>
+
+<details>
+<summary>What is the electroweak Lagrangian after the neutral-field rotation?</summary>
+
+Before discussing the Higgs mechanism, the electroweak Lagrangian is still the unbroken gauge theory
+
+$$
+\mathcal L_{\mathrm{EW}}=
+-\frac14W^a_{\mu\nu}W^{a\mu\nu}
+-\frac14B_{\mu\nu}B^{\mu\nu}
++\sum_f\bar f\,i\gamma^\mu D_\mu f
++(D_\mu\phi)^\dagger D^\mu\phi
+-V(\phi)
++\mathcal L_{\mathrm{Yukawa}}.
+$$
+
+The neutral fields may be rewritten as $A_\mu$ and $Z_\mu$, and the charged fields as $W^\pm_\mu$. At this stage there are no explicit $W$, $Z$, or fermion mass terms: those require the symmetry-breaking analysis that follows.
+
+</details>
+
+<details>
+<summary>What is the electroweak mass problem?</summary>
+
+The gauge symmetry forbids simply adding mass terms such as
+
+$$m_W^2W^+_\mu W^{-\mu},\qquad
+\frac12m_Z^2Z_\mu Z^\mu.$$
+
+Direct fermion masses are also incompatible with the gauge representations: a left-handed fermion is part of an $SU(2)_L$ doublet, while its right-handed partner is a singlet. Nevertheless, experiments show that the $W$ and $Z$ bosons and charged fermions are massive. The theory therefore needs a gauge-consistent mechanism that generates masses while leaving the photon massless. The Higgs mechanism addresses this problem in the next section.
 
 </details>
 
@@ -2062,6 +2176,246 @@ Explicit masses for W and Z would violate gauge consistency. The Higgs covariant
 </details>
 
 ## Higgs Mechanism
+
+<details>
+<summary>What type of field is the Higgs field?</summary>
+
+The Higgs field is a complex scalar field. It has spin zero and transforms as
+
+$$\phi\sim(\mathbf 1,\mathbf 2)_{Y=+1}$$
+
+under $SU(3)_C\times SU(2)_L\times U(1)_Y$: it is a colour singlet, a weak doublet, and has hypercharge $Y=+1$.
+
+</details>
+
+<details>
+<summary>What are the components of the Higgs field?</summary>
+
+The Higgs field is an $SU(2)_L$ doublet,
+
+$$
+\phi=
+\begin{pmatrix}
+\phi^+\\
+\phi^0
+\end{pmatrix}.
+$$
+
+The upper component has $T_3=+1/2$ and electric charge $Q=+1$; the lower component has $T_3=-1/2$ and $Q=0$, using $Q=T_3+Y/2$. Since each component is complex, the doublet contains four real degrees of freedom.
+
+</details>
+
+<details>
+<summary>What is the shape of the Higgs-field potential?</summary>
+
+The Higgs potential is
+
+$$V(\phi)=-\mu^2\phi^\dagger\phi+\lambda(\phi^\dagger\phi)^2,
+\qquad \mu^2>0,\quad\lambda>0.$$
+
+As a function of the field magnitude, it has the Mexican-hat shape. Its minimum occurs at
+
+$$\phi^\dagger\phi=\frac{\mu^2}{2\lambda}=\frac{v^2}{2}.$$
+
+The drawing is a two-dimensional slice; the full Higgs field has four real components.
+
+</details>
+
+<details>
+<summary>What global symmetry does the Higgs potential have?</summary>
+
+Because the potential depends only on $\phi^\dagger\phi$, it is invariant under rotations of the four real Higgs components. This is commonly written as
+
+$$O(4)\simeq SU(2)_L\times SU(2)_R.$$
+
+After a vacuum direction is chosen, the scalar sector retains the diagonal custodial symmetry $SU(2)_V$. In the full electroweak theory, gauge and Yukawa interactions make this custodial symmetry approximate.
+
+</details>
+
+<details>
+<summary>What is symmetry breaking?</summary>
+
+Symmetry breaking means that the equations have a symmetry, but the state chosen by the system does not. The Higgs potential has many equivalent minima, and choosing one vacuum direction hides part of the original electroweak symmetry:
+
+$$SU(2)_L\times U(1)_Y\longrightarrow U(1)_{\rm em}.$$
+
+The symmetry is not removed from the underlying Lagrangian; the chosen vacuum is not invariant under all of its transformations.
+
+</details>
+
+<details>
+<summary>What electric charge does the Higgs vacuum have, and why?</summary>
+
+Choose the vacuum in the neutral component:
+
+$$
+\langle\phi\rangle=
+\frac{1}{\sqrt2}
+\begin{pmatrix}
+0\\
+v
+\end{pmatrix}.
+$$
+
+For this component, $T_3=-1/2$ and $Y=+1$, so
+
+$$Q=T_3+\frac{Y}{2}=-\frac12+\frac12=0.$$
+
+The Higgs vacuum is therefore electrically neutral.
+
+</details>
+
+<details>
+<summary>What symmetry remains after the Higgs chooses its vacuum?</summary>
+
+The remaining gauge symmetry is
+
+$$U(1)_{\rm em}.$$
+
+Its generator is $Q=T_3+Y/2$. Since $Q\langle\phi\rangle=0$, electromagnetic transformations leave the vacuum unchanged. This unbroken symmetry is associated with the massless photon.
+
+</details>
+
+<details>
+<summary>What is a Goldstone boson?</summary>
+
+A Goldstone boson is a massless fluctuation in a direction that changes the vacuum without changing the potential energy. In the Higgs mechanism, these are would-be Goldstone modes: they are absorbed by the massive gauge bosons and become their longitudinal polarization states.
+
+</details>
+
+<details>
+<summary>How many polarization directions does a massless or massive spin-1 boson have?</summary>
+
+A massless spin-1 boson has two physical transverse polarizations. A massive spin-1 boson has three: two transverse and one longitudinal. The photon has two, while each of $W^\pm$ and $Z$ has three.
+
+</details>
+
+<details>
+<summary>What provides the three Goldstone bosons?</summary>
+
+The Higgs doublet has four real degrees of freedom. Three correspond to the three broken electroweak generators and become the Goldstone modes
+
+$$G^+,\qquad G^-,\qquad G^0.$$
+
+The remaining degree of freedom is the physical Higgs field $h$.
+
+</details>
+
+<details>
+<summary>Are the Goldstone bosons modes of the Higgs field?</summary>
+
+Yes. Write the Higgs doublet as
+
+$$
+\phi=
+\begin{pmatrix}
+G^+\\
+\dfrac{v+h+iG^0}{\sqrt2}
+\end{pmatrix}.
+$$
+
+The fields $G^+$, $G^-$, and $G^0$ are fluctuation modes of the Higgs field. They are not observed as separate massless particles because they are absorbed by $W^\pm$ and $Z$.
+
+</details>
+
+<details>
+<summary>How do the Goldstone modes align with the W and Z bosons?</summary>
+
+The alignment is found by expanding the Higgs kinetic term $(D_\mu\phi)^\dagger(D^\mu\phi)$. The derivative mixing terms have the form
+
+$$
+\mathcal L_{\rm mix}\sim
+m_W\left(W^-_\mu\partial^\mu G^+
++W^+_\mu\partial^\mu G^-\right)
++m_ZZ_\mu\partial^\mu G^0.
+$$
+
+Thus
+
+$$G^+\leftrightarrow W^+,\qquad
+G^-\leftrightarrow W^-,\qquad
+G^0\leftrightarrow Z.$$
+
+The photon has no corresponding Goldstone mode because $U(1)_{\rm em}$ remains unbroken.
+
+</details>
+
+<details>
+<summary>What becomes of the remaining degree of freedom of the Higgs field?</summary>
+
+The remaining degree of freedom is the radial fluctuation $h$:
+
+$$
+\phi=
+\frac{1}{\sqrt2}
+\begin{pmatrix}
+0\\
+v+h
+\end{pmatrix}
+$$
+
+in unitary gauge. It remains as the physical Higgs boson, a massive spin-0 particle with
+
+$$m_h^2=2\lambda v^2.$$
+
+</details>
+
+<details>
+<summary>How does the electron gain mass through the Higgs field?</summary>
+
+The electron has the Yukawa interaction
+
+$$\mathcal L_Y=-y_e\bar L_L\phi e_R+\text{h.c.}$$
+
+Substituting the Higgs field around its vacuum gives
+
+$$
+\mathcal L_Y
+=-\frac{y_ev}{\sqrt2}\bar e e
+-\frac{y_e}{\sqrt2}h\bar e e.
+$$
+
+The first term is the electron mass term, so
+
+$$m_e=\frac{y_ev}{\sqrt2}.$$
+
+The second term is the Higgs-electron interaction.
+
+</details>
+
+<details>
+<summary>How was the electron Yukawa term chosen?</summary>
+
+The term
+
+$$\mathcal L_Y=-y_e\bar L_L\phi e_R+\text{h.c.}$$
+
+is the simplest Lorentz-invariant, gauge-invariant, renormalizable interaction connecting the left-handed lepton doublet to the right-handed electron singlet. The Higgs doublet allows the $SU(2)_L$ indices to form a singlet, and the hypercharges cancel. The coupling $y_e$ is a free parameter measured from the electron mass.
+
+</details>
+
+<details>
+<summary>What is the electroweak Lagrangian with the Higgs field included?</summary>
+
+Before symmetry breaking, the electroweak Lagrangian is
+
+$$
+\mathcal L_{\rm EW}
+=-\frac14W^a_{\mu\nu}W^{a\mu\nu}
+-\frac14B_{\mu\nu}B^{\mu\nu}
++\sum_f\bar f\,i\gamma^\mu D_\mu f
++(D_\mu\phi)^\dagger(D^\mu\phi)
+-V(\phi)
++\mathcal L_{\rm Yukawa}.
+$$
+
+Here
+
+$$D_\mu=\partial_\mu+igT^aW_\mu^a+ig'\frac{Y}{2}B_\mu,$$
+
+and $\mathcal L_{\rm Yukawa}$ contains the gauge-invariant Higgs-fermion interactions. There are no explicit $W$, $Z$, or fermion mass terms at this stage; those arise after the Higgs field acquires its vacuum value.
+
+</details>
 
 <details>
 <summary>How does the Higgs field give particles mass without breaking gauge consistency?</summary>

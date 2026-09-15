@@ -143,6 +143,31 @@ export default {
   extendsMarkdown(md) {
     md.use(markdownItFootnote)
 
+    // Markdown-it treats the contents of raw HTML blocks as opaque.  Re-run
+    // the contents of <summary> elements through the inline parser so that
+    // inline and display math delimiters work there too.
+    const defaultHtmlBlock = md.renderer.rules.html_block
+    const defaultHtmlInline = md.renderer.rules.html_inline
+
+    const renderSummaryMath = (defaultRule) => (tokens, idx, options, env, self) => {
+      const token = tokens[idx]
+      const content = token.content.replace(
+        /(<summary\b[^>]*>)([\s\S]*?)(<\/summary>)/gi,
+        (_, open, inner, close) => `${open}${md.renderInline(inner, env)}${close}`,
+      )
+
+      if (content === token.content) {
+        return defaultRule
+          ? defaultRule(tokens, idx, options, env, self)
+          : self.renderToken(tokens, idx, options)
+      }
+
+      return content
+    }
+
+    md.renderer.rules.html_block = renderSummaryMath(defaultHtmlBlock)
+    md.renderer.rules.html_inline = renderSummaryMath(defaultHtmlInline)
+
     // ```feynman fenced blocks → static inline SVG, baked into the page
     // at build/render time (see lib/feynman-svg.js). No client JS, no
     // iframe — the diagram is part of the HTML itself.
