@@ -827,6 +827,31 @@ Treat $\psi$ and $\bar\psi$ as independent variables. Varying $\bar\psi$ gives t
 
 </details>
 
+<details>
+<summary>How do we derive the Lagrangian of a massless spin-1 gauge field?</summary>
+
+Start with a Lorentz vector field $A_\mu$. For a massless spin-1 **gauge** field, require invariance under
+
+$$A_\mu\to A_\mu+\partial_\mu\alpha.$$
+
+The simplest object made from one derivative of $A_\mu$ that is unchanged by this transformation is the antisymmetric field strength
+
+$$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.$$
+
+The simplest Lorentz scalar quadratic in the field strength is therefore
+
+$$\boxed{\mathcal L_{\mathrm{Maxwell}}=-\frac14F_{\mu\nu}F^{\mu\nu}}.$$
+
+Varying $A_\nu$ gives
+
+$$\partial_\mu F^{\mu\nu}=0,$$
+
+the source-free Maxwell equation. The factor $-1/4$ is a normalization chosen so the components have canonical normalization. This construction is guided by Lorentz symmetry, locality, a simple quadratic free theory, and gauge invariance; symmetry alone does not make the Lagrangian mathematically unique.
+
+In QED and the weak theory before the Higgs mechanism, the gauge symmetry selects the massless Maxwell or Yang–Mills form. The Higgs mechanism later produces an effective vector mass from a gauge-invariant scalar kinetic term.
+
+</details>
+
 ## Field Quantization
 
 <details>
