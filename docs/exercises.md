@@ -1001,6 +1001,25 @@ Its particle and antiparticle amplitudes become operators $a_s$ and $b_s$ that o
 ## Quantum Electrodynamics
 
 <details>
+<summary>What's the current?</summary>
+
+The electric four-current describes the density and flow of electric charge:
+
+$$J^\mu=(\rho,\mathbf j),$$
+
+where $\rho$ is the charge density and $\mathbf j$ is the three-dimensional current density. For a Dirac field $\psi$ with electric charge $q$, the QED current is
+
+$$J^\mu=q\bar\psi\gamma^\mu\psi.$$
+
+Its time component gives the charge density, $J^0=q\psi^\dagger\psi$, while its spatial components give the charge flow. The current is conserved:
+
+$$\partial_\mu J^\mu=0,$$
+
+which is the relativistic form of charge conservation.
+
+</details>
+
+<details>
 <summary>What is the electromagnetic field strength?</summary>
 
 The electromagnetic field strength is the antisymmetric tensor
@@ -1160,9 +1179,25 @@ This cancels the derivative of the local phase in $D_\mu\psi$. The field strengt
 </details>
 
 <details>
-<summary>Which terms make up the QED Lagrangian?</summary>
+<summary>What's the Lagrangian of QED?</summary>
 
-It contains the Dirac kinetic and mass terms, the photon kinetic term $-F_{\mu\nu}F^{\mu\nu}/4$, and the interaction $-e\bar\psi\gamma^\mu A_\mu\psi$. The interaction describes one photon meeting an incoming and outgoing charged-fermion line.
+The QED Lagrangian is
+
+$$\mathcal L_{\mathrm{QED}}
+=\bar\psi(i\gamma^\mu D_\mu-m)\psi
+-\frac14F_{\mu\nu}F^{\mu\nu},$$
+
+where
+
+$$D_\mu=\partial_\mu+ieA_\mu,
+\qquad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.$$
+
+The first term describes the charged Dirac field, including its kinetic and mass terms. The second describes the photon field. Expanding the covariant derivative gives the interaction term
+
+$$-e\bar\psi\gamma^\mu A_\mu\psi,$$
+
+which describes the coupling between the charged fermion and the photon.
 
 </details>
 
@@ -1516,6 +1551,131 @@ Their integrals include arbitrarily large virtual momenta and can diverge. Regul
 ## Weak Interaction
 
 <details>
+<summary>What is beta-minus decay?</summary>
+
+Beta-minus ($\beta^-$) decay is a radioactive process in which a neutron changes into a proton, an electron, and an electron antineutrino:
+
+$$n\longrightarrow p+e^-+\bar\nu_e.$$
+
+At the quark level, a down quark changes into an up quark through a virtual $W^-$ boson:
+
+$$d\longrightarrow u+W^-,\qquad W^-\longrightarrow e^-+\bar\nu_e.$$
+
+</details>
+
+<details>
+<summary>How are momentum and energy conserved in beta-minus decay?</summary>
+
+The proton, electron, and antineutrino share the neutron's initial energy and momentum. In the neutron rest frame,
+
+$$\mathbf p_p+\mathbf p_e+\mathbf p_{\bar\nu}=0,$$
+
+and
+
+$$m_n=E_p+E_e+E_{\bar\nu}.$$
+
+Because the three final particles can share the energy and momentum in many different ways, the electron has a continuous range of energies. The antineutrino is essential: without it, two-body kinematics would fix the electron energy to one value.
+
+</details>
+
+<details>
+<summary>How do the charges balance in beta-minus decay?</summary>
+
+At the nuclear level,
+
+$$0=(+e)+(-e)+0,$$
+
+for $n\to p+e^-+\bar\nu_e$. At the quark level,
+
+$$-\frac{e}{3}=+\frac{2e}{3}-e+0,$$
+
+for $d\to u+e^-+\bar\nu_e$. The virtual $W^-$ carries charge $-e$ between the two vertices.
+
+</details>
+
+<details>
+<summary>What is parity?</summary>
+
+Parity is the spatial-inversion transformation
+
+$$\mathcal P:\quad(t,\mathbf x)\longrightarrow(t,-\mathbf x).$$
+
+It is the transformation associated with comparing a process with its mirror-image version. A parity-conserving interaction gives the same probabilities for the original and parity-transformed processes.
+
+</details>
+
+<details>
+<summary>How do position, momentum, and spin transform under parity?</summary>
+
+Position and momentum are polar vectors, so they reverse:
+
+$$\mathbf x\longrightarrow-\mathbf x,\qquad \mathbf p\longrightarrow-\mathbf p.$$
+
+Spin is an axial vector, like angular momentum, so it does not reverse:
+
+$$\mathbf S\longrightarrow\mathbf S.$$
+
+Consequently, $\mathbf S\cdot\mathbf p$ changes sign under parity.
+
+</details>
+
+<details>
+<summary>How did the cobalt-60 experiment discover parity violation?</summary>
+
+Wu and her collaborators cooled cobalt-60 nuclei to low temperature and aligned their spins with a magnetic field. They counted beta electrons emitted along and opposite to the nuclear-spin direction, then reversed the magnetic field and repeated the measurement. The electrons were emitted asymmetrically: more came out opposite to the nuclear spin. Since parity reverses momentum but not spin, this asymmetry differs from its parity-reflected version and shows that the weak interaction violates parity.
+
+</details>
+
+<details>
+<summary>How do you select the chiral part of a field?</summary>
+
+Apply a chiral projector to the Dirac field $\psi$:
+
+$$\psi_L=P_L\psi,\qquad \psi_R=P_R\psi.$$
+
+The full field is the sum of its two parts, $\psi=\psi_L+\psi_R$.
+
+</details>
+
+<details>
+<summary>What are the projectors P_L and P_R?</summary>
+
+They are defined by
+
+$$P_L=\frac{1-\gamma^5}{2},\qquad P_R=\frac{1+\gamma^5}{2}.$$
+
+$P_L$ keeps the left-chiral component and removes the right-chiral component; $P_R$ does the reverse. They satisfy
+
+$$P_L^2=P_L,\qquad P_R^2=P_R,\qquad P_LP_R=0,\qquad P_L+P_R=1.$$
+
+</details>
+
+<details>
+<summary>What is the electron-neutrino current term?</summary>
+
+The left-chiral lepton current is
+
+$$j_\ell^\mu=\bar e_L\gamma^\mu\nu_{eL}
+=\bar e\gamma^\mu P_L\nu_e
+=\frac12\bar e\gamma^\mu(1-\gamma^5)\nu_e.$$
+
+Its field content allows the charged weak interaction to create an electron and an electron antineutrino. Its Hermitian-conjugate current describes the reverse process.
+
+</details>
+
+<details>
+<summary>What is the quark current term?</summary>
+
+The corresponding left-chiral quark current is
+
+$$j_q^\mu=\bar u_L\gamma^\mu d_L
+=\bar u\gamma^\mu P_Ld.$$
+
+It converts a down quark into an up quark at the charged-current vertex. Together, the quark and lepton currents describe beta decay through charged $W$ exchange.
+
+</details>
+
+<details>
 <summary>How does the weak interaction arise from SU(2) gauge symmetry?</summary>
 
 The weak interaction acts on left-handed fermion doublets and violates parity. Making their SU(2) symmetry local introduces three gauge fields $W_\mu^a$ with self-interactions. The combinations $W^\pm$ mediate charged-current processes such as beta decay, while $W^3$ contributes to the neutral interaction. At low energy, massive-W exchange reduces to Fermi's effective four-fermion interaction.
@@ -1533,6 +1693,21 @@ Experiments show maximal parity violation: charged weak currents couple to left-
 <summary>How does beta decay reveal the weak interaction?</summary>
 
 At quark level, a down quark becomes an up quark while emitting a virtual $W^-$, which produces an electron and electron antineutrino. The neutrino carries missing energy, momentum, and angular momentum.
+
+</details>
+
+<details>
+<summary>What happens in beta-minus decay?</summary>
+
+In beta-minus ($\beta^-$) decay, a neutron changes into a proton, an electron, and an electron antineutrino:
+
+$$n\longrightarrow p+e^-+\bar\nu_e.$$
+
+At the quark level, one down quark changes into an up quark by emitting a virtual $W^-$:
+
+$$d\longrightarrow u+W^-,\qquad W^-\longrightarrow e^-+\bar\nu_e.$$
+
+The charges balance because $0=(+e)+(-e)+0$. The antineutrino also carries away part of the energy and momentum, giving the emitted electron a continuous range of energies.
 
 </details>
 
