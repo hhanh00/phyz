@@ -1732,6 +1732,218 @@ At momenta far below $m_W$, the W propagator reduces to a contact interaction. M
 
 </details>
 
+<details>
+<summary>How do you build an interaction that affects the chiral parts of the electron field differently?</summary>
+
+Split the electron field with the chiral projectors,
+
+$$e_L=P_Le,qquad e_R=P_Re,$$
+
+and give the two parts separate couplings:
+
+$$
+\mathcal L_{\mathrm{int}}
+=-\bar e\gamma^\mu\left(g_LP_L+g_RP_R\right)eA_\mu.
+$$
+
+If $g_L\neq g_R$, the two chiralities interact differently. If $g_R=0$, only the left-chiral part couples. In the electroweak theory, this difference is represented by assigning $e_L$ to an $SU(2)_L$ doublet while $e_R$ is a singlet.
+
+</details>
+
+<details>
+<summary>How do you connect the two currents?</summary>
+
+Couple both currents to the same charged weak gauge field:
+
+$$
+\mathcal L_{\mathrm{int}}
+\propto
+\left(J^\mu_{\ell,+}+J^\mu_{q,+}\right)W^+_\mu+\text{Hermitian conjugate}.
+$$
+
+The $W$ field connects the quark current to the lepton current. At low energy, where the $W$ is not observed as an external particle, its exchange becomes an effective four-fermion term proportional to $J_q^\mu J_{\ell\mu}$.
+
+</details>
+
+<details>
+<summary>Once the currents are combined, why look for a symmetry?</summary>
+
+The currents could be connected directly in an effective interaction, but a symmetry gives a deeper organizing principle. It explains why related fields form pairs, why their couplings are related, why the same gauge fields mediate many processes, and why additional interactions are required. The symmetry turns many independently chosen couplings into one constrained gauge theory.
+
+</details>
+
+<details>
+<summary>What's a singlet, a doublet?</summary>
+
+Under $SU(2)$, a **singlet** is a one-component object that the group leaves unchanged. A **doublet** is a two-component object whose entries transform together and can be mixed:
+
+$$
+\text{singlet: }e_R,
+\qquad
+\text{doublet: }L=\begin{pmatrix}\nu_{eL}\\e_L\end{pmatrix}.
+$$
+
+The terminology refers to an internal symmetry representation, not to spatial dimension or spin.
+
+</details>
+
+<details>
+<summary>How do doublets help organize pairs of interacting fields?</summary>
+
+They package two fields into one object on which the same $SU(2)$ generators act:
+
+$$Q_L=\begin{pmatrix}u_L\\d_L\end{pmatrix}.
+$$
+
+One compact interaction,
+
+$$
+\bar Q_L\gamma^\mu T^aQ_LW^a_\mu,
+$$
+
+then contains the related charged and neutral interactions. The off-diagonal generators connect the two entries and the diagonal generator distinguishes them.
+
+</details>
+
+<details>
+<summary>What global SU(2) symmetry exists in the Weak Interaction chapter?</summary>
+
+Before gauging the symmetry, a constant matrix $U\in SU(2)$ can mix each left-handed doublet without changing its free, massless kinetic term:
+
+$$L\to UL,qquad Q_L\to UQ_L.$$
+
+For example,
+
+$$\mathcal L_0=i\bar L\gamma^\mu\partial_\mu L$$
+
+is unchanged because the constant $U$ passes through the derivative and cancels against $U^\dagger$. This is a global symmetry of the free kinetic term, not yet the full local electroweak theory.
+
+</details>
+
+<details>
+<summary>When making the symmetry local, what gauge fields appear?</summary>
+
+Allowing $U$ to depend on spacetime introduces one gauge field for each of the three $SU(2)$ generators:
+
+$$W^1_\mu,\qquad W^2_\mu,\qquad W^3_\mu.$$
+
+They enter the covariant derivative,
+
+$$D_\mu=\partial_\mu+igT^aW^a_\mu.$$
+
+The first two combine into $W^\pm_\mu=(W^1_\mu\mp iW^2_\mu)/\sqrt2$; $W^3_\mu$ is neutral before electroweak mixing.
+
+</details>
+
+<details>
+<summary>How do I form a $U(x)$ from arbitrary smooth functions?</summary>
+
+Choose three arbitrary smooth real functions $\alpha^1(x),\alpha^2(x),\alpha^3(x)$ and form
+
+$$
+U(x)=\exp\!\left[i\alpha^a(x)T^a\right],
+\qquad T^a=\frac{\sigma^a}{2}.
+$$
+
+The functions specify the local amount of rotation in the three internal generator directions. Exponentiation produces a unitary two-by-two matrix with determinant one, so $U(x)\in SU(2)$ at every point.
+
+</details>
+
+<details>
+<summary>How do I apply $U(x)$ to the Lagrangian?</summary>
+
+Transform all relevant fields, not just the matter doublet:
+
+$$L' = U(x)L,$$
+
+$$W'_\mu=UW_\mu U^\dagger+\frac{i}{g}(\partial_\mu U)U^\dagger.$$
+
+These rules give $D'_\mu L'=U(D_\mu L)$, so
+
+$$i\bar L'\gamma^\mu D'_\mu L'=i\bar L\gamma^\mu D_\mu L.$$
+
+The field strength transforms as $W'_{\mu\nu}=UW_{\mu\nu}U^\dagger$, making its trace-squared invariant as well. Therefore the full unfixed Lagrangian has the same value after the transformation.
+
+</details>
+
+<details>
+<summary>What is the left-handed lepton doublet?</summary>
+
+It is
+
+$$L=\begin{pmatrix}\nu_{eL}\\e_L\end{pmatrix}.$$
+
+It packages the left-chiral electron-neutrino and electron fields into one $SU(2)_L$ doublet. The $SU(2)_L$ generators can mix its two entries.
+
+</details>
+
+<details>
+<summary>What is the left-handed quark doublet?</summary>
+
+It is
+
+$$Q_L=\begin{pmatrix}u_L\\d_L\end{pmatrix}.$$
+
+It packages the left-chiral up- and down-quark fields into one $SU(2)_L$ doublet. The right-chiral fields $u_R$ and $d_R$ are separate $SU(2)_L$ singlets.
+
+</details>
+
+<details>
+<summary>What is the Lagrangian before making the global SU(2) symmetry local?</summary>
+
+For the left-handed lepton and quark doublets, the relevant free, massless Lagrangian is
+
+$$
+\mathcal L_0
+=i\bar L\gamma^\mu\partial_\mu L
++i\bar Q_L\gamma^\mu\partial_\mu Q_L.
+$$
+
+The right-handed singlets have their own free kinetic terms in the full theory. At this stage there are no $W^a_\mu$ fields, weak gauge interactions, Yang–Mills term, or mass terms.
+
+</details>
+
+<details>
+<summary>What is the Lagrangian after making the global SU(2) symmetry local?</summary>
+
+Replace the ordinary derivative by
+
+$$D_\mu=\partial_\mu+igT^aW^a_\mu$$
+
+and add the Yang–Mills kinetic term:
+
+$$
+\mathcal L
+=i\bar L\gamma^\mu D_\mu L
++i\bar Q_L\gamma^\mu D_\mu Q_L
+-\frac14W^a_{\mu\nu}W^{a\mu\nu}.
+$$
+
+Expanding $D_\mu$ gives the original free kinetic terms plus the lepton–$W$ and quark–$W$ interactions. At this stage there is still no $U(1)_Y$ field, Higgs field, or mass term.
+
+</details>
+
+<details>
+<summary>Since we can use any local gauge, what is a typical choice?</summary>
+
+A common covariant choice is the Lorenz-type condition
+
+$$\partial_\mu W^{a\mu}=0,
+\qquad a=1,2,3.$$
+
+In perturbative calculations, one often uses the related $R_\xi$ family, including Landau gauge ($\xi=0$) and Feynman gauge ($\xi=1$). The choice changes the mathematical description, not gauge-invariant predictions.
+
+</details>
+
+<details>
+<summary>What makes the Weak Interaction a gauge theory different from QED?</summary>
+
+QED uses one Abelian $U(1)$ generator and one gauge field, while the weak theory uses three non-Abelian $SU(2)_L$ generators and three gauge fields. The weak fields therefore have a commutator term in their field strength and direct self-interactions. In addition, $SU(2)_L$ acts on left-handed doublets, whereas QED couples left- and right-handed electrons with the same electric charge.
+
+The full electroweak theory later combines $SU(2)_L$ with $U(1)_Y$.
+
+</details>
+
 ## Yang–Mills Fields
 
 <details>
@@ -1753,6 +1965,21 @@ With $D_\mu=\partial_\mu-igA_\mu^aT^a$, the commutator defines
 $$[D_\mu,D_\nu]=-igF_{\mu\nu}^aT^a.$$
 
 The commutator of generators supplies the nonlinear $gf^{abc}A_\mu^bA_\nu^c$ term. This construction makes the field strength transform covariantly under local gauge transformations.
+
+</details>
+
+<details>
+<summary>What physical implications come from SU(2) being non-Abelian?</summary>
+
+The nonzero commutators of the generators produce the nonlinear term in the field strength:
+
+$$
+W^a_{\mu\nu}
+=\partial_\mu W^a_\nu-\partial_\nu W^a_\mu
+-g\epsilon^{abc}W^b_\mu W^c_\nu.
+$$
+
+When this is squared in the Yang–Mills kinetic term, it produces three- and four-gauge-boson interaction vertices. Thus the weak gauge bosons carry weak charge and interact directly with one another. After electroweak mixing, this gives vertices such as $W^+W^-\gamma$ and $W^+W^-Z$.
 
 </details>
 
