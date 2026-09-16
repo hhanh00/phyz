@@ -3,6 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import markdownItFootnote from 'markdown-it-footnote'
+import katex from 'katex'
 import { renderFeynmanSvg } from './lib/feynman-svg.js'
 
 export default {
@@ -150,9 +151,9 @@ export default {
   extendsMarkdown(md) {
     md.use(markdownItFootnote)
 
-    // Markdown-it treats the contents of raw HTML blocks as opaque.  Re-run
-    // the contents of <summary> elements through the inline parser so that
-    // inline and display math delimiters work there too.
+    // Markdown-it treats the contents of raw HTML blocks as opaque. Render
+    // only TeX inside <summary> elements so the footnote plugin does not
+    // accidentally insert footnote markup into the raw HTML block.
     const defaultHtmlBlock = md.renderer.rules.html_block
     const defaultHtmlInline = md.renderer.rules.html_inline
 
@@ -160,7 +161,16 @@ export default {
       const token = tokens[idx]
       const content = token.content.replace(
         /(<summary\b[^>]*>)([\s\S]*?)(<\/summary>)/gi,
-        (_, open, inner, close) => `${open}${md.renderInline(inner, env)}${close}`,
+        (_, open, inner, close) => {
+          const rendered = inner.replace(
+            /\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g,
+            (_, display, inline) => katex.renderToString(display ?? inline, {
+              displayMode: display !== undefined,
+              throwOnError: false,
+            }),
+          )
+          return open + rendered + close
+        },
       )
 
       if (content === token.content) {
