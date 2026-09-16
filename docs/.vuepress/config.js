@@ -1,6 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import markdownItFootnote from 'markdown-it-footnote'
 import { renderFeynmanSvg } from './lib/feynman-svg.js'
 
@@ -138,6 +139,12 @@ export default {
 
   plugins: [
     markdownMathPlugin({ type: 'katex', output: 'html' }),
+    slimsearchPlugin({
+      indexContent: true,
+      // Suggestions start a separate worker on page load. Keep the full-text
+      // index deferred until the reader opens search instead.
+      suggestion: false,
+    }),
   ],
 
   extendsMarkdown(md) {
