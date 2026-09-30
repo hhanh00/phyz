@@ -56,9 +56,10 @@ const groups = [
     color: '#db2777',
     soft: '#fce7f3',
     items: [
-      { number: '14', title: 'Weak Interaction', desc: 'Connect beta decay to chiral currents, Yang–Mills fields, and W-boson exchange.', link: '/weak-interaction.html', symbol: 'W±' },
-      { number: '15', title: 'Electroweak Unification', desc: 'Recover photon and Z couplings from weak isospin, hypercharge, and neutral-field mixing.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
-      { number: '16', title: 'Higgs Mechanism', desc: 'Outline: explain how the Higgs field gives mass to the W and Z bosons.', link: '/higgs-mechanism.html', symbol: 'H' },
+      { number: '14', title: 'Symmetries', desc: 'Build the route from spatial rotations to SU(2), Lorentz spinors, and chirality.', link: '/symmetries.html', symbol: 'SU(2)' },
+      { number: '15', title: 'Weak Interaction', desc: 'Connect beta decay to chiral currents, Yang–Mills fields, and W-boson exchange.', link: '/weak-interaction.html', symbol: 'W±' },
+      { number: '16', title: 'Electroweak Unification', desc: 'Recover photon and Z couplings from weak isospin, hypercharge, and neutral-field mixing.', link: '/electroweak-unification.html', symbol: 'Z⁰' },
+      { number: '17', title: 'Higgs Mechanism', desc: 'Outline: explain how the Higgs field gives mass to the W and Z bosons.', link: '/higgs-mechanism.html', symbol: 'H' },
     ],
   },
   {
@@ -68,8 +69,8 @@ const groups = [
     color: '#0e7490',
     soft: '#cffafe',
     items: [
-      { number: '17', title: 'Quantum Chromodynamics', desc: 'Outline: color charge, gluons, and the confinement of quarks into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
-      { number: '18', title: 'The Standard Model', desc: 'Outline: combine quarks, leptons, gauge fields, and the Higgs field.', link: '/standard-model.html', symbol: '3·2·1' },
+      { number: '18', title: 'Quantum Chromodynamics', desc: 'Outline: color charge, gluons, and the confinement of quarks into hadrons.', link: '/qcd.html', symbol: 'SU(3)' },
+      { number: '19', title: 'The Standard Model', desc: 'Outline: combine quarks, leptons, gauge fields, and the Higgs field.', link: '/standard-model.html', symbol: '3·2·1' },
     ],
   },
   {
@@ -79,11 +80,11 @@ const groups = [
     color: '#4f46e5',
     soft: '#e0e7ff',
     items: [
-      { number: '19', title: 'Path Integrals in Quantum Mechanics', desc: 'Connect sums over possible histories to quantum interference and classical motion.', link: '/path-integrals.html', symbol: 'eⁱˢ/ℏ' },
-      { number: '20', title: 'Path Integrals for Fields', desc: 'See how field histories lead to the same propagators and Feynman diagrams.', link: '/path-integrals-fields.html', symbol: 'Z[J]' },
-      { number: '21', title: 'Fermionic Path Integrals', desc: 'Understand how anticommuting variables preserve fermion exchange signs.', link: '/path-integrals-fermions.html', symbol: 'ψ̄, ψ' },
-      { number: '22', title: 'Gauge Fixing', desc: 'Explain why redundant potentials require a gauge choice when calculating propagation.', link: '/path-integrals-gauge-fixing.html', symbol: '∂·A' },
-      { number: '23', title: 'Renormalization at One Loop', desc: 'Connect regulated loop corrections to measured masses and interaction strengths.', link: '/path-integrals-renormalization.html', symbol: 'δm²' },
+      { number: '20', title: 'Path Integrals in Quantum Mechanics', desc: 'Connect sums over possible histories to quantum interference and classical motion.', link: '/path-integrals.html', symbol: 'eⁱˢ/ℏ' },
+      { number: '21', title: 'Path Integrals for Fields', desc: 'See how field histories lead to the same propagators and Feynman diagrams.', link: '/path-integrals-fields.html', symbol: 'Z[J]' },
+      { number: '22', title: 'Fermionic Path Integrals', desc: 'Understand how anticommuting variables preserve fermion exchange signs.', link: '/path-integrals-fermions.html', symbol: 'ψ̄, ψ' },
+      { number: '23', title: 'Gauge Fixing', desc: 'Explain why redundant potentials require a gauge choice when calculating propagation.', link: '/path-integrals-gauge-fixing.html', symbol: '∂·A' },
+      { number: '24', title: 'Renormalization at One Loop', desc: 'Connect regulated loop corrections to measured masses and interaction strengths.', link: '/path-integrals-renormalization.html', symbol: 'δm²' },
     ],
   },
   {
@@ -93,7 +94,7 @@ const groups = [
     color: '#0f766e',
     soft: '#ccfbf1',
     items: [
-      { number: '24', title: 'Final Recap', desc: 'Bring together the core ideas, the Standard Model, and the calculation of observable rates.', link: '/recap.html', symbol: 'ℒ → σ', final: true },
+      { number: '25', title: 'Final Recap', desc: 'Bring together the core ideas, the Standard Model, and the calculation of observable rates.', link: '/recap.html', symbol: 'ℒ → σ', final: true },
     ],
   },
   {
@@ -129,7 +130,7 @@ const groups = [
             Start reading
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
           </a>
-          <span class="chapter-count"><strong>24</strong> chapters</span>
+          <span class="chapter-count"><strong>25</strong> chapters</span>
         </div>
       </div>
 
