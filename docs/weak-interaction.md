@@ -1,6 +1,6 @@
 # Weak Interaction
 
-In [QED](qed.md), the photon couples to a current built from one charged fermion field. Weak interactions also connect different fermion species: a neutron can decay into a proton, an electron, and an antineutrino. We build an interaction that accounts for the particles and chiral preference seen in beta decay, then connect its strength to exchange of a heavy force carrier. We use natural units, $\hbar=c=1$.
+In [QED](qed.md), the photon couples to a current built from one charged fermion field. Weak interactions also connect different fermion species: a neutron can decay into a proton, an electron, and an antineutrino. We build an interaction that accounts for the particles and chiral preference seen in beta decay, then connect its strength to exchange of a heavy force carrier. [Symmetries](symmetries.md) introduces the global and local SU(2) ideas used here. We use natural units, $\hbar=c=1$.
 
 <details>
 <summary>Notation and mass dimensions</summary>

@@ -275,7 +275,7 @@ The real antisymmetric parameters $\omega_{\mu\nu}$ specify rotations and boosts
 
 1. **Finite-dimensional.** $S$ acts on four components at each point. This component transformation is distinct from the transformation of the full function over space.
 2. **Double-valued.** A $2\pi$ rotation gives $S=-\mathbb1$; a $4\pi$ rotation returns the spinor exactly. This is the spin-½ transformation law.
-3. **Reducible.** A change of component basis separates the Lorentz transformation into two two-component transformations. The corresponding **Weyl spinors** are the left- and right-handed components. They transform identically under rotations, with the generators from [§1](#_1-spin), and oppositely under boosts.
+3. **Reducible.** A change of component basis separates the Lorentz transformation into two two-component transformations. The corresponding **Weyl spinors** are the left- and right-handed components. They transform identically under rotations, with the generators from [§1](#_1-spin), and oppositely under boosts. The symmetry motivation for the two inequivalent Lorentz spinor representations is developed in [Symmetries](symmetries.md).
 
 For rotations, $S=\exp(-\tfrac i2\boldsymbol\theta\cdot\boldsymbol\Sigma)$. The generator is $\mathbf S/\hbar$, using the spin operator from [§1](#_1-spin). The calculations below derive the general form and compare rotations with boosts. The left/right decomposition is a further result stated here without proof; [Weak Interaction](weak-interaction.md) introduces the projectors used to separate these components when the distinction becomes physically necessary.
 
