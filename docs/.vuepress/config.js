@@ -1,6 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import markdownItFootnote from 'markdown-it-footnote'
 import katex from 'katex'
@@ -21,6 +22,7 @@ export default {
   theme: defaultTheme({
     navbar: [
       { text: 'Home', link: '/' },
+      { text: 'Mindmap', link: '/mindmap.html' },
       { text: 'Quiz', link: '/quiz.html' },
       {
         text: 'Foundations',
@@ -141,6 +143,7 @@ export default {
   }),
 
   plugins: [
+    markdownChartPlugin({ mermaid: true }),
     markdownMathPlugin({ type: 'katex', output: 'html' }),
     slimsearchPlugin({
       indexContent: true,
@@ -194,6 +197,10 @@ export default {
 
     md.renderer.rules.fence = (tokens, idx, options, env, self) => {
       const token = tokens[idx]
+      if (token.info.trim() === 'mindmap') {
+        const source = token.content.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '&#10;')
+        return `<Mindmap source="${source}" />\n`
+      }
       if (token.info.trim() === 'feynman') {
         return `${renderFeynmanSvg(token.content)}\n`
       }

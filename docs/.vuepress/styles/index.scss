@@ -16,3 +16,8 @@
   max-width: none;
   padding: 0;
 }
+
+.mindmap-page .theme-default-content {
+  max-width: none;
+  padding-inline: clamp(1rem, 3vw, 3rem);
+}
