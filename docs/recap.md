@@ -680,6 +680,27 @@ We use **natural units** $c=\hbar=1$ throughout.
 
   The Goldstone degree of freedom becomes the longitudinal polarization of the massive vector. The counting is preserved: a massless vector has two polarizations and the complex scalar has two real modes; afterward, the massive vector has three polarizations and one real scalar $h$ remains.
 
+### Proca Equation After Higgs Generates a Vector Mass
+
+- Keeping the free vector terms in unitary gauge gives
+
+  $$\mathcal L_{\mathrm{free}}=-\frac14F_{\mu\nu}F^{\mu\nu}+\frac12m_A^2A_\mu A^\mu,
+  \qquad m_A=qv.$$
+
+  The Maxwell derivative is $-F^{\mu\nu}$; differentiating the generated mass term gives $m_A^2A^\nu$. The Euler–Lagrange equation therefore gives the **Proca equation**,
+
+  $$\boxed{\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0.}$$
+
+- Taking the divergence eliminates the antisymmetric field-strength term. For $m_A\ne0$, the equation forces $\partial_\mu A^\mu=0$. Substituting this constraint back gives
+
+  $$(\Box+m_A^2)A^\nu=0,
+  \qquad p^2=m_A^2,
+  \qquad p\cdot\varepsilon=0.$$
+
+  In the rest frame, $\varepsilon^0=0$ leaves three spatial polarizations. The longitudinal mode is physical. The free massive equation forces the constraint; we do not choose it as a gauge condition.
+
+- Higgs explains the origin of the mass and longitudinal mode; Proca describes the resulting free massive vector. After electroweak symmetry breaking, the free $W^\pm$ and $Z$ fields have Proca equations, while the photon remains massless and obeys Maxwell. Interactions add terms to these free equations. See the [derivation in the Higgs chapter](higgs-mechanism.md#proca-equation-for-the-massive-vector).
+
 ### Standard Model Higgs Field
 
 - The electroweak Higgs field is a complex $SU(2)_L$ doublet with hypercharge $Y=1$:

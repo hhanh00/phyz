@@ -2438,6 +2438,57 @@ For a complex scalar with nonzero vacuum magnitude, write the phase fluctuation 
 
 </details>
 
+### Proca Equation
+
+Use the [Proca section in the Higgs chapter](higgs-mechanism.md#proca-equation-for-the-massive-vector). Work in natural units with metric $(+,-,-,-)$.
+
+<details>
+<summary>Derive the vector equation after the Abelian Higgs mechanism generates its mass.</summary>
+
+Keep the quadratic vector terms in unitary gauge:
+
+$$\mathcal L_{\mathrm{free}}=-\frac14F_{\mu\nu}F^{\mu\nu}+\frac12m_A^2A_\mu A^\mu,
+\qquad m_A=qv.$$
+
+The derivatives are $\partial\mathcal L/\partial(\partial_\mu A_\nu)=-F^{\mu\nu}$ and $\partial\mathcal L/\partial A_\nu=m_A^2A^\nu$. Substitution into the Euler–Lagrange equation gives $-\partial_\mu F^{\mu\nu}-m_A^2A^\nu=0$, or
+
+$$\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0.$$
+
+This is Proca. The scalar vacuum generated the mass term before we varied the free vector action.
+
+</details>
+
+<details>
+<summary>Take the divergence of Proca and show that each component obeys Klein–Gordon.</summary>
+
+The contraction $\partial_\nu\partial_\mu F^{\mu\nu}$ vanishes because the derivatives are symmetric and $F^{\mu\nu}$ is antisymmetric. Thus $m_A^2\partial_\nu A^\nu=0$. For $m_A\ne0$, $\partial_\nu A^\nu=0$.
+
+Expanding $F^{\mu\nu}$ in Proca gives $\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)+m_A^2A^\nu=0$. The constraint removes the middle term, leaving $(\Box+m_A^2)A^\nu=0$. These component equations alone do not specify the massive spin-1 field; we must also retain the constraint.
+
+</details>
+
+<details>
+<summary>For momentum along the z-axis, verify a longitudinal polarization and count the physical modes.</summary>
+
+Let $p^\mu=(E,0,0,k)$ with $E^2-k^2=m_A^2$. Choose
+
+$$\varepsilon_L^\mu=\frac1{m_A}(k,0,0,E).$$
+
+Then $p\cdot\varepsilon_L=(Ek-kE)/m_A=0$ and $\varepsilon_L^2=(k^2-E^2)/m_A^2=-1$. Two transverse choices are $(0,1,0,0)$ and $(0,0,1,0)$. Together these give three physical polarizations. In the rest frame, the longitudinal choice becomes $(0,0,0,1)$.
+
+</details>
+
+<details>
+<summary>Explain why setting the mass to zero changes the polarization count, and identify the fields that obey Proca in this treatment.</summary>
+
+At nonzero mass, taking the divergence forces $\partial\cdot A=0$. At zero mass the divergence gives $0=0$, so this argument no longer forces the constraint. Maxwell theory also permits gauge transformations, which remove an additional polarization and leave two physical transverse modes. We cannot obtain that counting by retaining all the massive-field constraints and just setting $m_A=0$; the displayed longitudinal polarization also contains $1/m_A$.
+
+The toy Abelian gauge field obeys free Proca after Higgs gives it mass. In the electroweak theory, the free $W^\pm$ and $Z$ fields obey Proca after acquiring their Higgs-generated masses; the photon remains massless and obeys Maxwell. The full interacting equations contain additional terms.
+
+</details>
+
+### Electroweak Masses
+
 <details>
 <summary>Which electroweak gauge bosons gain mass?</summary>
 

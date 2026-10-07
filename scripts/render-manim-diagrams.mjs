@@ -10,6 +10,7 @@ const manimDir = path.join(root, 'docs', 'manim')
 const venvManim = path.join(root, '.manim-venv', 'bin', 'manim')
 
 const diagrams = [
+  { source: 'mindmap.py', scene: 'PhysicsRoadmap', output: 'physics-roadmap.png', page: 'mindmap', resolution: '1920,3200' },
   { source: 'boost.py', scene: 'BoostDiagrams', output: 'boost-diagrams.png', page: 'special-relativity' },
   { source: 'hamiltonian_flow.py', scene: 'HamiltonianFlow', output: 'hamiltonian-flow.png', page: 'qft-action' },
   { source: 'occupation_states.py', scene: 'OccupationStates', output: 'occupation-states.png', page: 'field-quantization' },
@@ -89,10 +90,10 @@ if (missing.length > 0) {
 const mediaDir = fs.mkdtempSync(path.join(os.tmpdir(), 'phyz-manim-'))
 let ok = 0
 let failed = 0
-for (const { source, scene, output } of selected) {
+for (const { source, scene, output, resolution = '2400,1350' } of selected) {
   const result = spawnSync(
     venvManim,
-    ['render', '-s', '--tex_template', path.join(manimDir, 'template.tex'), '--media_dir', mediaDir, '-r', '2400,1350', '-q', 'm', path.join('docs', 'manim', source), scene],
+    ['render', '-s', '--tex_template', path.join(manimDir, 'template.tex'), '--media_dir', mediaDir, '-r', resolution, '-q', 'm', path.join('docs', 'manim', source), scene],
     { cwd: root, stdio: 'pipe', encoding: 'utf8' },
   )
   if (result.status !== 0) {

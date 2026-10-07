@@ -128,11 +128,49 @@ The remaining pieces, proportional to $vh$ and $h^2$, are couplings between the 
 
 </details>
 
-The key term in the main Lagrangian is therefore
+### Proca equation for the massive vector
 
-$$\mathcal L\supset-\frac14F_{\mu\nu}F^{\mu\nu}+\frac12q^2v^2A_\mu A^\mu.$$
+The scalar vacuum has now supplied a vector mass, $m_A=qv$. To find how this massive field propagates, keep the terms quadratic in $A_\mu$ and set aside its interactions with the Higgs fluctuation $h$. In unitary gauge, the free vector Lagrangian is
 
-Its vector equation has the form $\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0$, with $m_A=qv$. The mass comes from the original gauge-invariant scalar kinetic term, evaluated around a nonzero vacuum. The following three claims explain what happens to the Goldstone field.
+$$\mathcal L_{\mathrm{free}}=-\frac14F_{\mu\nu}F^{\mu\nu}+\frac12m_A^2A_\mu A^\mu.$$
+
+The mass here comes from the original gauge-invariant scalar kinetic term. We have reached this Lagrangian after expanding around the nonzero vacuum, rather than inserting a mass into the unbroken gauge theory.
+
+**Vary the vector field.** The Maxwell calculation in [Action and Lagrangians](qft-action.md#maxwell) already gives the derivative with respect to $\partial_\mu A_\nu$. The new mass term also contributes a derivative with respect to $A_\nu$:
+
+$$\frac{\partial\mathcal L_{\mathrm{free}}}{\partial(\partial_\mu A_\nu)}=-F^{\mu\nu},
+\qquad
+\frac{\partial\mathcal L_{\mathrm{free}}}{\partial A_\nu}=m_A^2A^\nu.$$
+
+The factor $\tfrac12$ cancels the two contributions from differentiating $A_\rho A^\rho$. Substituting into the Euler–Lagrange equation gives
+
+$$-\partial_\mu F^{\mu\nu}-m_A^2A^\nu=0,
+\qquad
+\boxed{\partial_\mu F^{\mu\nu}+m_A^2A^\nu=0.}$$
+
+This is the **Proca equation**, the free equation for a massive spin-1 field. Maxwell describes the massless vector; Proca describes the massive vector we have obtained through Higgs.
+
+**Derive the constraint.** Take the divergence:
+
+$$\partial_\nu\partial_\mu F^{\mu\nu}+m_A^2\partial_\nu A^\nu=0.$$
+
+Commuting partial derivatives makes the first term symmetric in $\mu,\nu$, while $F^{\mu\nu}$ is antisymmetric, so their contraction vanishes. For $m_A\ne0$,
+
+$$\boxed{\partial_\nu A^\nu=0.}$$
+
+This condition follows from the massive field equation. Unlike the Lorenz condition in Maxwell theory, we do not impose it by choosing a gauge for the free massive vector. The full Higgs theory still has gauge redundancy; we have already chosen unitary gauge to describe its massive vector.
+
+Expanding the field strength gives
+
+$$\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)+m_A^2A^\nu=0.$$
+
+Using the constraint leaves $(\Box+m_A^2)A^\nu=0$. Each component therefore has the massive Klein–Gordon dispersion relation, but the constraint ties the components together. For $A^\nu=\varepsilon^\nu e^{-ip\cdot x}$,
+
+$$p^2=m_A^2,\qquad p_\nu\varepsilon^\nu=0.$$
+
+In the rest frame, $p^\mu=(m_A,\mathbf0)$, this sets $\varepsilon^0=0$ and leaves three spatial polarizations. When the particle moves, two are transverse and the third is longitudinal. We can now identify how the scalar phase supplies that third mode.
+
+### Goldstone mode and the longitudinal polarization
 
 Before the gauge choice, the complex scalar contains the radial fluctuation $h$ and the phase fluctuation. In polar form,
 
@@ -175,7 +213,7 @@ $$2\text{ (massless-vector polarizations)}+2\text{ (scalar degrees of freedom)}
 <details>
 <summary>Why a massive vector has one more polarization than a massless one</summary>
 
-A vector field $A_\mu$ has four components, and the number of physical polarizations is what remains after the constraints. The massive field equation, $\partial_\mu F^{\mu\nu}+m^2A^\nu=0$ (the massive vector introduced with the [field classification in QFT](qft.md#fields)), forces one constraint automatically: taking its divergence kills the antisymmetric field-strength term and leaves $m^2\partial_\mu A^\mu=0$, so $\partial_\mu A^\mu=0$. For a plane wave $A_\mu\propto\varepsilon_\mu e^{-ip\cdot x}$ this reads $p^\mu\varepsilon_\mu=0$: the polarization must be orthogonal to the momentum, one condition on the four components, leaving three.
+The [Proca derivation above](#proca-equation-for-the-massive-vector) gives $p\cdot\varepsilon=0$, leaving three physical polarizations for the massive vector.
 
 To see what those three are, go to the particle's rest frame, $p^\mu=(m,\mathbf 0)$. The condition becomes $\varepsilon_0=0$, so the polarization is a purely spatial 3-vector with three independent directions. A spatial vector under rotations is exactly the spin-1 object with $2s+1=3$ states, all on equal footing. The transverse-versus-longitudinal distinction appears only once the particle moves: boosting along its direction of motion leaves the two polarizations perpendicular to that direction unchanged (transverse) and singles out the third along it (longitudinal).
 
@@ -352,6 +390,8 @@ $$\mathcal L_{\mathrm{mass}}^{\mathrm{neutral}}
 There is no $A_\mu A^\mu$ term. Therefore
 
 $$\boxed{m_Z=\frac v2\sqrt{g^2+g'^2},\qquad m_A=0.}$$
+
+After expanding around the Higgs vacuum, the free $W^+$, $W^-$, and $Z$ fields obey the [Proca equation](#proca-equation-for-the-massive-vector), with their respective masses. For $W^\pm$, use the charged-field quadratic Lagrangian $-\tfrac12W^+_{\mu\nu}W^{-\mu\nu}+m_W^2W^+_\mu W^{-\mu}$ and vary the conjugate fields independently; here $W^\pm_{\mu\nu}=\partial_\mu W^\pm_\nu-\partial_\nu W^\pm_\mu$ denotes the free field strength. The photon has no mass term and retains the free Maxwell equation. Their full equations also contain gauge, Higgs, and matter interactions, so the Proca form describes free propagation.
 
 This completes the step left open in EW: the combinations with photon and $Z$ interactions also have definite masses, and the photon is massless. Its absence from the mass term agrees with the earlier symmetry check, $Q\langle\phi\rangle=0$.
 
