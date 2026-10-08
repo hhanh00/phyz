@@ -34,6 +34,7 @@ class PhysicsRoadmap(Scene):
             'quarks':(-2.15,-.18,0),'electron':(0,-.18,0),'neutrino':(2.15,-.18,0),'photon':(4.45,-.18,0),
             'qcd':(-3.3,-1.45,0),'weak':(0,-1.45,0),'qed':(3.65,-1.45,0),
             'wch':(-1.15,-2.65,0),'wneut':(1.15,-2.65,0),'z':(.4,-3.75,0),'gamma':(2.55,-3.75,0),
+            'breaking':(-4.5,-.25,0),'mass':(-4.65,-2.65,0),'gluon':(-3.3,-3.75,0),
         }
         links=[('newton','lagrange',PURPLE),('lagrange','hamilton',PURPLE),('hamilton','qm',BLUE),
           ('qm','kg',BLUE),('sr','kg',BLUE),('kg','dirac',ORANGE),('spin','dirac',ORANGE),
@@ -44,7 +45,8 @@ class PhysicsRoadmap(Scene):
           ('quarks','qcd',PURPLE),('electron','qed',PURPLE),('photon','qed',PURPLE),
           ('quarks','weak',PURPLE),('electron','weak',PURPLE),('neutrino','weak',PURPLE),
           ('weak','wch',TEAL),('weak','wneut',TEAL),('wneut','z',TEAL),('wneut','gamma',TEAL),
-          ('photon','wneut',TEAL)]
+          ('photon','wneut',TEAL),('higgs','breaking',HIGGS),('breaking','mass',HIGGS),
+          ('qcd','gluon',GREEN)]
         node_start = len(self.mobjects)
         self.add(
           node('Newton',p['newton'],1.45,color=PURPLE),node('Lagrangian',p['lagrange'],1.55,color=PURPLE,size=20),
@@ -60,7 +62,10 @@ class PhysicsRoadmap(Scene):
           node('Photon',p['photon'],1.45,color=TEAL),node('QCD /\nStrong Force',p['qcd'],1.85,.9,PURPLE,20,'#f3edff'),
           node('Weak force',p['weak'],1.65,color=PURPLE,fill='#f3edff'),node('QED / EM',p['qed'],1.75,color=PURPLE,fill='#f3edff'),
           node('W+, W-',p['wch'],1.5,color=GREEN,fill='#dcfce7'),node('W0, B',p['wneut'],1.5,color=TEAL),
-          node('Z',p['z'],1.15,color=GREEN,fill='#dcfce7'),node('γ',p['gamma'],1.15,color=GREEN,fill='#dcfce7'))
+          node('Z',p['z'],1.15,color=GREEN,fill='#dcfce7'),node('γ',p['gamma'],1.15,color=GREEN,fill='#dcfce7'),
+          node('Symmetry\nbreaking',p['breaking'],1.65,.9,HIGGS,20,'#fce7f3'),
+          node('Mass',p['mass'],1.35,color=HIGGS,fill='#fce7f3'),
+          node('Gluon',p['gluon'],1.45,color=GREEN,fill='#dcfce7'))
         nodes = dict(zip(p, self.mobjects[node_start:]))
         def boundary(key, toward):
             obj = nodes[key][0]
@@ -70,9 +75,9 @@ class PhysicsRoadmap(Scene):
                          (obj.height / 2) / max(abs(delta[1]), 1e-9))
             return center + delta * factor
         for a,b,c in links:
-            if a == 'photon' and b in ('z','gamma'):
-                lane = 5.35 if b == 'z' else 5.65
-                y = -3.18 if b == 'z' else -3.28
+            if a == 'photon' and b == 'wneut':
+                lane = 5.45
+                y = -2.03
                 start = nodes[a][0].get_right()
                 end = nodes[b][0].get_top()
                 points = [start, np.array([lane,start[1],0]), np.array([lane,y,0]),
@@ -108,14 +113,14 @@ class PhysicsRoadmap(Scene):
 
         def gauge_link(source, row_index):
             target=positions[(row_index,3)]
-            title={'qcd':'QCD','gamma':'γ','z':'Z','wch':'W+, W-'}[source]
+            title={'gluon':'Gluon','gamma':'γ','z':'Z','wch':'W+, W-'}[source]
             self.add(label(title,4.65,target[1],18,GREEN,width=1.45),
                      edge([4.05,target[1],0],[3.54,target[1],0],GREEN,1.8,.015))
 
         row_bus('quarks',[0,1],AMBER)
         row_bus('electron',[2],AMBER)
         row_bus('neutrino',[3],AMBER)
-        gauge_link('qcd',0); gauge_link('gamma',1); gauge_link('z',2); gauge_link('wch',3)
+        gauge_link('gluon',0); gauge_link('gamma',1); gauge_link('z',2); gauge_link('wch',3)
         self.add(label('Higgs',-2.25,higgs_cell[1],18,HIGGS),
                  edge([-1.75,higgs_cell[1],0],[-1.10,higgs_cell[1],0],HIGGS,1.8,.015))
         self.add(label('Standard Model particles',0,top+.58,26))
