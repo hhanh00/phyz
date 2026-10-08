@@ -6,14 +6,16 @@ config.background_color = WHITE
 config.frame_width = 12
 config.frame_height = 20
 AMBER, GREEN, HIGGS = '#d97706', '#059669', '#db2777'
+CONNECTOR_WIDTH = 2.2
 
 def node(text, point, width=2.0, height=0.72, color=BLUE, size=22, fill=PALE):
     shape = RoundedRectangle(width=width, height=height, corner_radius=0.14,
         stroke_color=color, stroke_width=2.4, fill_color=fill, fill_opacity=1).move_to(point)
     return VGroup(shape, label(text, point[0], point[1], size, INK, width - 0.20))
 
-def edge(start, end, color=MUTED, width=2.5, buff=0.38):
-    return Arrow(start, end, buff=buff, color=color, stroke_width=width,
+def edge(start, end, color=MUTED, buff=0.38):
+    return Arrow(start, end, buff=buff, color=color, stroke_width=CONNECTOR_WIDTH,
+        max_stroke_width_to_length_ratio=100,
         tip_length=.10, max_tip_length_to_length_ratio=0.35)
 
 def cell(text, x, y, color, width=1.65, height=0.56):
@@ -33,7 +35,7 @@ class PhysicsRoadmap(Scene):
             'higgs':(-3.65,1.02,0),'fermions':(0,1.02,0),'bosons':(3.65,1.02,0),
             'quarks':(-2.15,-.18,0),'electron':(0,-.18,0),'neutrino':(2.15,-.18,0),'photon':(4.45,-.18,0),
             'qcd':(-3.3,-1.45,0),'weak':(0,-1.45,0),'qed':(3.65,-1.45,0),
-            'wch':(-1.15,-2.65,0),'wneut':(1.15,-2.65,0),'z':(.4,-3.75,0),'gamma':(2.55,-3.75,0),
+            'wch':(-1.05,-3.75,0),'wneut':(1.15,-2.65,0),'z':(1.05,-3.75,0),'gamma':(3.15,-3.75,0),
             'breaking':(-4.5,-.25,0),'mass':(-4.65,-2.65,0),'gluon':(-3.3,-3.75,0),
         }
         links=[('newton','lagrange',PURPLE),('lagrange','hamilton',PURPLE),('hamilton','qm',BLUE),
@@ -45,8 +47,8 @@ class PhysicsRoadmap(Scene):
           ('quarks','qcd',PURPLE),('electron','qed',PURPLE),('photon','qed',PURPLE),
           ('quarks','weak',PURPLE),('electron','weak',PURPLE),('neutrino','weak',PURPLE),
           ('weak','wch',TEAL),('weak','wneut',TEAL),('wneut','z',TEAL),('wneut','gamma',TEAL),
-          ('photon','wneut',TEAL),('higgs','breaking',HIGGS),('breaking','mass',HIGGS),
-          ('qcd','gluon',GREEN)]
+          ('qed','wneut',TEAL),('higgs','breaking',HIGGS),('breaking','mass',HIGGS),
+          ('qcd','gluon',GREEN),('mass','wneut',HIGGS)]
         node_start = len(self.mobjects)
         self.add(
           node('Newton',p['newton'],1.45,color=PURPLE),node('Lagrangian',p['lagrange'],1.55,color=PURPLE,size=20),
@@ -65,7 +67,7 @@ class PhysicsRoadmap(Scene):
           node('Z',p['z'],1.15,color=GREEN,fill='#dcfce7'),node('γ',p['gamma'],1.15,color=GREEN,fill='#dcfce7'),
           node('Symmetry\nbreaking',p['breaking'],1.65,.9,HIGGS,20,'#fce7f3'),
           node('Mass',p['mass'],1.35,color=HIGGS,fill='#fce7f3'),
-          node('Gluon',p['gluon'],1.45,color=GREEN,fill='#dcfce7'))
+          node('g',p['gluon'],1.45,color=GREEN,fill='#dcfce7'))
         nodes = dict(zip(p, self.mobjects[node_start:]))
         def boundary(key, toward):
             obj = nodes[key][0]
@@ -74,21 +76,49 @@ class PhysicsRoadmap(Scene):
             factor = min((obj.width / 2) / max(abs(delta[0]), 1e-9),
                          (obj.height / 2) / max(abs(delta[1]), 1e-9))
             return center + delta * factor
+        segments = []
         for a,b,c in links:
-            if a == 'photon' and b == 'wneut':
-                lane = 5.45
-                y = -2.03
-                start = nodes[a][0].get_right()
-                end = nodes[b][0].get_top()
-                points = [start, np.array([lane,start[1],0]), np.array([lane,y,0]),
-                          np.array([end[0],y,0])]
-                self.add(VMobject(color=c,stroke_width=2.2).set_points_as_corners(points).set_z_index(-1),
-                         edge(points[-1],end,c,2.2,.035).set_z_index(-1))
-                continue
             start, end = boundary(a,p[b]), boundary(b,p[a])
-            self.add(edge(start,end,c,2.2,.035).set_z_index(-1))
+            self.add(edge(start,end,c,buff=.035).set_z_index(-1))
+            segments.append((a,b,start,end,c))
+
+        # Mark interior crossings, excluding shared endpoints and node interiors.
+        crossings = []
+        def cross(u,v):
+            return u[0]*v[1]-u[1]*v[0]
+        for i,(a,b,start,end,color) in enumerate(segments):
+            direction = end-start
+            for c,d,other_start,other_end,other_color in segments[i+1:]:
+                if {a,b} & {c,d}:
+                    continue
+                other_direction = other_end-other_start
+                denominator = cross(direction,other_direction)
+                if abs(denominator) < 1e-8:
+                    continue
+                offset = other_start-start
+                t = cross(offset,other_direction)/denominator
+                u = cross(offset,direction)/denominator
+                if not (.015 < t < .985 and .015 < u < .985):
+                    continue
+                point = start+t*direction
+                if any(abs(point[0]-obj[0].get_center()[0]) < obj[0].width/2+.05
+                       and abs(point[1]-obj[0].get_center()[1]) < obj[0].height/2+.05
+                       for obj in nodes.values()):
+                    continue
+                if all(np.linalg.norm(point-existing[0]) > .16 for existing in crossings):
+                    crossings.append((point,direction/np.linalg.norm(direction),color,
+                                      other_direction/np.linalg.norm(other_direction),other_color))
+        for point,direction,color,under_direction,under_color in crossings:
+            radius=.09
+            angle=np.arctan2(direction[1],direction[0])
+            self.add(Line(point-radius*direction,point+radius*direction,
+                          color=WHITE,stroke_width=7).set_z_index(2))
+            self.add(Line(point-2*radius*under_direction,point+2*radius*under_direction,
+                          color=under_color,stroke_width=CONNECTOR_WIDTH).set_z_index(3))
+            self.add(Arc(radius=radius,start_angle=angle,angle=PI,
+                         arc_center=point,color=color,stroke_width=CONNECTOR_WIDTH).set_z_index(4))
         self.add(label('reformulate',-4,8.18,15,MUTED),label('reformulate',-1.95,8.18,15,MUTED),
-                 label('quantize',.12,8.05,16,BLUE),label('quantize',4.78,4.35,16,PURPLE))
+                 label('quantize',.12,8.25,16,BLUE),label('quantize',4.78,4.35,16,PURPLE))
 
         top=-5.05; xs=[-2.7,-.9,.9,2.7]
         headers=['Generation I','Generation II','Generation III','Gauge bosons']
@@ -104,25 +134,26 @@ class PhysicsRoadmap(Scene):
                 bus_y=y+.35
                 title={'quarks':'Quarks','electron':'Electron','neutrino':'Neutrino'}[source]
                 self.add(label(title,-4.6,y,17,color,width=1.55))
-                self.add(Line([-3.72,y,0],[-3.62,y,0],color=color,stroke_width=1.6),
-                         Line([-3.62,y,0],[-3.62,bus_y,0],color=color,stroke_width=1.6),
-                         Line([-3.62,bus_y,0],[xs[2],bus_y,0],color=color,stroke_width=1.6))
+                self.add(Line([-3.72,y,0],[-3.62,y,0],color=color,stroke_width=CONNECTOR_WIDTH),
+                         Line([-3.62,y,0],[-3.62,bus_y,0],color=color,stroke_width=CONNECTOR_WIDTH),
+                         Line([-3.62,bus_y,0],[xs[2],bus_y,0],color=color,stroke_width=CONNECTOR_WIDTH))
                 for ci in range(3):
                     self.add(Arrow([xs[ci],bus_y,0],[xs[ci],y+.28,0],buff=0,color=color,
-                                   stroke_width=1.5,max_tip_length_to_length_ratio=.8))
+                                   stroke_width=CONNECTOR_WIDTH,max_stroke_width_to_length_ratio=100,
+                                   max_tip_length_to_length_ratio=.8))
 
         def gauge_link(source, row_index):
             target=positions[(row_index,3)]
-            title={'gluon':'Gluon','gamma':'γ','z':'Z','wch':'W+, W-'}[source]
+            title={'gluon':'g','gamma':'γ','z':'Z','wch':'W+, W-'}[source]
             self.add(label(title,4.65,target[1],18,GREEN,width=1.45),
-                     edge([4.05,target[1],0],[3.54,target[1],0],GREEN,1.8,.015))
+                     edge([4.05,target[1],0],[3.54,target[1],0],GREEN,buff=.015))
 
         row_bus('quarks',[0,1],AMBER)
         row_bus('electron',[2],AMBER)
         row_bus('neutrino',[3],AMBER)
         gauge_link('gluon',0); gauge_link('gamma',1); gauge_link('z',2); gauge_link('wch',3)
         self.add(label('Higgs',-2.25,higgs_cell[1],18,HIGGS),
-                 edge([-1.75,higgs_cell[1],0],[-1.10,higgs_cell[1],0],HIGGS,1.8,.015))
+                 edge([-1.75,higgs_cell[1],0],[-1.10,higgs_cell[1],0],HIGGS,buff=.015))
         self.add(label('Standard Model particles',0,top+.58,26))
         for x,text in zip(xs,headers):self.add(node(text,(x,top,0),1.65,.54,MUTED,16,'#f8fafc'))
         for ri,(values,colors) in enumerate(rows):
