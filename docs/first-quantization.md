@@ -122,7 +122,7 @@ We now have the ingredients for an energy-level calculation: a state, a Hamilton
 
 ---
 
-Previous: [Lesson 01a — Classical Mechanics](./classical-mechanics.md)
+Previous: [Classical Mechanics](./classical-mechanics.md)
 
 Next: [The Harmonic Oscillator](./harmonic-oscillator.md)
 

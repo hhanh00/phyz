@@ -26,7 +26,7 @@ We use the curly $\partial$ to distinguish this from a full derivative $\frac{d}
 
 $$\frac{\partial L}{\partial \dot q}=m\dot q, \qquad \frac{\partial L}{\partial q}=-V'(q).$$
 
-Both derivatives appear in the Euler–Lagrange equation on [Classical Mechanics](classical-mechanics.md#_2-lagrangian-and-the-euler-lagrange-derivation):
+Both derivatives appear in the Euler–Lagrange equation on [Classical Mechanics](classical-mechanics.md#_4-from-stationary-action-to-an-equation-of-motion):
 
 $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L}{\partial q} = 0.$$
 
@@ -54,7 +54,7 @@ $$\int_a^b u\,\frac{dv}{dt}\,dt = \big[u v\big]_a^b - \int_a^b v\,\frac{du}{dt}\
 
 where $[uv]_a^b = u(b)v(b)-u(a)v(a)$ is the **boundary term**.
 
-**Example.** In the variation of the action, the velocity term is $\int \frac{\partial L}{\partial\dot q}\,\frac{d}{dt}(\delta q)\,dt$. Taking $u=\frac{\partial L}{\partial\dot q}$ and $v=\delta q$ moves the derivative onto $u$. The boundary term vanishes because the variation $\delta q$ is chosen to be zero at the endpoints. What remains is $\int\left(\frac{d}{dt}\frac{\partial L}{\partial\dot q}\right)\delta q\,dt$, which produces the Euler–Lagrange equation. The same step runs over every spacetime direction when deriving the [field equation](qft-action.md).
+**Example.** In the variation of the action, the velocity term is $\int \frac{\partial L}{\partial\dot q}\,\frac{d}{dt}(\delta q)\,dt$. Taking $u=\frac{\partial L}{\partial\dot q}$ and $v=\delta q$ moves the derivative onto $u$. The boundary term vanishes because the variation $\delta q$ is chosen to be zero at the endpoints. What remains is $-\int\left(\frac{d}{dt}\frac{\partial L}{\partial\dot q}\right)\delta q\,dt$, which produces the Euler–Lagrange equation. The same step runs over every spacetime direction when deriving the [field equation](qft-action.md).
 
 ## 5. Taylor expansion
 

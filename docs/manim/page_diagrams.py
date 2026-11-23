@@ -18,41 +18,57 @@ def path_curve(ax, fn, interval, color=BLUE):
 
 class NewtonMotion(Scene):
     def construct(self):
-        heading(self,'A constant force changes momentum and bends the trajectory','One-dimensional example: constant positive force, with the particle initially at rest')
-        for cx,title,fn,formula in [(-5,'Acceleration',lambda t:1,r'a=F/m'),(0,'Velocity',lambda t:t,r'v(t)=at'),(5,'Position',lambda t:0.5*t*t,r'x(t)=x_0+\tfrac12at^2')]:
-            ax=axes_at(cx,-0.1,4.1,3.5,(0,2,1),(0,2.3,1))
-            self.add(ax,path_curve(ax,fn,[0,2]),label(title,cx,2.15,28),math(formula,cx,-2.6,31),label('time',cx+1.5,-2.08,22,MUTED))
-        self.add(label('Integrate acceleration to get velocity; integrate velocity to get position.',0,-3.65,26,MUTED))
+        heading(self,'A constant force: a ball dropped from rest','Gravity gives a constant acceleration g = 9.8 m/s² downward; speed and distance fallen are measured downward')
+        g=9.8
+        panels=[(-5,'Acceleration',lambda t:g,(0,3.2,1),(0,12,4),r'g=9.8\ \mathrm{m/s^2}',[]),
+                (0,'Speed (m/s)',lambda t:g*t,(0,3.2,1),(0,32,10),r'v=gt',[(t,g*t) for t in (1,2,3)]),
+                (5,'Distance fallen (m)',lambda t:0.5*g*t*t,(0,3.2,1),(0,48,16),r'd=\tfrac12 g t^2',[(t,0.5*g*t*t) for t in (1,2,3)])]
+        for cx,title,fn,xr,yr,formula,marks in panels:
+            ax=axes_at(cx,-0.1,4.1,3.5,xr,yr)
+            self.add(ax,path_curve(ax,fn,[0,3]),label(title,cx,2.15,28),math(formula,cx,-2.6,31),label('time (s)',cx+1.5,-2.08,22,MUTED))
+            for t,v in marks:
+                pt=ax.c2p(t,v)
+                self.add(Dot(pt,color=ORANGE,radius=0.07),label(f'{v:.1f}',pt[0]-0.45,pt[1]+0.25,20,ORANGE))
+        self.add(label('Integrate the acceleration to get the speed; integrate the speed to get the distance.',0,-3.65,26,MUTED))
 
 
 class StationaryActionPaths(Scene):
     def construct(self):
-        heading(self,'Stationary action compares complete paths','Free particle with fixed endpoints; the straight path has constant velocity')
-        ax=axes_at(-4,0,6.2,4.4,(0,1,1),(0,1.2,1))
+        heading(self,'Stationary action compares complete paths','A ball thrown up and caught after 2 s, and paths bent by up to ε metres with the same endpoints')
+        ax=axes_at(-4.6,0,5.6,4.2,(0,2,1),(0,6.5,2))
         self.add(ax)
-        for e,c in [(-0.25,ORANGE),(0.25,TEAL),(0,BLUE)]:
-            self.add(path_curve(ax,lambda t,e=e:t+e*np.sin(np.pi*t),[0,1],c))
-        for t in [0,1]:self.add(Dot(ax.c2p(t,t),color=INK,radius=0.09))
-        self.add(label('time t',-1.25,-2.6,23),label('position x',-5.8,2.5,23),
-                 math(r'x_\epsilon(t)=t+\epsilon\sin(\pi t)',-4,-3.25,31),
-                 label('All paths share the endpoints.',-4,-3.9,23,MUTED))
-        ax2=axes_at(4,0,5.7,3.3,(-1,1,1),(0,2,1));self.add(ax2,path_curve(ax2,lambda e:0.4+e*e,[-1,1],PURPLE),
-                 label('Action S',2,2.15,25,PURPLE),label('path variation ε',4,-2.2,24),
-                 math(r'\left.\frac{dS}{d\epsilon}\right|_{\epsilon=0}=0',4,-3,34,PURPLE),
-                 label('Here the stationary action is a minimum.',4,-3.8,22,MUTED,width=6.8))
+        real=lambda t:9.8*t-4.9*t*t
+        for e,c in [(-0.5,ORANGE),(0.5,TEAL),(0,BLUE)]:
+            self.add(path_curve(ax,lambda t,e=e:real(t)+e*np.sin(np.pi*t/2),[0,2],c))
+        for t in [0,2]:self.add(Dot(ax.c2p(t,0),color=INK,radius=0.09))
+        self.add(label('time t (s)',-2.2,-2.5,23),label('height x (m)',-6.3,2.45,23),
+                 label('ε = +0.5',-0.6,1.6,21,TEAL),label('real path, ε = 0',-0.6,1.15,21,BLUE),label('ε = −0.5',-0.6,0.7,21,ORANGE),
+                 math(r'x(t)=9.8\,t-4.9\,t^2+\epsilon\sin(\pi t/2)',-4.3,-3.2,30),
+                 label('All paths leave and return at the same moments.',-4.3,-3.85,22,MUTED))
+        top=axes_at(4,1.15,5.2,1.7,(-0.5,0.5,0.5),(-32.05,-31.65,0.2))
+        bot=axes_at(4,-1.65,5.2,1.7,(-0.5,0.5,0.5),(80,112,10))
+        sa=lambda e:-32.0133+1.2337*e*e
+        sb=lambda e:96.04+24.955*e+1.2337*e*e
+        self.add(top,path_curve(top,sa,[-0.5,0.5],PURPLE),bot,path_curve(bot,sb,[-0.5,0.5],ORANGE))
+        for e in (-0.5,-0.2,0,0.2,0.5):
+            self.add(Dot(top.c2p(e,sa(e)),color=PURPLE,radius=0.06),Dot(bot.c2p(e,sb(e)),color=ORANGE,radius=0.06))
+        self.add(label('Action of T − V: flat at ε = 0',4,2.35,23,PURPLE),
+                 label('Total of T + V: still sloping at ε = 0',4,-0.45,23,ORANGE),
+                 label('bend ε (m)',6.1,-2.85,20,MUTED),
+                 label('Values from the table in the text',4,-3.55,21,MUTED))
 
 
 class PhaseSpaceStates(Scene):
     def construct(self):
-        heading(self,'Position alone does not specify a classical state','Two oscillators can pass the same position while moving in opposite directions')
-        ax=axes_at(-4,0,5.4,4.5,(-1.4,1.4,1),(-1.4,1.4,1));self.add(ax)
+        heading(self,'Position alone does not specify the state','The spring passes the middle twice in each swing, moving in opposite directions')
+        ax=axes_at(-4,0,5.4,4.5,(-1.4,1.4,1),(-2.8,2.8,1));self.add(ax)
         self.add(Ellipse(width=5.4/1.4,height=4.5/1.4,color=BLUE).move_to(ax.c2p(0,0)))
-        for y,c,tag in [(1,TEAL,'A: moving right'),(-1,ORANGE,'B: moving left')]:
-            pt=ax.c2p(0,y);self.add(Dot(pt,color=c,radius=.11),label(tag,pt[0]+1.9,pt[1],23,c,width=3.1))
-        self.add(label('momentum p',-5.5,2.65,24),label('position x',-1.8,-.4,23),
-                 box(4,0,6,3.5),math(r'A=(0,+p_0)',4,.9,38,TEAL),math(r'B=(0,-p_0)',4,-.1,38,ORANGE),
+        for y,c,tag in [(2,TEAL,'D: moving right'),(-2,ORANGE,'B: moving left')]:
+            pt=ax.c2p(0,y);self.add(Dot(pt,color=c,radius=.11),label(tag,pt[0]+2.4,pt[1]+(0.45 if y>0 else -0.45),23,c,width=3.1))
+        self.add(label('momentum p',-5.6,2.65,24),label('position x',-1.2,-0.7,23),
+                 box(4,0,6,3.5),math(r'D=(0,\,+2)',4,.9,38,TEAL),math(r'B=(0,\,-2)',4,-.1,38,ORANGE),
                  label('Same position. Different states.',4,-1.1,25),
-                 label('A point in phase space specifies both position and momentum.',0,-3.5,28,MUTED))
+                 label('Points B and D of the spring table: a point in phase space specifies both position and momentum.',0,-3.5,25,MUTED,width=15))
 
 
 class BornDensity(Scene):

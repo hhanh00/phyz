@@ -8,7 +8,7 @@ We have built Lagrangians for free fields and, in [QED](qed.md), their interacti
 
 ## From trajectories to transition amplitudes
 
-The classical use of a Lagrangian is to compute a trajectory. The [Classical Mechanics](classical-mechanics.md) page introduced stationary action, and [Action and Lagrangians](qft-action.md) derived the Euler–Lagrange equation. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
+The classical use of a Lagrangian is to compute a trajectory. The [Classical Mechanics](classical-mechanics.md) page introduced stationary action and derived the Euler–Lagrange equation, and [Action and Lagrangians](qft-action.md) applied it to fields. Insert $L(q, \dot q)$ into that equation, then solve for the trajectory $q(t)$. Initial conditions specify which trajectory occurs, and differentiating it gives the velocity $\dot q(t)$.
 
 A trajectory is the wrong target in quantum mechanics. We predict probabilities for measurement outcomes: [First Quantization](first-quantization.md) introduced the wave function $\psi$, whose squared magnitude gives a position probability density. [Field Quantization](field-quantization.md) also permits particle creation and annihilation. We therefore calculate an amplitude for each possible final collection of particles. The quantum calculation takes us from the Lagrangian to **transition amplitudes**.
 
