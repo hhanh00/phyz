@@ -1,0 +1,91 @@
+# Chapter workflow, from page to video
+
+This file records the steps used to bring chapter 1 (Classical Mechanics) to its current state, so that a later session can repeat them on another chapter. It covers the page itself, the listening script, the slide deck and the video. `audio/README.md` explains the tools; this file explains the order to use them in and the checks between steps.
+
+The work runs as review loops. A fresh agent reviews, the main session applies the findings, and a new fresh agent reviews again. The loop stops when a round returns no must-fix items. Fresh reviewers matter because an agent that wrote or fixed the text tends to confirm its own work.
+
+## Standing preferences
+
+These came from Hanh while working on chapter 1. They apply to every step below.
+
+- A question asked during review is a question. Answer it first, and edit only when asked.
+- The text has to pass the "bro test". Read each sentence as a friend would hear it. If the friend would reply "bro, what?", rewrite it in plain words, and keep the rewrite close to the original meaning, without embellishment.
+- Give the reason for each step. Saying how something is done isn't enough; say why it's needed before doing it.
+- A reader skimming the page should get the flow from headers, a short roadmap and goal boxes. Headers have to make sense to someone who doesn't know the topic yet.
+- Put worked examples in tables, displayed equations or figures, never in a dense numeric paragraph.
+- Don't render the deck after every script review. Get the script right first, then build the deck, then review the deck, then render once.
+- Rank the script against the page. The page may hold more detail, but the script must not leave out an important fact.
+- Commit only when asked, and push only when asked. Leave unrelated changes, such as personal notes in `docs/`, out of the commit.
+
+## 1. The page
+
+1. Read the chapter in `docs/` in full and rate it out of 10. Say what works and what doesn't, without editing yet.
+2. Run review loops with fresh agents until a round has no must-fix items. Each review checks facts and numbers, missing reasons, terms used before they're defined, the project style rules in `CLAUDE.md`, and the bro test. Apply each round's findings in the main session.
+3. Do one bro-test pass over the whole page, sentence by sentence. Check that each rewrite stays close to the original text.
+4. Fix the figures. The Manim sources are in `docs/manim/page_diagrams.py`. Render with `.manim-venv/bin/manim render -s -r 2400,1350 -q m`, copy the PNG to `docs/manim/`, and delete the `media/` folder Manim leaves at the repo root. Look at each figure after rendering.
+5. If a header changed, update the anchors that link to it from other chapters.
+6. Build the site, then commit when asked.
+
+## 2. The script
+
+1. Write `audio/scripts/STEM.txt` from the finished page, following `audio/BRIEF.md`. Check the format with a short script or with `check.py`. Only these characters are allowed: letters, space, `. , ; ' ? -`. Numbers are in words, sentences have at most 20 words, and headings have at most 7 words and end with a period.
+2. Keep a copy of each version in the scratchpad, because the deck step later diffs against the version the deck was built from.
+3. Run review rounds with a fresh agent each time. Use the prompt below. Apply the must-fix items and the should-fix items that fix a real problem, and skip pure preferences that undo an earlier round's fix.
+4. Stop when a round has no must-fix items. Chapter 1 took four rounds, and its fidelity score went from 7 to 9.5.
+
+### Script review prompt
+
+> You are reviewing a narration script for a video, against the site chapter it is based on. Do not edit any file; report only.
+>
+> Files: the script `audio/scripts/STEM.txt`, the chapter `docs/CHAPTER.md` (the source of truth), the rules `audio/BRIEF.md` and `audio/REVIEW.md`, and `CLAUDE.md`. Read them all in full.
+>
+> The listener hears the script once, with slides, and cannot read the page. Say what they already know and what they don't.
+>
+> Deliver, in this order:
+> 1. Fidelity ranking. List every important fact, definition, result and worked number in the chapter, and mark each COVERED, CHANGED (quote both versions) or OMITTED. The site may hold more detail. Flag an omission only when the listener would miss something needed to follow the argument, or something the chapter treats as a key takeaway. Check every number. Give a fidelity score out of 10.
+> 2. Must-fix items: factual errors, contradictions with the chapter, a term used before it's defined, a step a listener can't follow by ear, format violations. Quote the exact sentence, say why, and give a replacement that obeys the format rules.
+> 3. Should-fix items, kept short. Label pure preferences as such.
+> 4. Bro test: up to five sentences a friend would answer with "bro, what?", with plain replacements. Zero is a valid answer.
+> 5. Overall score out of 10, and whether the script is ready to record.
+>
+> Be calibrated. A must-fix needs a concrete listener failure or a factual error, not a wording preference. Keep the report under 1,500 words.
+
+In later rounds, add a line listing what earlier rounds already fixed, so the reviewer doesn't raise those points again.
+
+## 3. The pause file
+
+Write `audio/prosody/STEM.pauses.txt`: the final script with extra commas where a reader would breathe, and no other change. When the script changes, carry the old commas over to every sentence that didn't change, and add commas to new long sentences that have none. `render.py` refuses the file if it differs from the script by more than commas, and its `written_pauses` check can be run on its own before rendering.
+
+## 4. The deck
+
+1. Build `audio/slides/deck_NN.py` following `audio/slides/BRIEF.md`. Each slide is anchored to the first words of a script sentence. A new slide starts at every spoken heading, and numbers appear on screen when the narration reaches them, not before.
+2. Run `cd audio/slides && ../../.manim-venv/bin/python check.py NN` until it reports no anchor problems.
+3. Render contact sheets with `build.py deck_NN preview --work DIR`, and look at them. Use `--only N,N` to re-render single slides after a fix.
+4. Run one review with a fresh agent, using the prompt below. Apply its findings, re-render only the changed slides, and look at them.
+5. After any later script edit, run `check.py` again, because changed openings break anchors.
+
+A long deck update can go to one agent, with a brief that lists the stale anchors, the content the script gained (diff against the version the deck was built from) and the open review findings. Send that same agent the next review's findings, since it already knows the file.
+
+### Deck review prompt
+
+> Review the slide deck for chapter NN. Report only; do not edit files.
+>
+> Read `audio/slides/BRIEF.md`, the script, the chapter (the source of truth for facts and notation) and `deck_NN.py`. Look at every contact sheet image with the Read tool.
+>
+> Deliver:
+> 1. Sync and fidelity: slides whose content contradicts the narration or runs ahead of it, facts or numbers that differ from the chapter, and key results the narration states but no slide shows, where a visual would clearly help.
+> 2. Readability: overlaps, clipping, text too small, unlabelled axes, symbols shown before they're explained, clutter, colour inconsistencies.
+> 3. Pacing: slides that stay up a long time with nothing changing, and slides that flash by.
+>
+> For each item give the slide number, its anchor, the problem and a concrete fix. Split the items into MUST-FIX and SHOULD-FIX. End with a score out of 10 and whether the deck is ready to render. Keep the report under 1,200 words.
+
+## 5. The video
+
+1. Render the narration once the script is final. Deck changes don't touch the audio, so the narration can render while the deck is being fixed. Run it from `audio/`, in the background:
+   `VOICE=azure caffeinate -i .venv/bin/python render.py ../.kokoro scripts out --force --only STEM`
+   The Azure key is in `~/.azure-speech`. Never print it, and never ask Hanh to paste it.
+2. Add the chapter to `COVERS` in `slides/cover.py` if it has no cover yet, render the cover and look at it.
+3. Build the slides and the final video from the repo root, in the background:
+   `VOICE=azure WORK=DIR caffeinate -i audio/make_video.sh --skip-audio STEM`
+4. Write `audio/out/STEM-description.txt`. Take the chapter timestamps from the heading entries in `audio/timings/STEM.json`, and add the cover hold (`COVER` in `make_video.sh`, 5 s). Headings are silent in the final video, so the subtitle file won't show them.
+5. Commit the script, the pause file and the deck when asked. Everything in `audio/out/`, `audio/timings/` and `audio/azure-cache/` is generated and not committed.

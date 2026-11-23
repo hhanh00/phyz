@@ -12,7 +12,7 @@ Each chapter in `docs/` can have a listening script in `scripts/` and an animate
 
 `STEM` is a script's file name without `.txt`, such as `01-classical-mechanics`. The deck for it is `slides/deck_01.py`, named by the stem's first two digits. Everything in `audio/out/`, `audio/timings/` and `audio/azure-cache/` is generated and not committed.
 
-`BRIEF.md` covers writing scripts, `REVIEW.md` checking them against their chapters, and `slides/BRIEF.md` writing decks.
+`BRIEF.md` covers writing scripts, `REVIEW.md` checking them against their chapters, and `slides/BRIEF.md` writing decks. `WORKFLOW.md` gives the order of the whole job, from revising a chapter's page to publishing its video, with the review prompts used between steps.
 
 ## One-time setup
 
