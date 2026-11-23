@@ -76,10 +76,10 @@ class BornDensity(Scene):
         heading(self,'A wave amplitude becomes a probability density','Illustrative real wave function: negative amplitudes still give positive probabilities')
         ax=axes_at(-4,0,6,3.8,(-3,3,1),(-1.1,1.1,1));self.add(ax)
         fn=lambda x:np.exp(-x*x/3)*np.cos(2*x)
-        self.add(path_curve(ax,fn,[-3,3],BLUE),label('Amplitude ψ(x)',-4,2.3,29,BLUE),label('position x',-1.8,-.4,22))
+        self.add(path_curve(ax,fn,[-3,3],BLUE),label('Amplitude ψ(x)',-4,2.3,29,BLUE),label('position x',-1.7,-1.3,22))
         ax2=axes_at(4,0,6,3.8,(-3,3,1),(0,1.1,.5));curve=path_curve(ax2,lambda x:fn(x)**2,[-3,3],TEAL)
         self.add(ax2,ax2.get_area(curve,x_range=[.2,1.0],color=TEAL,opacity=.23),curve,
-                 label('Density |ψ(x)|²',4,2.3,29,TEAL),label('position x',6,-2.2,22),
+                 math(r'\text{Density}\ |\psi(x)|^2',4,2.3,31,TEAL),label('position x',6,-2.2,22),
                  math(r'P(a<x<b)=\int_a^b|\psi(x)|^2\,dx',4,-3.05,31,TEAL),
                  label('Shade an interval to calculate its probability.',4,-3.8,23,MUTED,width=7))
         self.add(label('Square the magnitude, then normalize\nso the total area under the density is one.',-4,-3.05,24,MUTED,width=6.8))
