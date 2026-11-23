@@ -1,0 +1,99 @@
+Chapter one. Classical Mechanics.
+
+Particle physics is built on quantum theory. And the basic equations of quantum theory have no force in them, and no path. A quantum particle doesn't follow a definite path. So there's nothing to put into F equals m a. What does carry over is one function, built from the kinetic and potential energies of a system. The motion follows from that function. This chapter rewrites ordinary mechanics in that form. We'll use a ball, a spring and a pendulum. Then the next chapters can take the same function and turn it into quantum mechanics.
+
+The chapter at a glance.
+
+We'll describe the same motion three times. For every system here, the three descriptions give exactly the same motion. What changes is what you put in, and the form of the answer. Later parts of physics build on each of the three forms.
+
+The first description is Newton's. You supply the forces, and you get the acceleration. The second is Lagrange's. It asks a different question. Of all the paths a body could take between two moments, which one does it actually take? You supply one function, the kinetic energy minus the potential energy. You get the same equation of motion, in any coordinates you like. The third description is Hamilton's. It asks, given the present state, where does the system go next? You supply the energy, written in terms of position and momentum. You get two equations that move a point through a space of states.
+
+There are three new ideas along the way. The action is one number that scores a whole path. The state is a point made of a position and a momentum. And the Poisson bracket gives the rate of change of any quantity.
+
+Each step has a reason. We leave Newton for two reasons. Forces are awkward when a body is tied to a string. And quantum theory isn't written in terms of forces. A function of energies avoids both problems. We move to Hamilton because quantum mechanics describes a system at one instant, and carries it forward. Asking how any quantity changes then gives the Poisson bracket. And the next chapter swaps that bracket for something quantum, and quantization starts there.
+
+Newton's law, forces in, motion out.
+
+Newton's second law says force equals mass times acceleration. Acceleration is how fast the velocity changes. Velocity is how fast the position changes. So once you know where a body starts and how fast it's moving, the law fixes everything after that.
+
+Take a ball dropped from rest. Near the ground, gravity gives it a constant acceleration of nine point eight metres per second, every second. After one second it's falling at nine point eight metres per second, and it has fallen four point nine metres. After two seconds it's at nineteen point six metres per second, and it has fallen nineteen point six metres. After three seconds, twenty-nine point four metres per second, and forty-four point one metres fallen. The speed grows steadily, and the distance grows with the square of the time.
+
+For a spring or a pendulum, the force depends on where the body is. Then we solve the law as an equation for the unknown path. The logic is the same.
+
+We'll need two kinds of energy, so let's name them. Kinetic energy is energy of motion. It's half the mass times the speed squared. Potential energy is energy stored by position. For the ball, it's the mass times g times the height. For a spring, it's half the stiffness times the stretch squared. The force is minus the slope of the potential energy, because a body gets pushed toward lower potential energy. For the spring, that gives a pull back toward the rest position.
+
+Where forces become awkward.
+
+To use Newton's law, you have to list every force on the body. That includes forces whose only job is to keep it on its allowed path. Take a pendulum, a weight on a string. Two forces act on it, gravity and the tension in the string. We know gravity. We don't know the tension, because it adjusts at every moment to keep the weight on its circle.
+
+For a single pendulum, there's a trick. The string always pulls at right angles to the motion. So if you only look at the force along the circle, the tension drops out. But hang a second pendulum from the first, and the trick stops working. The lower string pulls on the upper weight at an angle to its motion. So now you have to solve for that tension first. We want one recipe that works with the angles directly, and never mentions these constraint forces.
+
+One number for a whole path.
+
+A description built from energies alone still has to pick out the motion. Conservation of energy isn't enough. It's one equation, and the double pendulum has two angles to find. The rule that works compares whole paths.
+
+So we change the question. Don't ask how the body accelerates at each moment. Instead, fix where it is at a start time and at an end time. Then ask which path between those two moments it takes. Fixing both ends usually pins down the motion, just as a starting position and speed would.
+
+To compare paths, we give each one a score. At each moment along a path, take the kinetic energy minus the potential energy. That's called the Lagrangian. Add it up over the whole trip, and the total is called the action of that path. Every path gets a number, including paths the body never takes.
+
+Now the rule. Bend the real path a little, keeping its two ends fixed. The action changes, but only by an amount that grows like the square of the bend. Halve the bend, and the change drops to a quarter. So for small bends, the change is tiny. The real path sits at a flat spot of the action. Think of the bottom of a valley, or the top of a hill. That's what we call stationary action. People often call it least action, but the flat spot doesn't have to be a lowest point.
+
+Let's try it. Throw a one kilogram ball straight up, so that it comes back to your hand after two seconds. It rises for one second and falls for one second. So it leaves your hand at nine point eight metres per second. It climbs to four point nine metres and comes back down. Now compare it with bent paths. They leave and return at the same moments, but bulge up or down by up to half a metre.
+
+The real path has an action of minus thirty-two point zero one. Bulge it by a fifth of a metre either way. The action rises a little, to minus thirty-one point nine six. Bulge it by half a metre either way, and it rises a bit more, to minus thirty-one point seven. Up or down makes no difference. Making the bulge two and a half times bigger makes the change six and a quarter times bigger. That's the square growth of a flat spot.
+
+Now try the energy itself, kinetic plus potential, instead of kinetic minus potential. The total is ninety-six point zero four on the real path. But it goes down when the path bulges one way, and up when it bulges the other. So the real path isn't a flat spot of that total. That's why the sign is minus.
+
+For the systems in this chapter, stationary action is just Newton's law in another form. Its advantage is that it uses only the two energies, and it works the same way in any coordinates.
+
+From stationary action to an equation.
+
+Comparing paths one at a time can't find the real one. We need an equation that the real path satisfies at every moment. Asking that every small bend leaves the action unchanged gives one. It's called the Euler-Lagrange equation.
+
+The equation reads like a balance. One side is how fast the momentum changes. The other side is the force. So it says momentum changes at a rate set by the force, in whatever coordinate we chose. That coordinate might be a height, or it might be an angle. A coordinate chosen to fit the system like this is called a generalized coordinate.
+
+Two checks show that it works. First, for a ball, the equation gives back F equals m a exactly. And if you used kinetic plus potential instead, you'd get a ball that falls upward. That's the minus sign again.
+
+Second, the pendulum. Use the angle of the string as the coordinate. Write the kinetic and potential energy in terms of that angle, and apply the equation. Out comes the pendulum's equation of motion, and the tension never appears. That's because the angle already keeps the weight on its circle. For one pendulum, the old trick gave the same result. For two, the trick fails, but this method still works. Write the energies in the two angles, and no tension appears anywhere.
+
+There's a bonus. Suppose the Lagrangian doesn't depend on some coordinate at all. Then sliding the system along that coordinate changes nothing, and we call that a symmetry. In that case, the equation says the matching momentum never changes. For a free body, nothing depends on where it is, so its momentum stays constant. This link between a symmetry and a conserved quantity comes back later in full form, as Noether's theorem.
+
+A state as a point.
+
+So far we've compared whole paths between two fixed ends. But the quantum mechanics of the next chapters works differently. It takes the state at one instant and carries it forward in time. So we need the classical version of a state. What must we know at one instant to predict everything after it?
+
+Position alone isn't enough. A pendulum passes through the same angle twice in each swing, once going each way. What happens next is different each time. So we also need to know how the system is moving.
+
+We use the momentum for that, not the velocity. For a body on a line, momentum is just mass times velocity. For a pendulum, it's an angular momentum. We pick momentum because then a single function, the energy, gives both equations of motion. We'll see that next.
+
+A position together with a momentum is the state. The space of all states is called phase space. Each state is a point in it, and the motion of the system traces a curve. Two states with the same position but opposite momentum are different points.
+
+Energy moves the point.
+
+Now we want a rule that moves the state forward, using position and momentum instead of position and velocity. There's a standard way to swap velocity for momentum. You take the momentum times the velocity, and subtract the Lagrangian. The velocity drops out, and you're left with a function of position and momentum. That swap is called a Legendre transform.
+
+Let's try it on a spring. The result is the kinetic energy plus the potential energy. It's the total energy. Written with momentum, it's the momentum squared over twice the mass, plus the potential energy. This function is called the Hamiltonian. The next chapter starts from exactly this function.
+
+The Hamiltonian moves the state through two equations, called Hamilton's equations. One gives how fast the position changes. The other gives how fast the momentum changes. Both involve only first rates of change. So knowing the position and momentum now fixes the next small step, and with it the whole motion. That's the sense in which the point is the complete state.
+
+Let's follow a spring. Take a one kilogram mass on a spring of stiffness four. Pull it out by one metre and let go. Hamilton's equations say how it moves. It swings back and forth, and repeats every pi seconds.
+
+Follow it through one swing. At the start, it's stretched and at rest. A quarter swing later, it passes the middle moving left, with momentum minus two. Half a swing in, it's squeezed and at rest. Three quarters in, it passes the middle again, moving right, with momentum plus two. At all four moments, the energy is the same, two joules.
+
+In phase space, the point goes round a closed loop, an ellipse. Every point on it has the same energy. As it goes round, the energy passes back and forth between kinetic and potential. At the turning points it's all potential. In the middle it's all kinetic.
+
+How any quantity changes.
+
+Hamilton's equations give the rates of change of position and momentum. But often we want the rate of change of something else, like the energy. Take any quantity that depends on the state. As the state moves, the quantity changes through both its position and its momentum. Adding those two changes, and using Hamilton's equations, gives one fixed combination of slopes. It comes up so often that it has a name, the Poisson bracket.
+
+With it, the rate of change of any quantity is its bracket with the Hamiltonian. A few examples show how it works. The bracket of position with the Hamiltonian gives how fast the position changes. The bracket of momentum with the Hamiltonian gives how fast the momentum changes. And the bracket of the Hamiltonian with itself is zero. That says the energy never changes.
+
+One bracket is special. The bracket of position with momentum is exactly one. It doesn't involve the Hamiltonian, so it's the same for every system. That isn't true for velocity. The bracket of position with velocity is one over the mass, which changes from system to system. That's another reason we use momentum.
+
+And every other bracket can be worked out from that single one. So to make the theory quantum, we only have to change this one relation. That's exactly what the next chapter does.
+
+Where these tools come back.
+
+Each tool in this chapter returns later. The energy written with position and momentum becomes the operator in the Schrodinger equation, in the next chapter. The spring comes back as the harmonic oscillator, quantized exactly. The bracket of position with momentum becomes a quantum relation about the order of operations. The action and the Euler-Lagrange equation come back for fields, with one coordinate at every point of space. And the link between symmetry and conservation comes back as Noether's theorem, which gives the conservation of electric charge.
+
+In the next chapter, position and momentum become operators. The Hamiltonian keeps its job, as the function that moves the state forward in time.
