@@ -9,7 +9,7 @@ The work runs as review loops. A fresh agent reviews, the main session applies t
 These came from Hanh while working on chapter 1. They apply to every step below.
 
 - A question asked during review is a question. Answer it first, and edit only when asked.
-- The text has to pass the "bro test". Read each sentence as a friend would hear it. If the friend would reply "bro, what?", rewrite it in plain words, and keep the rewrite close to the original meaning, without embellishment.
+- The text has to pass the "bro test", run with the `/bro` skill (installed at `~/.claude/skills/bro/`, from github.com/luchasarie/bro-skill). `/bro` gives an ELI5-style simplification, so its output is expected to differ from the text, and a difference alone is not a problem. Use it to find gaps: a step, reason or definition `/bro` had to supply that the text never gives, a passage `/bro` misreads because the text is ambiguous, or a passage whose purpose `/bro` cannot state. Close each gap with the smallest fix in the chapter's own register. Don't rewrite passages toward the `/bro` version.
 - Give the reason for each step. Saying how something is done isn't enough; say why it's needed before doing it.
 - A reader skimming the page should get the flow from headers, a short roadmap and goal boxes. Headers have to make sense to someone who doesn't know the topic yet.
 - Put worked examples in tables, displayed equations or figures, never in a dense numeric paragraph.
@@ -21,7 +21,7 @@ These came from Hanh while working on chapter 1. They apply to every step below.
 
 1. Read the chapter in `docs/` in full and rate it out of 10. Say what works and what doesn't, without editing yet.
 2. Run review loops with fresh agents until a round has no must-fix items. Each review checks facts and numbers, missing reasons, terms used before they're defined, the project style rules in `CLAUDE.md`, and the bro test. Apply each round's findings in the main session.
-3. Do one bro-test pass over the whole page, sentence by sentence. Check that each rewrite stays close to the original text.
+3. Once the reviews are stable, do one `/bro` pass over the whole page, passage by passage, as described above. A fresh agent can run it: give it the skill file and ask for a count of passages checked and gaps found, and for each gap the sentence, what `/bro` had to add or got wrong, and the smallest fix.
 4. Fix the figures. The Manim sources are in `docs/manim/page_diagrams.py`. Render with `.manim-venv/bin/manim render -s -r 2400,1350 -q m`, copy the PNG to `docs/manim/`, and delete the `media/` folder Manim leaves at the repo root. Look at each figure after rendering.
 5. If a header changed, update the anchors that link to it from other chapters.
 6. Build the site, then commit when asked.
