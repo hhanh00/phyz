@@ -2,7 +2,9 @@
 
 This file records the steps used to bring chapter 1 (Classical Mechanics) to its current state, so that a later session can repeat them on another chapter. It covers the page itself, the listening script, the slide deck and the video. `audio/README.md` explains the tools; this file explains the order to use them in and the checks between steps.
 
-The work runs as review loops. A fresh agent reviews, the main session applies the findings, and a new fresh agent reviews again. The loop stops when a round returns no must-fix items. Fresh reviewers matter because an agent that wrote or fixed the text tends to confirm its own work.
+The work runs as review loops. A fresh agent reviews, the main session applies the findings, and a new fresh agent reviews again. Fresh reviewers matter because an agent that wrote or fixed the text tends to confirm its own work.
+
+The loop stops only on a fresh review of the final text. That review runs after the last edit, including any `/bro` fixes or should-fixes applied after an earlier clean round. It gets no list of what earlier rounds fixed, so it judges the text as a first-time reader would. It returns no must-fix items. If anything is edited after it, run another. A clean round followed by unreviewed edits doesn't count, and neither does a score from a reviewer who was told what to expect: chapter 2's page scored 9 that way, and on reading, Hanh found it well below that.
 
 ## Standing preferences
 
@@ -20,18 +22,19 @@ These came from Hanh while working on chapter 1. They apply to every step below.
 ## 1. The page
 
 1. Read the chapter in `docs/` in full and rate it out of 10. Say what works and what doesn't, without editing yet.
-2. Run review loops with fresh agents until a round has no must-fix items. Each review checks facts and numbers, missing reasons, terms used before they're defined, the project style rules in `CLAUDE.md`, and the bro test. Apply each round's findings in the main session.
+2. Run review loops with fresh agents. Each review checks facts and numbers, missing reasons, terms used before they're defined, experiments or examples used before they're presented, the project style rules in `CLAUDE.md`, and the bro test. It also scores how the page reads as a whole against chapter 1, not only whether gaps remain, because gap fixes accumulate into dense, patched paragraphs. Apply each round's findings in the main session.
 3. Once the reviews are stable, do one `/bro` pass over the whole page, passage by passage, as described above. A fresh agent can run it: give it the skill file and ask for a count of passages checked and gaps found, and for each gap the sentence, what `/bro` had to add or got wrong, and the smallest fix.
-4. Fix the figures. The Manim sources are in `docs/manim/page_diagrams.py`. Render with `.manim-venv/bin/manim render -s -r 2400,1350 -q m`, copy the PNG to `docs/manim/`, and delete the `media/` folder Manim leaves at the repo root. Look at each figure after rendering.
-5. If a header changed, update the anchors that link to it from other chapters.
-6. Build the site, then commit when asked.
+4. Run the closing fresh review described above, on the text as it now stands. Repeat until it returns no must-fix items with nothing edited after it.
+5. Fix the figures. The Manim sources are in `docs/manim/page_diagrams.py`. Render with `.manim-venv/bin/manim render -s -r 2400,1350 -q m`, copy the PNG to `docs/manim/`, and delete the `media/` folder Manim leaves at the repo root. Look at each figure after rendering.
+6. If a header changed, update the anchors that link to it from other chapters.
+7. Build the site, then commit when asked.
 
 ## 2. The script
 
 1. Write `audio/scripts/STEM.txt` from the finished page, following `audio/BRIEF.md`. Check the format with a short script or with `check.py`. Only these characters are allowed: letters, space, `. , ; ' ? -`. Numbers are in words, sentences have at most 20 words, and headings have at most 7 words and end with a period.
 2. Keep a copy of each version in the scratchpad, because the deck step later diffs against the version the deck was built from.
 3. Run review rounds with a fresh agent each time. Use the prompt below. Apply the must-fix items and the should-fix items that fix a real problem, and skip pure preferences that undo an earlier round's fix.
-4. Stop when a round has no must-fix items. Chapter 1 took four rounds, and its fidelity score went from 7 to 9.5.
+4. Stop only after a fresh review of the final script, run after the last edit, returns no must-fix items. Chapter 1 took four rounds, and its fidelity score went from 7 to 9.5.
 
 ### Script review prompt
 
@@ -50,7 +53,7 @@ These came from Hanh while working on chapter 1. They apply to every step below.
 >
 > Be calibrated. A must-fix needs a concrete listener failure or a factual error, not a wording preference. Keep the report under 1,500 words.
 
-In later rounds, add a line listing what earlier rounds already fixed, so the reviewer doesn't raise those points again.
+Middle rounds may list what earlier rounds already fixed, to avoid repeats. The closing review must not get that list.
 
 ## 3. The pause file
 
