@@ -73,34 +73,177 @@ class PhaseSpaceStates(Scene):
 
 class BornDensity(Scene):
     def construct(self):
-        heading(self,'A wave amplitude becomes a probability density','Illustrative real wave function: negative amplitudes still give positive probabilities')
-        ax=axes_at(-4,0,6,3.8,(-3,3,1),(-1.1,1.1,1));self.add(ax)
-        fn=lambda x:np.exp(-x*x/3)*np.cos(2*x)
-        self.add(path_curve(ax,fn,[-3,3],BLUE),label('Amplitude ψ(x)',-4,2.3,29,BLUE),label('position x',-1.7,-1.3,22))
-        ax2=axes_at(4,0,6,3.8,(-3,3,1),(0,1.1,.5));curve=path_curve(ax2,lambda x:fn(x)**2,[-3,3],TEAL)
-        self.add(ax2,ax2.get_area(curve,x_range=[.2,1.0],color=TEAL,opacity=.23),curve,
-                 math(r'\text{Density}\ |\psi(x)|^2',4,2.3,31,TEAL),label('position x',6,-2.2,22),
-                 math(r'P(a<x<b)=\int_a^b|\psi(x)|^2\,dx',4,-3.05,31,TEAL),
-                 label('Shade an interval to calculate its probability.',4,-3.8,23,MUTED,width=7))
-        self.add(label('Square the magnitude, then normalize\nso the total area under the density is one.',-4,-3.05,24,MUTED,width=6.8))
+        heading(self,'A wave function and its probability density','A particle confined between 0 and 1 m')
+        ax=axes_at(-4,-0.2,5.6,3.6,(0,1,0.25),(0,1.6,0.5));self.add(ax)
+        fn=lambda x:np.sqrt(2)*np.sin(np.pi*x)
+        self.add(path_curve(ax,fn,[0,1],BLUE),math(r'\psi(x)=\sqrt2\,\sin(\pi x)',-4,2.3,30,BLUE))
+        ax2=axes_at(4,-0.2,5.6,3.6,(0,1,0.25),(0,2.2,0.5));dens=lambda x:2*np.sin(np.pi*x)**2
+        curve=path_curve(ax2,dens,[0,1],TEAL);self.add(ax2)
+        for i,(lo,hi,pct) in enumerate([(0,.25,'9.1%'),(.25,.5,'40.9%'),(.5,.75,'40.9%'),(.75,1,'9.1%')]):
+            self.add(ax2.get_area(curve,x_range=[lo,hi],color=TEAL,opacity=.32 if i%2==0 else .16))
+            mid=(lo+hi)/2; y=0.55 if pct=='40.9%' else 0.8
+            self.add(label(pct,ax2.c2p(mid,0)[0],ax2.c2p(0,y)[1],21,INK))
+        self.add(curve,math(r'|\psi(x)|^2=2\sin^2(\pi x)',4,2.3,30,TEAL))
+        for a_,xx in ((ax,-4),(ax2,4)):
+            for v in (0,0.25,0.5,0.75,1):
+                self.add(label(f'{v:g}',a_.c2p(v,0)[0],a_.c2p(v,0)[1]-0.3,19,MUTED))
+            self.add(label('position x (m)',xx,-2.55,21,MUTED))
+        self.add(label('The amplitude can be negative in general; the density never is.',-4,-3.4,22,MUTED,width=7),
+                 label('Each shaded area is the chance of finding the particle in that quarter.',4,-3.4,22,MUTED,width=7))
+
+class TwoSlitCounts(Scene):
+    def construct(self):
+        heading(self,'Two slits open: some spots get fewer electrons','Counts on the screen with only slit A open, only slit B open, and both open')
+        src=Dot([-6.6,0.2,0],color=INK,radius=0.1)
+        bar=[Line([-4.8,y0,0],[-4.8,y1,0],color=INK,stroke_width=6) for y0,y1 in [(-1.9,-0.65),(-0.35,0.75),(1.05,2.3)]]
+        scr=Line([-3.0,-1.9,0],[-3.0,2.3,0],color=MUTED,stroke_width=6)
+        self.add(src,*bar,scr,label('source',-6.6,-0.35,21,MUTED),label('A',-5.15,0.9,22,TEAL),label('B',-5.15,-0.5,22,ORANGE),
+                 label('two slits',-4.8,-2.3,21,MUTED),label('screen',-3.0,-2.3,21,MUTED))
+        for y in (-0.5,0.9):
+            self.add(DashedLine([-6.5,0.2,0],[-4.8,y,0],color=MUTED,stroke_width=2))
+        ax=axes_at(2.6,-0.25,7.0,3.5,(-3,3,1),(0,4.2,1));self.add(ax)
+        A=lambda y:np.exp(-(y+0.35)**2/2.6); B=lambda y:np.exp(-(y-0.35)**2/2.6)
+        both=lambda y:A(y)+B(y)+2*np.sqrt(A(y)*B(y))*np.cos(4.2*y)
+        self.add(DashedVMobject(ax.plot(lambda y:A(y)+B(y),x_range=[-3,3],color=MUTED,stroke_width=3),num_dashes=60),
+                 path_curve(ax,A,[-3,3],TEAL).set_stroke(width=3),path_curve(ax,B,[-3,3],ORANGE).set_stroke(width=3),
+                 path_curve(ax,both,[-3,3],BLUE))
+        dark=-np.pi/4.2
+        pt=ax.c2p(dark,both(dark))
+        self.add(Dot(pt,color=INK,radius=0.07),arrow((pt[0]-1.4,pt[1]+2.6),(pt[0]-0.05,pt[1]+0.12),INK),
+                 label('fewer than with\none slit open',pt[0]-1.9,pt[1]+3.05,21,INK,width=3.4))
+        items=[('both open',BLUE),('only A open',TEAL),('only B open',ORANGE),('A + B, if chances added',MUTED)]
+        for i,(s,c) in enumerate(items):
+            x0=-0.6+4.0*(i%2); y0=2.4-0.5*(i//2)
+            ln=Line([x0,y0,0],[x0+0.45,y0,0],color=c,stroke_width=5)
+            lab=label(s,0,0,20,c); lab.next_to(ln,RIGHT,buff=0.15)
+            self.add(ln,lab)
+        self.add(label('position on the screen',2.6,-2.45,22,MUTED))
+        self.add(label('If each electron went through one slit, the both-open count could never fall below either single-slit count.',0,-3.55,24,MUTED,width=15))
+
+
+def wave_between(a, b, wavelength, amp=0.18, color=ORANGE, width=3):
+    a=np.array([*a,0.]); b=np.array([*b,0.]); d=b-a; L=np.linalg.norm(d); u=d/L; n=np.array([-u[1],u[0],0.])
+    return ParametricFunction(lambda s: a+u*s+n*amp*np.sin(2*np.pi*s/wavelength), t_range=[0,L], color=color, stroke_width=width)
+
+
+class SternGerlachSetup(Scene):
+    def construct(self):
+        heading(self,'A magnet sorts silver atoms into two spots','Atoms leave a hot oven with their tilts pointing every which way, pass a shaped magnet, and hit a plate')
+        oven=Rectangle(width=1.3,height=1.1,color=INK,fill_color=PALE,fill_opacity=1).move_to([-6.2,0.3,0])
+        self.add(oven,label('oven',-6.2,-0.55,21,MUTED),Line([-5.55,0.3,0],[-1.4,0.3,0],color=BLUE,stroke_width=4))
+        top=Polygon([-3.4,1.55,0],[-1.4,1.55,0],[-1.4,0.85,0],[-2.4,0.55,0],[-3.4,0.85,0],color=INK,fill_color=PALE,fill_opacity=1)
+        bot=Polygon([-3.4,-0.25,0],[-1.4,-0.25,0],[-1.4,-0.95,0],[-3.4,-0.95,0],color=INK,fill_color=PALE,fill_opacity=1)
+        self.add(top,bot,label('N',-2.4,1.2,24),label('S',-2.4,-0.6,24),label('magnet: field stronger near the top',-2.4,-1.4,20,MUTED,width=3.6))
+        for y in (1.25,-0.65):
+            self.add(Line([-1.4,0.3,0],[0.2,y,0],color=BLUE,stroke_width=3))
+        self.add(Line([0.2,-1.6,0],[0.2,2.2,0],color=MUTED,stroke_width=6),label('plate',0.2,-2.0,21,MUTED))
+        # expected vs seen
+        for cx,title,c in [(3.3,'expected',MUTED),(6.0,'seen',BLUE)]:
+            self.add(RoundedRectangle(width=1.6,height=3.4,corner_radius=0.1,color=MUTED,stroke_width=2).move_to([cx,0.3,0]),label(title,cx,2.35,24,c))
+        self.add(Line([3.3,-1.0,0],[3.3,1.6,0],color=MUTED,stroke_width=10).set_opacity(0.6),
+                 Dot([6.0,1.15,0],radius=0.17,color=BLUE),Dot([6.0,-0.55,0],radius=0.17,color=BLUE),
+                 label('a continuous line',3.3,-1.75,20,MUTED),label('two spots, up and down',6.0,-1.75,20,BLUE,width=2.6))
+        self.add(label('The tilt along the field takes only two values.',0,-3.3,25,INK))
+
+
+class MagnetsInRow(Scene):
+    def construct(self):
+        heading(self,'Magnets in a row','Each magnet keeps one beam and passes it on; the last magnet shows how the atoms split')
+        def mag(x,y,kind):
+            c=BLUE if kind=='vertical' else ORANGE
+            return VGroup(box(x,y,1.9,0.85,c),label(kind,x,y,22,c))
+        rows=[(1.6,['vertical','vertical'],['up'],'all up'),
+              (0.0,['vertical','sideways'],['up'],'50% right, 50% left'),
+              (-1.6,['vertical','sideways','vertical'],['up','right'],'50% up, 50% down')]
+        for y,mags,keeps,result in rows:
+            x=-5.6
+            for i,m in enumerate(mags):
+                self.add(mag(x,y,m))
+                if i<len(mags)-1:
+                    self.add(arrow((x+1.0,y),(x+2.0,y),INK),label('keep '+keeps[i],x+1.5,y+0.35,19,MUTED))
+                    x+=3.0
+            self.add(arrow((x+1.0,y),(x+2.0,y),INK),label(result,x+3.6,y,23,INK,width=3.6))
+        self.add(label('A measurement leaves a state that repeats (top), identical atoms give random results (middle),',0,-2.9,22,MUTED,width=15),
+                 label('and measuring sideways erases the earlier up (bottom).',0,-3.4,22,MUTED,width=15))
+
+
+class PhotoelectricEffect(Scene):
+    def construct(self):
+        heading(self,'Light knocks electrons out of a metal','Sodium: the fastest electrons gain energy in step with the frequency, above a threshold')
+        self.add(Rectangle(width=0.5,height=3.2,color=INK,fill_color=PALE,fill_opacity=1).move_to([-3.6,0,0]),label('metal',-3.6,-1.95,21,MUTED))
+        for y in (1.0,0.0,-1.0):
+            self.add(wave_between((-7.0,y+0.9),(-3.9,y),0.35,0.12,ORANGE,3))
+        for y,dy in ((0.8,0.5),(-0.4,-0.3)):
+            self.add(Dot([-3.1,y,0],radius=0.09,color=BLUE),arrow((-3.0,y),(-1.8,y+dy),BLUE))
+        self.add(label('light',-6.2,1.9,21,ORANGE),label('electrons',-2.1,1.55,21,BLUE))
+        ax=axes_at(3.4,-0.15,6.2,3.8,(0,12,2),(0,3,1)); self.add(ax)
+        f0=5.56; h=4.1357e-15*1e14  # eV per 1e14 Hz
+        self.add(DashedLine(ax.c2p(0,0),ax.c2p(f0,0),color=MUTED),ax.plot(lambda f:h*(f-f0),x_range=[f0,12],color=BLUE,stroke_width=4))
+        self.add(Dot(ax.c2p(f0,0),color=INK,radius=0.08),label('threshold 5.6',ax.c2p(f0,0)[0]-0.9,ax.c2p(f0,0)[1]+0.4,20,INK),
+                 label('slope h',ax.c2p(9.5,h*(9.5-f0))[0]-0.6,ax.c2p(9.5,h*(9.5-f0))[1]+0.35,22,BLUE))
+        for v in (0,4,8,12): self.add(label(str(v),ax.c2p(v,0)[0],ax.c2p(v,0)[1]-0.32,18,MUTED))
+        for v in (1,2,3): self.add(label(str(v),ax.c2p(0,v)[0]-0.25,ax.c2p(0,v)[1],18,MUTED))
+        self.add(math(r'\text{frequency } (10^{14}\ \text{Hz})',3.4,-2.75,22,MUTED),label('energy of fastest electrons (eV)',2.4,2.1,21,MUTED))
+        self.add(label('Brighter light ejects more electrons along the same line. Below the threshold, none come out.',0,-3.45,23,MUTED,width=15))
+
+
+class ComptonScattering(Scene):
+    def construct(self):
+        heading(self,'X-rays bounce off electrons and come out longer','The shift matches a collision between an electron and a packet of momentum h/λ')
+        e=np.array([0.0,0.0])
+        self.add(wave_between((-6.0,0.0),(-0.15,0.0),0.42,0.18,ORANGE,3),label('incoming X-ray',-4.2,0.6,22,ORANGE))
+        self.add(Dot([0,0,0],radius=0.14,color=BLUE),label('electron',0.0,-0.5,21,BLUE))
+        ang=np.radians(40)
+        self.add(wave_between((0.15*np.cos(ang),0.15*np.sin(ang)),(3.6*np.cos(ang),3.6*np.sin(ang)),0.75,0.2,ORANGE,3),
+                 label('scattered X-ray:\nlonger wavelength',4.6,2.0,22,ORANGE))
+        self.add(arrow((0.15,-0.15),(2.2,-1.6),BLUE),label('electron recoils',3.0,-1.95,21,BLUE))
+        self.add(DashedLine([0,0,0],[3.0,0,0],color=MUTED),Arc(radius=1.1,start_angle=0,angle=ang,color=MUTED),label('θ',1.35,0.45,24,MUTED))
+        self.add(label('A smooth wave would shake the electron at its own frequency and re-emit the same wavelength.',0,-2.9,22,MUTED,width=15),
+                 label('Instead the wavelength grows, and grows more at larger angles.',0,-3.4,22,MUTED,width=15))
+
+
+class DavissonGermer(Scene):
+    def construct(self):
+        heading(self,'Electrons bounce off a nickel crystal like a wave','54 eV electrons aimed straight down at the surface; the count peaks at 50°')
+        d=0.9; xs=[-6.2+d*i for i in range(6)]; y0=-1.4
+        for x in xs: self.add(Dot([x,y0,0],radius=0.13,color=INK))
+        self.add(label('surface rows of atoms',-5.3,y0-0.55,20,MUTED))
+        a1=np.array([xs[2],y0]); a2=np.array([xs[3],y0])
+        for a in (a1,a2): self.add(Line([a[0],2.0,0],[a[0],y0+0.15,0],color=BLUE,stroke_width=3))
+        self.add(label('beam',(a1[0]+a2[0])/2,2.3,21,BLUE))
+        th=np.radians(50); u=np.array([-np.sin(th),np.cos(th)])  # outgoing direction, θ from the beam (vertical), toward left
+        L=2.6
+        for a in (a1,a2): self.add(Arrow([a[0],a[1],0],[a[0]+u[0]*L,a[1]+u[1]*L,0],buff=0.1,color=TEAL,stroke_width=3,max_tip_length_to_length_ratio=0.08))
+        foot=a2+np.dot(a1-a2,u)*u
+        self.add(DashedLine([a1[0],a1[1],0],[foot[0],foot[1],0],color=MUTED),
+                 Line([a2[0],a2[1],0],[foot[0],foot[1],0],color=ORANGE,stroke_width=6),
+                 label('extra path d sin θ',foot[0]+1.35,foot[1]-0.25,20,ORANGE),
+                 BraceBetweenPoints([a1[0],y0-0.05,0],[a2[0],y0-0.05,0],direction=DOWN,color=MUTED),label('d',(a1[0]+a2[0])/2,y0-0.75,22,MUTED))
+        self.add(Arc(radius=0.8,start_angle=PI/2,angle=th,arc_center=[a1[0],a1[1],0],color=MUTED),label('θ',a1[0]-0.5,a1[1]+1.05,22,MUTED))
+        ax=axes_at(4.2,-0.1,5.2,3.4,(0,90,30),(0,1.2,0.5)); self.add(ax)
+        f=lambda g:0.35*np.exp(-g/60)+0.75*np.exp(-((g-50)/7)**2)
+        self.add(path_curve(ax,f,[2,88],TEAL),DashedLine(ax.c2p(50,0),ax.c2p(50,f(50)),color=INK))
+        for v in (0,30,50,90): self.add(label(f'{v}°',ax.c2p(v,0)[0],ax.c2p(v,0)[1]-0.32,19,INK if v==50 else MUTED))
+        self.add(label('electrons counted',2.9,1.85,21,MUTED),label('angle θ from the beam',4.2,-2.3,21,MUTED))
+        self.add(label('Peak where d sin θ is one wavelength: 0.215 nm × sin 50° = 0.165 nm. de Broglie predicts h/p = 0.167 nm.',0,-3.4,22,MUTED,width=15))
 
 
 class EigenbasisProbabilities(Scene):
     def construct(self):
-        heading(self,'The chosen eigenbasis determines the measurement amplitudes','A two-level example with real coefficients; general coefficients can be complex')
+        heading(self,'The tilted spin as an arrow','Its components along up and down are the amplitudes; their squares are the probabilities')
         origin=(-6,-1.5)
         self.add(arrow(origin,(-1,-1.5)),arrow(origin,(-6,2)),
                  arrow(origin,(-2.54,.5),BLUE),
                  DashedLine([-2.54,.5,0],[-2.54,-1.5,0],color=TEAL),
                  DashedLine([-6,.5,0],[-2.54,.5,0],color=ORANGE),
-                 math(r'|0\rangle',-1,-2,30),math(r'|1\rangle',-6.5,2.1,30),math(r'|\psi\rangle',-2.2,1,34,BLUE),
+                 math(r'|0\rangle\ \text{up}',-0.8,-2,30),math(r'|1\rangle\ \text{down}',-6.2,2.35,30),math(r'|\psi\rangle',-2.2,1,34,BLUE),
                  math(r'\sqrt3/2',-4.2,-2.05,30,TEAL),math(r'1/2',-6.7,-.4,30,ORANGE))
-        for x,prob,name,c in [(2.5,.75,'0',TEAL),(5.5,.25,'1',ORANGE)]:
+        for x,prob,name,c in [(2.5,.75,'up',TEAL),(5.5,.25,'down',ORANGE)]:
             self.add(Rectangle(width=1.5,height=3.2*prob,fill_color=c,fill_opacity=.8,stroke_width=0).move_to([x,-1.5+1.6*prob,0]),
-                     math(name,x,-1.9,28),label(str(int(100*prob))+'%',x,-1.5+3.2*prob+.3,25,c))
-        self.add(label('Measurement probabilities',4,2.3,28),
+                     label(name,x,-1.9,26),label(str(int(100*prob))+'%',x,-1.5+3.2*prob+.3,25,c))
+        self.add(label('Vertical magnet: probabilities',4,2.3,28),
                  math(r'|\psi\rangle=\tfrac{\sqrt3}{2}|0\rangle+\tfrac12|1\rangle',0,-3,35),
-                 label('Project onto each eigenstate, then square the amplitude’s magnitude.',0,-3.85,25,MUTED))
+                 label('Square the size of each amplitude to get the probability of that result.',0,-3.85,25,MUTED))
 
 
 class FourierUncertainty(Scene):
