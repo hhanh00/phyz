@@ -67,6 +67,20 @@ def daggers(mob, text):
     return mob
 
 
+def sci(before, exponent, after="", size=40, color=INK, bold=False):
+    """Text with a power of ten whose exponent is set small and raised, e.g. sci("one part in 10", "34").
+
+    Unicode superscript digits sit at different heights in Helvetica Neue, so 10³⁴ read like 10 to the 3 to the 4.
+    """
+    base = T(before, size, color, bold)
+    exp = T(exponent.replace("-", "−"), size * 0.6, color, bold)
+    exp.next_to(base, RIGHT, buff=0.04).align_to(base, UP).shift(UP * 0.12 * size / 40)
+    group = VGroup(base, exp)
+    if after:
+        group.add(T(after, size, color, bold).next_to(exp, RIGHT, buff=0.12 * size / 40).align_to(base[-1], DOWN))
+    return group
+
+
 def heq(text, size=34, color=INK, font=MONO):
     """Monospace math in which h-bar (with a following omega) is PURPLE and daggers are raised."""
     t2c = {f"[{m.start()}:{m.end()}]": PURPLE for m in re.finditer(r"ħω|ħ", text)}
@@ -1502,7 +1516,7 @@ def st17(s):
 
 @slide("Adding or removing one quantum changes", "Adding one quantum")
 def st18(s):
-    yield [FadeIn(at(lab("one quantum changes its energy by", 28, INK), 0, 1.4)), FadeIn(at(T("one part in 10³⁴", 52, ORANGE, True), 0, 0.3))]
+    yield [FadeIn(at(lab("one quantum changes its energy by", 28, INK), 0, 1.4)), FadeIn(at(sci("one part in 10", "34", "", 52, ORANGE, True), 0, 0.3))]
     yield [FadeIn(at(lab("nobody could ever measure that", 28, INK), 0, -1.4))]
 
 
@@ -1592,7 +1606,7 @@ def low5(s):
 
 @slide("For chapter one's spring, the spread is about five", "How big the spread is")
 def low6(s):
-    yield [FadeIn(at(lab("chapter 1's spring", 28, INK, True), 0, 2.0)), FadeIn(at(T("spread ≈ 5 × 10⁻¹⁸ m", 44, ORANGE, True), 0, 1.1))]
+    yield [FadeIn(at(lab("chapter 1's spring", 28, INK, True), 0, 2.0)), FadeIn(at(sci("spread ≈ 5 × 10", "-18", "m", 44, ORANGE, True), 0, 1.1))]
     nuc = Circle(radius=1.5, stroke_color=MUTED, stroke_width=3, fill_color=MUTED, fill_opacity=0.12).move_to([-2.0, -1.4, 0])
     tiny = Dot([-2.0, -1.4, 0], radius=0.02, color=ORANGE)
     yield [FadeIn(nuc), FadeIn(tiny), FadeIn(at(lab("an atomic nucleus", 24, MUTED), -2.0, -3.2)),
@@ -1861,19 +1875,19 @@ def co5(s):
 @slide("So what you see depends on how the two compare.", "Chapter 1's spring")
 def co6(s):
     yield [FadeIn(at(lab("what you see: the width compared with the swing", 28, INK), 0, 2.0))]
-    yield [FadeIn(left_at(lab("width", 30, ORANGE, True), -5.0, 0.6)), FadeIn(left_at(T("≈ 5 × 10⁻¹⁸ m", 36, ORANGE, True), -1.8, 0.6))]
+    yield [FadeIn(left_at(lab("width", 30, ORANGE, True), -5.0, 0.6)), FadeIn(left_at(sci("≈ 5 × 10", "-18", "m", 36, ORANGE, True), -1.8, 0.6))]
 
 
 def co_rows(s):
     s.add(at(lab("what you see: the width compared with the swing", 28, INK), 0, 2.0),
-          left_at(lab("width", 30, ORANGE, True), -5.0, 0.6), left_at(T("≈ 5 × 10⁻¹⁸ m", 36, ORANGE, True), -1.8, 0.6))
+          left_at(lab("width", 30, ORANGE, True), -5.0, 0.6), left_at(sci("≈ 5 × 10", "-18", "m", 36, ORANGE, True), -1.8, 0.6))
 
 
 @slide("The swing is one metre.", "Chapter 1's spring")
 def co7(s):
     co_rows(s)
     yield [FadeIn(left_at(lab("swing", 30, BLUE, True), -5.0, -0.5)), FadeIn(left_at(T("1 m", 36, BLUE, True), -1.8, -0.5))]
-    yield [FadeIn(at(T("the swing is 2 × 10¹⁷ widths", 40, INK, True), 0, -2.0), shift=UP * 0.15)]
+    yield [FadeIn(at(sci("the swing is 2 × 10", "17", "widths", 40, INK, True), 0, -2.0), shift=UP * 0.15)]
 
 
 @slide("No instrument could ever see the width.", "Too small to see")
