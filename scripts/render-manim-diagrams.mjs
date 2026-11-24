@@ -29,6 +29,7 @@ const diagrams = [
   { source: 'page_diagrams.py', scene: 'HclExperiments', output: 'hcl-experiments.png', page: 'harmonic-oscillator' },
   { source: 'page_diagrams.py', scene: 'CoherentState', output: 'coherent-state.png', page: 'harmonic-oscillator' },
   { source: 'page_diagrams.py', scene: 'NewtonMotion', output: 'newton-motion.png', page: 'classical-mechanics' },
+  { source: 'page_diagrams.py', scene: 'PendulumForces', output: 'pendulum-forces.png', page: 'classical-mechanics' },
   { source: 'page_diagrams.py', scene: 'StationaryActionPaths', output: 'stationary-action-paths.png', page: 'classical-mechanics' },
   { source: 'page_diagrams.py', scene: 'PhaseSpaceStates', output: 'phase-space-states.png', page: 'classical-mechanics' },
   { source: 'page_diagrams.py', scene: 'BornDensity', output: 'born-density.png', page: 'first-quantization' },

@@ -1,32 +1,33 @@
 # Classical Mechanics
 
-Particle physics is built from quantum theory, and the basic equations of quantum theory contain no force term and no trajectory. A quantum particle has no definite path, so there is nothing to put into $F = ma$. What does carry over is one function, built from the system's kinetic and potential energies, from which its motion follows. This chapter rewrites ordinary mechanics in that form, using a ball, a spring and a pendulum, so that the next chapters can take the same function and quantize it.
+Quantum theory has no forces and no paths. A quantum particle doesn't follow a definite track, so there's nothing to put into $F = ma$. But one thing from ordinary mechanics survives the trip into quantum theory: a single function built from a system's energy, which tells the system how to move. This chapter rewrites ordinary mechanics around that function, using a ball, a pendulum and a spring, so that the next chapter can turn it into quantum mechanics.
 
-## The chapter at a glance
-
-The chapter describes the same motion three times. For every system here the three give identical trajectories. What changes is what you supply and the form of the answer, and later parts of physics build on each form.
+We'll describe the same motion three ways, and all three give exactly the same answers. Newton starts from forces. Lagrange scores whole paths with one number built from energy. Hamilton describes the system at one instant and lets the energy carry it forward. The last step, a rule called the Poisson bracket, is the piece that quantum mechanics replaces.
 
 | | Newton | Lagrange | Hamilton |
 | --- | --- | --- | --- |
-| Question it answers | Given the forces, how does the body accelerate? | Of all paths between two moments, which one does the body take? | Given the present state, where does it go next? |
-| What you supply | The forces | One function, $L = T - V$ (kinetic minus potential energy) | One function, the energy $H$, built from $L$ and written in position $q$ and momentum $p$ |
-| What you get | One equation for the acceleration | The same equation, called the Euler–Lagrange equation, in any coordinates you like | Two equations that move a point $(q, p)$ through a space of states, called phase space |
-| Where it returns | Everyday mechanics | Field theories and path integrals | Quantum mechanics, from the next chapter on |
+| You supply | The forces | Kinetic minus potential energy, $L = T - V$ | The energy $H$, written in position and momentum |
+| You get | The acceleration at each moment | The path the body takes between two moments | Where position and momentum go next |
+| Comes back in | Everyday mechanics | Fields and path integrals | Quantum mechanics, from the next chapter on |
 
-There are three new ideas: the **action**, one number that scores a whole path; the **state** as a point made of position and momentum; and the **Poisson bracket**, which gives the rate of change of any quantity. One consequence comes along with the action: a coordinate that the Lagrangian does not depend on gives a quantity that never changes. Each step has a reason:
+## 1. Forces in, motion out
 
-1. **Newton to Lagrange.** Forces are awkward when a body is held to a track or a string, and quantum theory is not written in terms of them. A function of energies avoids both. Add it up along a path, and the real path is the one where a small change to the path barely changes the total. That rule gives back Newton's law.
-2. **Lagrange to Hamilton.** The quantum mechanics of the next chapters describes a system at one instant and gives a rule that carries it forward. So we describe one instant by position and momentum. Then one function, which turns out to be the energy, gives the motion of both.
-3. **Hamilton to the bracket.** Asking how any quantity changes along the motion produces one fixed combination of derivatives, the Poisson bracket.
-4. **The bracket to quantum mechanics.** The next chapter replaces the bracket of position and momentum, which is the same for every system and from which every other bracket follows, with a commutator, which measures how much the order of two operations matters, and quantization starts there.
+Newton's second law says that a force makes a body accelerate: $F = ma$. Acceleration is how fast the velocity changes, and velocity is how fast the position changes. So if you know where a body starts, how fast it's moving and what forces act on it, the law fixes everything that happens next.
 
-We go through Lagrange rather than straight to Hamilton because both the momentum $p$ and the energy $H$ are built from $L$, and because fields and path integrals later reuse the action itself.
+**A dropped ball.** Near the ground, gravity pulls down with a constant force, $F = -mg$, where $g = 9.8\ \mathrm{m/s^2}$ and the minus sign means downward. So the ball's acceleration is a constant $-g$. Its speed grows by 9.8 m/s every second, and the distance it has fallen grows with the square of the time: 4.9 m after one second, 19.6 m after two, 44.1 m after three.
 
-## 1. Newton's law: forces in, motion out
+![The dropped ball: constant acceleration g, speed rising linearly to 29.4 m/s after 3 s, and distance fallen rising quadratically to 44.1 m.](./manim/newton-motion.png)
 
-Newton's second law relates the acceleration of a body to the force on it: $F = ma$. Acceleration is the rate of change of velocity, and velocity is the rate of change of position. So the law fixes the future once we know where the body starts and how fast it is moving. We write $\dot x$ for the velocity and $\ddot x$ for the acceleration, one dot for each derivative with respect to time (see [derivatives](appendix-math-calculus.md#_1-derivatives) in the Math Refresher).
+*The dropped ball. The acceleration is constant, the speed grows steadily, and the distance fallen grows with the square of the time.*
 
-**Example: a dropped ball.** Near the ground, gravity pulls with a constant force $F = -mg$, where $g = 9.8\ \mathrm{m/s^2}$ and the minus sign means downward. Newton's law gives the constant acceleration $\ddot x = -g$. The force is known in advance, so [integrating](appendix-math-calculus.md#_4-integrals-and-integration-by-parts) once gives the speed, $gt$, and integrating again gives the distance fallen, $\tfrac12 g t^2$, for a ball dropped from rest:
+**Two kinds of energy.** The rest of the chapter works with energies rather than forces, so let's name them. A body of mass $m$ moving at speed $v$ has **kinetic energy** $T = \tfrac12 mv^2$, the energy of motion. A body can also store energy by where it is, called **potential energy** $V$. A ball at height $x$ has $V = mgx$, and a spring of stiffness $k$ stretched by $x$ has $V = \tfrac12 kx^2$.
+
+The force always pushes a body toward lower potential energy, downhill in $V$, and the steeper the slope, the harder the push. In symbols, the force is minus the slope, $F = -dV/dx$. For the ball that gives $-mg$, and for the spring it gives $-kx$, a pull back toward the resting position.
+
+<details>
+<summary>More detail: the dropped ball's numbers</summary>
+
+The acceleration is constant, so the speed after a time $t$ is $gt$ and the distance fallen from rest is $\tfrac12 gt^2$ (see [integrals](appendix-math-calculus.md#_4-integrals-and-integration-by-parts) in the Math Refresher).
 
 | Time $t$ (s) | Speed $gt$ (m/s) | Distance fallen $\tfrac12 g t^2$ (m) |
 | ---: | ---: | ---: |
@@ -35,264 +36,241 @@ Newton's second law relates the acceleration of a body to the force on it: $F = 
 | 2 | 19.6 | 19.6 |
 | 3 | 29.4 | 44.1 |
 
-![The dropped ball: constant acceleration g, speed rising linearly to 29.4 m/s after 3 s, and distance fallen rising quadratically to 44.1 m.](./manim/newton-motion.png)
+For a spring or a pendulum the force changes as the body moves, so the law becomes an equation for an unknown path rather than a simple sum, but the logic is the same.
 
-*The dropped ball from the table. The acceleration is constant, the speed grows linearly, and the distance fallen grows with the square of the time.*
+</details>
 
-For a spring or a pendulum the force depends on where the body is, so we solve the law as an equation for the unknown path, but the logic is the same.
+**Newton's law turns forces into motion, and the force is the downhill slope of the potential energy.**
 
-The rest of the chapter works with two energies, so we name them here. The **kinetic energy** of a body of mass $m$ moving at speed $v$ is $T = \tfrac12 m v^2$. The **potential energy** $V(x)$ is energy stored by position. For the ball, with $x$ its height above the ground, $V = mgx$; for a spring of stiffness $k$ stretched by $x$, $V = \tfrac12 k x^2$. The force is minus the slope of the potential, $F = -dV/dx$, because a body is pushed toward lower potential energy, downhill in $V$. For the ball this gives $F = -mg$; for the spring it gives $F = -kx$, the pull back toward the rest position.
+## 2. Where forces get awkward
 
-## 2. Where forces become awkward
+Newton's law needs every force on the body, including forces whose only job is to keep it on track. Take a pendulum, a weight called the bob on a string of length $\ell$. Gravity pulls on the bob, and so does the string. Gravity is easy. The string's pull, its tension, isn't known in advance, because it adjusts at every moment to whatever keeps the bob on its circle.
 
-Applying Newton's law means listing every force on the body, including forces whose only job is to keep it on its allowed path. Take a pendulum, a bob of mass $m$ on a string of length $\ell$. Two forces act on the bob: gravity, and the tension in the string. Gravity is known. The tension is not, because it adjusts at every moment to whatever value keeps the bob on its circle.
+For one pendulum you can dodge the tension. The string always pulls straight along itself, at right angles to the bob's motion, so it doesn't speed the bob up or slow it down, and you can look only at forces along the circle. But hang a second pendulum from the first, and the dodge fails. The lower string now tugs the upper bob at an angle to its motion, so you have to work out that tension before you can do anything else.
 
-For a single pendulum you can avoid the tension by taking the component of $F = ma$ along the circle, because the string always pulls at right angles to the motion. Hang a second pendulum from the first, and this stops working: the lower string pulls on the upper bob at an angle to its motion, so you have to solve for that tension first. We want one recipe that works with the angle $\theta$ of each string directly and never mentions constraint forces.
+![Left, one pendulum: the string pulls the bob at right angles to its motion. Right, two pendulums: the lower string tugs the upper bob at an angle to its motion.](./manim/pendulum-forces.png)
 
-**Forces are awkward for constrained bodies.** The next two sections build a description of motion from energies alone that handles the pendulum without the tension.
+*Blue arrows show how each bob moves, orange arrows how a string pulls on it. Each angle $\theta$ is measured from straight down, and $\ell$ is the string's length. With one pendulum the string's pull is at right angles to the motion. With two, the lower string's pull isn't.*
 
-## 3. One number for a whole path: the action
+We'd like a method that works directly with the angle of each string and never mentions the strings' pulls at all. The next two sections build one, from energies alone.
 
-A description built from energies alone still has to pick out the motion. Conservation of energy is not enough: it is one equation, and the double pendulum has two angles to find. The rule that works compares whole paths.
+**Forces are awkward when a body is held to a track or a string, so we look for a method built from energies.**
 
-So change the question. Instead of asking how the body accelerates at each moment, fix where it is at a start time and at an end time, and ask which path between those two events it takes. Fixing both endpoints usually pins down the motion just as fixing the starting position and speed does. In the example below, a ball that comes back to the hand after 2 s can only have been thrown at one speed.
+## 3. One number for a whole path
 
-To compare candidate paths, give each one a score. For each moment along a path, compute
+Energies alone have to pick out the motion somehow. Conservation of energy isn't enough, because it's one equation, and the double pendulum has two angles to find. What works is to change the question.
+
+Instead of asking how the body accelerates at each moment, fix where it is at a start time and where it is at an end time, and ask which path it takes between them. Fixing both ends usually pins down the motion just as well as fixing the start and the speed. A ball that leaves your hand and comes back 2 seconds later, for example, can only have been thrown at one speed.
+
+To compare paths, give each one a score. At each moment along the path, take the kinetic energy minus the potential energy,
 
 $$L = T - V,$$
 
-called the **Lagrangian**, and add up $L$ over the whole time interval. The total is the **action** of that path:
+called the **Lagrangian**. Add it up over the whole trip, and you get the path's score, called the **action**:
 
-$$S = \int_{t_i}^{t_f} L \, dt.$$
+$$S = \int L\, dt.$$
 
-The integral adds up the contributions of each small time interval (see [integrals](appendix-math-calculus.md#_4-integrals-and-integration-by-parts)). Every candidate path gets a number, including paths the body never takes.
+Every imaginable path gets an action, including paths the body would never take.
 
-The rule that selects the real path is the **principle of stationary action**. Bend the real path a little, by an amount $\epsilon$, keeping its two endpoints fixed. The action changes, but only by an amount that grows like $\epsilon^2$: halve the bend and the change drops to a quarter. So for small bends the change shrinks much faster than the bend, and we say the action does not change *to first order*. The real path sits at a flat spot of $S$, like the bottom of a valley, the top of a hill, or a saddle, which rises one way and falls the other. That is what *stationary* means. The principle is often called *least action*, but the flat spot need not be a minimum.
+**The real path sits at a flat spot.** Here's the rule that picks the real path out. Bend a path a little, keeping its two ends fixed, and its action changes. On most paths the change is proportional to the bend, like taking a step on a slope. On the real path that part vanishes, and what's left grows only like the square of the bend: halve the bend, and the change drops to a quarter. So for small bends the action is flat, like the bottom of a valley, and that's the rule, called the **principle of stationary action**. (It's often called "least action", but the flat spot doesn't have to be a minimum. It can also be a hilltop or a saddle.)
 
-**Example: a ball thrown up and caught.** Throw a ball of mass $1\ \mathrm{kg}$ straight up so that it returns to the hand after $2\ \mathrm{s}$. It must rise for 1 s and fall for 1 s, so it leaves the hand at $9.8\ \mathrm{m/s}$. The throw carries it up $9.8\,t$ metres while gravity pulls it back $\tfrac12 g t^2 = 4.9\,t^2$, as in the dropped-ball table, so its height above the hand is $x(t) = 9.8\,t - 4.9\,t^2$ metres, which rises to $4.9\ \mathrm{m}$ and falls back. Compare it with deformed paths $x(t) + \epsilon \sin(\pi t/2)$, which leave and return at the same moments but bulge by up to $\epsilon$ metres. With heights measured from the hand, $V = 9.8\,x$, and the action of each path, in joule-seconds, is:
+**A ball thrown up and caught.** Throw a ball straight up and catch it a couple of seconds later. Now imagine other paths that leave your hand and come back at the same moments, but bulge higher or lower along the way, and work out the action of each one. Bulging the path up or down raises the action by the same small amount, and doubling the bulge makes that rise four times bigger. That's the flat spot: the real path sits at the bottom of the valley.
 
-| Bulge $\epsilon$ (m) | Action with $L = T - V$ | Total of $T + V$ instead |
-| ---: | ---: | ---: |
-| −0.5 | −31.70 | 83.87 |
-| −0.2 | −31.96 | 91.10 |
-| 0 (real path) | −32.01 | 96.04 |
-| 0.2 | −31.96 | 101.08 |
-| 0.5 | −31.70 | 108.83 |
+![The thrown ball's real path and two paths bent up and down, all leaving and returning at the same moments. Beside them, the action of each path: a valley whose flat bottom is the real path.](./manim/stationary-action-paths.png)
 
-With $L = T - V$, bulging the path either way raises the action by the same amount. Making the bulge 2.5 times larger, from 0.2 to 0.5, makes the change in action $2.5^2 = 6.25$ times larger, from 0.049 to 0.308. That is the $\epsilon^2$ growth of a flat spot. **The real path is a flat spot of $T - V$, not of $T + V$.** In the last column the total keeps changing as the path moves through $\epsilon = 0$. A rule built on $T + V$ would pick a different path, one where the ball accelerates upward (Section 4).
+*The thrown ball. Left, the real path and two bent paths with the same ends. Right, the action of each path: flat at the real path.*
 
-<details>
-<summary>Where the numbers in the table come from</summary>
+**The real path is the one where the action sits at a flat spot: bend it a little and the action doesn't change.**
 
-Write the deformation as $\epsilon\eta(t)$ with $\eta = \sin(\pi t/2)$, and the real velocity as $v = 9.8 - 9.8\,t$. For $m = 1$, the kinetic energy of the deformed path is $\tfrac12(v + \epsilon\dot\eta)^2$ and the potential is $g(x + \epsilon\eta)$. Collect the terms by powers of $\epsilon$.
+## 4. Turning the rule into an equation
 
-First the real path, $\epsilon = 0$. The kinetic energy totals $\int_0^2 \tfrac12(9.8)^2(1-t)^2\,dt = 96.04/3 \approx 32.01$, and the potential energy totals $\int_0^2 9.8\,(9.8t - 4.9t^2)\,dt = 2 \cdot 96.04/3 \approx 64.03$, exactly twice as much. So the action of $T - V$ is $-96.04/3 \approx -32.01$, and the total of $T + V$ is $96.04$.
+Comparing paths one at a time can check a guess, but it can't find the real path. For that we need an equation the real path obeys at every moment. We'll write $\dot x$ for the velocity and $\ddot x$ for the acceleration, one dot for each rate of change in time. Asking that every small bend leave the action flat gives the equation, called the **Euler–Lagrange equation**:
 
-The terms in $\epsilon^2$ come from the kinetic energy only, $\tfrac12\epsilon^2\int_0^2 \dot\eta^2\,dt = (\pi^2/8)\,\epsilon^2$, and they are the same for both columns.
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) = \frac{\partial L}{\partial q}.$$
 
-The terms in $\epsilon$ are $\epsilon\int_0^2 v\dot\eta\,dt$ from the kinetic energy and $\epsilon\int_0^2 g\eta\,dt$ from the potential, and they are equal. The second is $\int_0^2 9.8\sin(\pi t/2)\,dt = 9.8\cdot 4/\pi = 39.2/\pi \approx 12.48$. Integrating the first by parts gives $-\int_0^2 \dot v\,\eta\,dt = \int_0^2 g\eta\,dt$, the same value. That equality is the cancellation that Section 4 turns into the Euler–Lagrange equation. With $T - V$ the potential term is subtracted, so the two cancel and no term in $\epsilon$ is left. With $T + V$ they add, giving $(78.4/\pi)\,\epsilon \approx 24.96\,\epsilon$. So
+Here $q$ stands for whatever describes the system, a height or an angle, and $\dot q$ for its rate of change. The $\partial$ symbols mean "how much $L$ changes when you nudge just this one thing", treating position and speed as two separate knobs (a [partial derivative](appendix-math-calculus.md#_2-partial-derivatives)).
 
-$$S_{T-V}(\epsilon) \approx -32.01 + 1.23\,\epsilon^2, \qquad S_{T+V}(\epsilon) \approx 96.04 + 24.96\,\epsilon + 1.23\,\epsilon^2.$$
+The equation reads as a balance. On the left, $\partial L/\partial\dot q$ is the momentum: for $L = \tfrac12 m\dot x^2 - V$, nudging the speed changes $L$ by $m\dot x$. So the left side is how fast the momentum changes. On the right, $\partial L/\partial q$ plays the role of the force. So it says what Newton said: **momentum changes at the rate the force sets**. The difference is that it works in whatever coordinate you choose.
 
-</details>
+**Newton comes back.** For a body with $L = \tfrac12 m\dot x^2 - V(x)$, the momentum is $m\dot x$ and the force term is $-dV/dx$, so the equation is $m\ddot x = -dV/dx$. That's $F = ma$. For the thrown ball, it gives $\ddot x = -g$.
 
-![The thrown ball's real path and two paths bent by plus and minus half a metre, all leaving and returning at the same moments. Beside them, the action of T minus V is a curve flat at zero bend, and the total of T plus V is still sloping there.](./manim/stationary-action-paths.png)
+**The pendulum, without the string.** Now describe the pendulum by its angle $\theta$. The bob moves along its circle at speed $\ell\dot\theta$, and its height depends only on the angle. So $L$ is written entirely in the angle and its rate of change, and the string's pull never appears in it. The Euler–Lagrange equation then gives the pendulum's motion with no tension anywhere. For the double pendulum, write $L$ in the two angles and get one equation for each, again with no tension. That's the method section 2 asked for.
 
-*The thrown ball from the table. Left, the real path and two bent paths with the same endpoints. Right, the table's values: the action of $T - V$ is flat at the real path, and the total of $T + V$ is not.*
-
-For the systems in this chapter, stationary action is Newton's law in another form, as the next section shows. Its advantage is that it uses only the two energies and works the same way in any coordinates.
-
-## 4. From stationary action to an equation of motion
-
-Comparing paths one at a time cannot find the real one. We need an equation the real path satisfies at every moment. Requiring that every small deformation leaves $S$ unchanged to first order gives one, the **Euler–Lagrange equation**:
-
-$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L}{\partial q} = 0.$$
-
-Here $q$ is whatever coordinate describes the system, a height or an angle, and $\dot q$ is its rate of change. The symbols $\partial L/\partial q$ and $\partial L/\partial \dot q$ are [partial derivatives](appendix-math-calculus.md#_2-partial-derivatives): the rate of change of $L$ with one variable while the other is held fixed. A coordinate chosen to fit the system, such as an angle, is called a **generalized coordinate**, and a system with several of them has one such equation for each.
-
-The equation reads as a balance. The first term is the rate of change of $\partial L/\partial \dot q$, which for ordinary motion is the momentum $m\dot q$. The second term, $\partial L / \partial q$, plays the role of the force; for an angle it is a torque, the turning effect of a force. So the equation states that the momentum changes at a rate equal to the force, in whatever coordinate we chose.
+**A missing coordinate gives something that never changes.** Suppose $L$ doesn't depend on some coordinate at all. For a body floating freely, $L = \tfrac12 m\dot x^2$ doesn't care where the body is, only how fast it moves. Then the force term is zero, and the equation says the momentum never changes. Shifting the system along that coordinate changes nothing, which we call a *symmetry*, and every such symmetry comes with a quantity that stays fixed. This link returns in general form as **Noether's theorem**: [Action and Lagrangians](qft-action.md) states it for fields, and [Quantum Electrodynamics](qed.md) uses it to get the conservation of electric charge.
 
 <details>
-<summary>Deriving the Euler–Lagrange equation from stationary action</summary>
+<summary>The calculation: deriving the Euler–Lagrange equation</summary>
 
-Write a nearby path as $q_\epsilon(t)=q(t)+\epsilon\eta(t)$, where $\eta(t_i)=\eta(t_f)=0$. The parameter $\epsilon$ measures the size of the change. "No first-order change" means that the slope of $S$ with respect to $\epsilon$ is zero at $\epsilon = 0$. Changing $\epsilon$ changes $L$ through $q$, by $(\partial L/\partial q)\,\eta$, and through $\dot q$, by $(\partial L/\partial \dot q)\,\dot\eta$, by the [chain rule](appendix-math-calculus.md#_3-the-chain-rule). So stationarity means
+Write a nearby path as $q(t) + \epsilon\eta(t)$, where $\eta$ is zero at both ends. "Flat" means the slope of $S$ with respect to $\epsilon$ is zero at $\epsilon = 0$. Changing $\epsilon$ changes $L$ through $q$, by $(\partial L/\partial q)\,\eta$, and through $\dot q$, by $(\partial L/\partial\dot q)\,\dot\eta$, by the [chain rule](appendix-math-calculus.md#_3-the-chain-rule). So
 
-$$0=\left.\frac{dS[q_\epsilon]}{d\epsilon}\right|_{\epsilon=0}
-=\int_{t_i}^{t_f}\left(\frac{\partial L}{\partial q}\eta+\frac{\partial L}{\partial\dot q}\dot\eta\right)dt.$$
+$$0 = \int_{t_i}^{t_f}\left(\frac{\partial L}{\partial q}\eta + \frac{\partial L}{\partial\dot q}\dot\eta\right)dt.$$
 
 Integrate the second term [by parts](appendix-math-calculus.md#_4-integrals-and-integration-by-parts):
 
-$$0=\left[\frac{\partial L}{\partial\dot q}\eta\right]_{t_i}^{t_f}
-+\int_{t_i}^{t_f}\left[\frac{\partial L}{\partial q}-\frac{d}{dt}\frac{\partial L}{\partial\dot q}\right]\eta\,dt.$$
+$$0 = \left[\frac{\partial L}{\partial\dot q}\eta\right]_{t_i}^{t_f} + \int_{t_i}^{t_f}\left[\frac{\partial L}{\partial q} - \frac{d}{dt}\frac{\partial L}{\partial\dot q}\right]\eta\,dt.$$
 
-The endpoint condition removes the boundary term. The coefficient multiplying $\eta$ must vanish throughout the path: if it were nonzero somewhere, a bump in $\eta$ placed only there would make the integral nonzero. This gives the Euler–Lagrange equation.
+The first term is zero because $\eta$ vanishes at the ends. The bracket must then be zero at every moment: if it weren't zero somewhere, a bump in $\eta$ placed just there would make the integral nonzero. That gives the Euler–Lagrange equation.
+
+A coordinate chosen to fit the system, such as an angle, is called a **generalized coordinate**. A system with several of them gets one Euler–Lagrange equation for each.
 
 </details>
 
-**Check 1: Newton's law comes back.** For a body with $L = \tfrac12 m \dot x^2 - V(x)$, the two partial derivatives are $\partial L/\partial \dot x = m\dot x$ and $\partial L/\partial x = -dV/dx$. The equation becomes
-
-$$m\ddot x = -\frac{dV}{dx} = F,$$
-
-which is $F = ma$. For the thrown ball, $V = mgx$ gives $\ddot x = -g$. With $T + V$ in place of $T - V$, the same steps give $\ddot x = +g$: the ball would accelerate upward. That is the reason for the minus sign.
-
-**Check 2: the pendulum without the tension.** Use the angle $\theta$ as the coordinate. The bob has moved a distance $\ell\theta$ along the circle, so its speed is $\ell\dot\theta$. It hangs $\ell\cos\theta$ below the pivot, so its height above the lowest point is $\ell(1-\cos\theta)$. Then
-
-$$L=\tfrac12m\ell^2\dot\theta^2-mg\ell(1-\cos\theta).$$
-
-The partial derivatives are $\partial L/\partial\dot\theta=m\ell^2\dot\theta$ and $\partial L/\partial\theta=-mg\ell\sin\theta$, and the Euler–Lagrange equation gives
-
-$$m\ell^2\ddot\theta+mg\ell\sin\theta=0.$$
-
-The tension never appears, because the angle already keeps the bob on its circle. For one pendulum, projecting $F = ma$ gives the same result. For two, projecting no longer works but this method still does: write $L$ in the two angles, and since no tension appears in $L$, none appears in the two Euler–Lagrange equations.
-
 <details>
-<summary>The double pendulum's Lagrangian</summary>
+<summary>The calculation: the pendulum and the double pendulum</summary>
 
-Hang a bob of mass $m_2$ on a string of length $\ell_2$ from a bob of mass $m_1$ on a string of length $\ell_1$, with angles $\theta_1$ and $\theta_2$ from the downward vertical. With the pivot at the origin and $y$ pointing up, the two bobs sit at
+**One pendulum.** The bob hangs $\ell\cos\theta$ below the pivot, so its height above the lowest point is $\ell(1 - \cos\theta)$, and it moves at speed $\ell\dot\theta$:
 
-$$(\ell_1\sin\theta_1,\ -\ell_1\cos\theta_1), \qquad (\ell_1\sin\theta_1 + \ell_2\sin\theta_2,\ -\ell_1\cos\theta_1 - \ell_2\cos\theta_2).$$
+$$L = \tfrac12 m\ell^2\dot\theta^2 - mg\ell(1 - \cos\theta).$$
 
-The first bob moves at speed $\ell_1\dot\theta_1$. Differentiating the second position and using $\cos a\cos b + \sin a\sin b = \cos(a-b)$ gives the second bob's squared speed,
+Then $\partial L/\partial\dot\theta = m\ell^2\dot\theta$ and $\partial L/\partial\theta = -mg\ell\sin\theta$, and the Euler–Lagrange equation gives
 
-$$v_2^2 = \ell_1^2\dot\theta_1^2 + \ell_2^2\dot\theta_2^2 + 2\ell_1\ell_2\dot\theta_1\dot\theta_2\cos(\theta_1-\theta_2).$$
+$$m\ell^2\ddot\theta + mg\ell\sin\theta = 0.$$
 
-Here the potential energy is measured from the pivot, not from the lowest point as for the single pendulum; a constant shift in $V$ changes no equation of motion. The energies are
+**Two pendulums.** Hang a bob of mass $m_2$ on a string of length $\ell_2$ from a bob of mass $m_1$ on a string of length $\ell_1$, with angles $\theta_1$ and $\theta_2$ from the vertical. Measuring heights from the pivot (a constant shift in $V$ changes no equation of motion), the energies are
 
 $$T = \tfrac12(m_1+m_2)\ell_1^2\dot\theta_1^2 + \tfrac12 m_2\ell_2^2\dot\theta_2^2 + m_2\ell_1\ell_2\dot\theta_1\dot\theta_2\cos(\theta_1-\theta_2),$$
 
 $$V = -(m_1+m_2)g\ell_1\cos\theta_1 - m_2 g\ell_2\cos\theta_2.$$
 
-The Euler–Lagrange equation for each angle, applied to $L = T - V$, gives the two equations of motion.
+The cross term in $T$ comes from the second bob's squared speed, $\ell_1^2\dot\theta_1^2 + \ell_2^2\dot\theta_2^2 + 2\ell_1\ell_2\dot\theta_1\dot\theta_2\cos(\theta_1-\theta_2)$. The Euler–Lagrange equation for each angle gives the two equations of motion, and no tension appears in either.
 
 </details>
 
-**A missing coordinate gives a conserved quantity.** If $L$ does not depend on some coordinate $q$, then shifting the system along $q$ leaves $L$ unchanged, which is a *symmetry*. In that case $\partial L/\partial q = 0$, and the Euler–Lagrange equation then requires $\partial L/\partial \dot q$ to stay constant. For a free body, nothing in $L = \tfrac12 m\dot x^2$ depends on $x$, so its momentum $m\dot x$ is constant. This link between a symmetry and a conserved quantity returns in general form as Noether's theorem: [Action and Lagrangians](qft-action.md) states it for fields, and [Quantum Electrodynamics](qed.md) uses it to obtain the conserved electric-charge current.
+**The Euler–Lagrange equation turns the flat-spot rule into "momentum changes at the rate the force sets", in any coordinates, with no string forces needed.**
 
-## 5. A state as a point: position and momentum
+## 5. A state is position plus momentum
 
-So far we have compared whole paths between two fixed ends. The form of quantum mechanics in the next chapters instead carries the state at one instant forward in time, so we need the classical version of that state. What must we know at one instant to predict everything after it? Position alone is not enough. A pendulum passes through the same angle twice in each swing, once going each way, and what happens next differs. We also need how the system is moving.
+So far we've compared whole paths between two fixed ends. Quantum mechanics works differently: it describes a system at one instant and gives a rule that carries it forward. So we need the classical version of "the system at one instant", called its **state**.
 
-Section 4 already used a particular measure of motion, the **conjugate momentum**
+Position alone isn't enough. A spring passes through its middle twice in each swing, once going each way, and what happens next is different. So the state also has to say how the system is moving.
 
-$$p = \frac{\partial L}{\partial \dot q}.$$
+We use the momentum for that, the same $\partial L/\partial\dot q$ that appeared in the Euler–Lagrange equation, called the **conjugate momentum**. For a body moving along a line it's the ordinary momentum $m\dot x$. For the pendulum it's $m\ell^2\dot\theta$, an angular momentum. Why momentum and not plain velocity? Section 7 shows why.
 
-For a body on a line it is the ordinary momentum $m\dot x$. For the pendulum it is $m\ell^2\dot\theta$, an angular momentum. **We use momentum rather than velocity because then one function, the energy, gives both equations of motion**, as the next section shows. Momentum is also what stays constant when $L$ lacks a coordinate, and Section 7 gives a third reason.
-
-The pair $(q, p)$ is the **state**, and the space of all states is called **phase space**. Each state is a point in it, and the motion of the system is a curve that the point traces. Two states with the same position but opposite momentum are different points.
+The pair, position $q$ and momentum $p$, is the state. Picture it as a point on a map with position across and momentum up. That map of all possible states is called **phase space**, and as the system moves, its point traces a curve.
 
 ![Two states of the spring at the same position with opposite momenta, points B and D on its orbit in phase space.](./manim/phase-space-states.png)
 
-*Points B and D of the spring in Section 6: the same position, opposite momenta. Phase space tells them apart. The figure uses $x$ for the position coordinate $q$.*
+*Two moments of the spring in section 6: the same position, opposite momenta. On the phase-space map they're different points. The figure writes the position as $x$.*
 
-## 6. Energy moves the point: the Hamiltonian
+**The state at one instant is a point: its position and its momentum.**
 
-We now want a rule that moves the state forward in time, written in terms of position and momentum instead of position and velocity. The Lagrangian depends on $\dot q$, and its slope with respect to $\dot q$ is $p$. We want a function $H$ of $q$ and $p$ whose slope with respect to $p$ is $\dot q$. Then $\dot q = \partial H/\partial p$ is an equation of motion: it says how $q$ moves. The product $p\dot q$ already changes with $p$ at the rate $\dot q$, but it also changes with $\dot q$. $L$ changes with $\dot q$ by exactly the same amount, so subtracting $L$ removes that part. With small changes $\Delta p$ and $\Delta\dot q$, holding $q$ fixed:
+## 6. The energy moves the state
 
-$$\Delta(p\dot q) = \dot q\,\Delta p + p\,\Delta\dot q, \qquad \Delta L = p\,\Delta\dot q.$$
+Now we want the rule that moves the state forward, written in position and momentum. It turns out to come from one function, the **Hamiltonian** $H$, which for everything in this chapter is simply the total energy, kinetic plus potential, written in terms of momentum. For a body of mass $m$, put $v = p/m$ into the kinetic energy $\tfrac12 mv^2$ and it becomes $p^2/2m$, so
 
-Subtracting,
-
-$$\Delta(p\dot q - L) = \dot q\,\Delta p.$$
-
-So $p\dot q - L$ responds to $p$ with slope $\dot q$, and does not respond to $\dot q$ at all. The details box below writes this out in full. Try it on the spring first, with $L = \tfrac12 m\dot x^2 - \tfrac12 k x^2$ and $p = m\dot x$:
-
-$$p\dot x - L = m\dot x^2 - \left(\tfrac12 m\dot x^2 - \tfrac12 k x^2\right) = \tfrac12 m \dot x^2 + \tfrac12 k x^2.$$
-
-**For the spring, $p\dot q - L$ is the total energy**, kinetic plus potential. Written with $\dot x = p/m$, it becomes
-
-$$H = \frac{p^2}{2m} + V(x).$$
-
-In general the **Hamiltonian** is $H = p\dot q - L$, with $\dot q$ rewritten in terms of $q$ and $p$. This exchange of $\dot q$ for $p$ is called a **Legendre transform**. For a kinetic energy of the form $\tfrac12 m\dot q^2$ and a potential that does not depend on velocity, $H$ is the total energy $T + V$. The chapters that follow start from exactly this function: the Schrödinger equation is built on $H = p^2/(2m) + V$.
+$$H = \frac{p^2}{2m} + V(q).$$
 
 The Hamiltonian moves the state through **Hamilton's equations**:
 
 $$\dot q = \frac{\partial H}{\partial p}, \qquad \dot p = -\frac{\partial H}{\partial q}.$$
 
-The first gives the rate of change of position, the second the rate of change of momentum. Both are *first-order* equations, meaning they involve only first derivatives in time, so knowing $(q, p)$ now fixes the next small step, and with it the whole motion that follows. That is the sense in which the point is the complete state. Together, Hamilton's equations are equivalent to the single Euler–Lagrange equation, which has a second derivative.
+The first says position changes at a rate set by how the energy depends on momentum; for $H$ above, that's $p/m$, the velocity. The second says momentum changes at a rate set by how the energy depends on position; for $H$ above, that's $-dV/dq$, the force. Together they're Newton's law again. Each one only involves the rate of change, not the acceleration, so knowing the state now fixes the next small step, and the next, and the whole motion after it.
+
+**The spring.** Take a spring with a 1 kg mass and stiffness $k = 4\ \mathrm{N/m}$, so $H = \tfrac12 p^2 + 2x^2$. Pull it out to 1 m and let go. Hamilton's equations give $\dot x = p$ and $\dot p = -4x$, and they're solved by
+
+$$x = \cos 2t, \qquad p = -2\sin 2t.$$
+
+The 2 here is the spring's **angular frequency**, $\omega = \sqrt{k/m}$, and the motion repeats every $2\pi/\omega = \pi$ seconds. At release the momentum is zero and $x = 1$, so the energy is $2 \times 1^2 = 2$ J, and it stays at 2 J the whole time. At the ends of the swing it's all potential, and in the middle it's all kinetic.
+
+On the phase-space map, the point goes round and round a closed loop. Every state on the loop has the same energy, 2 J, and the point just travels around it while energy passes back and forth between kinetic and potential. Rescale the two axes to the right proportions, and the loop is a circle, a picture the [Harmonic Oscillator](harmonic-oscillator.md) chapter builds on.
+
+![One classical orbit of a spring in phase space, with energy changing between potential and kinetic while the total stays fixed.](./manim/classical-oscillator-energy.png)
+
+*One orbit of the spring in phase space, with the axes rescaled so that the loop is a circle. At the turning points the energy is all potential, and in the middle it's all kinetic.*
 
 <details>
-<summary>Deriving Hamilton's equations from the Lagrangian</summary>
+<summary>The calculation: where the Hamiltonian comes from</summary>
 
-For one coordinate, the small change $dH$ of $H=p\dot q-L$, when $q$, $\dot q$, $p$ and $t$ each change a little, is
+We want a function of $q$ and $p$ whose slope with respect to $p$ is $\dot q$, so that $\dot q = \partial H/\partial p$ is an equation of motion. Start from $p\dot q - L$. When $p$ and $\dot q$ change a little, with $q$ fixed,
 
-$$dH=\dot q\,dp+p\,d\dot q-\frac{\partial L}{\partial q}dq-\frac{\partial L}{\partial\dot q}d\dot q-\frac{\partial L}{\partial t}dt.$$
+$$\Delta(p\dot q) = \dot q\,\Delta p + p\,\Delta\dot q, \qquad \Delta L = p\,\Delta\dot q,$$
 
-The two $d\dot q$ terms cancel because $p=\partial L/\partial\dot q$. The Euler–Lagrange equation gives $\partial L/\partial q=\dot p$, leaving
+because $p = \partial L/\partial\dot q$. Subtracting, $\Delta(p\dot q - L) = \dot q\,\Delta p$: the combination responds to $p$ with slope $\dot q$ and doesn't respond to $\dot q$ at all. So the **Hamiltonian** is
 
-$$dH=\dot q\,dp-\dot p\,dq-\frac{\partial L}{\partial t}dt.$$
+$$H = p\dot q - L,$$
 
-Compare the coefficients with $dH=(\partial H/\partial q)dq+(\partial H/\partial p)dp+(\partial H/\partial t)dt$. The first two give Hamilton's equations. The last gives $\partial H/\partial t=-\partial L/\partial t$.
+with $\dot q$ rewritten in terms of $q$ and $p$. This swap of $\dot q$ for $p$ is called a **Legendre transform**. For $L = \tfrac12 m\dot q^2 - V(q)$, $p = m\dot q$, and
 
-For $L=\tfrac12m\dot q^2-V(q)$, we have $p=m\dot q$, so $\dot q = p/m$ and
+$$H = p\cdot\frac{p}{m} - \left(\frac{p^2}{2m} - V\right) = \frac{p^2}{2m} + V(q),$$
 
-$$H = p\cdot\frac{p}{m} - \left(\frac{p^2}{2m} - V(q)\right) = \frac{p^2}{2m}+V(q).$$
+the total energy.
 
-Hamilton's equations become $\dot q=p/m$ and $\dot p=-\partial V/\partial q$. Together they reproduce Newton's law.
+**Hamilton's equations.** The small change of $H = p\dot q - L$, when everything changes a little, is
+
+$$dH = \dot q\,dp + p\,d\dot q - \frac{\partial L}{\partial q}dq - \frac{\partial L}{\partial\dot q}d\dot q - \frac{\partial L}{\partial t}dt.$$
+
+The $d\dot q$ terms cancel, and the Euler–Lagrange equation gives $\partial L/\partial q = \dot p$, so $dH = \dot q\,dp - \dot p\,dq - (\partial L/\partial t)\,dt$. Reading off the coefficients of $dp$ and $dq$ gives Hamilton's equations. They're *first-order*: they involve only first rates of change, where the Euler–Lagrange equation has a second.
 
 </details>
 
-**Example: the spring.** Take $m = 1\ \mathrm{kg}$ and $k = 4\ \mathrm{N/m}$, so $H = \tfrac12 p^2 + 2x^2$. Hamilton's equations give $\dot x = p$ and $\dot p = -4x$. Start at $x = 1\ \mathrm{m}$ at rest. These equations are solved by
+<details>
+<summary>More detail: the spring at four moments</summary>
 
-$$x = \cos 2t, \qquad p = -2\sin 2t,$$
+Check the solution: $\dot x = -2\sin 2t = p$ and $\dot p = -4\cos 2t = -4x$. The rows are a quarter of a period, $\pi/4$ s, apart.
 
-as you can check: $\dot x = -2\sin 2t = p$, and $\dot p = -4\cos 2t = -4x$. The number $2\ \mathrm{s^{-1}}$ is the angular frequency $\omega = \sqrt{k/m}$: the motion repeats every $2\pi/\omega = \pi$ seconds, and the rows of the table below are a quarter of that apart. The [Harmonic Oscillator](harmonic-oscillator.md) chapter uses $\omega$ throughout. At four moments of one swing:
-
-| Point in the figure | Time $t$ (s) | State $(x, p)$ | Where the mass is | $\dot x = p$ | $\dot p = -4x$ | $H$ (J) |
+| Point | Time $t$ (s) | State $(x, p)$ | Where the mass is | $\dot x = p$ | $\dot p = -4x$ | $H$ (J) |
 | --- | ---: | --- | --- | ---: | ---: | ---: |
 | A | 0 | $(1, 0)$ | stretched, at rest | 0 | −4 | 2 |
 | B | $\pi/4 \approx 0.79$ | $(0, -2)$ | passing the middle, moving left | −2 | 0 | 2 |
 | C | $\pi/2 \approx 1.57$ | $(-1, 0)$ | compressed, at rest | 0 | 4 | 2 |
 | D | $3\pi/4 \approx 2.36$ | $(0, 2)$ | passing the middle, moving right | 2 | 0 | 2 |
 
-The columns for $\dot x$ and $\dot p$ give the direction in which the point moves. At the stretched position the momentum starts to fall; in the middle the position changes fastest. The last column is the same in every row, so the energy stays fixed, and the states with that energy satisfy $x^2 + p^2/4 = 1$, an ellipse. The point travels round it, while energy passes back and forth between kinetic and potential.
+The states with energy 2 J satisfy $x^2 + p^2/4 = 1$, an ellipse. In the rescaled coordinates $X = \sqrt{m\omega}\,x$ and $P = p/\sqrt{m\omega}$ it becomes a circle. The [Harmonic Oscillator](harmonic-oscillator.md) chapter quantizes exactly this spring.
 
-![One classical orbit of a spring in phase space, with energy changing between potential and kinetic while the total stays fixed.](./manim/classical-oscillator-energy.png)
+</details>
 
-*One orbit of a spring in phase space. The rescaled coordinates $X = \sqrt{m\omega}\,x$ and $P = p/\sqrt{m\omega}$, with $\omega = \sqrt{k/m}$, turn the ellipse into a circle. At the turning points the energy is all potential, and in the middle it is all kinetic.*
+**The Hamiltonian is the energy written in position and momentum, and Hamilton's equations let it move the state forward one step at a time.**
 
+## 7. How anything changes: the Poisson bracket
 
-## 7. How any quantity changes: the Poisson bracket
-
-Hamilton's equations give the rates of change of position and momentum. Often we want the rate of change of something else, such as the energy or an angular momentum, without solving for the whole orbit first. Take any quantity $f(q, p)$ that depends on the state. As the state moves, $f$ changes through both of its variables, and the [chain rule](appendix-math-calculus.md#_3-the-chain-rule) adds the two contributions:
-
-$$\frac{df}{dt}=\frac{\partial f}{\partial q}\dot q+\frac{\partial f}{\partial p}\dot p
-=\frac{\partial f}{\partial q}\frac{\partial H}{\partial p}-\frac{\partial f}{\partial p}\frac{\partial H}{\partial q}.$$
-
-The second step substitutes Hamilton's equations. The combination on the right appears so often that it has a name. For any two quantities $f$ and $g$, the **Poisson bracket** is
-
-$$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q},$$
-
-summed over each pair of position and momentum when there are several. With it, the rate of change of any quantity is
+Hamilton's equations tell us how position and momentum change. Often we want to know how something else changes, such as the energy or an angular momentum, without solving the whole motion first. Any such quantity $f$ depends on the state, so as the state moves, $f$ changes for two reasons: the position moves and the momentum moves. Adding the two effects, and using Hamilton's equations for the rates, gives one fixed recipe, called the **Poisson bracket** of $f$ with $H$:
 
 $$\frac{df}{dt} = \{f, H\}.$$
 
-**Examples.** For $H = p^2/(2m) + V(q)$:
+For any two quantities $f$ and $g$, the bracket combines their slopes with respect to position and momentum:
+
+$$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q}.$$
+
+**What the bracket gives.** For $H = p^2/2m + V$, the bracket of position with $H$ is $p/m$ and the bracket of momentum with $H$ is $-dV/dq$: Hamilton's equations again. The bracket of $H$ with itself is zero, which says the energy never changes. In general, anything whose bracket with $H$ is zero stays constant.
+
+**One bracket that never changes.** The bracket of position with momentum is
+
+$$\{q, p\} = 1,$$
+
+because position changes with position at rate 1 and momentum with momentum at rate 1, while neither changes with the other: $1 \times 1 - 0 \times 0 = 1$. It doesn't involve $H$ at all. So it's the same for every system: a ball, a pendulum, a spring. Velocity doesn't share this. The bracket of position with velocity is $1/m$, which depends on the mass, so there'd be no single rule shared by every system. That's why we use momentum.
+
+Better still, every other bracket can be worked out from this one. Any quantity built by adding and multiplying position and momentum has a bracket that reduces, step by step, to $\{q, p\} = 1$. So when the next chapter builds quantum mechanics, it only has to replace this one relation. Everything else follows.
+
+<details>
+<summary>The calculation: the Poisson bracket</summary>
+
+As the state moves, $f(q, p)$ changes through both variables, and the [chain rule](appendix-math-calculus.md#_3-the-chain-rule) adds the two effects. Then Hamilton's equations replace $\dot q$ and $\dot p$:
+
+$$\frac{df}{dt} = \frac{\partial f}{\partial q}\dot q + \frac{\partial f}{\partial p}\dot p = \frac{\partial f}{\partial q}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial q}.$$
+
+The **Poisson bracket** of any two quantities is
+
+$$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q},$$
+
+summed over each position–momentum pair when there are several. So $df/dt = \{f, H\}$, plus $\partial f/\partial t$ if $f$ also depends on time directly.
+
+Examples, for $H = p^2/2m + V(q)$:
 
 $$\{q, H\} = \frac{p}{m}, \qquad \{p, H\} = -\frac{dV}{dq}, \qquad \{H, H\} = 0, \qquad \{q, p\} = 1.$$
 
-The first two are Hamilton's equations again, with $f = q$ and $f = p$. The third holds because the two terms of $\{H, H\}$ are the same product with opposite signs; it says the energy does not change. The last holds because the derivatives of $q$ by $q$ and of $p$ by $p$ are 1, and the cross derivatives are 0.
+The two terms of $\{H, H\}$ are the same product with opposite signs, so they cancel. For the spring, with $H = \tfrac12 p^2 + 2x^2$, the bracket gives $\{x, H\} = p$ and $\{p, H\} = -4x$, the two rates in the spring table. Since $\dot q = p/m$, the bracket of position with velocity is $\{q, p/m\} = 1/m$, and for the pendulum it's $1/(m\ell^2)$.
 
-For the spring of Section 6, with $H = \tfrac12 p^2 + 2x^2$, the bracket gives $\{x, H\} = p$ and $\{p, H\} = -4x$, the two rates of change in the spring table.
+The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited from the product rule for derivatives. For example, $\{q^2, p\} = q\{q, p\} + q\{q, p\} = 2q$, using only $\{q, p\} = 1$. Repeating this, every bracket of quantities built from $q$ and $p$ by adding and multiplying reduces to $\{q, p\} = 1$, together with $\{q, q\} = \{p, p\} = 0$.
 
-The bracket $\{q, p\} = 1$ does not involve $H$, so it is the same for every system. Position and velocity do not share this property. Since $\dot q = p/m$, the bracket of position with velocity is $\{q, \dot q\} = \{q, p/m\} = 1/m$, which depends on the mass, and for the pendulum it is $1/(m\ell^2)$. Only momentum gives 1 for every system. That is the third reason for using it.
+</details>
 
-The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited from the product rule for derivatives. So $\{q^2, p\} = q\{q, p\} + q\{q, p\} = 2q$, using only $\{q, p\} = 1$. Repeating this, every bracket of quantities built by adding and multiplying $q$ and $p$ reduces to $\{q, p\} = 1$, together with $\{q, q\} = \{p, p\} = 0$. So quantization only has to replace this one relation, which is what the next chapter does.
+**The Poisson bracket with the energy gives the rate of change of anything, and the bracket of position with momentum is 1 for every system.**
 
-A quantity is conserved exactly when its bracket with $H$ is zero. A quantity that also depends on time directly changes by an extra $\partial f/\partial t$.
+## Where this comes back
 
-## What later chapters do with these tools
+The next chapter, [First Quantization](first-quantization.md), keeps the Hamiltonian $H = p^2/2m + V$ as the function that moves the state forward, and turns position and momentum into operators, a new kind of object that chapter explains. It replaces the bracket $\{q, p\} = 1$ with a quantum version, and the rest of quantum mechanics follows from that one change. The [Harmonic Oscillator](harmonic-oscillator.md) chapter then quantizes this chapter's spring.
 
-| Tool from this chapter | Where it returns |
-| --- | --- |
-| $H = p^2/(2m) + V$ and the state $(q, p)$ | [First Quantization](first-quantization.md) turns $H$ into the operator of the Schrödinger equation |
-| The spring and its elliptical orbit | [Harmonic Oscillator](harmonic-oscillator.md) quantizes exactly this system |
-| The Poisson bracket $\{q, p\} = 1$ | [First Quantization](first-quantization.md) replaces it with the commutator of position and momentum |
-| Action and the Euler–Lagrange equation | [Action and Lagrangians](qft-action.md) applies them to fields, with one coordinate at each point of space |
-| Conjugate momentum and the Hamiltonian | [Action and Lagrangians](qft-action.md) builds the field's momentum and energy the same way |
-| A coordinate absent from $L$ gives a conserved momentum | [Action and Lagrangians](qft-action.md) states the general form, Noether's theorem; [Quantum Electrodynamics](qed.md) uses it for electric charge |
-| An action for every path, not only the real one | [Path Integrals](path-integrals.md), an optional sequence after the Standard Model, adds up all paths, each weighted by a factor set by its action, and explains why the stationary path is the one seen classically |
-
-In the next chapter, position and momentum become operators, and the Hamiltonian keeps its role as the function that moves the state forward in time.
+The action comes back too. [Action and Lagrangians](qft-action.md) applies the Euler–Lagrange equation to fields, with one coordinate at every point of space, and builds their momentum and energy the same way as here. And [Path Integrals](path-integrals.md), later on, adds up *every* path, each weighted by its action, and explains why the flat-spot path is the one we see.
 
 ---
 

@@ -34,28 +34,24 @@ class NewtonMotion(Scene):
 
 class StationaryActionPaths(Scene):
     def construct(self):
-        heading(self,'Stationary action compares complete paths','A ball thrown up and caught after 2 s, and paths bent by up to ε metres with the same endpoints')
+        heading(self,'The real path sits at a flat spot','A ball thrown up and caught, and paths bent up or down that leave and return at the same moments')
         ax=axes_at(-4.6,0,5.6,4.2,(0,2,1),(0,6.5,2))
         self.add(ax)
         real=lambda t:9.8*t-4.9*t*t
         for e,c in [(-0.5,ORANGE),(0.5,TEAL),(0,BLUE)]:
             self.add(path_curve(ax,lambda t,e=e:real(t)+e*np.sin(np.pi*t/2),[0,2],c))
         for t in [0,2]:self.add(Dot(ax.c2p(t,0),color=INK,radius=0.09))
-        self.add(label('time t (s)',-2.2,-2.5,23),label('height x (m)',-6.3,2.45,23),
-                 label('ε = +0.5',-0.6,1.6,21,TEAL),label('real path, ε = 0',-0.6,1.15,21,BLUE),label('ε = −0.5',-0.6,0.7,21,ORANGE),
-                 math(r'x(t)=9.8\,t-4.9\,t^2+\epsilon\sin(\pi t/2)',-4.3,-3.2,30),
-                 label('All paths leave and return at the same moments.',-4.3,-3.85,22,MUTED))
-        top=axes_at(4,1.15,5.2,1.7,(-0.5,0.5,0.5),(-32.05,-31.65,0.2))
-        bot=axes_at(4,-1.65,5.2,1.7,(-0.5,0.5,0.5),(80,112,10))
-        sa=lambda e:-32.0133+1.2337*e*e
-        sb=lambda e:96.04+24.955*e+1.2337*e*e
-        self.add(top,path_curve(top,sa,[-0.5,0.5],PURPLE),bot,path_curve(bot,sb,[-0.5,0.5],ORANGE))
-        for e in (-0.5,-0.2,0,0.2,0.5):
-            self.add(Dot(top.c2p(e,sa(e)),color=PURPLE,radius=0.06),Dot(bot.c2p(e,sb(e)),color=ORANGE,radius=0.06))
-        self.add(label('Action of T − V: flat at ε = 0',4,2.35,23,PURPLE),
-                 label('Total of T + V: still sloping at ε = 0',4,-0.45,23,ORANGE),
-                 label('bend ε (m)',6.1,-2.85,20,MUTED),
-                 label('Values from the table in the text',4,-3.55,21,MUTED))
+        self.add(label('time',-2.2,-2.5,23),label('height',-6.5,2.45,23),
+                 label('bent up',-0.6,1.6,22,TEAL),label('real path',-0.6,1.15,22,BLUE),label('bent down',-0.6,0.7,22,ORANGE),
+                 label('All paths leave the hand and return to it at the same moments.',-4.3,-3.3,22,MUTED,width=6.5))
+        ax2=axes_at(4,-0.1,5.2,3.6,(-0.5,0.5,0.5),(0,0.4,0.2))
+        sa=lambda e:1.2337*e*e+0.02  # the action, shifted so its axis sits below the curve
+        self.add(ax2,path_curve(ax2,sa,[-0.5,0.5],PURPLE))
+        for e,c in ((-0.5,ORANGE),(0,BLUE),(0.5,TEAL)):
+            self.add(Dot(ax2.c2p(e,sa(e)),color=c,radius=0.09))
+        self.add(label('action of each path',4,2.35,24,PURPLE),
+                 label('bent down',2.0,-2.3,20,ORANGE),label('bent up',6.0,-2.3,20,TEAL),label('real path',4,-2.3,20,BLUE),
+                 label('Bending either way raises the action by the same small amount.',4,-3.3,22,MUTED,width=6.5))
 
 
 class PhaseSpaceStates(Scene):
@@ -68,7 +64,7 @@ class PhaseSpaceStates(Scene):
         self.add(label('momentum p',-5.6,2.65,24),label('position x',-1.2,-0.7,23),
                  box(4,0,6,3.5),math(r'D=(0,\,+2)',4,.9,38,TEAL),math(r'B=(0,\,-2)',4,-.1,38,ORANGE),
                  label('Same position. Different states.',4,-1.1,25),
-                 label('Points B and D of the spring table: a point in phase space specifies both position and momentum.',0,-3.5,25,MUTED,width=15))
+                 label('Points B and D of the spring in section 6: a point in phase space specifies both position and momentum.',0,-3.5,25,MUTED,width=15))
 
 
 class BornDensity(Scene):
@@ -684,3 +680,38 @@ class MichelsonMorley(Scene):
             self.add(Arrow([3.6,y,0],[5.6,y,0],buff=0,color=BLUE,stroke_width=3,max_tip_length_to_length_ratio=0.12))
         self.add(label('expected “wind”\nas the Earth moves',4.6,-1.25,21,BLUE),
                  label('Turning the apparatus swaps which arm faces the wind, so the bands should slide. They barely moved.',0,-3.75,22,MUTED,width=14.5))
+
+
+class PendulumForces(Scene):
+    def construct(self):
+        heading(self,'Why one pendulum is easy and two are not','Blue arrows show how each bob is moving; orange arrows show a string pulling on it')
+        def unit(a,b):
+            v=np.array(b,dtype=float)-np.array(a,dtype=float); return v/np.linalg.norm(v)
+        def pend(piv,bob):
+            return VGroup(Line(piv+[-0.4,0,0],piv+[0.4,0,0],color=INK,stroke_width=6),
+                          Line(piv,bob,color=MUTED,stroke_width=3),Dot(bob,color=INK,radius=0.14))
+        def arr(at,d,c,L=1.3):
+            return Arrow(at,at+L*d,buff=0,color=c,stroke_width=5,max_tip_length_to_length_ratio=0.22)
+        def vert(piv,L):
+            return DashedVMobject(Line(piv,piv+[0,-L,0],color=MUTED,stroke_width=2),num_dashes=12)
+        def ang(piv,th,r,tex,off=0.35):
+            a=Arc(radius=r,start_angle=-PI/2,angle=th,arc_center=piv,color=INK,stroke_width=3)
+            mid=-PI/2+th/2
+            return VGroup(a,math(tex,piv[0]+(r+off)*np.cos(mid),piv[1]+(r+off)*np.sin(mid),30))
+        # One pendulum: the string pulls at right angles to the motion.
+        piv=np.array([-4.6,2.0,0]); th=np.radians(30); bob=piv+2.6*np.array([np.sin(th),-np.cos(th),0])
+        mv=np.array([np.cos(th),np.sin(th),0]); pull=unit(bob,piv)
+        mid=(piv+bob)/2
+        self.add(vert(piv,2.9),ang(piv,th,0.8,r'\theta',0.3),math(r'\ell',mid[0]+0.3,mid[1]+0.1,30),
+                 pend(piv,bob),arr(bob,mv,BLUE),arr(bob,pull,ORANGE,1.1),
+                 label('one pendulum',-4.6,2.55,26),
+                 label('the string pulls at right angles\nto the motion, so it never\nspeeds the bob up or slows it',-4.4,-2.3,22,MUTED))
+        # Two pendulums: the lower string tugs the upper bob at an angle to its motion.
+        piv2=np.array([2.6,2.1,0]); t1=np.radians(25); t2=np.radians(-22)
+        b1=piv2+2.0*np.array([np.sin(t1),-np.cos(t1),0]); b2=b1+1.9*np.array([np.sin(t2),-np.cos(t2),0])
+        self.add(vert(piv2,2.3),ang(piv2,t1,0.75,r'\theta_1',0.55),vert(b1,2.1),ang(b1,t2,0.7,r'\theta_2',0.55),
+                 pend(piv2,b1),Line(b1,b2,color=MUTED,stroke_width=3),Dot(b2,color=INK,radius=0.14),
+                 arr(b1,np.array([np.cos(t1),np.sin(t1),0]),BLUE),
+                 arr(b1,unit(b1,b2),ORANGE,1.1),
+                 label('two pendulums',2.6,2.65,26),
+                 label('the lower string tugs the upper bob\nat an angle to its motion, so its pull\nmust be worked out first',4.2,-2.3,22,MUTED))

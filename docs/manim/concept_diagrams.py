@@ -357,7 +357,7 @@ class ClassicalOscillatorEnergy(Scene):
         self.add(math(r'X=\sqrt{m\omega}\,x,\quad P=p/\sqrt{m\omega}',-4.2,-3.2,28),
                  math(r'H=\tfrac{\omega}{2}(X^2+P^2)',-4.2,-3.8,30))
         self.add(label('Potential energy',2.15,2.2,24,ORANGE),label('Kinetic energy',5.35,2.2,24,TEAL))
-        for y,tag,detail,pot,kin in [(1.35,'A, C','Turning points',1,0),(-0.1,'B, D','Passing equilibrium',0,1),(-1.55,'Example','Equal energy split',0.5,0.5)]:
+        for y,tag,detail,pot,kin in [(1.35,'A, C','Turning points',1,0),(-0.1,'B, D','Passing the middle',0,1),(-1.55,'Example','Equal energy split',0.5,0.5)]:
             self.add(label(tag,0.15,y,24,BLUE),label(detail,3.65,y+0.4,22,MUTED))
             for x,value,color in [(2.15,pot,ORANGE),(5.35,kin,TEAL)]:
                 self.add(Rectangle(width=2.6,height=0.32,stroke_color='#ccd5df',fill_color=PALE,fill_opacity=1).move_to([x,y-0.18,0]))

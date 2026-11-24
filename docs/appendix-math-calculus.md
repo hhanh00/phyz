@@ -26,7 +26,7 @@ We use the curly $\partial$ to distinguish this from a full derivative $\frac{d}
 
 $$\frac{\partial L}{\partial \dot q}=m\dot q, \qquad \frac{\partial L}{\partial q}=-V'(q).$$
 
-Both derivatives appear in the Euler–Lagrange equation on [Classical Mechanics](classical-mechanics.md#_4-from-stationary-action-to-an-equation-of-motion):
+Both derivatives appear in the Euler–Lagrange equation on [Classical Mechanics](classical-mechanics.md#_4-turning-the-rule-into-an-equation):
 
 $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L}{\partial q} = 0.$$
 

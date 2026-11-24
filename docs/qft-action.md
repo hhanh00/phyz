@@ -6,7 +6,7 @@ The [Quantum Field Theory page](qft.md) introduced field operators. We now need 
 
 ## Principle of Least Action
 
-To derive dynamics for the fields introduced on the [previous page](qft.md), begin with the particle construction in [Classical Mechanics §3](classical-mechanics.md#_3-one-number-for-a-whole-path-the-action). For a path $q(t)$, define the **action**
+To derive dynamics for the fields introduced on the [previous page](qft.md), begin with the particle construction in [Classical Mechanics §3](classical-mechanics.md#_3-one-number-for-a-whole-path). For a path $q(t)$, define the **action**
 
 $$S[q] = \int_{t_1}^{t_2} L(q, \dot q)\,dt, \qquad L = T - V,$$
 
@@ -57,7 +57,7 @@ This is the **Euler–Lagrange equation for a field**. The particle's time deriv
 
 For the scalar, vector, and spinor fields in the [Fields section](qft.md#fields), we will use the simplest standard free-field densities: $\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)-\tfrac{m^2}{2\hbar^2}\phi^2$, $-\tfrac14F^{\mu\nu}F_{\mu\nu}$, and $\bar\psi(i\hbar\gamma^\mu\partial_\mu-m)\psi$. Their variations give the Klein–Gordon, source-free Maxwell, and Dirac equations.
 
-To construct the Hamiltonian, follow [Classical Mechanics §6](classical-mechanics.md#_6-energy-moves-the-point-the-hamiltonian). Define the momentum density conjugate to the field, $\pi(t,\mathbf x)=\partial\mathcal L/\partial\dot\phi$, and take the Legendre transform:
+To construct the Hamiltonian, follow [Classical Mechanics §6](classical-mechanics.md#_6-the-energy-moves-the-state). Define the momentum density conjugate to the field, $\pi(t,\mathbf x)=\partial\mathcal L/\partial\dot\phi$, and take the Legendre transform:
 
 $$\mathcal{H} = \pi\,\dot\phi - \mathcal{L}, \qquad H = \int d^3x\;\mathcal{H},$$
 
@@ -73,7 +73,7 @@ A boosted observer uses different time slices and hence different functions $(\p
 
 ### The geometry of H
 
-A point in **state space** specifies the system at one instant, as in [Classical Mechanics §5](classical-mechanics.md#_5-a-state-as-a-point-position-and-momentum). For a particle it is the pair $(q,p)$. For a field it is the pair of functions $(\phi(\mathbf x),\pi(\mathbf x))$, with one conjugate pair at each spatial point. This state space is infinite-dimensional.
+A point in **state space** specifies the system at one instant, as in [Classical Mechanics §5](classical-mechanics.md#_5-a-state-is-position-plus-momentum). For a particle it is the pair $(q,p)$. For a field it is the pair of functions $(\phi(\mathbf x),\pi(\mathbf x))$, with one conjugate pair at each spatial point. This state space is infinite-dimensional.
 
 The Hamiltonian $H=\int d^3x\,\mathcal H$ assigns an energy to each configuration. Hamilton's equations give its evolution, $\dot\phi=\delta H/\delta\pi$ and $\dot\pi=-\delta H/\delta\phi$. Here a **functional derivative** measures how $H$ changes when we vary the field function locally.
 
@@ -85,7 +85,7 @@ The Hamiltonian has two related roles. It is the **energy**, conserved when ther
 
 After quantization, Heisenberg evolution takes the form $\hat\phi(t)=e^{i\hat Ht/\hbar}\hat\phi(0)e^{-i\hat Ht/\hbar}$ from the [Fields section](qft.md#fields). This is the operator version of classical Hamiltonian evolution.
 
-**Quantization also changes the algebra.** [Classical Mechanics §7](classical-mechanics.md#_7-how-any-quantity-changes-the-poisson-bracket) expressed evolution through the Poisson bracket, $\dot F=\{F,H\}$ for an observable with no explicit time dependence. [First Quantization](first-quantization.md) introduced its canonical quantum replacement, $\{\cdot,\cdot\}\to[\hat{\cdot},\hat{\cdot}]/(i\hbar)$, giving $[\hat x,\hat p]=i\hbar$.
+**Quantization also changes the algebra.** [Classical Mechanics §7](classical-mechanics.md#_7-how-anything-changes-the-poisson-bracket) expressed evolution through the Poisson bracket, $\dot F=\{F,H\}$ for an observable with no explicit time dependence. [First Quantization](first-quantization.md) introduced its canonical quantum replacement, $\{\cdot,\cdot\}\to[\hat{\cdot},\hat{\cdot}]/(i\hbar)$, giving $[\hat x,\hat p]=i\hbar$.
 
 Apply that prescription to the conjugate fields at equal time. We get $[\hat\phi(t,\mathbf x),\hat\pi(t,\mathbf x')]=i\hbar\delta^3(\mathbf x-\mathbf x')$. The delta function expresses the local pairing of field and momentum. Expanding in oscillator modes then gives $[\hat a(\mathbf k),\hat a^\dagger(\mathbf k')]\propto\delta^3(\mathbf k-\mathbf k')$.
 
@@ -294,7 +294,7 @@ Both terms now have the form $\bar\psi(\cdots)\psi$ and are Lorentz scalars. We 
 
 **Vary $\psi$ and $\bar\psi$ separately.** For a complex field, varying its real and imaginary parts is equivalent to treating the field and its complex conjugate as independent variables during differentiation. Since $\bar\psi=\psi^\dagger\gamma^0$ differs from the conjugate by an invertible constant matrix, we can use $\psi$ and $\bar\psi$ instead.
 
-This is a choice of variables in the variational calculation. We then apply the Euler–Lagrange method introduced in [Classical Mechanics §4](classical-mechanics.md#_4-from-stationary-action-to-an-equation-of-motion) to each component.
+This is a choice of variables in the variational calculation. We then apply the Euler–Lagrange method introduced in [Classical Mechanics §4](classical-mechanics.md#_4-turning-the-rule-into-an-equation) to each component.
 
 Start with $\bar\psi$. There is no derivative of $\bar\psi$ in this density, so its Euler–Lagrange equation reduces to
 
