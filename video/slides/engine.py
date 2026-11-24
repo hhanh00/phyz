@@ -38,7 +38,9 @@ class Text(_PANGO):
     """
 
     def __init__(self, text, font_size=DEFAULT_FONT_SIZE, **kwargs):
-        super().__init__(text, font_size=font_size * _UPSCALE, **kwargs)
+        # Pango wraps at the frame's pixel width, so widen the layout box by the same factor.
+        with tempconfig({"pixel_width": config.pixel_width * _UPSCALE, "pixel_height": config.pixel_height * _UPSCALE}):
+            super().__init__(text, font_size=font_size * _UPSCALE, **kwargs)
         self.scale(1 / _UPSCALE)
 
 
