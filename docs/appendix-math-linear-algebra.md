@@ -123,7 +123,7 @@ The components of a vector depend on the basis, but the vector itself does not. 
 
 The choice of basis is usually arbitrary, which is why it matters physically. An observer, or a reference frame, effectively picks a basis: two observers in relative motion pick different bases, but they describe the same particle. A law written in one basis must therefore hold in every other, because no observer's choice of coordinates is privileged.
 
-That requirement sorts quantities into two kinds. A **scalar** has the same value in every basis, so it is an invariant, like the [spacetime interval](special-relativity.md#_4-spacetime-and-the-invariant-interval) of relativity. A **vector** or **tensor** changes its components in a fixed, compensating way, and that rule is what makes quantities built from them come out invariant even while each component changes. [Index notation and tensors](appendix-math-tensors.md) develops these transformation rules, and [Special Relativity](special-relativity.md) is where they first become physical, because there the basis is a moving observer's frame.
+That requirement sorts quantities into two kinds. A **scalar** has the same value in every basis, so it is an invariant, like the [spacetime interval](special-relativity.md#_4-what-everyone-agrees-on) of relativity. A **vector** or **tensor** changes its components in a fixed, compensating way, and that rule is what makes quantities built from them come out invariant even while each component changes. [Index notation and tensors](appendix-math-tensors.md) develops these transformation rules, and [Special Relativity](special-relativity.md) is where they first become physical, because there the basis is a moving observer's frame.
 
 ---
 

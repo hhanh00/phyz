@@ -116,7 +116,7 @@ The derivative term describes variations in spacetime, and the second term conta
 
 $$(\partial_\mu\phi)(\partial^\mu\phi) = \sum_{\mu=0}^{3} \partial_\mu\phi\,\partial^\mu\phi,$$
 
-Raise an index with the Minkowski metric, $\partial^\mu=g^{\mu\nu}\partial_\nu$, as in [Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance). With $g^{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$, $\partial_0=\partial_t$, and $\partial_i=\partial_{x^i}$, the sum is
+Raise an index with the Minkowski metric, $\partial^\mu=g^{\mu\nu}\partial_\nu$, as in the [tensor appendix](appendix-math-tensors.md#_3-the-metric). With $g^{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$, $\partial_0=\partial_t$, and $\partial_i=\partial_{x^i}$, the sum is
 
 $$(\partial_\mu\phi)(\partial^\mu\phi) = (\partial_t\phi)(\partial_t\phi) + (\partial_1\phi)(-\partial_1\phi) + (\partial_2\phi)(-\partial_2\phi) + (\partial_3\phi)(-\partial_3\phi) = \dot\phi^2 - (\nabla\phi)^2,$$
 
@@ -156,7 +156,7 @@ Because it is second order in time, initial data must specify both $\phi$ and $\
 
 ### Maxwell
 
-For electromagnetism, use the four-potential $A^\mu(x)$. Build its free density from the field tensor introduced in [Special Relativity §8](special-relativity.md#_8-maxwell-equations):
+For electromagnetism, use the four-potential $A^\mu(x)$. Build its free density from the field tensor introduced in [Special Relativity §7](special-relativity.md#maxwell-s-equations-in-four-vector-form):
 
 $$\mathcal{L} = -\frac{1}{4}\,F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.$$
 
@@ -215,7 +215,7 @@ $$\partial_\mu F^{\mu\nu} = 0,$$
 
 </details>
 
-This is the source-free version of $\partial_\mu F^{\mu\nu}=J^\nu$ from [§8](special-relativity.md#_8-maxwell-equations). The component $\nu=0$ gives Gauss's law; the three spatial components give Ampère–Maxwell's law. The other two Maxwell equations follow from the definition of $F_{\mu\nu}$ in terms of $A_\mu$.
+This is the source-free version of $\partial_\mu F^{\mu\nu}=J^\nu$ from [Special Relativity §7](special-relativity.md#maxwell-s-equations-in-four-vector-form). The component $\nu=0$ gives Gauss's law; the three spatial components give Ampère–Maxwell's law. The other two Maxwell equations follow from the definition of $F_{\mu\nu}$ in terms of $A_\mu$.
 
 
 ### Dirac

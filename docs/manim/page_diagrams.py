@@ -261,36 +261,22 @@ class FourierUncertainty(Scene):
 
 class LightConeIntervals(Scene):
     def construct(self):
-        heading(self,'The interval classifies which events can be causally connected','Events are measured relative to the origin; c = 1, with x vertical and t horizontal')
-        center=np.array([-4,-.2,0])
-        self.add(Polygon(center,center+[2.4,2.4,0],center+[2.4,-2.4,0],fill_color=BLUE,fill_opacity=.1,stroke_width=0))
-        for sign in [-1,1]:self.add(DashedLine(center+[-2.4,-2.4*sign,0],center+[2.4,2.4*sign,0],color=ORANGE))
-        self.add(arrow((-6.6,-.2),(-1.3,-.2)),arrow((-4,-2.8),(-4,2.4)),math('t',-1.25,-.6,28),math('x',-4.4,2.45,28))
-        for pt,c,tag in [([1.8,.5,0],BLUE,'T'),([1.4,1.4,0],ORANGE,'L'),([.4,2,0],TEAL,'S')]:
-            pos=center+pt;self.add(Dot(pos,color=c,radius=.1),label(tag,pos[0]+.25,pos[1]+.2,24,c))
-        for y,title,formula,desc,c in [(1.7,'T: timelike',r'\Delta t^2-\Delta x^2>0','A slower-than-light signal can connect the events.',BLUE),
-             (0,'L: lightlike',r'\Delta t^2-\Delta x^2=0','A light signal connects the events.',ORANGE),
-             (-1.7,'S: spacelike',r'\Delta t^2-\Delta x^2<0','No signal at or below c can connect the events.',TEAL)]:
-            self.add(label(title,3.6,y+.45,26,c),math(formula,3.6,y-.1,31),label(desc,3.6,y-.65,21,MUTED,width=7.5))
-        self.add(label('Future timelike events lie inside the right-hand cone; the left-hand cone is the past.',0,-3.85,24,MUTED,width=14.5))
-
-
-class RelativeSimultaneity(Scene):
-    def construct(self):
-        heading(self,'Simultaneous events in one frame need not be simultaneous in another','Two events at t = 1 have different positions; use v = 0.5 and c = 1')
-        origin=np.array([-5.8,-.1,0]);scale=1.6
-        def pt(t,x):return origin+scale*np.array([t,x,0])
-        self.add(Line(pt(0,-1.5),pt(0,1.5),color=MUTED),Line(pt(0,0),pt(2.6,0),color=MUTED),
-                 Line(pt(1,-1.4),pt(1,1.4),color=BLUE,stroke_width=4))
-        for x,tag,c in [(1,'A',TEAL),(-1,'B',ORANGE)]:
-            pos=pt(1,x);self.add(Dot(pos,color=c,radius=.11),label(tag,pos[0]-.3,pos[1]+.2,26,c),
-                DashedLine(pt(1+.5*(-1.35-x),-1.35),pt(1+.5*(1.35-x),1.35),color=c))
-        self.add(math('x',-6.2,2.45,28),math('t',-1.5,-.5,28),label('t = 1',-4.2,2.5,25,BLUE),
-                 math(r"t'=\gamma(t-vx)",3.6,1.8,40),
-                 math(r"t'_A=\gamma(1-0.5)=\gamma/2",3.6,.5,33,TEAL),
-                 math(r"t'_B=\gamma(1+0.5)=3\gamma/2",3.6,-.7,33,ORANGE),
-                 label('A occurs before B in the primed frame.',3.6,-1.9,25,width=7),
-                 label('Dashed lines have constant t′. Their tilt changes which events share a time coordinate.',0,-3.65,24,MUTED,width=14.5))
+        heading(self,'The light cone','Events compared with the one at the centre; time points up')
+        c=np.array([-3.2,-0.3,0]); R=2.7
+        self.add(Polygon(c,c+[R,R,0],c+[-R,R,0],fill_color=BLUE,fill_opacity=.12,stroke_width=0),
+                 Polygon(c,c+[R,-R,0],c+[-R,-R,0],fill_color=BLUE,fill_opacity=.06,stroke_width=0))
+        for s in (-1,1):self.add(DashedLine(c+[-R,-R*s,0],c+[R,R*s,0],color=ORANGE))
+        self.add(arrow((c[0]-3.2,c[1]),(c[0]+3.2,c[1])),arrow((c[0],c[1]-2.9),(c[0],c[1]+3.0)),
+                 label('time',c[0]+0.55,c[1]+2.95,22),label('space',c[0]+3.2,c[1]-0.35,22),
+                 Dot(c,color=INK,radius=.08),
+                 label('future',c[0]-0.85,c[1]+2.2,22,BLUE),label('past',c[0]-0.75,c[1]-2.2,22,BLUE))
+        for pt,col,tag in [([0.5,1.6,0],BLUE,'A'),([1.4,1.4,0],ORANGE,'B'),([2.1,0.6,0],TEAL,'C')]:
+            pos=c+pt;self.add(Dot(pos,color=col,radius=.1),label(tag,pos[0]+.28,pos[1]+.18,24,col))
+        for y,title,desc,col in [(1.7,'A: positive interval','Inside the cone. Something slower than light can get there.',BLUE),
+             (0,'B: zero interval','On the edge. Only light gets there.',ORANGE),
+             (-1.7,'C: negative interval','Outside the cone. Nothing can get there, not even light.',TEAL)]:
+            self.add(label(title,3.9,y+.3,26,col),label(desc,3.9,y-.3,21,MUTED,width=6.8))
+        self.add(label('With two space directions drawn, the dashed X becomes a cone.',0,-3.75,22,MUTED,width=14.5))
 
 
 class RelativisticEnergySolutions(Scene):
@@ -602,3 +588,99 @@ class StepsVsThermal(Scene):
                  math(r'\text{first step}',6.55,Y(0.1)+1.65,20,PURPLE),math(r'0.1\,k_BT',6.55,Y(0.1)+1.25,20,PURPLE),
                  Arrow([6.4,Y(0.1)+1.0,0],[5.5,Y(0.1),0],buff=0,color=PURPLE,stroke_width=3,max_tip_length_to_length_ratio=0.18))
         self.add(math(r'\text{A collision trades about one }k_BT\text{. It almost never reaches the first vibration rung, but often moves a molecule up the rotation rungs.}',0,-3.6,22,MUTED,width=14.5))
+
+
+class LightClock(Scene):
+    def construct(self):
+        heading(self,'A moving light clock ticks slower','Light travels at the same speed in both pictures, but the moving clock gives it a longer path')
+        top,bot=1.6,-1.6
+        # Left: the clock at rest.
+        cx=-4.6
+        for y in (top,bot):
+            self.add(Line([cx-0.9,y,0],[cx+0.9,y,0],color=INK,stroke_width=6))
+        self.add(Arrow([cx-0.15,bot+0.08,0],[cx-0.15,top-0.08,0],buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.08),
+                 Arrow([cx+0.15,top-0.08,0],[cx+0.15,bot+0.08,0],buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.08),
+                 label('at rest',cx,top+0.6,26),
+                 label('straight up and back',cx,bot-0.55,22,MUTED))
+        # Right: the clock moving to the right, drawn at three moments.
+        xs=[-0.2,2.4,5.0]
+        for i,x in enumerate(xs):
+            op=1.0 if i==1 else 0.35
+            for y in (top,bot):
+                self.add(Line([x-0.9,y,0],[x+0.9,y,0],color=INK,stroke_width=6,stroke_opacity=op))
+        self.add(Arrow([xs[0],bot+0.08,0],[xs[1],top-0.08,0],buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.07),
+                 Arrow([xs[1],top-0.08,0],[xs[2],bot+0.08,0],buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.07),
+                 Arrow([1.4,top+0.55,0],[3.4,top+0.55,0],buff=0,color=BLUE,stroke_width=4,max_tip_length_to_length_ratio=0.15),
+                 label('moving',2.4,top+1.05,26),
+                 label('the same trip, slanted and longer',2.4,bot-0.55,22,MUTED))
+        self.add(label('Same speed, longer path, so each tick takes longer: the moving clock runs slow.',0,-3.6,24,MUTED,width=14.5))
+
+
+class MuonCounts(Scene):
+    def construct(self):
+        heading(self,'Muons reaching sea level','Frisch and Smith, 1963: muons per hour at the top of Mount Washington and at sea level')
+        base=-2.2; scale=4.3/563
+        for x,val,txt,c in [(-4,563,'at the top\n(1,907 m up)',BLUE),(0,31,'at sea level, if\nclocks ran normally',MUTED),(4,408,'at sea level,\nmeasured',ORANGE)]:
+            h=val*scale
+            self.add(Rectangle(width=2.0,height=h,stroke_width=0,fill_color=c,fill_opacity=0.85).move_to([x,base+h/2,0]),
+                     label(f'about {round(val,-1):,}' if val>100 else 'about 30',x,base+h+0.35,24,c),
+                     label(txt,x,base-0.6,21,INK))
+        self.add(Line([-5.6,base,0],[5.6,base,0],color=MUTED),
+                 label('The trip down takes about three lifetimes, but the moving muons’ clocks run about 9 times slow.',0,-3.75,22,MUTED,width=14.5))
+
+
+class TrainFlash(Scene):
+    def construct(self):
+        heading(self,'“At the same time” depends on who’s watching','A lamp flashes in the middle of a carriage moving to the right')
+        def carriage(cx,cy):
+            return Rectangle(width=5.0,height=1.3,color=INK,stroke_width=4).move_to([cx,cy,0])
+        # Top: on the train, both walls are hit together.
+        cy=1.0; cx=0
+        self.add(label('On the train',-5.4,cy+0.95,24),carriage(cx,cy),
+                 Dot([cx,cy,0],color=ORANGE,radius=0.12),
+                 Arrow([cx,cy,0],[cx-2.45,cy,0],buff=0.15,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.12),
+                 Arrow([cx,cy,0],[cx+2.45,cy,0],buff=0.15,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.12),
+                 Star(5,outer_radius=0.22,color=TEAL,fill_opacity=1).move_to([cx-2.5,cy,0]),
+                 Star(5,outer_radius=0.22,color=TEAL,fill_opacity=1).move_to([cx+2.5,cy,0]),
+                 label('light reaches both walls together',4.6,cy+0.95,21,TEAL))
+        # Bottom: from the platform, the carriage has moved on; the back wall meets the light first.
+        cy=-1.7; shift=0.9
+        self.add(label('From the platform',-5.0,cy+0.95,24),
+                 carriage(cx,cy).set_stroke(opacity=0.3),carriage(cx+shift,cy),
+                 Dot([cx,cy,0],color=ORANGE,radius=0.12).set_opacity(0.5),
+                 Arrow([cx,cy,0],[cx+shift-2.5,cy,0],buff=0.15,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.25),
+                 Arrow([cx,cy,0],[cx+1.6,cy,0],buff=0.15,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.12),
+                 Star(5,outer_radius=0.22,color=TEAL,fill_opacity=1).move_to([cx+shift-2.5,cy,0]),
+                 Arrow([3.8,cy+0.95,0],[5.4,cy+0.95,0],buff=0,color=BLUE,stroke_width=4,max_tip_length_to_length_ratio=0.2),
+                 label('the back wall meets the light first;\nthe front wall is still running away',4.4,cy-1.15,21,TEAL))
+        self.add(label('Light’s speed is the same for both observers, so they disagree about whether the walls are hit together.',0,-3.75,22,MUTED,width=14.5))
+
+
+class MichelsonMorley(Scene):
+    def construct(self):
+        heading(self,'The Michelson–Morley experiment','One beam split in two, sent along arms at right angles, and recombined')
+        S=np.array([-2.2,-0.7,0]); src=np.array([-6.0,-0.7,0])
+        m1=np.array([2.0,-0.7,0]); m2=np.array([-2.2,2.0,0]); scr=np.array([-2.2,-2.9,0])
+        beam=lambda a,b,**k:Line(a,b,color=ORANGE,stroke_width=4,**k)
+        d=0.09
+        self.add(beam(src,S),
+                 beam(S+[0,d,0],m1+[-0.05,d,0]),beam(m1+[-0.05,-d,0],S+[0,-d,0]),
+                 beam(S+[-d,0,0],m2+[-d,-0.05,0]),beam(m2+[d,-0.05,0],S+[d,0,0]),
+                 beam(S,scr+[0,0.12,0]))
+        self.add(Rectangle(width=0.7,height=0.5,color=INK,fill_color=INK,fill_opacity=1).move_to(src+[-0.35,0,0]),
+                 label('lamp',src[0]-0.35,src[1]-0.55,21),
+                 Line(S+[-0.4,-0.4,0],S+[0.4,0.4,0],color=TEAL,stroke_width=7),
+                 label('half-silvered mirror:\nsplits the beam',S[0]-1.75,S[1]+0.85,20,TEAL),
+                 Line(m1+[0,-0.6,0],m1+[0,0.6,0],color=INK,stroke_width=8),label('mirror',m1[0]+0.65,m1[1],21),
+                 Line(m2+[-0.6,0,0],m2+[0.6,0,0],color=INK,stroke_width=8),label('mirror',m2[0]+1.05,m2[1],21),
+                 label('arm 1',(S[0]+m1[0])/2,S[1]+0.4,21,MUTED),label('arm 2',S[0]+0.55,(S[1]+m2[1])/2,21,MUTED))
+        # Screen with bands.
+        for i in range(7):
+            self.add(Rectangle(width=0.22,height=0.45,stroke_width=0,fill_color=ORANGE if i%2==0 else INK,
+                               fill_opacity=0.85 if i%2==0 else 0.75).move_to(scr+[(i-3)*0.22,-0.15,0]))
+        self.add(label('bands of light and dark',scr[0]+2.6,scr[1]-0.15,21))
+        # Expected wind.
+        for y in (1.6,0.6,-0.4):
+            self.add(Arrow([3.6,y,0],[5.6,y,0],buff=0,color=BLUE,stroke_width=3,max_tip_length_to_length_ratio=0.12))
+        self.add(label('expected “wind”\nas the Earth moves',4.6,-1.25,21,BLUE),
+                 label('Turning the apparatus swaps which arm faces the wind, so the bands should slide. They barely moved.',0,-3.75,22,MUTED,width=14.5))

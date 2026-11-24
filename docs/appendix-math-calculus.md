@@ -85,7 +85,7 @@ $$\int_V \nabla\cdot\mathbf v\,d^3x=\oint_{\partial V}\mathbf v\cdot\mathbf n\,d
 
 The integral of a divergence over a volume equals the flux of the vector through the volume's boundary. It turns a continuity equation into a conservation statement: a change in a quantity inside a region equals the net flow through the boundary, so a flow that vanishes at infinity leaves the total unchanged, as in the [probability current](relativistic-qm.md#_3-negative-energy-and-probability) argument.
 
-These appear in the [Maxwell equations](special-relativity.md#_8-maxwell-equations): $\nabla\cdot\mathbf E=\rho$, $\nabla\times\mathbf E=-\partial_t\mathbf B$, and so on. The relativistic wave operator combines a time derivative with the Laplacian,
+These appear in the [Maxwell equations](special-relativity.md#maxwell-s-equations-in-four-vector-form): $\nabla\cdot\mathbf E=\rho$, $\nabla\times\mathbf E=-\partial_t\mathbf B$, and so on. The relativistic wave operator combines a time derivative with the Laplacian,
 
 $$\Box = \partial_t^2-\nabla^2,$$
 

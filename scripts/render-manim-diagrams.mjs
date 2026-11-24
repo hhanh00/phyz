@@ -11,7 +11,6 @@ const venvManim = path.join(root, '.manim-venv', 'bin', 'manim')
 
 const diagrams = [
   { source: 'mindmap.py', scene: 'PhysicsRoadmap', output: 'physics-roadmap.png', page: 'mindmap', resolution: '1920,3200' },
-  { source: 'boost.py', scene: 'BoostDiagrams', output: 'boost-diagrams.png', page: 'special-relativity' },
   { source: 'hamiltonian_flow.py', scene: 'HamiltonianFlow', output: 'hamiltonian-flow.png', page: 'qft-action' },
   { source: 'occupation_states.py', scene: 'OccupationStates', output: 'occupation-states.png', page: 'field-quantization' },
   { source: 'concept_diagrams.py', scene: 'PhotonPolarizations', output: 'photon-polarizations.png', page: 'qed' },
@@ -35,7 +34,10 @@ const diagrams = [
   { source: 'page_diagrams.py', scene: 'BornDensity', output: 'born-density.png', page: 'first-quantization' },
   { source: 'page_diagrams.py', scene: 'EigenbasisProbabilities', output: 'eigenbasis-probabilities.png', page: 'first-quantization' },
   { source: 'page_diagrams.py', scene: 'FourierUncertainty', output: 'fourier-uncertainty.png', page: 'first-quantization' },
-  { source: 'page_diagrams.py', scene: 'RelativeSimultaneity', output: 'relative-simultaneity.png', page: 'special-relativity' },
+  { source: 'page_diagrams.py', scene: 'MichelsonMorley', output: 'michelson-morley.png', page: 'special-relativity' },
+  { source: 'page_diagrams.py', scene: 'LightClock', output: 'light-clock.png', page: 'special-relativity' },
+  { source: 'page_diagrams.py', scene: 'MuonCounts', output: 'muon-counts.png', page: 'special-relativity' },
+  { source: 'page_diagrams.py', scene: 'TrainFlash', output: 'train-flash.png', page: 'special-relativity' },
   { source: 'page_diagrams.py', scene: 'LightConeIntervals', output: 'light-cone-intervals.png', page: 'special-relativity' },
   { source: 'page_diagrams.py', scene: 'RelativisticEnergySolutions', output: 'relativistic-energy-solutions.png', page: 'relativistic-qm' },
   { source: 'page_diagrams.py', scene: 'KleinGordonDensity', output: 'klein-gordon-density.png', page: 'relativistic-qm' },

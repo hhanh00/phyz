@@ -20,7 +20,7 @@ The summed index is a **dummy index**; its name does not matter, so $A^\mu B_\mu
 
 ## 3. The metric
 
-To form the [spacetime interval](special-relativity.md#_4-spacetime-and-the-invariant-interval), time and space enter with opposite signs. The **Minkowski metric** encodes those signs:
+To form the [spacetime interval](special-relativity.md#_4-what-everyone-agrees-on), time and space enter with opposite signs. The **Minkowski metric** encodes those signs:
 
 $$\eta_{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1).$$
 
@@ -29,6 +29,16 @@ It has entries $\eta_{00}=+1$, $\eta_{11}=\eta_{22}=\eta_{33}=-1$, and zeros els
 $$x^\mu x_\mu=\eta_{\mu\nu}x^\mu x^\nu=c^2t^2-x^2-y^2-z^2,$$
 
 which is the invariant interval. The metric is the geometric price of mixing time and space: it replaces the ordinary dot product's all-plus signs.
+
+**Raising and lowering indices.** The metric moves an index from top to bottom. Lowering multiplies by $\eta_{\mu\nu}$ and sums,
+
+$$x_\mu=\eta_{\mu\nu}x^\nu=(ct,-x,-y,-z),$$
+
+so in practice lowering an index flips the sign of the three space components and leaves the time component alone. The inverse metric $\eta^{\mu\nu}$, which has the same entries, moves an index back up, $x^\mu=\eta^{\mu\nu}x_\nu$. Derivatives work the same way. The natural derivative has a lower index, $\partial_\mu=\partial/\partial x^\mu=(\partial_t/c,\nabla)$, and raising it gives
+
+$$\partial^\mu=\eta^{\mu\nu}\partial_\nu=(\partial_t/c,-\nabla).$$
+
+So a pair summed once up and once down always comes out as time part minus space part, $A^\mu B_\mu=A^0B^0-\mathbf A\cdot\mathbf B$. Many chapters write the metric as $g_{\mu\nu}$ instead of $\eta_{\mu\nu}$; it is the same matrix.
 
 ## 4. Covariant and contravariant indices
 

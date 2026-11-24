@@ -159,7 +159,7 @@ A classical field assigns a value to each spacetime point. We classify fields by
 | vector $A^\mu(x)$ | $A'^\mu(x') = \Lambda^\mu{}_{\nu}\,A^\nu(x)$ | $1$ | photon |
 | spinor $\psi(x)$ | $\psi'(x') = S(\Lambda)\,\psi(x)$ | $\tfrac{1}{2}$ | electron |
 
-To write a relativistic equation, combine fields and derivatives so that every term transforms consistently ([Special Relativity §6](special-relativity.md#_6-metric-tensor-covariance-and-contravariance)). The familiar free equations follow from the simplest choices for these field types.
+To write a relativistic equation, combine fields and derivatives so that every term transforms consistently ([tensor appendix](appendix-math-tensors.md#_4-covariant-and-contravariant-indices)). The familiar free equations follow from the simplest choices for these field types.
 
 For the free fields considered here, we use Klein–Gordon for scalars, Dirac for spinors, and Maxwell for the electromagnetic field. These equations determine how the modes evolve; quantization will determine how many particles occupy them.
 
@@ -180,7 +180,7 @@ $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
 The Dirac equation is first order in both time and space. [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced it to obtain a positive single-particle density. We now use the same equation for a field with spin and antiparticle modes.
 
-**Vector field.** The electromagnetic potential $A^\mu$ enters the field tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ from [Special Relativity §8](special-relativity.md#_8-maxwell-equations). In empty space,
+**Vector field.** The electromagnetic potential $A^\mu$ enters the field tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ from [Special Relativity §7](special-relativity.md#maxwell-s-equations-in-four-vector-form). In empty space,
 
 $$\partial_\mu F^{\mu\nu} = 0 \quad\Longleftrightarrow\quad \Box A^\nu - \partial^\nu(\partial_\mu A^\mu) = 0,$$
 
