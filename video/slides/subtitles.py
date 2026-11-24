@@ -2,7 +2,7 @@
 
 Usage: subtitles.py STEM [--scale X]
 
-Reads audio/timings/STEM.json and audio/out/STEM-slides.mp4. Writes STEM-slides.srt
+Reads video/timings/STEM.json and video/out/STEM/STEM-slides.mp4. Writes STEM-slides.srt
 and STEM-slides-subtitled.mp4, which has a soft subtitle track that players can
 switch on or off. --scale should match the value given to build.py.
 """
@@ -18,8 +18,9 @@ GAP = 0.04  # seconds between cues within a sentence
 
 stem = sys.argv[1]
 scale = float(sys.argv[sys.argv.index("--scale") + 1]) if "--scale" in sys.argv else 1.0
-out = Path(__file__).resolve().parent.parent / "out"
-timings = json.loads((out.parent / "timings" / f"{stem}.json").read_text())
+audio = Path(__file__).resolve().parent.parent
+out = audio / "out" / stem
+timings = json.loads((audio / "timings" / f"{stem}.json").read_text())
 
 
 def balanced(text):

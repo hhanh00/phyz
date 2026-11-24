@@ -1,6 +1,6 @@
 # Writing listening scripts
 
-These scripts turn the chapters in `docs/` into an audiobook read by a text-to-speech voice. The listener has only their ears, cannot look back at a formula, and may be walking or driving. The reference for voice, density, and technique is `audio/scripts/01-classical-mechanics.txt`. Read it in full, alongside `docs/classical-mechanics.md`, before writing anything.
+These scripts turn the chapters in `docs/` into an audiobook read by a text-to-speech voice. The listener has only their ears, cannot look back at a formula, and may be walking or driving. The reference for voice, density, and technique is `video/scripts/01-classical-mechanics.txt`. Read it in full, alongside `docs/classical-mechanics.md`, before writing anything.
 
 ## Replacing what can't be heard
 
@@ -66,4 +66,4 @@ The text goes straight to the speech engine, so:
 - Write names with accents without them ("Schrodinger"), since the voice reads them correctly and the format allows only plain letters.
 - End the chapter with a short spoken wrap-up and a pointer to the next chapter, following the chapter's own closing.
 
-Each slide in `audio/slides/deck_NN.py` starts at the script sentence that begins with its `@slide("opening words", ...)`. After editing a script, run `../../.manim-venv/bin/python check.py NN` from `audio/slides/`. It reports anchors that no longer match, format problems, and spoken numbers that differ from the committed script. When a rewrite changes a sentence's opening, update that slide's anchor to the new opening words, long enough to match only that sentence.
+Each slide in `video/slides/deck_NN.py` starts at the script sentence that begins with its `@slide("opening words", ...)`. After editing a script, run `../../.manim-venv/bin/python check.py NN` from `video/slides/`. It reports anchors that no longer match, format problems, and spoken numbers that differ from the committed script. When a rewrite changes a sentence's opening, update that slide's anchor to the new opening words, long enough to match only that sentence.

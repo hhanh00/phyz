@@ -332,7 +332,7 @@ def to_ssml(plans, voice, source):
 
 
 if __name__ == "__main__":
-    # Usage: prosody.py STEM   (from audio/, in audio/.venv) writes audio/prosody/STEM.ssml
+    # Usage: prosody.py STEM   (from video/, in video/.venv) writes video/prosody/STEM.ssml
     import os
     import sys
     from pathlib import Path
@@ -360,5 +360,5 @@ if __name__ == "__main__":
             print(f"{n}/{len(sentences)}", flush=True)
     target = here / "prosody" / f"{stem}.ssml"
     target.parent.mkdir(exist_ok=True)
-    target.write_text(to_ssml(plans, voice, f"audio/hanh/{stem}"))
+    target.write_text(to_ssml(plans, voice, f"video/hanh/{stem}"))
     print(f"wrote {target.relative_to(here.parent)}: {len(plans)} of {len(sentences)} sentences", flush=True)

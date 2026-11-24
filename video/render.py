@@ -4,15 +4,15 @@ Usage: render.py MODEL_DIR SCRIPTS_DIR OUT_DIR [--force] [--only STEM]
 
 The environment variables VOICE (default am_michael) and SPEED (default 1.0)
 choose the Kokoro voice and pace. VOICE=hanh instead uses the recorded clips that
-takes.py cut into audio/hanh/STEM/, one per sentence, separated by SENTENCE_PAUSE
+takes.py cut into video/hanh/STEM/, one per sentence, separated by SENTENCE_PAUSE
 of silence, and has Kokoro's FILL voice read any sentence that has no clip.
 VOICE=transfer has Kokoro's BASE voice read every sentence, reshaped by prosody.py
 to the timing, pitch and stress of the recorded clip where there is one; it needs
-the audio/.venv environment, which has torch and Praat.
+the video/.venv environment, which has torch and Praat.
 
 VOICE=azure has an Azure Speech voice read every sentence once (see azure_tts.py).
 A voice left to itself reads long stretches without a breath, so the text it gets
-carries extra commas where a reader would pause. If audio/prosody/STEM.pauses.txt
+carries extra commas where a reader would pause. If video/prosody/STEM.pauses.txt
 exists, it is the script with those commas written in, and no recording is needed:
 the chapter title is read, the section headings are not, and the silence after a
 sentence is PAUSE_INSIDE within a paragraph and PAUSE_AFTER at its end. Without
@@ -22,7 +22,7 @@ pace, the stress and the length of a pause inside a sentence are the voice's.
 
 Skips chapters whose .m4a is newer than their script, so an interrupted run
 can restart, and an edited script re-renders on the next run. Writes each
-sentence's timing to audio/timings/STEM.json for the slide videos.
+sentence's timing to video/timings/STEM.json for the slide videos.
 """
 import json
 import os
@@ -79,7 +79,7 @@ def split(text):
 
 
 def written_pauses(stem, text):
-    """{sentence number: the sentence with its extra commas} from audio/prosody/STEM.pauses.txt, or None.
+    """{sentence number: the sentence with its extra commas} from video/prosody/STEM.pauses.txt, or None.
 
     The file has to be the script itself with nothing changed but commas added after
     words, so an edit to the script that the pause file missed stops the render.
@@ -192,14 +192,15 @@ timings_dir.mkdir(exist_ok=True)
 for script in sorted(scripts_dir.glob("*.txt")):
     if only and script.stem != only:
         continue
-    target = out_dir / f"{script.stem}.m4a"
+    target = out_dir / script.stem / f"{script.stem}.m4a"
+    target.parent.mkdir(exist_ok=True)
     if not force and target.exists() and target.stat().st_mtime > script.stat().st_mtime:
         print(f"skip {script.stem}", flush=True)
         continue
     start, filled, failed = time.time(), 0, 0
     audio, timings = render(script.read_text(), script.stem)
     (timings_dir / f"{script.stem}.json").write_text(json.dumps(timings, indent=1))
-    wav = out_dir / f"{script.stem}.wav"
+    wav = target.with_suffix(".wav")
     sf.write(wav, audio, RATE)
     subprocess.run(
         ["afconvert", "-f", "m4af", "-d", "aac", "-b", "64000", str(wav), str(target)],

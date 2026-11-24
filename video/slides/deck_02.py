@@ -1,6 +1,6 @@
 """Slides for chapter two, First Quantization.
 
-Every value comes from audio/scripts/02-first-quantization.txt or
+Every value comes from video/scripts/02-first-quantization.txt or
 docs/first-quantization.md. The figures follow docs/manim/page_diagrams.py
 (SternGerlachSetup, MagnetsInRow, TwoSlitCounts, EigenbasisProbabilities,
 BornDensity, PhotoelectricEffect, ComptonScattering, DavissonGermer,

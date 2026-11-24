@@ -1,6 +1,6 @@
 # Chapter workflow, from page to video
 
-This file records the steps used to bring chapter 1 (Classical Mechanics) to its current state, so that a later session can repeat them on another chapter. It covers the page itself, the listening script, the slide deck and the video. `audio/README.md` explains the tools; this file explains the order to use them in and the checks between steps.
+This file records the steps used to bring chapter 1 (Classical Mechanics) to its current state, so that a later session can repeat them on another chapter. It covers the page itself, the listening script, the slide deck and the video. `video/README.md` explains the tools; this file explains the order to use them in and the checks between steps.
 
 The work runs as review loops. A fresh agent reviews, the main session applies the findings, and a new fresh agent reviews again. Fresh reviewers matter because an agent that wrote or fixed the text tends to confirm its own work.
 
@@ -31,7 +31,7 @@ These came from Hanh while working on chapter 1. They apply to every step below.
 
 ## 2. The script
 
-1. Write `audio/scripts/STEM.txt` from the finished page, following `audio/BRIEF.md`. Check the format with a short script or with `check.py`. Only these characters are allowed: letters, space, `. , ; ' ? -`. Numbers are in words, sentences have at most 20 words, and headings have at most 7 words and end with a period.
+1. Write `video/scripts/STEM.txt` from the finished page, following `video/BRIEF.md`. Check the format with a short script or with `check.py`. Only these characters are allowed: letters, space, `. , ; ' ? -`. Numbers are in words, sentences have at most 20 words, and headings have at most 7 words and end with a period.
 2. Keep a copy of each version in the scratchpad, because the deck step later diffs against the version the deck was built from.
 3. Run review rounds with a fresh agent each time. Use the prompt below. Apply the must-fix items and the should-fix items that fix a real problem, and skip pure preferences that undo an earlier round's fix.
 4. Stop only after a fresh review of the final script, run after the last edit, returns no must-fix items. Chapter 1 took four rounds, and its fidelity score went from 7 to 9.5.
@@ -40,7 +40,7 @@ These came from Hanh while working on chapter 1. They apply to every step below.
 
 > You are reviewing a narration script for a video, against the site chapter it is based on. Do not edit any file; report only.
 >
-> Files: the script `audio/scripts/STEM.txt`, the chapter `docs/CHAPTER.md` (the source of truth), the rules `audio/BRIEF.md` and `audio/REVIEW.md`, and `CLAUDE.md`. Read them all in full.
+> Files: the script `video/scripts/STEM.txt`, the chapter `docs/CHAPTER.md` (the source of truth), the rules `video/BRIEF.md` and `video/REVIEW.md`, and `CLAUDE.md`. Read them all in full.
 >
 > The listener hears the script once, with slides, and cannot read the page. Say what they already know and what they don't.
 >
@@ -57,12 +57,12 @@ Middle rounds may list what earlier rounds already fixed, to avoid repeats. The 
 
 ## 3. The pause file
 
-Write `audio/prosody/STEM.pauses.txt`: the final script with extra commas where a reader would breathe, and no other change. When the script changes, carry the old commas over to every sentence that didn't change, and add commas to new long sentences that have none. `render.py` refuses the file if it differs from the script by more than commas, and its `written_pauses` check can be run on its own before rendering.
+Write `video/prosody/STEM.pauses.txt`: the final script with extra commas where a reader would breathe, and no other change. When the script changes, carry the old commas over to every sentence that didn't change, and add commas to new long sentences that have none. `render.py` refuses the file if it differs from the script by more than commas, and its `written_pauses` check can be run on its own before rendering.
 
 ## 4. The deck
 
-1. Build `audio/slides/deck_NN.py` following `audio/slides/BRIEF.md`. Each slide is anchored to the first words of a script sentence. A new slide starts at every spoken heading, and numbers appear on screen when the narration reaches them, not before.
-2. Run `cd audio/slides && ../../.manim-venv/bin/python check.py NN` until it reports no anchor problems.
+1. Build `video/slides/deck_NN.py` following `video/slides/BRIEF.md`. Each slide is anchored to the first words of a script sentence. A new slide starts at every spoken heading, and numbers appear on screen when the narration reaches them, not before.
+2. Run `cd video/slides && ../../.manim-venv/bin/python check.py NN` until it reports no anchor problems.
 3. Render contact sheets with `build.py deck_NN preview --work DIR`, and look at them. Use `--only N,N` to re-render single slides after a fix.
 4. Run one review with a fresh agent, using the prompt below. Apply its findings, re-render only the changed slides, and look at them.
 5. After any later script edit, run `check.py` again, because changed openings break anchors.
@@ -73,7 +73,7 @@ A long deck update can go to one agent, with a brief that lists the stale anchor
 
 > Review the slide deck for chapter NN. Report only; do not edit files.
 >
-> Read `audio/slides/BRIEF.md`, the script, the chapter (the source of truth for facts and notation) and `deck_NN.py`. Look at every contact sheet image with the Read tool.
+> Read `video/slides/BRIEF.md`, the script, the chapter (the source of truth for facts and notation) and `deck_NN.py`. Look at every contact sheet image with the Read tool.
 >
 > Deliver:
 > 1. Sync and fidelity: slides whose content contradicts the narration or runs ahead of it, facts or numbers that differ from the chapter, and key results the narration states but no slide shows, where a visual would clearly help.
@@ -84,11 +84,11 @@ A long deck update can go to one agent, with a brief that lists the stale anchor
 
 ## 5. The video
 
-1. Render the narration once the script is final. Deck changes don't touch the audio, so the narration can render while the deck is being fixed. Run it from `audio/`, in the background:
+1. Render the narration once the script is final. Deck changes don't touch the audio, so the narration can render while the deck is being fixed. Run it from `video/`, in the background:
    `VOICE=azure caffeinate -i .venv/bin/python render.py ../.kokoro scripts out --force --only STEM`
    The Azure key is in `~/.azure-speech`. Never print it, and never ask Hanh to paste it.
 2. Add the chapter to `COVERS` in `slides/cover.py` if it has no cover yet, render the cover and look at it.
 3. Build the slides and the final video from the repo root, in the background:
-   `VOICE=azure WORK=DIR caffeinate -i audio/make_video.sh --skip-audio STEM`
-4. Write `audio/out/STEM-description.txt`. Take the chapter timestamps from the heading entries in `audio/timings/STEM.json`, and add the cover hold (`COVER` in `make_video.sh`, 5 s). Headings are silent in the final video, so the subtitle file won't show them.
-5. Commit the script, the pause file and the deck when asked. Everything in `audio/out/`, `audio/timings/` and `audio/azure-cache/` is generated and not committed.
+   `VOICE=azure WORK=DIR caffeinate -i video/make_video.sh --skip-audio STEM`
+4. Write `video/out/STEM/STEM-description.txt`. Take the chapter timestamps from the heading entries in `video/timings/STEM.json`, and add the cover hold (`COVER` in `make_video.sh`, 5 s). Headings are silent in the final video, so the subtitle file won't show them.
+5. Commit the script, the pause file and the deck when asked. Everything in `video/out/`, `video/timings/` and `video/azure-cache/` is generated and not committed.

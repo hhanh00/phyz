@@ -2,7 +2,7 @@
 
 Usage: cover.py STEM
 
-Writes audio/out/STEM-cover.png. Each chapter's text and picture are in COVERS.
+Writes video/out/STEM/STEM-cover.png. Each chapter's text and picture are in COVERS.
 """
 import sys
 from pathlib import Path
@@ -134,7 +134,8 @@ config.verbosity = "ERROR"
 config.media_dir = "/tmp/cover-media"
 scene = Cover(COVERS[stem])
 scene.render()
-target = HERE.parent / "out" / f"{stem}-cover.png"
+target = HERE.parent / "out" / stem / f"{stem}-cover.png"
+target.parent.mkdir(parents=True, exist_ok=True)
 from PIL import Image  # noqa: E402
 
 Image.fromarray(scene.renderer.get_frame()).convert("RGB").save(target)

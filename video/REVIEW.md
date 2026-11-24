@@ -1,6 +1,6 @@
 # Checking listening scripts against their chapters
 
-A script in `audio/scripts/` is a spoken rewrite of a chapter in `docs/`. `audio/BRIEF.md` describes the rules the script was written under, including what it may legitimately drop. Read the brief, then read each source chapter in full and each script in full, and compare them claim by claim.
+A script in `video/scripts/` is a spoken rewrite of a chapter in `docs/`. `video/BRIEF.md` describes the rules the script was written under, including what it may legitimately drop. Read the brief, then read each source chapter in full and each script in full, and compare them claim by claim.
 
 The scripts are final in length and style, so this pass only corrects errors. Look for:
 

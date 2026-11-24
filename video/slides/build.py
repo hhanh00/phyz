@@ -117,7 +117,8 @@ def video():
     for stale in clips.glob("*.mp4"):
         if stale not in keep:
             stale.unlink()
-    join(paths, audio / "out" / f"{stem}-slides.mp4")
+    (audio / "out" / stem).mkdir(parents=True, exist_ok=True)
+    join(paths, audio / "out" / stem / f"{stem}-slides.mp4")
 
 
 def join(paths, target):

@@ -6,7 +6,7 @@ A deck turns a chapter's listening script into a silent, animated slide video. I
 
 Each slide is a generator registered with `@slide("first words", "Title")`. The first argument is the opening words of the script sentence where the slide begins. `Deck.resolve` matches those words in order, so slides must follow the script's order, and the opening words must be long enough to match only the intended sentence. The slide stays on screen until the next slide's sentence starts. Each `yield [animations]` is one build step, and the engine spreads the steps evenly over the time the narration spends on the slide.
 
-Write the script first, following `audio/BRIEF.md`, and build the deck against the final script. If you change the script later, re-render the audio, because the video uses the sentence timings in `audio/timings/`.
+Write the script first, following `video/BRIEF.md`, and build the deck against the final script. If you change the script later, re-render the audio, because the video uses the sentence timings in `video/timings/`.
 
 ## Pace
 
@@ -50,7 +50,7 @@ Every label and number on a slide must come from the script or its chapter. Copy
 
 ## Building
 
-`audio/README.md` covers the full setup and `audio/make_video.sh`, which renders a chapter's narration, slide video, subtitles and final video in one command. The commands below are the individual steps.
+`video/README.md` covers the full setup and `video/make_video.sh`, which renders a chapter's narration, slide video, subtitles and final video in one command. The commands below are the individual steps.
 
 Create the Manim environment once, from the repository root:
 
@@ -59,12 +59,12 @@ uv venv .manim-venv --python 3.14
 uv pip install --python .manim-venv/bin/python manim av pillow
 ```
 
-Then, from `audio/slides/`:
+Then, from `video/slides/`:
 
 ```sh
 ../../.manim-venv/bin/python build.py deck_NN preview          # final frame of each slide, as contact sheets
 ../../.manim-venv/bin/python build.py deck_NN preview --only 4,5
-../../.manim-venv/bin/python build.py deck_NN video            # needs audio/timings/STEM.json
+../../.manim-venv/bin/python build.py deck_NN video            # needs video/timings/STEM.json
 ../../.manim-venv/bin/python subtitles.py STEM                 # needs ffmpeg
 ```
 

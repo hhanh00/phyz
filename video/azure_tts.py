@@ -8,7 +8,7 @@ The key and region come from ~/.azure-speech, which holds two lines:
 AZURE_VOICE (default en-US-BrianNeural) chooses the voice. The voice reads each
 sentence as written, with one addition: a comma wherever the reader's recording
 pauses, so that it breathes where the reader did (see paused()). Each reading is cached in
-audio/azure-cache/ under a hash of the voice and the SSML sent, so a re-render only
+video/azure-cache/ under a hash of the voice and the SSML sent, so a re-render only
 pays for sentences whose text or prosody changed.
 """
 import hashlib
@@ -126,7 +126,7 @@ def paused(sentence, after):
 
 
 if __name__ == "__main__":
-    # Usage: azure_tts.py STEM   (from audio/, in audio/.venv) writes audio/prosody/STEM.azure.txt for review:
+    # Usage: azure_tts.py STEM   (from video/, in video/.venv) writes video/prosody/STEM.azure.txt for review:
     # the text VOICE=azure sends for each sentence, and the silence it leaves after it. Sends nothing to Azure.
     import sys
 

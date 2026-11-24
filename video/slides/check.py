@@ -1,4 +1,4 @@
-"""Check a listening script against its deck and the format rules in audio/BRIEF.md.
+"""Check a listening script against its deck and the format rules in video/BRIEF.md.
 
 Usage: check.py NN [NN ...]
 
@@ -78,7 +78,7 @@ def check(nn):
                 problems.append(f"sentence of {len(s.split())} words: {s[:70]!r}")
 
     try:
-        old = subprocess.run(["git", "show", f"HEAD:audio/scripts/{path.name}"], capture_output=True, text=True,
+        old = subprocess.run(["git", "show", f"HEAD:video/scripts/{path.name}"], capture_output=True, text=True,
                              check=True, cwd=HERE).stdout
         before, after = numbers(old), numbers(text)
         lost, gained = before - after, after - before

@@ -2,11 +2,11 @@
 
 Usage: takes.py STEM [--debug N]
 
-Reads audio/hanh/STEM.wav, the script audio/scripts/STEM.txt, and any pickup
-recordings audio/hanh/STEM-pickups*.wav, each with its reading list in the .txt
+Reads video/hanh/STEM.wav, the script video/scripts/STEM.txt, and any pickup
+recordings video/hanh/STEM-pickups*.wav, each with its reading list in the .txt
 of the same name (numbered sentences, in the order they were read). A later
 pickup file wins over an earlier one.
-Writes one clip per sentence to audio/hanh/STEM/NNN.wav, a manifest.tsv beside
+Writes one clip per sentence to video/hanh/STEM/NNN.wav, a manifest.tsv beside
 them, and prints the sentences that still need a retake. The manifest gives each
 clip's source recording and times, how well the reading matched the script
 (score), how well the finished clip matches when transcribed again (clip score),
@@ -341,7 +341,7 @@ def heard_in(clip, rate):
     """Transcribe a finished clip, returning its text and words as (word, start, end).
 
     Transcribing is the slow step, so results are kept by the clip's content in
-    audio/hanh/STEM/checks.json, and a rerun only transcribes clips that changed.
+    video/hanh/STEM/checks.json, and a rerun only transcribes clips that changed.
     """
     import mlx_whisper
     from scipy.signal import resample_poly

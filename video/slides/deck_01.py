@@ -1,6 +1,6 @@
 """Slides for chapter one, Classical Mechanics.
 
-Every value comes from audio/scripts/01-classical-mechanics.txt or
+Every value comes from video/scripts/01-classical-mechanics.txt or
 docs/classical-mechanics.md. The animated figures follow docs/manim/page_diagrams.py
 (NewtonMotion, StationaryActionPaths, PhaseSpaceStates) and
 docs/manim/concept_diagrams.py (ClassicalOscillatorEnergy).
