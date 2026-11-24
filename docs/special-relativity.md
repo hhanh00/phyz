@@ -121,7 +121,7 @@ $$s^2 = (c\,\Delta t)^2 - (\Delta x)^2.$$
 
 This is the **spacetime interval**. It's a bit like the length of a ruler, which stays the same however you turn the ruler, except with a minus sign.
 
-The muon shows it. Take its birth at the top of the mountain and its arrival at sea level. The ground says about 6.4 millionths of a second and 1,900 m apart. The muon's own clock says 0.7 millionths of a second, and no distance at all, since for the muon the mountain moves and it stays put. Work out the interval both ways and you get the same answer, about 210 m. For anything moving, the interval between two moments of its trip is simply the time on its own clock, times $c$.
+The muon shows it. Take its birth at the top of the mountain and its arrival at sea level. The ground says about 6.4 millionths of a second and 1,900 m apart. The muon's own clock says 0.7 millionths of a second, and no distance at all, since for the muon the mountain moves and it stays put. Work out the interval both ways and you get the same answer, about 210 m. For anything moving, the interval between two moments of its trip is the time on its own clock, times $c$.
 
 Because of the minus sign, the interval can come out positive, zero or negative, unlike a length. The sign says how the two events can be connected:
 

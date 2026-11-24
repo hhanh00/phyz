@@ -14,7 +14,7 @@ We'll describe the same motion three ways, and all three give exactly the same a
 
 Newton's second law says that a force makes a body accelerate: $F = ma$. Acceleration is how fast the velocity changes, and velocity is how fast the position changes. So if you know where a body starts, how fast it's moving and what forces act on it, the law fixes everything that happens next.
 
-**A dropped ball.** Near the ground, gravity pulls down with a constant force, $F = -mg$, where $g = 9.8\ \mathrm{m/s^2}$ and the minus sign means downward. So the ball's acceleration is a constant $-g$. Its speed grows by 9.8 m/s every second, and the distance it has fallen grows with the square of the time: 4.9 m after one second, 19.6 m after two, 44.1 m after three.
+**A dropped ball.** Near the ground, gravity pulls down with a constant force, $F = -mg$, where $g = 9.8\ \mathrm{m/s^2}$ and the minus sign means downward. So the ball's acceleration is a constant $-g$. Its speed grows by 9.8 m/s every second, and the distance it has fallen grows with the square of the time.
 
 ![The dropped ball: constant acceleration g, speed rising linearly to 29.4 m/s after 3 s, and distance fallen rising quadratically to 44.1 m.](./manim/newton-motion.png)
 
@@ -156,7 +156,7 @@ The pair, position $q$ and momentum $p$, is the state. Picture it as a point on 
 
 ## 6. The energy moves the state
 
-Now we want the rule that moves the state forward, written in position and momentum. It turns out to come from one function, the **Hamiltonian** $H$, which for everything in this chapter is simply the total energy, kinetic plus potential, written in terms of momentum. For a body of mass $m$, put $v = p/m$ into the kinetic energy $\tfrac12 mv^2$ and it becomes $p^2/2m$, so
+Now we want the rule that moves the state forward, written in position and momentum. It turns out to come from one function, the **Hamiltonian** $H$, which for everything in this chapter is the total energy, kinetic plus potential, written in terms of momentum. For a body of mass $m$, put $v = p/m$ into the kinetic energy $\tfrac12 mv^2$ and it becomes $p^2/2m$, so
 
 $$H = \frac{p^2}{2m} + V(q).$$
 
