@@ -84,7 +84,7 @@ class BornDensity(Scene):
             for v in (0,0.25,0.5,0.75,1):
                 self.add(label(f'{v:g}',a_.c2p(v,0)[0],a_.c2p(v,0)[1]-0.3,19,MUTED))
             self.add(label('position x (m)',xx,-2.55,21,MUTED))
-        self.add(label('The amplitude can be negative in general; the density never is.',-4,-3.4,22,MUTED,width=7),
+        self.add(label('The amplitude can be negative or complex in general; the density never is.',-4,-3.4,22,MUTED,width=7),
                  label('Each shaded area is the chance of finding the particle in that quarter.',4,-3.4,22,MUTED,width=7))
 
 class TwoSlitCounts(Scene):
@@ -226,25 +226,25 @@ class DavissonGermer(Scene):
 
 class EigenbasisProbabilities(Scene):
     def construct(self):
-        heading(self,'The tilted spin as an arrow','Its components along up and down are the amplitudes; their squares are the probabilities')
+        heading(self,'The tilted spin as an arrow','Its components along up and down are the amplitudes; their squares are the chances')
         origin=(-6,-1.5)
         self.add(arrow(origin,(-1,-1.5)),arrow(origin,(-6,2)),
                  arrow(origin,(-2.54,.5),BLUE),
                  DashedLine([-2.54,.5,0],[-2.54,-1.5,0],color=TEAL),
                  DashedLine([-6,.5,0],[-2.54,.5,0],color=ORANGE),
-                 math(r'|0\rangle\ \text{up}',-0.8,-2,30),math(r'|1\rangle\ \text{down}',-6.2,2.35,30),math(r'|\psi\rangle',-2.2,1,34,BLUE),
+                 math(r'|\text{up}\rangle',-0.8,-2,30),math(r'|\text{down}\rangle',-6.2,2.35,30),math(r'|\psi\rangle',-2.2,1,34,BLUE),
                  math(r'\sqrt3/2',-4.2,-2.05,30,TEAL),math(r'1/2',-6.7,-.4,30,ORANGE))
         for x,prob,name,c in [(2.5,.75,'up',TEAL),(5.5,.25,'down',ORANGE)]:
             self.add(Rectangle(width=1.5,height=3.2*prob,fill_color=c,fill_opacity=.8,stroke_width=0).move_to([x,-1.5+1.6*prob,0]),
                      label(name,x,-1.9,26),label(str(int(100*prob))+'%',x,-1.5+3.2*prob+.3,25,c))
-        self.add(label('Vertical magnet: probabilities',4,2.3,28),
-                 math(r'|\psi\rangle=\tfrac{\sqrt3}{2}|0\rangle+\tfrac12|1\rangle',0,-3,35),
-                 label('Square the size of each amplitude to get the probability of that result.',0,-3.85,25,MUTED))
+        self.add(label('Vertical magnet: chances',4,2.3,28),
+                 math(r'|\psi\rangle=\tfrac{\sqrt3}{2}|\text{up}\rangle+\tfrac12|\text{down}\rangle',0,-3,35),
+                 label('Square the size of each amplitude to get the chance of that result.',0,-3.85,25,MUTED))
 
 
 class FourierUncertainty(Scene):
     def construct(self):
-        heading(self,'Localizing a wave packet broadens its momentum distribution','Gaussian packets: narrowing the position spread increases the momentum spread')
+        heading(self,'Squeezing the position widens the momentum','Bell-shaped wave functions: the narrower the position spread, the wider the momentum spread')
         for y,sigma,c,tag in [(1,.48,BLUE,'Narrow in position'),(-1.25,1.2,TEAL,'Broad in position')]:
             for x,width in [(-4,sigma),(4,1/sigma)]:
                 ax=axes_at(x,y,5.8,1.5,(-4,4,1),(0,1.2,1))
@@ -715,3 +715,88 @@ class PendulumForces(Scene):
                  arr(b1,unit(b1,b2),ORANGE,1.1),
                  label('two pendulums',2.6,2.65,26),
                  label('the lower string tugs the upper bob\nat an angle to its motion, so its pull\nmust be worked out first',4.2,-2.3,22,MUTED))
+
+
+class SpinPrecession(Scene):
+    def construct(self):
+        heading(self,'The tilted spin swings round the field','In a vertical magnetic field, the tilt sweeps a cone; up and down stay 75% and 25% throughout')
+        o=np.array([-3.6,-2.6,0]); top=np.array([-3.6,0.9,0]); R=2.3; r=0.75
+        self.add(Arrow(o,top,buff=0,color=MUTED,stroke_width=4,max_tip_length_to_length_ratio=0.05),
+                 label('field',o[0]-0.55,top[1]-0.45,22,MUTED),
+                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2).move_to(top),
+                 DashedVMobject(Line(o,top+[-R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14),
+                 DashedVMobject(Line(o,top+[R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14))
+        stops=[('right',top+[R,0,0],'93% right',RIGHT),('back',top+[0,r,0],'50% right',UR),
+               ('left',top+[-R,0,0],'7% right',LEFT),('front',top+[0,-r,0],'50% right',DR)]
+        for name,pt,chance,d in stops:
+            g=VGroup(label(name,0,0,22,INK),label(chance,0,0,20,TEAL)).arrange(DOWN,buff=0.08)
+            g.next_to(pt,d,buff=0.22)
+            self.add(Dot(pt,color=BLUE,radius=0.09),g)
+        self.add(Arrow(o,top+[R,0,0],buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.06),
+                 CurvedArrow(top+[R*0.75,r*0.66,0],top+[R*0.2,r*0.98,0],color=ORANGE,stroke_width=3,tip_length=0.18))
+        # Right: the chance of "right" over one turn.
+        ax=axes_at(3.6,-0.3,5.6,3.4,(0,1,0.25),(0,1,0.5)); self.add(ax)
+        f=lambda u:0.5+np.sqrt(3)/4*np.cos(2*np.pi*u)
+        self.add(path_curve(ax,f,[0,1],TEAL))
+        for u,name in ((0,'right'),(0.25,'back'),(0.5,'left'),(0.75,'front'),(1,'right')):
+            self.add(Dot(ax.c2p(u,f(u)),color=BLUE,radius=0.07),label(name,ax.c2p(u,0)[0],ax.c2p(u,0)[1]-0.32,18,MUTED))
+        self.add(label('chance of \u201cright\u201d',3.6,1.75,22,TEAL),label('one full turn of the tilt',3.6,-2.75,18,MUTED),
+                 label('Up and down only see the sizes of the amplitudes; the sideways chances follow the turning gap between their phases.',0,-3.75,21,MUTED,width=14.5))
+
+
+class TwoTilts(Scene):
+    def construct(self):
+        heading(self,'Same up-and-down chances, different states','Two batches of atoms, both tilted 60° from vertical: one toward the right, one toward the front')
+        o=np.array([-4.0,-2.5,0]); top=np.array([-4.0,0.9,0]); R=2.3; r=0.8
+        ring=lambda deg:top+np.array([R*np.cos(np.radians(deg)),r*np.sin(np.radians(deg)),0])
+        tr=ring(-25); tf=ring(-115)   # the view is turned a little, so neither tilt points straight at us
+        self.add(DashedVMobject(Line(o,top+[0,1.2,0],color=MUTED,stroke_width=3),num_dashes=18),
+                 label('vertical',top[0],top[1]+1.45,22,MUTED),
+                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2,stroke_opacity=0.6).move_to(top),
+                 DashedVMobject(Line(top,tr,color=BLUE,stroke_width=2,stroke_opacity=0.6),num_dashes=8),
+                 DashedVMobject(Line(top,tf,color=ORANGE,stroke_width=2,stroke_opacity=0.6),num_dashes=6))
+        for deg,name in ((-25,'right'),(65,'back'),(155,'left'),(-115,'front')):
+            q=ring(deg); d=(q-top)/np.linalg.norm(q-top)
+            self.add(label(name,q[0]+0.55*d[0],q[1]+0.4*d[1]+(0.12 if deg in (65,155) else -0.12),20,MUTED))
+        self.add(Arrow(o,tr,buff=0,color=BLUE,stroke_width=7,max_tip_length_to_length_ratio=0.07),
+                 Arrow(o,tf,buff=0,color=ORANGE,stroke_width=7,max_tip_length_to_length_ratio=0.08),
+                 label('batch 1:\nleans right',tr[0]+0.6,tr[1]-1.0,21,BLUE),
+                 label('batch 2:\nleans toward the front',tf[0]-1.45,tf[1]-1.05,21,ORANGE),
+                 label('both lean 60° from vertical',o[0],o[1]-0.45,20,INK))
+        # Results, as bars.
+        def bars(x,y,vals,names,c):
+            g=VGroup()
+            for i,(v,n) in enumerate(zip(vals,names)):
+                h=1.5*v/100; xx=x+i*0.95
+                g.add(Rectangle(width=0.7,height=max(h,0.02),stroke_width=0,fill_color=c,fill_opacity=0.85).move_to([xx,y+h/2,0]),
+                      label(f'{v}%',xx,y+h+0.22,18,c),label(n,xx,y-0.25,18,MUTED))
+            return g
+        self.add(label('vertical magnet',2.35,2.55,22,INK),label('sideways magnet',5.6,2.55,22,INK),
+                 bars(1.9,0.55,[75,25],['up','down'],BLUE),bars(5.15,0.55,[93,7],['right','left'],BLUE),
+                 bars(1.9,-2.0,[75,25],['up','down'],ORANGE),bars(5.15,-2.0,[50,50],['right','left'],ORANGE),
+                 label('the same',2.35,-0.35,20,TEAL),label('different',5.6,-0.35,20,RED))
+        self.add(label('A vertical magnet only sees how far each batch leans from vertical. A sideways magnet also sees which way.',0,-3.75,21,MUTED,width=14.5))
+
+
+class OverlapShadow(Scene):
+    def construct(self):
+        heading(self,'The overlap is a shadow',"How much of the tilted state points along the state that is certainly ``right''")
+        o=np.array([-5.6,-2.4,0]); L=4.3
+        u=lambda deg:np.array([np.cos(np.radians(deg)),np.sin(np.radians(deg)),0])
+        tip=o+L*u(30); rdir=u(45); foot=o+L*np.cos(np.radians(15))*rdir
+        self.add(arrow((o[0],o[1]),(o[0]+L+0.7,o[1])),arrow((o[0],o[1]),(o[0],o[1]+L+0.4)),
+                 math(r'|\text{up}\rangle',o[0]+L+0.95,o[1]-0.35,28),math(r'|\text{down}\rangle',o[0]-0.1,o[1]+L+0.75,28),
+                 DashedVMobject(Line(o,o+(L+0.9)*rdir,color=ORANGE,stroke_width=3),num_dashes=24),
+                 label("certainly ``right''",o[0]+(L+0.9)*rdir[0]+0.2,o[1]+(L+0.9)*rdir[1]+0.3,22,ORANGE),
+                 Line(o,foot,color=TEAL,stroke_width=10),
+                 DashedVMobject(Line(tip,foot,color=MUTED,stroke_width=2),num_dashes=8),
+                 Arrow(o,tip,buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.06),
+                 math(r'|\psi\rangle',tip[0]+0.45,tip[1]-0.05,30,BLUE),
+                 Arc(radius=1.6,start_angle=np.radians(30),angle=np.radians(15),arc_center=o,color=INK,stroke_width=2),
+                 math(r'15^\circ',o[0]+1.95*np.cos(np.radians(37.5)),o[1]+1.95*np.sin(np.radians(37.5)),24),
+                 math(r'\text{shadow}\approx 0.97',foot[0]-1.2,foot[1]+0.35,26,TEAL))
+        h=3.2*0.933
+        self.add(Rectangle(width=1.6,height=h,stroke_width=0,fill_color=TEAL,fill_opacity=0.85).move_to([4.2,-2.4+h/2,0]),
+                 label("chance of ``right''",4.2,1.25,24,INK),math(r'0.97^2\approx 93\%',4.2,-2.4+h+0.4,30,TEAL),
+                 Line([3.0,-2.4,0],[5.4,-2.4,0],color=MUTED,stroke_width=3))
+        self.add(label("The amplitude for a result is the shadow of the state on that result's certain state; the chance is the shadow squared.",0,-3.7,21,MUTED,width=14.5))
