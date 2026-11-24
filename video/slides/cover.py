@@ -103,6 +103,28 @@ def energy_ladder():
     return art
 
 
+def light_clock():
+    """Chapter 4: a light clock at rest ticks straight up and back; the same clock moving makes the light zigzag."""
+    top, bot = 1.6, -1.6
+    art = VGroup()
+    beam = lambda a, b: Arrow(a, b, buff=0, color=AMBER, stroke_width=6, max_tip_length_to_length_ratio=0.07)
+    cx = -3.4
+    for y in (top, bot):
+        art.add(Line([cx - 0.8, y, 0], [cx + 0.8, y, 0], color=WHITE, stroke_width=8))
+    art.add(beam([cx - 0.15, bot + 0.1, 0], [cx - 0.15, top - 0.1, 0]), beam([cx + 0.15, top - 0.1, 0], [cx + 0.15, bot + 0.1, 0]))
+    xs = [-0.4, 2.0, 4.4]
+    for i, x in enumerate(xs):
+        for y in (top, bot):
+            art.add(Line([x - 0.8, y, 0], [x + 0.8, y, 0], color=WHITE if i == 1 else SOFT, stroke_width=8,
+                         stroke_opacity=1 if i == 1 else 0.4))
+    art.add(beam([xs[0], bot + 0.1, 0], [xs[1], top - 0.1, 0]), beam([xs[1], top - 0.1, 0], [xs[2], bot + 0.1, 0]),
+            Arrow([1.0, top + 0.6, 0], [3.0, top + 0.6, 0], buff=0, color=SKY, stroke_width=6, max_tip_length_to_length_ratio=0.18))
+    art.add(Text("at rest", font=FONT, color=SOFT, font_size=30, weight=BOLD).move_to([cx, top + 0.6, 0]),
+            Text("moving", font=FONT, color=SKY, font_size=30, weight=BOLD).move_to([2.0, top + 1.2, 0]),
+            Text("longer path, same speed: slower tick", font=FONT, color=MINT, font_size=28, weight=BOLD).move_to([0.5, bot - 0.7, 0]))
+    return art
+
+
 COVERS = {
     "01-classical-mechanics": {
         "kicker": "PHYZ  ·  CHAPTER 1",
@@ -121,6 +143,12 @@ COVERS = {
         "title": ["Harmonic", "Oscillator"],
         "sub": "The quantum spring\nand its ladder of energies",
         "art": energy_ladder,
+    },
+    "04-special-relativity": {
+        "kicker": "PHYZ  ·  CHAPTER 4",
+        "title": ["Special", "Relativity"],
+        "sub": "Light's speed is fixed,\nso time and space give way",
+        "art": light_clock,
     },
     # "STEM": {"kicker": "PHYZ  ·  CHAPTER N", "title": ["Line", "Line"], "sub": "One line\nor two", "art": a_function},
 }

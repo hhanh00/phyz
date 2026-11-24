@@ -1,0 +1,109 @@
+Chapter four. Special Relativity.
+
+The last chapter ended with a promise. Before we can build quantum fields, our equations have to agree with relativity. That matters, because the particles of quantum field theory often move at close to the speed of light. And near that speed, the everyday rules for time, distance and energy stop working.
+
+This chapter starts from one surprising fact about light, and follows where it leads. We'll find clocks that run slow and lengths that shrink. We'll find an energy hiding in every bit of mass. And we'll find a test that the Schrodinger equation fails.
+
+Here's the contrast. At everyday speeds, speeds add up, and one clock serves the whole universe. A ruler is just a ruler, and everyone agrees on what happens at the same time. Near the speed of light, every one of these breaks. Light's speed is the same for everyone. Moving clocks run slow, and moving rulers shrink. Whether two things happen at the same time depends on who's watching. And even mass sitting still holds energy.
+
+Light's speed is the same for everyone.
+
+Walk forward at one metre per second on a train doing thirty. Someone on the platform sees you go by at thirty-one. Speeds add. That's so obvious that nobody questioned it for centuries.
+
+Light breaks it. In the eighteen sixties, James Clerk Maxwell wrote down his equations for electricity and magnetism. They predict waves that travel at about three hundred thousand kilometres per second. That's exactly the measured speed of light. But his equations don't say relative to what.
+
+The natural guess was an invisible medium that carries light, the way air carries sound. Light's speed would be fixed relative to that medium. The Earth races around the Sun at thirty kilometres per second. So it should feel a wind of that medium. And light should go a little faster in some directions than in others.
+
+In eighteen eighty-seven, Albert Michelson and Edward Morley looked for that wind. They split a beam of light in two, and sent the halves along arms at right angles. Then they brought the halves back together, into a pattern of light and dark bands. If one arm faced into the wind, its half would take a different time to come back. Turning the apparatus would swap which arm faced the wind, so the bands would slide.
+
+They barely moved. The slide was less than a twentieth of what they expected. Experiments since then, far more precise, all agree. Every observer measures the same speed of light, however they're moving.
+
+In nineteen oh five, Albert Einstein took this seriously. He added one more rule. The laws of physics are the same for every observer, moving at a steady speed. No experiment inside a smoothly moving train, can tell you whether the train is moving. These two rules are the whole of special relativity. Everything else in this chapter follows from them. Light's speed can't give, so something else has to. It turns out to be time and space.
+
+Moving clocks run slow.
+
+Picture the simplest possible clock. It's a pulse of light bouncing between two mirrors, one above the other. Each round trip is one tick.
+
+Now put that clock on a fast train. To you, riding along, the light goes straight up and down. But someone on the platform sees the mirrors move sideways, while the light is in flight. So for them, the light travels along a slanted zigzag. That path is longer. And light's speed is the same for both of you. A longer path at the same speed takes longer. So from the platform, each tick takes longer. The moving clock runs slow.
+
+And it's not just this clock. Every clock on the train runs slow by the same amount. Otherwise you could compare them on the train, and tell that you were moving. So time itself runs slow on the train, as seen from the platform.
+
+We call the slowdown factor gamma. Here's how to get it. Take the train's speed as a fraction of light's speed, and square it. Subtract that from one, and take the square root. Gamma is one divided by the result. As the speed gets close to light's, that root shrinks toward zero. So gamma grows without limit. At everyday speeds, gamma is so close to one that nobody notices. For a jet plane, it differs from one only in the thirteenth decimal place. At sixty percent of light speed, gamma is one and a quarter. At eighty-seven percent, it's two. At ninety-nine percent, it's seven point one.
+
+Here's the evidence. Cosmic rays hit the top of the atmosphere, and make particles called muons. Muons rain down at about ninety-nine point four percent of the speed of light. At that speed, gamma is nine point one. Muons decay at random, like radioactive atoms. At rest, half of them are gone after about one and a half millionths of a second.
+
+In nineteen sixty-three, David Frisch and James Smith counted muons on top of Mount Washington. That's about nineteen hundred metres up. Then they counted again at sea level. The trip down takes six point four millionths of a second. That's long enough for all but about one in twenty to decay. About five hundred and sixty per hour pass the top. Only about thirty of those should reach the bottom. They counted about four hundred and ten.
+
+The muons' clocks were running slow. Gamma is nine point one. So on the muons' own clocks, the trip takes only zero point seven millionths of a second. That's too short for most of them to decay. So moving clocks really do run slow, by the factor gamma.
+
+Moving lengths shrink.
+
+Now look at it from the muon's side. To the muon, its own clock is perfectly normal. So how does it reach the ground? To the muon, the mountain is what's moving. And moving lengths shrink, by the same factor gamma. The nineteen hundred metres of air shrinks to about two hundred and ten metres. That's short enough to cross in zero point seven millionths of a second.
+
+So the two views tell the story in different words. The ground says the muon's clock runs slow. The muon says the mountain is short. But they agree on what actually happens. Most muons reach the ground.
+
+Lengths shrink only along the direction of motion. A train going by is shorter, but not thinner.
+
+Same moment depends on who's watching.
+
+Put a lamp in the middle of a moving train carriage, and flash it. On the train, the light reaches the front and back walls at the same moment. That's because they're the same distance away. Now watch from the platform. The back wall is moving toward the flash, and the front wall is moving away. And light's speed is the same either way. So from the platform, the light hits the back wall first.
+
+So two events that happen at the same time for one observer, happen at different times for another.
+
+Slow clocks, short lengths, and disagreeing about what happens at the same time all come from one rule. We call it the Lorentz transformation. It converts one observer's times and positions into another's. At everyday speeds, it turns back into the familiar rule where speeds add.
+
+What everyone agrees on.
+
+So observers disagree about times and distances. But there's one combination of the two that everyone agrees on. Here's how to build it. Take the time between two events, and multiply by the speed of light. That turns it into a distance. Square it. Then subtract the square of the distance between the events. We call the result the spacetime interval.
+
+It's a bit like the length of a ruler. A ruler's length stays the same however you turn it. The interval is like that, but with a minus sign.
+
+The muon shows it. Take two events, the muon's birth at the top of the mountain and its arrival at sea level. The ground says they're about six point four millionths of a second apart, and nineteen hundred metres. The muon's own clock says zero point seven millionths of a second. And for the muon they're no distance apart, since the mountain moves and the muon stays put. Work out the interval both ways, and you get the same answer, about two hundred and ten metres.
+
+Here's a handy fact. For anything moving, the interval along its trip is the time on its own clock, times light's speed.
+
+Because of the minus sign, the interval can come out positive, zero or negative. A length can't do that. And the sign tells you how the two events can be connected.
+
+If it's positive, there's more than enough time for light to cover the distance. So something slower than light can make the trip too. And every observer agrees which event came first.
+
+If it's zero, there's exactly enough time for light. So only light can connect them.
+
+If it's negative, not even light has time to get from one to the other. So nothing can. Then the order of the two events can depend on who's watching, like the train flash. But since nothing can travel between them, neither can cause the other. So cause and effect stay safe.
+
+Picture it as a cone around an event, with time pointing up. We call it the light cone. Its edge is where light from the event can reach. Events inside the cone have a positive interval. Events on the edge have zero. And events outside have a negative one.
+
+Energy and mass.
+
+Relativity's most famous result says that mass is a form of energy. Anything with mass holds an energy even when it sits still. We call it the rest energy. That energy is its mass times the speed of light squared. That's E equals m c squared. The speed of light squared is huge, so a little mass is a lot of energy. One gram holds about nine times ten to the thirteen joules. That's roughly what a large power station makes in a whole day.
+
+Energy and momentum behave like time and distance. Observers moving differently disagree about an object's energy and its momentum. But they all agree on one combination, built just like the interval. Take the energy squared, and subtract the square of the momentum times the speed of light. What's left is always the rest energy, squared.
+
+At rest, the momentum is zero, and this gives back the rest energy. For something moving, the energy is gamma times the rest energy. At everyday speeds, that's the rest energy plus the familiar kinetic energy. Near the speed of light, gamma shoots up. So the energy grows without limit. That's why nothing with mass can ever reach the speed of light.
+
+Light has no mass. So its energy is just its momentum times the speed of light. That fits chapter two. A packet of light has an energy of Planck's constant times its frequency. Its momentum is Planck's constant over its wavelength. And frequency times wavelength is the speed of light. So the energy is exactly the momentum times the speed of light.
+
+The Schrodinger equation fails the test.
+
+Remember the rule Einstein added. The laws of physics must look the same to every observer, moving at a steady speed. That's a test you can put any equation through. Switch to a moving observer, and see whether the equation keeps its form.
+
+Maxwell's equations pass. They were the starting point, after all. Their light waves travel at the speed of light for everyone.
+
+The Schrodinger equation from chapter two fails. Look at its shape. In time, it takes one derivative. In space, it takes two in a row. That lopsidedness is the problem.
+
+Changing observer mixes time and space. It's like turning a map, which mixes north-south with east-west. Picture a rule that treats north-south differently from east-west. It changes when you turn the map. In the same way, an equation that treats time differently from space changes when you change observer.
+
+The lopsidedness comes from where the equation started. Chapter two had a trick for turning an energy rule into an equation. A time derivative stands for energy, and a space derivative stands for momentum. Chapter two used it on the low-speed energy, momentum squared over twice the mass. That has one power of energy, and two of momentum. So the equation gets one derivative in time, and two in space.
+
+That's fine at low speeds, which is where chapters two and three used it. But fast particles need an equation, built from the energy rule we found earlier. Energy squared, minus momentum times light's speed squared, gives the rest energy squared. That rule has two powers of energy and two of momentum, just like the interval. Run the same trick on that rule, and you get the Klein-Gordon equation. That's the subject of the next chapter.
+
+Notation for later chapters.
+
+Later chapters write relativity in a compact notation. It packs time and space into one object with four parts, called a four-vector. Energy and momentum make a four-vector too. The interval and the energy-momentum combination are both built the same way. The time part comes with a plus, and the space parts with minuses. The notation does that bookkeeping for you.
+
+Changing observer also ties electricity and magnetism together. A charge sitting still makes only an electric field. But to someone moving past, the charge is moving. A moving charge is a current, and currents make magnetic fields. So that observer sees a magnetic field too. Electric and magnetic fields are two parts of one object, and different observers split it differently. In the compact notation, Maxwell's four equations become two short ones.
+
+Where this leads.
+
+Here's where we've got to. Light's speed is the same for everyone. So moving clocks run slow, and moving lengths shrink. Observers disagree about time and distance, but they agree on the interval. Mass is energy. And the Schrodinger equation only works at low speeds.
+
+The next chapter is relativistic quantum mechanics. It builds the Klein-Gordon equation, and then finds out what goes wrong with it.
