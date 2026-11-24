@@ -113,7 +113,7 @@ In quantum mechanics, position and momentum become operators that don't commute 
 
 You could solve a differential equation for that, but there's a shortcut: copy the arrow trick. Turn the arrow into an operator, called $\hat a$, and its mirror image into a partner, $\hat a^\dagger$. Then multiply them, just as the classical energy was the arrow times its mirror image.
 
-With ordinary numbers, that product gives back exactly the energy. With operators, it gives the energy plus one small leftover, because position and momentum don't commute. The result is
+With ordinary numbers, that product gives back exactly the energy. With operators, it falls a little short of the energy, because position and momentum don't commute. The result is
 
 $$\text{energy} = \hbar\omega\left(\hat a^\dagger\hat a + \tfrac12\right).$$
 
@@ -186,7 +186,7 @@ Tumbling is quantized too, but its steps are about ten times smaller than a typi
 
 **Why the steps are so different.** Every motion has its own ladder, and the rule from section 5, step $= \hbar\omega$, says how far apart its rungs are: about $\hbar$ times how fast that motion naturally repeats. Fast motions come in big steps, slow ones in small steps.
 
-- **Vibrating is fast.** A spring rings at a rate set by its stiffness and its mass. The bond is very stiff and the hydrogen atom is very light, so the bond rings about $10^{14}$ times a second. Big steps.
+- **Vibrating is fast.** A spring rings at a rate set by its stiffness and its mass. The bond is very stiff and the hydrogen atom is very light, so the bond rings almost $9\times10^{13}$ times a second. Big steps.
 - **Tumbling is slow.** Nothing pulls the molecule back to a preferred angle, so it has no ringing rate of its own. Its slowest allowed spin is set by how hard the whole molecule is to turn, and that comes out about a hundred times slower than the vibration. Small steps.
 - **Flying around is slower still.** The only thing that repeats is bouncing from wall to wall of the container, which takes ages. Its steps are far too small to matter.
 
@@ -253,7 +253,7 @@ the smallest product chapter 2's uncertainty relation allows. The kinetic energy
 
 **A mix of rungs.** The spring doesn't have to sit on a single rung. Just as chapter 2's tilted spin was partly up and partly down, the spring's state can be partly on one rung and partly on another. It's still one spring in one state, with an amplitude on each of the two rungs. Measure its energy and you get one rung's energy or the other, with probabilities set by the amplitudes. The mix doesn't have to be equal: 50/50, 75/25, anything that adds up to 100%.
 
-**Two rungs mixed together swing.** Their phases turn at slightly different rates, and the difference makes the average position and momentum go round and round, at exactly the classical spring's rate $\omega$. The more even the mix, the bigger the swing. A 50/50 mix swings the most, and a mix that is almost all one rung barely moves. In fact any mixture of rungs does this. Because the rungs are evenly spaced, every pair of neighbouring rungs turns at the same rate, so the averages always follow chapter 1's equations exactly.
+**Two rungs mixed together swing.** Their phases turn at different rates, and the growing gap between them makes the average position and momentum go round and round, at exactly the classical spring's rate $\omega$. The more even the mix, the bigger the swing. A 50/50 mix swings the most, and a mix that is almost all one rung barely moves. In fact any mixture of rungs does this. Because the rungs are evenly spaced, the phase gap between any two neighbouring rungs grows at the same rate, so the averages always follow chapter 1's equations exactly.
 
 **What we see is a coherent state.** When you pull chapter 1's spring to 1 m and let go, quantum mechanics describes it as the bell curve from section 7, shifted over to where you let go. This state is called a **coherent state**. Its centre swings back and forth exactly along chapter 1's path, and its width stays at the bell's width forever. A swinging spring, a pendulum, anything you see oscillating at everyday scale is, in quantum terms, very close to a state like this.
 
