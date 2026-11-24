@@ -12,6 +12,20 @@ Render a static image:
 from manim import *
 import numpy as np
 
+_PANGO = Text
+
+
+class Text(_PANGO):
+    """Pango text set at eight times its size, then scaled down.
+
+    At small sizes Pango places glyphs on a coarse grid, which gives uneven
+    letter spacing; setting the text large keeps the font's own spacing.
+    """
+
+    def __init__(self, text, font_size=DEFAULT_FONT_SIZE, **kwargs):
+        super().__init__(text, font_size=font_size * 8, **kwargs)
+        self.scale(1 / 8)
+
 config.background_color = "#ffffff"  # diagrams sit on white in the docs
 
 GRAY = "#666666"

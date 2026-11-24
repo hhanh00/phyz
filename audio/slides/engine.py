@@ -25,6 +25,21 @@ PALE = "#eef3fa"
 FONT = "Helvetica Neue"
 MONO = "Menlo"
 TOP = 2.75  # upper edge of the content area, below the title
+_PANGO = Text
+_UPSCALE = 8
+
+
+class Text(_PANGO):
+    """Pango text set at eight times its size, then scaled down.
+
+    Pango places glyphs on a grid at the requested size, so small text comes out
+    with uneven letter spacing and lost word spaces. Setting it large and scaling
+    the result keeps the font's own spacing.
+    """
+
+    def __init__(self, text, font_size=DEFAULT_FONT_SIZE, **kwargs):
+        super().__init__(text, font_size=font_size * _UPSCALE, **kwargs)
+        self.scale(1 / _UPSCALE)
 
 
 def T(text, size=30, color=INK, bold=False, font=FONT):
