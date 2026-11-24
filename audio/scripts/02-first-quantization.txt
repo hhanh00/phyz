@@ -1,0 +1,145 @@
+Chapter two. First Quantization.
+
+The last chapter ended with two promises. The Hamiltonian, the energy written with position and momentum, would keep its job. It would still move the state forward in time. And the Poisson bracket of position with momentum would become a commutator. A commutator measures how much the order of two operations matters. This chapter keeps both promises. But first it has to change what a state is. A few experiments on atoms and electrons can't be described by any single position and momentum. So each new rule here comes right after the experiment that forces it.
+
+The chapter at a glance.
+
+Each classical idea from the last chapter gets a quantum version. Classically, the state at one instant is a point, a position and a momentum. In quantum mechanics, it's a list of complex numbers called amplitudes, one for each possible outcome. Classically, a measurable quantity is a number you compute from the point. Here it's an operator, a matrix whose eigenvalues are the possible results. Classically, a measurement gives the value exactly. Here it gives one of those results at random. The chance of each result is the squared size of its amplitude. Hamilton's equations moved the classical point. The Schrodinger equation moves the quantum state, and it's built from the same energy function. And the bracket of position with momentum was one. Its quantum version is a commutator, equal to i times a tiny constant called h-bar.
+
+Five experiments drive these changes. Magnets sorting atoms show that outcomes are random, so the theory predicts chances. Electrons through two slits show that those chances come from amplitudes that can cancel. Light knocking electrons out of a metal shows that light's energy comes in packets, set by its frequency. X-rays bouncing off electrons show that each packet also carries momentum, set by its wavelength. Louis de Broglie then proposed the same two rules for matter. And electrons bouncing off a crystal show that matter has de Broglie's wavelength. That last step fixes the momentum operator. De Broglie's other rule, for a particle's frequency, then gives the Schrodinger equation.
+
+Replacing classical quantities by operators like this is called first quantization. It's first because it quantizes particles. A later chapter applies the same rule to fields.
+
+Experiments that force a new state.
+
+Start with magnets. In nineteen twenty-two, Otto Stern and Walther Gerlach boiled silver atoms off a hot oven. The atoms flew as a beam between the poles of a magnet. Each silver atom is itself a tiny magnet, because of a property of its outer electron called spin. The magnet's field is stronger near one pole. So it pushes each atom up or down, depending on how the atom's own magnet is tilted. Then the atoms hit a glass plate.
+
+The atoms leave the oven tilted every which way. So you'd expect a smeared line on the plate, from top to bottom. Instead the plate shows two separate spots, one up and one down, and nothing in between. The tilt along the field takes only two values.
+
+Later experiments put magnets in a row. Here's an idealized version of what they show. Keep the atoms that went up, and send them through a second vertical magnet. They all go up again. So a measurement can leave a state that repeats. Now send those same atoms through a magnet turned sideways. Half go right and half go left, and there's no way to predict which atom goes where. Identical atoms give different results, so the theory can only predict chances. Finally, keep the atoms that went right, and send them through a vertical magnet again. Half go up and half go down. The sideways measurement erased the earlier up. Measuring changes the state.
+
+Now fire electrons at a barrier with two narrow slits, one electron at a time. Count where they land on a screen behind it. Each electron arrives as a single dot. Run it three ways, with only the first slit open, only the second, and both. Claus Jonsson first did this with electrons in nineteen sixty-one. In nineteen eighty-nine, Akira Tonomura's group watched the pattern build up one electron at a time. They used a device that acts like a pair of slits.
+
+First, what should we expect? Suppose each electron goes through one slit or the other. Then, with both slits open, its chance of reaching a spot is a sum. It's the chance through the first slit plus the chance through the second. Chances are never negative. So opening the second slit can only add electrons to a spot, never remove them.
+
+That's not what happens. With both slits open, the counts form stripes. At some spots they drop almost to zero, even though each slit alone sends plenty of electrons there.
+
+So the theory needs numbers that can cancel when added. Quantum mechanics gives each route an amplitude, a complex number. It adds the amplitudes for different routes to the same spot first. Then it squares the size of the sum to get the chance. Two amplitudes of opposite sign cancel, and that makes the dark stripes. This adding before squaring is called interference.
+
+So outcomes are random, and their chances come from amplitudes that can cancel. Next, let's build a state out of amplitudes, using the silver atom's spin.
+
+A state is a list of amplitudes.
+
+Put a silver atom in a vertical magnetic field. Its spin has two orientations along the field, up and down. A compass needle's energy depends on its angle to a field. In the same way, these two orientations have slightly different energies. A general state mixes the two. We describe it with two complex numbers, one for up and one for down. Those are its amplitudes.
+
+Measure it with a vertical magnet. The chance of up is the squared size of the up amplitude. The chance of down is the squared size of the down amplitude. This is called the Born rule. The two chances must add to one, so the squared sizes add to one too.
+
+Here's how to prepare a state. Keep the atoms that went up in a first magnet, tilted by some angle from vertical. Then measure them with a vertical magnet. Experiment finds that they come out up with a chance equal to the cosine squared of half the tilt. With no tilt, that's all of them. With a ninety degree tilt, it's half, as in the magnet rows. With the first magnet upside down, it's none. So we choose the amplitudes to be the cosine and the sine of half the tilt. A tilt to the left flips the sign of the down amplitude.
+
+Our running example is a tilt of sixty degrees to the right. Half of that is thirty degrees. So the up amplitude is the cosine of thirty degrees, about zero point eight six six. The down amplitude is the sine, one half. Square them, and you get seventy-five percent up and twenty-five percent down.
+
+Amplitudes can be complex, and their phase can matter even when the up and down chances stay the same. To see this, measure the same atoms with a sideways magnet. Each of its results has a state that gives it for certain. Those are the states a first magnet tilted ninety degrees would make. Right has both amplitudes equal, at one over root two. Left is the same, but with the down amplitude negative.
+
+To get the sideways chances, rewrite the state in terms of right and left. The right amplitude turns out to be the up and down amplitudes added, then divided by root two. The left amplitude is their difference, divided by root two. Squaring a sum gives the two squares, plus a cross term that mixes them. That cross term is where interference lives. For our atoms, both amplitudes are positive. So the cross term helps on the right and hurts on the left. The result is ninety-three point three percent right and six point seven percent left. That near-cancellation on the left is the same thing that makes the dark stripes. The cosine squared rule agrees. The first magnet sits at sixty degrees and the sideways one at ninety. So they're thirty degrees apart. Half of that is fifteen, and the cosine squared of fifteen degrees is ninety-three point three percent.
+
+Now a second experiment. Tilt the first magnet sixty degrees toward the front instead. Front is a quarter turn away from right. A vertical magnet still gives seventy-five percent up. So the down amplitude still has size one half. If amplitudes were real, it would be plus or minus one half. Then the sideways magnet would give ninety-three point three percent right, or six point seven. Instead, it gives fifty percent each way. The tilt rule agrees. Front and sideways are ninety degrees apart. Half of that is forty-five, and the cosine squared of forty-five degrees is one half.
+
+An even split needs the cross term to vanish. The cross term is twice the up amplitude times the real part of the down amplitude. The up amplitude is fixed and real. So the down amplitude must have no real part. So it's plus or minus i over two. That points at right angles to the up amplitude in the complex plane. Which sign goes with the front is a convention, and we pick plus i over two. The vertical magnet can't tell the right-tilted atoms from the front-tilted ones. The sideways magnet can. So the state is the list of amplitudes, phases included, not just a list of chances.
+
+There's a shortcut for finding an amplitude. Write down the two amplitudes of the state for right. Conjugate each one. Multiply each by the matching amplitude of our atoms' state, and add. We call this sum the overlap. You get about zero point nine six six. Square it, and you get the ninety-three point three percent from before. Its other name is the inner product. The conjugate makes the overlap of a state with itself equal to its squared length, which is one. In general, the chance of a result is the squared size of the overlap with that result's certain state.
+
+A particle on a line.
+
+An electron hitting the screen can land at any position. So its state needs one amplitude for every position. That list is a complex function called the wave function. At the screen, it's the sum of a part from each slit. The stripes are where the two parts cancel.
+
+The Born rule turns the wave function into a probability density, its squared size. The chance of finding the particle between two points is the area under the density between them. The whole area is one.
+
+Let's try one. Take a particle confined between zero and one metre. Its wave function, chosen for illustration, is a single hump of a sine wave. It's zero at the walls and largest in the middle. Split the interval into quarters. The two outer quarters each hold nine point one percent. The two inner quarters each hold forty point nine percent. Together that's all of it, so the particle is certainly somewhere inside.
+
+Measured quantities become operators.
+
+A measurable quantity now needs two things. One is its possible values, like up and down. The other is, for each value, the state that gives it with certainty. A matrix holds both. Choose a matrix whose eigenvectors are the certain states, and whose eigenvalues are the matching values. Eigenvectors are also called eigenstates. Applying the matrix to one of them only rescales it by its value. Such a matrix is called an operator. For a particle, the operator is an operation on wave functions instead.
+
+For the spin, the energy operator has up and down as its eigenstates, with the two energies as its values. The sideways magnet has right and left as its eigenstates. We give them the values plus one and minus one. Its operator swaps the two amplitudes. Swapping leaves right unchanged, so its value is plus one. It turns left into its negative, so its value is minus one.
+
+Two conditions make an operator fit for a measurement. Its values must be real, because they're measured numbers. And its certain states must have no overlap at all. A state certain to give one value can't give another. Matrices equal to their own conjugate transpose meet both conditions. We call them Hermitian, and a quantity they represent is called an observable. A Hermitian operator also has enough certain states to write any state as a sum of them.
+
+Repeat a measurement on many identical atoms, and the results have an average and a spread. Take our tilted atoms on the sideways magnet. They give plus one ninety-three point three percent of the time, and minus one the rest. The average is zero point eight six six. We call this average the expectation value. For the spread, the standard deviation, first average the squared results. Every result squared is one, so that average is one. Then square the average itself. Zero point eight six six squared is zero point seven five. Subtract, and take the square root. That gives one half. The average also comes straight from the operator. Apply the operator to the state, and take the overlap with the state. You get the same zero point eight six six.
+
+With ordinary numbers, the order of multiplying doesn't matter. With operators it can. The commutator measures how much. Call the two operators A and B. Apply B and then A. Then subtract the result of applying A and then B. That difference is the commutator of A with B. Take the energy and the sideways operators. The energy operator scales up by one energy and down by the other. Swap first, and each amplitude gets the other one's energy. So the two orders agree only if the energies match. Since they differ, the commutator isn't zero.
+
+If two operators shared a full set of certain states, both orders would agree on each of them. Then the commutator would be zero. Operators that don't commute can't share such a set. So some state with a certain value of one must be spread in the other. The magnets in a row showed this. Atoms certain to go right gave up and down half and half.
+
+Matter waves.
+
+To find a particle's momentum operator, we need three more experiments. The first is about light. Shine light on a clean metal, and it knocks electrons out. If light were a smooth wave, brighter light would shake electrons harder and eject faster ones. And dim light of any colour would eventually eject some. Neither happens. Brighter light ejects more electrons, but not faster ones. Below a certain frequency, no electrons come out at all, however bright the light. Above it, the fastest electrons' energy grows in step with the frequency.
+
+Einstein explained this in nineteen oh five. Light arrives in packets, each with an energy equal to a constant times the frequency. We call it Planck's constant. Max Planck had introduced it in nineteen hundred. Each packet frees at most one electron. The fastest electrons leave with the packet's energy, minus what it took to free them. So their energy against frequency is a straight line, and its slope is Planck's constant. Robert Millikan measured that line in nineteen sixteen. His slope came within one percent of Planck's value. For sodium, electrons start coming out with green light.
+
+Light also carries momentum. Electromagnetism gives light a momentum equal to its energy divided by the speed of light. That's why light pushes on what it hits. For one packet, that momentum works out to Planck's constant over the wavelength.
+
+In nineteen twenty-three, Arthur Compton bounced X-rays off the electrons in a block of carbon. A smooth wave would shake each electron at the wave's own frequency. The electron would re-radiate the same wavelength. Instead, the scattered X-rays came out with a longer wavelength. The shift grew with the angle, by exactly what a collision with a packet of that momentum predicts.
+
+In nineteen twenty-four, Louis de Broglie proposed that matter works the same way. A particle with some momentum behaves as a wave. Its wavelength is Planck's constant over the momentum. And a particle with some energy oscillates at a frequency equal to its energy over Planck's constant.
+
+The third experiment tests that wavelength. In nineteen twenty-seven, Clinton Davisson and Lester Germer aimed electrons straight down at a nickel crystal. All the electrons had the same energy. They counted how many bounced back at each angle. Particles bouncing off a rough surface would spread over a smooth range of angles. Instead, the count showed a clear peak at one angle.
+
+That's what a wave does when it bounces off evenly spaced rows of atoms. Waves bouncing off neighbouring rows travel different distances on the way out. The extra distance depends on the row spacing and the exit angle. When it equals one wavelength, the waves reinforce. At most other angles they cancel. So the peak angle, with the known spacing, measures the wavelength.
+
+The numbers match. The electrons had fifty-four electron volts of energy, a small energy unit. De Broglie's rule predicts a wavelength of zero point one six seven nanometres. The peak at fifty degrees, with the known spacing of the rows, gives zero point one six five. So matter really has a wavelength set by its momentum. De Broglie's other rule gives it a frequency set by its energy.
+
+Position and momentum operators.
+
+Start with position. Its certain states are spikes at a single point. So the position operator multiplies the wave function by the position. On a spike at some point, that's the same as multiplying by that point, which is its value.
+
+Now momentum. A particle with a definite momentum has a wave function shaped like a wave, with de Broglie's wavelength. A real wave, like a cosine, has crests and troughs in its density. That would make the particle prefer some places over others. But nothing about a free particle favours one place. So the wave is complex instead. Its size is one everywhere, and its phase turns steadily along the line. It turns at a rate equal to the momentum divided by a constant called h-bar. H-bar is Planck's constant divided by two pi. A full turn of phase is two pi, so the wave repeats once every de Broglie wavelength. H-bar itself is about one point zero five five times ten to the minus thirty-four joule seconds.
+
+The momentum operator has to give back this same wave, multiplied by its momentum. And one operator has to do that for every momentum. Taking the slope does it. The slope of this wave is the wave itself, times i, times the momentum over h-bar. So multiply the slope by minus i h-bar, and you get exactly the momentum times the wave. That's the momentum operator. Any wave function is a sum of such waves. The operator acts on a sum term by term, so it works on every wave function.
+
+Now the commutator. Try both orders on a test function, position squared. Applying the momentum operator first, then multiplying by position, gives minus two i h-bar times position squared. Multiplying by position first, then applying the momentum operator, gives minus three i h-bar times position squared. Subtract the second result from the first. The difference is i h-bar times the function we started with. The same happens for every function. So the commutator of position with momentum is i h-bar.
+
+Compare this with the last chapter. There, the bracket of position with momentum was one, for every system. Every other bracket followed from it. Here the commutator is that same one, multiplied by i h-bar. That suggests a rule for every quantity. Replace each Poisson bracket by a commutator, divided by i h-bar. A commutator of two observables comes out as i times an observable. So dividing by i leaves an observable, with real values, like a bracket's. And h-bar fixes the units. The commutator has units of position times momentum, and so does h-bar. The bracket has no units.
+
+The energy moves the state.
+
+Any state can be written as a sum of states of definite energy. So to move a state, we only need to know how each of those changes in time. De Broglie's second rule says a state of definite energy oscillates at a frequency set by its energy. So its phase turns steadily in time, at a rate of its energy over h-bar. A state of definite momentum turns its phase along the line. A state of definite energy turns its phase in time.
+
+A free particle with a definite momentum also has a definite energy. That energy is its momentum squared over twice the mass. So its wave turns in both space and time. We'll call it the free wave. Which way the phase turns in time is our choice at first. Once the phase along the line is fixed, the two must turn opposite ways. Follow a point where the phase stays fixed. With opposite turns, that point moves the way the momentum points. With matching turns, it would move backwards. A state of definite energy changes only by this overall phase. So its density and every chance stay fixed. These are called stationary states.
+
+Next, the energy operator. In the last chapter, the Hamiltonian was the momentum squared over twice the mass, plus the potential energy. Quantum mechanics keeps that function, and puts in the momentum operator. Applying it twice takes the slope twice, and multiplies by minus h-bar squared.
+
+Now we want an equation for the state. Like Hamilton's, it should involve one rate of change in time, so the state now fixes its future. And it should be linear, so sums of solutions are solutions. Take the free wave's rate of change in time, and multiply by i h-bar. That gives its energy times the wave. The energy operator gives its momentum squared over twice the mass, times the wave. Those agree, because that's exactly the free particle's energy. The equation that sets them equal is the Schrodinger equation. It says i h-bar times the rate of change of the state equals the energy operator acting on it. With a potential, we keep the same equation, and include the potential in the energy operator. That step is an assumption, which experiment has confirmed ever since.
+
+The equation has three properties. First, it's linear. So you can split a state into states of definite energy, move each one, and add them back. Second, it keeps the total chance at one. Each part only has its phase turned, and turning a phase never changes an amplitude's size. So no amplitude grows or shrinks. An evolution that keeps every length and overlap like this is called unitary. Third, averages follow the last chapter's bracket rule. The average of a quantity changes at a rate set by its commutator with the energy, divided by i h-bar. For position and momentum, it gives Hamilton's equations for the averages. The only difference is that the force is averaged over the spread-out state.
+
+Let's watch the tilted spin in time. Leave it in the vertical field. Its up part turns its phase at a rate set by one energy. Its down part turns at a rate set by the other. Turning both by the same phase changes no chance. So only the difference matters, and the down amplitude turns relative to the up one.
+
+Follow the down amplitude through one full turn relative to up. One full turn takes Planck's constant divided by the gap between the two energies. At the start, it's seventy-five percent up and ninety-three point three percent right. A quarter turn later, it's still seventy-five percent up, but fifty percent right. Half a turn in, still seventy-five percent up, but only six point seven percent right. At three quarters, it's fifty percent right again. Then it's back where it started.
+
+The up and down chances never change, because they depend only on the sizes of the amplitudes. The sideways chances swing back and forth, because they depend on the relative phase. Physically, the spin's tilt swings around the field, like a spinning top. At three quarters of a turn it points toward the front. That's exactly the front-tilted state from earlier. That turning is also why amplitudes must be complex. A real amplitude of fixed size can only flip its sign. A complex one can keep its size and still turn.
+
+The Hamiltonian now moves a list of amplitudes, instead of a point.
+
+Position and momentum can't both be sharp.
+
+Call a quantity sharp when the state is certain to give one value. Suppose a state had a sharp position and a sharp momentum at once. Then both orders of the two operators would give the same thing, the product of the two values. Their commutator would give zero. But it gives i h-bar times the state, which isn't zero. So no such state exists.
+
+The best a state can do is keep both spreads small. The commutator sets how small. The Heisenberg uncertainty relation says the position spread times the momentum spread is at least h-bar over two. Narrowing one spread forces the other to widen. A similar bound, set by their commutator, holds for any two observables.
+
+The bound is tiny in everyday units, which is why the last chapter never needed it. Hold an electron within an atom, with a position spread of a tenth of a nanometre. Its velocity spread is then at least about five hundred eighty kilometres per second. So an electron can't be pictured as a little ball on a path. Now take the one kilogram ball from the last chapter, located to a micrometre. Its velocity spread is at least five point three times ten to the minus twenty-nine metres per second. That's far below anything we could measure. So the ball's state stays narrow as it moves. Across such a narrow state, the force barely changes. So the averaged force equals the force at its center, and the averages obey the last chapter's equations.
+
+A bell-shaped wave function shows the trade-off. Split it into momentum waves. Squeezing it in position needs a wider range of momentum waves. For that shape, the product of the two spreads is exactly h-bar over two, the smallest allowed.
+
+What a measurement does.
+
+The rules so far give the chance of each outcome. One more rule says what happens afterwards. The magnets in a row already showed it. After an ideal measurement, the state becomes the certain state of the result found. So repeating the measurement at once gives the same result. This update is called collapse.
+
+Take our tilted atoms to a sideways magnet. Ninety-three point three percent of them go right. Those atoms are now in the state for right, an even mix of up and down. So a vertical magnet now gives fifty percent up, not the seventy-five percent they had before. The sideways measurement changed the state. Unlike the Schrodinger equation, collapse loses information. From the state for right alone, you can't recover what the atom was before.
+
+These rules are enough to calculate every prediction in this book. Physicists who agree on them still disagree about what they mean. The Copenhagen view treats the chances as fundamental. It's tempting to think the chances hide some detail that fixes each outcome. A theory with such details is called a hidden-variable theory. Bell found limits that any local hidden-variable theory must obey. Quantum mechanics predicts results that break those limits. Experiments found them broken. So experiments rule out hidden variables that act only locally, given Bell's assumptions about locality and independence. They don't rule out every hidden-variable theory. Theories where the details act at a distance are still debated. Aspect, Clauser and Zeilinger won the Nobel Prize in twenty twenty-two for those experiments.
+
+Where these tools come back.
+
+The next chapter, the harmonic oscillator, takes the spring from the last chapter. It finds the spring's stationary states from the commutator alone. Their energies are evenly spaced. For that spring, the spacing is two point one times ten to the minus thirty-four joules. Compared with its total energy of two joules, that's far too small to notice. That's why the spring looks classical. The rule that turns a bracket into a commutator comes back for fields. There's one pair of operators at every point of space. And the unitary time evolution comes back in quantum field theory.
+
+So the Hamiltonian keeps its job, and position and momentum no longer commute. Next comes the harmonic oscillator, the spring from the last chapter, made quantum.

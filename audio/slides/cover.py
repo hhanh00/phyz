@@ -12,7 +12,7 @@ sys.path.insert(0, str(HERE))
 
 from manim import *  # noqa: E402,F403
 
-from engine import FONT, MONO, T  # noqa: E402
+from engine import FONT, MONO, T, Text  # noqa: E402
 
 NAVY = "#152238"
 SKY = "#60a5fa"
@@ -58,12 +58,43 @@ def thrown_paths():
     return art
 
 
+def two_slit_stripes():
+    """Chapter 2: two slits open give stripes, dipping below what one slit alone delivers."""
+    import numpy as np
+    w, h = 6.4, 3.4
+    A = lambda y: np.exp(-(y + 0.35) ** 2 / 2.6)
+    B = lambda y: np.exp(-(y - 0.35) ** 2 / 2.6)
+    both = lambda y: A(y) + B(y) + 2 * np.sqrt(A(y) * B(y)) * np.cos(4.2 * y)
+    def pt(y, v):
+        return [y / 3 * w / 2, v / 4.0 * h - h / 2, 0]
+    ys = np.linspace(-3, 3, 240)
+    art = VGroup(Line(pt(-3.1, 0), pt(3.1, 0), color=SOFT, stroke_width=3))
+    summed = VMobject(stroke_color=SOFT, stroke_width=4)
+    summed.set_points_smoothly([pt(y, A(y) + B(y)) for y in ys])
+    one = VMobject(stroke_color=MINT, stroke_width=4)
+    one.set_points_smoothly([pt(y, A(y)) for y in ys])
+    curve = VMobject(stroke_color=SKY, stroke_width=7)
+    curve.set_points_smoothly([pt(y, both(y)) for y in ys])
+    dark = -np.pi / 4.2
+    art.add(DashedVMobject(summed, num_dashes=50), one, curve, Dot(pt(dark, both(dark)), color=AMBER, radius=0.14))
+    art.add(Text("both slits open", font=FONT, color=SKY, font_size=30, weight=BOLD).next_to(pt(0, 4.0), UP, buff=0.15),
+            Text("one slit", font=FONT, color=MINT, font_size=26, weight=BOLD).move_to(pt(-2.7, 1.0)),
+            Text("fewer here than with one slit", font=FONT, color=AMBER, font_size=28, weight=BOLD).move_to([0, -h / 2 - 0.7, 0]))
+    return art
+
+
 COVERS = {
     "01-classical-mechanics": {
         "kicker": "PHYZ  ·  CHAPTER 1",
         "title": ["Classical", "Mechanics"],
         "sub": "One motion, described three ways,\nready for quantum theory",
         "art": thrown_paths,
+    },
+    "02-first-quantization": {
+        "kicker": "PHYZ  ·  CHAPTER 2",
+        "title": ["First", "Quantization"],
+        "sub": "From magnets and two slits\nto the Schrodinger equation",
+        "art": two_slit_stripes,
     },
     # "STEM": {"kicker": "PHYZ  ·  CHAPTER N", "title": ["Line", "Line"], "sub": "One line\nor two", "art": a_function},
 }
