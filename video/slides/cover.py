@@ -83,6 +83,26 @@ def two_slit_stripes():
     return art
 
 
+def energy_ladder():
+    """Chapter 3: the spring's energy well with its evenly spaced rungs, the lowest one above zero."""
+    import numpy as np
+    w, h = 6.0, 4.2
+    top = 4.6
+    def pt(x, e):
+        return [x / 2.2 * w / 2, e / top * h - h / 2, 0]
+    well = VMobject(stroke_color=SKY, stroke_width=7)
+    well.set_points_smoothly([pt(x, x * x) for x in np.linspace(-2.15, 2.15, 80)])
+    art = VGroup(Line(pt(-2.3, 0), pt(2.3, 0), color=SOFT, stroke_width=3), well)
+    for n in range(4):
+        e = n + 0.5
+        x = np.sqrt(e)
+        art.add(Line(pt(-x, e), pt(x, e), color=AMBER, stroke_width=6))
+    art.add(Text("evenly spaced rungs", font=FONT, color=AMBER, font_size=30, weight=BOLD).next_to(pt(0, 4.4), UP, buff=0.15),
+            Text("never zero", font=FONT, color=MINT, font_size=28, weight=BOLD).move_to([0, -h / 2 - 0.6, 0]),
+            Arrow([0, -h / 2 - 0.35, 0], pt(0, 0.5), buff=0.05, color=MINT, stroke_width=4, max_tip_length_to_length_ratio=0.25))
+    return art
+
+
 COVERS = {
     "01-classical-mechanics": {
         "kicker": "PHYZ  ·  CHAPTER 1",
@@ -95,6 +115,12 @@ COVERS = {
         "title": ["First", "Quantization"],
         "sub": "From magnets and two slits\nto the Schrodinger equation",
         "art": two_slit_stripes,
+    },
+    "03-harmonic-oscillator": {
+        "kicker": "PHYZ  ·  CHAPTER 3",
+        "title": ["Harmonic", "Oscillator"],
+        "sub": "The quantum spring\nand its ladder of energies",
+        "art": energy_ladder,
     },
     # "STEM": {"kicker": "PHYZ  ·  CHAPTER N", "title": ["Line", "Line"], "sub": "One line\nor two", "art": a_function},
 }

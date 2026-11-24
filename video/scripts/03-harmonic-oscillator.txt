@@ -1,0 +1,107 @@
+Chapter three. The Harmonic Oscillator.
+
+The last chapter gave us the rules of quantum mechanics. Now we run them on one system, from start to finish. That system is the spring from chapter one.
+
+The spring is worth the effort for two reasons. Almost anything that wobbles a little around a resting spot behaves like a spring. A pendulum does, a molecule does, and so does a guitar string. And later, every wave of a quantum field will turn out to be a spring too. So once we understand the quantum spring, we understand a lot.
+
+Here's where we end up. A classical spring can hold any amount of energy. A quantum spring can only hold certain amounts, evenly spaced, like the rungs of a ladder. A classical spring can sit still with zero energy. A quantum spring never can, so it always jiggles a little. And yet, on average, it swings exactly like the classical spring.
+
+Why springs are everywhere.
+
+Zoom in on the bottom of any smooth valley, and it looks like a parabola. A parabola is exactly the shape of a spring's energy, which grows with the square of the stretch. So any small wobble around a resting point is a spring wobble.
+
+The pendulum is a good check. Its energy curve and the spring's parabola agree to within a third of a percent. That holds for swings up to about eleven degrees. The atoms in a molecule also sit at the bottom of an energy valley. So the bond between them is a tiny, very stiff spring.
+
+A puzzle about heat.
+
+Take hydrogen chloride. It's one hydrogen atom stuck to one chlorine atom, so it's a tiny spring. Shine infrared light through the gas, and it soaks up light most strongly at one frequency. That frequency is about eighty-six and a half trillion vibrations per second. It's how fast the bond vibrates.
+
+Now heat the gas. Classical physics has a simple rule for this. Every way a molecule can hold energy takes an equal share of the heat. Hydrogen chloride can hold energy by flying around, by tumbling, and by vibrating. So the rule predicts how much heat it takes to warm the gas. The measurement comes out lower, by exactly the vibration's share. The bond refuses to take any heat, as if it were frozen.
+
+Classical physics can't explain that. The quantum spring can, and we'll get there once we've solved it.
+
+The spring as a spinning arrow.
+
+Chapter one's spring has a mass and a stiffness, and it swings back and forth. Its energy has two parts. One part grows with the square of its position. The other grows with the square of its momentum.
+
+Here's a neat trick. Two squares added together give the squared length of one arrow in the complex plane. Position runs across, and momentum runs up. So we can pack the position and the momentum into a single arrow. Then the motion becomes very simple. The arrow keeps its length, and that length sets the energy. And the arrow spins round at a steady rate, the spring's frequency. The whole spring is just one spinning arrow.
+
+This matters for one reason. The squared length of an arrow is a product, the arrow times its mirror image. Next, we turn that product into quantum operators, and that's what unlocks the quantum spring.
+
+Turning the arrow into a tool.
+
+In quantum mechanics, position and momentum become operators, and the order you apply them in matters. The spring's energy keeps the same form. We want to know which energies it allows.
+
+You could solve a differential equation for that. But there's a shortcut, which is to copy the arrow trick. The arrow is built from position and momentum, so build it from their operators instead. Call the result a. Turn its mirror image into a partner operator, called a-dagger. Then multiply the two, just as the classical energy was the arrow times its mirror image.
+
+With ordinary numbers, that product gives back exactly the energy. With operators, it falls a little short of the energy, because position and momentum don't commute. The result is short. Take a-dagger times a, add one half, and multiply by h-bar omega. That's the energy.
+
+So it's the classical answer with an extra half of h-bar omega on the end. That extra piece is pure quantum mechanics, and it will matter.
+
+One more rule drops out. Swap the order of the two operators, and their product changes by exactly one. That single rule is all we need next.
+
+Climbing the ladder.
+
+Call a-dagger times a the number operator. To get the energy, take its value, add a half, and multiply by h-bar omega. So the question is which values the number operator can have.
+
+Using only the swapping rule, three things follow. First, a steps down and a-dagger steps up. Applied to a state, a lowers the number by exactly one, and a-dagger raises it by one. Each step changes the energy by h-bar omega. That's why they're called ladder operators.
+
+Second, the ladder has a bottom. You can't step down forever, because the number can't go negative. So stepping down has to stop exactly at zero. Start at two and a half, and you'd step to minus a half, which isn't allowed. That means the numbers are whole numbers, zero, one, two, and so on.
+
+Third, the ladder has no top. You can always step up.
+
+So each allowed energy is a whole number plus a half, times h-bar omega. The rungs are evenly spaced, each h-bar omega apart. And the lowest rung isn't at zero. It sits at half of h-bar omega. One step of h-bar omega is called a quantum, and the whole number counts how many quanta the spring holds.
+
+How big the steps are.
+
+Now we can solve the heat puzzle. For hydrogen chloride, one step on the ladder is big. It's about fourteen times the energy molecules trade when they bump into each other at room temperature. The bond can only take a whole step, never part of one. And bumps that big are rare, about one in a million. So the bond almost never gets kicked up a rung. It sits on the bottom rung and takes no heat. That's the missing share.
+
+Tumbling comes in steps too. But its steps are about ten times smaller than a typical bump. So bumps move molecules up and down the tumbling ladder all the time. That's why tumbling takes its full share of heat, just as classical physics says.
+
+Here's why the steps are so different. Every motion has its own ladder. Its rungs are spaced by about h-bar times how fast that motion naturally repeats. Fast motions come in big steps, and slow ones come in small steps.
+
+Vibrating is fast. A spring rings at a rate set by its stiffness and its mass. The bond is very stiff, and the hydrogen atom is very light. So the bond rings almost ninety trillion times a second, and its steps are big.
+
+Tumbling is slow. Nothing pulls the molecule back to a preferred angle, so it has no ringing rate of its own. Its slowest spin is set by how hard the whole molecule is to turn. That comes out about a hundred times slower than the vibration, so its steps are small.
+
+Flying around is slower still. The only thing that repeats is bouncing from wall to wall of the container, and that takes ages. Its steps are far too small to matter.
+
+Room temperature happens to sit between the vibration's steps and the tumbling steps. That's why only the vibration freezes. Cool the gas far enough, and tumbling freezes too. Heat it to thousands of degrees, and the vibration thaws.
+
+Chapter one's spring is the opposite case. Its steps are tiny compared with its energy. Adding or removing one quantum changes its energy by one part in ten to the thirty-four. Nobody could ever measure that. So its energy looks perfectly smooth, and that's why chapter one never noticed the ladder.
+
+The lowest rung.
+
+A classical spring can sit perfectly still at the bottom, with zero energy. A quantum spring can't. Sitting still at the bottom would mean its position and its momentum are both exactly zero. And the last chapter showed that quantum mechanics never lets both be sharp at once. So even on its lowest rung, the spring keeps a little energy, half of h-bar omega. We call that the zero-point energy.
+
+Plot where the spring on its lowest rung is likely to be, and you get a bell curve. The spring's position is spread out a little around the bottom, and so is its momentum. The two spreads are as small together as the uncertainty rule allows. And the energy splits evenly, half from moving and half from stretching.
+
+For chapter one's spring, the spread is about five times ten to the minus eighteen metres. That's a few hundred times smaller than an atomic nucleus. For a molecule's bond, it's a few percent of the bond's length. So even near absolute zero, a bond's length is never perfectly sharp.
+
+How the quantum spring moves.
+
+One rung on its own doesn't move. Its state only turns its phase, and nothing you could measure changes.
+
+But the spring doesn't have to sit on a single rung. The last chapter's tilted spin was partly up and partly down. In the same way, the spring's state can be partly on one rung and partly on another. It's still one spring in one state, with an amplitude on each rung. Measure its energy, and you get one rung's energy or the other, with chances set by the amplitudes. And the mix doesn't have to be equal. It can be fifty-fifty, seventy-five to twenty-five, anything that adds up to a hundred percent.
+
+A mix of two rungs swings. Their phases turn at different rates. The gap between them grows steadily, and that makes the average position and momentum go round and round. They go round at exactly the classical spring's rate. The more even the mix, the bigger the swing. A fifty-fifty mix swings the most, and a mix that's almost all one rung barely moves.
+
+Any mixture of rungs does this. The rungs are evenly spaced, so the phase gap between any two neighbouring rungs grows at the same rate. That means the averages always follow chapter one's equations exactly.
+
+What we see is a coherent state.
+
+Pull chapter one's spring out to one metre and let go. Quantum mechanics describes it as the bell curve of the lowest rung, shifted over to where you let go. We call this a coherent state. In rung terms, it's a mix of a huge number of rungs, so it swings. Its centre swings back and forth exactly along chapter one's path. And its width stays at the bell's width forever. A swinging spring, a pendulum, anything you see oscillating at everyday scale, is very close to a state like this.
+
+Here's why it looks classical. The width is fixed by the spring's mass and frequency, and it doesn't grow when you pull harder. The swing is whatever you give it. So what you see depends on how the two compare.
+
+For chapter one's spring, the width is about five times ten to the minus eighteen metres. The swing is one metre. So the swing is two times ten to the seventeen widths. No instrument could ever see the width. All you see is the centre, a point following chapter one's path. That's the classical spring.
+
+For a molecule's bond, the width is about six percent of the bond's length. A vibration spans only a few widths. So the blur can't be ignored, and the bond never looks like a classical spring. You see rungs and jumps instead.
+
+Same rules, same kind of state. At our scale, the quantum blur is just far too small to notice.
+
+Where this comes back.
+
+This spring keeps coming back. In the chapter on field quantization, every wave of a field is a spring with its own ladder. One quantum on a wave's ladder is one particle, moving with that wave's momentum. Every wave also has its own zero-point energy. There are infinitely many waves, so the total is infinite, and it gets subtracted off. And the quanta of the light field are photons, the packets of light from the last chapter.
+
+But first, fields have to agree with relativity. So the next chapter is special relativity.
