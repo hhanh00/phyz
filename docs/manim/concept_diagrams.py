@@ -318,7 +318,7 @@ class OscillatorApproximation(Scene):
                 'The constant shifts the energy reference; the curvature sets the restoring force')
         ax = Axes(x_range=[-2.1,2.1,1], y_range=[0,5,1], x_length=6.8, y_length=4.7,
                   tips=False, axis_config={'color':MUTED,'include_ticks':False}).move_to([-3.85,-0.5,0])
-        self.add(ax, ax.plot(lambda u:u*u+0.18*u**3+0.15*u**4,x_range=[-1.8,1.6],color=BLUE),
+        self.add(ax, ax.plot(lambda u:u*u-0.18*u**3+0.15*u**4,x_range=[-1.6,1.8],color=BLUE),
                  ax.plot(lambda u:u*u,x_range=[-2,2],color=ORANGE),
                  Dot(ax.c2p(0,0),color=INK,radius=0.08),
                  label('displacement from equilibrium',-3.85,-3.3,23,MUTED),
@@ -326,9 +326,11 @@ class OscillatorApproximation(Scene):
         # Highlight the small-displacement region without claiming a global fit.
         self.add(DashedLine(ax.c2p(-0.65,0),ax.c2p(-0.65,1.25),color=TEAL),
                  DashedLine(ax.c2p(0.65,0),ax.c2p(0.65,1.25),color=TEAL),
-                 label('Local agreement',-3.85,-1.2,22,TEAL).add_background_rectangle(color=WHITE,opacity=1,buff=0.06),
-                 label('Example smooth potential',3.7,1.9,27,BLUE),
-                 label('Quadratic approximation',3.7,1.25,27,ORANGE),
+                 label('local agreement',*ax.c2p(-1.45,0.3)[:2],22,TEAL),
+                 Line([1.0,1.9,0],[1.6,1.9,0],color=BLUE,stroke_width=5),
+                 label('Example smooth potential',3.75,1.9,27,BLUE),
+                 Line([1.0,1.25,0],[1.6,1.25,0],color=ORANGE,stroke_width=5),
+                 label('Quadratic approximation',3.75,1.25,27,ORANGE),
                  box(3.7,-0.35,6.4,1.7,ORANGE),
                  math(r'V(x)-V(x_0)\approx\tfrac12 k(x-x_0)^2',3.7,-0.1,31,ORANGE,width=6),
                  math(r'k=V^{\prime\prime}(x_0)>0',3.7,-0.8,31),

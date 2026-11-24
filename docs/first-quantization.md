@@ -469,7 +469,7 @@ It is tempting to read the probabilities as ignorance of hidden details that do 
 
 | Tool from this chapter | Where it returns |
 | --- | --- |
-| The Schrödinger equation, stationary states and $[\hat x,\hat p] = i\hbar$ | [The Harmonic Oscillator](./harmonic-oscillator.md) finds the stationary states of chapter 1's spring from the commutator alone. Their energies are evenly spaced by $\hbar\omega$, which for chapter 1's spring, with $\omega = 2\ \mathrm{s^{-1}}$, is $2.1\times10^{-34}$ J against a total energy of 2 J. That is why the spring looks classical |
+| The Schrödinger equation, stationary states and $[\hat x,\hat p] = i\hbar$ | [The Harmonic Oscillator](./harmonic-oscillator.md) finds the energies of chapter 1's spring from the commutator, with one extra fact from the wave function. Their energies are evenly spaced by $\hbar\omega$, which for chapter 1's spring, with $\omega = 2\ \mathrm{s^{-1}}$, is $2.1\times10^{-34}$ J against a total energy of 2 J. That is why the spring looks classical |
 | Bracket to commutator | [Field Quantization](./field-quantization.md) applies the same replacement to a field, with one pair of operators at every point of space |
 | Unitary evolution and Hermitian generators | [Symmetries](./symmetries.md) builds symmetry groups from Hermitian generators, [Action and Lagrangians](./qft-action.md) links symmetries to conservation laws, and [Quantum Field Theory](./qft.md) builds its time evolution from $e^{-i\hat Ht/\hbar}$ |
 

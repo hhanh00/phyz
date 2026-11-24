@@ -532,3 +532,73 @@ class LoopMomentumFreedom(Scene):
                  math(r'\ell',2.75,.8,32,ORANGE),math(r'P-\ell',2.75,-1.8,33,TEAL),math('P',-.4,-1.8,30),math('P',6,-1.8,30),
                  math(r'P=(P-\ell)+\ell',-3.6,-2.85,35),math(r'\int\frac{d^4\ell}{(2\pi)^4}',3.6,-2.95,39),
                  label('Conservation holds for every choice of ℓ. Integrate over that remaining four-momentum.',0,-4,25,MUTED,width=14.5))
+
+
+class HclExperiments(Scene):
+    def construct(self):
+        heading(self,'Heating hydrogen chloride gas','Heat needed per kelvin, in J/(mol K), at fixed volume, near room temperature')
+        base=-2.4; scale=0.55; x1,x2=-1.6,2.2
+        y=base
+        for name,val,c in [('moving',1.5,TEAL),('rotating',1.0,PURPLE),('vibrating',1.0,ORANGE)]:
+            h=val*scale*2
+            self.add(Rectangle(width=1.8,height=h,stroke_width=0,fill_color=c,fill_opacity=0.85).move_to([x1,y+h/2,0]),
+                     label(name,x1-2.0,y+h/2,22,c))
+            y+=h
+        hm=2.5*scale*2
+        self.add(Rectangle(width=1.8,height=hm,stroke_width=0,fill_color=BLUE,fill_opacity=0.85).move_to([x2,base+hm/2,0]),
+                 Line([x1-1.3,base,0],[x2+1.3,base,0],color=MUTED),
+                 math(r'\tfrac72 R = 29.1',x1,y+0.35,26),math(r'\tfrac52 R = 20.8',x2,base+hm+0.35,26,BLUE),
+                 label('classical prediction',x1,base-0.4,22,INK),label('measured',x2,base-0.4,22,BLUE),
+                 label('The measured value matches the prediction with the vibration left out.',0,-3.55,22,MUTED,width=12))
+
+class CoherentState(Scene):
+    def construct(self):
+        heading(self,'A coherent state swings without spreading','The lowest state shifted to one side keeps its width while its average goes round')
+        # Left: position density at four times.
+        swing=2.2; w=0.45
+        for i,(lab,c) in enumerate([(r'\omega t=0',np.cos(0)),(r'\omega t=\pi/2',np.cos(np.pi/2)),(r'\omega t=\pi',np.cos(np.pi)),(r'\omega t=3\pi/2',np.cos(3*np.pi/2))]):
+            yb=1.55-1.2*i
+            ax=Axes(x_range=[-3.6,3.6,1],y_range=[0,1,1],x_length=6.0,y_length=0.95,tips=False,
+                    axis_config={'color':MUTED,'include_ticks':False}).move_to([-3.6,yb+0.35,0])
+            mu=swing*c
+            self.add(ax,ax.plot(lambda u,mu=mu:np.exp(-(u-mu)**2/(2*w*w)),x_range=[-3.6,3.6],color=BLUE,stroke_width=3),
+                     math(lab,-7.25,yb+0.25,21))
+        self.add(label('position density',-3.6,-3.1,20,MUTED))
+        # Right: the averages go round, each with the same small spread.
+        cx,cy,R=3.9,-0.3,2.0
+        self.add(Circle(radius=R,color=MUTED,stroke_width=2).move_to([cx,cy,0]),
+                 math('X',cx+R+0.9,cy,26),math('P',cx,cy+R+0.75,26))
+        for th in [0,np.pi/2,np.pi,3*np.pi/2]:
+            p=[cx+R*np.cos(-th),cy+R*np.sin(-th),0]
+            self.add(Circle(radius=0.41,color=BLUE,fill_color=BLUE,fill_opacity=0.25,stroke_width=2).move_to(p))
+        self.add(Arrow([cx+R*np.cos(0.5),cy+R*np.sin(0.5),0],[cx+R*np.cos(0.15),cy+R*np.sin(0.15),0],buff=0,color=ORANGE,
+                       stroke_width=4,max_tip_length_to_length_ratio=0.5),
+                 label('averages in scaled coordinates; circles mark the spreads',cx,cy-R-0.6,19,MUTED,width=6.2))
+        self.add(math(r'\text{Swing drawn about 5 times the spread. For chapter 1\textquoteright s spring it is }2\times10^{17}\text{ times.}',0,-3.65,22,MUTED,width=14.5))
+
+
+
+class StepsVsThermal(Scene):
+    def construct(self):
+        heading(self,'One step of energy against the thermal energy','HCl at 300 K, energies above the bottom rung in units of the thermal energy')
+        top=15.0; y0=-2.6; H=5.6
+        Y=lambda e:y0+H*e/top
+        self.add(Line([-6.2,y0,0],[6.2,y0,0],color=MUTED))
+        # vibration ladder
+        for e in (0.0,13.8):
+            self.add(Line([-5.4,Y(e),0],[-2.6,Y(e),0],color=ORANGE,stroke_width=5))
+        self.add(label('vibration',-4.0,y0-0.4,24,ORANGE),
+                 math(r'13.8\,k_BT',-1.6,Y(13.8),24,ORANGE))
+        # thermal bar
+        self.add(Rectangle(width=0.9,height=Y(1)-y0,stroke_width=0,fill_color=BLUE,fill_opacity=0.8).move_to([0,(Y(1)+y0)/2,0]),
+                 math(r'k_BT',0,Y(1)+0.35,24,BLUE),label('thermal\nenergy',0,y0-0.55,22,BLUE))
+        # rotation ladder, E_J = 0.05 J(J+1) k_BT
+        J=0
+        while 0.05*J*(J+1)<=top:
+            e=0.05*J*(J+1)
+            self.add(Line([2.6,Y(e),0],[5.4,Y(e),0],color=PURPLE,stroke_width=3))
+            J+=1
+        self.add(label('rotation',4.0,y0-0.4,24,PURPLE),
+                 math(r'\text{first step}',6.55,Y(0.1)+1.65,20,PURPLE),math(r'0.1\,k_BT',6.55,Y(0.1)+1.25,20,PURPLE),
+                 Arrow([6.4,Y(0.1)+1.0,0],[5.5,Y(0.1),0],buff=0,color=PURPLE,stroke_width=3,max_tip_length_to_length_ratio=0.18))
+        self.add(math(r'\text{A collision trades about one }k_BT\text{. It almost never reaches the first vibration rung, but often moves a molecule up the rotation rungs.}',0,-3.6,22,MUTED,width=14.5))
