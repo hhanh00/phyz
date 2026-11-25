@@ -1,0 +1,163 @@
+Chapter two, part B. First Quantization.
+
+The last chapter gave the rules of quantum mechanics in words. A state is a list of amplitudes. A measurement collapses it, and the Born rule gives the chances. This chapter turns those words into maths we can calculate with.
+
+It also keeps two promises from chapter one. The Hamiltonian keeps its job of moving the state forward in time. And the Poisson bracket of position with momentum gets a quantum version.
+
+Here's where we'll end up. Each measurable quantity becomes a thing called an operator. The bracket becomes something called a commutator. And the state moves by the Schrodinger equation, built from the same Hamiltonian. Turning classical quantities into operators like this is called first quantization. We call it first because it comes first. It deals with the motion of particles. A later chapter does the same to fields.
+
+Measured quantities become operators.
+
+Start with the vertical magnet from the last chapter. It has two results, up and down. Each result has a state that gives it for certain. The up state always gives up, and the down state always gives down. To calculate with results, we give each one a number. Up gets plus one, and down gets minus one. These numbers are our choice of units. The magnet measures the amount of spin along it. We're counting that amount in units, where up is plus one and down is minus one. Other units would give other numbers for the same magnet. The up and down states don't depend on that choice.
+
+Now pack those numbers and states into one rule. It takes a state and returns a state. On the up state, it multiplies by plus one, so it leaves that state alone. On the down state, it multiplies by minus one, so it flips the sign. On a mix of up and down, it treats each part separately. The up part keeps its amplitude, and the down part gets a minus sign. So this one rule holds everything about the vertical magnet. It holds the numbers its results give, and the state that gives each one.
+
+A rule like this is called an operator, and every measurable quantity has one. The states it only multiplies are called its eigenstates. The numbers it multiplies them by are called its eigenvalues. Eigen is German for own. So these are the quantity's own states and its own numbers.
+
+An eigenvalue is a result you could read off a measuring device. So it's always an ordinary real number. Only the amplitudes are complex. This is one of the places, where the maths has to touch what we actually observe.
+
+We'll call this first one the vertical operator. The sideways magnet has its own operator too. Its eigenstates are right, with eigenvalue plus one, and left, with eigenvalue minus one.
+
+One warning before we go on. Applying an operator is a calculation on paper, not a measurement. It doesn't pick a result, and it doesn't collapse the state. A measurement still works the way the last chapter said. Operators are for calculating. They'll give us the quantum version of the bracket, and averages straight from the amplitudes.
+
+Order matters.
+
+With ordinary numbers, the order of multiplying doesn't matter. Two times three is three times two. With operators, the order can matter. Apply the vertical operator and then the sideways one. You can get a different state than with the sideways one first.
+
+The commutator measures that difference. Apply the two operators in one order, then in the other order, and subtract the results. When the commutator is zero, we say the two operators commute.
+
+Here's when that happens. Suppose two operators share all their eigenstates. On each shared state, both just multiply by numbers. Numbers don't care about order, so the commutator is zero.
+
+The magnets in a row show the other case. An atom that's certainly up, splits half and half in a sideways magnet. So the up state is not an eigenstate of the sideways operator. The two operators don't share eigenstates, and the order does matter.
+
+Let's check that on the up state. Remember that up is an equal mix of right and left. The sideways operator flips the sign of the left part. That leaves right minus left. The last chapter showed that right minus left is the down state. So the sideways operator turns up into down. Now try both orders. Take vertical first, then sideways. Up stays up, then becomes down. Now take sideways first, then vertical. Up becomes down, then minus down. They're the same two steps, and the results differ by a sign.
+
+That sign needs a comment. Measured on its own, minus down gives the same chances as down. But its phase is different, half a turn away. And a phase counts as soon as one state is added to another, or subtracted from it. That minus sign comes back much later, with objects called spinors.
+
+Here it shows at once, because the commutator subtracts the two results. Sideways first gave minus down. Vertical first gave down. Subtract the second from the first. That leaves minus two times down. That's not zero. So the vertical and sideways operators don't commute.
+
+Position and momentum operators.
+
+So far we've used the spin. Now let's build the operators for chapter one's two quantities, position and momentum.
+
+Position comes first. A position measurement can give any position along the line. An eigenvalue is what a measurement can show. So the position operator's eigenvalues must be the positions themselves. Its eigenstates are the states certain to be at one point. Each one is a wave function squeezed onto that point. So the operator has to multiply each squeezed state by its point's position. Here's an operator that does it. At each point, it multiplies the wave function by that point's own position.
+
+Now momentum. You might expect it to work the same way, and just multiply by the momentum. That would be true if we listed the state's amplitudes by momentum. But the wave function lists them by position. That's our choice, and it's the list the last chapter built. An operator acts by plain multiplying on one kind of list only. That's a list of its own eigenstates. On any other list, it has to do something else. The spin showed this. On the up and down list, the vertical operator multiplies. But the sideways operator turned up into down. On that list, it swaps the two amplitudes. Had we chosen the momentum list, the roles would swap. Momentum would multiply, and position would have to do something else.
+
+So the question is, what the momentum operator does to the position list. The last chapter already found the states of definite momentum, and they're waves. The arrow keeps its length and turns steadily along the line. It makes one full turn every wavelength, which is Planck's constant divided by the momentum.
+
+As a formula, such a wave is an exponential, and you can see it on screen. We write an arrow of length one as an exponential, with i times its angle in the exponent. For our wave, that angle grows with the position. So the exponent holds the momentum, times the position. It also holds a constant called h-bar. That's Planck's constant divided by two pi, because a full turn is an angle of two pi. It's tiny, about ten to the minus thirty-four joule-seconds.
+
+Here's what we're looking for. This wave has to be an eigenstate of the momentum operator, and its eigenvalue has to be its momentum. So we want an operation, that turns the wave into the momentum times the wave. In other words, we need to pull the momentum down out of the exponent.
+
+Calculus has an operation that does that, and it's taking the slope. The slope says how fast the wave function changes, as you move along the line. The slope of an exponential is the same exponential, times the number in front of the position. Here that number is i, times the momentum, over h-bar. So the slope of the wave is that number times the wave.
+
+That's almost what we want. The momentum has come down, with an unwanted factor of i over h-bar. To correct for it, multiply by minus i h-bar. Minus i times i is one, and the h-bars cancel. What's left is the momentum times the wave. So the momentum operator is minus i h-bar, times the slope.
+
+One caution about these waves. They go on forever, so their total chance can't add up to one. No actual particle is in such a state. It's a limit that actual states can come close to, like the state squeezed onto one point. Actual states are sums of such waves, and we'll use that soon.
+
+The bracket becomes a commutator.
+
+Now ask whether the order matters for position and momentum. Apply both orders to any wave function. In the first order, momentum goes first. Take the slope of the wave function, then multiply by the position. In the second order, position goes first. Multiply by the position, then take the slope.
+
+The product rule from calculus handles the second order. The slope of the position times the wave function has two pieces. One is the position times the slope of the wave function. The other is the wave function itself. So the second order has one extra term, the wave function itself. It comes with the slope's factor of minus i h-bar.
+
+The commutator is the first order minus the second. So that extra term gets subtracted, and the difference is plus i h-bar, times the wave function. In short, the commutator of position with momentum is i h-bar.
+
+Here a commutator equals a number. That means applying it to any state, just multiplies the state by i h-bar. It's never zero, so position and momentum never commute.
+
+Now compare chapter one. It ended on one relation. The Poisson bracket of position with momentum equals one. The two look alike, and the match goes further. Take position squared. Its bracket with momentum is twice the position. Its commutator with momentum is twice the position operator, times i h-bar. The quantum answer is the classical one, times i h-bar. That pattern holds for the quantities this chapter needs.
+
+So here's the quantum version of the bracket that chapter one promised. The commutator, divided by i h-bar, plays the role of the Poisson bracket. Physicists often run this argument the other way. They start from the bracket, replace it by a commutator, and get the operators from that. A later chapter on fields does exactly this.
+
+Averages and spreads.
+
+A single measurement gives a random result, so one result says little. But repeat the measurement on many atoms in the same state. The results form a pattern, and the theory predicts that pattern exactly. Two numbers describe it, the average and the spread. They're where quantum mechanics becomes predictable again.
+
+Let's take an example. Tilt a first magnet sixty degrees to the right, and keep the atoms that go up along it. These are leaning atoms, like the ones in the last chapter. Now send many of them through a sideways magnet. They go right ninety-three point three percent of the time. They go left six point seven percent of the time.
+
+Right has eigenvalue plus one, and left has eigenvalue minus one. For the average, multiply each eigenvalue by its chance, and add. That comes to about zero point eight seven. We call it the expectation value. It isn't a result any single atom gives. It's the average over many atoms.
+
+The spread measures how far the results land from the average. Take each result's distance from the average. Square the distances, average the squares, and take the square root. Here the spread comes to zero point five.
+
+The operator gives both numbers directly. You don't have to find its eigenstates and eigenvalues first. Here's the recipe for the average. Apply the operator to the state. Then compare the result with the original state. Multiply their amplitudes pair by pair, and add. We call that number the overlap.
+
+For our tilted atoms, that works straight from the up and down amplitudes. There's no need to rewrite the state as right and left. It gives the same average as before, about zero point eight seven. The spread comes the same way. From here on, the spread in position means the spread of many position results. The same goes for the spread in momentum.
+
+Position and momentum can't both be exact.
+
+Go back to the single slit from the last chapter, and make the slit narrower. You might expect a narrower hump on the screen. Instead the electrons spread out wider.
+
+Read the slit and the hump as spreads. The slit fixes where the electron is across it. So the slit's width is the spread in position. An electron that lands far from the centre was moving sideways. So the hump's width shows the spread in sideways momentum. A narrower slit means a smaller spread in position. And the wider hump means a larger spread in momentum.
+
+Sound does the same. A long, steady note has one pitch. A short click has no single pitch. It's a mix of many. A sound squeezed into a short time needs many pitches. In the same way, a particle squeezed into a small region needs many wavelengths.
+
+Here's how that works for wave functions. A wave function with one wavelength is a state of one momentum. Its arrow has the same length everywhere, so the particle is equally likely to be anywhere. To make a narrow bump, you have to add many of those momentum waves, with different wavelengths. They reinforce near the bump, and cancel everywhere else. The narrower the bump, the wider the range of momenta it needs.
+
+So the two spreads can't both be small. Multiply the spread in position by the spread in momentum. That product has a lower limit, and the limit is half of h-bar. This is the Heisenberg uncertainty relation.
+
+The commutator is the reason. Suppose a state were exact in both position and momentum, with zero spread in each. On that state, both operators would only multiply by numbers. Then the two orders would agree, and the commutator would give zero. But we found that it multiplies every state by i h-bar. So no such state exists. The same commutator also sets the limit at half of h-bar, though we won't show that here.
+
+That limit is tiny in everyday units. Confine an electron to the size of an atom. Its speed is then uncertain, by about five hundred and eighty kilometres per second. You can't picture it as a little ball on a path. Now confine a one kilogram ball to a micrometre. Its speed is uncertain, by only about five times ten to the minus twenty-nine metres per second. That's far below anything measurable, so chapter one never noticed the limit.
+
+The energy operator.
+
+The last chapter said that between measurements, the state changes in a fully predictable way. To find how, we start from the energy.
+
+In chapter one, the Hamiltonian was the energy. It was the kinetic energy plus the potential energy, and it moved the state forward. The kinetic energy was the momentum squared, divided by twice the mass. To use the Hamiltonian now, we need its operator. Here's the rule. Take a quantity built from position and momentum. Build its operator the same way, from the position and momentum operators.
+
+Here's what supports the rule. Take a state of definite momentum. There, the momentum operator just multiplies by the momentum. So applying it twice multiplies by the momentum squared. The same goes for a state squeezed onto one point. There, the potential energy operator multiplies by the potential energy at that point. So whenever the state has a definite position or a definite momentum, the operator gives chapter one's answer. Any state is a mix of such states, and an operator acts on each piece of the mix. So the kinetic part is right for every state. The potential part is right for every state too. What we haven't checked is adding them. That part is a guess. We're assuming the energy operator is just the two parts added together, as in chapter one. No state has both a definite position and a definite momentum. So we can't check that directly. We test it by what it predicts, later in this chapter and in the next. There's no deeper derivation. It's the simplest operator that agrees with chapter one, wherever we can compare the two. And its predictions match experiment.
+
+So here's the energy operator, written out on screen. It has two parts, like chapter one's energy. The kinetic part comes from applying the momentum operator twice. The potential part multiplies the wave function, at each point, by the potential energy there.
+
+We need it for two things. Its eigenstates are the states of definite energy, and we'll see next what they do as time passes. And it's the operator that drives the Schrodinger equation.
+
+A definite energy turns the phase.
+
+Here's what a state of definite energy does as time passes. It turns its phase steadily. Momentum does the same thing along the line. A state of definite momentum turns its phase, a certain number of times per metre. That number is the momentum divided by Planck's constant. A state of definite energy turns its phase, a certain number of times per second. That number is the energy divided by Planck's constant.
+
+The rule for energy comes from light. Light arrives in packets. Each packet's energy is Planck's constant times the light's frequency, the number of turns per second. De Broglie applied the same rule to matter. It's an assumption, and experiment has confirmed it ever since.
+
+Now look at what the turning does. In a state of definite energy, every amplitude turns together. Every arrow turns by the same angle. So no length changes, and no angle between arrows changes. That means no chance changes. The state looks the same at every moment, and we call it a stationary state.
+
+A state that moves.
+
+A state of one energy stands still. Mix two energies, and the state does change.
+
+Take our tilted atoms again, leaning sixty degrees to the right. Leave them in an even vertical magnetic field. An even field only twists the atoms. It doesn't sort them or measure them. Their chances are seventy-five percent for up and twenty-five percent for down.
+
+Like a compass needle, an atom has slightly different energies pointing up and pointing down. The energy depends only on the up or down reading. So the energy operator has the same eigenstates as the vertical operator. Up and down are the states of definite energy here.
+
+Here's what happens next. The state is a mix of up and down. Each part turns its phase at its own energy's rate, and the two rates differ slightly. So the angle between the two arrows grows steadily. In the last chapter, that angle set which way the atom leans. So the lean swings round the field, like a spinning top. It passes right, back, left and front in turn.
+
+A sideways magnet's chance of right rises and falls with it. It swings between ninety-three percent and seven percent. Meanwhile the up and down chances never change, because they only see the lengths of the arrows.
+
+The Schrodinger equation.
+
+Any state is a mix of states of definite energy. Each part turns its phase at its own rate. As the spinning atom showed, that decides how the whole state moves. Written as one equation, it's the Schrodinger equation.
+
+Here's what it says. Take the rate of change of the wave function in time, and multiply by i h-bar. That equals the energy operator applied to the wave function.
+
+Let's check it on a state of definite energy. Both sides come out as the energy times the state. The right side does, because the state is an eigenstate of the energy operator. The left side does because of the steady turning. When a phase turns steadily in time, the rate of change is the state itself, times a multiple of i. It's just like the slope of a momentum wave. Multiplying by i h-bar leaves the energy times the state. Every state is a mix of these states, so every state obeys the equation.
+
+The equation tells us three things. First, the state fixes its future. Like Hamilton's equations, it involves only the first rate of change in time, with no acceleration. Know the state now, and you know it at every later time.
+
+Second, the total chance stays one. Each energy part only turns its phase, so the state's amplitude for each energy keeps its length. So their squares still add up to one.
+
+Third, energy and momentum look alike. A rate of change in time, times i h-bar, stands for the energy. A slope along the line, times minus i h-bar, stands for the momentum.
+
+Averages follow chapter one.
+
+Chapter one's bracket had one more job. It told us how any quantity changes in time. The rate of change was the quantity's bracket with the Hamiltonian.
+
+The Schrodinger equation gives the quantum version, for averages. Before a measurement, a quantity has no single result, only chances. So what changes smoothly is its average. Here's the rule. Take the commutator of the quantity with the energy operator. Take its average, and divide by i h-bar. That's the rate of change of the quantity's average. It's chapter one's rule again, with the same swap as before. The bracket becomes a commutator divided by i h-bar.
+
+For position and momentum, it gives Hamilton's equations for the averages. The average position changes at the average momentum divided by the mass. The average momentum changes at the average force. That's the force averaged over where the particle might be. For a narrow state like a ball's, it's the force at the average position.
+
+This is why chapter one works for a ball. Its spreads can be far too small to notice. So the average is all we ever see, and the averages follow chapter one's equations.
+
+Where this goes next.
+
+Let's sum up. A measurable quantity becomes an operator, with its own eigenstates and eigenvalues. Position and momentum don't commute, and their commutator is i h-bar. That's why they can't both be exact. And the energy operator moves the state forward, through the Schrodinger equation.
+
+The next chapter, the Harmonic Oscillator, applies these rules to chapter one's spring. It finds the spring's energies from the commutator alone, and they come in evenly spaced steps. Further on, a chapter on fields applies the same swap, from bracket to commutator, to a field. And the change that carries a state forward in time, keeps the total chance at one. A change like that is called unitary, and it returns in later chapters too.

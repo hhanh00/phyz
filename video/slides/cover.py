@@ -144,7 +144,24 @@ def adding_arrows():
     return art
 
 
+def bracket_to_commutator():
+    """Chapter 2b: chapter 1's Poisson bracket of position with momentum becomes a commutator."""
+    art = VGroup()
+    top = MathTex(r"\{q,\,p\} = 1", color=SOFT).scale(2.2).move_to([0, 2.0, 0])
+    down = Arrow([0, 1.2, 0], [0, 0.1, 0], buff=0, color=AMBER, stroke_width=8, max_tip_length_to_length_ratio=0.3)
+    mid = MathTex(r"[\hat x,\,\hat p] = i\hbar", color=WHITE).scale(2.8).move_to([0, -0.9, 0])
+    art.add(Text("chapter 1: the bracket", font=FONT, color=SOFT, font_size=26).next_to(top, UP, buff=0.3), top, down, mid,
+            Text("the commutator", font=FONT, color=AMBER, font_size=30, weight=BOLD).next_to(mid, DOWN, buff=0.4))
+    return art
+
+
 COVERS = {
+    "02b-first-quantization": {
+        "kicker": "PHYZ  ·  CHAPTER 2B",
+        "title": ["First", "Quantization"],
+        "sub": "Operators, the commutator\nand the Schrodinger equation",
+        "art": bracket_to_commutator,
+    },
     "02a-quantum-ideas": {
         "kicker": "PHYZ  ·  CHAPTER 2A",
         "title": ["Quantum", "Ideas"],

@@ -22,6 +22,8 @@ Turning classical quantities into operators like this is called **first quantiza
 
 Start with the vertical magnet from chapter 2a. It has two results, up and down, and each has a state that gives it for certain: $\lvert\text{up}\rangle$ always gives up, and $\lvert\text{down}\rangle$ always gives down. To calculate with results, give each one a number: $+1$ for up and $-1$ for down.
 
+These two numbers are our choice of units. The magnet measures the amount of spin along it, and we're counting that amount in units where up is $+1$ and down is $-1$. Other units would give other numbers for the same magnet. The states $\lvert\text{up}\rangle$ and $\lvert\text{down}\rangle$ don't depend on that choice.
+
 Now build a rule, call it $\hat Z$, that takes a state and returns a state. The hat marks it as a rule acting on states, not a plain number:
 
 $$\hat Z\lvert\text{up}\rangle = +1\,\lvert\text{up}\rangle, \qquad \hat Z\lvert\text{down}\rangle = -1\,\lvert\text{down}\rangle.$$
@@ -42,6 +44,8 @@ A rule like this is called an **operator**. Every measurable quantity has one:
 - the numbers it multiplies them by are called **eigenvalues** (see the [Math Refresher](appendix-math-linear-algebra.md#_4-eigenvalues-and-eigenvectors)).
 
 *Eigen* is German for "own": a quantity's own states and its own numbers.
+
+An eigenvalue is a result you could read off a measuring device, so it's always an ordinary real number. Only the amplitudes are complex. This is one of the places where the maths has to touch what we actually observe.
 
 The sideways magnet has its own operator, $\hat S$. Its eigenstates are right, with eigenvalue $+1$, and left, with eigenvalue $-1$.
 
@@ -123,26 +127,31 @@ which isn't zero.
 
 Sections 1 and 2 used the spin. Now build the operators for chapter 1's two quantities, position and momentum.
 
-**Position.** The state that is certain to be at one point is a wave function squeezed onto that point. An operator multiplies its eigenstates by their eigenvalues, so the position operator $\hat x$ has to multiply that state by the point's position. Multiplying the wave function at each point by that point's own position $x$ does it.
+**Position.** A position measurement can give any position along the line. An eigenvalue is what a measurement can show, so the eigenvalues of the position operator $\hat x$ must be the positions themselves. Its eigenstates are the states certain to be at one point, which are wave functions squeezed onto that point. So $\hat x$ has to multiply each squeezed state by its point's position. Multiplying the wave function at each point by that point's own position $x$ does it.
 
-**Momentum.** Chapter 2a already found the states of definite momentum: waves whose phase turns steadily. Here they are in full:
+**Momentum.** You might expect momentum to work the same way: multiply by the momentum. That would be true if we listed the state's amplitudes by momentum. But the wave function lists them by position. That's our choice, and it's the list chapter 2a built. An operator only "just multiplies" on a list of its own eigenstates. On any other list it has to do something else, the way the sideways operator $\hat S$ swaps the up and down amplitudes rather than multiplying them. Had we chosen the momentum list, the roles would swap: momentum would multiply, and position would have to do something else.
 
-- the arrow has the same length everywhere;
-- its phase turns steadily along the line;
-- it makes one full turn every $h/p$.
+So the question is what the momentum operator does to the position list. Chapter 2a already found the states of definite momentum: waves whose arrow keeps its length and turns steadily, one full turn every $h/p$.
 
-The momentum operator $\hat p$ has to multiply each of these waves by its own momentum $p$. One operation does that: taking the slope.
+**The wave as a formula.** An arrow of length one at an angle $\theta$ is written $e^{i\theta}$ (see [Euler's formula](appendix-math-complex.md#_2-the-complex-plane-and-euler-s-formula)). For this wave the angle grows steadily with $x$: a full turn, $2\pi$, every $h/p$ metres, so $\theta = 2\pi p x/h$. The combination $h/2\pi$ comes up so often that it has its own symbol, $\hbar$, read "h-bar". It's about $10^{-34}$ joule-seconds. With it, the wave of momentum $p$ is
 
-The **slope** of a wave function is how fast its arrow changes as you move along the line, written $d/dx$ (see [derivatives](appendix-math-calculus.md#_1-derivatives)). For an arrow that turns steadily, each small step adds a piece at right angles to the arrow. So the slope is the arrow itself, turned a quarter turn and multiplied by how fast it turns:
+$$\psi_p(x) = e^{ipx/\hbar}.$$
 
-- a quarter turn is multiplying by $i$ (see [the complex plane](appendix-math-complex.md#_2-the-complex-plane-and-euler-s-formula));
-- the wave makes one full turn, an angle of $2\pi$, every $h/p$ metres, so it turns by $2\pi p/h$ per metre.
+**What we're looking for.** This wave has to be an eigenstate of $\hat p$ with eigenvalue $p$. So we want an operation that turns the wave into $p$ times itself:
 
-The combination $h/2\pi$ comes up so often that it has its own symbol, $\hbar$, read "h-bar". It's about $10^{-34}$ joule-seconds. With it, the wave turns by an angle of $p/\hbar$ per metre (that's $p/h$ full turns per metre), and
+$$\hat p\,\psi_p = p\,e^{ipx/\hbar}.$$
 
-$$\text{slope of the wave} = i\,\frac{p}{\hbar} \times \text{the wave}.$$
+In other words, we need to pull the $p$ down out of the exponent.
 
-Multiply both sides by $-i\hbar$. Since $-i \times i = 1$, the right side becomes $p$ times the wave, which is what we wanted. So
+**The slope does it.** Recall from calculus that taking the slope of an exponential pulls down the number in front of $x$: the slope of $e^{ax}$ is $a\,e^{ax}$ (see [derivatives](appendix-math-calculus.md#_1-derivatives)). Here that number is $ip/\hbar$, so, writing the slope as $d/dx$,
+
+$$\frac{d\psi_p}{dx} = \frac{ip}{\hbar}\,e^{ipx/\hbar}.$$
+
+That's almost it. The $p$ has come down, with an unwanted factor $i/\hbar$. Multiply by $-i\hbar$ to correct for it, since $-i\hbar \times i/\hbar = 1$:
+
+$$-i\hbar\,\frac{d\psi_p}{dx} = p\,e^{ipx/\hbar}.$$
+
+So the momentum operator is
 
 $$\hat p = -i\hbar\,\frac{d}{dx}.$$
 
@@ -151,11 +160,9 @@ These waves go on forever, so their total chance can't add up to one. No actual 
 <details>
 <summary>The calculation: the momentum waves</summary>
 
-A wave whose phase turns by $p/\hbar$ per metre is $\psi_p(x) = e^{ipx/\hbar}$ (see [Euler's formula](appendix-math-complex.md#_2-the-complex-plane-and-euler-s-formula)). Its slope is $\psi_p' = (ip/\hbar)\,\psi_p$, so
+**The numbers.** The phase of $\psi_p$ is $px/\hbar$. It grows by $2\pi$ over a distance $2\pi\hbar/p = h/p$, the wavelength. Numerically, $\hbar = h/2\pi = 1.055\times10^{-34}$ J s.
 
-$$\hat p\,\psi_p = -i\hbar \times \frac{ip}{\hbar}\,\psi_p = p\,\psi_p.$$
-
-Its phase $px/\hbar$ grows by $2\pi$ over a distance $2\pi\hbar/p = h/p$. Numerically, $\hbar = h/2\pi = 1.055\times10^{-34}$ J s.
+**The same result as a picture.** The slope of a wave function is how fast its arrow changes as you move along the line. For an arrow that turns steadily, each small step adds a piece at right angles to the arrow. So the slope is the arrow itself, turned a quarter turn, which is multiplying by $i$, and multiplied by how fast it turns, an angle of $p/\hbar$ per metre. That's $(ip/\hbar)\,\psi_p$ again.
 
 **Representations.** In the position representation used here, $\hat x$ multiplies by $x$ and $\hat p$ acts as $-i\hbar\,d/dx$. In the momentum representation, $\hat p$ multiplies by $p$ and $\hat x$ acts as $i\hbar\,d/dp$. A [Fourier transform](appendix-math-complex.md#_4-waves-and-the-fourier-transform) relates the two.
 
@@ -297,22 +304,22 @@ Chapter 2a said that between measurements, the state changes in a fully predicta
 
 **From quantities to operators.** In chapter 1, the Hamiltonian $H = p^2/2m + V(x)$ was the energy, kinetic plus potential, and it moved the state forward. To use it, we need its operator. The rule is: a quantity built from position and momentum becomes an operator built the same way from $\hat x$ and $\hat p$.
 
-Here's why that's a natural guess. Take a state of definite momentum $p$. There, $\hat p$ just multiplies by $p$, so applying it twice multiplies by $p^2$. Likewise, on a state squeezed onto one point $x$, the potential energy operator multiplies by $V(x)$, the potential energy at that point. So whenever the state has a definite position or a definite momentum, the operator gives exactly chapter 1's answer. What it does on other states is the guess, and it's tested by what it predicts: section 11, and the next chapter's spring.
+Here's what supports the rule. Take a state of definite momentum $p$. There, $\hat p$ just multiplies by $p$, so applying it twice multiplies by $p^2$. Likewise, on a state squeezed onto one point $x$, the potential energy operator multiplies by $V(x)$, the potential energy at that point. So whenever the state has a definite position or a definite momentum, the operator gives exactly chapter 1's answer. That fixes each part on every state, because any state is a mix of such states and the operator acts on each part of the mix. What remains a guess is that the energy operator is just the two parts added together, as in chapter 1. No state has both a definite position and a definite momentum, so we can't check that directly. We test it by what it predicts: section 11's averages, and the next chapter's spring. There's no deeper derivation. This is the simplest operator that agrees with chapter 1 wherever the two can be compared, and its predictions match experiment.
 
-**The energy operator.** Here's what $\hat H$ does to a wave function $\psi$:
+**The energy operator, written out.** Here's what $\hat H$ does to a wave function $\psi$:
 
 - **Kinetic energy.** $\hat p^2$ is $\hat p\hat p$: by section 2, a product of operators means applying them one after the other. So apply $\hat p$ twice:
 
   $$\frac{\hat p\hat p}{2m}\,\psi = \frac{1}{2m}\,(-i\hbar)\frac{d}{dx}\Big((-i\hbar)\frac{d\psi}{dx}\Big) = -\frac{\hbar^2}{2m}\,\frac{d^2\psi}{dx^2},$$
 
-  since $(-i\hbar)^2 = -\hbar^2$. The slope of the slope measures how sharply the wave function bends. A shorter wavelength bends more sharply, so it carries more kinetic energy.
+  since $(-i\hbar)^2 = -\hbar^2$.
 - **Potential energy.** $V(\hat x)$ multiplies the wave function at each point by the potential energy there, the way $\hat x$ multiplies by $x$.
 
 Together,
 
 $$\hat H\,\psi = -\frac{\hbar^2}{2m}\,\frac{d^2\psi}{dx^2} + V(x)\,\psi.$$
 
-The eigenstates of $\hat H$ are the **states of definite energy**.
+We need this operator for two things. Its eigenstates are the **states of definite energy**, and section 8 shows what they do as time passes. And it's the operator that drives the Schrödinger equation in section 10.
 
 **The energy becomes an operator, built from $\hat x$ and $\hat p$ the way chapter 1's Hamiltonian is built from position and momentum.**
 
@@ -391,6 +398,29 @@ Turning at $E/h$ turns per second, the phase after a time $t$ has turned by $2\p
 The $\partial$ marks a rate of change in one variable, here time, with the other, position, held fixed.
 
 The minus sign in $e^{-iEt/\hbar}$ makes waves move the way their momentum points. A crest of $e^{i(px - Et)/\hbar}$, where $px - Et$ is fixed, moves at $x = (E/p)\,t + \text{const}$, toward $+x$ when $p > 0$. That's the speed of the crests, not of the particle. Section 11 gives the particle's.
+
+</details>
+
+<details>
+<summary>The calculation: the free particle, and where the equation came from</summary>
+
+Take a free particle, with no potential, in a wave of definite momentum $p$ and definite energy $E$. Its phase turns by $p/\hbar$ per metre along the line and by $E/\hbar$ per second in time:
+
+$$\psi(x, t) = e^{i(px - Et)/\hbar}.$$
+
+**In time.** The rate of change in time pulls down $-iE/\hbar$, so
+
+$$i\hbar\,\frac{\partial\psi}{\partial t} = i\hbar \times \Big(-\frac{iE}{\hbar}\Big)\psi = E\,\psi.$$
+
+**Along the line.** Each slope pulls down $ip/\hbar$, so two of them pull down $(ip/\hbar)^2 = -p^2/\hbar^2$, and
+
+$$-\frac{\hbar^2}{2m}\,\frac{\partial^2\psi}{\partial x^2} = -\frac{\hbar^2}{2m} \times \Big(-\frac{p^2}{\hbar^2}\Big)\psi = \frac{p^2}{2m}\,\psi.$$
+
+**Together.** Chapter 1 says a free particle's energy is $E = p^2/2m$. So the two results are equal, and the wave obeys
+
+$$i\hbar\,\frac{\partial\psi}{\partial t} = -\frac{\hbar^2}{2m}\,\frac{\partial^2\psi}{\partial x^2}.$$
+
+That's the Schrödinger equation with no potential. Reasoning close to this led Erwin Schrödinger to the equation in 1926, starting from de Broglie's waves. The potential term $V(x)\,\psi$ is then added so that the averages follow Hamilton's equations (section 11).
 
 </details>
 
