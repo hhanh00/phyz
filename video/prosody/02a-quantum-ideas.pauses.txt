@@ -1,0 +1,141 @@
+Chapter two, part A. Quantum Ideas.
+
+Chapter one described a system at one instant by a single point. That point was its position and its momentum. Quantum mechanics replaces that point with a list of numbers called amplitudes. This chapter shows why. We'll start with an experiment on silver atoms and magnets. Its results can't be explained by a position and a momentum alone. Then come the rules of quantum mechanics. They look strange at first, so we'll check them against every result. A tilted magnet then shows, why the amplitudes have to be complex numbers.
+
+A spin's up or down says nothing about where an atom is, or how fast it moves. So after the spin, we turn to an electron's position, using the two-slit experiment. And we end with its momentum. This chapter is the ideas. The next one, First Quantization, turns them into maths.
+
+Magnets that sort atoms.
+
+In nineteen twenty-two, Otto Stern and Walther Gerlach heated silver in an oven. They fired the atoms that boiled off through a magnet, onto a glass plate. Each silver atom is a tiny magnet itself. That comes from a property of one of its electrons, and we call it spin.
+
+The big magnet was shaped, so its field is stronger near one pole. That shape matters. An even field would only twist each atom. In an uneven field, one end of the atom's magnet gets pulled harder than the other. So the atom gets pushed up or down. How far depends on how the atom's own magnet is tilted. An atom pointing straight up gets pushed up the most. One pointing straight down gets pushed down the most. And one lying sideways isn't pushed at all.
+
+The atoms leave the oven tilted every which way. So the plate should show a smear, one point for each tilt. It doesn't. It shows two spots, and nothing in between.
+
+Later experiments put magnets one after another. Start with the atoms that went up in a vertical magnet. Send them through a second vertical magnet, and all of them go up again. Send them through a sideways magnet instead, and half go right and half go left. Nothing tells you in advance which atom goes which way. Now keep the ones that went right, and send them through a vertical magnet again. Half go up and half go down. Keeping the ones that went left gives the same split. These rows of magnets are idealized, the way textbooks present them.
+
+So there are four things to explain. First, the plate shows two spots instead of a smear. Second, an atom that went up goes up again. Third, atoms that all went up split half and half in a sideways magnet. No vertical magnet can tell those atoms apart, yet they give different results. Fourth, atoms found right have forgotten that they were up.
+
+The two rules.
+
+Quantum mechanics explains all four results with two rules. They'll sound strange, so take them as given for now. Then we'll check them against the magnets.
+
+Rule one is about the state. Compare a coin. It lands heads or tails. Before you look, it's already one or the other. That's true even while it's hidden under your hand, and you don't know which. A spin in a vertical magnet also gives only two results, up or down. That's what the two spots show.
+
+The difference comes before the measurement. A spin can be in a mix of up and down, and we call that a superposition. The state holds a number for each result, called an amplitude. One amplitude goes with up, and one goes with down. A spin in a superposition isn't secretly up or secretly down. That's the new idea, and the magnets give us a way to check it.
+
+An amplitude is a complex number, and we'll see why later. You can picture it as an arrow, with a length and a direction. The arrow's direction is called its phase. We write the state as a sum. It's the up amplitude times the up state, plus the down amplitude times the down state. The up state is the one that's certainly up. Its amplitudes are one for up and zero for down. The down state is the reverse.
+
+That plus sign doesn't add directions in space. Up and down are opposite directions in space, so added as directions they'd give nothing. Here, up and down are just two entries in the state's list. The sum only says how much amplitude goes with up, and how much with down. A superposition is a state in its own right. It's not a spin pointing partly up and partly down.
+
+Rule two is about measurement. A measurement does two things. It changes the state, and it gives a result with a chance you can calculate. First, the change. Before a vertical magnet, the spin is in a superposition. Afterwards, it's in the certain state of the result that was found. An atom that went up is now in the up state, whatever it was before. We call this jump collapse. It's the strangest part of the rules, and we'll come back to it.
+
+Collapse says what the state becomes. It doesn't say which result you get. For that, the rule gives a chance. The chance of a result is the square of its amplitude's length, and we call this the Born rule. Say the up arrow has length zero point six, and the down arrow zero point eight. Then a vertical magnet finds the spin up, with chance zero point three six. It finds it down with chance zero point six four. The two chances must add to one, so the squared lengths always add to one too. Here, zero point three six plus zero point six four is one. Only the lengths go into these chances, not the directions. We'll see later where the directions matter.
+
+The chance isn't there because the state is unknown. That's the difference from the coin under your hand. In standard quantum mechanics, the state is the whole description. Two atoms with the same amplitudes are in exactly the same state, with nothing hidden. The chance only comes in when you measure.
+
+That's worth stressing, because people often sum up quantum mechanics as everything is random. Most of it isn't. The state is definite. Between measurements, it changes in a fully predictable way, and the next chapter's Schrodinger equation describes how. Even at a measurement, the amplitudes fix the chances exactly. Only which result a single atom gives is left to chance.
+
+A result is certain, only when the spin is already in that result's certain state. Then that amplitude has length one, and the other is zero. One squared is one, so the result is certain. Any other state leaves both results possible.
+
+Now, other magnets. A magnet turned another way has its own two certain states. For a sideways magnet, we call them right and left. Experiment tells us what they're made of. Atoms found right split half up and half down, and so do atoms found left. So each is an equal mix of up and down. A chance of one half needs an amplitude, of length one over the square root of two. Its square is one half.
+
+So the right state is up plus down, divided by the square root of two. The left state is up minus down, divided by the same. Notice that an equal mix of up and down, turns out to be a sideways state. That comes from experiment, not from adding directions in space. We'll see later where the minus sign comes from.
+
+It works the other way round too. Add the right and left states, and the down parts cancel. What's left is two up states, divided by the square root of two. That's the up state times the square root of two. Divide by the square root of two. Now the up state is an equal mix of right and left.
+
+Both parts of rule two work the same way for any magnet. The same state has a different list of amplitudes for each magnet, one for each of its results. Take the up state. For a vertical magnet, its list is one for up and zero for down. For a sideways magnet, it's one over root two for right, and the same for left. Nothing about the atom differs between the two lists. It's one state, seen from two magnets' points of view. Think of one spot on a map. Turn the grid, and the spot gets different coordinates. So to get a sideways magnet's chances, use the sideways list and square the lengths. Afterwards, the atom has collapsed to right or to left.
+
+So an unmeasured state is a superposition, with an amplitude for each result. Measuring collapses it to the result found. And the chance of that result is its amplitude's length squared.
+
+The rules solve the puzzle.
+
+Now let's put the rules to work on the four results.
+
+First, the two spots. The number of spots comes from experiment. We gave a vertical magnet two results, because that's what the plate shows. What the rules explain is why there's no smear. Atoms leave the oven in all sorts of superpositions of up and down. The vertical magnet measures each one, and a measurement only ever gives one of its results. So each atom lands in one of the two spots. What the old picture called an atom's tilt becomes its amplitudes. And amplitudes don't move the spots. They only change the chances.
+
+Second, up stays up. An atom that went up has collapsed to the up state, so its up amplitude is one. By the Born rule, a second vertical magnet finds it up every time.
+
+Third, half right and half left. A sideways magnet measures right or left, so we write the state in terms of right and left. For an atom in the up state, that's an equal mix of right and left. Each amplitude has length one over root two, and squaring gives a chance of one half. Notice what happened. We put in one fact from experiment, that atoms found right split evenly between up and down. The rules turned it into this new one. And every atom here is in the same state, the up state. In standard quantum mechanics, that state is the whole description. So nothing in any atom decides which way it goes.
+
+Fourth, the lost up. An atom found right has collapsed to the right state, whatever it was before. Every atom found right is in that same state, whether it started up, down or anything else. So nothing in it records that the atom was once up. That's why the up is lost for good. The half and half split that follows, is the experiment we used to define the right state. So it matches by design. What the rules add is the forgetting, because the collapse replaced the atom's state.
+
+The magnets can also check that a superposition isn't a hidden coin. Atoms found right split half up and half down. A bag of coins, half heads and half tails, would do the same. But send atoms found right through a second sideways magnet. Every one goes right again, as experiment confirms. A bag of atoms that were secretly up or secretly down, couldn't do that. The secretly up ones would split half right and half left. Now take the secretly down ones. Subtract the left state from the right one, and the up parts cancel. That leaves down as an equal mix of right and left too. So the secretly down ones, would also split half right and half left. Either way, half the bag would go left. So atoms found right aren't a mix of up atoms and down atoms. They're all in one state, the right state.
+
+The natural next step is to ask why the rules are like this. The honest answer is that nobody knows. Nobody knows why there are amplitudes, or what really happens in a collapse. Physicists agree on the rules, because every experiment so far matches them. They still disagree about what the rules mean, and that debate has run since the nineteen twenties. We'll do what most physicists do day to day. We'll use the rules, and leave the debate aside.
+
+So with two facts from experiment, the rules explain all four results. The two facts are how many results a magnet has, and what right and left are made of.
+
+Why amplitudes are complex.
+
+Rule one said amplitudes are complex numbers, without saying why. One more experiment gives the reason. Rules with only ordinary positive and negative numbers couldn't explain it.
+
+Tilt the first magnet away from vertical, and keep the atoms that went up along it. Then send them through a vertical magnet. Some go up and some go down. How far you tilted the first magnet sets those chances. So it sets the lengths of the two amplitudes. But you can tilt the magnet by that same amount, in any direction. Tilt it to the right, toward the front, to the left, or toward the back. These directions go all the way round a circle. And a vertical magnet gives every one of them the same chances.
+
+We'll say the atoms lean the way their first magnet was tilted. A sideways magnet does tell them apart. Atoms leaning right mostly go right, and atoms leaning left mostly go left. Atoms leaning toward the front lean neither way, so they split half and half. So the state has to record which way round the circle the atom leans, not just how far.
+
+Ordinary numbers can't do that. Once the two lengths are fixed, the only choice left is the signs. Flipping both signs together changes no chance, for any magnet. So what counts is whether the down amplitude has the same sign as the up one, or the opposite. That gives two states. It's enough for leaning right and leaning left, but nothing in between.
+
+A complex amplitude has a phase, so its arrow can point any way round a circle. That gives one direction for every way the atom can lean. Careful, though, because these are two different pictures. The lean is a direction in space. The phase is an arrow in the complex plane, which is just a drawing of a number. The rule links them. Going round the circle of leans, turns the down amplitude's arrow by the same angle. Leaning right gives the down arrow, the same direction as the up arrow. Leaning left turns it halfway round. An arrow turned halfway round is a minus sign, and that's the minus sign in the left state. Remember that the right state is up plus down. So a sideways magnet's amplitude for right, adds the up and down amplitudes together. Two arrows added together make a longer or shorter arrow, depending on the angle between them. So the phase changes the sideways chances.
+
+That's why amplitudes are complex. A vertical magnet misses which way an atom leans, and a sideways magnet sees it. So the state needs a phase, and only complex amplitudes have one.
+
+Measuring position with one slit.
+
+Chapter one described a particle by its position and its momentum. A spin has neither, so we still owe you those two. Let's start with position. Every measurement so far had two possible results. Position can be anywhere along a line. So this is a step, from a few separate results to a continuous range.
+
+To find where a particle is, let it land on a screen. Fire electrons one at a time, at a barrier with a narrow slit. Record where each one lands on a screen behind it. Each electron arrives as a single dot. After many electrons, the dots pile up in a hump behind the slit. The hump alone doesn't look strange yet. It's our baseline for the next experiment.
+
+The rules still apply, with many more results. The spin has two results, so its state has two amplitudes. An electron can land anywhere across the screen. So its state needs one amplitude for every position, which makes infinitely many. Together they form a complex function of position, and we call it the wave function.
+
+With infinitely many positions sharing a total chance of one, any single point gets a chance of zero. So the Born rule gives a chance per metre instead. That's the squared length of the wave function, and we call it the probability density. The chance of finding the particle between two points, is the area under the density between them. The total area is one. Behind one slit, the density is that hump.
+
+Two slits make stripes.
+
+Now open a second slit next to the first. That's the simplest case, where an electron can reach a spot in two ways. Keep firing them one at a time, so no electron ever meets another. Run the experiment three times, and count where they land each time. First with only slit A open, then with only slit B, then with both.
+
+Each slit on its own gives a hump, like the one before. Suppose each electron went through one slit or the other. Then opening both would just add the two humps. Instead the counts form stripes. At some spots, fewer electrons arrive with both slits open than with only one. Adding chances can never do that, because chances are never negative. And the stripes are the same, when you wait between one electron and the next. So they don't come from electrons meeting each other. They build up from single electrons, dot by dot.
+
+The pattern looks just like water waves passing through two gaps, in a harbour wall. There, crests from the two gaps add up in some places. In others, a crest meets a trough, and they cancel. In nineteen eighty-nine, Akira Tonomura's team watched this pattern build up one electron at a time. They used a device that acts like two slits.
+
+There's one more observation. Put a detector at the slits, that records which slit each electron takes. Then the stripes disappear, and the counts become the two humps added together.
+
+Two ways, so add.
+
+The two rules already explain the stripes. With both slits open, nothing records which slit the electron takes. So it can reach each spot in two ways. Its state is a mix of through A and through B. That's a superposition, just as right was a mix of up and down.
+
+So its wave function is the sum of two parts. One is the wave function with only slit A open. The other is the one with only slit B open. We scale the sum so the total chance stays one. This isn't a new rule. It's rule one again.
+
+The density is the squared length of this sum. So we need the squared length of two arrows added together. It's the first arrow's length squared, plus the second arrow's length squared, plus one more term. That term is twice the two lengths, times the cosine of the angle between the arrows. It's the cosine rule from school, for the triangle the arrows make head to tail. The rule's usual minus sign turns into a plus here. That's because the triangle's corner, is one hundred and eighty degrees minus the angle between the arrows. The cosine of that corner is minus the cosine of the angle.
+
+The first two terms are the two humps, and the last one is extra. Where the two arrows point the same way, the cosine is one. Then the spot gets more than the two humps together. Where they point opposite ways, the cosine is minus one. Then the spot gets fewer, and none at all if the arrows are equally long. Adding amplitudes before squaring, so they can reinforce or cancel, is called interference.
+
+We've seen a phase change a chance before. The direction an atom leaned changed its sideways split. Here, the angle between the two arrows at each spot decides.
+
+The detector fits too. Recording which slit an electron takes is a measurement, even if nobody ever reads the detector. So rule two collapses the electron onto one route. Its wave function is then one part or the other, never their sum. So there's no extra term. About half the electrons end up in each, so the counts add the two humps. It's the same collapse that made the atoms forget they were up.
+
+That leaves one question. We still need to know, why the angle between the two arrows changes from spot to spot.
+
+Matter waves set the phase.
+
+The answer is a fact from experiment, not a third rule. Follow a particle along its route. As you follow it, its amplitude's arrow keeps turning. It makes one full turn for every wavelength of distance. This turning is the amplitude's phase, and it has nothing to do with spin.
+
+The particle's momentum sets the wavelength. The wavelength is Planck's constant divided by the momentum. Planck's constant is tiny, six point six three times ten to the minus thirty-four joule-seconds. Louis de Broglie proposed this rule in nineteen twenty-four, and he borrowed it from light. Light comes in packets, and each packet's momentum is Planck's constant divided by its wavelength. De Broglie read that rule the other way round, for matter. The two-slit stripes are one of its checks, because their spacing matches the wavelength it predicts.
+
+With one slit, you can't see the turning. Each spot on the screen has an arrow pointing its own way. That direction is set by the spot's distance from the slit. But the chance only uses the arrow's length. It's like the vertical magnet, that couldn't see which way an atom leaned.
+
+With two slits, both routes start from the same source with the same arrow. But the two routes to a spot have different lengths. So their arrows arrive turned by different amounts. Where one route is a whole number of wavelengths longer, the arrows match, and that spot is bright. Where it's half a wavelength longer, the arrows point opposite ways, and that spot is dark. Move along the screen, and the difference in route lengths grows steadily. So bright and dark alternate in stripes. Faster electrons have shorter wavelengths, so their stripes sit closer together.
+
+Momentum, how fast the phase turns.
+
+We set out to find position and momentum. Position became the variable of the wave function. On the screen, that was the position across the screen. In general, it's wherever the particle might be. Momentum is hiding in de Broglie's rule. Read it the other way round, and momentum is Planck's constant divided by the wavelength.
+
+So take a particle with a definite momentum. Its phase turns steadily along its direction of travel. Its momentum is Planck's constant times the number of turns per metre. A short wavelength means many turns per metre, and a large momentum. A long wavelength means few turns, and a small one.
+
+In chapter one, momentum was mass times velocity. It was a second number, listed beside the position. In quantum mechanics, both live in the one wave function. Position is where the amplitudes are. A definite momentum is how fast their phase turns, along the particle's path.
+
+Where this goes next.
+
+Let's sum up. A state is a list of amplitudes, arrows with a length and a phase. Measuring collapses the state, and the Born rule gives the chances. Two ways that nothing tells apart add their amplitudes, so they can interfere. And the phase turns along a particle's route, at a rate set by its momentum.
+
+The next chapter, First Quantization, turns these ideas into maths. Position and momentum become operators, a new kind of object that acts on the wave function. Chapter one's Poisson bracket becomes its quantum version, the commutator. And chapter one's Hamiltonian moves the state forward in time, through the Schrodinger equation.

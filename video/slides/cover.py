@@ -125,7 +125,32 @@ def light_clock():
     return art
 
 
+def adding_arrows():
+    """Chapter 2a: two amplitude arrows added head to tail; pointing the same way they reinforce, opposite they cancel."""
+    art = VGroup()
+    arrow = lambda a, b, c: Arrow(a, b, buff=0, color=c, stroke_width=8, max_tip_length_to_length_ratio=0.16)
+    o = [-3.2, -0.6, 0]
+    a_end = [-0.6, 1.0, 0]
+    b_end = [2.6, -0.2, 0]
+    art.add(arrow(o, a_end, SKY), arrow(a_end, b_end, AMBER), arrow(o, b_end, MINT))
+    art.add(Text("a", font=FONT, color=SKY, font_size=36, weight=BOLD).move_to([-2.2, 0.55, 0]),
+            Text("b", font=FONT, color=AMBER, font_size=36, weight=BOLD).move_to([1.2, 0.75, 0]),
+            Text("a + b", font=FONT, color=MINT, font_size=36, weight=BOLD).move_to([-0.2, -0.95, 0]))
+    y = -2.4
+    art.add(arrow([-3.4, y, 0], [-2.2, y, 0], SKY), arrow([-2.2, y, 0], [-1.0, y, 0], AMBER),
+            Text("reinforce", font=FONT, color=SOFT, font_size=28).move_to([-2.2, y - 0.55, 0]))
+    art.add(arrow([1.0, y + 0.12, 0], [2.4, y + 0.12, 0], SKY), arrow([2.4, y - 0.12, 0], [1.0, y - 0.12, 0], AMBER),
+            Text("cancel", font=FONT, color=SOFT, font_size=28).move_to([1.7, y - 0.55, 0]))
+    return art
+
+
 COVERS = {
+    "02a-quantum-ideas": {
+        "kicker": "PHYZ  ·  CHAPTER 2A",
+        "title": ["Quantum", "Ideas"],
+        "sub": "Magnets, two slits,\nand amplitudes that add",
+        "art": adding_arrows,
+    },
     "01-classical-mechanics": {
         "kicker": "PHYZ  ·  CHAPTER 1",
         "title": ["Classical", "Mechanics"],

@@ -94,7 +94,7 @@ Tilt the first magnet away from vertical, keep the atoms that went up along it, 
 
 A sideways magnet does tell them apart. Atoms that lean right mostly go right, atoms that lean left mostly go left, and atoms that lean toward the front lean neither way, so they split half and half. So the state has to record which way round the circle the atom leans, not only how far.
 
-Real amplitudes can't do that. Once the lengths of $c_0$ and $c_1$ are fixed, the only choice left is their signs. Flipping both together changes no chance, for any magnet, so what counts is the sign of $c_1$ compared with $c_0$, which gives two states: enough for leaning right and leaning left, but nothing in between. A complex $c_1$ has a phase, so its arrow can point any way round a circle, one direction for every way the atom can lean. The phase shows up in a sideways magnet's chances because its amplitudes are sums: the amplitude for right adds $c_0$ and $c_1$, and two arrows added together make a longer or shorter arrow depending on the angle between them. That's why amplitudes are complex.
+Real amplitudes can't do that. Once the lengths of $c_0$ and $c_1$ are fixed, the only choice left is their signs. Flipping both together changes no chance, for any magnet, so what counts is the sign of $c_1$ compared with $c_0$, which gives two states: enough for leaning right and leaning left, but nothing in between. A complex $c_1$ has a phase, so its arrow can point any way round a circle, one direction for every way the atom can lean. Careful, though: these are two different pictures. The lean is a direction in space. The phase is an arrow in the complex plane, which is only a drawing of a number. The rule links them: going round the circle of leans turns the down amplitude's arrow by the same angle. The phase shows up in a sideways magnet's chances because its amplitudes are sums: the amplitude for right adds $c_0$ and $c_1$, and two arrows added together make a longer or shorter arrow depending on the angle between them. That's why amplitudes are complex.
 
 <details>
 <summary>The calculation: the phase and the sideways chances</summary>
@@ -104,6 +104,8 @@ A magnet tilted by $\theta$ from vertical, toward the direction at angle $\varph
 $$c_0 = \cos(\theta/2), \qquad c_1 = \sin(\theta/2)\,e^{i\varphi}.$$
 
 The lengths depend only on $\theta$, and the direction $\varphi$ only sets the phase of $c_1$ (see [Euler's formula](appendix-math-complex.md#_2-the-complex-plane-and-euler-s-formula)). Multiplying the whole state by a phase changes no chance, which is why $c_0$ can always be taken positive. Which of front and back gets $+90°$ is a convention.
+
+This map from spin states to directions in space is called the **Bloch sphere**: up sits at the north pole, down at the south pole, and right and left on the equator. Notice the half angles. Up and down are opposite in space, $180°$ apart, but as amplitude lists they are $(1, 0)$ and $(0, 1)$, two separate entries rather than two opposite arrows. A tilt of $\theta$ from vertical becomes $\theta/2$ in the amplitudes' lengths, while the direction $\varphi$ round the circle becomes the phase of $c_1$ unchanged.
 
 A fully sideways magnet has $\theta = 90°$, so both amplitudes have length $1/\sqrt2$. Turned to the right ($\varphi = 0$), it lets through $(\lvert\text{up}\rangle + \lvert\text{down}\rangle)/\sqrt2$, the state "right" of section 2. Turned to the left ($\varphi = 180°$), the phase is $e^{i\cdot180°} = -1$, which gives "left" with its minus sign.
 
@@ -145,7 +147,7 @@ Now open a second slit next to the first. Two slits are the simplest case where 
 
 *Electron counts with one slit or both open. The dashed curve is what adding chances would give. Akira Tonomura's team recorded the pattern building up one electron at a time in 1989, using an electron biprism, the electron equivalent of two slits.*
 
-Each slit on its own gives a hump like the one in section 5. If each electron went through one slit or the other, opening both would add the two humps and give the dashed curve. Instead the counts form stripes, and at some spots fewer electrons arrive with both slits open than with only one. Adding chances can never do that, because chances are never negative. The pattern looks just like water waves passing through two gaps in a harbour wall, where crests from the two gaps add up in some places, and a crest meets a trough and cancels in others.
+Each slit on its own gives a hump like the one in section 5. If each electron went through one slit or the other, opening both would add the two humps and give the dashed curve. Instead the counts form stripes, and at some spots fewer electrons arrive with both slits open than with only one. Adding chances can never do that, because chances are never negative. The stripes are the same even with a long wait between one electron and the next, so they don't come from electrons meeting each other. They build up from single electrons, dot by dot. The pattern looks just like water waves passing through two gaps in a harbour wall, where crests from the two gaps add up in some places, and a crest meets a trough and cancels in others.
 
 There's one more observation. Put a detector at the slits that records which slit each electron goes through. Then the stripes disappear, and the counts become the dashed curve.
 

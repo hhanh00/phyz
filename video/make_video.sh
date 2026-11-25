@@ -23,7 +23,7 @@ if [[ $1 == --skip-audio ]]; then SKIP_AUDIO=1; shift; fi
 (( $# )) || { sed -n '2,12p' $0; exit 1; }
 
 for STEM in "$@"; do
-  NN=${STEM[1,2]}
+  NN=${STEM%%-*}  # the part before the first dash: 01, 02a, ...
   [[ -f $HERE/scripts/$STEM.txt ]] || { echo "no script video/scripts/$STEM.txt"; exit 1; }
   [[ -f $HERE/slides/deck_$NN.py ]] || { echo "no deck video/slides/deck_$NN.py"; exit 1; }
   echo "== $STEM"
