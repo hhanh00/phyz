@@ -122,7 +122,7 @@ def adding_arrows():
 def bracket_to_commutator():
     """Chapter 2b: chapter 1's Poisson bracket of position with momentum becomes a commutator."""
     art = VGroup()
-    top = MathTex(r"\{q,\,p\} = 1", color=SOFT).scale(2.2).move_to([0, 2.0, 0])
+    top = MathTex(r"\{x,\,p\} = 1", color=SOFT).scale(2.2).move_to([0, 2.0, 0])
     down = Arrow([0, 1.2, 0], [0, 0.1, 0], buff=0, color=AMBER, stroke_width=8, max_tip_length_to_length_ratio=0.3)
     mid = MathTex(r"[\hat x,\,\hat p] = i\hbar", color=WHITE).scale(2.8).move_to([0, -0.9, 0])
     art.add(Text("chapter 1: the bracket", font=FONT, color=SOFT, font_size=26).next_to(top, UP, buff=0.3), top, down, mid,
