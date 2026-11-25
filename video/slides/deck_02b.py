@@ -8,7 +8,7 @@ brackets upright. The two figures follow docs/manim/page_diagrams.py (WaveSum,
 SpinPrecession), with the same geometry. The helpers, state chips, amplitude
 lists, phasors and magnet boxes come from deck_02a.py, and the operator pipes,
 the result chart, the bell curves and the electron and ball slides are carried
-over from deck_02.py.
+over from the old, unsplit chapter 2 deck (deck_02.py, removed; see git history).
 
 Colors, as in deck_02a: BLUE for states and amplitudes (state chips, kets, the
 arrows that draw complex numbers, wave functions) and for the particles that

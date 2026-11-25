@@ -4,9 +4,9 @@ Every value comes from video/scripts/02a-quantum-ideas.txt or
 docs/quantum-ideas.md. The figures follow docs/manim/page_diagrams.py
 (SternGerlachSetup, MagnetsInRow, TiltCircle, SingleSlit, TwoSlitCounts,
 PhaseAlongScreen, TwoRoutes), with the same geometry. The Stern-Gerlach,
-magnets-in-a-row and two-slit drawings are carried over from deck_02.py.
+magnets-in-a-row and two-slit drawings are carried over from the old, unsplit chapter 2 deck (deck_02.py, removed; see git history).
 
-Colors, as in deck_02: BLUE for states and amplitudes (state lists, the arrows
+Colors: BLUE for states and amplitudes (state lists, the arrows
 that draw complex numbers, wave functions) and for the particles that carry
 them (atoms, electrons), TEAL for chances, probability densities and counts,
 and for checks that pass, ORANGE for the step or quantity under discussion
