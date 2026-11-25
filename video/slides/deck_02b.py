@@ -1217,25 +1217,21 @@ def cmp_label(k):
 
 
 def cmp_cell(k, col):
-    tex = [[r"\{q, p\} = 1", r"[\hat x, \hat p] = i\hbar"], [r"\{q^2, p\} = 2q", r"[\hat x^2, \hat p] = 2\,i\hbar\,\hat x"]][k][col]
+    tex = [[r"\{x, p\} = 1", r"[\hat x, \hat p] = i\hbar"], [r"\{x^2, p\} = 2x", r"[\hat x^2, \hat p] = 2\,i\hbar\,\hat x"]][k][col]
     return at(mt(tex, size=48, color=(MUTED, PURPLE)[col]), CMP_X[col], CMP_Y[k])
-
-
-def cmp_q():
-    return left_at(lab("chapter 1 wrote position as q", 22), -7.1, -2.9)
 
 
 @slide("Now compare chapter one.", "Bracket and commutator")
 def br7(s):
     yield [FadeIn(cmp_frame())]
     yield [FadeIn(cmp_label(0)), FadeIn(left_at(lab("chapter 1 ended on one relation", 22), -7.1, 2.5))]
-    yield [FadeIn(cmp_cell(0, 0)), FadeIn(cmp_q())]
+    yield [FadeIn(cmp_cell(0, 0))]
     yield [FadeIn(cmp_cell(0, 1))]
 
 
 @slide("Take position squared.", "Bracket and commutator")
 def br8(s):
-    s.add(cmp_frame(), cmp_label(0), cmp_cell(0, 0), cmp_cell(0, 1), cmp_q())
+    s.add(cmp_frame(), cmp_label(0), cmp_cell(0, 0), cmp_cell(0, 1))
     yield [FadeIn(cmp_label(1))]
     yield [FadeIn(cmp_cell(1, 0))]
     yield [FadeIn(cmp_cell(1, 1))]
@@ -1243,7 +1239,7 @@ def br8(s):
 
 @slide("The quantum answer is the classical one, times i h-bar.", "Bracket and commutator")
 def br9(s):
-    s.add(cmp_frame(), *[cmp_label(k) for k in (0, 1)], *[cmp_cell(k, c) for k in (0, 1) for c in (0, 1)], cmp_q())
+    s.add(cmp_frame(), *[cmp_label(k) for k in (0, 1)], *[cmp_cell(k, c) for k in (0, 1) for c in (0, 1)])
     tags = VGroup()
     for y in CMP_Y:
         a = Arrow(P(1.1, y), P(2.05, y), buff=0, color=ORANGE, stroke_width=5, tip_length=0.18)

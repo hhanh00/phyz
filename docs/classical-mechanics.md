@@ -84,11 +84,11 @@ Every imaginable path gets an action, including paths the body would never take.
 
 ## 4. Turning the rule into an equation
 
-Comparing paths one at a time can check a guess, but it can't find the real path. For that we need an equation the real path obeys at every moment. We'll write $\dot x$ for the velocity and $\ddot x$ for the acceleration, one dot for each rate of change in time. Asking that every small bend leave the action flat gives the equation, called the **Euler–Lagrange equation**:
+Comparing paths one at a time can check a guess, but it can't find the real path. For that we need an equation the real path obeys at every moment. The equation has to work for a height and for an angle alike, so we write it with a stand-in letter. Let $q$ be whichever coordinate describes the system, such as the position $x$ of a body on a line or the angle $\theta$ of the pendulum. A dot marks a rate of change in time, so $\dot q$ is how fast the coordinate changes. For the body that's the velocity $\dot x$, and a second dot, $\ddot x$, is the acceleration. Asking that every small bend leave the action flat gives the equation, called the **Euler–Lagrange equation**:
 
 $$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) = \frac{\partial L}{\partial q}.$$
 
-Here $q$ stands for whatever describes the system, a height or an angle, and $\dot q$ for its rate of change. The $\partial$ symbols mean "how much $L$ changes when you nudge just this one thing", treating position and speed as two separate knobs (a [partial derivative](appendix-math-calculus.md#_2-partial-derivatives)).
+The $\partial$ symbols mean "how much $L$ changes when you nudge just this one thing", treating position and speed as two separate knobs (a [partial derivative](appendix-math-calculus.md#_2-partial-derivatives)).
 
 The equation reads as a balance. On the left, $\partial L/\partial\dot q$ is the momentum: for $L = \tfrac12 m\dot x^2 - V$, nudging the speed changes $L$ by $m\dot x$. So the left side is how fast the momentum changes. On the right, $\partial L/\partial q$ plays the role of the force. So it says what Newton said: **momentum changes at the rate the force sets**. The difference is that it works in whatever coordinate you choose.
 
@@ -144,13 +144,17 @@ So far we've compared whole paths between two fixed ends. Quantum mechanics work
 
 Position alone isn't enough. A spring passes through its middle twice in each swing, once going each way, and what happens next is different. So the state also has to say how the system is moving.
 
-We use the momentum for that, the same $\partial L/\partial\dot q$ that appeared in the Euler–Lagrange equation, called the **conjugate momentum**. For a body moving along a line it's the ordinary momentum $m\dot x$. For the pendulum it's $m\ell^2\dot\theta$, an angular momentum. Why momentum and not plain velocity? Section 7 shows why.
+We use the momentum for that. It's the same $\partial L/\partial\dot q$ that appeared in the Euler–Lagrange equation, called the **conjugate momentum** and written $p$:
 
-The pair, position $q$ and momentum $p$, is the state. Picture it as a point on a map with position across and momentum up. That map of all possible states is called **phase space**, and as the system moves, its point traces a curve.
+$$p = \frac{\partial L}{\partial\dot q}.$$
+
+Each choice of coordinate has its own momentum. With $q = x$, a body moving along a line, it's the ordinary momentum $p = m\dot x$. With $q = \theta$, the pendulum, it's $m\ell^2\dot\theta$, an angular momentum. Why momentum and not plain velocity? Section 7 shows why.
+
+The rest of the chapter follows a body on a line, so from here on the coordinate is $x$. The pair, position $x$ and momentum $p$, is the state. Picture it as a point on a map with position across and momentum up. That map of all possible states is called **phase space**, and as the system moves, its point traces a curve.
 
 ![Two states of the spring at the same position with opposite momenta, points B and D on its orbit in phase space.](./manim/phase-space-states.png)
 
-*Two moments of the spring in section 6: the same position, opposite momenta. On the phase-space map they're different points. The figure writes the position as $x$.*
+*Two moments of the spring in section 6: the same position, opposite momenta. On the phase-space map they're different points.*
 
 **The state at one instant is a point: its position and its momentum.**
 
@@ -158,13 +162,13 @@ The pair, position $q$ and momentum $p$, is the state. Picture it as a point on 
 
 Now we want the rule that moves the state forward, written in position and momentum. It turns out to come from one function, the **Hamiltonian** $H$, which for everything in this chapter is the total energy, kinetic plus potential, written in terms of momentum. For a body of mass $m$, put $v = p/m$ into the kinetic energy $\tfrac12 mv^2$ and it becomes $p^2/2m$, so
 
-$$H = \frac{p^2}{2m} + V(q).$$
+$$H = \frac{p^2}{2m} + V(x).$$
 
 The Hamiltonian moves the state through **Hamilton's equations**:
 
-$$\dot q = \frac{\partial H}{\partial p}, \qquad \dot p = -\frac{\partial H}{\partial q}.$$
+$$\dot x = \frac{\partial H}{\partial p}, \qquad \dot p = -\frac{\partial H}{\partial x}.$$
 
-The first says position changes at a rate set by how the energy depends on momentum; for $H$ above, that's $p/m$, the velocity. The second says momentum changes at a rate set by how the energy depends on position; for $H$ above, that's $-dV/dq$, the force. Together they're Newton's law again. Each one only involves the rate of change, not the acceleration, so knowing the state now fixes the next small step, and the next, and the whole motion after it.
+The dot means what it meant before, a rate of change in time, so $\dot p$ is how fast the momentum changes. The first equation says position changes at a rate set by how the energy depends on momentum; for $H$ above, that's $p/m$, the velocity. The second says momentum changes at a rate set by how the energy depends on position; for $H$ above, that's $-dV/dx$, the force. Together they're Newton's law again. Each one only involves the rate of change, not the acceleration, so knowing the state now fixes the next small step, and the next, and the whole motion after it.
 
 **The spring.** Take a spring with a 1 kg mass and stiffness $k = 4\ \mathrm{N/m}$, so $H = \tfrac12 p^2 + 2x^2$. Pull it out to 1 m and let go. Hamilton's equations give $\dot x = p$ and $\dot p = -4x$, and they're solved by
 
@@ -181,25 +185,25 @@ On the phase-space map, the point goes round and round a closed loop. Every stat
 <details>
 <summary>The calculation: where the Hamiltonian comes from</summary>
 
-We want a function of $q$ and $p$ whose slope with respect to $p$ is $\dot q$, so that $\dot q = \partial H/\partial p$ is an equation of motion. Start from $p\dot q - L$. When $p$ and $\dot q$ change a little, with $q$ fixed,
+We want a function of $x$ and $p$ whose slope with respect to $p$ is $\dot x$, so that $\dot x = \partial H/\partial p$ is an equation of motion. Start from $p\dot x - L$. When $p$ and $\dot x$ change a little, with $x$ fixed,
 
-$$\Delta(p\dot q) = \dot q\,\Delta p + p\,\Delta\dot q, \qquad \Delta L = p\,\Delta\dot q,$$
+$$\Delta(p\dot x) = \dot x\,\Delta p + p\,\Delta\dot x, \qquad \Delta L = p\,\Delta\dot x,$$
 
-because $p = \partial L/\partial\dot q$. Subtracting, $\Delta(p\dot q - L) = \dot q\,\Delta p$: the combination responds to $p$ with slope $\dot q$ and doesn't respond to $\dot q$ at all. So the **Hamiltonian** is
+because $p = \partial L/\partial\dot x$. Subtracting, $\Delta(p\dot x - L) = \dot x\,\Delta p$: the combination responds to $p$ with slope $\dot x$ and doesn't respond to $\dot x$ at all. So the **Hamiltonian** is
 
-$$H = p\dot q - L,$$
+$$H = p\dot x - L,$$
 
-with $\dot q$ rewritten in terms of $q$ and $p$. This swap of $\dot q$ for $p$ is called a **Legendre transform**. For $L = \tfrac12 m\dot q^2 - V(q)$, $p = m\dot q$, and
+with $\dot x$ rewritten in terms of $x$ and $p$. This swap of $\dot x$ for $p$ is called a **Legendre transform**. For $L = \tfrac12 m\dot x^2 - V(x)$, $p = m\dot x$, and
 
-$$H = p\cdot\frac{p}{m} - \left(\frac{p^2}{2m} - V\right) = \frac{p^2}{2m} + V(q),$$
+$$H = p\cdot\frac{p}{m} - \left(\frac{p^2}{2m} - V\right) = \frac{p^2}{2m} + V(x),$$
 
 the total energy.
 
-**Hamilton's equations.** The small change of $H = p\dot q - L$, when everything changes a little, is
+**Hamilton's equations.** The small change of $H = p\dot x - L$, when everything changes a little, is
 
-$$dH = \dot q\,dp + p\,d\dot q - \frac{\partial L}{\partial q}dq - \frac{\partial L}{\partial\dot q}d\dot q - \frac{\partial L}{\partial t}dt.$$
+$$dH = \dot x\,dp + p\,d\dot x - \frac{\partial L}{\partial x}dx - \frac{\partial L}{\partial\dot x}d\dot x - \frac{\partial L}{\partial t}dt.$$
 
-The $d\dot q$ terms cancel, and the Euler–Lagrange equation gives $\partial L/\partial q = \dot p$, so $dH = \dot q\,dp - \dot p\,dq - (\partial L/\partial t)\,dt$. Reading off the coefficients of $dp$ and $dq$ gives Hamilton's equations. They're *first-order*: they involve only first rates of change, where the Euler–Lagrange equation has a second.
+The $d\dot x$ terms cancel, and the Euler–Lagrange equation gives $\partial L/\partial x = \dot p$, so $dH = \dot x\,dp - \dot p\,dx - (\partial L/\partial t)\,dt$. Reading off the coefficients of $dp$ and $dx$ gives Hamilton's equations. They're *first-order*: they involve only first rates of change, where the Euler–Lagrange equation has a second.
 
 </details>
 
@@ -229,38 +233,38 @@ $$\frac{df}{dt} = \{f, H\}.$$
 
 For any two quantities $f$ and $g$, the bracket combines their slopes with respect to position and momentum:
 
-$$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q}.$$
+$$\{f, g\} = \frac{\partial f}{\partial x}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial x}.$$
 
-**What the bracket gives.** For $H = p^2/2m + V$, the bracket of position with $H$ is $p/m$ and the bracket of momentum with $H$ is $-dV/dq$: Hamilton's equations again. The bracket of $H$ with itself is zero, which says the energy never changes. In general, anything whose bracket with $H$ is zero stays constant.
+**What the bracket gives.** For $H = p^2/2m + V$, the bracket of position with $H$ is $p/m$ and the bracket of momentum with $H$ is $-dV/dx$: Hamilton's equations again. The bracket of $H$ with itself is zero, which says the energy never changes. In general, anything whose bracket with $H$ is zero stays constant.
 
 **One bracket that never changes.** The bracket of position with momentum is
 
-$$\{q, p\} = 1,$$
+$$\{x, p\} = 1,$$
 
-because position changes with position at rate 1 and momentum with momentum at rate 1, while neither changes with the other: $1 \times 1 - 0 \times 0 = 1$. It doesn't involve $H$ at all. So it's the same for every system: a ball, a pendulum, a spring. Velocity doesn't share this. The bracket of position with velocity is $1/m$, which depends on the mass, so there'd be no single rule shared by every system. That's why we use momentum.
+because position changes with position at rate 1 and momentum with momentum at rate 1, while neither changes with the other: $1 \times 1 - 0 \times 0 = 1$. It doesn't involve $H$ at all, and the same holds for any coordinate paired with its own momentum, such as the pendulum's angle and its angular momentum. So it's the same for every system: a ball, a pendulum, a spring. Velocity doesn't share this. The bracket of position with velocity is $1/m$, which depends on the mass, so there'd be no single rule shared by every system. That's why we use momentum.
 
-Better still, every other bracket can be worked out from this one. Any quantity built by adding and multiplying position and momentum has a bracket that reduces, step by step, to $\{q, p\} = 1$. So when the next chapter builds quantum mechanics, it only has to replace this one relation. Everything else follows.
+Better still, every other bracket can be worked out from this one. Any quantity built by adding and multiplying position and momentum has a bracket that reduces, step by step, to $\{x, p\} = 1$. So when the next chapter builds quantum mechanics, it only has to replace this one relation. Everything else follows.
 
 <details>
 <summary>The calculation: the Poisson bracket</summary>
 
-As the state moves, $f(q, p)$ changes through both variables, and the [chain rule](appendix-math-calculus.md#_3-the-chain-rule) adds the two effects. Then Hamilton's equations replace $\dot q$ and $\dot p$:
+As the state moves, $f(x, p)$ changes through both variables, and the [chain rule](appendix-math-calculus.md#_3-the-chain-rule) adds the two effects. Then Hamilton's equations replace $\dot x$ and $\dot p$:
 
-$$\frac{df}{dt} = \frac{\partial f}{\partial q}\dot q + \frac{\partial f}{\partial p}\dot p = \frac{\partial f}{\partial q}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial q}.$$
+$$\frac{df}{dt} = \frac{\partial f}{\partial x}\dot x + \frac{\partial f}{\partial p}\dot p = \frac{\partial f}{\partial x}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial x}.$$
 
 The **Poisson bracket** of any two quantities is
 
-$$\{f, g\} = \frac{\partial f}{\partial q}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial q},$$
+$$\{f, g\} = \frac{\partial f}{\partial x}\frac{\partial g}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial g}{\partial x},$$
 
 summed over each position–momentum pair when there are several. So $df/dt = \{f, H\}$, plus $\partial f/\partial t$ if $f$ also depends on time directly.
 
-Examples, for $H = p^2/2m + V(q)$:
+Examples, for $H = p^2/2m + V(x)$:
 
-$$\{q, H\} = \frac{p}{m}, \qquad \{p, H\} = -\frac{dV}{dq}, \qquad \{H, H\} = 0, \qquad \{q, p\} = 1.$$
+$$\{x, H\} = \frac{p}{m}, \qquad \{p, H\} = -\frac{dV}{dx}, \qquad \{H, H\} = 0, \qquad \{x, p\} = 1.$$
 
-The two terms of $\{H, H\}$ are the same product with opposite signs, so they cancel. For the spring, with $H = \tfrac12 p^2 + 2x^2$, the bracket gives $\{x, H\} = p$ and $\{p, H\} = -4x$, the two rates in the spring table. Since $\dot q = p/m$, the bracket of position with velocity is $\{q, p/m\} = 1/m$, and for the pendulum it's $1/(m\ell^2)$.
+The two terms of $\{H, H\}$ are the same product with opposite signs, so they cancel. For the spring, with $H = \tfrac12 p^2 + 2x^2$, the bracket gives $\{x, H\} = p$ and $\{p, H\} = -4x$, the two rates in the spring table. Since $\dot x = p/m$, the bracket of position with velocity is $\{x, p/m\} = 1/m$, and for the pendulum it's $1/(m\ell^2)$.
 
-The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited from the product rule for derivatives. For example, $\{q^2, p\} = q\{q, p\} + q\{q, p\} = 2q$, using only $\{q, p\} = 1$. Repeating this, every bracket of quantities built from $q$ and $p$ by adding and multiplying reduces to $\{q, p\} = 1$, together with $\{q, q\} = \{p, p\} = 0$.
+The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited from the product rule for derivatives. For example, $\{x^2, p\} = x\{x, p\} + x\{x, p\} = 2x$, using only $\{x, p\} = 1$. Repeating this, every bracket of quantities built from $x$ and $p$ by adding and multiplying reduces to $\{x, p\} = 1$, together with $\{x, x\} = \{p, p\} = 0$.
 
 </details>
 
@@ -268,7 +272,7 @@ The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited
 
 ## Where this comes back
 
-The next two chapters build quantum mechanics. [Quantum Ideas](quantum-ideas.md) shows from experiments why the state has to become a list of amplitudes. Then [First Quantization](first-quantization.md) keeps the Hamiltonian $H = p^2/2m + V$ as the function that moves the state forward, and turns position and momentum into operators, a new kind of object that chapter explains. It replaces the bracket $\{q, p\} = 1$ with a quantum version, and the rest of quantum mechanics follows from that one change. The [Harmonic Oscillator](harmonic-oscillator.md) chapter then quantizes this chapter's spring.
+The next two chapters build quantum mechanics. [Quantum Ideas](quantum-ideas.md) shows from experiments why the state has to become a list of amplitudes. Then [First Quantization](first-quantization.md) keeps the Hamiltonian $H = p^2/2m + V$ as the function that moves the state forward, and turns position and momentum into operators, a new kind of object that chapter explains. It replaces the bracket $\{x, p\} = 1$ with a quantum version, and the rest of quantum mechanics follows from that one change. The [Harmonic Oscillator](harmonic-oscillator.md) chapter then quantizes this chapter's spring.
 
 The action comes back too. [Action and Lagrangians](qft-action.md) applies the Euler–Lagrange equation to fields, with one coordinate at every point of space, and builds their momentum and energy the same way as here. And [Path Integrals](path-integrals.md), later on, adds up *every* path, each weighted by its action, and explains why the flat-spot path is the one we see.
 

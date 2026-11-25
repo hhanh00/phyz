@@ -183,18 +183,18 @@ $$[\hat x, \hat p] = i\hbar.$$
 
 Here a commutator equals a number. That means applying $\hat x\hat p - \hat p\hat x$ to any state just multiplies it by $i\hbar$. Position and momentum never commute.
 
-Now compare chapter 1. It ended on one relation, the Poisson bracket of position with momentum. Chapter 1 wrote position as $q$, and it's the same position as $x$ here:
+Now compare chapter 1. It ended on one relation, the Poisson bracket of position with momentum:
 
-$$\{q, p\} = 1.$$
+$$\{x, p\} = 1.$$
 
 The two look alike, and the match goes further. Take position squared, where $\hat x^2$ means applying $\hat x$ twice:
 
 | | Classical | Quantum |
 | --- | --- | --- |
-| The basic relation | $\{q, p\} = 1$ | $[\hat x, \hat p] = i\hbar$ |
-| Position squared | $\{q^2, p\} = 2q$ | $[\hat x^2, \hat p] = 2\,i\hbar\,\hat x$ |
+| The basic relation | $\{x, p\} = 1$ | $[\hat x, \hat p] = i\hbar$ |
+| Position squared | $\{x^2, p\} = 2x$ | $[\hat x^2, \hat p] = 2\,i\hbar\,\hat x$ |
 
-Chapter 1's formula gives $\{q^2, p\} = 2q \times 1 - 0 = 2q$, and the box works out the quantum entry. The quantum column is the classical one times $i\hbar$, and that pattern holds for the quantities this chapter needs.
+Chapter 1's formula gives $\{x^2, p\} = 2x \times 1 - 0 = 2x$, and the box works out the quantum entry. The quantum column is the classical one times $i\hbar$, and that pattern holds for the quantities this chapter needs.
 
 This is the quantum version of the bracket that chapter 1 promised: **the commutator, divided by $i\hbar$, plays the role of the Poisson bracket**. Physicists often run the argument the other way. They start from the bracket, replace it by a commutator, and get the operators from that. [Field Quantization](./field-quantization.md) will do exactly this.
 
@@ -205,17 +205,17 @@ This is the quantum version of the bracket that chapter 1 promised: **the commut
 
 $$[\hat x, \hat p]\psi = x\,(-i\hbar\,\psi') + i\hbar\,(x\psi)' = -i\hbar\,x\psi' + i\hbar\,(\psi + x\psi') = i\hbar\,\psi.$$
 
-The same steps with any $f(x)$ in place of $x$ give $[f, \hat p] = i\hbar f'$, the quantum version of chapter 1's $\{f, p\} = \partial f/\partial q$.
+The same steps with any $f(x)$ in place of $x$ give $[f, \hat p] = i\hbar f'$, the quantum version of chapter 1's $\{f, p\} = \partial f/\partial x$.
 
-**The rule.** For the quantities used here, each Poisson bracket becomes a commutator divided by $i\hbar$: $\{f, g\} \to [\hat f, \hat g]/i\hbar$. Commutators share the bracket's properties: they flip sign when you swap the two quantities, obey the same product rule, and give zero for plain numbers. For $q^2$: $[\hat x^2, \hat p] = \hat x[\hat x, \hat p] + [\hat x, \hat p]\hat x = 2i\hbar\,\hat x$. For products of higher powers of position and momentum, the order of the operators matters and the match is no longer exact.
+**The rule.** For the quantities used here, each Poisson bracket becomes a commutator divided by $i\hbar$: $\{f, g\} \to [\hat f, \hat g]/i\hbar$. Commutators share the bracket's properties: they flip sign when you swap the two quantities, obey the same product rule, and give zero for plain numbers. For $x^2$: $[\hat x^2, \hat p] = \hat x[\hat x, \hat p] + [\hat x, \hat p]\hat x = 2i\hbar\,\hat x$. For products of higher powers of position and momentum, the order of the operators matters and the match is no longer exact.
 
 **Why $i$.** A bracket of two measurable quantities is itself measurable, but a commutator isn't: the commutator of two Hermitian operators is minus its own adjoint, because $(\hat A\hat B)^\dagger = \hat B\hat A$, so its eigenvalues are imaginary. Dividing it by $i$ makes it Hermitian, with real eigenvalues. For the spin, $[\hat Z, \hat S]$ has eigenvalues $+2i$ and $-2i$, and $[\hat Z, \hat S]/i$ has eigenvalues $+2$ and $-2$.
 
-**Why $\hbar$.** A commutator of position with momentum has units of position times momentum, the units of $\hbar$, while $\{q, p\} = 1$ has none.
+**Why $\hbar$.** A commutator of position with momentum has units of position times momentum, the units of $\hbar$, while $\{x, p\} = 1$ has none.
 
 </details>
 
-**Position and momentum don't commute: $[\hat x, \hat p] = i\hbar$. That's chapter 1's $\{q, p\} = 1$ in quantum form, with the commutator in place of the bracket.**
+**Position and momentum don't commute: $[\hat x, \hat p] = i\hbar$. That's chapter 1's $\{x, p\} = 1$ in quantum form, with the commutator in place of the bracket.**
 
 ## 5. Averages and spreads
 

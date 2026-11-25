@@ -1782,7 +1782,7 @@ def hamq(s):
     ham_base(s)
     hx, hp, both = ham_arrows()
     yield [FadeIn(left_at(T("Hamilton's equations", 32, PURPLE, True), -7.0, 2.2)), FadeIn(left_at(eq("H = p²/2m + V", 30, PURPLE), -7.0, 1.5))]
-    yield [FadeIn(left_at(eq("q̇ = ∂H/∂p", 38, BLUE), -7.0, 0.4)), GrowArrow(hx),
+    yield [FadeIn(left_at(eq("ẋ = ∂H/∂p", 38, BLUE), -7.0, 0.4)), GrowArrow(hx),
            FadeIn(left_at(lab("position's rate: how H depends on momentum", 22), -7.0, -0.25))]
     yield [FadeIn(left_at(eq("= p / m, the velocity", 30, BLUE), -6.4, -0.85))]
 
@@ -1792,10 +1792,10 @@ def hamp(s):
     ham_base(s)
     hx, hp, both = ham_arrows()
     s.add(left_at(T("Hamilton's equations", 32, PURPLE, True), -7.0, 2.2), left_at(eq("H = p²/2m + V", 30, PURPLE), -7.0, 1.5),
-          left_at(eq("q̇ = ∂H/∂p", 38, BLUE), -7.0, 0.4), hx, left_at(eq("= p / m, the velocity", 30, BLUE), -6.4, -0.85))
-    yield [FadeIn(left_at(eq("ṗ = −∂H/∂q", 38, ORANGE), -7.0, -1.75)), GrowArrow(hp),
+          left_at(eq("ẋ = ∂H/∂p", 38, BLUE), -7.0, 0.4), hx, left_at(eq("= p / m, the velocity", 30, BLUE), -6.4, -0.85))
+    yield [FadeIn(left_at(eq("ṗ = −∂H/∂x", 38, ORANGE), -7.0, -1.75)), GrowArrow(hp),
            FadeIn(left_at(lab("momentum's rate: how H depends on position", 22), -7.0, -2.4))]
-    yield [FadeIn(left_at(eq("= −dV/dq, the force", 30, ORANGE), -6.4, -3.0))]
+    yield [FadeIn(left_at(eq("= −dV/dx, the force", 30, ORANGE), -6.4, -3.0))]
     yield [GrowArrow(both), FadeIn(at(lab("together: Newton's law again", 26, INK, True), PX, -3.45))]
 
 
@@ -2010,7 +2010,7 @@ def pb1(s):
     t = clock(s)
     moving_phase(s, t)
     yield [FadeIn(left_at(lab("from Hamilton's equations:", 24), -7.0, 2.2))]
-    a = left_at(hchip("how q changes", BLUE, size=28, h=0.75), -7.0, 1.4)
+    a = left_at(hchip("how x changes", BLUE, size=28, h=0.75), -7.0, 1.4)
     b = left_at(hchip("how p changes", BLUE, size=28, h=0.75), -7.0, 0.4)
     yield [FadeIn(a), FadeIn(b), FadeIn(tick(a)), FadeIn(tick(b))]
     c = left_at(hchip("how the energy changes?", INK, size=28, h=0.75), -7.0, -1.0)
@@ -2025,7 +2025,7 @@ def pb2(s):
     no = left_at(hchip("solve the whole motion first", MUTED, size=26, h=0.75), -7.0, 1.8)
     yield [FadeIn(no), Create(strike(no, RED)), FadeIn(left_at(lab("without that", 24, INK), -7.0, 1.0))]
     contours = VGroup(*[smooth([pp(r * np.cos(u), 2 * r * np.sin(u)) for u in np.linspace(0, TAU, 50)], LINE, 2) for r in (0.35, 0.65, 0.95, 1.2)])
-    f = left_at(eq("f(q, p)", 40, INK), -7.0, -0.2)
+    f = left_at(eq("f(x, p)", 40, INK), -7.0, -0.2)
     yield [FadeIn(contours), FadeIn(f), FadeIn(left_at(lab("any quantity depends on the state", 24, INK), -7.0, -0.9))]
     seen = tracker(s)
     live(s, lambda: dim(VGroup(phase_dot(t.get_value())), seen.get_value()))
@@ -2045,9 +2045,9 @@ def pb3(s):
     a2 = Arrow(o + dx, o + dx + dp, buff=0, color=ORANGE, stroke_width=6, tip_length=0.2)
     yield [GrowArrow(a1), GrowArrow(a2), FadeIn(left_at(lab("the position moves", 24, BLUE), -7.0, 2.2)),
            FadeIn(left_at(lab("the momentum moves", 24, ORANGE), -7.0, 1.6))]
-    r = left_at(eq("rate of f = (∂f/∂q) q̇ + (∂f/∂p) ṗ", 30, INK), -7.0, 0.4)
-    yield [FadeIn(r), FadeIn(left_at(lab("add the two; Hamilton's equations give q̇ and ṗ", 22), -7.0, -0.25))]
-    yield [FadeIn(left_at(eq("= ∂f/∂q · ∂H/∂p − ∂f/∂p · ∂H/∂q", 30, PURPLE), -6.2, -1.0))]
+    r = left_at(eq("rate of f = (∂f/∂x) ẋ + (∂f/∂p) ṗ", 30, INK), -7.0, 0.4)
+    yield [FadeIn(r), FadeIn(left_at(lab("add the two; Hamilton's equations give ẋ and ṗ", 22), -7.0, -0.25))]
+    yield [FadeIn(left_at(eq("= ∂f/∂x · ∂H/∂p − ∂f/∂p · ∂H/∂x", 30, PURPLE), -6.2, -1.0))]
     yield [FadeIn(left_at(pill("one fixed recipe", PURPLE, 28), -7.0, -2.1))]
 
 
@@ -2061,7 +2061,7 @@ def pb4(s):
     yield [FadeIn(g), FadeIn(at(lab("the recipe works for any two quantities", 26, INK), 2.6, -1.8))]
 
 
-FB = [("{f, g}  =", INK), ("∂f/∂q · ∂g/∂p", PURPLE), ("−", INK), ("∂f/∂p · ∂g/∂q", PURPLE)]
+FB = [("{f, g}  =", INK), ("∂f/∂x · ∂g/∂p", PURPLE), ("−", INK), ("∂f/∂p · ∂g/∂x", PURPLE)]
 
 
 def fb_parts(size=40):
@@ -2098,9 +2098,9 @@ def feed(inp, out, note, y, color=BLUE, note_color=INK, below=False):
 @slide("The bracket of position with the energy", "Bracket with the energy")
 def pb6(s):
     s.add(machine(), at(lab("feed a quantity in, get its rate of change out", 24, INK), MX, 2.3))
-    a, _ = feed("q", "p / m", "the velocity", 0.0)
+    a, _ = feed("x", "p / m", "the velocity", 0.0)
     yield a
-    b, _ = feed("p", "−dV/dq", "the force", -1.3, BLUE, ORANGE)
+    b, _ = feed("p", "−dV/dx", "the force", -1.3, BLUE, ORANGE)
     yield b
     yield [FadeIn(at(pill("Hamilton's equations again", INK, 28), 0, -2.8))]
 
@@ -2113,7 +2113,7 @@ def pb7(s):
     yield [FadeIn(at(eq("{f, H} = 0  →  f stays constant", 36, INK), 0, -2.3))]
 
 
-QP = [("{q, p}  =", INK), ("∂q/∂q", PURPLE), ("·", INK), ("∂p/∂p", PURPLE), ("−", INK), ("∂q/∂p", PURPLE), ("·", INK), ("∂p/∂q", PURPLE)]
+QP = [("{x, p}  =", INK), ("∂x/∂x", PURPLE), ("·", INK), ("∂p/∂p", PURPLE), ("−", INK), ("∂x/∂p", PURPLE), ("·", INK), ("∂p/∂x", PURPLE)]
 
 
 def qp_parts():
@@ -2127,7 +2127,7 @@ def slot(parts, k, val, color=TEAL):
 
 @slide("Now one special bracket.", "Position with momentum")
 def qp1(s):
-    big = at(eq("{q, p}", 64, PURPLE), 0, 1.5)
+    big = at(eq("{x, p}", 64, PURPLE), 0, 1.5)
     yield [FadeIn(big), FadeIn(at(lab("one special bracket", 26, INK), 0, 2.45))]
     parts = qp_parts()
     yield [ReplacementTransform(big, parts)]
@@ -2135,8 +2135,8 @@ def qp1(s):
     line = Line(P(-5.0, -1.6), P(1.0, -1.6), color=LINE, stroke_width=4)
     d0 = Dot(P(q0, -1.6), radius=0.13, color=BLUE)
     nudge = Arrow(P(q0, -2.1), P(q0 + 1.6, -2.1), buff=0, color=INK, stroke_width=4, tip_length=0.18)
-    yield [FadeIn(line), FadeIn(d0), GrowArrow(nudge), d0.animate.shift(RIGHT * 1.6), FadeIn(at(lab("nudge q", 22, INK), q0 + 0.8, -2.45)),
-           FadeIn(left_at(lab("q moves by exactly the nudge", 24, INK), 1.6, -1.6)), FadeIn(slot(parts, 1, "1"))]
+    yield [FadeIn(line), FadeIn(d0), GrowArrow(nudge), d0.animate.shift(RIGHT * 1.6), FadeIn(at(lab("nudge x", 22, INK), q0 + 0.8, -2.45)),
+           FadeIn(left_at(lab("x moves by exactly the nudge", 24, INK), 1.6, -1.6)), FadeIn(slot(parts, 1, "1"))]
 
 
 @slide("The same goes for momentum with momentum.", "Filling in the four slopes")
@@ -2145,13 +2145,13 @@ def qp2(s):
     s.add(parts, slot(parts, 1, "1"))
     yield [FadeIn(slot(parts, 3, "1"))]
     yield [FadeIn(slot(parts, 5, "0")), FadeIn(slot(parts, 7, "0")), FadeIn(at(lab("neither changes with the other", 24, INK), 2.6, -0.4))]
-    r = at(eq("{q, p} = 1 · 1 − 0 · 0 = 1", 48, PURPLE, True), 0, -2.0)
+    r = at(eq("{x, p} = 1 · 1 − 0 · 0 = 1", 48, PURPLE, True), 0, -2.0)
     yield [FadeIn(r, shift=UP * 0.15)]
 
 
 @slide("It doesn't involve the energy at all.", "The same for every system")
 def qp3(s):
-    e = at(eq("{q, p} = 1", 56, PURPLE), 0, 1.7)
+    e = at(eq("{x, p} = 1", 56, PURPLE), 0, 1.7)
     s.add(e)
     yield [FadeIn(at(lab("no energy H in it", 26, INK), 0, 0.85))]
     xs = (-4.6, 0, 4.6)
@@ -2162,9 +2162,9 @@ def qp3(s):
 
 @slide("Velocity doesn't share this.", "Why momentum")
 def qv(s):
-    good = at(eq("{q, p} = 1", 44, PURPLE), -3.8, 1.6)
+    good = at(eq("{x, p} = 1", 44, PURPLE), -3.8, 1.6)
     s.add(good)
-    bad = at(eq("{q, v}", 44, INK), 2.6, 1.6)
+    bad = at(eq("{x, v}", 44, INK), 2.6, 1.6)
     yield [FadeIn(bad)]
     res = eq("= 1 / m", 44, INK).next_to(bad, RIGHT, buff=0.25)
     yield [FadeIn(res)]
@@ -2176,18 +2176,18 @@ def qv(s):
 
 @slide("Better still, every other bracket", "One relation underneath")
 def tree(s):
-    root = at(card("{q, p} = 1", 4.0, 1.1, PURPLE, 36), -4.4, 0.0)
-    kids = [at(hchip(t, PURPLE, size=28, h=0.75), 2.6, y) for t, y in (("{q², p} = 2q", 1.7), ("{q, H}", 0.55), ("{p, H}", -0.6), ("…", -1.75))]
+    root = at(card("{x, p} = 1", 4.0, 1.1, PURPLE, 36), -4.4, 0.0)
+    kids = [at(hchip(t, PURPLE, size=28, h=0.75), 2.6, y) for t, y in (("{x², p} = 2x", 1.7), ("{x, H}", 0.55), ("{p, H}", -0.6), ("…", -1.75))]
     yield [FadeIn(root), FadeIn(at(lab("every other bracket", 26, INK), 2.6, 2.5))]
-    yield [*[FadeIn(k) for k in kids], FadeIn(at(lab("built by adding and multiplying q and p", 24, INK), 2.6, -2.6))]
+    yield [*[FadeIn(k) for k in kids], FadeIn(at(lab("built by adding and multiplying x and p", 24, INK), 2.6, -2.6))]
     yield [*[GrowArrow(Arrow(k.get_left(), root.get_right(), buff=0.12, color=MUTED, stroke_width=4, tip_length=0.18)) for k in kids],
            FadeIn(at(lab("reduces, step by step, to this one", 24, INK), -4.4, -1.0))]
 
 
 @slide("So when the next chapter builds quantum mechanics", "Only one relation to replace")
 def tree2(s):
-    root = at(card("{q, p} = 1", 4.0, 1.1, PURPLE, 36), -4.4, 0.0)
-    kids = [at(hchip(t, PURPLE, size=28, h=0.75), 2.6, y) for t, y in (("{q², p} = 2q", 1.7), ("{q, H}", 0.55), ("{p, H}", -0.6), ("…", -1.75))]
+    root = at(card("{x, p} = 1", 4.0, 1.1, PURPLE, 36), -4.4, 0.0)
+    kids = [at(hchip(t, PURPLE, size=28, h=0.75), 2.6, y) for t, y in (("{x², p} = 2x", 1.7), ("{x, H}", 0.55), ("{p, H}", -0.6), ("…", -1.75))]
     s.add(root, *kids, *[Arrow(k.get_left(), root.get_right(), buff=0.12, color=MUTED, stroke_width=4, tip_length=0.18) for k in kids])
     yield [Indicate(root, color=PURPLE), FadeIn(at(lab("the next chapter replaces only this", 26, INK, True), -4.4, 1.2))]
     yield [LaggedStart(*[Indicate(k, color=PURPLE) for k in kids], lag_ratio=0.2), FadeIn(at(lab("everything else follows", 26, INK, True), 2.6, -2.6))]
@@ -2202,7 +2202,7 @@ def back1(s):
     yield [FadeIn(at(pill("next chapter: first quantization", INK, 30), 0, 2.15))]
     h = at(eq("H = p²/2m + V", 40, PURPLE), -3.6, 0.7)
     yield [FadeIn(h), FadeIn(left_at(words("keeps its job: it moves the state forward", 40, 26, INK), -0.6, 0.7))]
-    q = at(VGroup(chip("q", BLUE, size=32, h=0.8), chip("p", BLUE, size=32, h=0.8)).arrange(RIGHT, buff=0.25), -3.6, -1.2)
+    q = at(VGroup(chip("x", BLUE, size=32, h=0.8), chip("p", BLUE, size=32, h=0.8)).arrange(RIGHT, buff=0.25), -3.6, -1.2)
     ops = at(card("operators,\na new kind of object", 4.4, 1.3, INK, 28), 3.6, -1.2)
     yield [FadeIn(q), GrowArrow(arrow(q, ops)), FadeIn(ops)]
 
@@ -2210,7 +2210,7 @@ def back1(s):
 @slide("It replaces the bracket of position with momentum", "One change, then the rest")
 def back2(s):
     t = clock(s)
-    a = at(card("{q, p} = 1", 3.8, 1.0, PURPLE, 34), -4.4, 1.6)
+    a = at(card("{x, p} = 1", 3.8, 1.0, PURPLE, 34), -4.4, 1.6)
     b = at(card("a quantum version", 4.2, 1.0, INK, 30), 3.6, 1.6)
     yield [FadeIn(a), GrowArrow(arrow(a, b)), FadeIn(b)]
     yield [FadeIn(at(lab("the rest of quantum mechanics follows from that one change", 26, INK), 0, 0.4))]
