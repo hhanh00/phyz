@@ -268,10 +268,10 @@ The bracket obeys a product rule, $\{fg, h\} = f\{g, h\} + g\{f, h\}$, inherited
 
 ## Where this comes back
 
-The next chapter, [First Quantization](first-quantization.md), keeps the Hamiltonian $H = p^2/2m + V$ as the function that moves the state forward, and turns position and momentum into operators, a new kind of object that chapter explains. It replaces the bracket $\{q, p\} = 1$ with a quantum version, and the rest of quantum mechanics follows from that one change. The [Harmonic Oscillator](harmonic-oscillator.md) chapter then quantizes this chapter's spring.
+The next two chapters build quantum mechanics. [Quantum Ideas](quantum-ideas.md) shows from experiments why the state has to become a list of amplitudes. Then [First Quantization](first-quantization.md) keeps the Hamiltonian $H = p^2/2m + V$ as the function that moves the state forward, and turns position and momentum into operators, a new kind of object that chapter explains. It replaces the bracket $\{q, p\} = 1$ with a quantum version, and the rest of quantum mechanics follows from that one change. The [Harmonic Oscillator](harmonic-oscillator.md) chapter then quantizes this chapter's spring.
 
 The action comes back too. [Action and Lagrangians](qft-action.md) applies the Euler–Lagrange equation to fields, with one coordinate at every point of space, and builds their momentum and energy the same way as here. And [Path Integrals](path-integrals.md), later on, adds up *every* path, each weighted by its action, and explains why the flat-spot path is the one we see.
 
 ---
 
-Next: [First Quantization](./first-quantization.md)
+Next: [Quantum Ideas](./quantum-ideas.md)

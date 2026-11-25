@@ -101,7 +101,7 @@ Multiplying the electron field by a constant phase changes no prediction. Take
 
 $$\psi \to e^{i\alpha}\psi, \qquad \bar\psi \to e^{-i\alpha}\bar\psi,$$
 
-with the same constant $\alpha$ everywhere. The probability density from [First Quantization](first-quantization.md), $P = \psi^*\psi$, is unchanged because the phase and its conjugate cancel. Relative phases between parts of a superposition still matter for interference; the transformation here rotates the whole field by one angle.
+with the same constant $\alpha$ everywhere. The probability density from [Quantum Ideas](quantum-ideas.md), $P = \psi^*\psi$, is unchanged because the phase and its conjugate cancel. Relative phases between parts of a superposition still matter for interference; the transformation here rotates the whole field by one angle.
 
 Every term in the free Dirac Lagrangian contains one $\psi$ and one $\bar\psi$. In the mass term the two phases cancel directly, $e^{-i\alpha}e^{i\alpha}=1$. In the kinetic term the constant phase passes through the derivative and then cancels the same way. The Lagrangian is therefore unchanged. A transformation that leaves the action unchanged is a **symmetry**, and this one is **global** because a single $\alpha$ applies across all of spacetime.
 

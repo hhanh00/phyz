@@ -44,7 +44,7 @@ then $A\mathbf e_1=\begin{pmatrix}a\\c\end{pmatrix}$ and $A\mathbf e_2=\begin{pm
 
 $$A\mathbf v=v_1\begin{pmatrix}a\\c\end{pmatrix}+v_2\begin{pmatrix}b\\d\end{pmatrix}=\begin{pmatrix}av_1+bv_2\\cv_1+dv_2\end{pmatrix}.$$
 
-This is the whole multiplication rule. Each entry of the output is a row of the matrix dotted against $\mathbf v$, but that dot product is not a separate convention: it falls out of expanding $\mathbf v$ in the basis and letting $A$ act on each basis vector. Multiplying two matrices applies the two transformations in sequence, and the order matters because $AB$ and $BA$ generally differ. This failure to commute is exactly what the [commutator](first-quantization.md#_4-measured-quantities-become-operators) $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$ measures.
+This is the whole multiplication rule. Each entry of the output is a row of the matrix dotted against $\mathbf v$, but that dot product is not a separate convention: it falls out of expanding $\mathbf v$ in the basis and letting $A$ act on each basis vector. Multiplying two matrices applies the two transformations in sequence, and the order matters because $AB$ and $BA$ generally differ. This failure to commute is exactly what the [commutator](first-quantization.md#_1-measured-quantities-become-operators) $[\hat A,\hat B]=\hat A\hat B-\hat B\hat A$ measures.
 
 ## 3. Transpose, conjugate transpose, and the adjoint
 
@@ -80,7 +80,7 @@ When a matrix acts on a vector and only rescales it,
 
 $$\hat A\mathbf v=\lambda\mathbf v,$$
 
-the vector $\mathbf v$ is an **eigenvector** and the number $\lambda$ is its **eigenvalue**. Solving this equation for a matrix $\hat A$ finds its special directions. In quantum mechanics the eigenvalues of an observable are the possible measurement outcomes, as [First Quantization](first-quantization.md#_4-measured-quantities-become-operators) explains.
+the vector $\mathbf v$ is an **eigenvector** and the number $\lambda$ is its **eigenvalue**. Solving this equation for a matrix $\hat A$ finds its special directions. In quantum mechanics the eigenvalues of an observable are the possible measurement outcomes, as [First Quantization](first-quantization.md#_1-measured-quantities-become-operators) explains.
 
 **Example.** The matrix $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ has eigenvectors $\begin{pmatrix}1\\1\end{pmatrix}$ and $\begin{pmatrix}1\\-1\end{pmatrix}$ with eigenvalues $+1$ and $-1$.
 
@@ -104,7 +104,7 @@ means the overlap of $\phi$ with the vector $\hat A|\psi\rangle$. The adjoint is
 
 $$\langle\phi|\hat A^\dagger\psi\rangle=\langle\hat A\phi|\psi\rangle.$$
 
-This notation first appears on [First Quantization](first-quantization.md) and is used from then on. A ket written as $|0\rangle$ is a named state (the ground state or the vacuum), not the number zero.
+This notation first appears on [Quantum Ideas](quantum-ideas.md) and is used from then on. A ket written as $|0\rangle$ is a named state (the ground state or the vacuum), not the number zero.
 
 ## 6. Hermitian and unitary operators; trace
 
@@ -113,7 +113,7 @@ Two kinds of operator do most of the work:
 - A **Hermitian** operator satisfies $\hat A=\hat A^\dagger$. Its eigenvalues are real, which is why observables are Hermitian. Eigenvectors with distinct eigenvalues are orthogonal.
 - A **unitary** operator satisfies $\hat U^\dagger\hat U=\hat U\hat U^\dagger=1$. It preserves every inner product, so it maps normalized states to normalized states and describes time evolution and symmetry transformations.
 
-For a Hermitian matrix we can always find a complete set of orthogonal eigenvectors. This is the **spectral theorem**: a state can be expanded in the eigenbasis of an observable, and the squared magnitudes of the expansion coefficients give outcome probabilities ([First Quantization](first-quantization.md#_4-measured-quantities-become-operators)).
+For a Hermitian matrix we can always find a complete set of orthogonal eigenvectors. This is the **spectral theorem**: a state can be expanded in the eigenbasis of an observable, and the squared magnitudes of the expansion coefficients give outcome probabilities ([First Quantization](first-quantization.md#_1-measured-quantities-become-operators)).
 
 The **trace** of a square matrix is the sum of its diagonal entries, $\operatorname{tr}A=\sum_i A_{ii}$. It appears when a [closed fermion loop](feynman-rules.md#tree-level-and-loop-diagrams) is evaluated, where the sum over the spinor index of a closed chain is a trace.
 

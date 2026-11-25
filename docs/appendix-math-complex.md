@@ -14,7 +14,7 @@ The **complex conjugate** flips the sign of the imaginary part, $z^*=a-ib$. Mult
 
 $$|z|^2=z^*z=(a-ib)(a+ib)=a^2+b^2.$$
 
-We call $|z|$ the **magnitude** of $z$. In quantum mechanics, a probability density is built this way: $|\psi|^2=\psi^*\psi$ on [First Quantization](first-quantization.md).
+We call $|z|$ the **magnitude** of $z$. In quantum mechanics, a probability density is built this way: $|\psi|^2=\psi^*\psi$ on [Quantum Ideas](quantum-ideas.md).
 
 ## 2. The complex plane and Euler's formula
 
@@ -51,9 +51,9 @@ A **plane wave** writes an oscillation as a complex exponential,
 
 $$e^{i(\mathbf p\cdot\mathbf x-Et)/\hbar}=\cos\!\left(\frac{\mathbf p\cdot\mathbf x-Et}{\hbar}\right)+i\sin\!\left(\frac{\mathbf p\cdot\mathbf x-Et}{\hbar}\right).$$
 
-The real part is a cosine wave; the complex form is easier to differentiate because the derivative of $e^{i\theta}$ is $ie^{i\theta}$. This wave appears first in [First Quantization](first-quantization.md#_7-the-energy-moves-the-state-the-schrodinger-equation), returns as the relativistic [plane wave](relativistic-qm.md#_1-plane-wave), and drives every field expansion afterward.
+The real part is a cosine wave; the complex form is easier to differentiate because the derivative of $e^{i\theta}$ is $ie^{i\theta}$. This wave appears first in [First Quantization §2](first-quantization.md#_2-position-and-momentum-operators), returns as the relativistic [plane wave](relativistic-qm.md#_1-plane-wave), and drives every field expansion afterward.
 
-A general function can be written as a sum (or integral) of such waves with different momenta. Reconstructing the function from its momentum components is the **Fourier transform**. It is the step that connects the position and momentum representations in [First Quantization](first-quantization.md) and that decomposes a field into momentum modes in [Field Quantization](field-quantization.md). Roughly: a sharply localized position wave is a broad sum of momentum waves, and vice versa, which is the mathematical content of the [uncertainty relation](first-quantization.md#_8-why-position-and-momentum-cannot-both-be-sharp).
+A general function can be written as a sum (or integral) of such waves with different momenta. Reconstructing the function from its momentum components is the **Fourier transform**. It is the step that connects the position and momentum representations in [First Quantization](first-quantization.md) and that decomposes a field into momentum modes in [Field Quantization](field-quantization.md). Roughly: a sharply localized position wave is a broad sum of momentum waves, and vice versa, which is the mathematical content of the [uncertainty relation](first-quantization.md#_4-why-position-and-momentum-cannot-both-be-sharp).
 
 ## 5. Conjugation and the adjoint
 

@@ -52,7 +52,7 @@ The cross section combines three ingredients: the squared amplitude supplies the
 
 $$\sigma = \frac{1}{\Phi}\int |\mathcal{M}|^{2}\; d\Pi,$$
 
-where squaring follows the Born rule introduced in [First Quantization](first-quantization.md).
+where squaring follows the Born rule introduced in [Quantum Ideas](quantum-ideas.md).
 
 The **phase-space measure** for a final state of $n$ particles is
 

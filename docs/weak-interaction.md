@@ -314,7 +314,7 @@ $$\varepsilon_L^\mu=\left(\frac{|\mathbf k|}{m},0,0,\frac{E}{m}\right),$$
 
 which still satisfies $k\cdot\varepsilon_L=0$.
 
-For comparison, the [earlier massless photon treatment](qed.md#counting-a-free-photons-polarizations) has $k^2=0$ and also imposes $k\cdot\varepsilon=0$. The massless gauge redundancy $\varepsilon^\mu\sim\varepsilon^\mu+\alpha k^\mu$ removes the remaining non-transverse direction, leaving only two physical polarizations. A massive $W$ has no such removable longitudinal mode, so its third polarization is physical.
+For comparison, the [earlier massless photon treatment](qed.md#counting-a-free-photon-s-polarizations) has $k^2=0$ and also imposes $k\cdot\varepsilon=0$. The massless gauge redundancy $\varepsilon^\mu\sim\varepsilon^\mu+\alpha k^\mu$ removes the remaining non-transverse direction, leaving only two physical polarizations. A massive $W$ has no such removable longitudinal mode, so its third polarization is physical.
 
 </details>
 

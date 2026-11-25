@@ -67,26 +67,6 @@ class PhaseSpaceStates(Scene):
                  label('Points B and D of the spring in section 6: a point in phase space specifies both position and momentum.',0,-3.5,25,MUTED,width=15))
 
 
-class BornDensity(Scene):
-    def construct(self):
-        heading(self,'A wave function and its probability density','A particle confined between 0 and 1 m')
-        ax=axes_at(-4,-0.2,5.6,3.6,(0,1,0.25),(0,1.6,0.5));self.add(ax)
-        fn=lambda x:np.sqrt(2)*np.sin(np.pi*x)
-        self.add(path_curve(ax,fn,[0,1],BLUE),math(r'\psi(x)=\sqrt2\,\sin(\pi x)',-4,2.3,30,BLUE))
-        ax2=axes_at(4,-0.2,5.6,3.6,(0,1,0.25),(0,2.2,0.5));dens=lambda x:2*np.sin(np.pi*x)**2
-        curve=path_curve(ax2,dens,[0,1],TEAL);self.add(ax2)
-        for i,(lo,hi,pct) in enumerate([(0,.25,'9.1%'),(.25,.5,'40.9%'),(.5,.75,'40.9%'),(.75,1,'9.1%')]):
-            self.add(ax2.get_area(curve,x_range=[lo,hi],color=TEAL,opacity=.32 if i%2==0 else .16))
-            mid=(lo+hi)/2; y=0.55 if pct=='40.9%' else 0.8
-            self.add(label(pct,ax2.c2p(mid,0)[0],ax2.c2p(0,y)[1],21,INK))
-        self.add(curve,math(r'|\psi(x)|^2=2\sin^2(\pi x)',4,2.3,30,TEAL))
-        for a_,xx in ((ax,-4),(ax2,4)):
-            for v in (0,0.25,0.5,0.75,1):
-                self.add(label(f'{v:g}',a_.c2p(v,0)[0],a_.c2p(v,0)[1]-0.3,19,MUTED))
-            self.add(label('position x (m)',xx,-2.55,21,MUTED))
-        self.add(label('The amplitude can be negative or complex in general; the density never is.',-4,-3.4,22,MUTED,width=7),
-                 label('Each shaded area is the chance of finding the particle in that quarter.',4,-3.4,22,MUTED,width=7))
-
 class TwoSlitCounts(Scene):
     def construct(self):
         heading(self,'Two slits open: some spots get fewer electrons','Counts on the screen with only slit A open, only slit B open, and both open')
@@ -115,6 +95,46 @@ class TwoSlitCounts(Scene):
             self.add(ln,lab)
         self.add(label('position on the screen',2.6,-2.45,22,MUTED))
         self.add(label('If each electron went through one slit, the both-open count could never fall below either single-slit count.',0,-3.55,24,MUTED,width=15))
+
+
+class SingleSlit(Scene):
+    def construct(self):
+        heading(self,'One slit: electrons pile up in a hump','Each electron lands as a single dot, anywhere on the screen')
+        bx=-4.8; sx=-3.0
+        self.add(Dot([-6.6,0.2,0],color=INK,radius=0.1),label('source',-6.6,-0.35,21,MUTED),
+                 Line([bx,-1.9,0],[bx,0.0,0],color=INK,stroke_width=6),Line([bx,0.4,0],[bx,2.3,0],color=INK,stroke_width=6),
+                 Line([sx,-1.9,0],[sx,2.3,0],color=MUTED,stroke_width=6),
+                 label('one slit',bx,-2.3,21,MUTED),label('screen',sx,-2.3,21,MUTED),
+                 DashedLine([-6.5,0.2,0],[bx,0.2,0],color=MUTED,stroke_width=2))
+        rng=np.random.default_rng(3)
+        for y in np.clip(rng.normal(0.2,0.75,45),-1.8,2.2):
+            self.add(Dot([sx+0.18,y,0],radius=0.035,color=BLUE))
+        ax=axes_at(2.6,-0.25,7.0,3.5,(-3,3,1),(0,1.2,1)); self.add(ax)
+        self.add(path_curve(ax,lambda y:np.exp(-y**2/1.6),[-3,3],BLUE),
+                 label('position on the screen',2.6,-2.45,22,MUTED),label('number of electrons',2.6,1.9,21,MUTED))
+        self.add(label('Most electrons land behind the slit, fewer further out.',0,-3.55,22,MUTED,width=15))
+
+
+class PhaseAlongScreen(Scene):
+    def construct(self):
+        heading(self,'The phase turns with distance','One slit open: an arrow for landing at each spot on the screen')
+        bx=-5.4; sx=-1.6; lam=0.55
+        self.add(Line([bx,2.3,0],[bx,0.15,0],color=INK,stroke_width=6),Line([bx,-0.15,0],[bx,-2.3,0],color=INK,stroke_width=6),
+                 Line([sx,2.3,0],[sx,-2.3,0],color=MUTED,stroke_width=4),
+                 label('slit',bx,-2.7,20,MUTED),label('screen',sx,-2.7,20,MUTED))
+        hump=lambda y:np.exp(-y**2/3.0)
+        for y in np.linspace(-2.0,2.0,9):
+            d=np.hypot(sx-bx,y); ang=2*np.pi*d/lam; L=0.9*hump(y)
+            u=np.array([sx-bx,y,0])/d
+            self.add(DashedVMobject(Line(np.array([bx,0,0])+0.6*u,[sx,y,0],color=MUTED,stroke_width=1.5,stroke_opacity=0.5),num_dashes=12))
+            o=np.array([sx+0.75,y,0]); v=np.array([np.cos(ang),np.sin(ang),0])*L
+            self.add(Dot([sx,y,0],radius=0.04,color=INK),
+                     Arrow(o-v/2,o+v/2,buff=0,color=BLUE,stroke_width=5,max_tip_length_to_length_ratio=0.3,max_stroke_width_to_length_ratio=10))
+        self.add(label('arrow directions: set by the distance from the slit',sx+0.4,2.65,20,BLUE))
+        ax=axes_at(4.6,0.0,3.4,4.0,(0,1.2,1),(-2.2,2.2,1)); self.add(ax)
+        self.add(ax.plot_parametric_curve(lambda s:np.array([hump(s)**2,s,0]),t_range=[-2.2,2.2],color=TEAL,stroke_width=4),
+                 label('chance per metre',4.6,2.45,21,TEAL),label('only the lengths count',4.6,-2.45,20,MUTED))
+        self.add(label('Turn every arrow by any amount and the chances stay the same, so one slit alone can never show the phase.',0,-3.65,21,MUTED,width=15))
 
 
 def wave_between(a, b, wavelength, amp=0.18, color=ORANGE, width=3):
@@ -169,9 +189,10 @@ class PhotoelectricEffect(Scene):
         self.add(Rectangle(width=0.5,height=3.2,color=INK,fill_color=PALE,fill_opacity=1).move_to([-3.6,0,0]),label('metal',-3.6,-1.95,21,MUTED))
         for y in (1.0,0.0,-1.0):
             self.add(wave_between((-7.0,y+0.9),(-3.9,y),0.35,0.12,ORANGE,3))
-        for y,dy in ((0.8,0.5),(-0.4,-0.3)):
-            self.add(Dot([-3.1,y,0],radius=0.09,color=BLUE),arrow((-3.0,y),(-1.8,y+dy),BLUE))
-        self.add(label('light',-6.2,1.9,21,ORANGE),label('electrons',-2.1,1.55,21,BLUE))
+        # Electrons leave the lit face, back toward the light.
+        for (x0,y0),(x1,y1) in (((-4.05,1.45),(-5.0,2.35)),((-4.05,-1.45),(-5.1,-2.3))):
+            self.add(Dot([x0,y0,0],radius=0.09,color=BLUE),arrow((x0-0.05,y0),(x1,y1),BLUE))
+        self.add(label('light',-6.6,2.3,21,ORANGE),label('electrons',-4.6,2.7,21,BLUE))
         ax=axes_at(3.4,-0.15,6.2,3.8,(0,12,2),(0,3,1)); self.add(ax)
         f0=5.56; h=4.1357e-15*1e14  # eV per 1e14 Hz
         self.add(DashedLine(ax.c2p(0,0),ax.c2p(f0,0),color=MUTED),ax.plot(lambda f:h*(f-f0),x_range=[f0,12],color=BLUE,stroke_width=4))
@@ -196,50 +217,6 @@ class ComptonScattering(Scene):
         self.add(DashedLine([0,0,0],[3.0,0,0],color=MUTED),Arc(radius=1.1,start_angle=0,angle=ang,color=MUTED),label('θ',1.35,0.45,24,MUTED))
         self.add(label('A smooth wave would shake the electron at its own frequency and re-emit the same wavelength.',0,-2.9,22,MUTED,width=15),
                  label('Instead the wavelength grows, and grows more at larger angles.',0,-3.4,22,MUTED,width=15))
-
-
-class DavissonGermer(Scene):
-    def construct(self):
-        heading(self,'Electrons bounce off a nickel crystal like a wave','54 eV electrons aimed straight down at the surface; the count peaks at 50°')
-        d=0.9; xs=[-6.2+d*i for i in range(6)]; y0=-1.4
-        for x in xs: self.add(Dot([x,y0,0],radius=0.13,color=INK))
-        self.add(label('surface rows of atoms',-5.3,y0-0.55,20,MUTED))
-        a1=np.array([xs[2],y0]); a2=np.array([xs[3],y0])
-        for a in (a1,a2): self.add(Line([a[0],2.0,0],[a[0],y0+0.15,0],color=BLUE,stroke_width=3))
-        self.add(label('beam',(a1[0]+a2[0])/2,2.3,21,BLUE))
-        th=np.radians(50); u=np.array([-np.sin(th),np.cos(th)])  # outgoing direction, θ from the beam (vertical), toward left
-        L=2.6
-        for a in (a1,a2): self.add(Arrow([a[0],a[1],0],[a[0]+u[0]*L,a[1]+u[1]*L,0],buff=0.1,color=TEAL,stroke_width=3,max_tip_length_to_length_ratio=0.08))
-        foot=a2+np.dot(a1-a2,u)*u
-        self.add(DashedLine([a1[0],a1[1],0],[foot[0],foot[1],0],color=MUTED),
-                 Line([a2[0],a2[1],0],[foot[0],foot[1],0],color=ORANGE,stroke_width=6),
-                 label('extra path d sin θ',foot[0]+1.35,foot[1]-0.25,20,ORANGE),
-                 BraceBetweenPoints([a1[0],y0-0.05,0],[a2[0],y0-0.05,0],direction=DOWN,color=MUTED),label('d',(a1[0]+a2[0])/2,y0-0.75,22,MUTED))
-        self.add(Arc(radius=0.8,start_angle=PI/2,angle=th,arc_center=[a1[0],a1[1],0],color=MUTED),label('θ',a1[0]-0.5,a1[1]+1.05,22,MUTED))
-        ax=axes_at(4.2,-0.1,5.2,3.4,(0,90,30),(0,1.2,0.5)); self.add(ax)
-        f=lambda g:0.35*np.exp(-g/60)+0.75*np.exp(-((g-50)/7)**2)
-        self.add(path_curve(ax,f,[2,88],TEAL),DashedLine(ax.c2p(50,0),ax.c2p(50,f(50)),color=INK))
-        for v in (0,30,50,90): self.add(label(f'{v}°',ax.c2p(v,0)[0],ax.c2p(v,0)[1]-0.32,19,INK if v==50 else MUTED))
-        self.add(label('electrons counted',2.9,1.85,21,MUTED),label('angle θ from the beam',4.2,-2.3,21,MUTED))
-        self.add(label('Peak where d sin θ is one wavelength: 0.215 nm × sin 50° = 0.165 nm. de Broglie predicts h/p = 0.167 nm.',0,-3.4,22,MUTED,width=15))
-
-
-class EigenbasisProbabilities(Scene):
-    def construct(self):
-        heading(self,'The tilted spin as an arrow','Its components along up and down are the amplitudes; their squares are the chances')
-        origin=(-6,-1.5)
-        self.add(arrow(origin,(-1,-1.5)),arrow(origin,(-6,2)),
-                 arrow(origin,(-2.54,.5),BLUE),
-                 DashedLine([-2.54,.5,0],[-2.54,-1.5,0],color=TEAL),
-                 DashedLine([-6,.5,0],[-2.54,.5,0],color=ORANGE),
-                 math(r'|\text{up}\rangle',-0.8,-2,30),math(r'|\text{down}\rangle',-6.2,2.35,30),math(r'|\psi\rangle',-2.2,1,34,BLUE),
-                 math(r'\sqrt3/2',-4.2,-2.05,30,TEAL),math(r'1/2',-6.7,-.4,30,ORANGE))
-        for x,prob,name,c in [(2.5,.75,'up',TEAL),(5.5,.25,'down',ORANGE)]:
-            self.add(Rectangle(width=1.5,height=3.2*prob,fill_color=c,fill_opacity=.8,stroke_width=0).move_to([x,-1.5+1.6*prob,0]),
-                     label(name,x,-1.9,26),label(str(int(100*prob))+'%',x,-1.5+3.2*prob+.3,25,c))
-        self.add(label('Vertical magnet: chances',4,2.3,28),
-                 math(r'|\psi\rangle=\tfrac{\sqrt3}{2}|\text{up}\rangle+\tfrac12|\text{down}\rangle',0,-3,35),
-                 label('Square the size of each amplitude to get the chance of that result.',0,-3.85,25,MUTED))
 
 
 class FourierUncertainty(Scene):
@@ -559,7 +536,6 @@ class CoherentState(Scene):
         self.add(math(r'\text{Swing drawn about 5 times the spread. For chapter 1\textquoteright s spring it is }2\times10^{17}\text{ times.}',0,-3.65,22,MUTED,width=14.5))
 
 
-
 class StepsVsThermal(Scene):
     def construct(self):
         heading(self,'One step of energy against the thermal energy','HCl at 300 K, energies above the bottom rung in units of the thermal energy')
@@ -717,86 +693,84 @@ class PendulumForces(Scene):
                  label('the lower string tugs the upper bob\nat an angle to its motion, so its pull\nmust be worked out first',4.2,-2.3,22,MUTED))
 
 
-class SpinPrecession(Scene):
+class TiltCircle(Scene):
     def construct(self):
-        heading(self,'The tilted spin swings round the field','In a vertical magnetic field, the tilt sweeps a cone; up and down stay 75% and 25% throughout')
-        o=np.array([-3.6,-2.6,0]); top=np.array([-3.6,0.9,0]); R=2.3; r=0.75
-        self.add(Arrow(o,top,buff=0,color=MUTED,stroke_width=4,max_tip_length_to_length_ratio=0.05),
-                 label('field',o[0]-0.55,top[1]-0.45,22,MUTED),
-                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2).move_to(top),
-                 DashedVMobject(Line(o,top+[-R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14),
-                 DashedVMobject(Line(o,top+[R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14))
-        stops=[('right',top+[R,0,0],'93% right',RIGHT),('back',top+[0,r,0],'50% right',UR),
-               ('left',top+[-R,0,0],'7% right',LEFT),('front',top+[0,-r,0],'50% right',DR)]
-        for name,pt,chance,d in stops:
-            g=VGroup(label(name,0,0,22,INK),label(chance,0,0,20,TEAL)).arrange(DOWN,buff=0.08)
-            g.next_to(pt,d,buff=0.22)
-            self.add(Dot(pt,color=BLUE,radius=0.09),g)
-        self.add(Arrow(o,top+[R,0,0],buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.06),
-                 CurvedArrow(top+[R*0.75,r*0.66,0],top+[R*0.2,r*0.98,0],color=ORANGE,stroke_width=3,tip_length=0.18))
-        # Right: the chance of "right" over one turn.
-        ax=axes_at(3.6,-0.3,5.6,3.4,(0,1,0.25),(0,1,0.5)); self.add(ax)
-        f=lambda u:0.5+np.sqrt(3)/4*np.cos(2*np.pi*u)
-        self.add(path_curve(ax,f,[0,1],TEAL))
-        for u,name in ((0,'right'),(0.25,'back'),(0.5,'left'),(0.75,'front'),(1,'right')):
-            self.add(Dot(ax.c2p(u,f(u)),color=BLUE,radius=0.07),label(name,ax.c2p(u,0)[0],ax.c2p(u,0)[1]-0.32,18,MUTED))
-        self.add(label('chance of \u201cright\u201d',3.6,1.75,22,TEAL),label('one full turn of the tilt',3.6,-2.75,18,MUTED),
-                 label('Up and down only see the sizes of the amplitudes; the sideways chances follow the turning gap between their phases.',0,-3.75,21,MUTED,width=14.5))
-
-
-class TwoTilts(Scene):
-    def construct(self):
-        heading(self,'Same up-and-down chances, different states','Two batches of atoms, both tilted 60° from vertical: one toward the right, one toward the front')
+        heading(self,'Same lean, different directions','Atoms leaning by the same amount from vertical, toward the right, the front and the left')
         o=np.array([-4.0,-2.5,0]); top=np.array([-4.0,0.9,0]); R=2.3; r=0.8
         ring=lambda deg:top+np.array([R*np.cos(np.radians(deg)),r*np.sin(np.radians(deg)),0])
-        tr=ring(-25); tf=ring(-115)   # the view is turned a little, so neither tilt points straight at us
+        dirs=((-25,BLUE,'leans right'),(-115,ORANGE,'leans toward the front'),(155,TEAL,'leans left'))
         self.add(DashedVMobject(Line(o,top+[0,1.2,0],color=MUTED,stroke_width=3),num_dashes=18),
                  label('vertical',top[0],top[1]+1.45,22,MUTED),
-                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2,stroke_opacity=0.6).move_to(top),
-                 DashedVMobject(Line(top,tr,color=BLUE,stroke_width=2,stroke_opacity=0.6),num_dashes=8),
-                 DashedVMobject(Line(top,tf,color=ORANGE,stroke_width=2,stroke_opacity=0.6),num_dashes=6))
+                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2,stroke_opacity=0.6).move_to(top))
         for deg,name in ((-25,'right'),(65,'back'),(155,'left'),(-115,'front')):
             q=ring(deg); d=(q-top)/np.linalg.norm(q-top)
+            if name=='front':
+                self.add(label(name,-4.45,0.0,20,MUTED)); continue
             self.add(label(name,q[0]+0.55*d[0],q[1]+0.4*d[1]+(0.12 if deg in (65,155) else -0.12),20,MUTED))
-        self.add(Arrow(o,tr,buff=0,color=BLUE,stroke_width=7,max_tip_length_to_length_ratio=0.07),
-                 Arrow(o,tf,buff=0,color=ORANGE,stroke_width=7,max_tip_length_to_length_ratio=0.08),
-                 label('batch 1:\nleans right',tr[0]+0.6,tr[1]-1.0,21,BLUE),
-                 label('batch 2:\nleans toward the front',tf[0]-1.45,tf[1]-1.05,21,ORANGE),
-                 label('both lean 60° from vertical',o[0],o[1]-0.45,20,INK))
-        # Results, as bars.
+        for deg,c,_ in dirs:
+            q=ring(deg)
+            self.add(DashedVMobject(Line(top,q,color=c,stroke_width=2,stroke_opacity=0.6),num_dashes=7),
+                     Arrow(o,q,buff=0,color=c,stroke_width=7,max_tip_length_to_length_ratio=0.07))
+        self.add(label('all lean the same amount',o[0],o[1]-0.45,20,INK))
         def bars(x,y,vals,names,c):
             g=VGroup()
             for i,(v,n) in enumerate(zip(vals,names)):
-                h=1.5*v/100; xx=x+i*0.95
+                h=1.0*v/100; xx=x+i*0.95
                 g.add(Rectangle(width=0.7,height=max(h,0.02),stroke_width=0,fill_color=c,fill_opacity=0.85).move_to([xx,y+h/2,0]),
-                      label(f'{v}%',xx,y+h+0.22,18,c),label(n,xx,y-0.25,18,MUTED))
+                      label(n,xx,y-0.22,17,MUTED))
             return g
-        self.add(label('vertical magnet',2.35,2.55,22,INK),label('sideways magnet',5.6,2.55,22,INK),
-                 bars(1.9,0.55,[75,25],['up','down'],BLUE),bars(5.15,0.55,[93,7],['right','left'],BLUE),
-                 bars(1.9,-2.0,[75,25],['up','down'],ORANGE),bars(5.15,-2.0,[50,50],['right','left'],ORANGE),
-                 label('the same',2.35,-0.35,20,TEAL),label('different',5.6,-0.35,20,RED))
-        self.add(label('A vertical magnet only sees how far each batch leans from vertical. A sideways magnet also sees which way.',0,-3.75,21,MUTED,width=14.5))
+        self.add(label('vertical magnet',2.35,2.55,22,INK),label('sideways magnet',5.6,2.55,22,INK))
+        rows=((0.95,[93,7]),(-0.75,[50,50]),(-2.45,[7,93]))
+        for (deg,c,name),(y,side) in zip(dirs,rows):
+            self.add(label(name,-0.05,y+0.45,19,c,width=2.2),
+                     bars(1.9,y,[75,25],['up','down'],c),bars(5.15,y,side,['right','left'],c))
+        self.add(label('the same',2.35,-3.25,20,INK),label('different',5.6,-3.25,20,INK))
+        self.add(label('A vertical magnet only sees how far the atoms lean. A sideways magnet also sees which way.',0,-3.8,21,MUTED,width=14.5))
 
 
-class OverlapShadow(Scene):
+class WaveSum(Scene):
     def construct(self):
-        heading(self,'The overlap is a shadow',"How much of the tilted state points along the state that is certainly ``right''")
-        o=np.array([-5.6,-2.4,0]); L=4.3
-        u=lambda deg:np.array([np.cos(np.radians(deg)),np.sin(np.radians(deg)),0])
-        tip=o+L*u(30); rdir=u(45); foot=o+L*np.cos(np.radians(15))*rdir
-        self.add(arrow((o[0],o[1]),(o[0]+L+0.7,o[1])),arrow((o[0],o[1]),(o[0],o[1]+L+0.4)),
-                 math(r'|\text{up}\rangle',o[0]+L+0.95,o[1]-0.35,28),math(r'|\text{down}\rangle',o[0]-0.1,o[1]+L+0.75,28),
-                 DashedVMobject(Line(o,o+(L+0.9)*rdir,color=ORANGE,stroke_width=3),num_dashes=24),
-                 label("certainly ``right''",o[0]+(L+0.9)*rdir[0]+0.2,o[1]+(L+0.9)*rdir[1]+0.3,22,ORANGE),
-                 Line(o,foot,color=TEAL,stroke_width=10),
-                 DashedVMobject(Line(tip,foot,color=MUTED,stroke_width=2),num_dashes=8),
-                 Arrow(o,tip,buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.06),
-                 math(r'|\psi\rangle',tip[0]+0.45,tip[1]-0.05,30,BLUE),
-                 Arc(radius=1.6,start_angle=np.radians(30),angle=np.radians(15),arc_center=o,color=INK,stroke_width=2),
-                 math(r'15^\circ',o[0]+1.95*np.cos(np.radians(37.5)),o[1]+1.95*np.sin(np.radians(37.5)),24),
-                 math(r'\text{shadow}\approx 0.97',foot[0]-1.2,foot[1]+0.35,26,TEAL))
-        h=3.2*0.933
-        self.add(Rectangle(width=1.6,height=h,stroke_width=0,fill_color=TEAL,fill_opacity=0.85).move_to([4.2,-2.4+h/2,0]),
-                 label("chance of ``right''",4.2,1.25,24,INK),math(r'0.97^2\approx 93\%',4.2,-2.4+h+0.4,30,TEAL),
-                 Line([3.0,-2.4,0],[5.4,-2.4,0],color=MUTED,stroke_width=3))
-        self.add(label("The amplitude for a result is the shadow of the state on that result's certain state; the chance is the shadow squared.",0,-3.7,21,MUTED,width=14.5))
+        heading(self,'Adding waves of different wavelengths','At each point, the arrows of all the waves add; their total length sets where the particle is likely to be')
+        xs=np.linspace(-15,15,41); k0=2*np.pi/6
+        def one(x): return np.exp(1j*k0*x)
+        def two(x): return 0.5*(np.exp(1j*k0*x)+np.exp(1j*2*np.pi/4.5*x))
+        ks=np.linspace(k0-0.9,k0+0.9,61); w=np.exp(-(ks-k0)**2/(2*0.25**2)); w/=w.sum()
+        def many(x): return np.sum(w*np.exp(1j*ks*x))
+        rows=[(1.45,one,'one wavelength','arrow length the same everywhere'),
+              (-0.35,two,'two wavelengths','length rises and falls'),
+              (-2.15,many,'many wavelengths','one bump: the particle is somewhere')]
+        X0,X1=-4.6,6.6; L=0.62
+        for y,f,name,note in rows:
+            self.add(Line([X0-0.2,y,0],[X1+0.2,y,0],color=MUTED,stroke_width=1.5,stroke_opacity=0.5),
+                     label(name,-6.0,y+0.05,22,INK),label(note,(X0+X1)/2,y-0.85,20,TEAL))
+            for x in xs:
+                z=f(x); r=abs(z); px=X0+(x+15)/30*(X1-X0)
+                if r*L<0.04:
+                    self.add(Dot([px,y,0],radius=0.03,color=BLUE)); continue
+                d=np.array([np.cos(np.angle(z)),np.sin(np.angle(z)),0])*r*L
+                self.add(Arrow([px,y,0]-d/2,[px,y,0]+d/2,buff=0,color=BLUE,stroke_width=3,max_tip_length_to_length_ratio=0.35,max_stroke_width_to_length_ratio=12))
+        self.add(label('position along the line',(X0+X1)/2,-3.45,20,MUTED),
+                 label('More wavelengths, so more momenta, make a narrower bump.',0,-3.85,21,MUTED,width=14.5))
+
+
+class TwoRoutes(Scene):
+    def construct(self):
+        heading(self,'Why the stripes alternate','Each route’s arrow turns one full turn per wavelength; the routes to a spot differ in length')
+        bx=-4.6; sx=-0.6; A=np.array([bx,0.75,0]); B=np.array([bx,-0.75,0])
+        P=np.array([sx,0.0,0]); Q=np.array([sx,1.9,0])
+        self.add(Line([bx,2.6,0],[bx,0.95,0],color=INK,stroke_width=6),Line([bx,0.55,0],[bx,-0.55,0],color=INK,stroke_width=6),
+                 Line([bx,-0.95,0],[bx,-2.6,0],color=INK,stroke_width=6),Line([sx,2.6,0],[sx,-2.6,0],color=MUTED,stroke_width=4),
+                 label('A',bx-0.35,0.75,22,TEAL),label('B',bx-0.35,-0.75,22,PURPLE),label('screen',sx,-2.95,20,MUTED))
+        self.add(Line(A,P,color=TEAL,stroke_width=3),Line(B,P,color=PURPLE,stroke_width=3),
+                 DashedVMobject(Line(A,Q,color=TEAL,stroke_width=3),num_dashes=20),DashedVMobject(Line(B,Q,color=PURPLE,stroke_width=3),num_dashes=22),
+                 Dot(P,color=ORANGE,radius=0.1),Dot(Q,color=INK,radius=0.1),
+                 label('bright spot',sx+0.95,P[1],20,ORANGE),label('dark spot',sx+0.85,Q[1],20,INK))
+        def pair(cx,cy,ang_b,title,sub,total,c):
+            o=np.array([cx,cy,0]); L=0.9
+            a=Arrow(o,o+L*RIGHT,buff=0,color=TEAL,stroke_width=6,max_tip_length_to_length_ratio=0.25)
+            d=np.array([np.cos(ang_b),np.sin(ang_b),0])
+            b=Arrow(o+np.array([0,-0.35,0]),o+np.array([0,-0.35,0])+L*d,buff=0,color=PURPLE,stroke_width=6,max_tip_length_to_length_ratio=0.25)
+            return VGroup(label(title,cx+0.2,cy+0.75,22,c),a,b,label(sub,cx+0.2,cy-0.95,19,MUTED),label(total,cx+0.2,cy-1.35,20,c))
+        self.add(pair(3.6,1.25,0,'at the bright spot','routes equally long: arrows match','together: length 2, chance 4',ORANGE),
+                 pair(3.6,-1.55,PI,'at the dark spot','B half a wavelength longer: arrows opposite','together: length 0, chance 0',INK))
+        self.add(label('Each route alone would give length 1, chance 1. Adding chances would always give 2.',0,-3.75,21,MUTED,width=14.5))

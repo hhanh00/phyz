@@ -31,7 +31,7 @@ For U(1), $T$ is just the number $1$, so the exponential reproduces $e^{i\alpha}
 
 $$z\;\mapsto\;e^{i\alpha}z\approx z+i\alpha z,$$
 
-a small step sideways, along the tangent to the circle. The generator fixes that tangent direction — the arrow at the identity in the diagram below — and the exponential walks along it through the full angle. For larger groups the generators are matrices, and the same logic applies component by component, as used for spinors on [The Dirac Equation](dirac-equation.md#_5-spinors-transformations).
+a small step sideways, along the tangent to the circle. The generator fixes that tangent direction — the arrow at the identity in the diagram below — and the exponential walks along it through the full angle. For larger groups the generators are matrices, and the same logic applies component by component, as used for spinors on [The Dirac Equation](dirac-equation.md#_5-spinors).
 
 ![A rotation group is a circle; the tangent at the identity is the generator that fixes the direction of the infinitesimal change.](./manim/rotation-generator.png)
 
@@ -63,7 +63,7 @@ $$[T^a,T^b]=i\epsilon^{abc}T^c,$$
 
 where $\epsilon^{abc}$ equals $+1$ for $(1,2,3)$ and its even permutations, $-1$ for odd permutations, and $0$ when two indices repeat. A group whose generators fail to commute is **non-Abelian**.
 
-This single fact changes the physics. The field strength of a non-Abelian gauge theory gains an extra term — $W_{\mu\nu}^a=\partial_\mu W_\nu^a-\partial_\nu W_\mu^a-g\epsilon^{abc}W_\mu^bW_\nu^c$ on [Weak Interaction](weak-interaction.md#yang-mills-fields-and-self-interactions) — which makes the gauge bosons interact directly with one another, something the photon never does. The names **Yang–Mills theory** and **structure constants** both refer to this construction: a gauge theory built from a non-Abelian group, and the numbers $\epsilon^{abc}$ that fix how its generators combine.
+This single fact changes the physics. The field strength of a non-Abelian gauge theory gains an extra term — $W_{\mu\nu}^a=\partial_\mu W_\nu^a-\partial_\nu W_\mu^a-g\epsilon^{abc}W_\mu^bW_\nu^c$ on [Weak Interaction](weak-interaction.md#yang–mills-fields-and-self-interactions) — which makes the gauge bosons interact directly with one another, something the photon never does. The names **Yang–Mills theory** and **structure constants** both refer to this construction: a gauge theory built from a non-Abelian group, and the numbers $\epsilon^{abc}$ that fix how its generators combine.
 
 ---
 

@@ -160,7 +160,7 @@ $$E^2 - (pc)^2 = (mc^2)^2.$$
 
 At rest, the momentum is zero and this gives back $E = mc^2$. For something moving, the energy is gamma times $mc^2$. At everyday speeds that's the rest energy plus the familiar kinetic energy $\tfrac12 mv^2$. Near the speed of light, gamma shoots up (section 2's table), so the energy grows without limit, which is why nothing with mass can ever reach $c$.
 
-**Light.** Light has no mass, so its energy is just $E = pc$. That fits chapter 2: a packet of light carries energy $hf$ and momentum $h/\lambda$, and since $f\lambda = c$, the energy is exactly $c$ times the momentum.
+**Light.** Light has no mass, so its energy is just $E = pc$. That fits chapter 2a: a packet of light carries energy $hf$ and momentum $h/\lambda$, and since $f\lambda = c$, the energy is exactly $c$ times the momentum.
 
 <details>
 <summary>More detail: energy, momentum and the low-speed limit</summary>
@@ -183,18 +183,18 @@ The rule from section 1 says the laws of physics must look the same to every obs
 
 Maxwell's equations for light pass. They were the starting point, after all, and their light waves travel at $c$ for everyone.
 
-The Schrödinger equation from chapter 2 fails. For a free particle it reads
+The Schrödinger equation from chapter 2b fails. For a free particle it reads
 
 $$i\hbar\frac{\partial\psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2\psi,$$
 
-with one derivative in time on the left and two in space on the right. That lopsidedness is the problem. Changing observer mixes time and space, the way turning a map mixes north–south with east–west. A rule that treats north–south differently from east–west changes when you turn the map, and in the same way an equation that treats time differently from space changes when you change observer. The lopsidedness comes from where the equation started: chapter 2 built it from the low-speed energy $E = p^2/2m$, which has one power of energy and two of momentum.
+with one derivative in time on the left and two in space on the right. That lopsidedness is the problem. Changing observer mixes time and space, the way turning a map mixes north–south with east–west. A rule that treats north–south differently from east–west changes when you turn the map, and in the same way an equation that treats time differently from space changes when you change observer. The lopsidedness comes from where the equation started: chapter 2b built it from the low-speed energy $E = p^2/2m$, which has one power of energy and two of momentum.
 
-That's fine at low speeds, where chapters 2 and 3 used it. But for fast particles we need an equation built from the full relativistic energy, with two powers of each, matching the interval. Doing that with chapter 2's trick, where a time derivative stands for energy and a space derivative for momentum, gives the **Klein–Gordon equation**, the subject of the next chapter.
+That's fine at low speeds, where chapters 2b and 3 used it. But for fast particles we need an equation built from the full relativistic energy, with two powers of each, matching the interval. Doing that with chapter 2b's trick, where a time derivative stands for energy and a space derivative for momentum, gives the **Klein–Gordon equation**, the subject of the next chapter.
 
 <details>
 <summary>The calculation: why the Schrödinger equation isn't relativistic</summary>
 
-Chapter 2 turned energy and momentum into operators, $E \to i\hbar\,\partial/\partial t$ and $\mathbf p \to -i\hbar\nabla$. Applied to $E = \mathbf p^2/2m$, this gives the free Schrödinger equation above.
+Chapter 2b turned energy and momentum into operators, $E \to i\hbar\,\partial/\partial t$ and $\mathbf p \to -i\hbar\nabla$. Applied to $E = \mathbf p^2/2m$, this gives the free Schrödinger equation above.
 
 A change of observer mixes $t$ with $x$, so it mixes $\partial_t$ with $\nabla$. The combination of derivatives that every observer agrees on is $\partial_t^2/c^2 - \nabla^2$, called the d'Alembertian, with two derivatives in time and two in space, mirroring the interval. The Schrödinger equation's one-time, two-space combination is not of that form.
 

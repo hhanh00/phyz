@@ -28,6 +28,7 @@ export default {
         text: 'Foundations',
         children: [
           { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
+          { text: 'Quantum Ideas', link: '/quantum-ideas.html' },
           { text: 'First Quantization', link: '/first-quantization.html' },
           { text: 'Harmonic Oscillator', link: '/harmonic-oscillator.html' },
         ],
@@ -99,7 +100,8 @@ export default {
     // Reading order for the Prev/Next footer links on each page.
     sidebar: [
       { text: 'Classical Mechanics', link: '/classical-mechanics.html' },
-      { text: 'First Quantization', link: '/first-quantization.html' },
+      { text: 'Quantum Ideas', link: '/quantum-ideas.html' },
+          { text: 'First Quantization', link: '/first-quantization.html' },
       { text: 'Harmonic Oscillator', link: '/harmonic-oscillator.html' },
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },

@@ -1,6 +1,6 @@
 # The Harmonic Oscillator
 
-Chapter 2 gave us the rules of quantum mechanics. Now we run them on one thing, all the way through: the spring from chapter 1.
+Chapters 2a and 2b gave us the rules of quantum mechanics. Now we run them on one thing, all the way through: the spring from chapter 1.
 
 Why a spring? Because almost anything that wobbles a little around a resting spot behaves like one: a pendulum, a molecule, a guitar string. And later, every wave of a quantum field will turn out to be a spring too. So if we understand the quantum spring, we understand a lot.
 
@@ -109,7 +109,7 @@ For chapter 1's spring ($m = 1$ kg, $\omega = 2$ per second, released from 1 m),
 
 ## 4. Turning the arrow into a quantum tool
 
-In quantum mechanics, position and momentum become operators that don't commute (chapter 2). The spring's energy keeps the same form, and we want to know which energies it allows.
+In quantum mechanics, position and momentum become operators that don't commute (chapter 2b). The spring's energy keeps the same form, and we want to know which energies it allows.
 
 You could solve a differential equation for that, but there's a shortcut: copy the arrow trick. Turn the arrow into an operator, called $\hat a$, and its mirror image into a partner, $\hat a^\dagger$. Then multiply them, just as the classical energy was the arrow times its mirror image.
 
@@ -222,7 +222,7 @@ The tumbling rate is $\hbar/I$, where $I$ is how hard the molecule is to spin (i
 
 ## 7. The lowest rung
 
-A classical spring can sit perfectly still at the bottom, with zero energy. A quantum spring can't. Sitting still at the bottom would mean its position and its momentum are both exactly zero, and chapter 2 showed that quantum mechanics never allows both to be sharp at once. So even on its lowest rung, the spring keeps a little energy, $\tfrac12\hbar\omega$, called the **zero-point energy**.
+A classical spring can sit perfectly still at the bottom, with zero energy. A quantum spring can't. Sitting still at the bottom would mean its position and its momentum are both exactly zero, and chapter 2b showed that quantum mechanics never allows both to be sharp at once. So even on its lowest rung, the spring keeps a little energy, $\tfrac12\hbar\omega$, called the **zero-point energy**.
 
 What does that lowest state look like? A bell curve. The spring's position is spread out a little around the bottom, and so is its momentum, and the two spreads are as small together as the uncertainty rule allows. The energy is split evenly: half from moving, half from stretching.
 
@@ -235,7 +235,7 @@ For chapter 1's spring, the spread is about $5\times10^{-18}$ m, a few hundred t
 <details>
 <summary>The calculation: the bell curve and its spreads</summary>
 
-The bottom rung satisfies $\hat a\lvert 0\rangle = 0$. With $\hat p = -i\hbar\,d/dx$ from chapter 2 this becomes
+The bottom rung satisfies $\hat a\lvert 0\rangle = 0$. With $\hat p = -i\hbar\,d/dx$ from chapter 2b this becomes
 
 $$\psi_0'(x) = -\frac{m\omega}{\hbar}\,x\,\psi_0(x), \qquad\text{solved by}\qquad \psi_0(x) = \Big(\frac{m\omega}{\pi\hbar}\Big)^{1/4} e^{-m\omega x^2/2\hbar}.$$
 
@@ -243,7 +243,7 @@ The spreads are
 
 $$\Delta x_0 = \sqrt{\frac{\hbar}{2m\omega}}, \qquad \Delta p_0 = \sqrt{\frac{m\hbar\omega}{2}}, \qquad \Delta x_0\,\Delta p_0 = \frac{\hbar}{2},$$
 
-the smallest product chapter 2's uncertainty relation allows. The kinetic energy is $\Delta p_0^2/2m = \hbar\omega/4$ and the potential energy is $\tfrac12 m\omega^2\Delta x_0^2 = \hbar\omega/4$, which add to $\tfrac12\hbar\omega$. For chapter 1's spring, $\Delta x_0 = 5.1\times10^{-18}$ m. For HCl it is $7.7\times10^{-12}$ m, about 6% of the bond's length of $1.27\times10^{-10}$ m.
+the smallest product chapter 2b's uncertainty relation allows. The kinetic energy is $\Delta p_0^2/2m = \hbar\omega/4$ and the potential energy is $\tfrac12 m\omega^2\Delta x_0^2 = \hbar\omega/4$, which add to $\tfrac12\hbar\omega$. For chapter 1's spring, $\Delta x_0 = 5.1\times10^{-18}$ m. For HCl it is $7.7\times10^{-12}$ m, about 6% of the bond's length of $1.27\times10^{-10}$ m.
 
 </details>
 
@@ -251,7 +251,7 @@ the smallest product chapter 2's uncertainty relation allows. The kinetic energy
 
 **One rung on its own doesn't move.** Its state only turns its phase, and nothing you could measure changes.
 
-**A mix of rungs.** The spring doesn't have to sit on a single rung. Just as chapter 2's tilted spin was partly up and partly down, the spring's state can be partly on one rung and partly on another. It's still one spring in one state, with an amplitude on each of the two rungs. Measure its energy and you get one rung's energy or the other, with probabilities set by the amplitudes. The mix doesn't have to be equal: 50/50, 75/25, anything that adds up to 100%.
+**A mix of rungs.** The spring doesn't have to sit on a single rung. Just as chapter 2a's tilted spin was partly up and partly down, the spring's state can be partly on one rung and partly on another. It's still one spring in one state, with an amplitude on each of the two rungs. Measure its energy and you get one rung's energy or the other, with probabilities set by the amplitudes. The mix doesn't have to be equal: 50/50, 75/25, anything that adds up to 100%.
 
 **Two rungs mixed together swing.** Their phases turn at different rates, and the growing gap between them makes the average position and momentum go round and round, at exactly the classical spring's rate $\omega$. The more even the mix, the bigger the swing. A 50/50 mix swings the most, and a mix that is almost all one rung barely moves. In fact any mixture of rungs does this. Because the rungs are evenly spaced, the phase gap between any two neighbouring rungs grows at the same rate, so the averages always follow chapter 1's equations exactly.
 
@@ -271,7 +271,7 @@ Same rules, same kind of state. At our scale, the quantum blur is just far too s
 <details>
 <summary>The calculation: swinging averages and the coherent state</summary>
 
-**Two rungs.** A mix of rungs 0 and 1 is $c_0\lvert 0\rangle + c_1\lvert 1\rangle$, with $\lvert c_0\rvert^2 + \lvert c_1\rvert^2 = 1$. Measuring the energy gives $\tfrac12\hbar\omega$ with probability $\lvert c_0\rvert^2$ and $\tfrac32\hbar\omega$ with probability $\lvert c_1\rvert^2$. In time, with the shared phase removed, $c_1$ picks up $e^{-i\omega t}$. Using $\hat x = \Delta x_0(\hat a + \hat a^\dagger)$, the average position swings as $\langle x\rangle = 2\lvert c_0\rvert\lvert c_1\rvert\,\Delta x_0\cos(\omega t - \varphi)$, where $\varphi$ is the phase of $c_1$ relative to $c_0$. A complex amplitude, like chapter 2's $i/2$, only shifts when the swing starts.
+**Two rungs.** A mix of rungs 0 and 1 is $c_0\lvert 0\rangle + c_1\lvert 1\rangle$, with $\lvert c_0\rvert^2 + \lvert c_1\rvert^2 = 1$. Measuring the energy gives $\tfrac12\hbar\omega$ with probability $\lvert c_0\rvert^2$ and $\tfrac32\hbar\omega$ with probability $\lvert c_1\rvert^2$. In time, with the shared phase removed, $c_1$ picks up $e^{-i\omega t}$. Using $\hat x = \Delta x_0(\hat a + \hat a^\dagger)$, the average position swings as $\langle x\rangle = 2\lvert c_0\rvert\lvert c_1\rvert\,\Delta x_0\cos(\omega t - \varphi)$, where $\varphi$ is the phase of $c_1$ relative to $c_0$. A complex amplitude, like chapter 2a's $i/2$, only shifts when the swing starts.
 
 | $c_0$ | $c_1$ | Rung 0 / rung 1 | Size of the swing |
 | --- | --- | --- | --- |
@@ -298,7 +298,7 @@ For the equal mix, with $\hat p = i\Delta p_0(\hat a^\dagger - \hat a)$:
 
 - **[Field Quantization](./field-quantization.md):** every wave of a field is a spring with its own ladder. One quantum on a wave's ladder is one particle with that wave's momentum.
 - **The same chapter:** every wave also has its own zero-point energy, $\tfrac12\hbar\omega$. There are infinitely many waves, so the total is infinite, and it gets subtracted off.
-- **[Quantum Electrodynamics](./qed.md):** the quanta of the light field are photons, the packets of light from chapter 2.
+- **[Quantum Electrodynamics](./qed.md):** the quanta of the light field are photons, the packets of light from chapter 2a.
 
 But first, fields have to agree with relativity, so the next chapter is [Special Relativity](./special-relativity.md).
 
