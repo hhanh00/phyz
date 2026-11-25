@@ -219,19 +219,6 @@ class ComptonScattering(Scene):
                  label('Instead the wavelength grows, and grows more at larger angles.',0,-3.4,22,MUTED,width=15))
 
 
-class FourierUncertainty(Scene):
-    def construct(self):
-        heading(self,'Squeezing the position widens the momentum','Bell-shaped wave functions: the narrower the position spread, the wider the momentum spread')
-        for y,sigma,c,tag in [(1,.48,BLUE,'Narrow in position'),(-1.25,1.2,TEAL,'Broad in position')]:
-            for x,width in [(-4,sigma),(4,1/sigma)]:
-                ax=axes_at(x,y,5.8,1.5,(-4,4,1),(0,1.2,1))
-                self.add(ax,path_curve(ax,lambda u,w=width:np.exp(-u*u/(2*w*w)),[-4,4],c))
-            self.add(label(tag,0,y+.25,21,c,width=2.1))
-        self.add(label('Position density',-4,2.55,28),label('Momentum density',4,2.55,28),
-                 math(r'\Delta x\,\Delta p\geq\hbar/2',0,-3.2,38),
-                 label('Horizontal scales are fixed within each column; peak heights are rescaled for comparison.',0,-4,22,MUTED,width=14.5))
-
-
 class LightConeIntervals(Scene):
     def construct(self):
         heading(self,'The light cone','Events compared with the one at the centre; time points up')
@@ -728,18 +715,49 @@ class TiltCircle(Scene):
         self.add(label('A vertical magnet only sees how far the atoms lean. A sideways magnet also sees which way.',0,-3.8,21,MUTED,width=14.5))
 
 
+class SpinPrecession(Scene):
+    def construct(self):
+        heading(self,'The tilted spin swings round the field','In a vertical magnetic field, the tilt sweeps a cone; up and down stay 75% and 25% throughout')
+        o=np.array([-3.2,-2.0,0]); top=np.array([-3.2,-0.672,0]); R=2.3; r=0.65  # R/height = tan 60 degrees
+        ftip=top+np.array([0,r+1.3,0])
+        self.add(Arrow(o,ftip,buff=0,color=MUTED,stroke_width=4,max_tip_length_to_length_ratio=0.05),
+                 label('field',ftip[0]-0.6,ftip[1]-0.15,22,MUTED),
+                 Ellipse(width=2*R,height=2*r,color=MUTED,stroke_width=2).move_to(top),
+                 DashedVMobject(Line(o,top+[-R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14),
+                 DashedVMobject(Line(o,top+[R,0,0],color=MUTED,stroke_width=2,stroke_opacity=0.5),num_dashes=14))
+        stops=[('right',top+[R,0,0],'93% right',RIGHT),('back',top+[0,r,0],'50% right',UR),
+               ('left',top+[-R,0,0],'7% right',LEFT),('front',top+[0,-r,0],'50% right',DR)]
+        for name,pt,chance,d in stops:
+            g=VGroup(label(name,0,0,22,INK),label(chance,0,0,20,TEAL)).arrange(DOWN,buff=0.08)
+            g.next_to(pt,d,buff=0.22)
+            if name=='front':
+                g.next_to(pt,LEFT,buff=0.25).shift(DOWN*0.05)
+                self.add(BackgroundRectangle(g,color=WHITE,fill_opacity=1,buff=0.06))
+            self.add(Dot(pt,color=BLUE,radius=0.09),g)
+        self.add(Arrow(o,top+[R,0,0],buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.06),
+                 CurvedArrow(top+[R*0.75,r*0.66,0],top+[R*0.2,r*0.98,0],color=ORANGE,stroke_width=3,tip_length=0.18))
+        # Right: the chance of "right" over one turn.
+        ax=axes_at(3.6,-0.3,5.6,3.4,(0,1,0.25),(0,1,0.5)); self.add(ax)
+        f=lambda u:0.5+np.sqrt(3)/4*np.cos(2*np.pi*u)
+        self.add(path_curve(ax,f,[0,1],TEAL))
+        for u,name in ((0,'right'),(0.25,'back'),(0.5,'left'),(0.75,'front'),(1,'right')):
+            self.add(Dot(ax.c2p(u,f(u)),color=BLUE,radius=0.07),label(name,ax.c2p(u,0)[0],ax.c2p(u,0)[1]-0.32,18,MUTED))
+        self.add(label('chance of \u201cright\u201d',3.6,1.75,22,TEAL),label('one full turn of the tilt',3.6,-2.75,18,MUTED),
+                 label('Up and down only see the lengths of the arrows; the sideways chances follow the angle between them.',0,-3.75,21,MUTED,width=14.5))
+
+
 class WaveSum(Scene):
     def construct(self):
-        heading(self,'Adding waves of different wavelengths','At each point, the arrows of all the waves add; their total length sets where the particle is likely to be')
-        xs=np.linspace(-15,15,41); k0=2*np.pi/6
+        heading(self,'Adding momentum waves of different wavelengths','At each point, the arrows of all the waves add; their total length sets where the particle is likely to be')
+        xs=np.linspace(-15,15,27); k0=2*np.pi/6
         def one(x): return np.exp(1j*k0*x)
         def two(x): return 0.5*(np.exp(1j*k0*x)+np.exp(1j*2*np.pi/4.5*x))
         ks=np.linspace(k0-0.9,k0+0.9,61); w=np.exp(-(ks-k0)**2/(2*0.25**2)); w/=w.sum()
         def many(x): return np.sum(w*np.exp(1j*ks*x))
         rows=[(1.45,one,'one wavelength','arrow length the same everywhere'),
               (-0.35,two,'two wavelengths','length rises and falls'),
-              (-2.15,many,'many wavelengths','one bump: the particle is somewhere')]
-        X0,X1=-4.6,6.6; L=0.62
+              (-2.15,many,'many wavelengths','one bump: the particle is near one place')]
+        X0,X1=-4.6,6.6; L=0.4
         for y,f,name,note in rows:
             self.add(Line([X0-0.2,y,0],[X1+0.2,y,0],color=MUTED,stroke_width=1.5,stroke_opacity=0.5),
                      label(name,-6.0,y+0.05,22,INK),label(note,(X0+X1)/2,y-0.85,20,TEAL))
@@ -750,7 +768,7 @@ class WaveSum(Scene):
                 d=np.array([np.cos(np.angle(z)),np.sin(np.angle(z)),0])*r*L
                 self.add(Arrow([px,y,0]-d/2,[px,y,0]+d/2,buff=0,color=BLUE,stroke_width=3,max_tip_length_to_length_ratio=0.35,max_stroke_width_to_length_ratio=12))
         self.add(label('position along the line',(X0+X1)/2,-3.45,20,MUTED),
-                 label('More wavelengths, so more momenta, make a narrower bump.',0,-3.85,21,MUTED,width=14.5))
+                 label('More wavelengths, so more momenta, gather the particle into one bump.',0,-3.85,21,MUTED,width=14.5))
 
 
 class TwoRoutes(Scene):
