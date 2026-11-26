@@ -27,21 +27,26 @@ The closing review (N10) returned no must-fix: fidelity 9.5/10, overall 9/10, "r
 
 It made five optional suggestions (N11 to N15). Hanh, 2026-11-26: "leave N11-N15". The script is unchanged since the closing review.
 
-| ID | Where | The question or task | Waiting on |
+### The deck: done
+
+Hanh, 2026-11-26: "take your recommendations for P". P1 to P9, P11 and P14 are applied; P10, P12, P13 and P15 are left as they are. The anchor check passes with 0 problems, the eleven changed slides are re-rendered, and Claude looked at each one. No decision is open on the deck.
+
+### Waiting for work
+
+| ID | Where | What has to happen | Waiting on |
 | --- | --- | --- | --- |
-| F13 | Whole script | Hanh to read the script, before any deck work. | Hanh. |
-| F12 | Whole script | Run `check.py 05` for slide anchors. | Needs the deck. |
-| G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`. | Needs the final script, and Hanh's go-ahead. |
-| G2 | Deck | Build `video/slides/deck_05.py`, check anchors, review the contact sheets. | Needs the final script, and Hanh's go-ahead. |
-| G3 | Cover and video | Cover, narration, video, description. | Needs G1 and G2. |
+| G3 | Cover and video | Add the cover, render the narration, build the video, write the description. | Hanh's go-ahead. |
+| G7 | Repository | Commit the pause file, the deck and this file. Push the branch (it also holds the script commit `57b3c8f`). | Hanh asking for it. |
 
 ## Status
 
 | Step | State |
 | --- | --- |
 | Page | Final (Hanh, 2026-11-26), committed as `841bb7c`, merged to `main` and live on the site. |
-| Script | Resumed. Rewritten from the final page (about 3,380 words, format clean); the closing review returned no must-fix (9/10, ready to record). Hanh left its five optional suggestions as they are. Not committed. |
-| Pause file, deck, cover, video | Not started, and not to be started until the script resumes. |
+| Script | Resumed. Rewritten from the final page (about 3,380 words, format clean); the closing review returned no must-fix (9/10, ready to record). Hanh left its five optional suggestions as they are. Committed as `57b3c8f` on the branch, not pushed. Hanh chose not to read it before the deck. |
+| Pause file | Written and checked. Not committed. |
+| Deck | Built, 125 slides, anchor check clean. Fresh review 9/10, ready to render, no must-fix. Eleven of its optional points applied and checked. Not committed. |
+| Cover, video | Not started. |
 
 ---
 
@@ -301,6 +306,29 @@ The page changed in every section after iterations E and F, so Claude rewrote th
 | F10 | Antimatter | "Pauli's exclusion principle", without the first name the second time. The other half of F10 was not taken. | Done |
 | F11 | Whole script | Superseded by N2. | Done |
 
+## P. The deck (2026-11-26)
+
+Hanh: "do the pause file and the deck". One agent built `video/slides/deck_05.py` from a full brief: 125 slides, about 2.9 sentences per slide, no slide over four sentences, every slide with two to four build steps. Colours: blue for positive energies, orange for negative energies and what comes from them (the sea, the hole, the trail, the positron), purple for alpha, beta and their matrices, teal for what works, red for what fails. Claude looked at all eleven contact sheets. A fresh review then gave 9/10 with no must-fix.
+
+| ID | Slide | Item | Status |
+| --- | --- | --- | --- |
+| P1 | 100 | Two electrons per shell under the exclusion principle. | Done |
+| P2 | 99 | The dot falls smoothly through the forbidden gap. | Done |
+| P3 | 38 | The light wiggle points at the wrong line. | Done |
+| P4 | 14 | The proton's range mark is a stray tick. | Done |
+| P5 | 42 | The negative-energy wave carries the positive-energy formula. | Done |
+| P6 | 81 | "Square it" labels the wrong arrow. | Done |
+| P7 | 85 | The vertical matrix sits in a momentum place. | Done |
+| P8 | 66 | Red crosses on both conditions. | Done |
+| P9 | 120 | The particles dot isn't blue. | Done |
+| P10 | 11 | The example trail bends like a negative charge. Left as is. | Kept |
+| P11 | 103 | The light squiggle runs into the sea's dots. | Done |
+| P12 | 46–48 | The sum arrow is hard to see when the arrows nearly cancel. Left as is; to be checked in the video. | Kept |
+| P13 | 110–111 | A heavy red strike through the sea. Left as is. | Kept |
+| P14 | 122 | The first recap bullet appears under the spoken heading. | Done |
+| P15 | 116, 118 | Rung labels 0 to 4. Left as is. | Kept |
+| P16 | Whole deck | After the fixes: `check.py 05` reports 125 anchors, 0 problems; the eleven changed slides re-rendered; Claude looked at all eleven. Two needed a second pass by the agent (slide 42's arrow, slide 81's label spacing) and are right now. | Done |
+
 ---
 
 # The rest of the pipeline
@@ -311,8 +339,8 @@ Nothing here has started. Each step is listed so it has an ID.
 
 | ID | Step | Item | Status |
 | --- | --- | --- | --- |
-| G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`: the final script plus breath commas. | Open |
-| G2 | Deck | Build `video/slides/deck_05.py`, run `check.py 05` until clean, make contact sheets, run one fresh deck review. | Open |
+| G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`: the final script plus breath commas. Written on 2026-11-26 with 16 added commas, in the script's long sentences that had none. Checked: 357 sentences, differing from the script by commas only. Not committed. | Done |
+| G2 | Deck | Build `video/slides/deck_05.py`, run `check.py 05` until clean, make contact sheets, run one fresh deck review. Done on 2026-11-26; see iteration P. | Done |
 | G3 | Cover and video | Add the chapter to `COVERS` in `slides/cover.py`, render the narration, build the video, write the description file. | Open |
 | G4 | Repository | Commit when Hanh asks. Committed as `841bb7c` on `classical-mechanics-rewrite` and pushed, 2026-11-26. The script draft was left out. `main` is not updated (G4b). | Done |
 | G4b | Repository | Merge into `main` and publish. Hanh, 2026-11-26: "merge into main and push". `main` fast-forwarded to `841bb7c` and pushed; the deploy succeeded and the live page shows the new chapter. | Done |

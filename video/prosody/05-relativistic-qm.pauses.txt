@@ -1,0 +1,161 @@
+Chapter five. Relativistic Quantum Mechanics.
+
+The last chapter put the Schrodinger equation through relativity's test, and it failed. It treats time and space differently, so it only works for slow particles. This chapter builds the quantum equation for fast ones.
+
+The first try is quick to write down, and it has two things wrong with it. Fixing one of them led Paul Dirac, in nineteen twenty-eight, to a new equation. The other problem stayed. And it turned out to predict a kind of matter nobody had seen.
+
+Here's where we end up, with three equations side by side. Schrodinger's is built from the low-speed energy, and it fails for fast particles. The Klein-Gordon equation works for fast particles. But the chance it gives for finding the particle can come out negative. Dirac's works for fast particles, and its chance is never negative. The cost is that its state is four wave functions, not one. And both relativistic equations allow negative energies. We start with the photograph that found the new matter.
+
+A trail that bends the wrong way.
+
+In nineteen thirty-two, Carl Anderson was photographing cosmic rays. Those are the fast particles from space, that also make the muons of the last chapter. He used a cloud chamber. That's a box of damp gas, where a charged particle leaves a trail of droplets.
+
+A magnet around the chamber bent the trails. Positive and negative charges bend opposite ways. So the bend tells you the sign of the charge, as long as you know which way the particle went. To settle that, Anderson put a lead plate across the chamber. A particle loses energy in the lead, and a particle with less energy bends more. So the tighter half of a trail is where the particle came out.
+
+One photograph showed a trail that crossed the plate, and bent the way a positive charge does. You can see a sketch of it on screen.
+
+As far as anyone knew then, matter held two kinds of charged particle. The electron is light and negative. The proton is positive, and about eighteen hundred times heavier. So a positive trail should have been a proton. But a proton is very heavy. To bend that tightly, it would have to be slow. And the gas stops a slow proton, after about a tenth of the trail's length. So the particle was positive, but far too light to be a proton. No known particle fit.
+
+So the puzzle is where a light, positive particle comes from. The answer was already on paper. It had come out the year before. It came from an attempt to make quantum mechanics agree with relativity. The rest of this chapter follows that attempt.
+
+An energy rule becomes an equation.
+
+The chapter on first quantization built the Schrodinger equation, from a rule connecting energy and momentum. We'll use that recipe twice, so here it is, step by step.
+
+Take a free particle with a definite momentum and a definite energy. It's a wave whose phase turns steadily. The momentum sets how many turns it makes per metre along the line. The energy sets how many turns it makes per second. The formula is on screen.
+
+That earlier chapter found two operations, that pull those numbers out of the wave. A rate of change in time pulls out the energy. A slope along the line pulls out the momentum. Each comes with a constant factor, which you can see on screen.
+
+So here's the recipe. Take a rule that connects energy and momentum, and swap each letter for its operation. Where the rule has the energy, write the rate of change in time. Where it has the momentum, write the slope. A squared momentum means taking the slope twice.
+
+For example, take the slow free particle from chapter one. Its energy is the momentum squared, over twice the mass. The recipe turns that rule into the free Schrodinger equation. It has one rate of change in time, and two slopes in space. That's because the rule has one power of the energy, and two of the momentum. That mismatch is what failed relativity's test.
+
+The Klein-Gordon equation.
+
+The last chapter gave the rule that holds at any speed, and it's on screen. This time the energy is squared, as well as the momentum.
+
+Put it through the recipe. The energy is squared now, so we do the time operation twice. Tidy up, and we get the equation on screen. This is the Klein-Gordon equation. Oskar Klein and Walter Gordon published it in nineteen twenty-six.
+
+It passes the test. The equation has two rates of change in time, and two slopes in space. There's a minus sign between them, just like the interval of the last chapter. So it keeps its form for every observer moving at a steady speed.
+
+And it has the right waves. Put our wave back into the equation. The equation holds exactly, when the wave's energy and momentum fit the relativistic rule. A wave that doesn't fit the rule doesn't solve it.
+
+That all works. But two things are wrong with this equation.
+
+First problem, negative energies.
+
+The relativistic rule fixes the square of the energy, not the energy itself. And a square has two square roots. Nine is the square of three, and also of minus three. So for every momentum, two energies fit the rule. One is positive and one is negative.
+
+Take a particle at rest. The rule allows its rest energy, m c squared. It also allows minus m c squared. Now give the particle some momentum. The positive energy goes up, and the negative one goes further down. The graph on screen shows both. The positive energies start at the rest energy and climb. The negative ones start at minus the rest energy, and go down without end. No energy in between is allowed.
+
+In classical physics, nobody worries. The same rule holds for a thrown ball, and there we throw the negative root away. That's safe, because a classical particle's energy changes smoothly. To get from positive to negative, it would have to pass through the forbidden gap.
+
+A quantum particle can jump. In the chapter on the harmonic oscillator, a molecule's bond changed its energy a whole rung at a time. Nothing in between was needed. And anything that can lose energy by giving off light, sooner or later does. So an electron with positive energy, could drop to a negative-energy state in one jump. It would give off the difference as a packet of light. Then it could drop again, to a state lower still. The spring's ladder has a lowest rung, so its fall has to stop. Here there's no lowest rung.
+
+So every electron in the world should keep falling, giving off light forever. No atom would last. That doesn't happen.
+
+You might want to declare the negative energies forbidden. The equation won't let us. To the equation, a negative-energy wave is a solution like any other.
+
+Second problem, a negative chance.
+
+Remember what the wave function is for. Its squared length is the chance per metre of finding the particle. Two things make that work. It's never negative. And its total over all positions is one, and stays one. The Schrodinger equation keeps that total at one.
+
+The Klein-Gordon equation doesn't have to. Here's why. Take a positive-energy wave, and the negative-energy wave with the same momentum. The equation accepts both. And when two waves each solve it, so does their sum. Along the line, both arrows turn the same way. In time, they turn opposite ways, because the energies have opposite signs. At some moments they point the same way, and they add. At others they point opposite ways, and they cancel. The momentum is the same, so that happens at every position at once. So the total of the squared length rises and falls. It can't be the chance.
+
+The equation does keep the total of a different quantity. The equation has two rates of change in time, where Schrodinger's has one. And that puts a rate of change in time, into the quantity it keeps. For a wave with a definite energy, that quantity is on screen. It's the squared length, times the wave's energy over its rest energy.
+
+The rate of change in time is what brings in the energy, and with it the energy's sign. For a positive-energy wave, the quantity is positive. A slow particle's energy is close to its rest energy. So there it's almost the squared length itself. But for a negative-energy wave, it's negative. A chance of minus thirty percent means nothing.
+
+So neither one works as a chance. The total of the squared length isn't kept. And the quantity that is kept can be negative. The Klein-Gordon wave function can't be read as a chance.
+
+Dirac's idea.
+
+In nineteen twenty-eight, Paul Dirac was twenty-five. He went looking for a relativistic equation with a chance that's never negative.
+
+He started from where the trouble came from. It came from having two rates of change in time. Those came from the squared energy in the rule. So Dirac wanted an equation built from the energy itself. It would have a single rate of change in time, like Schrodinger's.
+
+Relativity then forces something more. An equation has to treat time and space alike. So if time gets a single rate of change, space must get a single slope. The energy rule behind the equation has to be a straight-line one. The energy and the momentum each appear to the first power.
+
+That rule is on screen. It has two fixed quantities in it, called alpha and beta. Alpha stands in front of the momentum, and beta in front of the mass. They're the same for every particle, and we still have to find them.
+
+This new rule mustn't contradict relativity. So squaring it has to give back the relativistic rule. Let's square it. We don't know yet what kind of thing alpha and beta are. So when we multiply them, we don't swap their order, in case the order matters.
+
+The square has three terms, and it's on screen. The first two match the relativistic rule, as long as alpha squared is one and beta squared is one. The third term mixes the momentum with the mass. The relativistic rule has no such term, so it has to vanish. That term holds alpha and beta multiplied in both orders. So the two orders have to cancel each other. That makes three conditions, and they're on screen.
+
+Numbers can't meet them. For ordinary numbers, the order doesn't matter. So the two orders give the same product. Adding them gives twice that product. That's zero only if alpha or beta is zero. And then its square isn't one.
+
+The Dirac equation.
+
+So alpha and beta can't be numbers. After a single number, the next thing to try is a table of numbers, called a matrix. When we multiply two matrices, the order can matter. That's just what the third condition needs.
+
+Dirac didn't have to invent any. The year before, Wolfgang Pauli had described the electron's spin with small matrices. We met two of them in the chapter on first quantization. There we called them the vertical operator and the sideways operator. They belong to the up-and-down magnet and the sideways magnet. Written as tables of numbers, they're on screen.
+
+These two meet all three conditions. Multiply either one by itself, and you get the matrix that changes nothing. That matrix plays the part of the number one. Multiply the two together, and the two orders give opposite results. We saw that in the earlier chapter, when we applied both orders to up. We say that two such matrices anticommute. So we can take the sideways matrix for alpha, and the vertical matrix for beta.
+
+There's a cost. A two-by-two matrix acts on a column of two entries. A column is our list of amplitudes, written top to bottom. So the state can't be a single wave function any more. It has to be a column of two wave functions, for alpha and beta to act on. We're only borrowing the arithmetic of the spin matrices here. This column isn't a spin. We'll see shortly what its two entries are.
+
+Now put the straight-line rule through the recipe. That gives the Dirac equation for motion along a line, and it's on screen. It has one rate of change in time, and one slope in space. So it treats time and space alike, as the last chapter asks.
+
+Four matrices in space.
+
+That was motion along a line. In space, the momentum has three parts, one for each direction. On the line, each matrix had its own job. Alpha stood in front of the momentum, and beta in front of the mass. So in space, each part of the momentum needs its own matrix. With beta for the mass, that makes four.
+
+The four must all be different, and here's why. Square the rule again. Each matrix's own square gives one of the terms we want, so each must square to one. And every pair of matrices gives a mixed term that we don't want. So every pair must anticommute. That rules out using one matrix twice. Paired with itself, it gives twice its square, which is two, not zero.
+
+So we need four different matrices. Each squares to one, and every pair anticommutes.
+
+Two-by-two matrices aren't enough. They offer only three that all anticommute. We have two of them, and there's one more. Those three cover the three directions of space, and none is left for the mass.
+
+Three-by-three doesn't work either. It turns out that matrices like these only come in even sizes. So after two comes four.
+
+Four-by-four matrices do offer the four we need. They act on a column of four wave functions. So that's the Dirac equation. Its coefficients are matrices. And its state is a column of wave functions, two on a line and four in space.
+
+A chance that is never negative.
+
+With four wave functions, the squared length of the state is again the chance of finding the particle. For a column, the squared length is the sum of its entries' squared lengths. A sum of squares is never negative.
+
+And this is the quantity whose total the Dirac equation keeps constant. The equation has the single rate of change in time, that Dirac asked for. So, as with the Schrodinger equation, no rate of change in time gets into the quantity it keeps. And no energy sign gets in with it. That solves the second problem.
+
+The negative energies predict antimatter.
+
+The first problem is still there. Dirac's rule has the energy to the first power. So it might seem to give one energy for each momentum. It doesn't.
+
+To see why, go back to the simpler case of motion along a line. There the column has just two wave functions. Take a particle at rest. Its momentum is zero, so the rule says the energy is beta times the rest energy. The right side is now a matrix. A matrix acts on the state, so it's an operator, like the energy operator from before. And an operator's eigenvalues are the results a measurement can give. So the allowed energies are this matrix's eigenvalues.
+
+Beta is the vertical matrix. It multiplies the top entry by plus one, and the bottom entry by minus one. You can see it on screen. So the top wave function gets the rest energy with a plus sign. The bottom one gets it with a minus sign. So for a particle at rest, that's what the column's two entries are. There's one for each sign of the energy.
+
+In space, the column has four wave functions, and the same thing happens two at a time. Two get the positive energy, and two get the negative. The next chapter says what tells the two of each sign apart. Either way, the negative energies are still in the equation.
+
+Dirac's own answer came in nineteen thirty. It isn't the one physicists use today, and we'll get to theirs. But his led to the right prediction, so we'll follow it.
+
+It starts from a fact that chemistry had already taught. No two electrons can be in the same state. This is Pauli's exclusion principle. It's why the electrons in an atom stack up in shells, and don't all sit in the lowest one.
+
+Suppose, said Dirac, that every negative-energy state is already taken. Then an ordinary electron can't fall, because there's no room below it. He called this full set of states the sea. It's the same everywhere, so nobody would notice it.
+
+That looks like a trick, and in a way it is one. Nobody has seen the sea. Dirac brought it in only to block the fall. What matters is what follows from it.
+
+Now let a packet of light give one electron in the sea, enough energy to cross the gap. That takes at least twice the rest energy. It becomes an ordinary electron with positive energy. And it leaves behind a hole. The picture is on screen.
+
+Think about how the hole would look to us. The sea is missing one electron's negative charge. So the hole looks like a positive charge. The sea is also missing a negative energy. So the hole has positive energy. The hole behaves like a particle, with the electron's mass and the opposite charge. In nineteen thirty-one, Dirac predicted that such a particle exists. He called it the anti-electron.
+
+Now back to the trail. A light particle with a positive charge, is exactly what Anderson photographed the next year. He hadn't been looking for it. We now call it the positron.
+
+Other particles turned out to have such partners too, with the same mass and the opposite charge. We call each partner an antiparticle. Together we call them antimatter.
+
+One particle isn't enough.
+
+Dirac's sea gave the right prediction, but physicists dropped it, for two reasons. It asks us to believe in infinitely many electrons that nobody can see. And it depends on the exclusion principle, which not every particle obeys. Yet the particles that don't obey it have antiparticles too.
+
+Dirac's hole points at the real issue. A packet of light goes in, and an electron and a positron come out. The number of particles changed. The last chapter allows that. Mass is a form of energy, so enough energy can become the mass of new particles.
+
+A wave function can't describe that. It gives one amplitude for each position of one particle. Nothing in it can say that there are now two more. Every equation in this chapter describes a fixed number of particles. That goes for Schrodinger's, for Klein and Gordon's, and for Dirac's. And at high energy, the number isn't fixed.
+
+We already have the tool for counting. In the chapter on the harmonic oscillator, the spring's energy came in rungs. The rung number counted its quanta. The coming chapters change what the wave function is. It no longer belongs to one particle. It becomes a field. A field is something with a value at every point of space, like the electric field. Each wave of the field is a spring. The rung it's on is the number of particles with that wave's momentum. Going up a rung creates a particle, and going down removes one.
+
+The coming chapters show that in that theory, the negative energies stop being a problem. The negative-energy waves don't describe particles with negative energy. They describe the creation of antiparticles, whose energy is positive. So nothing falls. And the Klein-Gordon quantity that could be negative, turns out to be electric charge. It has one sign for particles, and the opposite sign for antiparticles. The Klein-Gordon equation comes back as the equation for fields, whose particles have no spin. And the Dirac equation comes back as the equation for the electron's field.
+
+Where this leads.
+
+Here's where we've got to. The relativistic energy rule gives the Klein-Gordon equation. It has negative energies, and its chance can be negative. Dirac's equation uses matrices, and its chance is never negative. Its negative energies predicted the positron. And a single wave function can't count particles that come and go.
+
+The next chapter looks at the Dirac equation piece by piece. It shows what its four wave functions do.
