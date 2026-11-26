@@ -44,7 +44,6 @@ Hanh, 2026-11-26: "commit and push, then do the video". The video is built: `vid
 
 | ID | Where | What has to happen | Waiting on |
 | --- | --- | --- | --- |
-| Q10 | YouTube | Upload the video with its description, cover and playlist place. Hanh has to drop the file, as before. | Hanh asking for it. |
 
 ## Status
 
@@ -56,7 +55,7 @@ Hanh, 2026-11-26: "commit and push, then do the video". The video is built: `vid
 | Deck | Built, 125 slides, anchor check clean. Fresh review 9/10, ready to render, no must-fix. Eleven of its optional points applied and checked. Committed as `963b3e5` and pushed; eight places were fixed afterwards during the video build (Q3) and committed with the build changes. |
 | Cover | Rendered and checked. |
 | Narration | Rendered with the Azure voice: 23.8 minutes. |
-| Video | Built: 23:56, with subtitles. Description file written. Hanh has not watched it. |
+| Video | Built: 23:56, with subtitles. Published on YouTube at https://youtu.be/DOQCxIXyy5Q. Claude checked nine frames; nobody has watched it end to end. |
 
 ---
 
@@ -352,7 +351,7 @@ Hanh: "do the pause file and the deck". One agent built `video/slides/deck_05.py
 | Q7 | Build script | `make_video.sh` hides a failed step. Hanh, 2026-11-26: "take your recommendations for Q". The script now sets `pipefail`, keeps the slide build's full log in the work folder, and on failure prints its last 25 lines and stops. | Done |
 | Q8 | Workflow | The preview can't catch animation crashes. `build.py` has a new mode, `smoke`, which plays every slide once at low resolution without needing narration and lists the slides that crash. Run on the committed, unfixed deck it reports slides 9 and 117; on the fixed deck, 0 of 125. `BRIEF.md` has the rule against animating a redrawn object, and `WORKFLOW.md` has the smoke step before and after the deck review and a check that the video file exists. | Done |
 | Q9 | Repository | Commit and push the deck fixes, cover entry, build changes and this file. Hanh, 2026-11-26: "commit and push". | Done |
-| Q10 | YouTube | Upload. | Open |
+| Q10 | YouTube | Upload. Hanh dropped the file on 2026-11-26. Claude copied chapter 4's playlist, tags, language, category and audience setting, typed the title and the description from the description file, set the cover as the thumbnail, waited for YouTube's checks (no notices) and set it to public: https://youtu.be/DOQCxIXyy5Q. It is sixth in "QFT for dummies", after chapter 4. "Notify subscribers" was left on, since this is a new chapter. | Done |
 
 ---
 
