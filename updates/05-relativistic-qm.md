@@ -18,34 +18,29 @@ Hanh, 2026-11-26: "page is final". No decision is open on the page.
 
 | ID | Where | What has to happen | Waiting on |
 | --- | --- | --- | --- |
-| G4 | Repository | Commit the page, figures, link changes, the dev helper and the `updates/` files, and push `main` to publish. | Hanh asking for the commit. |
 
-### The script (on hold)
+### The script (resumed)
 
-Hanh stopped the script work on 2026-11-26: "stop the script. we haven't finalized the page". Claude had started it too early. The draft stays on disk as it is, and nothing below is to be worked on until Hanh says the page is final and asks to resume. At that point the script must first be brought back in line with the final page. Known so far: the script's "Second problem" section was written before H2 and L1 reworked §5, so check it against the page. Its antimatter section still has "a way of counting" (I13, F8).
+Hanh, 2026-11-26: "commit and push, then resume the script". Claude rewrote the script in one pass from the final page (iteration N). The earlier open items F4 to F10 are settled by that rewrite and listed under N.
 
-| ID | Where | The question or task | Claude's recommendation |
+The closing review (N10) returned no must-fix: fidelity 9.5/10, overall 9/10, "ready to record". Every date and number matches the page, the format is clean, and the two-waves passage is faithful to the page's box.
+
+It made five optional suggestions (N11 to N15). Hanh, 2026-11-26: "leave N11-N15". The script is unchanged since the closing review.
+
+| ID | Where | The question or task | Waiting on |
 | --- | --- | --- | --- |
-| F4 | An energy rule becomes an equation | "Its energy is the momentum squared, over twice the mass" borders on reading a formula. Replace with "Its energy rule is the low-speed one, on screen"? | Leave it. |
-| F5 | Dirac's idea | "The square has three terms" never says the result is on screen. Add "It's on screen."? | Take it. |
-| F6 | The Dirac equation | "Column" is new; video 2b said "list". Add "A column is just our list of amplitudes, written top to bottom."? | Take it. |
-| F7 | Antimatter (and page §9) | "Antiparticles" is used without being named. Add "Each partner is called an antiparticle."? The page has the same gap. | Take it, in both. |
-| F8 | Antimatter | Replace "a way of counting" with "a working assumption"? This moves away from the page's wording (C16). | Leave it. |
-| F9 | A trail that bends the wrong way | "It had come out, the year before, of an attempt..." is hard to parse by ear. Split into two sentences? | Take it. |
-| F10 | The Dirac equation | Two preferences: tie the on-screen matrices to "multiplies" and "swaps"; drop Pauli's first name the second time. | Take the second. |
-| F11 | Whole script | One more fresh review with no must-fix before recording. | After the page is final. |
+| F13 | Whole script | Hanh to read the script, before any deck work. | Hanh. |
 | F12 | Whole script | Run `check.py 05` for slide anchors. | Needs the deck. |
-| F13 | Whole script | Hanh to read the script. | After the page is final. |
-| G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`. | Needs the final script. |
-| G2 | Deck | Build `video/slides/deck_05.py`, check anchors, review the contact sheets. | Needs the final script. |
+| G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`. | Needs the final script, and Hanh's go-ahead. |
+| G2 | Deck | Build `video/slides/deck_05.py`, check anchors, review the contact sheets. | Needs the final script, and Hanh's go-ahead. |
 | G3 | Cover and video | Cover, narration, video, description. | Needs G1 and G2. |
 
 ## Status
 
 | Step | State |
 | --- | --- |
-| Page | Final (Hanh, 2026-11-26). Two rounds of rating review (8, then 8.5 out of 10) and bro-what test (7.5, then 8), and three correctness checks, the last with no errors. Not committed. |
-| Script | On hold until Hanh asks to resume. A draft exists, reviewed twice, written from the page as it stood after D3; it must be brought in line with the final page first. |
+| Page | Final (Hanh, 2026-11-26), committed as `841bb7c`, merged to `main` and live on the site. |
+| Script | Resumed. Rewritten from the final page (about 3,380 words, format clean); the closing review returned no must-fix (9/10, ready to record). Hanh left its five optional suggestions as they are. Not committed. |
 | Pause file, deck, cover, video | Not started, and not to be started until the script resumes. |
 
 ---
@@ -276,6 +271,36 @@ A fresh agent with no history: fidelity 9.5/10, overall 8.5/10, format clean, on
 | F12 | Whole script | `check.py 05` can't run until the deck exists, so slide anchors are unchecked. | Open |
 | F13 | Whole script | Hanh has not read the script. | Open |
 
+## N. Script rewritten from the final page (2026-11-26)
+
+The page changed in every section after iterations E and F, so Claude rewrote the script in one pass instead of patching it. It follows the page's final wording section by section, and adds a spoken heading, "Four matrices in space", to match the page's sub-heading.
+
+| ID | Spoken section | Item | Status |
+| --- | --- | --- | --- |
+| N1 | Whole script | Rewrite from the final page. About 3,380 words. Format clean: allowed characters, numbers in words, no sentence over 20 words, thirteen headings of at most 7 words. | Done |
+| N2 | Whole script | Fresh review against the final page: fidelity 9.5/10, overall 9/10, one must-fix. | Done |
+| N3 | A trail that bends the wrong way | Must-fix: "a year earlier" dates the attempt, not the answer. Now "It had come out the year before. It came from an attempt to make quantum mechanics agree with relativity." | Done |
+| N4 | Second problem | The two-waves passage skips two reasons. It now says a sum of two solutions is a solution, that the arrows turn opposite ways because the energies have opposite signs, and that the same momentum makes it happen at every position at once. | Done |
+| N5 | Opening | "Its chance can be negative" before the listener knows which chance. Now "the chance it gives for finding the particle can come out negative". | Done |
+| N6 | Dirac's idea | The third term's two orders aren't mentioned before they "cancel". Added, without symbols: "That term holds alpha and beta multiplied in both orders." The reviewer's wording, which read the formula aloud, was not used (E4). | Done |
+| N7 | The Dirac equation | "Just". Removed. | Done |
+| N8 | Where this leads | "The next chapter is the Dirac equation." Now "The next chapter looks at the Dirac equation piece by piece. It shows what its four wave functions do." | Done |
+| N9 | Antimatter | The operator sentence is compressed. Now four short sentences: a matrix acts on the state, so it's an operator; an operator's eigenvalues are what a measurement can give; so the allowed energies are the matrix's eigenvalues. | Done |
+| N10 | Whole script | Closing fresh review after N3 to N9: no must-fix, fidelity 9.5/10, overall 9/10, ready to record. | Done |
+| N11 | Second problem | Optional: introduce the arrows before "both arrows turn the same way". Hanh: leave it. | Kept |
+| N12 | Dirac's idea | Optional: "alpha and beta each square to one". Hanh: leave it. | Kept |
+| N13 | An energy rule becomes an equation | Optional, a preference: say the last chapter recalled the recipe. Hanh: leave it. | Kept |
+| N14 | Second problem | Optional, a preference: "the particle's rest energy". Hanh: leave it. | Kept |
+| N15 | Second problem | Optional: plainer wording for "puts a rate of change in time into the quantity it keeps". Hanh: leave it. | Kept |
+| F4 | An energy rule becomes an equation | "The momentum squared, over twice the mass": left as is, as recommended. | Kept |
+| F5 | Dirac's idea | "The square has three terms, and it's on screen." | Done |
+| F6 | The Dirac equation | "A column is just our list of amplitudes, written top to bottom." | Done |
+| F7 | Antimatter | "We call each partner an antiparticle." The page names it too (I8). | Done |
+| F8 | Antimatter | The "way of counting" sentence is gone from the page (I13) and from the script. | Done |
+| F9 | A trail that bends the wrong way | The hard sentence is now two: "A year earlier, someone had tried to make quantum mechanics agree with relativity. The answer came out of that attempt..." | Done |
+| F10 | Antimatter | "Pauli's exclusion principle", without the first name the second time. The other half of F10 was not taken. | Done |
+| F11 | Whole script | Superseded by N2. | Done |
+
 ---
 
 # The rest of the pipeline
@@ -289,7 +314,8 @@ Nothing here has started. Each step is listed so it has an ID.
 | G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`: the final script plus breath commas. | Open |
 | G2 | Deck | Build `video/slides/deck_05.py`, run `check.py 05` until clean, make contact sheets, run one fresh deck review. | Open |
 | G3 | Cover and video | Add the chapter to `COVERS` in `slides/cover.py`, render the narration, build the video, write the description file. | Open |
-| G4 | Repository | Commit when Hanh asks. | Open |
+| G4 | Repository | Commit when Hanh asks. Committed as `841bb7c` on `classical-mechanics-rewrite` and pushed, 2026-11-26. The script draft was left out. `main` is not updated (G4b). | Done |
+| G4b | Repository | Merge into `main` and publish. Hanh, 2026-11-26: "merge into main and push". `main` fast-forwarded to `841bb7c` and pushed; the deploy succeeded and the live page shows the new chapter. | Done |
 | G5 | Page source | Remove the temporary review anchors from `docs/relativistic-qm.md`. Done on 2026-11-26, once every H and I item was settled (`python3 updates/refresh_links.py --strip`). | Done |
 | G6 | Dev helper | `docs/.vuepress/lib/review-jump.js`, wired in `client.js` behind `__VUEPRESS_DEV__`: makes `?rev=ID` links scroll to a review anchor and badges every anchor. Added 2026-11-26 after Hanh reported the first deep links landing in different places. Hanh, 2026-11-26: "G6 keep". | Kept |
 
