@@ -23,6 +23,7 @@ Use Manim Community through the helpers in `engine.py` (`T`, `W`, `card`, `pill`
 - Keep a running example on screen across a few slides, and change it step by step instead of redrawing it from scratch.
 - Use `Indicate`, `Flash`, or a colored outline to point at the part the narration is talking about.
 - Keep text-only slides, built with the `pts` and `cards` helpers, to about a fifth of the deck. They suit lists of assumptions or properties. They do not suit mechanisms.
+- Never pass an object made with `always_redraw` to `FadeIn`, `Create` or any other animation. Such an object is rebuilt every frame, and the animation fails as soon as its shape changes. Add it with `s.add(...)` on the line before the `yield`.
 
 ## Color
 
@@ -64,6 +65,7 @@ Then, from `video/slides/`:
 ```sh
 ../../.manim-venv/bin/python build.py deck_NN preview          # final frame of each slide, as contact sheets
 ../../.manim-venv/bin/python build.py deck_NN preview --only 4,5
+../../.manim-venv/bin/python build.py deck_NN smoke            # plays every slide once, lists the ones that crash
 ../../.manim-venv/bin/python build.py deck_NN video            # needs video/timings/STEM.json
 ../../.manim-venv/bin/python subtitles.py STEM                 # needs ffmpeg
 ```

@@ -1,10 +1,13 @@
 """Build a slide deck. See engine.py.
 
-Usage: build.py DECK preview|video [--only N,N] [--work DIR] [--scale X]
+Usage: build.py DECK preview|video|smoke [--only N,N] [--work DIR] [--scale X]
 
 DECK is a module in this folder, such as deck_01. Video clips are kept in the
 work directory, so a rerun rebuilds only slides whose code or timing changed.
 --scale stretches all timing, for narration that runs longer or shorter.
+smoke plays every slide's animation once, small and fast, and lists the slides that
+crash. It needs no narration timings. The preview draws only each slide's last
+frame, so it cannot show a slide that fails while it is animating.
 """
 import hashlib
 import importlib
@@ -147,4 +150,22 @@ def join(paths, target):
     print(f"wrote {target}", flush=True)
 
 
-{"preview": preview, "video": video}[mode]()
+def smoke():
+    """Animate each slide for a few seconds at low resolution, and report the ones that raise."""
+    config.pixel_width, config.pixel_height, config.frame_rate = 320, 180, 6
+    config.write_to_movie = False
+    failed = []
+    for i, slide in enumerate(deck.slides):
+        if only and i not in only:
+            continue
+        try:
+            engine.SlideScene(slide, 4.0).render()
+        except Exception as error:  # report every failing slide, not only the first
+            failed.append(i)
+            print(f"slide {i} ({slide['title']}): {type(error).__name__}: {error}", flush=True)
+    print(f"smoke: {len(failed)} of {len(deck.slides)} slides failed" + (f": {failed}" if failed else ""), flush=True)
+    if failed:
+        sys.exit(1)
+
+
+{"preview": preview, "video": video, "smoke": smoke}[mode]()

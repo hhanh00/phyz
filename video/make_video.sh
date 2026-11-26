@@ -11,6 +11,7 @@
 # for COVER seconds (default 5), then crossfades over FADE seconds (default 1).
 # See video/README.md for the one-time setup.
 set -e
+set -o pipefail  # a failed step stops the build, even though its output goes through tail
 
 ROOT=${0:A:h:h}
 HERE=$ROOT/video
@@ -34,7 +35,13 @@ for STEM in "$@"; do
     [[ ${VOICE:-} == (transfer|azure) ]] && PY=$HERE/.venv/bin/python
     (cd $HERE && $PY render.py $KOKORO scripts out --force --only $STEM | tail -1)
   fi
-  (cd $HERE/slides && $ROOT/.manim-venv/bin/python build.py deck_$NN video --work $WORK | tail -1)
+  # Keep the slide build's full output, and show its end if it fails. A slide that crashes while
+  # animating would otherwise leave no slides.mp4 and only a last line of traceback.
+  mkdir -p $WORK
+  LOG=$WORK/$STEM-build.log
+  (cd $HERE/slides && $ROOT/.manim-venv/bin/python build.py deck_$NN video --work $WORK > $LOG 2>&1) \
+    || { tail -25 $LOG; echo "slide build failed for $STEM; full log in $LOG"; exit 1; }
+  tail -1 $LOG
   (cd $HERE && $ROOT/.manim-venv/bin/python slides/subtitles.py $STEM | tail -1)
 
   OUT=$HERE/out/$STEM

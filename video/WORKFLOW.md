@@ -76,8 +76,9 @@ Write `video/prosody/STEM.pauses.txt`: the final script with extra commas where 
 1. Build `video/slides/deck_NN.py` following `video/slides/BRIEF.md`. Each slide is anchored to the first words of a script sentence. A new slide starts at every spoken heading, and numbers appear on screen when the narration reaches them, not before.
 2. Run `cd video/slides && ../../.manim-venv/bin/python check.py NN` until it reports no anchor problems.
 3. Render contact sheets with `build.py deck_NN preview --work DIR`, and look at them. Use `--only N,N` to re-render single slides after a fix.
-4. Run one review with a fresh agent, using the prompt below. Apply its findings, re-render only the changed slides, and look at them.
-5. After any later script edit, run `check.py` again, because changed openings break anchors.
+4. Run `build.py deck_NN smoke` until no slide fails. It plays every slide's animation once, small and fast, and needs no narration. The contact sheets show only each slide's last frame, so they can't reveal a slide that crashes while animating: chapter 5's deck passed the anchor check, the sheets and a review, then failed in the video build on eight slides that faded in a redrawn object.
+5. Run one review with a fresh agent, using the prompt below. Apply its findings, re-render only the changed slides, look at them, and run the smoke test again.
+6. After any later script edit, run `check.py` again, because changed openings break anchors.
 
 A long deck update can go to one agent, with a brief that lists the stale anchors, the content the script gained (diff against the version the deck was built from) and the open review findings. Send that same agent the next review's findings, since it already knows the file.
 
@@ -102,5 +103,6 @@ A long deck update can go to one agent, with a brief that lists the stale anchor
 2. Add the chapter to `COVERS` in `slides/cover.py` if it has no cover yet, render the cover and look at it.
 3. Build the slides and the final video from the repo root, in the background:
    `VOICE=azure WORK=DIR caffeinate -i video/make_video.sh --skip-audio STEM`
+   When it ends, confirm that `video/out/STEM/STEM-video.mp4` exists and that its length matches the narration's plus the cover hold.
 4. Write `video/out/STEM/STEM-description.txt`. Take the chapter timestamps from the heading entries in `video/timings/STEM.json`, and add the cover hold (`COVER` in `make_video.sh`, 5 s). Headings are silent in the final video, so the subtitle file won't show them.
 5. Commit the script, the pause file and the deck when asked. Everything in `video/out/`, `video/timings/` and `video/azure-cache/` is generated and not committed.

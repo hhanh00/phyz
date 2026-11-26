@@ -130,6 +130,25 @@ def bracket_to_commutator():
     return art
 
 
+def two_energy_curves():
+    """Chapter 5: the relativistic rule's two energies for each momentum, with the gap between them."""
+    import numpy as np
+    w, h = 6.4, 5.6
+    def pt(p, e):
+        return [p / 2.5 * w / 2, e / 3.0 * h / 2, 0]
+    def curve(sign, colour):
+        c = VMobject(stroke_color=colour, stroke_width=7)
+        c.set_points_smoothly([pt(p, sign * np.sqrt(1 + p * p)) for p in np.linspace(-2.5, 2.5, 80)])
+        return c
+    gap = Polygon(pt(-2.5, 1), pt(2.5, 1), pt(2.5, -1), pt(-2.5, -1), stroke_width=0, fill_color=SOFT, fill_opacity=0.12)
+    art = VGroup(gap, Line(pt(-2.5, 0), pt(2.5, 0), color=SOFT, stroke_width=3),
+                 curve(1, SKY), curve(-1, AMBER))
+    art.add(Text("positive energies", font=FONT, color=SKY, font_size=30, weight=BOLD).move_to(pt(0, 2.45) + np.array([0, 0.75, 0])),
+            Text("negative energies", font=FONT, color=AMBER, font_size=30, weight=BOLD).move_to(pt(0, -2.45) + np.array([0, -0.75, 0])),
+            Text("nothing allowed in between", font=FONT, color=SOFT, font_size=24).move_to(pt(0, 0.45)))
+    return art
+
+
 COVERS = {
     "02b-first-quantization": {
         "kicker": "PHYZ  ·  CHAPTER 2B",
@@ -160,6 +179,13 @@ COVERS = {
         "title": ["Special", "Relativity"],
         "sub": "Light's speed is fixed,\nso time and space give way",
         "art": light_clock,
+    },
+    "05-relativistic-qm": {
+        "kicker": "PHYZ  ·  CHAPTER 5",
+        "title": ["Relativistic", "Quantum", "Mechanics"],
+        "title_size": 80,
+        "sub": "Two equations for fast particles,\nand a kind of matter nobody had seen",
+        "art": two_energy_curves,
     },
     # "STEM": {"kicker": "PHYZ  ·  CHAPTER N", "title": ["Line", "Line"], "sub": "One line\nor two", "art": a_function},
 }

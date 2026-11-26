@@ -578,7 +578,8 @@ def cosmic(s):
         return g
     ground = Line(P(-7.3, -1.85), P(7.3, -1.85), color=LINE, stroke_width=5)
     yield [FadeIn(at(T("1932: Carl Anderson", 32, INK, True), 0, -2.5)), FadeIn(ground)]
-    yield [FadeIn(always_redraw(rays)), FadeIn(at(lab("cosmic rays: fast particles from space", 26, INK), 0, -3.15))]
+    s.add(always_redraw(rays))  # added, not faded in: a redrawn object changes shape between frames
+    yield [FadeIn(at(lab("cosmic rays: fast particles from space", 26, INK), 0, -3.15))]
     yield [FadeIn(at(lab("they also make chapter 4's muons", 24), 0, -3.7))]
 
 
@@ -598,7 +599,8 @@ def cloud(s):
     s.add(f)
     yield [FadeIn(chamber()), FadeIn(left_at(T("a cloud chamber", 30, INK, True), 0.6, 1.3)),
            FadeIn(left_at(lab("a box of damp gas", 26, INK), 0.6, 0.6))]
-    yield [FadeIn(always_redraw(drops)), f.animate.set_value(1.0),
+    s.add(always_redraw(drops))  # added, not faded in: a redrawn object changes shape between frames
+    yield [f.animate.set_value(1.0),
            FadeIn(left_at(words("a charged particle leaves a trail of droplets", 28, 26), 0.6, -0.7))]
 
 
@@ -1067,7 +1069,8 @@ def forever(s):
             a = g2p(steps[j], 0.35 if j == 0 else energy(steps[j], -1) + 0.25) + RIGHT * 0.2
             g.add(wiggle(a, a + P(0.9, 0.3), amp=0.07, waves=3, width=3))
         return g
-    yield [FadeIn(always_redraw(draw)), FadeIn(side_text("every electron in the world should keep falling, giving off light forever", 2.0, RED))]
+    s.add(always_redraw(draw))  # added, not faded in: a redrawn object changes shape between frames
+    yield [FadeIn(side_text("every electron in the world should keep falling, giving off light forever", 2.0, RED))]
     atom = VGroup(Circle(radius=0.7, color=MUTED, stroke_width=3).move_to(P(2.5, -0.9)), Dot(P(2.5, -0.9), radius=0.14, color=MUTED),
                   electron(3.2, -0.9))
     yield [FadeIn(atom), Create(cross(atom, RED, 5)), FadeIn(left_at(T("no atom would last", 28, RED, True), 3.7, -0.9))]
@@ -1919,7 +1922,8 @@ def answer(s):
     def faller():
         k = int(1.6 * t.get_value()) % (len(SEA_ROWS) + 1)
         return Dot(P(-2.0, EY if k == 0 else SEA_ROWS[k - 1]), radius=0.13, color=BLUE if k == 0 else ORANGE)
-    yield [FadeIn(always_redraw(faller)), FadeIn(sea_text("1930: Dirac's own answer", 1.9, INK, True, size=28))]
+    s.add(always_redraw(faller))  # added, not faded in: a redrawn object changes shape between frames
+    yield [FadeIn(sea_text("1930: Dirac's own answer", 1.9, INK, True, size=28))]
     yield [FadeIn(sea_text("it isn't the one physicists use today", 0.7))]
     yield [FadeIn(sea_text("but it led to the right prediction, so we follow it", -0.7))]
 
@@ -2160,7 +2164,8 @@ def tofield(s):
     yield [FadeIn(psi), FadeIn(old)]
     yield [Create(Line(old.get_left() + LEFT * 0.1, old.get_right() + RIGHT * 0.1, color=RED, stroke_width=4))]
     yield [FadeIn(at(T("it becomes a field", 32, INK, True), -4.4, -1.8)), GrowArrow(varrow(P(-3.6, 0.7), P(0.2, 0.7)))]
-    yield [FadeIn(field_line(t)), FadeIn(at(words("a value at every point of space, like the electric field", 34, 26, INK, ORIGIN), 3.8, -1.7))]
+    s.add(field_line(t))  # a redrawn object is added, not faded in
+    yield [FadeIn(at(words("a value at every point of space, like the electric field", 34, 26, INK, ORIGIN), 3.8, -1.7))]
 
 
 @slide("Each wave of the field is a spring.", "Rungs count particles")
@@ -2177,10 +2182,11 @@ def rungs(s):
     def made():
         k = int(round(n.get_value()))
         return VGroup(hollow(), *[electron(3.0 + 0.6 * j, -1.0, INK, 0.17) for j in range(k)])
-    s.add(n)
-    yield [FadeIn(wave), FadeIn(at(lab("one wave of the field", 24, INK), -5.1, -0.6)), GrowArrow(varrow(P(-2.9, 0.6), P(-1.9, 0.6))), FadeIn(lad), FadeIn(marker),
+    s.add(n, wave, marker)  # redrawn objects are added, not faded in
+    yield [FadeIn(at(lab("one wave of the field", 24, INK), -5.1, -0.6)), GrowArrow(varrow(P(-2.9, 0.6), P(-1.9, 0.6))), FadeIn(lad),
            FadeIn(at(lab("is a spring", 24, INK), 0.2, 2.4))]
-    yield [FadeIn(always_redraw(made)), FadeIn(left_at(words("its rung: the number of particles with that wave's momentum", 26, 24), 2.5, 0.6))]
+    s.add(always_redraw(made))  # added, not faded in: a redrawn object changes shape between frames
+    yield [FadeIn(left_at(words("its rung: the number of particles with that wave's momentum", 26, 24), 2.5, 0.6))]
     yield [n.animate.set_value(3.0), FadeIn(left_at(words("up a rung creates a particle, down a rung removes one", 26, 24, INK, bold=True), 2.5, -2.3))]
 
 

@@ -31,12 +31,20 @@ It made five optional suggestions (N11 to N15). Hanh, 2026-11-26: "leave N11-N15
 
 Hanh, 2026-11-26: "take your recommendations for P". P1 to P9, P11 and P14 are applied; P10, P12, P13 and P15 are left as they are. The anchor check passes with 0 problems, the eleven changed slides are re-rendered, and Claude looked at each one. No decision is open on the deck.
 
+### The video: built, waiting for Hanh to watch
+
+Hanh, 2026-11-26: "commit and push, then do the video". The video is built: `video/out/05-relativistic-qm/05-relativistic-qm-video.mp4`, 23 minutes 56 seconds, 1920 by 1080, with audio and a subtitle track. See iteration Q.
+
+| ID | Where | The question | Claude's recommendation |
+| --- | --- | --- | --- |
+| Q6 | Whole video | Hanh to watch it. Claude checked nine frames against the narration's timings, not the whole video. | Watch at least "Second problem" (8:13) and "The Dirac equation" (12:41). |
+| P12 | Slides 46 to 48, at 8:50 to 9:10 | In the frames Claude checked, the two arrows and their sum are small inside their circles. Enlarge them? | Hanh's call after watching. A change means re-rendering three slides and rebuilding the video, about five minutes. |
+
 ### Waiting for work
 
 | ID | Where | What has to happen | Waiting on |
 | --- | --- | --- | --- |
-| G3 | Cover and video | Add the cover, render the narration, build the video, write the description. | Hanh's go-ahead. |
-| G7 | Repository | Commit the pause file, the deck and this file. Push the branch (it also holds the script commit `57b3c8f`). | Hanh asking for it. |
+| Q10 | YouTube | Upload the video with its description, cover and playlist place. Hanh has to drop the file, as before. | Hanh asking for it. |
 
 ## Status
 
@@ -45,8 +53,10 @@ Hanh, 2026-11-26: "take your recommendations for P". P1 to P9, P11 and P14 are a
 | Page | Final (Hanh, 2026-11-26), committed as `841bb7c`, merged to `main` and live on the site. |
 | Script | Resumed. Rewritten from the final page (about 3,380 words, format clean); the closing review returned no must-fix (9/10, ready to record). Hanh left its five optional suggestions as they are. Committed as `57b3c8f` on the branch, not pushed. Hanh chose not to read it before the deck. |
 | Pause file | Written and checked. Not committed. |
-| Deck | Built, 125 slides, anchor check clean. Fresh review 9/10, ready to render, no must-fix. Eleven of its optional points applied and checked. Not committed. |
-| Cover, video | Not started. |
+| Deck | Built, 125 slides, anchor check clean. Fresh review 9/10, ready to render, no must-fix. Eleven of its optional points applied and checked. Committed as `963b3e5` and pushed; eight places were fixed afterwards during the video build (Q3) and committed with the build changes. |
+| Cover | Rendered and checked. |
+| Narration | Rendered with the Azure voice: 23.8 minutes. |
+| Video | Built: 23:56, with subtitles. Description file written. Hanh has not watched it. |
 
 ---
 
@@ -329,6 +339,21 @@ Hanh: "do the pause file and the deck". One agent built `video/slides/deck_05.py
 | P15 | 116, 118 | Rung labels 0 to 4. Left as is. | Kept |
 | P16 | Whole deck | After the fixes: `check.py 05` reports 125 anchors, 0 problems; the eleven changed slides re-rendered; Claude looked at all eleven. Two needed a second pass by the agent (slide 42's arrow, slide 81's label spacing) and are right now. | Done |
 
+## Q. Cover, narration and video (2026-11-26)
+
+| ID | Step | Item | Status |
+| --- | --- | --- | --- |
+| Q1 | Cover | Added chapter 5 to `COVERS` in `video/slides/cover.py`: the two energy curves with the gap between them. Rendered and checked; one axis line that crossed a label was removed. | Done |
+| Q2 | Narration | Rendered with the Azure voice from the final script and the pause file: 23.8 minutes, 18,401 characters sent. | Done |
+| Q3 | Slide video | The first build crashed on slide 9 and `make_video.sh` hid the error, so it looked like success. Cause: slides 9 and 117 faded in an object that is redrawn every frame, which fails when the object's shape changes. Six more places used the same pattern without failing (slides 8, 41, 48, 99 and 118). The preview renders only last frames, so neither the builder nor the review could see it. Claude changed all eight places to add the object directly. Anchor check still 0 problems. | Done |
+| Q4 | Final video | Built: 1,435 seconds (23:56), h264 at 1920 by 1080, aac audio, subtitle track with 372 cues. | Done |
+| Q5 | Description | `video/out/05-relativistic-qm/05-relativistic-qm-description.txt`, in chapter 4's format, with thirteen chapter timestamps from the heading timings plus the five-second cover hold. | Done |
+| Q6 | Check | Claude pulled nine frames at the times of key sentences (the cover, the cloud chamber, the odd trail, the two-arrows passage twice, the two matrices, the Dirac equation, the sea, the rungs). Each shows the right slide for its sentence. Hanh has not watched the video. | Open |
+| Q7 | Build script | `make_video.sh` hides a failed step. Hanh, 2026-11-26: "take your recommendations for Q". The script now sets `pipefail`, keeps the slide build's full log in the work folder, and on failure prints its last 25 lines and stops. | Done |
+| Q8 | Workflow | The preview can't catch animation crashes. `build.py` has a new mode, `smoke`, which plays every slide once at low resolution without needing narration and lists the slides that crash. Run on the committed, unfixed deck it reports slides 9 and 117; on the fixed deck, 0 of 125. `BRIEF.md` has the rule against animating a redrawn object, and `WORKFLOW.md` has the smoke step before and after the deck review and a check that the video file exists. | Done |
+| Q9 | Repository | Commit and push the deck fixes, cover entry, build changes and this file. Hanh, 2026-11-26: "commit and push". | Done |
+| Q10 | YouTube | Upload. | Open |
+
 ---
 
 # The rest of the pipeline
@@ -341,7 +366,7 @@ Nothing here has started. Each step is listed so it has an ID.
 | --- | --- | --- | --- |
 | G1 | Pause file | Write `video/prosody/05-relativistic-qm.pauses.txt`: the final script plus breath commas. Written on 2026-11-26 with 16 added commas, in the script's long sentences that had none. Checked: 357 sentences, differing from the script by commas only. Not committed. | Done |
 | G2 | Deck | Build `video/slides/deck_05.py`, run `check.py 05` until clean, make contact sheets, run one fresh deck review. Done on 2026-11-26; see iteration P. | Done |
-| G3 | Cover and video | Add the chapter to `COVERS` in `slides/cover.py`, render the narration, build the video, write the description file. | Open |
+| G3 | Cover and video | Add the chapter to `COVERS` in `slides/cover.py`, render the narration, build the video, write the description file. Done on 2026-11-26; see iteration Q. | Done |
 | G4 | Repository | Commit when Hanh asks. Committed as `841bb7c` on `classical-mechanics-rewrite` and pushed, 2026-11-26. The script draft was left out. `main` is not updated (G4b). | Done |
 | G4b | Repository | Merge into `main` and publish. Hanh, 2026-11-26: "merge into main and push". `main` fast-forwarded to `841bb7c` and pushed; the deploy succeeded and the live page shows the new chapter. | Done |
 | G5 | Page source | Remove the temporary review anchors from `docs/relativistic-qm.md`. Done on 2026-11-26, once every H and I item was settled (`python3 updates/refresh_links.py --strip`). | Done |
