@@ -241,36 +241,73 @@ class LightConeIntervals(Scene):
 
 class RelativisticEnergySolutions(Scene):
     def construct(self):
-        heading(self,'The relativistic wave equation admits both energy signs','Illustrative units m = c = 1; momentum is horizontal and energy is vertical')
-        ax=axes_at(-3.8,0,6.2,5,(-2.5,2.5,1),(-3,3,1))
-        self.add(ax,path_curve(ax,lambda p:np.sqrt(1+p*p),[-2.5,2.5],BLUE),path_curve(ax,lambda p:-np.sqrt(1+p*p),[-2.5,2.5],ORANGE),
-                 label('E',-4.2,2.7,26),label('p',-.4,-.35,26),
-                 math(r'+mc^2',-5.15,.85,26,BLUE),math(r'-mc^2',-5.15,-.85,26,ORANGE),
-                 math(r'E=+\sqrt{p^2c^2+m^2c^4}',3.65,1.6,34,BLUE,width=6.8),
-                 math(r'E=-\sqrt{p^2c^2+m^2c^4}',3.65,-.05,34,ORANGE,width=6.8),
-                 label('The negative-energy values\nhave no lower bound.',3.65,-1.55,27,ORANGE),
-                 label('Field quantization reinterprets negative-frequency modes as positive-energy antiparticle creation.',0,-3.75,23,MUTED,width=14.6))
+        heading(self,'The relativistic rule allows two energies for every momentum','Energy against momentum for one particle of mass m')
+        ax=axes_at(-2.6,-0.35,7.4,5.6,(-2.5,2.5,1),(-3,3,1))
+        gap=Polygon(ax.c2p(-2.5,1),ax.c2p(2.5,1),ax.c2p(2.5,-1),ax.c2p(-2.5,-1),stroke_width=0,fill_color=PALE,fill_opacity=0.9)
+        self.add(gap,ax,
+                 DashedLine(ax.c2p(-2.5,1),ax.c2p(2.5,1),color=MUTED,stroke_width=2),
+                 DashedLine(ax.c2p(-2.5,-1),ax.c2p(2.5,-1),color=MUTED,stroke_width=2),
+                 path_curve(ax,lambda p:np.sqrt(1+p*p),[-2.5,2.5],BLUE),path_curve(ax,lambda p:-np.sqrt(1+p*p),[-2.5,2.5],ORANGE),
+                 label('energy',-3.25,2.2,22,MUTED),label('momentum',1.75,-0.62,22,MUTED),
+                 math(r'+mc^2',-6.95,0.58,28,BLUE),math(r'-mc^2',-6.95,-1.28,28,ORANGE),
+                 label('no energy allowed in between',-0.75,-0.05,20,MUTED),
+                 label('positive energies',4.6,1.75,26,BLUE),label('start at +mc² and go up',4.6,1.25,22,BLUE),
+                 label('negative energies',4.6,-1.7,26,ORANGE),label('start at −mc² and go down\nwithout end',4.6,-2.4,22,ORANGE),
+                 Arrow(ax.c2p(2.15,-2.37),ax.c2p(2.45,-2.65),buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.5),
+                 Arrow(ax.c2p(-2.15,-2.37),ax.c2p(-2.45,-2.65),buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.5))
 
 
-class KleinGordonDensity(Scene):
+class DiracSeaHole(Scene):
     def construct(self):
-        heading(self,'A conserved density is not automatically a probability density','For a Klein–Gordon plane wave, the current density has the sign of its energy')
-        for x,sign,c in [(-4,'+',BLUE),(4,'-',ORANGE)]:
-            self.add(box(x,0,6.6,4,c),math(r'\psi\propto e^{'+('-' if sign=='+' else '+')+r'iE_pt/\hbar}',x,1.25,36,c),
-                     math(r'E='+sign+r'E_p',x,.3,35),math(r'\rho='+sign+r'\frac{2E_p}{\hbar}|\psi|^2',x,-.85,38,c),
-                     label('Positive conserved density' if sign=='+' else 'Negative conserved density',x,-2.6,25,c))
-        self.add(label('Probability must be nonnegative. Charge density can have either sign.',0,-3.65,28,MUTED))
+        heading(self,'Dirac’s sea, and a hole in it','Every negative-energy state is filled, so an ordinary electron has nowhere to fall')
+        x0,x1=-5.2,0.6
+        top=Rectangle(width=x1-x0,height=1.7,stroke_color=BLUE,stroke_width=2,fill_color=PALE,fill_opacity=0.5).move_to([(x0+x1)/2,1.55,0])
+        sea=Rectangle(width=x1-x0,height=2.3,stroke_color=ORANGE,stroke_width=2,fill_color=ORANGE,fill_opacity=0.12).move_to([(x0+x1)/2,-1.95,0])
+        self.add(top,sea,
+                 Arrow([x0-0.7,-3.2,0],[x0-0.7,2.6,0],buff=0,color=MUTED,stroke_width=3,max_tip_length_to_length_ratio=0.04),
+                 label('energy',x0-0.7,2.85,20,MUTED),
+                 math(r'+mc^2',x0-1.55,0.7,26,BLUE),math(r'-mc^2',x0-1.55,-0.8,26,ORANGE),
+                 Line([x0-0.85,0.7,0],[x0-0.55,0.7,0],color=MUTED),Line([x0-0.85,-0.8,0],[x0-0.55,-0.8,0],color=MUTED),
+                 )
+        hole=(-1.2,-1.1)
+        for r,y in enumerate((-1.1,-1.45,-1.8,-2.15,-2.5,-2.85)):
+            for c in range(12):
+                x=x0+0.35+c*((x1-x0-0.7)/11)
+                if abs(x-hole[0])<0.2 and abs(y-hole[1])<0.05:
+                    self.add(Circle(radius=0.13,color=ORANGE,stroke_width=3).move_to([x,y,0])); hx=x
+                else:
+                    self.add(Dot([x,y,0],radius=0.09,color=ORANGE))
+        e=(hx,1.5)
+        self.add(Dot([*e,0],radius=0.13,color=BLUE),
+                 Arrow([hx,hole[1]+0.2,0],[hx,e[1]-0.2,0],buff=0,color=INK,stroke_width=4,max_tip_length_to_length_ratio=0.07))
+        wave=ParametricFunction(lambda t:np.array([-4.9+t*3.5,0.4+t*(-0.65)+0.13*np.sin(t*10*PI),0]),t_range=[0,1],color=PURPLE,stroke_width=3)
+        self.add(wave,label('a packet of light, at least 2mc²',-3.4,-0.55,20,PURPLE))
+        self.add(label('the electron, lifted out:',4.3,1.85,22,BLUE),label('negative charge,\npositive energy',4.3,1.15,22,BLUE),
+                 label('the hole it leaves:',4.3,-1.05,22,ORANGE),label('looks like a positive charge\nwith positive energy',4.3,-1.75,22,ORANGE),
+                 Line([hx+0.25,e[1],0],[2.2,1.6,0],color=BLUE,stroke_width=2),Line([hx+0.25,hole[1],0],[2.0,-1.3,0],color=ORANGE,stroke_width=2))
+        self.add(label('The electron and the hole appear together: a pair.',0,-3.75,24,MUTED))
 
 
-class DiracLinearization(Scene):
+class PositronTrack(Scene):
     def construct(self):
-        heading(self,'Linearizing the energy relation requires matrices','Matching the squared Hamiltonian removes mixed terms and fixes the matrix algebra')
-        self.add(box(-4.5,.75,5.5,2.4),math(r'H=\boldsymbol\alpha\cdot\mathbf p+\beta m',-4.5,1.05,34,width=5.1),
-                 label('First order in momentum',-4.5,.05,25,BLUE),arrow((-1.65,.75),(.25,.75)),label('square',-.7,1.3,23),
-                 box(3.8,.75,6.8,2.4,TEAL),math(r'H^2=\mathbf p^2+m^2',3.8,1.05,38,TEAL),label('Correct relativistic dispersion',3.8,.05,25,TEAL),
-                 math(r'\{\alpha_i,\alpha_j\}=2\delta_{ij},\quad\{\alpha_i,\beta\}=0,\quad\beta^2=1',0,-1.6,33),
-                 label('Ordinary numbers cannot satisfy all these conditions.',0,-2.65,27),
-                 label('The smallest complex matrices are 4 × 4, so the wave function has four components.',0,-3.55,25,MUTED,width=14.3))
+        heading(self,'Anderson’s trail, 1932','A sketch of the cloud-chamber photograph: one trail crossing a lead plate')
+        cx,cy,R=-2.6,-0.45,2.75
+        self.add(Circle(radius=R,color=MUTED,stroke_width=3).move_to([cx,cy,0]),
+                 Rectangle(width=2*R-0.5,height=0.22,stroke_width=0,fill_color=INK,fill_opacity=0.85).move_to([cx,cy,0]))
+        # Below the plate: more energy, gently curved. Above: less energy, tightly curved. Both bend to the left.
+        p0=np.array([cx+0.55,cy-0.11,0])
+        r1=6.0; c1=p0+np.array([-r1,0,0])
+        low=Arc(radius=r1,start_angle=-0.42,angle=0.42,arc_center=c1,color=ORANGE,stroke_width=5)
+        p1=np.array([cx+0.55,cy+0.11,0])
+        r2=2.1; c2=p1+np.array([-r2,0,0])
+        up=Arc(radius=r2,start_angle=0,angle=1.02,arc_center=c2,color=ORANGE,stroke_width=5)
+        tip=up.point_from_proportion(1.0); pre=up.point_from_proportion(0.93)
+        self.add(low,up,Arrow(pre,tip,buff=0,color=ORANGE,stroke_width=5,max_tip_length_to_length_ratio=1.2))
+        self.add(label('lead plate',cx-1.55,cy+0.42,20,INK),
+                 label('enters with more energy:\ngentle curve',3.9,-1.75,23,INK),Line([cx+1.0,cy-1.4,0],[2.2,-1.7,0],color=MUTED,stroke_width=2),
+                 label('loses energy in the lead',3.9,-0.45,23,INK),Line([cx+R-0.2,cy,0],[2.05,-0.45,0],color=MUTED,stroke_width=2),
+                 label('leaves with less energy:\ntighter curve',3.9,1.2,23,INK),Line([cx+0.45,cy+1.25,0],[2.2,1.2,0],color=MUTED,stroke_width=2))
+        self.add(label('The tighter half shows which way it went. Going that way, the bend is a positive charge’s.',0,-3.75,23,MUTED,width=14.5))
 
 
 class SpinMeasurement(Scene):

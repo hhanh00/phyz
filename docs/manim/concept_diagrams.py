@@ -34,7 +34,7 @@ def label(s, x, y, size=26, color=INK, width=None):
         'λ': r'\ensuremath{\lambda}', '∑': r'\ensuremath{\sum}',
         'ℏ': r'\ensuremath{\hbar}', '½': r'\ensuremath{\frac12}',
         '₀': r'\ensuremath{{}_0}', '²': r'\ensuremath{{}^{2}}',
-        '−': '-', '′': "'", '…': r'\ldots',
+        '−': r'\ensuremath{-}', '′': "'", '…': r'\ldots',
         '’': "'", '“': '``', '”': "''", '–': '--', '—': '---',
     }
     def escape(line):

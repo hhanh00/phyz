@@ -18,7 +18,7 @@ $$\frac{d}{dt}\,\frac{\partial L}{\partial \dot q} - \frac{\partial L}{\partial 
 
 For $L=T-V$, this reproduces Newton's equation. The advantage is that we can derive motion from one scalar function instead of specifying force components separately. We can use the same variational method with a relativistic Lagrangian.
 
-The Lagrangian also determines the Hamiltonian. Its quantum version generates time evolution, as in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators), and its spectrum is central to the negative-energy problem in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+The Lagrangian also determines the Hamiltonian. Its quantum version generates time evolution, as in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators), and its spectrum is central to the negative-energy problem in [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
 
 ### From particles to fields
 
@@ -150,7 +150,7 @@ $$\Box\phi + \frac{m^2}{\hbar^2}\phi = 0,$$
 
 </details>
 
-This is the **Klein–Gordon equation**. [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon) introduced it and explained the difficulty of treating it as a single-particle probability equation. Here it governs a field.
+This is the **Klein–Gordon equation**. [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation) introduced it and explained the difficulty of treating it as a single-particle probability equation. Here it governs a field.
 
 Because it is second order in time, initial data must specify both $\phi$ and $\dot\phi$. With suitable boundary conditions, those data determine the evolution, with disturbances propagating within the light cone.
 
@@ -312,7 +312,7 @@ $$i\hbar\,(\partial_\mu\bar\psi)\,\gamma^\mu + m\,\bar\psi = 0,$$
 
 This is the **adjoint Dirac equation**. We could also obtain it by taking the adjoint of the Dirac equation and multiplying by $\gamma^0$. The two variations give mutually conjugate equations.
 
-The Dirac equation is first order in both time and space, as sought in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). Initial data specify $\psi$ at one instant; an independent $\dot\psi$ is unnecessary. This Lagrangian therefore reproduces the first-order dynamics constructed by factoring the Klein–Gordon operator in [The Dirac Equation](dirac-equation.md).
+The Dirac equation is first order in both time and space, as sought in [Relativistic QM §6](relativistic-qm.md#_6-dirac-s-idea-an-energy-rule-that-isn-t-squared). Initial data specify $\psi$ at one instant; an independent $\dot\psi$ is unnecessary. This Lagrangian therefore reproduces the first-order dynamics constructed by factoring the Klein–Gordon operator in [The Dirac Equation](dirac-equation.md).
 
 We have recovered the three free wave equations from actions and identified the conjugate variables used to quantize them. The next chapter carries out that step for scalar and spinor fields, checking that their excitations have positive energies and the appropriate particle statistics.
 

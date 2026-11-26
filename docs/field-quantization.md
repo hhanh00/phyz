@@ -306,7 +306,7 @@ These expressions specify the occupations. Repeated creation also produces norma
 
 **The energy has a lower bound.** Every $E_p$ is nonnegative and every $n_p$ is a nonnegative integer. An annihilation operator cannot lower an empty mode further.
 
-This resolves the negative-energy problem in the [single-particle Klein–Gordon interpretation](relativistic-qm.md#_2-klein-gordon). We retain the negative-frequency term $e^{+ip\cdot x/\hbar}$, but its coefficient is now $\hat a^\dagger$: it creates a particle with positive energy. The [Dirac equation page](dirac-equation.md) previewed the corresponding reinterpretation for antiparticles.
+This resolves the negative-energy problem in the [single-particle Klein–Gordon interpretation](relativistic-qm.md#_4-first-problem-negative-energies). We retain the negative-frequency term $e^{+ip\cdot x/\hbar}$, but its coefficient is now $\hat a^\dagger$: it creates a particle with positive energy. The [Dirac equation page](dirac-equation.md) previewed the corresponding reinterpretation for antiparticles.
 
 The real scalar has one operator family and particles that are their own antiparticles. In the free theory, the number operator $\hat N=\int\frac{d^3p}{(2\pi\hbar)^3}\hat a^\dagger(p)\hat a(p)$ commutes with $\hat H$, so particle number is conserved. The construction gives the oscillator algebra previewed on the [Action page](qft-action.md).
 

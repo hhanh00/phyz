@@ -1,10 +1,10 @@
 # The Dirac Equation
 
-[Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced $(i\hbar\gamma^\mu\partial_\mu-m)\psi=0$. Its wave function has four components and both energy signs. We now derive the spin carried by those components, solve the positive- and negative-energy solutions, and explain why antiparticles require a field theory.
+[Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use) introduced $(i\hbar\gamma^\mu\partial_\mu-m)\psi=0$. Its wave function has four components and both energy signs. We now derive the spin carried by those components, solve the positive- and negative-energy solutions, and explain why antiparticles require a field theory.
 
 ## 1. Spin
 
-To interpret the extra components from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation), start with angular momentum. A particle's total angular momentum can include both orbital motion and intrinsic spin:
+To interpret the extra components from [Relativistic QM §7](relativistic-qm.md#_7-the-dirac-equation), start with angular momentum. A particle's total angular momentum can include both orbital motion and intrinsic spin:
 
 $$\mathbf J = \mathbf L + \mathbf S, \qquad \mathbf L = \mathbf r \times \mathbf p,$$
 
@@ -35,7 +35,7 @@ It must satisfy two conditions: cancel $[H,L_i]$ and obey the angular-momentum c
 
 $$[H, S_i] = -[H, L_i] = i\hbar\,(\boldsymbol\alpha \times \hat{\mathbf p})_i.$$
 
-The Pauli matrices provide a candidate. In [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation), $\alpha_j=\begin{pmatrix}0&\sigma_j\\\sigma_j&0\end{pmatrix}$, so $\alpha_j\alpha_k=\mathrm{diag}(\sigma_j\sigma_k,\sigma_j\sigma_k)$. Using $[\sigma_j,\sigma_k]=2i\varepsilon_{jkl}\sigma_l$ gives
+The Pauli matrices provide a candidate. In [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use), $\alpha_j=\begin{pmatrix}0&\sigma_j\\\sigma_j&0\end{pmatrix}$, so $\alpha_j\alpha_k=\mathrm{diag}(\sigma_j\sigma_k,\sigma_j\sigma_k)$. Using $[\sigma_j,\sigma_k]=2i\varepsilon_{jkl}\sigma_l$ gives
 
 $$[\alpha_j, \alpha_k] = 2i\varepsilon_{jkl}\begin{pmatrix} \sigma_l & \mathbf 0 \\ \mathbf 0 & \sigma_l \end{pmatrix},$$
 
@@ -73,7 +73,7 @@ For an electron, $q=-e$. Taking the nonrelativistic limit gives the Pauli equati
 
 $$\boldsymbol\mu = -\frac{e}{m}\,\mathbf S, \qquad g = 2,$$
 
-The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with minimal coupling. This answers the spin question from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). We examine how the spin components transform in [§5](#_5-spinors).
+The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with minimal coupling. We examine how the spin components transform in [§5](#_5-spinors).
 
 ![An ideal measurement of spin along z has outcomes plus or minus hbar over two. The displayed equal superposition gives equal probabilities.](./manim/spin-measurement.png)
 
@@ -84,7 +84,7 @@ The dimensionless **gyromagnetic factor** is $g=2$ for the Dirac equation with m
 <details>
 <summary>Deriving the magnetic moment at low speed</summary>
 
-The factor $g=2$ quoted above follows from taking the Dirac equation at low momentum. Split the spinor into upper and lower pairs, $\psi=(u,v)$, and use minimal substitution $\hat{\mathbf p}\to\hat{\mathbf p}-q\mathbf A$ in the coupled equations of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation):
+The factor $g=2$ quoted above follows from taking the Dirac equation at low momentum. Split the spinor into upper and lower pairs, $\psi=(u,v)$, and use minimal substitution $\hat{\mathbf p}\to\hat{\mathbf p}-q\mathbf A$ in the coupled equations of [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use):
 
 $$(E-m)\,u = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,v, \qquad (E+m)\,v = \boldsymbol\sigma\cdot(\hat{\mathbf p}-q\mathbf A)\,u,$$
 
@@ -150,7 +150,7 @@ At rest, the energies are $E=+m$ and $E=-m$, each with two independent spin stat
 
 $$E\,w = \beta m\,w.$$
 
-In the representation of [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation), $\beta=\mathrm{diag}(1,1,-1,-1)$. Writing $w=(w_1,w_2,w_3,w_4)$ gives four equations:
+In the representation of [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use), $\beta=\mathrm{diag}(1,1,-1,-1)$. Writing $w=(w_1,w_2,w_3,w_4)$ gives four equations:
 
 $$E\,w_1 = m\,w_1, \qquad E\,w_2 = m\,w_2, \qquad E\,w_3 = -m\,w_3, \qquad E\,w_4 = -m\,w_4.$$
 
@@ -160,13 +160,13 @@ For a nonzero state, at least one component must survive. An upper component req
 2. **$E=m$:** $w_3=w_4=0$, while the two upper components are free.
 3. **$E=-m$:** $w_1=w_2=0$, while the two lower components are free.
 
-These are the two signs in $E^2=\mathbf p^2+m^2$ from [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), evaluated at rest. Squaring the Dirac Hamiltonian gives this dispersion relation because its matrices anticommute.
+These are the two signs in $E^2=\mathbf p^2+m^2$ from [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation), evaluated at rest. Squaring the Dirac Hamiltonian gives this dispersion relation because its matrices anticommute.
 
 Each energy eigenspace has dimension two. A basis of the four independent rest solutions is
 
 $$E = +m: \quad w = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}; \qquad E = -m: \quad w = \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}.$$
 
-The four-component size follows from the matrix algebra in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). The Hamiltonian needs four mutually anticommuting matrices. The three Pauli matrices cannot accommodate a fourth in two dimensions; the smallest suitable complex representation is four-dimensional.
+The four-component size follows from the matrix algebra in [Relativistic QM §7](relativistic-qm.md#_7-the-dirac-equation). The Hamiltonian needs four mutually anticommuting matrices. The three Pauli matrices cannot accommodate a fourth in two dimensions; the smallest suitable complex representation is four-dimensional.
 
 Choose the basis to diagonalize $S_z=\tfrac\hbar2\Sigma_z$. Label the rest solutions $w_+^{(1)},w_+^{(2)},w_-^{(1)},w_-^{(2)}$. Since $\Sigma_z=\mathrm{diag}(1,-1,1,-1)$,
 
@@ -185,7 +185,7 @@ For a moving particle, write $E_p=\sqrt{\mathbf p^2+m^2}>0$. The energies remain
 
 $$(E - \boldsymbol\alpha\cdot\mathbf p - \beta m)\,w = 0,$$
 
-Write $w=(\phi,\chi)$ for the upper and lower two-component blocks, as in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation). Then
+Write $w=(\phi,\chi)$ for the upper and lower two-component blocks, as in [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use). Then
 
 $$(E - m)\,\phi = \boldsymbol\sigma\cdot\mathbf p\,\chi, \qquad (E + m)\,\chi = \boldsymbol\sigma\cdot\mathbf p\,\phi.$$
 
@@ -197,7 +197,7 @@ At $\mathbf p=0$, these reduce to the positive-energy rest states up to normaliz
 
 $$v_s(p) = \begin{pmatrix} -\dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + m}}\;\chi_s \\ \sqrt{E_p + m}\;\chi_s \end{pmatrix} \qquad (E = -E_p),$$
 
-Their lower blocks dominate at low momentum, as in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation).
+Their lower blocks dominate at low momentum, as in [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use).
 
 </details>
 
@@ -209,7 +209,7 @@ For plane waves this maps $\eta u_s(p)^*$ to a negative-energy solution $v_{s'}(
 
 To see why this changes charge, restore the electromagnetic coupling from [§1](#_1-spin): $\partial_\mu\to\partial_\mu+\tfrac{iq}{\hbar}A_\mu$. Complex conjugation reverses the sign of $i$, so $\psi_c$ obeys the equation with charge $-q$. It describes the **antiparticle**, with the same mass and opposite charge. In the full electromagnetic theory, charge conjugation also reverses $A_\mu$.
 
-This connects to the Stückelberg–Feynman interpretation in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability). For electrons the antiparticle is the positron, discovered in 1932.
+This connects to the Stückelberg–Feynman interpretation in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough). For electrons the antiparticle is the positron, discovered in 1932.
 
 ### Extra: verifying the charge-conjugation map
 
@@ -246,7 +246,7 @@ The free equation supplies both frequency signs. A precise particle interpretati
 
 ## 4. Negative Energy Solutions
 
-The two families of solutions in [§3](#_3-antiparticles) both have nonnegative density $\psi^\dagger\psi$. We cannot reject the negative-energy solutions on probability grounds. As [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) noted, treating them as ordinary electron states would leave energy unbounded below: an interacting electron could keep radiating into lower levels.
+The two families of solutions in [§3](#_3-antiparticles) both have nonnegative density $\psi^\dagger\psi$. We cannot reject the negative-energy solutions on probability grounds. As [Relativistic QM §9](relativistic-qm.md#_9-the-negative-energies-predict-antimatter) noted, treating them as ordinary electron states would leave energy unbounded below: an interacting electron could keep radiating into lower levels.
 
 The field description assigns the negative-frequency terms to creation of positive-energy antiparticles. This is more than a relabeling of a single-particle state: we introduce operators that change particle number. The next chapter develops that construction; the algebra below previews how it removes the unbounded negative excitation energies.
 
@@ -257,7 +257,7 @@ The field description assigns the negative-frequency terms to creation of positi
 
 Fermion operators obey $\hat b\hat b^\dagger=1-\hat b^\dagger\hat b$. Substitution gives $E_p(\hat a^\dagger\hat a+\hat b^\dagger\hat b)$ plus a vacuum constant. After subtracting that constant, electrons and positrons both contribute positive energy $E_p$.
 
-Thus $\hat b^\dagger$ multiplies a negative-frequency solution but creates a positive-energy positron. This implements the reinterpretation in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+Thus $\hat b^\dagger$ multiplies a negative-frequency solution but creates a positive-energy positron. This implements the reinterpretation in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough).
 
 </details>
 
@@ -351,7 +351,7 @@ $$\Omega_{\text{rot}} = -\frac{i}{2}\left(\omega_{12}\,\sigma^{12} + \omega_{13}
 
 We need the generators $\sigma^{ij}=\tfrac i2(\gamma^i\gamma^j-\gamma^j\gamma^i)$. Compute the gamma-matrix products first.
 
-Use the standard representation from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation): $\gamma^0=\beta$ and $\gamma^i=\beta\alpha_i$. The matrices from [§1](#_1-spin) have the following block form, with each entry a $2\times2$ block and $\sigma_i$ the [Pauli matrices](#_1-spin):
+Use the standard representation from [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use): $\gamma^0=\beta$ and $\gamma^i=\beta\alpha_i$. The matrices from [§1](#_1-spin) have the following block form, with each entry a $2\times2$ block and $\sigma_i$ the [Pauli matrices](#_1-spin):
 
 $$\beta = \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}, \qquad \alpha_i = \begin{pmatrix}0 & \sigma_i \\ \sigma_i & 0\end{pmatrix}.$$
 
@@ -478,7 +478,7 @@ For the negative-frequency phase written here, the spatial wave is $e^{-i\mathbf
 
 $$u_s(p) = \begin{pmatrix} \sqrt{E_p + m}\;\chi_s \\ \dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + m}}\;\chi_s \end{pmatrix}, \qquad v_s(p) = \begin{pmatrix} \dfrac{\boldsymbol\sigma\cdot\mathbf p}{\sqrt{E_p + m}}\;\chi_s \\ \sqrt{E_p + m}\;\chi_s \end{pmatrix},$$
 
-The relabeling changes the sign of the upper block of $v$. The low-momentum structure remains the one found in [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation): $u$ has a large upper block, while $v$ has a large lower block.
+The relabeling changes the sign of the upper block of $v$. The low-momentum structure remains the one found in [Relativistic QM §11](relativistic-qm.md#_11-the-notation-later-chapters-use): $u$ has a large upper block, while $v$ has a large lower block.
 
 </details>
 

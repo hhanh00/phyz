@@ -145,7 +145,7 @@ Replacing the coefficients gives a useful candidate field operator. To make it a
 
 - **States with arbitrary particle number.** Start from a vacuum $|0\rangle$ that every $\hat a$ and $\hat b$ annihilates. This replaces the sea in [§4](dirac-equation.md#_4-negative-energy-solutions). Schematically, pair annihilation becomes $\hat a\,\hat b\,|e^-\,e^+\rangle = |0\rangle$, up to the ordering convention for fermion states.
 - **An operator algebra.** Commutators or anticommutators determine how multiparticle states behave under exchange, addressing the statistics assumption in [§4](dirac-equation.md#_4-negative-energy-solutions).
-- **A Hamiltonian bounded below.** A lowest-energy vacuum must exist despite the negative-frequency solutions of [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+- **A Hamiltonian bounded below.** A lowest-energy vacuum must exist despite the negative-frequency solutions of [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
 
 Before constructing these, we need to distinguish the field types and the quantum pictures.
 
@@ -170,7 +170,7 @@ For the free fields considered here, we use Klein–Gordon for scalars, Dirac fo
 
 $$\left(\Box + \frac{m^2}{\hbar^2}\right)\phi = 0,$$
 
-This is the Klein–Gordon equation from [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), with dispersion relation $E^2 = \mathbf p^2 + m^2$.
+This is the Klein–Gordon equation from [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation), with dispersion relation $E^2 = \mathbf p^2 + m^2$.
 
 Its earlier difficulty concerned interpreting the conserved density as a single-particle probability density. A classical field $\phi$ is not a probability amplitude, so that interpretation is unnecessary here.
 
@@ -178,7 +178,7 @@ Its earlier difficulty concerned interpreting the conserved density as a single-
 
 $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
-The Dirac equation is first order in both time and space. [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) introduced it to obtain a positive single-particle density. We now use the same equation for a field with spin and antiparticle modes.
+The Dirac equation is first order in both time and space. [Relativistic QM §6](relativistic-qm.md#_6-dirac-s-idea-an-energy-rule-that-isn-t-squared) introduced it to obtain a positive single-particle density. We now use the same equation for a field with spin and antiparticle modes.
 
 **Vector field.** The electromagnetic potential $A^\mu$ enters the field tensor $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ from [Special Relativity §7](special-relativity.md#maxwell-s-equations-in-four-vector-form). In empty space,
 
@@ -248,7 +248,7 @@ modes.
 show why these local oscillators are coupled; Fourier transformation finds the
 independent normal modes in the free theory.*
 
-We have met these equations before: Klein–Gordon in [Relativistic QM §2](relativistic-qm.md#_2-klein-gordon), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
+We have met these equations before: Klein–Gordon in [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
 
 The relation between transformation law and spin is the one developed in [§5](dirac-equation.md#_5-spinors). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
 
@@ -329,14 +329,14 @@ $$\psi(\mathbf x) \;\longrightarrow\; \psi(\mathbf x_1, \ldots, \mathbf x_N) \;\
 
 The **wave functional** $\Psi[\varphi(\mathbf x)]$ assigns an amplitude to each whole field configuration on a spatial slice. A Lorentz boost changes that slice: events simultaneous in one frame are generally not simultaneous in another.
 
-This does not invalidate Schrödinger evolution. It means that covariance involves transforming the slice as well as the state. The first-order Dirac equation from [Relativistic QM §4](relativistic-qm.md#_4-dirac-equation) does not remove this distinction.
+This does not invalidate Schrödinger evolution. It means that covariance involves transforming the slice as well as the state. The first-order Dirac equation from [Relativistic QM §7](relativistic-qm.md#_7-the-dirac-equation) does not remove this distinction.
 
 In the Heisenberg picture, the field already carries a spacetime label. With a consistent convention, a scalar transforms as $\hat U(\Lambda)\hat\phi(x)\hat U^{-1}(\Lambda)=\hat\phi(\Lambda x)$; vector and spinor fields also acquire their component matrices. We can therefore express covariance directly through local field transformations. States remain fixed under time evolution in this picture, though they still transform when we change reference frame.
 
-The free field operators obey the same wave equations as the classical fields: Klein–Gordon for $\hat\phi(x)$ ([Relativistic QM §2](relativistic-qm.md#_2-klein-gordon)) and Dirac for $\hat\psi(x)$ ([The Dirac Equation](dirac-equation.md)). Quantization changes the amplitudes into operators; it preserves these free equations.
+The free field operators obey the same wave equations as the classical fields: Klein–Gordon for $\hat\phi(x)$ ([Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation)) and Dirac for $\hat\psi(x)$ ([The Dirac Equation](dirac-equation.md)). Quantization changes the amplitudes into operators; it preserves these free equations.
 
 The field types differ in their operator algebra. Integer-spin fields use commutators, while half-integer-spin fields use anticommutators. The constructions ahead illustrate this spin–statistics connection; we give the general result without proof because its derivation requires a longer treatment of relativistic locality and positive-norm states.
 
-We can now construct the operator algebra, the state space, and the Hamiltonian. In particular, we must check that energy has a lower bound, resolving the problem in [Relativistic QM §3](relativistic-qm.md#_3-negative-energy-and-probability).
+We can now construct the operator algebra, the state space, and the Hamiltonian. In particular, we must check that energy has a lower bound, resolving the problem in [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
 
 The [next page](qft-action.md) starts with the scalar field and its action. The [Field Quantization page](field-quantization.md#the-spinor-field) develops the spinor algebra. The photon also has gauge redundancy, which we handle on the [QED page](qed.md#quantizing-the-gauge-fixed-field).
