@@ -704,6 +704,30 @@ One fresh agent, no history, errors only, after all the fixes of P. **Result: 9 
 - Suggestion: Name both pairs: "With the field, Pi-x contains p-x and y, and Pi-y contains p-y and x."
 - Jump: [rendered page](http://localhost:8080/dirac-equation.html?rev=Q3) · [source, line 333](../docs/dirac-equation.md#L333) · search text: `With the field, $\Pi_x$ contains $y$ and $\Pi_y$ contains $\hat p_y$` (section 5's box, step 4)
 
+## R. The script for 6a (2026-11-27)
+
+Hanh: "6a is final, commit and push", then "then work on the slide script". The page and the review tooling were committed and pushed (two commits on `classical-mechanics-rewrite`).
+
+| ID | What | Status |
+| --- | --- | --- |
+| R1 | First draft of `video/scripts/06a-dirac-equation.txt`, written in one pass from the final page. About 3,340 words, against 3,420 for chapter 5. Format checked: allowed characters only, no sentence over 20 words, seven headings of at most 7 words, no questions. Formulas are pointed at as "on screen", not read out. A copy is kept as `script-v1.txt` in the scratchpad. | Done |
+| R2 | First fresh review of the script. **Fidelity 9, overall 8.5, format clean.** Five must-fix items, four of them places where the script told the listener an earlier video had shown something it never showed: the four matrices, the word "spinor", the tilted-spin formula (it sat in a box of 2a), and the third spin matrix with the undefined word "imaginary". The fifth was a skipped step at 360 degrees. | Done |
+| R3 | Applied all five, and the should-fix and bro-test items that fix a real problem: one name for "the momentum matrix for x", the swap told term by term, why a plain matrix leaves the momenta alone, "a multiple of" for the spin matrices' commutators, the two results tied back to the two spots, "exactly" dropped from the measured value, "from Vienna", arrows "on the page, not in space". Now about 3,490 words. Copy kept as `script-v2.txt`. Left as they are, both marked preferences by the review: the ratio rule said once in words, and "we met it in chapter one". | Done |
+| R4 | Second fresh review, with no list of earlier fixes, reading the six earlier scripts to check every claim about what the listener has heard. **Fidelity 9, overall 9, format clean.** Two must-fix items: the magnet "points along its spin" and two sentences later "opposite to its spin" (the script had dropped the page's general charge); and "for the pendulum, it was the bob's momentum times its distance", which script 1 never said. | Done |
+| R5 | Applied both, and six smaller items: two sentences that read a formula aloud, "the leftover" named where it first appears, the four matrices said to meet the last chapter's conditions, the new matrix distinguished from the momentum matrix for the vertical, the three plates introduced as "two predicted and one measured", and two bro-test rewordings. Not taken: the review's shorter version of the swap paragraph, which is what the first review had asked to be expanded. Now about 3,560 words. Copy kept as `script-v3.txt`. | Done |
+| R6 | Closing review: a fresh agent, must-change items only. **Fidelity 9, overall 9, format clean, every back-reference borne out by the earlier scripts.** Two findings. A sign error in the swap step: the script compared the energy operator with "the leftover" but stated the signs of the requirement, which is minus the leftover (the page compares with the requirement). And "lies along this spin" in section 4 against "opposite to its spin" in section 5. | Done |
+| R7 | Both fixed with the review's own wording: three sentences now say "the requirement", and section 4 says "lies along the same line as this spin". Claude checked the signs against the page's two displayed commutators. About 3,560 words. Copy kept as `script-v4.txt`. No review has run after these four one-phrase edits. | Done |
+| R8 | For the deck: the slide for the swap step must show the requirement with its minus sign multiplied through, beside the energy operator, with terms aligned by momentum. Both reviews said this is where the script leans hardest on the screen. | Noted |
+| R9 | Hanh read the script: "script is ok, do the pause file and the deck". | Done |
+| R10 | Pause file `video/prosody/06a-dirac-equation.pauses.txt`: the script with 34 breath commas added, in the 32 sentences of 13 words or more that had none. Checked that it differs from the script by commas only. | Done |
+| R11 | Deck `video/slides/deck_06a.py`, built by one agent against the final script: 129 slides for 369 sentences, 2.9 sentences a slide, none over 4. `check.py`: 0 problems. Smoke run: 0 of 129 slides failed. Colour choices to know: ORANGE is the x-momentum and TEAL the y-momentum (needed for the swap step), so negative energy is grey, unlike chapter 5's deck. | Done |
+| R12 | Hanh: "finish unattended". Narration rendered with the Azure voice: 24.7 minutes, pauses from the pause file. Cover added to `video/slides/cover.py` and rendered: one full turn in space against a half turn in the state. | Done |
+| R13 | Fresh deck review, with every contact sheet, about fifty full-size frames and the narration's timings: **8 out of 10, no wrong fact, sign or formula; all 23 "on screen" pointers have their formula on the slide when spoken; the swap step's signs are right.** Six must-fix items, all layout (frames and crosses cutting through symbols, braces on top of brackets, a label touching a box). Sixteen should-fix items (three slides opening blank, small type on key results, three reveals about 2 s off). | Done |
+| R14 | The builder applied all six must-fix items, all the should-fix items, and one from Claude: the slide "One half, or one" drew a spin-one state in the electron's two-amplitude plane, which is not meaningful; it now shows a dial that turns by the whole angle. 28 slides changed, each re-rendered and opened at full size. `check.py`: 0 problems. Smoke run: 0 failures. Claude opened two of the changed slides (73 and 115). No fresh review has run after these fixes. | Done |
+| R15 | Video built: `video/out/06a-dirac-equation/06a-dirac-equation-video.mp4`, 1920 by 1080, with audio and a subtitle track of 386 cues. Length 1,484.8 s (24 min 45 s), which is the narration's 1,479.9 s plus the 5 s cover hold. Claude looked at three frames taken from the video itself: the cover, the swap step mid-animation, and the neutron count. | Done |
+| R16 | Description written, `06a-dirac-equation-description.txt`, with seven timestamps from the heading starts plus 5 s. Its "next chapter" link is the 6b page, which is on the branch but not yet read or reviewed. | Done |
+| R17 | Hanh: "commit and push". The script, pause file, deck and cover entry are committed and pushed. Not done: upload. Everything in `video/out/` and `video/timings/` is generated and not committed. | Done |
+
 ---
 
 ## Index by section
@@ -721,6 +745,7 @@ One fresh agent, no history, errors only, after all the fixes of P. **Result: 9 
 | 9 | C10, C13, C18 |
 | 10 and boxes | C14, C19, C20, D11 |
 | Iteration D | 1: D12 · 3: D3, D4, D13 · 5: D2 · 6: D7, D8, D14 · 7: D15 · 8: D5, D9 · 9: D6, D10 |
+| Iteration R | script, pause file, deck and video for 6a: R1 to R17 |
 | Iteration Q | closing review of 6a: Q1 to Q3 |
 | Iteration P | reviews of 6a: P1 to P27 |
 | Iteration O | 6: O1 to O5 |

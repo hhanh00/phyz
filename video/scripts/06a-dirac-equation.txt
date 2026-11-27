@@ -1,0 +1,159 @@
+Chapter six, part A. The Dirac Equation.
+
+The last chapter ended with the Dirac equation, and a state made of four wave functions. Two of them have positive energy, and two have negative energy. That left a question open. Something has to tell the two of each sign apart, and we didn't say what.
+
+This chapter answers it. The answer is the electron's spin, and nobody put it into the equation. Two more results come with it. The equation gives the strength of the electron's magnet, which had puzzled physicists for years. And it says that turning an electron once round doesn't bring its state back.
+
+Here's where we end up, for a particle at rest. The table is on screen. The first two wave functions have positive energy. One is spin up, and the other is spin down. The last two have negative energy, and they're up and down as well. We start with the magnet.
+
+A magnet twice too strong.
+
+The chapter on quantum ideas opened with silver atoms flying through a magnet. Each atom is a tiny magnet itself. That comes from a property of one of its electrons, called spin. We used the spin there without saying what it is. We didn't say how strong the electron's magnet is, either. Both questions have a history.
+
+Start with a fact from ordinary physics. Charge going round a circle is an electric current in a loop. And a current in a loop is a magnet, as in an electromagnet. So anything charged that spins is a magnet.
+
+Anything with mass that spins also has angular momentum. That's the amount of turning motion it carries. We met it in chapter one, for the pendulum.
+
+Now spin the body twice as fast. The magnet's strength doubles, and so does the angular momentum. That means their ratio is fixed. The rule is on screen. The strength of the magnet is the angular momentum, times a fixed number. That number is the charge over twice the mass. It holds when the charge is spread through the body the same way as the mass.
+
+Now for what was measured. The experiment with silver atoms measures the magnet directly. The uneven field pushes each atom up or down. The stronger the atom's magnet, the harder the push. So the gap between the two spots on the plate gives the strength. Otto Stern and Walther Gerlach's gap gave the value on screen, to within ten percent. The mass in it is the electron's mass. That's because the silver atom's magnet is the magnet of one of its electrons.
+
+The plate also gives a count. There are two spots, and nothing between them. And that count says something about angular momentum.
+
+By nineteen twenty-five, physicists had learned a rule from the light of atoms. Measure angular momentum along a chosen direction, and the results come in steps. Each step is one h-bar. The steps fix the spacing between the results. They don't fix where the results start. The results could be zero and one h-bar, say, or any two values one step apart.
+
+But nothing makes up differ from down. So the results have to sit evenly on either side of zero. Now we have two results, one step apart, evenly either side of zero. They can only be plus half of h-bar, and minus half of h-bar.
+
+In nineteen twenty-five, George Uhlenbeck and Samuel Goudsmit proposed an angular momentum of that size. It belongs to the electron itself, whether or not the electron moves round anything. They called it spin.
+
+Now look at the gap again. Put half of h-bar into the rule for a spinning charge. The electron's magnet should have the first strength on screen. The measured strength is twice that.
+
+Try it the other way round. By the rule, the measured strength goes with a whole h-bar of angular momentum. But a whole h-bar gives three results, which are plus h-bar, zero, and minus h-bar. That would make three spots on the plate, and there are two.
+
+Three plates are on screen, two predicted and one measured. Two spots mean an angular momentum of half of h-bar. But the spots are as far apart as a whole h-bar would put them. The rule for a spinning charge can't produce both.
+
+In nineteen twenty-seven, Wolfgang Pauli wrote an equation for a slow electron with spin. The spin went in as an assumption. So did the factor of two. Nobody could say where either came from.
+
+So that's the puzzle, and it has two parts. We want to know why the electron has a spin of half of h-bar. And we want to know why its magnet is twice as strong as a spinning charge's. The Dirac equation answers both.
+
+Four wave functions and one question.
+
+Let's bring the equation back. The last chapter found that in space, the state is a column of four wave functions. The energy rule needs four matrices. There's one in front of each part of the momentum, and one in front of the mass. Put that rule through the last chapter's recipe, and we get the Dirac equation. It's on screen.
+
+On its right-hand side is the energy operator. It plays the same part here as in the chapter on first quantization. Inside it, each part of the momentum is a slope, along one direction in space.
+
+The last chapter said four such matrices exist. It didn't show them. This chapter works with them, so let's look. Each one is a table of four rows and four columns. And each is built from smaller blocks of two rows and two columns.
+
+The blocks are three spin matrices, and we've met two of them. There's one for a sideways magnet, and one for an up-and-down magnet. The third is new, and it's for a front-to-back magnet. All three are on screen. The new one has i and minus i for entries. Its measurement still gives plus one or minus one, like the other two.
+
+The four big matrices are on screen now. Three of them go with the three parts of the momentum. Each of those has a spin matrix in two of its corners, and zeros in the other two. The fourth goes with the mass. It has ones in its top half, and minus ones in its bottom half. They meet the last chapter's conditions. Each squares to one, and every pair anticommutes.
+
+Here's the useful way to think of the column. It's two pairs. The first two wave functions are the upper pair, and the last two are the lower pair. The mass matrix keeps each pair to itself. Each momentum matrix does the opposite. It sends the upper pair to the lower, and the lower pair to the upper.
+
+Now take a particle at rest. Its momentum is zero. That means its wave function is the same at every point. So every slope is zero, and the momentum terms drop out. Only the mass term is left.
+
+The result is on screen. The upper pair has the rest energy, m c squared. The lower pair has minus m c squared. On a line, the last chapter found one wave function with each sign of the energy. In space, each sign appears twice.
+
+And that's the question. The first two wave functions have the same energy and the same momentum. So measuring energy and momentum can't tell them apart. We've met two states like that before. Spin up and spin down were alike, until a vertical magnet sent them to different spots. We need a measurement that does the same for these two. The next two sections find it.
+
+Angular momentum that isn't kept.
+
+The missing quantity turns up in a check. A free particle's angular momentum should never change. We'll run that check on the Dirac equation. It fails. And the term that repairs it is the quantity we're after.
+
+First, we need to know what stays constant. The chapter on first quantization gave a rule for how an average changes in time. It's on screen. The rate of change depends on a commutator. That's the difference between applying two operators in one order and in the other. Here the two are the quantity's own operator, and the energy operator.
+
+So suppose the two orders agree. Then the commutator is zero, and the quantity never changes, whatever the state. We'll say a quantity like that is kept. A free particle's momentum is kept, for example.
+
+Next, angular momentum. For a pendulum, it's the bob's momentum, times its distance from the pivot. A particle anywhere in space has the same thing about the vertical axis. It's the momentum that carries it round the axis, times its distance from the axis.
+
+Look down from above, as on screen. There are two ways to go round. A particle out along x, moving along y, goes round anticlockwise. Its motion counts with a plus sign. A particle out along y, moving along x, goes round clockwise. Its motion counts with a minus sign. Add the two parts, and we have the angular momentum about the vertical.
+
+It ought to be kept. Nothing pushes a free particle, so its momentum stays the same. Nothing twists it either. So its angular momentum should stay the same too. A spinning skater shows this. With nothing to twist them, their angular momentum can't change. So when they pull their arms in, they spin faster.
+
+Now the check. Turn the positions and momenta into operators, as the earlier chapter did. Then work out the commutator with Dirac's energy operator. The result is on screen, and it isn't zero. We'll call that result the leftover.
+
+So take a free electron, with nothing twisting it. The angular momentum of its motion changes in time. That shouldn't happen.
+
+Angular momentum can't come from nowhere. If the motion's share changes, the electron must carry more of it somewhere else. Then the total could still stay the same. So we need a second term. Its commutator with the energy operator has to be exactly minus the first one. Then the two cancel.
+
+That requirement is on screen, and it tells us what to look for. First, the term can be a matrix. The leftover on screen has matrices and momenta in it, and no position. So the new term needs no position either. A matrix of plain numbers will do. A matrix of plain numbers doesn't care which side of a momentum it sits on. So its commutator leaves the momenta as they are. It can only change the matrices beside them.
+
+Second, look at what the matrix has to do. Set the energy operator beside the requirement. Look at the term with the momentum along x. The energy operator puts the momentum matrix for x in front of it. The requirement puts the one for y there. Now the term with the momentum along y. The energy operator has the momentum matrix for y, and the requirement has minus the one for x. So the new term has to swap those two matrices, with one change of sign.
+
+The spin matrices do exactly that to each other. Take the up-and-down one. Its commutator with the sideways one gives a multiple of the front-to-back one. Its commutator with the front-to-back one gives a multiple of minus the sideways one. And the momentum matrices for x and y are built from those two.
+
+So the matrix to try is built from the up-and-down spin matrix. It has that matrix twice, once for each pair of the column. You can see it on screen. It isn't the momentum matrix for the vertical, which swaps the pairs.
+
+It works, apart from the number in front. To make the two commutators cancel, we have to multiply it by half of h-bar. With that factor, the sum is kept. The total on screen never changes.
+
+Notice that half of h-bar wasn't a choice. It's the one number that makes the two cancel. The other two axes work the same way, with the other two spin matrices.
+
+Here's what the new term is. It adds to the angular momentum of the motion, and the total never changes. So it's angular momentum too. But it's a matrix. It acts on the column of four wave functions. It doesn't act on where the electron is, or on how it moves. The electron has it even at rest, when the angular momentum of its motion is zero.
+
+That's the spin. Dirac asked for two things only. His equation had to agree with relativity. And it had to have a single rate of change in time. The spin came out without his putting it in.
+
+Spin up and spin down.
+
+Let's read off what the spin can be. A measurement gives one of the eigenvalues of its operator. The spin's operator is half of h-bar, times the matrix we found. It's on screen, acting on the column.
+
+It multiplies the first wave function by plus half of h-bar. It multiplies the second by minus half of h-bar. The third and fourth go the same way. So the spin along the vertical has two possible results. We call them spin up and spin down.
+
+The chapter on first quantization called these results plus one and minus one. It left the unit open. Now we know the unit. It's half of h-bar, the size Uhlenbeck and Goudsmit proposed. And because it's half of h-bar, physicists say the electron has spin one half. The next section shows that the electron's magnet lies along the same line as this spin. So these two results are the two spots on the plate.
+
+That answers the question about the four wave functions. In each pair, the first is spin up, and the second is spin down. The four solutions for a particle at rest are on screen. The energy tells the pairs apart. The spin tells the two members of a pair apart.
+
+Nothing is special about the vertical. Measure the spin along any other direction, and you again get plus or minus half of h-bar.
+
+The strength of the magnet.
+
+Now back to the puzzle. By the rule for a spinning charge, half of h-bar makes a magnet of a certain strength. Stern and Gerlach measured twice that. The equation has just given the spin its size. So let's ask it for the strength of the magnet.
+
+Here's how to ask. In the chapter on first quantization, an atom in a magnetic field was like a compass needle. It had slightly different energies pointing up and pointing down. That difference is what the strength of a magnet means. Line a magnet up with the field, and its energy goes down. The drop is the magnet's strength times the field. Line it up against the field, and its energy goes up by the same amount.
+
+So we put the electron in a field that points up. Then we compare the energies of spin up and spin down.
+
+A magnetic field goes into the equation of a charged particle in a standard way. We won't derive it here. Then take a slow particle with positive energy. Its lower pair is tiny, and the equation reduces to one for the upper pair alone.
+
+And that upper pair is something we know. It's the list of two amplitudes from the chapter on quantum ideas. One amplitude is for spin up, and one is for spin down.
+
+The equation gives the two their energies, and they're on screen. Part of the energy is the same for both. On top of that, spin up is shifted one way, and spin down is shifted the other way. Compare that with a magnet in a field. The particle is a magnet, and its strength is on screen. For a positive charge, the magnet points along the spin.
+
+For the electron, that strength is the measured value. One detail is worth adding. The electron's charge is negative. So its magnet points opposite to its spin. In a field that points up, spin up has the higher energy.
+
+Now divide the strength by the angular momentum, which is half of h-bar. The result is the charge over the mass. The rule for a spinning charge gave the charge over twice the mass.
+
+So the spin makes a magnet twice as strong as the rule allows. That's the answer to the puzzle. And nobody put the factor of two in. The equation came from the energy rule of relativity. The field went in the same way it does for any charged particle.
+
+One full turn flips the sign.
+
+Spin one half has one more consequence. It follows from something we've used since the chapter on quantum ideas.
+
+That chapter wrote a spin state as a list of two amplitudes. Spin up is the list one, zero. Spin down is the list zero, one. Now draw each list as a single arrow on a page. Go across for the first amplitude, and upward for the second. Careful, these are directions on the page, not in space. The arrow for spin up lies flat, pointing right. The arrow for spin down stands upright. The two arrows are at right angles.
+
+Think about what that says. In space, up and down are opposite. They're a hundred and eighty degrees apart. In the state, they're ninety degrees apart.
+
+That holds for every angle, not only this one. The page for that chapter works out the state of a spin tilted away from the vertical. We'll take the result as given, and it's on screen. The amplitudes are the cosine and the sine of half the tilt. So an angle in space shows up as half that angle in the state.
+
+Now carry the tilt once round. Keep tilting past down, all the way round, and back to up. That's three hundred and sixty degrees. Half of that is a hundred and eighty degrees. Its cosine is minus one, and its sine is zero. So the formula gives the list minus one, zero.
+
+So the spin points up, as it did at the start. But the state is minus what it was. A full turn in space is only a half turn in the state. It takes two full turns to bring the state back.
+
+The figure on screen shows both. On top is the spin in space. Below it is the arrow for the state, turning half as fast.
+
+The half comes from the size of the spin. How much the state turns depends on the size of the spin. Divide the spin by h-bar, and that's the fraction of the turn the state makes. For the electron, it's one half. For a particle with a whole h-bar of spin, it's one. So that particle's state comes back after a single turn.
+
+The minus sign doesn't show on one electron alone. After a full turn the spin points where it did. So a measurement of its direction finds nothing new. And we learned early on that multiplying a whole state by minus one changes no chance.
+
+But a phase counts as soon as we add one state to another. So here's the test. Split a beam in two. Turn the spins in one half through a full turn, and leave the other half alone. Then bring the two halves together. If the turned half comes back with a minus sign, the halves cancel where they added before.
+
+In nineteen seventy-five, two groups did this. Helmut Rauch led one, from Vienna. Samuel Werner led the other, in the United States. They used neutrons, which have spin one half like the electron. A neutron has no charge. So a magnetic field turns its spin without bending its path.
+
+The setup is on screen. A crystal of silicon split each neutron's wave onto two paths. Then it brought them together again, as the two slits did for an electron. One path ran through a magnetic field. The field turned the spin, by an angle set by the field's strength.
+
+As the field went up, the count of neutrons rose and fell. With the spin turned by three hundred and sixty degrees, the two paths cancelled. The count came back only at seven hundred and twenty degrees.
+
+One last point ties this to the Dirac equation. Each pair of the Dirac column is a list of two amplitudes, as we just saw. So the column's entries turn at half the angle too. Physicists call a column like that a spinor. The chapter on first quantization said this minus sign would come back with spinors. This is where.
+
+Here's where we've got to. The angular momentum of a free electron's motion isn't kept. A matrix term of half of h-bar repairs it, and that term is the spin. In each pair of the column, one wave function is spin up, and the other is spin down. The equation makes the electron's magnet twice as strong as a spinning charge's, which is what Stern and Gerlach measured. And one full turn in space multiplies the state by minus one.
+
+The electron has stayed at rest, or slow, through all of this. The next chapter sets it moving. It also finds what the negative-energy solutions describe.

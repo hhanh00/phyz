@@ -149,7 +149,39 @@ def two_energy_curves():
     return art
 
 
+def full_turn_half_turn():
+    """Chapter 6a: one full turn of a spin in space is only a half turn of its state, which leaves a minus sign."""
+    import numpy as np
+    art = VGroup()
+    arrow = lambda a, b, c: Arrow(a, b, buff=0, color=c, stroke_width=9, max_tip_length_to_length_ratio=0.2)
+    def dial(cx, cy, r, sweep, colour, start, end):
+        ring = Circle(radius=r, color=SOFT, stroke_width=3, stroke_opacity=0.45).move_to([cx, cy, 0])
+        arc = Arc(radius=r, start_angle=PI / 2, angle=-sweep, color=colour, stroke_width=8, arc_center=[cx, cy, 0])
+        tip = arc.point_from_proportion(1.0)
+        d = np.array([-np.sin(PI / 2 - sweep), np.cos(PI / 2 - sweep), 0]) * -1
+        head = Triangle(color=colour, fill_color=colour, fill_opacity=1, stroke_width=0).scale(0.16)
+        head.rotate(np.arctan2(d[1], d[0]) - PI / 2).move_to(tip)
+        return VGroup(ring, arc, head, arrow([cx, cy, 0], [cx + start[0], cy + start[1], 0], SOFT).set_opacity(0.35),
+                      arrow([cx, cy, 0], [cx + end[0], cy + end[1], 0], colour))
+    r = 1.25
+    art.add(dial(-1.9, 1.6, r, 2 * PI * 0.96, AMBER, (0, r * 0.85), (0, r * 0.85)),
+            Text("in space", font=FONT, color=AMBER, font_size=30, weight=BOLD).move_to([-1.9, 3.35, 0]),
+            MathTex(r"360^\circ", color=WHITE).scale(1.5).move_to([1.75, 1.75, 0]),
+            Text("the spin points up again", font=FONT, color=SOFT, font_size=24).move_to([1.75, 1.0, 0]))
+    art.add(dial(-1.9, -2.25, r, PI, SKY, (r * 0.85, 0), (-r * 0.85, 0)),
+            Text("in the state", font=FONT, color=SKY, font_size=30, weight=BOLD).move_to([-1.9, -0.5, 0]),
+            MathTex(r"180^\circ", color=WHITE).scale(1.5).move_to([1.75, -1.9, 0]),
+            MathTex(r"\text{the state} \times (-1)", color=MINT).scale(1.0).move_to([1.9, -2.75, 0]))
+    return art
+
+
 COVERS = {
+    "06a-dirac-equation": {
+        "kicker": "PHYZ  ·  CHAPTER 6A",
+        "title": ["The Dirac", "Equation"],
+        "sub": "Spin, a magnet twice too strong,\nand a full turn that flips a sign",
+        "art": full_turn_half_turn,
+    },
     "02b-first-quantization": {
         "kicker": "PHYZ  ·  CHAPTER 2B",
         "title": ["First", "Quantization"],
