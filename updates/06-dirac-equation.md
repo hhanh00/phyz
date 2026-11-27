@@ -727,6 +727,8 @@ Hanh: "6a is final, commit and push", then "then work on the slide script". The 
 | R15 | Video built: `video/out/06a-dirac-equation/06a-dirac-equation-video.mp4`, 1920 by 1080, with audio and a subtitle track of 386 cues. Length 1,484.8 s (24 min 45 s), which is the narration's 1,479.9 s plus the 5 s cover hold. Claude looked at three frames taken from the video itself: the cover, the swap step mid-animation, and the neutron count. | Done |
 | R16 | Description written, `06a-dirac-equation-description.txt`, with seven timestamps from the heading starts plus 5 s. Its "next chapter" link is the 6b page, which is on the branch but not yet read or reviewed. | Done |
 | R17 | Hanh: "commit and push". The script, pause file, deck and cover entry are committed and pushed. Not done: upload. Everything in `video/out/` and `video/timings/` is generated and not committed. | Done |
+| R18 | Hanh: "merge to main", then "always push to main". `main` fast-forwarded to `2eeca67` and pushed, which deploys the site with 6a and the unreviewed 6b page. | Done |
+| R19 | YouTube. Hanh dropped the file on 2026-11-27 and said "finish up the yt publication". Claude reused chapter 5's details in Studio (playlist "QFT for dummies", tags, language, category, not made for kids), set the title "Phyz, Chapter 6a: The Dirac Equation" and the description from the description file, uploaded the cover as the thumbnail, waited for YouTube's checks (no issues found) and set it to public: https://youtu.be/krNvXJRgW4M. It is seventh in the playlist, after chapter 5. The "notify subscribers" setting was left as Studio had it. Nobody had watched the video end to end before publication. | Done |
 
 ---
 
@@ -745,7 +747,7 @@ Hanh: "6a is final, commit and push", then "then work on the slide script". The 
 | 9 | C10, C13, C18 |
 | 10 and boxes | C14, C19, C20, D11 |
 | Iteration D | 1: D12 · 3: D3, D4, D13 · 5: D2 · 6: D7, D8, D14 · 7: D15 · 8: D5, D9 · 9: D6, D10 |
-| Iteration R | script, pause file, deck and video for 6a: R1 to R17 |
+| Iteration R | script, pause file, deck and video for 6a: R1 to R19 |
 | Iteration Q | closing review of 6a: Q1 to Q3 |
 | Iteration P | reviews of 6a: P1 to P27 |
 | Iteration O | 6: O1 to O5 |
