@@ -473,7 +473,7 @@ in chapter 4's index notation. This is the form the rest of the site uses.
 
 ## Where this comes back
 
-- **[The Dirac Equation](./dirac-equation.md)**, the next chapter, looks at the equation piece by piece: what the four components do, how spin comes out in three dimensions, and how its solutions pair up as electron and positron.
+- **[The Dirac Equation](./dirac-equation.md)**, the next chapter, looks at the equation piece by piece: what the four components do and how spin comes out in three dimensions. The chapter after it pairs the solutions up as electron and positron.
 - **[Fields and Quanta](./qft.md)** makes the move from one particle's wave function to a field.
 - **[Field Quantization](./field-quantization.md)** puts chapter 3's ladder on every wave of a field, and shows that the energy then has a lowest value.
 

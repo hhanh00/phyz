@@ -93,7 +93,7 @@ $$\mathcal{L}_\text{Maxwell} = -\tfrac14 F_{\mu\nu}F^{\mu\nu}, \qquad F_{\mu\nu}
 
 Varying $A_\mu$ gives Maxwell's equations in free space, $\partial_\mu F^{\mu\nu}=0$.
 
-Adding these two Lagrangians describes fields that propagate independently, with nothing passing between them. Electromagnetic scattering needs an interaction term as well. The next two sections show that requiring the electron Lagrangian to respect a local phase symmetry forces that term into one particular shape, the **minimal coupling** used in [The Dirac Equation §1](dirac-equation.md#_1-spin).
+Adding these two Lagrangians describes fields that propagate independently, with nothing passing between them. Electromagnetic scattering needs an interaction term as well. The next two sections show that requiring the electron Lagrangian to respect a local phase symmetry forces that term into one particular shape, the **minimal coupling** used in [The Dirac Equation §5](dirac-equation.md#_5-the-strength-of-the-magnet).
 
 ## U(1) Global Symmetry
 

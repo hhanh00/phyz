@@ -18,7 +18,7 @@ $$\frac{d}{dt}\,\frac{\partial L}{\partial \dot q} - \frac{\partial L}{\partial 
 
 For $L=T-V$, this reproduces Newton's equation. The advantage is that we can derive motion from one scalar function instead of specifying force components separately. We can use the same variational method with a relativistic Lagrangian.
 
-The Lagrangian also determines the Hamiltonian. Its quantum version generates time evolution, as in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators), and its spectrum is central to the negative-energy problem in [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
+The Lagrangian also determines the Hamiltonian. Its quantum version generates time evolution, as in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use), and its spectrum is central to the negative-energy problem in [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
 
 ### From particles to fields
 
@@ -220,7 +220,7 @@ This is the source-free version of $\partial_\mu F^{\mu\nu}=J^\nu$ from [Special
 
 ### Dirac
 
-The **spinor** $\psi(x)$ has four complex components and transforms between frames by the matrix $S(\Lambda)$ from [§5](dirac-equation.md#_5-spinors). [The Dirac Equation](dirac-equation.md) introduced this field for massive spin-$\tfrac12$ particles; it can also carry charge.
+The **spinor** $\psi(x)$ has four complex components and transforms between frames by the matrix $S(\Lambda)$ from [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). [The Dirac Equation](dirac-equation.md) introduced this field for massive spin-$\tfrac12$ particles; it can also carry charge.
 
 **First find a Lorentz-invariant pairing.** The Lagrangian must be a scalar. A candidate is $\psi^\dagger\psi$, so test whether it has the same value in every frame.
 
@@ -237,13 +237,13 @@ For this to equal $\psi^\dagger\psi$, we would need $S^\dagger S=1$, or **unitar
 
 This is the same exponential construction used for $e^{-i\hat Ht/\hbar}$ in [First Quantization](first-quantization.md). Lorentz boosts, however, do not act unitarily on the finite spinor components. We can check this directly.
 
-The matrix $S$ acts on spinor components, just as $\Lambda^\mu{}_\nu$ acts on vector components. For a boost along the first spatial axis, [§5](dirac-equation.md#_5-spinors) gives
+The matrix $S$ acts on spinor components, just as $\Lambda^\mu{}_\nu$ acts on vector components. For a boost along the first spatial axis, [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) gives
 
 $$S = \cosh\frac{\varphi}{2} - \alpha^1\sinh\frac{\varphi}{2} = e^{-\varphi\alpha^1/2},$$
 
 Here $\alpha^1=\gamma^0\gamma^1$ is Hermitian, and the **rapidity** $\varphi$ satisfies $\tanh\varphi=v$.
 
-This follows from the general expression $S(\Lambda)=\exp(-\tfrac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$ in [§5](dirac-equation.md#_5-spinors), which also derives the hyperbolic-function expansion.
+This follows from the general expression $S(\Lambda)=\exp(-\tfrac{i}{4}\omega_{\mu\nu}\sigma^{\mu\nu})$ in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use), which also derives the hyperbolic-function expansion.
 
 The boost exponent has no factor of $i$. Because $\alpha^1$ is Hermitian, $S$ is Hermitian and $S^\dagger S=S^2=e^{-\varphi\alpha^1}\ne1$ for a nonzero boost. Thus $\psi^\dagger\psi$ is not a Lorentz scalar.
 
@@ -277,7 +277,7 @@ The matrix $\gamma^0$ thus serves as the invariant pairing matrix for spinors. I
 We can now write the free Dirac density:
 $$\mathcal{L} = \bar\psi\,(i\hbar\,\gamma^\mu\partial_\mu - m)\,\psi = i\hbar\,\bar\psi\gamma^\mu\,\partial_\mu\psi - m\,\bar\psi\psi,$$
 
-The first term is kinetic and the second is the mass term. The gamma-matrix transformation identity from [§5](dirac-equation.md#_5-spinors) makes $\gamma^\mu\partial_\mu\psi$ transform as a spinor, so pairing it with $\bar\psi$ gives a scalar.
+The first term is kinetic and the second is the mass term. The gamma-matrix transformation identity from [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) makes $\gamma^\mu\partial_\mu\psi$ transform as a spinor, so pairing it with $\bar\psi$ gives a scalar.
 
 <details>
 <summary>Expanding the contracted Dirac derivative</summary>

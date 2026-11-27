@@ -310,6 +310,67 @@ class PositronTrack(Scene):
         self.add(label('The tighter half shows which way it went. Going that way, the bend is a positive charge’s.',0,-3.75,23,MUTED,width=14.5))
 
 
+class MagnetTwiceTooStrong(Scene):
+    def construct(self):
+        heading(self,'The puzzle: a magnet twice too strong','Spots of silver atoms on the plate: the count gives the angular momentum, the gap gives the strength of the magnet')
+        cases=[(-5.2,[0.45,-0.45],'angular momentum ℏ/2,\nby the rule',r'\mu=\frac{e\hbar}{4m}','right count, gap too small',INK,MUTED),
+               (0.0,[0.9,0,-0.9],'angular momentum ℏ,\nby the rule',r'\mu=\frac{e\hbar}{2m}','right gap, one spot too many',INK,MUTED),
+               (5.2,[0.9,-0.9],'measured',r'\mu=\frac{e\hbar}{2m}','two spots, wide apart',ORANGE,ORANGE)]
+        for x,ys,title,form,note,tc,c in cases:
+            self.add(label(title,x,2.2,24,tc),
+                     Rectangle(width=2.4,height=3.2,stroke_color=INK,stroke_width=3,fill_color=PALE,fill_opacity=0.7).move_to([x-0.5,-0.2,0]))
+            for y in ys:
+                self.add(Ellipse(width=1.4,height=0.32,stroke_width=0,fill_color=c,fill_opacity=0.9).move_to([x-0.5,-0.2+y,0]))
+            g=max(ys)
+            self.add(DoubleArrow([x+1.0,-0.2-g,0],[x+1.0,-0.2+g,0],buff=0,color=c,stroke_width=4,tip_length=0.16))
+            if form: self.add(math(form,x+1.95,-0.2,30,tc))
+            self.add(label(note,x-0.1,-2.2,22,tc))
+        self.add(label('Two spots mean an angular momentum of ℏ/2. Their gap is the one a whole ℏ would give.',0,-3.0,23,INK,width=14.5),
+                 label('Where does the spin come from, and why is its magnet twice as strong?',0,-3.75,24,ORANGE,width=14.5))
+
+
+class WaveOnCircle(Scene):
+    def construct(self):
+        heading(self,'A wave round a circle has to join up with itself','A whole number of wavelengths fits; half a wavelength left over does not')
+        R,a=1.75,0.38
+        for x,n,c,title,note in [(-5.0,3,TEAL,'3 wavelengths','joins up: allowed'),(2.6,2.5,ORANGE,'2½ wavelengths','does not join up: not allowed')]:
+            ctr=np.array([x,-0.3,0])
+            self.add(Circle(radius=R,color='#b8c6d4',stroke_width=2).move_to(ctr))
+            f=lambda s,n=n,ctr=ctr: ctr+(R+a*np.cos(n*s))*np.array([np.cos(s),np.sin(s),0])
+            self.add(ParametricFunction(f,t_range=[0,2*PI-0.001,0.01],color=c,stroke_width=5))
+            self.add(label(title,x,2.15,26,c),label(note,x,-2.75,24,c))
+            if n!=int(n):
+                s0=f(0.0001); s1=f(2*PI-0.001)
+                self.add(Dot(s0+np.array([0,0.0,0]),radius=0.08,color=INK),Dot(s1,radius=0.08,color=INK),
+                         Line(s0,s1,color=INK,stroke_width=3),
+                         label('start and end\nout of step',x+3.5,-0.3,21,INK))
+            else:
+                self.add(Dot(f(0),radius=0.08,color=INK),label('start and end\nmeet',x+3.4,-0.3,21,INK))
+        self.add(label('Angular momentum = number of wavelengths round the circle, times ℏ.',0,-3.75,24,MUTED,width=14.5))
+
+
+class AngularMomentumParts(Scene):
+    def construct(self):
+        heading(self,'Angular momentum about the vertical axis, in two parts','Seen from above: distance from the axis, times the momentum that carries the particle round')
+        for cx,pos,mom,c,sense,form,word in [(-4.2,(1.9,0),(0,1.5),TEAL,1,r'+\,x\,p_y','goes round anticlockwise'),(4.2,(0,1.5),(1.5,0),ORANGE,-1,r'-\,y\,p_x','goes round clockwise')]:
+            O=np.array([cx,-0.4,0]); P=O+np.array([*pos,0]); M=np.array([*mom,0])
+            self.add(Arrow(O+[-2.7,0,0],O+[2.9,0,0],buff=0,color='#b8c6d4',stroke_width=2,max_tip_length_to_length_ratio=0.04),
+                     Arrow(O+[0,-2.2,0],O+[0,2.2,0],buff=0,color='#b8c6d4',stroke_width=2,max_tip_length_to_length_ratio=0.05),
+                     math('x',O[0]+3.1,O[1],26,MUTED),math('y',O[0]-0.3,O[1]+2.1,26,MUTED),
+                     Dot(O,radius=0.1,color=INK),label('axis',O[0]-0.65,O[1]-0.4,27,MUTED),
+                     Line(O,P,color=INK,stroke_width=4),Dot(P,radius=0.13,color=c),
+                     Arrow(P,P+M,buff=0,color=c,stroke_width=6,max_tip_length_to_length_ratio=0.2))
+            if pos[1]==0:
+                self.add(math('x',O[0]+0.95,O[1]-0.3,28),math('p_y',P[0]+0.45,P[1]+0.85,30,c))
+                arc=Arc(radius=1.0,start_angle=0.35,angle=1.5,arc_center=O,color=c,stroke_width=3)
+            else:
+                self.add(math('y',O[0]-0.3,O[1]+0.95,28),math('p_x',P[0]+0.85,P[1]+0.4,30,c))
+                arc=Arc(radius=1.0,start_angle=PI/2-0.35,angle=-1.5,arc_center=O,color=c,stroke_width=3)
+            arc.add_tip(tip_length=0.2,tip_width=0.2)
+            self.add(arc,label(word,cx,-3.0,23,c),math(r'\text{contributes }'+form,cx+0.4,2.4,30,c))
+        self.add(math(r'L_z = x\,p_y - y\,p_x',0,-3.75,36))
+
+
 class SpinMeasurement(Scene):
     def construct(self):
         heading(self,'A spin-½ measurement along one axis has two outcomes','An ideal spin analyzer measures a component of angular momentum, not a tiny rotating ball')
@@ -323,25 +384,71 @@ class SpinMeasurement(Scene):
 
 class SpinorRotationSign(Scene):
     def construct(self):
-        heading(self,'A 2π rotation changes a spinor’s sign; 4π restores it','Track the phase of a spin-up component under a rotation about z')
-        for x,theta,phase,direction in [(-5,'0','1',1),(0,r'2\pi','-1',-1),(5,r'4\pi','1',1)]:
-            self.add(Circle(radius=1.1,color='#b8c6d4').move_to([x,.2,0]),
-                     arrow((x,.2),(x+direction*.95,.2),BLUE),math(r'\theta='+theta,x,2,32),
-                     math(r'e^{-i\theta/2}='+phase,x,-1.7,33,BLUE),math(('' if direction==1 else '-')+r'|\uparrow\rangle',x,-2.5,33))
-        self.add(label('A common sign does not change probabilities. Interference can compare it with a reference.',0,-3.85,24,MUTED,width=14.5))
+        heading(self,'One full turn flips the sign; two full turns restore it','The phase of the spin-up amplitude as the spin is turned about the vertical')
+        for x,theta,phase,direction,word in [(-5,r'0^\circ','1',1,'as at the start'),(0,r'360^\circ','-1',-1,'minus the start'),(5,r'720^\circ','1',1,'as at the start')]:
+            self.add(Circle(radius=1.1,color='#b8c6d4').move_to([x,.3,0]),
+                     arrow((x,.3),(x+direction*.95,.3),BLUE),math(r'\text{turned by }'+theta,x,2.05,32),
+                     math(r'\text{amplitude}\times('+phase+')' if direction==-1 else r'\text{amplitude}\times '+phase,x,-1.5,32,BLUE),
+                     label(word,x,-2.25,26))
+        self.add(label('A shared sign changes no chance on its own. It shows when the state is added to a copy that was not turned.',0,-3.75,23,MUTED,width=14.5))
+
+
+class HalfAngleState(Scene):
+    def construct(self):
+        heading(self,'An angle in space is half that angle in the state','A spin tilted away from up, and the two amplitudes that describe it')
+        self.add(label('in space',-6.3,0.75,24,ORANGE),label('in the state',-6.3,-1.2,24,BLUE))
+        for x,theta,sp,st,tex,word in [(-3.9,r'0^\circ',1,0,r'(1,\ 0)','up'),(-1.1,r'180^\circ',-1,90,r'(0,\ 1)','down'),(1.7,r'360^\circ',1,180,r'(-1,\ 0)','minus up'),(4.5,r'720^\circ',1,0,r'(1,\ 0)','up')]:
+            self.add(math(r'\text{tilted by }'+theta,x,2.0,30))
+            self.add(DashedLine([x,0.15,0],[x,1.35,0],color='#b8c6d4',stroke_width=2),
+                     arrow((x,0.75-sp*0.5),(x,0.75+sp*0.5),ORANGE))
+            c=np.array([x,-1.2,0]); r=0.8
+            self.add(Line(c+[-r,0,0],c+[r,0,0],color='#b8c6d4',stroke_width=2),Line(c+[0,-r,0],c+[0,r,0],color='#b8c6d4',stroke_width=2))
+            a=np.radians(st)
+            self.add(Arrow([x,-1.2,0],[x+0.8*np.cos(a),-1.2+0.8*np.sin(a),0],buff=0,color=BLUE,stroke_width=7,max_tip_length_to_length_ratio=0.25))
+            self.add(math(tex,x,-2.45,30,BLUE),label(word,x,-3.0,24))
+        self.add(label('Each state is drawn as an arrow: across for the up amplitude, upward for the down amplitude.',0,-3.75,22,MUTED,width=14.5))
 
 
 class RestSpinorBasis(Scene):
     def construct(self):
-        heading(self,'At rest, the Dirac basis separates into two pairs','Standard Dirac representation; overall spinor normalization is omitted')
-        for x,vals,name,c in [(-5.4,[1,0,0,0],'u_1',BLUE),(-1.8,[0,1,0,0],'u_2',BLUE),(1.8,[0,0,1,0],'v_1',ORANGE),(5.4,[0,0,0,1],'v_2',ORANGE)]:
-            self.add(math(name,x,1.9,34,c))
+        heading(self,'A particle at rest: four solutions','Each solution fills one entry of the column of four wave functions')
+        for x,vals,spin,c in [(-5.4,[1,0,0,0],'spin up',BLUE),(-1.8,[0,1,0,0],'spin down',BLUE),(1.8,[0,0,1,0],'spin up',ORANGE),(5.4,[0,0,0,1],'spin down',ORANGE)]:
+            self.add(label(spin,x,2.0,28,c))
             for i,v in enumerate(vals):
-                self.add(Square(side_length=.65,stroke_color=c,fill_color=c if v else PALE,fill_opacity=.85 if v else .4).move_to([x,.9-i*.7,0]),
-                         label(str(v),x,.9-i*.7,25,WHITE if v else MUTED))
-        self.add(math(r'E=+m',-3.6,-2.3,35,BLUE),math(r'E=-m',3.6,-2.3,35,ORANGE),
-                 label('Two independent solutions per energy sign',0,-3.2,28),
-                 label('Away from rest, upper and lower components mix; they are not separate particle labels.',0,-3.95,24,MUTED,width=14.5))
+                self.add(Square(side_length=.65,stroke_color=c,fill_color=c if v else PALE,fill_opacity=.85 if v else .4).move_to([x,1.0-i*.7,0]),
+                         label(str(v),x,1.0-i*.7,25,WHITE if v else MUTED))
+        self.add(math(r'\text{energy }+mc^2',-3.6,-2.1,34,BLUE),math(r'\text{energy }-mc^2',3.6,-2.1,34,ORANGE),
+                 Line([-6.2,-1.65,0],[-1.0,-1.65,0],color=BLUE,stroke_width=3),Line([1.0,-1.65,0],[6.2,-1.65,0],color=ORANGE,stroke_width=3),
+                 label('upper pair of entries',-3.6,-2.75,22,MUTED),label('lower pair of entries',3.6,-2.75,22,MUTED),
+                 label('The energy tells the pairs apart. The spin tells the two entries of a pair apart.',0,-3.75,24,MUTED,width=14.5))
+
+
+class NeutronFullTurn(Scene):
+    def construct(self):
+        heading(self,'Seeing the sign: split, turn one path, recombine','A sketch of the 1975 neutron experiments')
+        src=np.array([-7.0,-0.4,0]); S=np.array([-5.6,-0.4,0]); top=np.array([-3.6,1.2,0]); bot=np.array([-3.6,-2.0,0]); R=np.array([-1.6,-0.4,0]); det=np.array([-0.4,-0.4,0])
+        beam=lambda a,b:Line(a,b,color=ORANGE,stroke_width=4)
+        self.add(beam(src,S),beam(S,top),beam(top,R),beam(S,bot),beam(bot,R),Arrow(R,det,buff=0,color=ORANGE,stroke_width=4,max_tip_length_to_length_ratio=0.25))
+        for P in (S,R):
+            self.add(Line(P+[0,-0.45,0],P+[0,0.45,0],color=TEAL,stroke_width=7))
+        self.add(Line(top+[-0.5,0.02,0],top+[0.5,0.02,0],color=TEAL,stroke_width=7),Line(bot+[-0.5,-0.02,0],bot+[0.5,-0.02,0],color=TEAL,stroke_width=7))
+        mag=(S+top)/2
+        self.add(Rectangle(width=1.0,height=0.75,stroke_color=PURPLE,stroke_width=3,fill_color=PURPLE,fill_opacity=0.15).rotate(np.arctan2(1.6,2.0)).move_to(mag),
+                 label('magnet: turns\nthe spin',mag[0]-0.9,mag[1]+0.95,21,PURPLE),
+                 label('this path is\nleft alone',-4.9,-2.35,21,MUTED),
+                 label('neutrons',src[0]+0.3,src[1]+0.4,21),
+                 label('plates cut from one\nsilicon crystal split\nthe wave and bring\nit together',-3.25,-0.75,20,TEAL),
+                 Rectangle(width=0.5,height=0.9,color=INK,fill_color=INK,fill_opacity=1).move_to(det+[0.25,0,0]),label('counter',det[0]+0.3,det[1]-0.8,21))
+        ax=Axes(x_range=[0,720,180],y_range=[0,1.15,1],x_length=5.6,y_length=2.9,axis_config={'color':MUTED,'stroke_width':2,'include_tip':False}).move_to([4.2,-0.5,0])
+        curve=ax.plot(lambda d:0.5*(1+np.cos(np.radians(d)/2)),x_range=[0,720],color=BLUE,stroke_width=5)
+        self.add(ax,curve,label('count at the counter',4.2,1.45,22,BLUE))
+        for d,s in [(0,r'0^\circ'),(360,r'360^\circ'),(720,r'720^\circ')]:
+            q=ax.c2p(d,0); self.add(math(s,q[0],q[1]-0.35,26))
+        self.add(label('angle the spin was turned through',4.2,-2.85,21,MUTED),
+                 Dot(ax.c2p(360,0),radius=0.09,color=ORANGE),label('the two paths cancel',4.2,0.25,21,ORANGE),
+                 Line([4.2,0.0,0],ax.c2p(360,0.06),color=ORANGE,stroke_width=2))
+        self.add(label('After 360° of turn the paths cancel. The count comes back only at 720°.'.replace('°',' degrees'),0,-3.75,23,MUTED,width=14.5))
+
 
 
 class FieldTransformationTypes(Scene):

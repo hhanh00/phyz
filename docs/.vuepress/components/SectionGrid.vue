@@ -22,6 +22,7 @@ const groups = [
       { number: '04', title: 'Special Relativity', desc: 'Relate measurements in moving frames using Lorentz transformations.', link: '/special-relativity.html', symbol: 'xμ' },
       { number: '05', title: 'Relativistic QM', desc: 'Derive a relativistic wave equation and examine its probability density.', link: '/relativistic-qm.html', symbol: '□ + m²' },
       { number: '06', title: 'The Dirac Equation', desc: 'Derive the electron’s wave equation and interpret its spinor solutions.', link: '/dirac-equation.html', symbol: 'γμ' },
+      { number: '06b', title: 'Solutions of the Dirac Equation', desc: 'Follow a moving electron, pair the negative-energy solutions with positrons, and write the general solution.', link: '/dirac-solutions.html', symbol: 'u, v' },
     ],
   },
   {

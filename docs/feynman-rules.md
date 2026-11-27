@@ -109,7 +109,7 @@ The vertex factor is $-iq\gamma^\mu$, with $\gamma^\mu$ the matrices introduced 
 
 For the internal electron, $\not r$ abbreviates $\gamma^\mu r_\mu$. The numerator retains the field's spinor structure, while the denominator has its mass-shell poles. Quantizing the Dirac field by the method of [Field Quantization](field-quantization.md) gives this propagator. The $+i\epsilon$ specifies how to pass the poles in momentum integrals[^epsilon].
 
-For an external electron, $u(p)$ is a positive-energy spinor solution from [The Dirac Equation page](dirac-equation.md), and $\bar u(p')=u(p')^\dagger\gamma^0$ is its adjoint. For a photon, $\varepsilon_\mu(k)$ is the polarization four-vector; an outgoing photon uses its complex conjugate[^polarization]. The additional photon-propagator and positron rules appear in a footnote[^rulebook].
+For an external electron, $u(p)$ is a positive-energy spinor solution from [Solutions of the Dirac Equation](dirac-solutions.md#_1-a-moving-electron), and $\bar u(p')=u(p')^\dagger\gamma^0$ is its adjoint. For a photon, $\varepsilon_\mu(k)$ is the polarization four-vector; an outgoing photon uses its complex conjugate[^polarization]. The additional photon-propagator and positron rules appear in a footnote[^rulebook].
 
 To evaluate a product of factors, write the electron factors in matrix order. Start with $u(p)$ on the right and follow the electron arrow, adding each new factor to its left. Finish with $\bar u(p')$. Multiply by the photon polarization factors. For the first diagram this gives
 

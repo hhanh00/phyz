@@ -1,6 +1,6 @@
 # Quantum Field Theory: Fields and Quanta
 
-A single-particle wave function cannot describe pair creation or annihilation. To continue from [The Dirac Equation](dirac-equation.md), we therefore introduce **field operators**: operators assigned to spacetime points that act on states with different particle numbers.
+A single-particle wave function cannot describe pair creation or annihilation. To continue from [Solutions of the Dirac Equation](dirac-solutions.md), we therefore introduce **field operators**: operators assigned to spacetime points that act on states with different particle numbers.
 
 For the electron field, these operators remove electrons and create positrons. This gives the negative-frequency solutions a precise role without a filled sea of negative-energy electrons.
 
@@ -73,25 +73,25 @@ The free Dirac solution is a sum of plane waves. At each momentum and spin, $a_s
 <details>
 <summary>The classical mode expansion</summary>
 
-Start with the general free solution from [The Dirac Equation §6](dirac-equation.md#_6-general-solution):
+Start with the general free solution from [Solutions of the Dirac Equation §3](dirac-solutions.md#_3-the-general-solution):
 
 $$\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + b_s^*(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
 Here $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$ and $E_p = \sqrt{\mathbf p^2 + m^2}$. The index $s$ labels the two spin states. The coefficients $a_s(p)$ and $b_s^*(p)$ are complex amplitudes fixed by the initial field.
 
-The $u$-terms have positive frequency; the $v$-terms have negative frequency. [§3](dirac-equation.md#_3-antiparticles) related the second family to antiparticles, and [§4](dirac-equation.md#_4-negative-energy-solutions) introduced the historical hole interpretation. We will now describe both families with operators.
+The $u$-terms have positive frequency; the $v$-terms have negative frequency. [§2](dirac-solutions.md#_2-electron-and-positron) related the second family to antiparticles, and [Relativistic QM §9](relativistic-qm.md#_9-the-negative-energies-predict-antimatter) introduced the historical hole interpretation. We will now describe both families with operators.
 
 </details>
 
 ### The promotion
 
-To describe changing particle numbers, replace the numerical amplitudes by operators. This implements the step discussed in [§4](dirac-equation.md#_4-negative-energy-solutions) and proposed after the general solution in [§6](dirac-equation.md#_6-general-solution):
+To describe changing particle numbers, replace the numerical amplitudes by operators. This implements the step discussed in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough) and proposed after the general solution in [§3](dirac-solutions.md#_3-the-general-solution):
 
 $$a_s(p) \to \hat a_s(p), \qquad b_s^*(p) \to \hat b_s^\dagger(p),$$
 
 The operator $\hat a_s(p)$ removes an electron of momentum $\mathbf p$ and spin label $s$. The operator $\hat b_s^\dagger(p)$ creates a positron with those labels.
 
-For operators, the counterpart of complex conjugation is the **adjoint**, denoted by $\dagger$. This explains the notation $b_s^*$ in [§6](dirac-equation.md#_6-general-solution): after quantization it becomes $\hat b_s^\dagger$. The expansion is now
+For operators, the counterpart of complex conjugation is the **adjoint**, denoted by $\dagger$. This explains the notation $b_s^*$ in [§3](dirac-solutions.md#_3-the-general-solution): after quantization it becomes $\hat b_s^\dagger$. The expansion is now
 
 $$\hat\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[\hat a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + \hat b_s^\dagger(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
@@ -117,7 +117,7 @@ The opposite phase, $e^{+ip\cdot x/\hbar}$, corresponds to adding energy $E_p$ a
 
 </details>
 
-The phases determine whether an operator creates or annihilates. The species labels follow the convention in [The Dirac Equation](dirac-equation.md): the $u$-family describes electrons and the $v$-family describes positrons.
+The phases determine whether an operator creates or annihilates. The species labels follow the convention in [Solutions of the Dirac Equation](dirac-solutions.md#_3-the-general-solution): the $u$-family describes electrons and the $v$-family describes positrons.
 
 Both the field and its adjoint contain creation and annihilation terms. We retain the negative-frequency solutions, but use them to create positive-energy antiparticles.
 
@@ -143,15 +143,15 @@ excitations.
 
 Replacing the coefficients gives a useful candidate field operator. To make it a complete quantum description, we still have to specify three ingredients:
 
-- **States with arbitrary particle number.** Start from a vacuum $|0\rangle$ that every $\hat a$ and $\hat b$ annihilates. This replaces the sea in [§4](dirac-equation.md#_4-negative-energy-solutions). Schematically, pair annihilation becomes $\hat a\,\hat b\,|e^-\,e^+\rangle = |0\rangle$, up to the ordering convention for fermion states.
-- **An operator algebra.** Commutators or anticommutators determine how multiparticle states behave under exchange, addressing the statistics assumption in [§4](dirac-equation.md#_4-negative-energy-solutions).
+- **States with arbitrary particle number.** Start from a vacuum $|0\rangle$ that every $\hat a$ and $\hat b$ annihilates. This replaces the sea in [Relativistic QM §9](relativistic-qm.md#_9-the-negative-energies-predict-antimatter). Schematically, pair annihilation becomes $\hat a\,\hat b\,|e^-\,e^+\rangle = |0\rangle$, up to the ordering convention for fermion states.
+- **An operator algebra.** Commutators or anticommutators determine how multiparticle states behave under exchange, addressing the statistics assumption in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough).
 - **A Hamiltonian bounded below.** A lowest-energy vacuum must exist despite the negative-frequency solutions of [Relativistic QM §4](relativistic-qm.md#_4-first-problem-negative-energies).
 
 Before constructing these, we need to distinguish the field types and the quantum pictures.
 
 ## Fields
 
-A classical field assigns a value to each spacetime point. We classify fields by how those values change under Lorentz transformations, as in [The Dirac Equation §5](dirac-equation.md#_5-spinors). This transformation law also determines the spin content of the quantized field:
+A classical field assigns a value to each spacetime point. We classify fields by how those values change under Lorentz transformations, as in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). This transformation law also determines the spin content of the quantized field:
 
 | field | transformation law | spin | quanta |
 | --- | --- | --- | --- |
@@ -174,7 +174,7 @@ This is the Klein–Gordon equation from [Relativistic QM §3](relativistic-qm.m
 
 Its earlier difficulty concerned interpreting the conserved density as a single-particle probability density. A classical field $\phi$ is not a probability amplitude, so that interpretation is unnecessary here.
 
-**Spinor field.** The spinor transformation $S(\Lambda)$ and the gamma matrices from [The Dirac Equation](dirac-equation.md) satisfy a compatibility relation. As a result, the derivative term $\gamma^\mu\partial_\mu\psi$ transforms as a spinor, just like $\psi$. We can combine them as
+**Spinor field.** The spinor transformation $S(\Lambda)$ and the gamma matrices from [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) satisfy a compatibility relation. As a result, the derivative term $\gamma^\mu\partial_\mu\psi$ transforms as a spinor, just like $\psi$. We can combine them as
 
 $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
@@ -250,7 +250,7 @@ independent normal modes in the free theory.*
 
 We have met these equations before: Klein–Gordon in [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
 
-The relation between transformation law and spin is the one developed in [§5](dirac-equation.md#_5-spinors). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
+The relation between transformation law and spin is the one developed in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
 
 ![Scalar, vector, and spinor fields use different component transformation laws for the same Lorentz change of frame.](./manim/field-transformation-types.png)
 
@@ -272,7 +272,7 @@ Strictly, quantum fields are **operator-valued distributions**. To obtain well-d
 
 ### Choosing a picture
 
-We can place time dependence in the states or in the operators. These are two equivalent descriptions of the same predictions. [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators) already used the second description to derive $d\hat A/dt = \tfrac{i}{\hbar}[\hat H,\hat A]$.
+We can place time dependence in the states or in the operators. These are two equivalent descriptions of the same predictions. [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) already used the second description to derive $d\hat A/dt = \tfrac{i}{\hbar}[\hat H,\hat A]$.
 
 In the **Schrödinger picture**, states evolve. Operators without explicit time dependence stay fixed:
 
@@ -287,7 +287,7 @@ $$|\Psi_H\rangle \;\text{ fixed}, \qquad \hat\phi(t, \mathbf x) = e^{i\hat H t/\
 
 The plus sign on the left comes from taking the adjoint of the time-evolution operator in [First Quantization](first-quantization.md). The ket evolves with $e^{-i\hat Ht/\hbar}$, while the bra evolves with $e^{+i\hat Ht/\hbar}$.
 
-Moving both factors onto the operator gives the Heisenberg expression differentiated in [The Dirac Equation §2](dirac-equation.md#_2-conservation-and-commutators). The expectation values agree:
+Moving both factors onto the operator gives the Heisenberg expression differentiated in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). The expectation values agree:
 
 $$\langle\Psi_S(t)|\,\hat O_S\,|\Psi_S(t)\rangle = \langle\Psi_H|\,\hat O_H(t)\,|\Psi_H\rangle,$$
 

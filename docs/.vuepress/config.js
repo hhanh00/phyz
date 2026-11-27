@@ -6,6 +6,7 @@ import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import markdownItFootnote from 'markdown-it-footnote'
 import katex from 'katex'
 import { renderFeynmanSvg } from './lib/feynman-svg.js'
+import { reviewReplies } from './lib/review-server.js'
 
 export default {
   lang: 'en-US',
@@ -17,7 +18,8 @@ export default {
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
   ],
 
-  bundler: viteBundler(),
+  // reviewReplies only applies to `vuepress dev`: it stores replies to the review notes.
+  bundler: viteBundler({ viteOptions: { plugins: [reviewReplies()] } }),
 
   theme: defaultTheme({
     navbar: [
@@ -39,6 +41,7 @@ export default {
           { text: 'Special Relativity', link: '/special-relativity.html' },
           { text: 'Relativistic QM', link: '/relativistic-qm.html' },
           { text: 'Dirac Equation', link: '/dirac-equation.html' },
+          { text: 'Dirac Solutions', link: '/dirac-solutions.html' },
         ],
       },
       {
@@ -106,6 +109,7 @@ export default {
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
       { text: 'Dirac Equation', link: '/dirac-equation.html' },
+          { text: 'Dirac Solutions', link: '/dirac-solutions.html' },
       { text: 'Fields and Quanta', link: '/qft.html' },
       { text: 'Action and Lagrangians', link: '/qft-action.html' },
       { text: 'Field Quantization', link: '/field-quantization.html' },
