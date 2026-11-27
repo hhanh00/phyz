@@ -33,3 +33,6 @@ video/clips/
 .pnpm-store/
 .opencode/
 output/
+
+# Replies given on the dev page to review notes (see docs/.vuepress/lib/review-server.js)
+updates/review-replies.json
