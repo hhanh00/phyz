@@ -2,7 +2,7 @@
 
 The last chapter ended with the Dirac equation and a state made of four wave functions. Two of them have positive energy and two have negative energy, and the chapter left a question open: what tells the two of each sign apart?
 
-This chapter answers it. The answer is the electron's spin, which nobody put into the equation. Two more results come with it. The equation gives the strength of the electron's magnet, which had puzzled physicists for years. And it says that turning an electron once round doesn't bring its state back. The next chapter, 6b, follows a moving electron and finds what the negative-energy solutions describe.
+This chapter answers it. The answer is the electron's spin, which nobody put into the equation. Two more results come with it. The equation gives the strength of the electron's magnet, which had puzzled physicists for years. And it says that turning an electron once round doesn't bring its state back. The next chapter, Fields and Quanta, takes up what the two negative-energy wave functions describe.
 
 Here is where we end up, for a particle at rest:
 
@@ -127,6 +127,8 @@ Section 5's box uses this.
 $$\hat H\psi = mc^2\begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -1 \end{pmatrix}\begin{pmatrix} \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4 \end{pmatrix} = \begin{pmatrix} +mc^2\,\psi_1 \\ +mc^2\,\psi_2 \\ -mc^2\,\psi_3 \\ -mc^2\,\psi_4 \end{pmatrix}.$$
 
 The upper pair has the energy $+mc^2$ and the lower pair has $-mc^2$. On a line, chapter 5 found one entry with each sign of the energy. In space each sign appears twice.
+
+**Why at rest is enough.** The particles in this chapter's experiments do move, but far slower than light, and for them the account at rest is accurate to a few thousandths of a percent or better (the [reference page](dirac-reference.md#_4-a-moving-electron) works this out). An electron is also at rest for any observer who moves along with it, and chapter 4's rule says the laws are the same for that observer.
 
 **The question.** The entries $\psi_1$ and $\psi_2$ have the same energy and the same momentum, which means that measuring the energy and the momentum can't tell them apart. Chapter 2a had two states like that: up and down, which a vertical magnet sends to different spots. Is there a measurement that does the same for $\psi_1$ and $\psi_2$? The next two sections find it.
 
@@ -405,7 +407,7 @@ But a phase counts as soon as a state is added to another. Split a beam in two, 
 
 As the field went up, the count of neutrons coming out rose and fell. With the spin turned by $360°$, the two paths cancelled. The count returned to its starting value only when the turn reached $720°$.
 
-**The name.** Each pair of the Dirac column is such a list of two amplitudes (section 5), so the column's entries turn at half the angle too. Physicists call a column whose entries turn at half the angle, and so change sign under one full turn, a **spinor**. That is the name chapter 5 gave the Dirac column. [Chapter 6b's section 4](dirac-solutions.md#_4-the-notation-later-chapters-use) has the general rule for how the column changes when it is turned or set moving.
+**The name.** Each pair of the Dirac column is such a list of two amplitudes (section 5), so the column's entries turn at half the angle too. Physicists call a column whose entries turn at half the angle, and so change sign under one full turn, a **spinor**. That is the name chapter 5 gave the Dirac column.
 
 <details>
 <summary>The calculation: a turn about the vertical, made by a magnetic field</summary>
@@ -432,7 +434,7 @@ Each phase is $\tfrac{q}{m}Bt$ times the spin, $\pm\hbar/2$, divided by $\hbar$.
 
 ## Where this comes back
 
-- **[Solutions of the Dirac Equation](./dirac-solutions.md)**, the next chapter, gives the electron momentum, pairs each negative-energy solution with a positron, and collects the notation later chapters use.
+- **[Fields and Quanta](./qft.md)**, the next chapter, takes up what the two negative-energy wave functions describe, and turns the wave function into a field.
 - **[QED](./qed.md)** derives section 5's way of putting a field into the equation from a symmetry.
 - **[Symmetries](./symmetries.md)** comes back to section 6's difference between a turn in space and a turn in the state, and gives the general rule for how turns act on a spin state.
 
@@ -440,4 +442,4 @@ Each phase is $\tfrac{q}{m}Bt$ times the spin, $\pm\hbar/2$, divided by $\hbar$.
 
 Previous: [Relativistic Quantum Mechanics](./relativistic-qm.md)
 
-Next: [Solutions of the Dirac Equation](./dirac-solutions.md)
+Next: [Fields and Quanta](./qft.md)

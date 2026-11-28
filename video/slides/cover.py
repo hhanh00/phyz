@@ -176,8 +176,8 @@ def full_turn_half_turn():
 
 
 COVERS = {
-    "06a-dirac-equation": {
-        "kicker": "PHYZ  ·  CHAPTER 6A",
+    "06-dirac-equation": {
+        "kicker": "PHYZ  ·  CHAPTER 6",
         "title": ["The Dirac", "Equation"],
         "sub": "Spin, a magnet twice too strong,\nand a full turn that flips a sign",
         "art": full_turn_half_turn,

@@ -1,6 +1,6 @@
-"""Slides for chapter six, part A, The Dirac Equation.
+"""Slides for chapter six, The Dirac Equation.
 
-Every value comes from video/scripts/06a-dirac-equation.txt or
+Every value comes from video/scripts/06-dirac-equation.txt or
 docs/dirac-equation.md. The narration does not read formulas aloud, so each
 formula is shown at the sentence that states it in words, in the page's
 notation, set with MathTex (LaTeX). The drawings redraw the chapter's figures in
@@ -24,7 +24,7 @@ from manim import *
 
 from engine import *
 
-STEM = "06a-dirac-equation"
+STEM = "06-dirac-equation"
 deck = Deck(f"scripts/{STEM}.txt")
 slide = deck.slide
 
@@ -396,10 +396,10 @@ def am_text(text, y, color=INK, bold=False, chars=34, size=26):
 
 
 # ================================================================== opening
-deck.part("Chapter six, part A")
+deck.part("Chapter six")
 
 
-@slide("Chapter six, part A.", "The Dirac Equation")
+@slide("Chapter six.", "The Dirac Equation")
 def opening(s):
     c = at(col4m(64, 0.95, False), -3.2, -0.3)
     yield [FadeIn(c)]
@@ -441,7 +441,7 @@ def prev2(s):
 
 
 # ================================================================== the chapter at a glance
-deck.part("Chapter six, part A")
+deck.part("Chapter six")
 
 
 @slide("This chapter answers it.", "The answer is the spin")
@@ -2434,7 +2434,7 @@ def spinor(s):
 
 
 # ================================================================== where we've got to
-deck.part("Chapter six, part A")
+deck.part("Chapter six")
 
 RECAP_Y = (1.9, 0.85, -0.2, -1.25, -2.3)
 RECAP_DOT = (RED, PURPLE, PURPLE, INK, BLUE)

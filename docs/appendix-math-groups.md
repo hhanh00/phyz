@@ -31,7 +31,7 @@ For U(1), $T$ is just the number $1$, so the exponential reproduces $e^{i\alpha}
 
 $$z\;\mapsto\;e^{i\alpha}z\approx z+i\alpha z,$$
 
-a small step sideways, along the tangent to the circle. The generator fixes that tangent direction — the arrow at the identity in the diagram below — and the exponential walks along it through the full angle. For larger groups the generators are matrices, and the same logic applies component by component, as used for spinors on [The Dirac Equation](dirac-solutions.md#_4-the-notation-later-chapters-use).
+a small step sideways, along the tangent to the circle. The generator fixes that tangent direction — the arrow at the identity in the diagram below — and the exponential walks along it through the full angle. For larger groups the generators are matrices, and the same logic applies component by component, as used for spinors on [The Dirac Equation](dirac-reference.md#_2-the-notation-later-chapters-use).
 
 ![A rotation group is a circle; the tangent at the identity is the generator that fixes the direction of the infinitesimal change.](./manim/rotation-generator.png)
 

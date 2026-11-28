@@ -54,6 +54,7 @@ const diagrams = [
   { source: 'page_diagrams.py', scene: 'MagnetTwiceTooStrong', output: 'magnet-twice-too-strong.png', page: 'dirac-equation' },
   { source: 'page_diagrams.py', scene: 'SpinorRotationSign', output: 'spinor-rotation-sign.png', page: 'dirac-equation' },
   { source: 'page_diagrams.py', scene: 'HalfAngleState', output: 'half-angle-state.png', page: 'dirac-equation' },
+  { source: 'page_diagrams.py', scene: 'ElectronPositronFlip', output: 'electron-positron-flip.png', page: 'qft' },
   { source: 'page_diagrams.py', scene: 'RestSpinorBasis', output: 'rest-spinor-basis.png', page: 'dirac-equation' },
   { source: 'page_diagrams.py', scene: 'FieldTransformationTypes', output: 'field-transformation-types.png', page: 'qft' },
   { source: 'page_diagrams.py', scene: 'QuantumPictures', output: 'quantum-pictures.png', page: 'qft' },

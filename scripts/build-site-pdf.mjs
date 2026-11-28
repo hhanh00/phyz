@@ -34,7 +34,6 @@ const chapters = [
   ['Special Relativity', 'special-relativity.md'],
   ['Relativistic Quantum Mechanics', 'relativistic-qm.md'],
   ['The Dirac Equation', 'dirac-equation.md'],
-  ['Solutions of the Dirac Equation', 'dirac-solutions.md'],
   ['Fields and Quanta', 'qft.md'],
   ['Action and Lagrangians', 'qft-action.md'],
   ['Field Quantization', 'field-quantization.md'],

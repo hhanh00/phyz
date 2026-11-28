@@ -409,6 +409,32 @@ class HalfAngleState(Scene):
         self.add(label('Each state is drawn as an arrow: across for the up amplitude, upward for the down amplitude.',0,-3.75,22,MUTED,width=14.5))
 
 
+class ElectronPositronFlip(Scene):
+    def construct(self):
+        heading(self,'A negative-energy solution becomes a positron','Conjugate, then reshuffle the column')
+        L,Rx=-3.9,3.9
+        self.add(box(L,-0.35,5.2,5.3,BLUE),box(Rx,-0.35,5.2,5.3,ORANGE),
+                 label("a negative-energy solution\nof the electron's equation",L,1.75,23,BLUE),
+                 label('the solution it becomes:\na positron',Rx,1.75,23,ORANGE))
+        rows=[('energy',0.75),('momentum',-0.05),('spin',-0.85),('charge',-1.65),('mass',-2.45)]
+        for name,y in rows:
+            same=name=='mass'
+            self.add(label(name,0,y+0.14,23,MUTED if same else INK),
+                     label('the same' if same else 'reversed',0,y-0.2,18,MUTED if same else PURPLE))
+            if not same:
+                self.add(Arrow([-0.95,y-0.02,0],[-1.25,y-0.02,0],buff=0,color=PURPLE,stroke_width=3,max_tip_length_to_length_ratio=0.5),
+                         Arrow([0.95,y-0.02,0],[1.25,y-0.02,0],buff=0,color=PURPLE,stroke_width=3,max_tip_length_to_length_ratio=0.5))
+        self.add(math(r'-E',L,0.75,40,BLUE),math(r'+E',Rx,0.75,40,ORANGE))
+        self.add(Arrow([L-0.2,-0.3,0],[L-0.2,0.2,0],buff=0,color=BLUE,stroke_width=6,max_tip_length_to_length_ratio=0.4),math(r'p',L+0.4,-0.05,36,BLUE),
+                 Arrow([Rx-0.2,0.2,0],[Rx-0.2,-0.3,0],buff=0,color=ORANGE,stroke_width=6,max_tip_length_to_length_ratio=0.4),math(r'-p',Rx+0.5,-0.05,36,ORANGE))
+        self.add(Circle(radius=0.3,color=BLUE,stroke_width=2,fill_color=BLUE,fill_opacity=0.12).move_to([L-0.2,-0.85,0]),
+                 Arrow([L-0.2,-1.08,0],[L-0.2,-0.62,0],buff=0,color=BLUE,stroke_width=5,max_tip_length_to_length_ratio=0.4),label('up',L+0.5,-0.85,24,BLUE),
+                 Circle(radius=0.3,color=ORANGE,stroke_width=2,fill_color=ORANGE,fill_opacity=0.12).move_to([Rx-0.2,-0.85,0]),
+                 Arrow([Rx-0.2,-0.62,0],[Rx-0.2,-1.08,0],buff=0,color=ORANGE,stroke_width=5,max_tip_length_to_length_ratio=0.4),label('down',Rx+0.65,-0.85,24,ORANGE))
+        self.add(math(r'-e',L,-1.65,40,BLUE),math(r'+e',Rx,-1.65,40,ORANGE),
+                 math(r'm',L,-2.45,40,MUTED),math(r'm',Rx,-2.45,40,MUTED))
+
+
 class RestSpinorBasis(Scene):
     def construct(self):
         heading(self,'A particle at rest: four solutions','Each solution fills one entry of the column of four wave functions')

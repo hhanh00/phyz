@@ -41,7 +41,6 @@ export default {
           { text: 'Special Relativity', link: '/special-relativity.html' },
           { text: 'Relativistic QM', link: '/relativistic-qm.html' },
           { text: 'Dirac Equation', link: '/dirac-equation.html' },
-          { text: 'Dirac Solutions', link: '/dirac-solutions.html' },
         ],
       },
       {
@@ -109,7 +108,6 @@ export default {
       { text: 'Special Relativity', link: '/special-relativity.html' },
       { text: 'Relativistic QM', link: '/relativistic-qm.html' },
       { text: 'Dirac Equation', link: '/dirac-equation.html' },
-          { text: 'Dirac Solutions', link: '/dirac-solutions.html' },
       { text: 'Fields and Quanta', link: '/qft.html' },
       { text: 'Action and Lagrangians', link: '/qft-action.html' },
       { text: 'Field Quantization', link: '/field-quantization.html' },

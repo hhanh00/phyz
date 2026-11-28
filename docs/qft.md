@@ -1,8 +1,96 @@
 # Quantum Field Theory: Fields and Quanta
 
-A single-particle wave function cannot describe pair creation or annihilation. To continue from [Solutions of the Dirac Equation](dirac-solutions.md), we therefore introduce **field operators**: operators assigned to spacetime points that act on states with different particle numbers.
+A single-particle wave function cannot describe pair creation or annihilation. To continue from [The Dirac Equation](dirac-equation.md), we therefore introduce **field operators**: operators assigned to spacetime points that act on states with different particle numbers.
 
 For the electron field, these operators remove electrons and create positrons. This gives the negative-frequency solutions a precise role without a filled sea of negative-energy electrons.
+
+## From a negative energy to a positron
+
+[The Dirac Equation](dirac-equation.md) left four wave functions for a particle at rest. Two have the energy $+mc^2$ and two have $-mc^2$, and in each pair one is spin up and one is spin down. [Chapter 5](relativistic-qm.md) said what is wrong with a negative energy: an electron could drop into such a state and keep falling, with no lowest rung, and no atom would last. A way out has to do three things.
+
+1. **Stop the fall.** There has to be a lowest state, with nothing below it.
+2. **Account for what is seen.** Positrons exist, with a positive energy, and an electron and a positron can appear together out of a packet of light.
+3. **Keep the equation**, because it gave the spin and the strength of the electron's magnet.
+
+This section does a first part of that. It shows what kind of particle the negative-energy solutions are about. It doesn't stop the fall and it doesn't make pairs, and the rest of the chapter needs fields for both.
+
+Here is where the section ends up, for a particle at rest:
+
+| Entry of the column | Energy of its solution | Spin of the entry | What it describes |
+| --- | --- | --- | --- |
+| $\psi_1$ | $+mc^2$ | up | An electron, spin up |
+| $\psi_2$ | $+mc^2$ | down | An electron, spin down |
+| $\psi_3$ | $-mc^2$ | up | A positron, spin down |
+| $\psi_4$ | $-mc^2$ | down | A positron, spin up |
+
+In the last two rows the solution has a negative energy, and the positron it describes has a positive one. The positron's spin is the opposite of the entry's as well.
+
+**Another reading of a negative-energy solution.** Two steps turn each negative-energy solution into a positive-energy solution for a particle of the opposite charge. No chance of finding the particle changes on the way. The steps can also be undone, so the new solution holds the same information as the old one.
+
+**Step one: take the complex conjugate.** We want to change the sign of the energy without changing any chance. The complex conjugate does that. The [complex conjugate](appendix-math-complex.md#_1-complex-numbers) of a number, marked with a star, has $-i$ wherever the number has $i$. It keeps the number's length, and a chance is a squared length, so it changes no chance.
+
+A wave with momentum $p$ along $z$ and energy $E$ is $e^{i(pz - Et)/\hbar}$. Give it the negative energy $-E$, where $E$ is positive, and it reads $e^{i(pz + Et)/\hbar}$. Conjugating puts a minus sign in front of the whole exponent:
+
+$$\left(e^{i(pz + Et)/\hbar}\right)^* = e^{-i(pz + Et)/\hbar} = e^{i\left((-p)z - Et\right)/\hbar}.$$
+
+Compare the last form with the wave we started from. It has $-p$ where $p$ stood, and its energy is $+E$. Conjugating has reversed the energy, and the momentum with it.
+
+**Step two: reshuffle the column.** Step one isn't enough on its own. Take the particle at rest, with only the third entry filled. After conjugating, its wave turns in time like a wave of energy $+mc^2$. But the filled entry still sits in the lower pair, and the equation gives the lower pair the energy $-mc^2$. The wave and its place in the column disagree, so the conjugate isn't a solution yet.
+
+The repair is to move the entries. A fixed matrix, the same one for every solution, swaps the upper pair with the lower pair. That fixes the particle at rest. For a particle moving in some directions, one more term comes out of the conjugate with the wrong sign, and swapping spin up with spin down inside each pair fixes that one (box). So the matrix does both, and this second swap is why the positron's spin comes out opposite. What was in $\psi_3$ ends up in the place of $\psi_2$. That doesn't make it an electron with spin down, because the new column obeys a different equation, as the next paragraph shows. The matrix only moves entries and changes some signs, so like the conjugate it changes no chance.
+
+Call the result $\psi_c$, with $c$ for conjugate:
+
+$$\psi_c = (\text{a fixed matrix}) \times \psi^*.$$
+
+**The charge.** So far the particle was free, and a free particle's equation doesn't contain its charge at all. The charge $q$ appears only when a magnetic field is present, as in [chapter 6's section 5](dirac-equation.md#_5-the-strength-of-the-magnet). So to find the charge of $\psi_c$, put a field in. The field adds one piece to the equation, with $q$ in it. Do the two steps to the whole equation (box). Everything comes back as it started except that piece, whose sign has changed. That is the Dirac equation with $-q$ in place of $q$. The electron's charge is $q = -e$, so $\psi_c$ obeys the equation for a particle of charge $+e$.
+
+**What changes.** Put the three together. A negative-energy solution of the electron's equation becomes a positive-energy solution of the equation for a particle of charge $+e$.
+
+![Two cards side by side. On the left, a negative-energy solution of the electron's equation: energy minus E, momentum p shown as an arrow pointing up, spin up, charge minus e, mass m. On the right, the solution it becomes, a positron: energy plus E, momentum minus p shown as an arrow pointing down, spin down, charge plus e, mass m. Between them each row is marked as reversed, except the mass, which is marked as the same.](./manim/electron-positron-flip.png)
+
+*The energy, the momentum, the spin and the charge are reversed. The mass is the same.*
+
+A particle with the electron's mass, a positive energy and the charge $+e$ is the **positron** of chapter 5.
+
+**The same signs as chapter 5's hole.** These four reversals are the ones chapter 5's hole had. Physicists have dropped the filled sea, but its rule is easy to remember: a hole is a missing electron, so whatever that electron had, the hole has minus it. Chapter 5 used the rule for the energy and the charge. It gives the momentum and the spin too. So the equation, with no sea, gives the same particle the hole gave.
+
+That is the table above. At rest, the four entries describe two particles, each with two spins.
+
+**What this doesn't do.** This is still one equation for one particle. It can relabel a negative-energy solution, but it can't make an electron and a positron appear out of a packet of light, as chapter 5 said happens. It doesn't stop chapter 5's fall either. We have renamed the negative-energy solutions, but the electron's equation still has them, and nothing here stops an electron from dropping into one. Both need the wave function to become a field, which is what the rest of this chapter starts on.
+
+<details>
+<summary>The calculation: checking the conjugate solution</summary>
+
+**The two steps, written out.** They take the column $(\psi_1, \psi_2, \psi_3, \psi_4)$ to
+
+$$\psi_c = \left(\psi_4^*,\ -\psi_3^*,\ -\psi_2^*,\ \psi_1^*\right).$$
+
+The upper pair and the lower pair have changed places. Inside each pair, up and down have changed places, and the two middle entries have a minus sign. For the particle at rest with only $\psi_3$ filled, $\psi_c$ has only its second entry filled, which is a spin-down entry in the upper pair.
+
+**What the fixed matrix has to repair.** If $\psi$ obeys the Dirac equation, conjugate the whole equation to see what $\psi^*$ obeys. The rate of change in time comes with an $i$, and so does each slope, so those terms change sign. The mass term, $\beta\,mc^2$, has no $i$ and stays as it was. The matrix $\alpha_y$ is built from $\hat Y$, which has an $i$ of its own, and that cancels the sign change of the slope along $y$. So two terms are left with the wrong sign against the others: the mass term and the term with the slope along $y$. The fixed matrix changes the sign of exactly those two.
+
+- It swaps the upper pair with the lower pair. The matrix $\beta$ is $+1$ on the upper pair and $-1$ on the lower, so swapping the pairs does to the mass term what changing the sign of $\beta$ would.
+- Inside each pair it swaps spin up with spin down, with a change of sign, and the two pairs get opposite signs. Together these leave $\alpha_x$ and $\alpha_z$ as they were and change the sign of $\alpha_y$. Multiplying the matrices out confirms it, and we leave that out.
+
+**The charge, term by term.** A field enters the equation by replacing $\hat p_x$ with $\hat p_x - qA_x$, which is $-i\hbar\,\partial/\partial x - qA_x$, and likewise for $y$ and $z$. Here $\mathbf A$ is the field of arrows from the box in chapter 6's section 5. Its values are ordinary real numbers, so conjugation turns the $-i$ into $+i$ and leaves $qA_x$ alone:
+
+$$-i\hbar\,\frac{\partial}{\partial x} - qA_x \quad\longrightarrow\quad +i\hbar\,\frac{\partial}{\partial x} - qA_x = -\left(-i\hbar\,\frac{\partial}{\partial x} + qA_x\right).$$
+
+Follow the terms of the equation through both steps.
+
+| Term | After conjugating | After the fixed matrix |
+| --- | --- | --- |
+| Rate of change in time, $i\hbar\,\partial/\partial t$ | Sign changed | Still changed |
+| Momentum along $x$ or $z$, with the field | Sign changed, and $-qA$ has become $+qA$ | No further change |
+| Momentum along $y$, with the field | Sign not changed, but $-qA_y$ has become $+qA_y$ | Sign changed |
+| Mass, $\beta\,mc^2$ | Sign not changed | Sign changed |
+
+After both steps every term carries the same minus sign. Multiply the whole equation by $-1$, and every sign is as it was at the start, except that $+q\mathbf A$ stands where $-q\mathbf A$ stood. That is the Dirac equation for the charge $-q$.
+
+</details>
+
+**Conjugating a negative-energy solution and reshuffling its entries gives a positive-energy solution for the opposite charge, with the same mass. At rest, the four entries describe the electron and the positron, each with two spins.**
 
 ## Spacetime, components, and value spaces
 
@@ -73,25 +161,25 @@ The free Dirac solution is a sum of plane waves. At each momentum and spin, $a_s
 <details>
 <summary>The classical mode expansion</summary>
 
-Start with the general free solution from [Solutions of the Dirac Equation §3](dirac-solutions.md#_3-the-general-solution):
+Start with the general free solution from [the Dirac reference page §1](dirac-reference.md#_1-the-general-solution):
 
 $$\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + b_s^*(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
 Here $p\cdot x = E_p t - \mathbf p\cdot\mathbf x$ and $E_p = \sqrt{\mathbf p^2 + m^2}$. The index $s$ labels the two spin states. The coefficients $a_s(p)$ and $b_s^*(p)$ are complex amplitudes fixed by the initial field.
 
-The $u$-terms have positive frequency; the $v$-terms have negative frequency. [§2](dirac-solutions.md#_2-electron-and-positron) related the second family to antiparticles, and [Relativistic QM §9](relativistic-qm.md#_9-the-negative-energies-predict-antimatter) introduced the historical hole interpretation. We will now describe both families with operators.
+The $u$-terms have positive frequency; the $v$-terms have negative frequency. [The first section](#from-a-negative-energy-to-a-positron) related the second family to antiparticles, and [Relativistic QM §9](relativistic-qm.md#_9-the-negative-energies-predict-antimatter) introduced the historical hole interpretation. We will now describe both families with operators.
 
 </details>
 
 ### The promotion
 
-To describe changing particle numbers, replace the numerical amplitudes by operators. This implements the step discussed in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough) and proposed after the general solution in [§3](dirac-solutions.md#_3-the-general-solution):
+To describe changing particle numbers, replace the numerical amplitudes by operators. This implements the step discussed in [Relativistic QM §10](relativistic-qm.md#_10-why-a-one-particle-equation-isn-t-enough) and proposed after the general solution in [the Dirac reference page §1](dirac-reference.md#_1-the-general-solution):
 
 $$a_s(p) \to \hat a_s(p), \qquad b_s^*(p) \to \hat b_s^\dagger(p),$$
 
 The operator $\hat a_s(p)$ removes an electron of momentum $\mathbf p$ and spin label $s$. The operator $\hat b_s^\dagger(p)$ creates a positron with those labels.
 
-For operators, the counterpart of complex conjugation is the **adjoint**, denoted by $\dagger$. This explains the notation $b_s^*$ in [§3](dirac-solutions.md#_3-the-general-solution): after quantization it becomes $\hat b_s^\dagger$. The expansion is now
+For operators, the counterpart of complex conjugation is the **adjoint**, denoted by $\dagger$. This explains the notation $b_s^*$ in [the Dirac reference page §1](dirac-reference.md#_1-the-general-solution): after quantization it becomes $\hat b_s^\dagger$. The expansion is now
 
 $$\hat\psi(x) = \sum_{s=1}^{2} \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}}\left[\hat a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} + \hat b_s^\dagger(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
@@ -117,7 +205,7 @@ The opposite phase, $e^{+ip\cdot x/\hbar}$, corresponds to adding energy $E_p$ a
 
 </details>
 
-The phases determine whether an operator creates or annihilates. The species labels follow the convention in [Solutions of the Dirac Equation](dirac-solutions.md#_3-the-general-solution): the $u$-family describes electrons and the $v$-family describes positrons.
+The phases determine whether an operator creates or annihilates. The species labels follow the convention in [the Dirac reference page](dirac-reference.md#_1-the-general-solution): the $u$-family describes electrons and the $v$-family describes positrons.
 
 Both the field and its adjoint contain creation and annihilation terms. We retain the negative-frequency solutions, but use them to create positive-energy antiparticles.
 
@@ -151,7 +239,7 @@ Before constructing these, we need to distinguish the field types and the quantu
 
 ## Fields
 
-A classical field assigns a value to each spacetime point. We classify fields by how those values change under Lorentz transformations, as in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). This transformation law also determines the spin content of the quantized field:
+A classical field assigns a value to each spacetime point. We classify fields by how those values change under Lorentz transformations, as in [the Dirac reference page §2](dirac-reference.md#_2-the-notation-later-chapters-use). This transformation law also determines the spin content of the quantized field:
 
 | field | transformation law | spin | quanta |
 | --- | --- | --- | --- |
@@ -174,7 +262,7 @@ This is the Klein–Gordon equation from [Relativistic QM §3](relativistic-qm.m
 
 Its earlier difficulty concerned interpreting the conserved density as a single-particle probability density. A classical field $\phi$ is not a probability amplitude, so that interpretation is unnecessary here.
 
-**Spinor field.** The spinor transformation $S(\Lambda)$ and the gamma matrices from [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) satisfy a compatibility relation. As a result, the derivative term $\gamma^\mu\partial_\mu\psi$ transforms as a spinor, just like $\psi$. We can combine them as
+**Spinor field.** The spinor transformation $S(\Lambda)$ and the gamma matrices from [the Dirac reference page §2](dirac-reference.md#_2-the-notation-later-chapters-use) satisfy a compatibility relation. As a result, the derivative term $\gamma^\mu\partial_\mu\psi$ transforms as a spinor, just like $\psi$. We can combine them as
 
 $$(i\hbar\,\gamma^\mu\partial_\mu - m)\psi = 0,$$
 
@@ -250,7 +338,7 @@ independent normal modes in the free theory.*
 
 We have met these equations before: Klein–Gordon in [Relativistic QM §3](relativistic-qm.md#_3-the-klein–gordon-equation), Dirac in [The Dirac Equation](dirac-equation.md), and Maxwell in classical electromagnetism. Here all three describe fields whose quantized excitations are particles.
 
-The relation between transformation law and spin is the one developed in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
+The relation between transformation law and spin is the one developed in [the Dirac reference page §2](dirac-reference.md#_2-the-notation-later-chapters-use). The Higgs is another scalar example; its full description involves interactions beyond the free equations considered here.
 
 ![Scalar, vector, and spinor fields use different component transformation laws for the same Lorentz change of frame.](./manim/field-transformation-types.png)
 
@@ -272,7 +360,7 @@ Strictly, quantum fields are **operator-valued distributions**. To obtain well-d
 
 ### Choosing a picture
 
-We can place time dependence in the states or in the operators. These are two equivalent descriptions of the same predictions. [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use) already used the second description to derive $d\hat A/dt = \tfrac{i}{\hbar}[\hat H,\hat A]$.
+We can place time dependence in the states or in the operators. These are two equivalent descriptions of the same predictions. [the Dirac reference page §2](dirac-reference.md#_2-the-notation-later-chapters-use) already used the second description to derive $d\hat A/dt = \tfrac{i}{\hbar}[\hat H,\hat A]$.
 
 In the **Schrödinger picture**, states evolve. Operators without explicit time dependence stay fixed:
 
@@ -287,7 +375,7 @@ $$|\Psi_H\rangle \;\text{ fixed}, \qquad \hat\phi(t, \mathbf x) = e^{i\hat H t/\
 
 The plus sign on the left comes from taking the adjoint of the time-evolution operator in [First Quantization](first-quantization.md). The ket evolves with $e^{-i\hat Ht/\hbar}$, while the bra evolves with $e^{+i\hat Ht/\hbar}$.
 
-Moving both factors onto the operator gives the Heisenberg expression differentiated in [Solutions of the Dirac Equation §4](dirac-solutions.md#_4-the-notation-later-chapters-use). The expectation values agree:
+Moving both factors onto the operator gives the Heisenberg expression differentiated in [the Dirac reference page §2](dirac-reference.md#_2-the-notation-later-chapters-use). The expectation values agree:
 
 $$\langle\Psi_S(t)|\,\hat O_S\,|\Psi_S(t)\rangle = \langle\Psi_H|\,\hat O_H(t)\,|\Psi_H\rangle,$$
 

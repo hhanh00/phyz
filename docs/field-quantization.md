@@ -314,13 +314,13 @@ The real scalar has one operator family and particles that are their own antipar
 
 The [Fields and Quanta page](qft.md#the-promotion) introduced two Dirac-field operator families, $\hat a_s(p)$ and $\hat b_s(p)$, with spin label $s=1,2$. To quantize them, we must choose their algebra. The free Hamiltonian makes the consequence of that choice explicit.
 
-The [general Dirac solution](dirac-solutions.md#_3-the-general-solution) has two positive-frequency spinors $u_s(p)$ and two negative-frequency spinors $v_s(p)$ per momentum. Replace their coefficients by operators:
+The [general Dirac solution](dirac-reference.md#_1-the-general-solution) has two positive-frequency spinors $u_s(p)$ and two negative-frequency spinors $v_s(p)$ per momentum. Replace their coefficients by operators:
 
 $$\hat\psi(x) = \int \frac{d^3p}{(2\pi\hbar)^3}\,\frac{1}{\sqrt{2E_p}} \sum_{s=1}^{2}\left[\hat a_s(p)\,u_s(p)\,e^{-ip\cdot x/\hbar} \;+\; \hat b_s^\dagger(p)\,v_s(p)\,e^{+ip\cdot x/\hbar}\right],$$
 
 The Dirac adjoint is $\hat{\bar\psi}=\hat\psi^\dagger\gamma^0$. Unlike a real scalar, this field is not Hermitian; it has distinct particle and antiparticle operator families.
 
-The negative-frequency term contains $\hat b^\dagger$. As the [mode analysis in Fields and Quanta](qft.md#fields) explains, this term raises the state's energy by $E_p$. It implements the [negative-energy solutions](dirac-solutions.md#_2-electron-and-positron).
+The negative-frequency term contains $\hat b^\dagger$. As the [mode analysis in Fields and Quanta](qft.md#fields) explains, this term raises the state's energy by $E_p$. It implements the [negative-energy solutions](qft.md#from-a-negative-energy-to-a-positron).
 
 Substitute the expansion into the free Dirac Hamiltonian. Integrate the plane waves and use the spinor orthogonality relations. Before reordering the operators, the result is
 
