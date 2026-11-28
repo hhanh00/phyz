@@ -156,4 +156,4 @@ One last point ties this to the Dirac equation. Each pair of the Dirac column is
 
 Here's where we've got to. The angular momentum of a free electron's motion isn't kept. A matrix term of half of h-bar repairs it, and that term is the spin. In each pair of the column, one wave function is spin up, and the other is spin down. The equation makes the electron's magnet twice as strong as a spinning charge's, which is what Stern and Gerlach measured. And one full turn in space multiplies the state by minus one.
 
-The electron has stayed at rest, or slow, through all of this. The next chapter sets it moving. It also finds what the negative-energy solutions describe.
+The electron has stayed at rest, or slow, through all of this. That was enough, because the particles in these experiments move far slower than light. The next chapter takes up what the two negative-energy wave functions describe.

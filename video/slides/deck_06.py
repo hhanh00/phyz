@@ -2470,10 +2470,10 @@ def recap2(s):
     yield [FadeIn(recap_row(4), shift=RIGHT * 0.15)]
 
 
-@slide("The electron has stayed at rest, or slow, through all of this.", "Next: a moving electron")
+@slide("The electron has stayed at rest, or slow, through all of this.", "Next: fields")
 def nxt(s):
-    e = espin(-5.4, 0.8, True, 1.6, 0.2)
+    e = espin(-4.6, 0.8, True, 1.6, 0.2)
     yield [FadeIn(e), FadeIn(at(lab("at rest, or slow, through all of this", 24, INK), -4.6, -0.5))]
-    yield [e.animate.shift(RIGHT * 9.6), Create(Line(P(-4.6, 0.8), P(3.6, 0.8), color=LINE, stroke_width=4).set_z_index(-1)),
-           FadeIn(at(T("the next chapter sets it moving", 28, INK, True), 2.4, -0.5))]
-    yield [FadeIn(at(lab("it also finds what the negative-energy solutions describe", 26, LOW, True), 0, -2.2))]
+    yield [FadeIn(at(T("that was enough", 30, INK, True), 2.4, 1.0)),
+           FadeIn(at(lab("the particles in these experiments\nmove far slower than light", 26, INK), 2.4, 0.1))]
+    yield [FadeIn(at(lab("next: what the two negative-energy wave functions describe", 26, LOW, True), 0, -2.2))]
